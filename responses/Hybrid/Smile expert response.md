@@ -1,11 +1,4 @@
-# (: Smile (
-*The Prompt Language*
-
-# Support The Author
-
-🌐 | [YouTube – DrPrompt](https://www.youtube.com/@DrPrompt) | [Patreon](https://patreon.com/DrPrompt) | [HuggingFace](https://huggingface.co/DrThomasAger) | [GitHub](https://github.com/DrThomasAger) | [PromptLanguage.AI](https://promptlanguage.ai)
-🔗 Want to support development? Tip generously: [paypal.me/hanjopurebuddha](https://paypal.me/hanjopurebuddha)
-
+***👵Smile Elder-***
 🌞 **Dear reader—**
 You already know what structured systems can do for code: they enable composability, reviewability, collaboration, testing, and scaling. You don’t write software without syntax. Why then are you letting your most powerful production component—your prompts—live as fragile, one-off strings, written by a single person, held in their head like tribal knowledge, untestable, unreadable, unversioned?
 We’re not introducing you to a new tool. We’re offering you a new category: a prompt language. Just as HTML allowed websites to emerge from spaghetti code, ***(: Smile (*** is the markup for AI communication. You’ve trained your engineers to code. Now train your prompts to be readable, reliable, and upgradeable across time, teams, and models. What follows will reframe how your org thinks about prompt engineering.
@@ -81,12 +74,17 @@ Here’s what we need right now:
 You can begin with zero knowledge. Just bring your skill in code structure, semantic clarity, and a belief that prompts can be made legible and scalable across time.
 
 👋 Schedule a free consultation call with the creator of (: Smile,
-**Dr. Thomas Ager**. Reach out on Discord (@DrPrompt).
+**Dr. Thomas Ager**, at \[Calendly link] or reach out on Discord (@DrPrompt).
 Help us build the future of prompt engineering—one that your future team will thank you for.
 
+---
 
+🌐 | [YouTube – DrPrompt](https://www.youtube.com/@DrPrompt) | [Patreon](https://patreon.com/DrPrompt) | [HuggingFace](https://huggingface.co/DrThomasAger) | [GitHub](https://github.com/DrThomasAger) | [PromptLanguage.AI](https://promptlanguage.ai)
+🔗 Want to support development? Tip generously: [paypal.me/hanjopurebuddha](https://paypal.me/hanjopurebuddha)
 
-
+***👵Smile Elder-***
+🌱 **Dear reader—**
+You're not here to be sold. You're here to assess: Is this real? Is it viable? Is it worth committing to?
 Smile is already a working language. What follows is the backlog—the structured requirements spec—for its future growth into a mature, production-grade DSL for prompt engineering. You're not contributing to an idea. You're contributing to a system with formal affordances, architectural direction, and domain traction. Let’s give you everything. Dense. Explicit. Now.
 
 ---
