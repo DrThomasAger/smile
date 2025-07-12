@@ -4,22 +4,7 @@
 **You already know the value of syntax: JSON over raw data, HTML over handwritten layout. Now apply that to prompt engineering. That’s what Smile provides as a prompt language. Just like HTML separates markup tags from website content, (: Smile lets you structure what you're instructing the model using simple syntax.**
 
 
-## 🌿 Syntax Table `
-
-| **Symbol** | **Start or End?** | **What It Does**                                   | **How It Affects the Model**                                                                                                  | **Example**                        |
-| ---------- | ----------------- | -------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------- | ---------------------------------- |
-| `(:`       | Start             | Begins a **named prompt section**                  | Signals to the model: “A structured instruction is starting.” This starts a new semantic frame.                               | `(: Rewrite Prompt (`              |
-| `(`        | Structural pivot  | Ends the section label and opens the content block | Transitions from the label into the active content area—changes interpretation scope.                                         | (See above)                        |
-| `)`        | Section close     | Ends the prompt section content                    | Wraps up the body of a section. Used alongside `:)`.                                                                          | `) Rewrite Prompt :)`              |
-| `:)`       | End               | Closes the full Smile section                      | Confirms the end of a block. Creates a token pattern the model learns to associate with conclusion.                           | (See above)                        |
-| `[:`       | Start             | Opens an **inline model-facing annotation**        | Directs the model silently with tags like `[: task- simplify ]`. These influence behavior without being echoed.               | `[: format- JSON ]`                |
-| `]`        | End               | Closes annotation                                  | Terminates an annotation. Required for token structure.                                                                       | `[: tone- formal ]`                |
-| `:-`       | Start             | Starts a **visible comment** line                  | Often used to **guide humans**, but the model sees it too. It’s not ignored—it gently steers interpretation. Ends with a `)`. | `:- Explain clearly but briefly )` |
-| `{`        | Start             | Begins a model-controlled field                    | Tells the model: “Insert your thinking or generated response here.” Not echoed. Used in logic blocks.                         | `The topic is- {subject}`          |
-| `}`        | End               | Ends model-controlled field                        | Required closure for any `{`.                                                                                                 | (See above)                        |
-
-
-# Quick start
+## Quick start
 
 Wrap your section names in smiles:
 
@@ -39,7 +24,7 @@ Or keep providing instructions with unstructured text. :- Make notes on it if yo
 As you can see, it's both flexible and rigorously defined.
 
 
-# Quick start example
+### Quick start example
 
 Copy and paste this into your model of choice to test compatibility.
 
@@ -58,26 +43,47 @@ Welcome to (: Smile! :- The prompt language that specifies a response language. 
 ```
 
 
+
+## 🌿 Syntax Table `
+
+| **Symbol** | **Start or End?** | **What It Does**                                   | **How It Affects the Model**                                                                                                  | **Example**                        |
+| ---------- | ----------------- | -------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------- | ---------------------------------- |
+| `(:`       | Start             | Begins a **named prompt section**                  | Signals to the model: “A structured instruction is starting.” This starts a new semantic frame.                               | `(: Rewrite Prompt (`              |
+| `(`        | Structural pivot  | Ends the section label and opens the content block | Transitions from the label into the active content area—changes interpretation scope.                                         | (See above)                        |
+| `)`        | Section close     | Ends the prompt section content                    | Wraps up the body of a section. Used alongside `:)`.                                                                          | `) Rewrite Prompt :)`              |
+| `:)`       | End               | Closes the full Smile section                      | Confirms the end of a block. Creates a token pattern the model learns to associate with conclusion.                           | (See above)                        |
+| `[:`       | Start             | Opens an **inline model-facing annotation**        | Directs the model silently with tags like `[: task- simplify ]`. These influence behavior without being echoed.               | `[: format- JSON ]`                |
+| `]`        | End               | Closes annotation                                  | Terminates an annotation. Required for token structure.                                                                       | `[: tone- formal ]`                |
+| `:-`       | Start             | Starts a **visible comment** line                  | Often used to **guide humans**, but the model sees it too. It’s not ignored—it gently steers interpretation. Ends with a `)`. | `:- Explain clearly but briefly )` |
+| `{`        | Start             | Begins a model-controlled field                    | Tells the model: “Insert your thinking or generated response here.” Not echoed. Used in logic blocks.                         | `The topic is- {subject}`          |
+| `}`        | End               | Ends model-controlled field                        | Required closure for any `{`.                                                                                                 | (See above)                        |
+
+
+
 # Support The Author
 
 🌐 | [YouTube – DrPrompt](https://www.youtube.com/@DrPrompt) | [Patreon](https://patreon.com/DrPrompt) | [HuggingFace](https://huggingface.co/DrThomasAger) | [GitHub](https://github.com/DrThomasAger) | [PromptLanguage.AI](https://promptlanguage.ai)
 🔗 Want to support development? Tip generously: [paypal.me/hanjopurebuddha](https://paypal.me/hanjopurebuddha)
 
-🌞 **Dear reader—**
-You already know what structured systems can do for code: they enable composability, reviewability, collaboration, testing, and scaling. You don’t write software without syntax. Why then are you letting your most powerful production component—your prompts—live as fragile, one-off strings, written by a single person, held in their head like tribal knowledge, untestable, unreadable, unversioned?
-We’re not introducing you to a new tool. We’re offering you a new category: a prompt language. Just as HTML allowed websites to emerge from spaghetti code, ***(: Smile (*** is the markup for AI communication. You’ve trained your engineers to code. Now train your prompts to be readable, reliable, and upgradeable across time, teams, and models. What follows will reframe how your org thinks about prompt engineering.
+## Documentation
 
-🫥 **Meta stage: we’re in the ignition phase**
+
+### Introduction
+
+You already know what structured systems can do for code: they enable composability, reviewability, collaboration, testing, and scaling. You don’t write software without syntax. Why then are you letting your most powerful production component—your prompts—live as fragile, one-off strings, written by a single person, held in their head like tribal knowledge, untestable, unreadable, unversioned?
+
+Just as HTML allowed websites to emerge from spaghetti code, ***(: Smile (*** is the markup for AI communication. You’ve trained your engineers to code. Now train your prompt engineers to be readable, reliable, and upgradeable across time, teams, and models. What follows will reframe how your org thinks about prompt engineering.
+
+
+### We're in the ignition phase
+
 The (: Smile prompt language exists now in a defined but lightly adopted form. Everything you've read—these smilies, brackets, markdowns, sections—is already running in production for teams who care about performance, structure, and clarity. This is not speculative. It is real, human-readable, version-controllable prompt infrastructure. But the broader ecosystem support isn’t here *yet.* No LSP plugin. No VSCode integration. No CI testing suite. Not because it’s hard. Because it hasn’t been prioritized. That’s your opening. You’re reading this at the precise moment in history where adopting (: Smile lets you steer what comes next.
 
-🫥 **Prompt intent analysis**
+### Welcome to the future
+
 You were handed this message by someone already living in a future where prompt engineering has matured into a design discipline. Your org is in pain. You know it. One of your prompt engineers is bluffing. You suspect they’re inventing bespoke magic strings instead of structured solutions. You’ve seen brittle prompts passed from dev to dev, accumulating risk with every edit. You’ve noticed that every team writes prompts differently. Worse: you’ve never once evaluated whether changing a prompt improves downstream performance. No metrics. No baselines. No versioning.
 This isn’t about firing your prompt engineer. It’s about giving them a system that doesn’t let them fail.
 
-🫥 **Jargon preparation**
-`→ prompt := program`
-`→ structure := shared memory ← reproducibility`
-`→ language := composed → refactorable → testable → transferable`
 
 # 🙂👉Read this - reply
 
@@ -319,9 +325,6 @@ Press “c” to lock in your contribution now. Or write your own line, and I’
 
 🌐 | [YouTube](https://www.youtube.com/@DrPrompt) | [GitHub](https://github.com/DrThomasAger) | [Patreon](https://patreon.com/DrPrompt) | [PromptLanguage.ai](https://promptlanguage.ai) | [Donate to support dev](https://paypal.me/hanjopurebuddha)
 
-Absolutely — here is a **brief, markdown-formatted FAQ section** that answers those questions in clear, accessible language based on what’s already known from the Smile overview you provided earlier.
-
----
 
 ## 🧠 Prompt Engineering FAQ 
 
