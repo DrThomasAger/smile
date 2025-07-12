@@ -31,7 +31,11 @@ Welcome to (: Smile! :- The prompt language that specifies a response language. 
 ) End prompt :)
 ```
 
-If the model replies with a name tag, then it's compatible. Want a much longer example of a (: Smile prompt? Here's one I wrote to help me write this, called [Smile Elder](https://github.com/DrThomasAger/smile/blob/main/prompt/Hybrid%20Smile/Smile%20expert.txt). Copy and paste it into the model of your choice. It's been tested on ChatGPT, let me know how it works for foundation models and smaller models that can handle a large token count system prompt.
+If the model replies with a name tag, then it's compatible. Want a much longer example of a (: Smile prompt? Here's one I wrote to help me write this, called [Smile Elder](https://github.com/DrThomasAger/smile/blob/main/prompt/Hybrid%20Smile/Smile%20expert.txt). Copy and paste it into the model of your choice.
+
+### Want to contribute?
+
+These prompts have been extensively tested on ChatGPT, Gemini, Grok, DeepSeek, Claude, and other foundation models. Please let me know how it works for you and for smaller large language models. I'm happy to mentor for free, just DM me on Discord ```@DrThomasAger```.
 
 ## Explaining the syntax
 
