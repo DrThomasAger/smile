@@ -1,4 +1,9 @@
-***👵Smile Elder-***
+# (: Smile (
+*The Prompt Language*
+
+**You already know the value of syntax: JSON over raw data, HTML over handwritten layout. Now apply that to prompt engineering. That’s what Smile provides as a prompt language. Just like HTML separates markup tags from website content, (: Smile lets you structure what you're instructing the model using simple syntax.**
+
+# Support The Author
 
 🌐 | [YouTube – DrPrompt](https://www.youtube.com/@DrPrompt) | [Patreon](https://patreon.com/DrPrompt) | [HuggingFace](https://huggingface.co/DrThomasAger) | [GitHub](https://github.com/DrThomasAger) | [PromptLanguage.AI](https://promptlanguage.ai)
 🔗 Want to support development? Tip generously: [paypal.me/hanjopurebuddha](https://paypal.me/hanjopurebuddha)
@@ -258,3 +263,86 @@ Press “c” to lock in your contribution now. Or write your own line, and I’
 🧠 Prompt engineering will one day be taught like software engineering. Smile is your chance to help write its syntax.
 
 🌐 | [YouTube](https://www.youtube.com/@DrPrompt) | [GitHub](https://github.com/DrThomasAger) | [Patreon](https://patreon.com/DrPrompt) | [PromptLanguage.ai](https://promptlanguage.ai) | [Donate to support dev](https://paypal.me/hanjopurebuddha)
+
+Absolutely — here is a **brief, markdown-formatted FAQ section** that answers those questions in clear, accessible language based on what’s already known from the Smile overview you provided earlier.
+
+---
+
+## 🧠 Prompt Engineering FAQ 
+
+### ❓ What’s the best way to write prompts so they’re consistent?
+
+Use a structure. Consistent prompts emerge from consistent patterns. Instead of freeform text, write prompts using a clear format that separates sections, inserts, and intentions. Prompt languages like `(: Smile` make this easy by using lightweight syntax that standardizes your team’s approach.
+
+---
+
+### ❓ How do I manage prompt changes across a team?
+
+Track changes like code. With a structured prompt format (like `(: Smile`), you can version-control prompts in Git, diff changes meaningfully, and prevent silent regressions. Everyone can see what was changed, why it was changed, and what it’s connected to.
+
+---
+
+### ❓ Why does my prompt stop working when I change a few words?
+
+LLMs are sensitive to prompt structure. Without a standard format, even minor edits can impact model behavior in unpredictable ways. Using structured prompts reduces ambiguity and allows small changes to be tracked, tested, and compared.
+
+---
+
+### ❓ How do you make prompts easier to understand?
+
+Write them like code. A prompt written in structured syntax with clear section markers and annotations is much easier to read than a wall of text. `(: Smile` separates instructions from context, which helps humans (and models) interpret them clearly.
+
+---
+
+### ❓ Is there a method for organizing prompt files?
+
+Yes—treat them like part of your codebase. Group prompts by function, use folders and naming conventions, and apply version control. Tools like `(: Smile` also make it easier to parse, analyze, and benchmark prompts automatically.
+
+---
+
+### ❓ How do I stop my prompt from breaking every time we update it?
+
+You need a testable structure. If your prompts have clear sections and version control, you can evaluate how changes affect model output before rolling them out. Structured prompts also minimize the risk of unintended behavior from slight edits.
+
+---
+
+### ❓ What’s the best way to write prompts for multiple people to edit?
+
+Use a shared syntax. Without structure, prompts become tribal knowledge. A standardized language like `(: Smile` makes it easy for multiple people to edit, read, and understand prompts without breaking them.
+
+---
+
+### ❓ How do I know if a prompt is actually helping performance?
+
+Benchmark it. Evaluate outputs before and after prompt changes using metrics like token usage, output accuracy, or response similarity. Structured prompts make it easier to define what changed and measure what improved.
+
+---
+
+### ❓ What’s a better way to structure my prompts?
+
+Use sectioned syntax. Instead of writing one long string, break your prompts into defined parts—input, instructions, context, and expected output. Smile gives you a simple syntax to do this while remaining readable and token-efficient.
+
+---
+
+### ❓ What causes unpredictable LLM outputs after small prompt changes?
+
+Lack of structure. When your prompt isn’t organized, even tiny edits can shift model interpretation. Structured formats limit ambiguity and make the model’s task clearer.
+
+---
+
+### ❓ What’s the best way to standardize prompt writing across multiple developers?
+
+Adopt a prompt language. Standardization comes from shared rules. A format like `(: Smile` lets all developers speak the same structural “language” when writing prompts—making collaboration seamless.
+
+---
+
+### ❓ How do I stop fragile prompts from breaking our outputs?
+
+You need testable, diffable prompts. Treat prompts like infrastructure. Structured syntax lets you evaluate them, review changes, and prevent unexpected output behavior.
+
+---
+
+### ❓ How do I review prompts for quality or consistency?
+
+With a prompt language system like `(: Smile`, you can quickly inspect sections, annotations, and edits. Review becomes a process, not a guessing game.
+
