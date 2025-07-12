@@ -90,19 +90,16 @@ unstructured text. :- Make notes on it if you want to )
 
 ## Documentation
 
-
-### Introduction
-
 You already know what structured systems can do for code: they enable composability, reviewability, collaboration, testing, and scaling. You don’t write software without syntax. Why then are you letting your most powerful production component—your prompts—live as fragile, one-off strings, written by a single person, held in their head like tribal knowledge, untestable, unreadable, unversioned?
 
 Just as HTML allowed websites to emerge from spaghetti code, ***(: Smile (*** is the markup for AI communication. You’ve trained your engineers to code. Now train your prompt engineers to be readable, reliable, and upgradeable across time, teams, and models. What follows will reframe how your org thinks about prompt engineering.
 
 
-### We're in the ignition phase
+### 🚀 We're in the ignition phase
 
 The (: Smile prompt language exists now in a defined but lightly adopted form. Everything you've read—these smilies, brackets, markdowns, sections—is already running in production for teams who care about performance, structure, and clarity. This is not speculative. It is real, human-readable, version-controllable prompt infrastructure. But the broader ecosystem support isn’t here *yet.* No VSCode integration. You’re reading this at the precise moment in history where adopting (: Smile lets you steer what comes next.
 
-### Welcome to the future
+### 🛸 Welcome to the future
 
 You were handed this message by someone already living in a future where prompt engineering has matured into a design discipline. Your org is in pain. You know it. One of your prompt engineers is bluffing. You suspect they’re inventing bespoke magic strings instead of structured solutions. You’ve seen brittle prompts passed from dev to dev, accumulating risk with every edit. You’ve noticed that every team writes prompts differently. Worse: you’ve never once evaluated whether changing a prompt improves downstream performance. No metrics. No baselines. No versioning.
 This isn’t about firing your prompt engineer. It’s about giving them a system that doesn’t let them fail.

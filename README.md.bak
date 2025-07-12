@@ -2,7 +2,8 @@
 *The Prompt Language*
 
 🌐 | [YouTube](https://www.youtube.com/@DrPrompt) | [Patreon](https://patreon.com/DrPrompt) | [HF](https://huggingface.co/DrThomasAger) | [GitHub](https://github.com/DrThomasAger) | Discord: @DrThomasAger
-🔗 Want to support open source? Tip generously: [paypal.me/hanjopurebuddha](https://paypal.me/hanjopurebuddha)
+
+*🔗 Want to support open source? Tip generously: [paypal.me/hanjopurebuddha](https://paypal.me/hanjopurebuddha)*
 
 > "Why are you letting your most powerful production component—your prompts—live as fragile, one-off strings, written by a single person, held in their head like tribal knowledge, untestable, unreadable, unversioned?"
 > - 👵 Smile Elder, ChatGPT 4o 2025-07-12
@@ -83,13 +84,11 @@ unstructured text. :- Make notes on it if you want to )
 
 # Support The Author
 
-🌐 | [YouTube – DrPrompt](https://www.youtube.com/@DrPrompt) | [Patreon](https://patreon.com/DrPrompt) | [HuggingFace](https://huggingface.co/DrThomasAger) | [GitHub](https://github.com/DrThomasAger) | Discord: @DrThomasAger
-🔗 Want to support development? Tip generously: [paypal.me/hanjopurebuddha](https://paypal.me/hanjopurebuddha)
+🌐 | [YouTube](https://www.youtube.com/@DrPrompt) | [Patreon](https://patreon.com/DrPrompt) | [HF](https://huggingface.co/DrThomasAger) | [GitHub](https://github.com/DrThomasAger) | Discord: @DrThomasAger
+
+*🔗 Want to support open source? Tip generously: [paypal.me/hanjopurebuddha](https://paypal.me/hanjopurebuddha)*
 
 ## Documentation
-
-
-### Introduction
 
 You already know what structured systems can do for code: they enable composability, reviewability, collaboration, testing, and scaling. You don’t write software without syntax. Why then are you letting your most powerful production component—your prompts—live as fragile, one-off strings, written by a single person, held in their head like tribal knowledge, untestable, unreadable, unversioned?
 
