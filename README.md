@@ -1,6 +1,8 @@
 # (: Smile (
 *The Prompt Language*
 
+**You already know the value of syntax: JSON over raw data, HTML over handwritten layout. Now apply that to prompt engineering. That’s what Smile provides as a prompt language. Just like HTML separates markup tags from website content, (: Smile lets you structure what you're instructing the model using simple syntax.**
+
 # Support The Author
 
 🌐 | [YouTube – DrPrompt](https://www.youtube.com/@DrPrompt) | [Patreon](https://patreon.com/DrPrompt) | [HuggingFace](https://huggingface.co/DrThomasAger) | [GitHub](https://github.com/DrThomasAger) | [PromptLanguage.AI](https://promptlanguage.ai)
