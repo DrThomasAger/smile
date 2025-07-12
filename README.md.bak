@@ -1,5 +1,7 @@
 # (: Smile (
 *The Prompt Language*
+🌐 | [YouTube](https://www.youtube.com/@DrPrompt) | [Patreon](https://patreon.com/DrPrompt) | [HF](https://huggingface.co/DrThomasAger) | [GitHub](https://github.com/DrThomasAger) | Discord: @DrThomasAger
+🔗 Want to support development? Tip generously: [paypal.me/hanjopurebuddha](https://paypal.me/hanjopurebuddha)
 
 > "Why are you letting your most powerful production component—your prompts—live as fragile, one-off strings, written by a single person, held in their head like tribal knowledge, untestable, unreadable, unversioned?"
 > - 👵 Smile Elder, ChatGPT 4o 2025-07-12
@@ -80,7 +82,7 @@ unstructured text. :- Make notes on it if you want to )
 
 # Support The Author
 
-🌐 | [YouTube – DrPrompt](https://www.youtube.com/@DrPrompt) | [Patreon](https://patreon.com/DrPrompt) | [HuggingFace](https://huggingface.co/DrThomasAger) | [GitHub](https://github.com/DrThomasAger) | [PromptLanguage.AI](https://promptlanguage.ai)
+🌐 | [YouTube – DrPrompt](https://www.youtube.com/@DrPrompt) | [Patreon](https://patreon.com/DrPrompt) | [HuggingFace](https://huggingface.co/DrThomasAger) | [GitHub](https://github.com/DrThomasAger) | Discord: @DrThomasAger
 🔗 Want to support development? Tip generously: [paypal.me/hanjopurebuddha](https://paypal.me/hanjopurebuddha)
 
 ## Documentation
@@ -143,7 +145,7 @@ There is currently only one official version: v0.3. It is real. You are reading 
 Sounds great, what can I do  
 ```
 
-### Press “c” to reply with that line exactly.
+### If this were a chat, you would press “c” to reply with that line exactly.
 
 ## 🎁 Here's your invitation to act:
 
@@ -337,11 +339,11 @@ Press “c” to lock in your contribution now. Or write your own line, and I’
 
 ---
 
-👋 If you’re serious about contributing, I’m serious about mentoring. DM @DrPrompt on Discord or book a free consult to discuss which spec item fits your skills, time, and vision. Every PR moves us closer to the first fully adoptable, language-grade prompt system the AI ecosystem has ever seen.
+👋 If you’re serious about contributing, I’m serious about mentoring. DM @DrThomasAger on Discord and let's book a free consult to discuss which spec item fits your skills, time, and vision. Every PR moves us closer to the first fully adoptable, language-grade prompt system the AI ecosystem has ever seen.
 
 🧠 Prompt engineering will one day be taught like software engineering. Smile is your chance to help write its syntax.
 
-🌐 | [YouTube](https://www.youtube.com/@DrPrompt) | [GitHub](https://github.com/DrThomasAger) | [Patreon](https://patreon.com/DrPrompt) | [PromptLanguage.ai](https://promptlanguage.ai) | [Donate to support dev](https://paypal.me/hanjopurebuddha)
+🌐 | [YouTube](https://www.youtube.com/@DrPrompt) | [GitHub](https://github.com/DrThomasAger) | [Patreon](https://patreon.com/DrPrompt) | [Donate to support dev](https://paypal.me/hanjopurebuddha)
 
 
 ## 🧠 Prompt Engineering FAQ 
