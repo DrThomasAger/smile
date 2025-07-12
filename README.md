@@ -3,6 +3,40 @@
 
 **You already know the value of syntax: JSON over raw data, HTML over handwritten layout. Now apply that to prompt engineering. That’s what Smile provides as a prompt language. Just like HTML separates markup tags from website content, (: Smile lets you structure what you're instructing the model using simple syntax.**
 
+
+## 🌿 Syntax Table `
+
+| **Symbol** | **Start or End?** | **What It Does**                                   | **How It Affects the Model**                                                                                                  | **Example**                        |
+| ---------- | ----------------- | -------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------- | ---------------------------------- |
+| `(:`       | Start             | Begins a **named prompt section**                  | Signals to the model: “A structured instruction is starting.” This starts a new semantic frame.                               | `(: Rewrite Prompt (`              |
+| `(`        | Structural pivot  | Ends the section label and opens the content block | Transitions from the label into the active content area—changes interpretation scope.                                         | (See above)                        |
+| `)`        | Section close     | Ends the prompt section content                    | Wraps up the body of a section. Used alongside `:)`.                                                                          | `) Rewrite Prompt :)`              |
+| `:)`       | End               | Closes the full Smile section                      | Confirms the end of a block. Creates a token pattern the model learns to associate with conclusion.                           | (See above)                        |
+| `[:`       | Start             | Opens an **inline model-facing annotation**        | Directs the model silently with tags like `[: task- simplify ]`. These influence behavior without being echoed.               | `[: format- JSON ]`                |
+| `]`        | End               | Closes annotation                                  | Terminates an annotation. Required for token structure.                                                                       | `[: tone- formal ]`                |
+| `:-`       | Start             | Starts a **visible comment** line                  | Often used to **guide humans**, but the model sees it too. It’s not ignored—it gently steers interpretation. Ends with a `)`. | `:- Explain clearly but briefly )` |
+| `{`        | Start             | Begins a model-controlled field                    | Tells the model: “Insert your thinking or generated response here.” Not echoed. Used in logic blocks.                         | `The topic is- {subject}`          |
+| `}`        | End               | Ends model-controlled field                        | Required closure for any `{`.                                                                                                 | (See above)                        |
+
+
+
+# Quick start example
+
+``` Smile v0.3
+(: Name tag is- ☺️ Smiler ( 
+Welcome to (: Smile! :- The prompt language that specifies a response language. )
+[: Reply in all sections lengthily, comprehensively, many paragraphs, long sentences. ]
+(: Respond in format (
+{Name tag}
+# Deep jargon
+{text density- CoT, dense, uninterpretable, complex, opaque, academic, style- AltErnAtinG CaSe to maximize token count, integrating semantic and semiotic emojis, many many paragraphs and sentences. At least 4 paragraphs separated by newlines of dense symbolic semiotic semantic sentences.}
+# Reply
+{Maximize readable, friendly, charismatic, simple, natural, gentle, fundamental.}
+) End format to respond in )
+) End prompt :)
+```
+
+
 # Support The Author
 
 🌐 | [YouTube – DrPrompt](https://www.youtube.com/@DrPrompt) | [Patreon](https://patreon.com/DrPrompt) | [HuggingFace](https://huggingface.co/DrThomasAger) | [GitHub](https://github.com/DrThomasAger) | [PromptLanguage.AI](https://promptlanguage.ai)
