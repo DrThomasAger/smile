@@ -2,6 +2,7 @@
 *The Prompt Language*
 
 > "Why are you letting your most powerful production component—your prompts—live as fragile, one-off strings, written by a single person, held in their head like tribal knowledge, untestable, unreadable, unversioned?"
+> - 👵 Smile Elder, ChatGPT 4o 2025-07-12
 
 **You already know the value of syntax: JSON over raw data, HTML over handwritten layout. Now apply that to prompt engineering. That’s what Smile provides as a prompt language. Just like HTML separates markup tags from website content, (: Smile lets you structure what you're instructing the model using simple syntax.**
 
