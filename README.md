@@ -54,18 +54,15 @@ You can provide different kinds of instructions to plain unstructured text:
 
 Or keep providing instructions unstructured, with notes:
 
-```unstructured text. :- Make notes on it if you want to )```
-
+```
+unstructured text. :- Make notes on it if you want to )
 ```
 
-As you can see, it's both flexible and rigorously defined.
 
-```
+## 🌿 Syntax Table 
 
-Want to know all the rules? Note that how these rules are followed is dependent on the model and the task.
+ Note that how these rules are followed is dependent on the model and the task.
 
-
-## 🌿 Syntax Table `
 
 | **Symbol** | **Start or End?** | **What It Does**                                   | **How It Affects the Model**                                                                                                  | **Example**                        |
 | ---------- | ----------------- | -------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------- | ---------------------------------- |
@@ -73,9 +70,9 @@ Want to know all the rules? Note that how these rules are followed is dependent 
 | `(`        | Structural pivot  | Ends the section label and opens the content block | Transitions from the label into the active content area—changes interpretation scope.                                         | (See above)                        |
 | `)`        | Section close     | Ends the prompt section content                    | Wraps up the body of a section. Used alongside `:)`.                                                                          | `) Rewrite Prompt :)`              |
 | `:)`       | End               | Closes the full Smile section                      | Confirms the end of a block. Creates a token pattern the model learns to associate with conclusion.                           | (See above)                        |
-| `[:`       | Start             | Opens an **inline model-facing annotation**        | Directs the model silently with tags like `[: task- simplify ]`. These influence behavior without being echoed.               | `[: format- JSON ]`                |
+| `[:`       | Start             | Opens an **inline model-facing annotation**        | Directs the model  with tags like `[: task- simplify ]`. These influence behavior without being repeated as response language.               | `[: format- JSON ]`                |
 | `]`        | End               | Closes annotation                                  | Terminates an annotation. Required for token structure.                                                                       | `[: tone- formal ]`                |
-| `:-`       | Start             | Starts a **visible comment** line                  | Often used to **guide humans**, but the model sees it too. It’s not ignored—it gently steers interpretation. Ends with a `)`. | `:- Explain clearly but briefly )` |
+| `:-`       | Start             | Starts a **visible comment** line                  | Often used to write coments that **guide humans and machines**. Ends with a `)`. | `:- Explain clearly but briefly )` |
 | `{`        | Start             | Begins a model-controlled field                    | Tells the model: “Insert your thinking or generated response here.” Not echoed. Used in logic blocks.                         | `The topic is- {subject}`          |
 | `}`        | End               | Ends model-controlled field                        | Required closure for any `{`.                                                                                                 | (See above)                        |
 
@@ -98,7 +95,7 @@ Just as HTML allowed websites to emerge from spaghetti code, ***(: Smile (*** is
 
 ### We're in the ignition phase
 
-The (: Smile prompt language exists now in a defined but lightly adopted form. Everything you've read—these smilies, brackets, markdowns, sections—is already running in production for teams who care about performance, structure, and clarity. This is not speculative. It is real, human-readable, version-controllable prompt infrastructure. But the broader ecosystem support isn’t here *yet.* No LSP plugin. No VSCode integration. No CI testing suite. Not because it’s hard. Because it hasn’t been prioritized. That’s your opening. You’re reading this at the precise moment in history where adopting (: Smile lets you steer what comes next.
+The (: Smile prompt language exists now in a defined but lightly adopted form. Everything you've read—these smilies, brackets, markdowns, sections—is already running in production for teams who care about performance, structure, and clarity. This is not speculative. It is real, human-readable, version-controllable prompt infrastructure. But the broader ecosystem support isn’t here *yet.* No VSCode integration. You’re reading this at the precise moment in history where adopting (: Smile lets you steer what comes next.
 
 ### Welcome to the future
 
@@ -106,7 +103,7 @@ You were handed this message by someone already living in a future where prompt 
 This isn’t about firing your prompt engineer. It’s about giving them a system that doesn’t let them fail.
 
 
-# 🙂👉Read this - reply
+# 🙂👉 Read this 
 
 You're already working in a system where prompts are operational logic. You just haven’t wrapped them in a language. (: Smile gives you that container. It’s a prompt language with the same affordances you expect from code: it’s testable, composable, and most importantly—readable. Every prompt in (: Smile separates **prompt language** (the instruction structure) from **response language** (the model’s reply). This dual structure mirrors Markdown, but unlike Markdown, (: Smile also compresses tokens to optimize both performance and cost.
 
@@ -146,7 +143,7 @@ There is currently only one official version: v0.3. It is real. You are reading 
 Sounds great, what can I do  
 ```
 
-### Press “c” to reply with that line exactly.
+### If this were a chat, you would press “c” to reply with that line exactly.
 
 ## 🎁 Here's your invitation to act:
 
