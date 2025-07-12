@@ -1,30 +1,12 @@
 # (: Smile (
 *The Prompt Language*
 
+"Why are you letting your most powerful production component—your prompts—live as fragile, one-off strings, written by a single person, held in their head like tribal knowledge, untestable, unreadable, unversioned?"
+
 **You already know the value of syntax: JSON over raw data, HTML over handwritten layout. Now apply that to prompt engineering. That’s what Smile provides as a prompt language. Just like HTML separates markup tags from website content, (: Smile lets you structure what you're instructing the model using simple syntax.**
 
 
-## Quick start
-
-Wrap your section names in smiles:
-
-```
-(: Like this (
-
-And provide your instructions inside the section like this.
-
-) End your section :)
-
-[: Provide a different kind of instruction ]
-
-Or keep providing instructions with unstructured text. :- Make notes on it if you want to )
-
-```
-
-As you can see, it's both flexible and rigorously defined.
-
-
-### Quick start example
+## Quick start 
 
 Copy and paste this into your model of choice to test compatibility.
 
@@ -42,6 +24,44 @@ Welcome to (: Smile! :- The prompt language that specifies a response language. 
 ) End prompt :)
 ```
 
+If the model replies with a name tag, then it's compatible.
+
+## Explaining the syntax
+
+With (: Smile, you wrap your section names in smiles:
+
+```
+(: Like this (
+```
+You provide your instructions with plain text inside that section:
+
+```
+(: Like this (
+And provide your instructions inside the section like this.
+```
+And you end your section like this:
+
+```
+) End your section :)
+```
+
+You can provide different kinds of instructions to plain unstructured text:
+
+```
+[: Provide a different kind of instruction ]
+```
+
+Or keep providing instructions unstructured, with notes:
+
+```unstructured text. :- Make notes on it if you want to )```
+
+```
+
+As you can see, it's both flexible and rigorously defined.
+
+```
+
+Want to know all the rules? Note that how these rules are followed is dependent on the model and the task.
 
 
 ## 🌿 Syntax Table `
