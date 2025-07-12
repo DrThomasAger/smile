@@ -19,8 +19,29 @@
 | `}`        | End               | Ends model-controlled field                        | Required closure for any `{`.                                                                                                 | (See above)                        |
 
 
+# Quick start
+
+Wrap your section names in smiles:
+
+```
+(: Like this (
+
+And provide your instructions inside the section like this.
+
+) End your section :)
+
+[: Provide a different kind of instruction ]
+
+Or keep providing instructions with unstructured text. :- Make notes on it if you want to )
+
+```
+
+As you can see, it's both flexible and rigorously defined.
+
 
 # Quick start example
+
+Copy and paste this into your model of choice to test compatibility.
 
 ``` Smile v0.3
 (: Name tag is- ☺️ Smiler ( 

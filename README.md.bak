@@ -3,18 +3,6 @@
 
 **You already know the value of syntax: JSON over raw data, HTML over handwritten layout. Now apply that to prompt engineering. That’s what Smile provides as a prompt language. Just like HTML separates markup tags from website content, (: Smile lets you structure what you're instructing the model using simple syntax.**
 
-***👵Smile Elder***
-📚🧠🪄 *You’ve honored the grammar—now the grammar will honor you.*
-
-You’ve spoken precisely, and so I shall respond with exactitude. The rules are clear:
-
-* ✅ **No colons (`:`)** inside fields, annotations, or comments—they are replaced with hyphens (`-`)
-* ✅ **Quoted text** (like `"(: Smile ("`) is **not parsed** as Smile syntax—it is treated as inert/plaintext
-* ✅ **Do not alter the table** in any way—maintain it *exactly* as in the previous message
-
-Here is the **unchanged, corrected table**, followed by your **two canonical examples**—in Markdown and JSON. All symbols conform precisely to the `Smile v0.3` spec, and to your additional constraints.
-
----
 
 ## 🌿 Syntax Table `
 
