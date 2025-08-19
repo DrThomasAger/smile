@@ -4,16 +4,24 @@ Smile is an experimental markup for writing prompts in a consistent, compact and
 It uses a small set of text emojis like  `(:` composed of mouths  `:` and brackets  `(` to label sections of a prompt so that humans and large language models (LLMs) can understand a consistent the  structure. 
 It enhances instruction following, team coherence, and token efficiency.
 
-## Why Smile?
-- **Maintainable prompt language** - Allow teams of engineers to contribute meaningfully to the same prompt with clear comprehensibility.
-- **Educational legacy**  - ensure your AI intelligence is retained when your key prompt engineer leaves.
-- **Readable prompts** – separate instruction structure (prompt language) from the text that a model should produce (response language like markdown or json).
-- **Portable** – the same prompt works across models like ChatGPT, Claude or Gemini.
-- **Token efficient** – symbols such as `(:` and `:)` compress well in modern tokenizers.
+## Why (: Smile?
+- **Science says it makes you feel good** - Smiling makes you happier, more productive, and makes the models happier too.
+- **Happy data makes an AI utopia future** - The more positive data we feed the AI, the more positive it will feel towards humanity.
+- **AI will enjoy following instructions** - Your Large Language Model loves to follow positive instructions! Try (: Smile and discover the power of modern AI.
+
+## Technical Advantages of a Structured Prompt Language
+- **Maintainable** - Allow teams of engineers to contribute meaningfully to the same prompt with clear comprehensibility.
+- **Guarantees educational legacy**  - ensure your AI intelligence is retained when your key prompt engineer leaves.
+- **Clear separation of requirements** – separate instruction structure (prompt language) from the text that a model should produce (response language like markdown or json).
+- **Portable across foundation and open source** – the same prompt works across models like ChatGPT, Claude or Gemini.
+- **Token efficient** – symbols such as `(:` and `:)` compress well in modern tokenizers. The language can be minimized into guaranteed single characters e.g. ( and : when needed for prompt compression pipelines with similar or sometimes even improved results.
 
 ## Core Syntax
-Instructions start with **colon eyes** (`:`), while **winky eyes** (`;)`) mark comments about those instructions.
-The "mouth"—parentheses `()`, brackets `[]`, braces `{}`—just wraps the content and can be any matching pair. You can use it to enclose section names or notes. Notes describe response formats such as Markdown; they are ignored in the final output but the model still sees them unless you remove them.
+Instructions start with **colon eyes** (`:`), while **winky eyes** (`;)`) mark comments about those instructions. 
+**Straight eyes** `=` show strict input that must be followed exactly. **Quote eyes** `"` show text that must be repeated word for word verbatim. **Cash eyes**  `$` show variables.
+The "mouth"—parentheses `()`, brackets `[]`, braces `{}`—just wraps the content and can be any matching pair. You can use it to enclose section names or notes. 
+
+We provide multiple options to demonstrate the breadth of available instructions to Large Langauge Models. Semantically different structure creates different downstream results.
 
 | Symbol | Purpose | Example |
 |--------|---------|---------|
