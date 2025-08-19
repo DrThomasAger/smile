@@ -36,7 +36,11 @@ Copy this into your favourite LLM. If the model responds with a "Name tag", it u
 ## Status
 This project is a work in progress. Smile version **0.4** is still evolving and may change.
 
-## Support
-Created by the DrPrompt community.  
-[YouTube – DrPrompt](https://www.youtube.com/@DrPrompt) · [Patreon](https://patreon.com/DrPrompt) · [HuggingFace](https://huggingface.co/DrThomasAger)
+## Next Steps
+We're preparing experiments that compare unstructured prompts against Smile-formatted prompts on downstream tasks like sentiment analysis.
+
+## Contribute
+Help build a dataset of prompts that will be automatically converted for better performance. Share examples already written in Smile or send raw prompts you'd like translated.
+
+Join the DrPrompt community to share ideas and stay updated: [YouTube – DrPrompt](https://www.youtube.com/@DrPrompt) · [Patreon](https://patreon.com/DrPrompt) · [HuggingFace](https://huggingface.co/DrThomasAger)
 
