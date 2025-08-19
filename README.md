@@ -10,16 +10,16 @@ It uses a small set of emojis and brackets to label sections of a prompt so that
 
 ## Core Syntax
 Instructions start with **colon eyes** (`:`), while **winky eyes** (`;)`) mark comments about those instructions.
-Notes can describe response formats such as Markdown; they are ignored in the final output but the model still sees them unless you remove them.
+The "mouth"—parentheses `()`, brackets `[]`, braces `{}`—just wraps the content and can be any matching pair. You can use it to enclose section names or notes. Notes describe response formats such as Markdown; they are ignored in the final output but the model still sees them unless you remove them.
 
 | Symbol | Purpose | Example |
 |--------|---------|---------|
-| `(: Section (` | begin a named section | `(: Format (` |
+| `(: Section (` | begin a named section (mouth can be `()`, `[]`, `{}`) | `(: Format (` |
 | `)` | close the current section | `) End section :)` |
 | `:)` | close the whole Smile block | `) End section :)` |
 | `[= literal =]` | strict text that must match exactly | `[= Smile =]` |
 | `[$ variable $]` | placeholder variable to find and replace | `[$subject$]` |
-| `[: note ]` | model-facing note about the response language | `[: reply in Markdown ]` |
+| `[: note ]` or `(: note )` | model-facing note about the response language (mouth can be any matching pair) | `[: reply in Markdown ]` |
 | `;) comment )` | human comment on an instruction | `;) clarify tone )` |
 | `{placeholder}` | area to be filled by the model | `The topic is {subject}` |
 
