@@ -25,12 +25,18 @@ The "mouth"—parentheses `()`, brackets `[]`, braces `{}`—just wraps the cont
 
 ## Example
 ```text
-(: Name tag (
-[: reply in plain English ]
+(: Smile defines prompt language, you respond in response language which starts with name tag [***Semantic Markdown***] which is described next (
+[: reply in plain English semantic markdown ]
+[: Format of response [
+***Semantic Markdown***
+
+# Reply
+
 {Your answer here}
-) End prompt :)
+]
+) End prompt language, respond only in response language :)
 ```
-Copy this into your favourite LLM. If the model responds with a "Name tag", it understands Smile.
+Copy this into your favourite LLM. If the model echoes the `Semantic Markdown` tag and layout, it understands Smile.
 
 ## Repository Layout
 - `prompt/` – example prompts written in Smile.
