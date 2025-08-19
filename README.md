@@ -9,13 +9,18 @@ It uses a small set of emojis and brackets to label sections of a prompt so that
 - **Token efficient** – symbols such as `(:` and `:)` compress well in modern tokenizers.
 
 ## Core Syntax
+Instructions start with **colon eyes** (`:`), while **winky eyes** (`;)`) mark comments about those instructions.
+Notes can describe response formats such as Markdown; they are ignored in the final output but the model still sees them unless you remove them.
+
 | Symbol | Purpose | Example |
 |--------|---------|---------|
 | `(: Section (` | begin a named section | `(: Format (` |
 | `)` | close the current section | `) End section :)` |
 | `:)` | close the whole Smile block | `) End section :)` |
-| `[: note ]` | inline model-facing annotation | `[: tone- friendly ]` |
-| `:- comment )` | human comment that ends with `)` | `:- explain briefly )` |
+| `[= literal =]` | strict text that must match exactly | `[= Smile =]` |
+| `[$ variable $]` | placeholder variable to find and replace | `[$subject$]` |
+| `[: note ]` | model-facing note about the response language | `[: reply in Markdown ]` |
+| `;) comment )` | human comment on an instruction | `;) clarify tone )` |
 | `{placeholder}` | area to be filled by the model | `The topic is {subject}` |
 
 ## Example
