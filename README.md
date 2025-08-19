@@ -1,10 +1,13 @@
 # Smile Prompt Language
 
-Smile is an experimental markup for writing prompts in a consistent, compact and human friendly way.  
-It uses a small set of emojis and brackets to label sections of a prompt so that humans and large language models (LLMs) share the same structure.
+Smile is an experimental markup for writing prompts in a consistent, compact and human friendly way.  Think of it like markdown but for Large Language Model (LLM) prompts.
+It uses a small set of text emojis like  `(:` composed of mouths  `:` and brackets  `(` to label sections of a prompt so that humans and large language models (LLMs) can understand a consistent the  structure. 
+It enhances instruction following, team coherence, and token efficiency.
 
 ## Why Smile?
-- **Readable prompts** – separate instruction structure from the text that a model should produce.
+- **Maintainable prompt language** - Allow teams of engineers to contribute meaningfully to the same prompt with clear comprehensibility.
+- **Educational legacy**  - ensure your AI intelligence is retained when your key prompt engineer leaves.
+- **Readable prompts** – separate instruction structure (prompt language) from the text that a model should produce (response language like markdown or json).
 - **Portable** – the same prompt works across models like ChatGPT, Claude or Gemini.
 - **Token efficient** – symbols such as `(:` and `:)` compress well in modern tokenizers.
 
