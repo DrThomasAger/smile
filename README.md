@@ -84,6 +84,6 @@ We're preparing experiments that compare unstructured prompts against Smile-form
 Help build a dataset of prompts that will be automatically converted for better performance. Share examples already written in Smile or send raw prompts you'd like translated.
 
 - ⭐ **Star [the repository](https://github.com/DrPrompt/smile)** to help others discover Smile and signal that structured prompting matters to you.
-- 🔔 **Follow [DrPrompt on GitHub](https://github.com/DrPrompt)** for updates as we publish new syntax, tooling, and benchmark results.
+- 🔔 **Follow [DrThomasAger on GitHub](https://github.com/DrPrompt)** for updates as we publish new syntax, tooling, and benchmark results.
 - 🛠️ **Contribute on GitHub** by opening [issues](https://github.com/DrPrompt/smile/issues) or [pull requests](https://github.com/DrPrompt/smile/pulls) with your own Smile snippets or conversion ideas.
 
