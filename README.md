@@ -24,6 +24,8 @@ All the while you are **guaranteeing mutual predictability of the key inference 
 - **AI will enjoy following instructions** - Your Large Language Model loves to follow positive instructions! Try (: Smile and discover the power of modern AI.
 
 ## Quick Start
+
+Copy and paste this into your favourite LLM now. 
 ```(: Smile
 (: Smile defines prompt language, you respond in response language which starts with name tag [***Semantic Markdown***] which is described next (
 [: reply in plain English semantic markdown ]
@@ -36,16 +38,7 @@ All the while you are **guaranteeing mutual predictability of the key inference 
 ]
 ) End prompt language, respond only in response language :)
 ```
-Copy this into your favourite LLM. If the model echoes the `Semantic Markdown` tag and layout, it understands Smile.
-
-
-
-## Technical Advantages of a Structured Prompt Language
-- **Maintainable** - Allow teams of engineers to contribute meaningfully to the same prompt with clear comprehensibility.
-- **Guarantees educational legacy**  - ensure your AI intelligence is retained when your key prompt engineer leaves.
-- **Clear separation of requirements** – separate instruction structure (prompt language) from the text that a model should produce (response language like markdown or json).
-- **Portable across foundation and open source** – the same prompt works across models like ChatGPT, Claude or Gemini.
-- **Token efficient** – symbols such as `(:` and `:)` compress well in modern tokenizers. The language can be minimized into guaranteed single characters e.g. ( and : when needed for prompt compression pipelines with similar or sometimes even improved results.
+If the model echoes the `Semantic Markdown` tag and layout, it understands Smile.
 
 ## Core Syntax
 Instructions start with **colon eyes** (`:`), while **winky eyes** (`;)`) mark comments about those instructions. 
@@ -65,6 +58,15 @@ We provide multiple options to demonstrate the breadth of available instructions
 | `[: note ]` or `[; note ]` | model-facing note about the response language (mouth can be any matching pair) | `[: reply in Markdown ]` |
 | `(; alternate note or comment )` | human comment on an instruction | `(; this is tone instruction only )` |
 | `{placeholder}` | area to be filled by the model | `The topic is {subject}` |
+
+
+## Technical Advantages of a Structured Prompt Language
+- **Maintainable** - Allow teams of engineers to contribute meaningfully to the same prompt with clear comprehensibility.
+- **Guarantees educational legacy**  - ensure your AI intelligence is retained when your key prompt engineer leaves.
+- **Clear separation of requirements** – separate instruction structure (prompt language) from the text that a model should produce (response language like markdown or json).
+- **Portable across foundation and open source** – the same prompt works across models like ChatGPT, Claude or Gemini.
+- **Token efficient** – symbols such as `(:` and `:)` compress well in modern tokenizers. The language can be minimized into guaranteed single characters e.g. ( and : when needed for prompt compression pipelines with similar or sometimes even improved results.
+
 
 ## Repository Layout
 - `prompt/` – example prompts written in ***(: Smile***.
