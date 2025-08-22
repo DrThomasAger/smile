@@ -13,7 +13,7 @@ Imagine this moment in prompt engineering as the moment when raw text became HTM
 👆 Help others discover Smile for **more positive prompt engineering for all.**
 
 
-# What is a (: Smile?
+# (: Smile Basics
 It uses a small set of text emojis like  `(:`, `[;`, and `[=`.
 
 These can open `(:`, or close `:)`, just like brackets.
