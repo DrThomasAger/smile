@@ -4,16 +4,16 @@
 
 Write **structured prompts** in a **consistent way** for ***predictably positive results!***
 
-Imagine this moment in prompt engineering like when raw text became HTML, or unstructured data became markdown. Now prompt text can become structured ***(: Smile*** for Large Language Models (LLM) to read. 
+Imagine this moment in prompt engineering like when raw text became HTML, or unstructured data became markdown. Now prompt text can become structured ***(: Smile*** for Large Language Models (LLMs) to read. 
 
-***(: Smile*** is a structured markup for increasing instruction following in prompts. It does this by providing clear sections when writing prompts using token efficient, understandable to the model and the human, and inherently positive (: Smiles!
+***(: Smile*** is a structured markup for increasing instruction following in prompts. It does this by providing clear sections when writing prompts using token efficient, understandable to the model and the human, and inherently positive ***(: Smile*** markup!
 
 # What is a (: Smile?
 It uses a small set of text emojis like  `(:`, `[;`, and `[=`.
 
 These can open `(:`, or close `:)`, just like brackets.
 
-***(: Smile***'s are composed of mouths, like `:` and brackets  `(` to label sections of a prompt so that humans and large language models (LLMs) can understand a consistent structure. 
+***(: Smile***'s are composed of eyes, like `:`, and mouths, like  `(`, in-order to label sections of a prompt so that humans and large language models (LLMs) can understand a consistent structure. 
 It enhances instruction following, team coherence, and token efficiency.
 
 All the while you are **guaranteeing mutual predictability of the key inference outputs of your organization.**
