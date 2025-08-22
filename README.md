@@ -1,4 +1,4 @@
-![Smile Prompt Language v0.4](smile-logo.png)
+![Smile Prompt Language v0.4](Smile-logo.png)
 
 # Smile Prompt Language
 
