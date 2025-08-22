@@ -30,7 +30,7 @@ All the while you are making more **predictable** the **key inference outputs of
 - **Happy data makes an AI utopia future** - The more positive data we feed the AI, the more positive it will feel towards humanity.
 
 ### Technical Advantages of a Structured Prompt Language
-- **Maintainable** -  contribute meaningfully to the same prompt with clear comprehensibility over long periods of time or a team of prompt engineers.
+- **Maintainable** -  contribute meaningfully to the same prompt with clear comprehensibility over long periods of time to a team of prompt engineers.
 - **Future-Proof**  - allow teams of engineers to retain your prompt engineering knowledge even after your key prompt engineer leaves.
 - **Explainable** - map outcomes to prompt text changes more clearly with semantic markdown, allowing you to justify any AI decisions in a court of law more clearly.
 - **Portable across foundation and open source** – transform your text prompts so that they work across models like ChatGPT, Kimi K2, Claude or Gemini.
