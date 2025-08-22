@@ -6,7 +6,7 @@ Write **structured prompts** in a **consistent way** for ***predictably positive
 
 Think of this moment in prompt engineering like when raw text became HTML, or unstructured data became markdown. Now prompt text can become structured (: Smile for Large Language Models (LLM) to read. 
 
-Smile is a structured markup for increasing instruction following in prompts. It does this by providing clear sections when writing prompts using token efficient, understandable to the model and the human, and inherently positive markdown.. 
+Smile is a structured markup for increasing instruction following in prompts. It does this by providing clear sections when writing prompts using token efficient, understandable to the model and the human, and inherently positive (: Smiles!
 
 # What is a (: Smile?
 It uses a small set of text emojis like  `(:` composed of mouths  `:` and brackets  `(` to label sections of a prompt so that humans and large language models (LLMs) can understand a consistent the  structure. 
