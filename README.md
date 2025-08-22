@@ -23,7 +23,7 @@ These can open `(:`, or close `:)`, just like brackets.
 
 ## Why (: Smile?
 - **Science says it makes you feel good** - Smiling makes you happier, more productive, and makes the models happier too.
-- **Happy data makes an AI utopia future** - The more positive data we feed the AI, the more positive it will feel towards humanity.
+- **Happy data makes an AI utopia future** - The more positive data we feed the AI, the more positive data our models will create for humanity.
 
 
 
