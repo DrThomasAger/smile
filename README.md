@@ -1,6 +1,8 @@
+![Smile Prompt Language v0.4](./assets/smile-logo.png)
+
 # Smile Prompt Language
 
-Smile is an experimental markup for writing prompts in a consistent, compact and human friendly way.  Think of it like markdown but for Large Language Model (LLM) prompts.
+Smile is a structured markup for writing prompts in a consistent, compact and human friendly way.  Think of it like markdown but for Large Language Model (LLM) prompts.
 It uses a small set of text emojis like  `(:` composed of mouths  `:` and brackets  `(` to label sections of a prompt so that humans and large language models (LLMs) can understand a consistent the  structure. 
 It enhances instruction following, team coherence, and token efficiency.
 
