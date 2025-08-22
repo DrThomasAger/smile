@@ -20,12 +20,6 @@ It uses a small set of text emojis like  `(:`, `[;`, and `[=`.
 
 These can open `(:`, or close `:)`, just like brackets.
 
-## Breaking it down - What even is a (: Smile syntactically for LLM's?
-
-***(: Smile***'s are composed of eyes `:`, and mouths  `(`, in-order to label sections of a prompt so that humans and large language models (LLMs) can understand a consistent structure. 
-It enhances instruction following, organization of the prompt, modular composability, and token efficiency.
-
-All the while you are making more **predictable** the **key inference outputs of your organization** for both you and your model.
 
 ## Why (: Smile?
 - **Science says it makes you feel good** - Smiling makes you happier, more productive, and makes the models happier too.
@@ -106,6 +100,14 @@ Develop and launch tools for:
   - **Prompt compression**  
   - **Integration into VS Code**  
   - **Additional utilities**
+
+## Breaking it down - What even is a (: Smile syntactically for LLM's?
+
+***(: Smile***'s are composed of eyes `:`, and mouths  `(`, in-order to label sections of a prompt so that humans and large language models (LLMs) can understand a consistent structure. 
+It enhances instruction following, organization of the prompt, modular composability, and token efficiency.
+
+All the while you are making more **predictable** the **key inference outputs of your organization** for both you and your model.
+
 
 ## Repository Layout
 - `prompt/` – example prompts written in ***(: Smile***.
