@@ -48,12 +48,14 @@ Copy and paste this into your favourite LLM now.
 ```
 If the model echoes the `Semantic Markdown` tag and layout, it understands Smile.
 
+Replace everything under the ***Semantic Markdown*** name tag with clear instructions of how you want the model to respone in each markdown section.
+
 ### Technical Advantages of a Structured Prompt Language
-- **Maintainable** -  contribute meaningfully to the same prompt with clear comprehensibility over long periods of time to a team of prompt engineers.
-- **Future-Proof**  - allow teams of engineers to retain your prompt engineering knowledge even after your key prompt engineer leaves.
-- **Explainable** - map outcomes to prompt text changes more clearly with semantic markdown, allowing you to justify any AI decisions in a court of law more clearly.
-- **Portable across foundation and open source** – transform your text prompts so that they work across models like ChatGPT, Kimi K2, Claude or Gemini.
-- **Token efficient** – symbols such as `(:` and `:)` compress well in modern tokenizers. 
+- **Maintainable** -  Contribute meaningfully to the same prompt with clear comprehensibility over long periods of time to a team of prompt engineers.
+- **Future-Proof**  - Allow teams of engineers to retain your prompt engineering knowledge even after your key prompt engineer leaves.
+- **Explainable** - Map outcomes to prompt text changes more clearly with semantic markdown, allowing you to justify any AI decisions in a court of law more clearly.
+- **Portable across foundation and open source** – Transform your text prompts so that they work across models like ChatGPT, Kimi K2, Claude or Gemini.
+- **Token efficient** – symbols such as `(:` and `:)` Compress well in modern tokenizers. 
 
 ## How to Use (: Smile
 
