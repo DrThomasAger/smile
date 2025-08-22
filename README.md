@@ -1,13 +1,15 @@
 ![Smile Prompt Language v0.4](Smile-logo.png)
 
 # (: Smile Prompt Language
-- ⭐ **[Help us grow by **Star**ing the repository](https://github.com/DrThomasAger/smile)** to help others discover Smile for **more positive prompt engineering for all.**
 
 Write **structured prompts** in a **consistent way** for ***predictably positive results!***
 
 Imagine this moment in prompt engineering as the moment when raw text became HTML, or unstructured data became markdown. Now prompt text can become structured ***(: Smile*** for Large Language Models (LLMs) to read. 
 
 ***(: Smile*** is a structured markup for increasing instruction following in prompts. It does this by providing clear sections when writing prompts using token efficient, understandable to the model and the human, and inherently positive ***(: Smile*** markup!
+
+⭐ **[Help us grow and save for later by **Star**ring the repository](https://github.com/DrThomasAger/smile)** to help others discover Smile for **more positive prompt engineering for all.**
+
 
 # What is a (: Smile?
 It uses a small set of text emojis like  `(:`, `[;`, and `[=`.
