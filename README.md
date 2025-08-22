@@ -74,23 +74,23 @@ We provide multiple options to demonstrate the breadth of available instructions
 | `{placeholder}` | area to be filled by the model | `Fill out the following sections # Thinking {Plan} # Replying {Use plan to reply}` |
 
 
-# (: Smile Roadmap
+## (: Smile Roadmap
 
-## Phase 1 — **Research**
+### Phase 1 — **Research**
 - **✅March 2023 – June 2025**
 
-## Phase 2 — **Define (: Smile Syntax**
+### Phase 2 — **Define (: Smile Syntax**
 - **✅June 2025 – September 2025** *Ahead of schedule!*
 
-## Phase 3 — **Convert Prompt Archive**
+### Phase 3 — **Convert Prompt Archive**
 - **October 2025 – March 2026**  
 Convert existing prompt archive into a **handwritten gold standard (: Smile Syntax)**.
 
-## Phase 4 — **Test, Verify, Validate**
+### Phase 4 — **Test, Verify, Validate**
 - **April 2026 – September 2026**  
 Test and validate prompts on **downstream tasks and metrics**.
 
-## Phase 5 — **Introduce New Tooling**
+### Phase 5 — **Introduce New Tooling**
 - **October 2026 – March 2027**  
 Develop and launch tools for:  
   - **Prompt compression**  
