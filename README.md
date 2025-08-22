@@ -111,12 +111,6 @@ Develop and launch tools for:
 - `import/` – raw prompt text to be converted into ***(: Smile*** unedited and unmaintained.
 - `python/` – prototype scripts for transforming prompts.
 
-## Status
-This project is a work in progress. Smile version **0.4** is still evolving and may change.
-
-## Next Steps
-We're preparing experiments that compare unstructured prompts against Smile-formatted prompts on downstream tasks like sentiment analysis.
-
 ## Contribute
 Help build a dataset of prompts that will be automatically converted for better performance. Share examples already written in Smile or send raw prompts you'd like translated.
 
