@@ -8,7 +8,9 @@ Imagine this moment in prompt engineering as the moment when raw text became HTM
 
 ***(: Smile*** is a structured markup for increasing instruction following in prompts. It does this by providing clear sections when writing prompts using token efficient, understandable to the model and the human, and inherently positive ***(: Smile*** markup!
 
-⭐ **[Help us grow and save for later by **Star**ring the repository](https://github.com/DrThomasAger/smile)** to help others discover Smile for **more positive prompt engineering for all.**
+⭐ **[Help us grow and save for later by **Star**ring the repository](https://github.com/DrThomasAger/smile)** 
+
+👆 Help others discover Smile for **more positive prompt engineering for all.**
 
 
 # What is a (: Smile?
