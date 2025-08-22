@@ -29,7 +29,7 @@ All the while you are **guaranteeing mutual predictability of the key inference 
 
 ### Technical Advantages of a Structured Prompt Language
 - **Maintainable** -  contribute meaningfully to the same prompt with clear comprehensibility.
-- **Future Aware**  - Allow teams of engineers to retain your AI intelligence when your key prompt engineer leaves.
+- **Future-Proof**  - Allow teams of engineers to retain your AI intelligence when your key prompt engineer leaves.
 - **Portable across foundation and open source** – the same prompt works across models like ChatGPT, Claude or Gemini.
 - **Token efficient** – symbols such as `(:` and `:)` compress well in modern tokenizers. The language can be minimized into guaranteed single characters e.g. ( and : when needed for prompt compression pipelines with similar or sometimes even improved results.
 
