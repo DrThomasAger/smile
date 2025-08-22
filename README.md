@@ -4,9 +4,9 @@
 
 Write **structured prompts** in a **consistent way** for ***predictably positive results!***
 
-Think of this moment in prompt engineering like when raw text became HTML, or unstructured data became markdown. Now prompt text can become structured (: Smile for Large Language Models (LLM) to read. 
+Think of this moment in prompt engineering like when raw text became HTML, or unstructured data became markdown. Now prompt text can become structured ***(: Smile*** for Large Language Models (LLM) to read. 
 
-Smile is a structured markup for increasing instruction following in prompts. It does this by providing clear sections when writing prompts using token efficient, understandable to the model and the human, and inherently positive (: Smiles!
+***(: Smile*** is a structured markup for increasing instruction following in prompts. It does this by providing clear sections when writing prompts using token efficient, understandable to the model and the human, and inherently positive (: Smiles!
 
 # What is a (: Smile?
 It uses a small set of text emojis like  `(:` composed of mouths  `:` and brackets  `(` to label sections of a prompt so that humans and large language models (LLMs) can understand a consistent the  structure. 
@@ -38,8 +38,9 @@ We provide multiple options to demonstrate the breadth of available instructions
 | `:)` | close the whole Smile block | `) End section :)` |
 | `[= literal =]` | strict text that must match exactly | `[= Smile =]` |
 | `[$ variable $]` | placeholder variable to find and replace | `[$subject$]` |
-| `[: note ]` or `(: note )` | model-facing note about the response language (mouth can be any matching pair) | `[: reply in Markdown ]` |
-| `;) comment )` | human comment on an instruction | `;) clarify tone )` |
+|  `[! important instruction !] ` | placeholder variable to find and replace | `[$subject$]` |
+| `[: note ]` or `[; note ]` | model-facing note about the response language (mouth can be any matching pair) | `[: reply in Markdown ]` |
+| `(; alternate note or comment )` | human comment on an instruction | `(; this is tone instruction only )` |
 | `{placeholder}` | area to be filled by the model | `The topic is {subject}` |
 
 ## Example
@@ -58,9 +59,9 @@ We provide multiple options to demonstrate the breadth of available instructions
 Copy this into your favourite LLM. If the model echoes the `Semantic Markdown` tag and layout, it understands Smile.
 
 ## Repository Layout
-- `prompt/` – example prompts written in Smile.
+- `prompt/` – example prompts written in ***(: Smile***.
 - `response/` – sample outputs from LLMs.
-- `import/` – raw text used in experiments.
+- `import/` – raw prompt text to be converted into ***(: Smile** used in experiments.
 - `python/` – prototype scripts for transforming prompts.
 
 ## Status
