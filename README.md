@@ -38,7 +38,7 @@ Copy and paste this into your favourite LLM now.
 
 # Reply
 
-{10 dense intelligent jargon-filled meta-aware paragraphs}
+{10 intelligent jargon-filled meta-aware paragraphs}
 ]
 ) End prompt language, respond only in response language :)
 ```
