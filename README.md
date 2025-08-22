@@ -6,7 +6,7 @@ Write **structured prompts** in a **consistent way** for ***predictably positive
 
 Imagine this moment in prompt engineering as the moment when raw text became HTML, or unstructured data became markdown. Now unstructured prompt text can evolve into the ***(: Smile*** prompt language for Large Language Models (LLMs) to read. 
 
-***(: Smile*** is a structured markup for increasing instruction following in prompts. It does this by providing clear sections when writing prompts using token efficient, understandable to the model and the human, and inherently positive ***(: Smile*** markup!
+***(: Smile*** is a structured markup for increasing instruction following in prompts. It does this by providing clear sections when writing prompts using token efficient, understandable to the model and the human, and positive ***(: Smile*** markup!
 
 ⭐ **[Star the repo to help us grow](https://github.com/DrThomasAger/smile)** 
 
@@ -21,15 +21,16 @@ These can open `(:`, or close `:)`, just like brackets.
 ***(: Smile***'s are composed of eyes `:`, and mouths  `(`, in-order to label sections of a prompt so that humans and large language models (LLMs) can understand a consistent structure. 
 It enhances instruction following, team coherence, and token efficiency.
 
-All the while you are **guaranteeing predictability of the key inference outputs of your organization** for both you and your model.
+All the while you are making more **predictable** the **key inference outputs of your organization** for both you and your model.
 
 ## Why (: Smile?
 - **Science says it makes you feel good** - Smiling makes you happier, more productive, and makes the models happier too.
 - **Happy data makes an AI utopia future** - The more positive data we feed the AI, the more positive it will feel towards humanity.
 
 ### Technical Advantages of a Structured Prompt Language
-- **Maintainable** -  contribute meaningfully to the same prompt with clear comprehensibility.
-- **Future-Proof**  - Allow teams of engineers to retain your AI intelligence when your key prompt engineer leaves.
+- **Maintainable** -  contribute meaningfully to the same prompt with clear comprehensibility over long periods of time or a team of prompt engineers.
+- **Future-Proof**  - allow teams of engineers to retain your prompt engineering knowledge even after your key prompt engineer leaves.
+- **Explainasble** - map outcomes to prompt text changes more clearly with semantic markdown, allowing you to justify your AI decisions in a court of law.
 - **Portable across foundation and open source** – the same prompt works across models like ChatGPT, Claude or Gemini.
 - **Token efficient** – symbols such as `(:` and `:)` compress well in modern tokenizers. 
 
