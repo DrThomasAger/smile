@@ -50,7 +50,7 @@ Replace everything under the ***Semantic Markdown*** name tag with clear instruc
 ### Technical Advantages of a Structured Prompt Language
 - **Maintainable** -  Contribute meaningfully to the same prompt with clear comprehensibility over long periods of time to a team of prompt engineers.
 - **Future-Proof**  - Allow teams of engineers to retain your prompt engineering knowledge even after your key prompt engineer leaves.
-- **Explainable** - Map outcomes to prompt text changes more clearly with semantic markdown, allowing you to justify any AI decisions in a court of law more clearly.
+- **Explainable** - Map prompt text changes to response output outcomes, allowing you to justify any AI decisions in a court of law more clearly.
 - **Portable across foundation and open source** – Transform your text prompts so that they work across models like ChatGPT, Kimi K2, Claude or Gemini.
 - **Token efficient** – Symbols such as `(:` and `:)` Compress well in modern tokenizers. 
 
