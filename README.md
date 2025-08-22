@@ -41,7 +41,7 @@ Copy and paste this into your favourite LLM now.
 If the model echoes the `Semantic Markdown` tag and layout, it understands Smile.
 
 ## Core Syntax
-Instructions start with **colon eyes** (`:`), while **winky eyes** (`;)`) mark comments about those instructions. 
+Instructions start with **colon eyes** `:`, while **winky eyes** `;` mark comments about those instructions. 
 **Straight eyes** `=` show strict input that must be followed exactly. **Quote eyes** `"` show text that must be repeated word for word verbatim. **Cash eyes**  `$` show variables.
 The "mouth"—parentheses `()`, brackets `[]`, braces `{}`—just wraps the content and can be any matching pair. You can use it to enclose section names or notes. 
 
