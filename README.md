@@ -21,7 +21,7 @@ These can open `(:`, or close `:)`, just like brackets.
 ***(: Smile***'s are composed of eyes `:`, and mouths  `(`, in-order to label sections of a prompt so that humans and large language models (LLMs) can understand a consistent structure. 
 It enhances instruction following, team coherence, and token efficiency.
 
-All the while you are **guaranteeing mutual predictability of the key inference outputs of your organization.**
+All the while you are **guaranteeing predictability of the key inference outputs of your organization** for both you and your model.
 
 ## Why (: Smile?
 - **Science says it makes you feel good** - Smiling makes you happier, more productive, and makes the models happier too.
