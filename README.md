@@ -26,7 +26,13 @@ All the while you are **guaranteeing mutual predictability of the key inference 
 ## Why (: Smile?
 - **Science says it makes you feel good** - Smiling makes you happier, more productive, and makes the models happier too.
 - **Happy data makes an AI utopia future** - The more positive data we feed the AI, the more positive it will feel towards humanity.
-- **AI will enjoy following instructions** - Your Large Language Model loves to follow positive instructions! Try (: Smile and discover the power of modern AI.
+
+### Technical Advantages of a Structured Prompt Language
+- **Maintainable** -  contribute meaningfully to the same prompt with clear comprehensibility.
+- **Future Aware**  - Allow teams of engineers to retain your AI intelligence when your key prompt engineer leaves.
+- **Portable across foundation and open source** – the same prompt works across models like ChatGPT, Claude or Gemini.
+- **Token efficient** – symbols such as `(:` and `:)` compress well in modern tokenizers. The language can be minimized into guaranteed single characters e.g. ( and : when needed for prompt compression pipelines with similar or sometimes even improved results.
+
 
 ## Quick Start
 
@@ -65,12 +71,6 @@ We provide multiple options to demonstrate the breadth of available instructions
 | `{placeholder}` | area to be filled by the model | `The topic is {subject}` |
 
 
-## Technical Advantages of a Structured Prompt Language
-- **Maintainable** - Allow teams of engineers to contribute meaningfully to the same prompt with clear comprehensibility.
-- **Guarantees educational legacy**  - ensure your AI intelligence is retained when your key prompt engineer leaves.
-- **Clear separation of requirements** – separate instruction structure (prompt language) from the text that a model should produce (response language like markdown or json).
-- **Portable across foundation and open source** – the same prompt works across models like ChatGPT, Claude or Gemini.
-- **Token efficient** – symbols such as `(:` and `:)` compress well in modern tokenizers. The language can be minimized into guaranteed single characters e.g. ( and : when needed for prompt compression pipelines with similar or sometimes even improved results.
 
 
 ## Repository Layout
