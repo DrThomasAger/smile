@@ -74,10 +74,10 @@ We provide multiple options to demonstrate the breadth of available instructions
 # (: Smile Roadmap
 
 ## Phase 1 — **Research**
-- **March 2023 – June 2025**
+- **✅March 2023 – June 2025**
 
 ## Phase 2 — **Define (: Smile Syntax**
-- **June 2025 – September 2025**
+- **✅June 2025 – September 2025** *Ahead of schedule!*
 
 ## Phase 3 — **Convert Prompt Archive**
 - **October 2025 – March 2026**  
