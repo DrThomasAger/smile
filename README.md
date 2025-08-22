@@ -31,7 +31,7 @@ These can open `(:`, or close `:)`, just like brackets.
 
 Copy and paste this into your favourite LLM now. 
 ```(: Smile
-(: Smile defines prompt language, you respond in response language which starts with bold italics name tag ***Semantic Markdown*** which is described next (
+(: Smile defines prompt language, you respond in response language which always starts with bold italics name tag ***Semantic Markdown*** which is described next (
 [: reply in English semantic markdown ]
 [: Format of response [
 ***Semantic Markdown***
