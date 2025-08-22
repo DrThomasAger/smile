@@ -21,7 +21,7 @@ These can open `(:`, or close `:)`, just like brackets.
 ## Breaking it down - What even is a (: Smile syntactically for LLM's?
 
 ***(: Smile***'s are composed of eyes `:`, and mouths  `(`, in-order to label sections of a prompt so that humans and large language models (LLMs) can understand a consistent structure. 
-It enhances instruction following, team coherence, and token efficiency.
+It enhances instruction following, organization of the prompt, modular composability, and token efficiency.
 
 All the while you are making more **predictable** the **key inference outputs of your organization** for both you and your model.
 
