@@ -71,7 +71,7 @@ We provide multiple options to demonstrate the breadth of available instructions
 ## Repository Layout
 - `prompt/` – example prompts written in ***(: Smile***.
 - `response/` – sample outputs from LLMs.
-- `import/` – raw prompt text to be converted into ***(: Smile** used in experiments.
+- `import/` – raw prompt text to be converted into ***(: Smile*** unedited and unmaintained.
 - `python/` – prototype scripts for transforming prompts.
 
 ## Status
