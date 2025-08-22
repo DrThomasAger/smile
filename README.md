@@ -64,14 +64,14 @@ We provide multiple options to demonstrate the breadth of available instructions
 | Symbol | Purpose | Example |
 |--------|---------|---------|
 | `(: Section (` | begin a named section (mouth can be `()`, `[]`, `{}`) | `(: Format (` |
-| `)` | close the current section | `) End section :)` |
+| `)` | shortened close for the current section | `) End section :)` |
 | `:)` | close the whole Smile block | `) End section :)` |
-| `[= literal =]` | strict text that must match exactly | `[= Smile =]` |
-| `[$ variable $]` | placeholder variable to find and replace | `[$subject$]` |
-|  `[! important instruction !] ` | placeholder variable to find and replace | `[$subject$]` |
-| `[: note ]` or `[; note ]` | model-facing note about the response language (mouth can be any matching pair) | `[: reply in Markdown ]` |
-| `(; alternate note or comment )` | human comment on an instruction | `(; this is tone instruction only )` |
-| `{placeholder}` | area to be filled by the model | `The topic is {subject}` |
+| `[= literal =]` | strict text that must match exactly | `Write this word for word [= "Thinking through step by step..." =]` |
+| `[$ variable $]` | placeholder variable to find and replace | `Next is user input (: User input ( [$User_Input_Document$] ) End input document :)` |
+|  `[! important instruction !] ` | text that the model can allocate attention to | `[! NEVER use an emdash! !]` |
+| `[: note ]` or `[; note ]` | model-facing note about the response language (mouth can be any matching pair) | `[: reply in Markdown ] (; Ensure that you **bold** key words` |
+| `(; alternate note or comment )` | human comment on an instruction | `(; this is length instruction only ( write comprehensively, extensively, with multiple lengthy paragraphs` |
+| `{placeholder}` | area to be filled by the model | `Fill out the following sections # Thinking {Plan} # Replying {Use plan to reply}` |
 
 
 # (: Smile Roadmap
