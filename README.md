@@ -2,11 +2,11 @@
 
 # (: Smile Prompt Language
 
-Write structured prompts in a consistent way for predictably positive results!
+Write **structured prompts** in a **consistent way** for ***predictably positive results!***
 
-Smile is a structured markup for increasing instruction following in prompts. It does this by providing guidance when writing prompts in a consistent, compact and human friendly way.  
+Smile is a structured markup for increasing instruction following in prompts. It does this by providing a structure when writing prompts that is token efficient, understandable to the model and the human, and creates consistent and effective results. 
 
-Think of it like when raw text became HTML, or unstructured data became markdown. Now prompt text can become structured (: Smile for Large Language Models (LLM) to read. 
+Think of this moment in prompt engineering like when raw text became HTML, or unstructured data became markdown. Now prompt text can become structured (: Smile for Large Language Models (LLM) to read. 
 
 # What is a (: Smile?
 It uses a small set of text emojis like  `(:` composed of mouths  `:` and brackets  `(` to label sections of a prompt so that humans and large language models (LLMs) can understand a consistent the  structure. 
