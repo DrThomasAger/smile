@@ -18,6 +18,8 @@ It uses a small set of text emojis like  `(:`, `[;`, and `[=`.
 
 These can open `(:`, or close `:)`, just like brackets.
 
+## Breaking it down - What even is a (: Smile syntactically for LLM's?
+
 ***(: Smile***'s are composed of eyes `:`, and mouths  `(`, in-order to label sections of a prompt so that humans and large language models (LLMs) can understand a consistent structure. 
 It enhances instruction following, team coherence, and token efficiency.
 
