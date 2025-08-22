@@ -55,7 +55,7 @@ Replace everything under the ***Semantic Markdown*** name tag with clear instruc
 - **Future-Proof**  - Allow teams of engineers to retain your prompt engineering knowledge even after your key prompt engineer leaves.
 - **Explainable** - Map outcomes to prompt text changes more clearly with semantic markdown, allowing you to justify any AI decisions in a court of law more clearly.
 - **Portable across foundation and open source** – Transform your text prompts so that they work across models like ChatGPT, Kimi K2, Claude or Gemini.
-- **Token efficient** – symbols such as `(:` and `:)` Compress well in modern tokenizers. 
+- **Token efficient** – Symbols such as `(:` and `:)` Compress well in modern tokenizers. 
 
 ## How to Use (: Smile
 
