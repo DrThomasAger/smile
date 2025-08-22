@@ -4,7 +4,9 @@
 
 Write **structured prompts** in a **consistent way** for ***predictably positive results!***
 
-Imagine this moment in prompt engineering as the moment when raw text became HTML, or unstructured data became markdown. Now unstructured prompt text can evolve into the ***(: Smile*** prompt language for Large Language Models (LLMs) to read. 
+Imagine this moment in prompt engineering as the moment when raw text became HTML, or unstructured data became markdown. 
+
+Now unstructured prompt text can evolve into the ***(: Smile*** prompt language for Large Language Models (LLMs) and humans to read. 
 
 ***(: Smile*** is a structured markup for increasing instruction following in prompts. It does this by providing clear sections when writing prompts using token efficient, understandable to the model and the human, and positive ***(: Smile*** markup!
 
