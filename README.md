@@ -71,7 +71,28 @@ We provide multiple options to demonstrate the breadth of available instructions
 | `{placeholder}` | area to be filled by the model | `The topic is {subject}` |
 
 
+# (: Smile Roadmap
 
+## Phase 1 — **Research**
+- **March 2023 – June 2025**
+
+## Phase 2 — **Define (: Smile Syntax**
+- **June 2025 – September 2025**
+
+## Phase 3 — **Convert Prompt Archive**
+- **October 2025 – March 2026**  
+Convert existing prompt archive into a **handwritten gold standard (: Smile Syntax)**.
+
+## Phase 4 — **Test, Verify, Validate**
+- **April 2026 – September 2026**  
+Test and validate prompts on **downstream tasks and metrics**.
+
+## Phase 5 — **Introduce New Tooling**
+- **October 2026 – March 2027**  
+Develop and launch tools for:  
+  - **Prompt compression**  
+  - **Integration into VS Code**  
+  - **Additional utilities**
 
 ## Repository Layout
 - `prompt/` – example prompts written in ***(: Smile***.
