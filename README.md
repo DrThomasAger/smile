@@ -55,11 +55,12 @@ If the model echoes the `Semantic Markdown` tag and layout, it understands Smile
 - **Portable across foundation and open source** – transform your text prompts so that they work across models like ChatGPT, Kimi K2, Claude or Gemini.
 - **Token efficient** – symbols such as `(:` and `:)` compress well in modern tokenizers. 
 
-## How to use (: Smile
+## How to Use (: Smile
 
-Start by clearly defining and naming sections and using (: Smile syntax to show the start and end of the section and describe it. You can also see how to use (: Smile by studying the example prompts in this repo in the `prompt` directory. 
+Start by clearly defining sections using (: Smile syntax to show the start and end of the section. You can also see how to use (: Smile by studying the example prompts in this repo in the `prompt` directory. 
 
-## Core Syntax
+## How to Write (: Smile 
+
 Instructions start with **colon eyes** `:`, while **winky eyes** `;` mark comments about those instructions. 
 **Straight eyes** `=` show strict input that must be followed exactly. **Quote eyes** `"` show text that must be repeated word for word verbatim. **Cash eyes**  `$` show variables.
 The "mouth"—parentheses `()`, brackets `[]`, braces `{}`—just wraps the content and can be any matching pair. You can use it to enclose section names or notes. 
