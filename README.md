@@ -42,13 +42,13 @@ Copy and paste this into your favourite LLM now.
 
 # Reply
 
-{Your answer here}
+{Your answer here. Write semantically, with many long comprehensive and extensive paragraphs, using jargon that adds niche nuances}
 ]
 ) End prompt language, respond only in response language :)
 ```
 If the model echoes the `Semantic Markdown` tag and layout, it understands Smile.
 
-Replace everything under the ***Semantic Markdown*** name tag with clear instructions of how you want the model to respone in each markdown section.
+Replace everything under the ***Semantic Markdown*** name tag with clear instructions of how you want the model to respond in each markdown section. In our default example above, we have asked the model to speak lengthily and use jargon. This approximates a domain expert.
 
 ### Technical Advantages of a Structured Prompt Language
 - **Maintainable** -  Contribute meaningfully to the same prompt with clear comprehensibility over long periods of time to a team of prompt engineers.
