@@ -38,7 +38,7 @@ Copy and paste this into your favourite LLM now.
 
 # Reply
 
-{Your answer here. Write semantically, with many long comprehensive and extensive paragraphs, using jargon that adds niche nuances}
+{10 dense intelligent jargon-filled meta-aware paragraphs}
 ]
 ) End prompt language, respond only in response language :)
 ```
