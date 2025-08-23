@@ -44,6 +44,30 @@ First, write exact name tag  ["[***Smile Expert***](https://github.com/DrThomasA
 * **Token efficient** – Symbols such as `(:` compress to a single token in modern tokenizers. This allows you to use clear structure rather than long sentences for instructions, saving tokens and money.
 
 
+
+## Foundation Models (Compatibility Chart)
+
+| Company             | Model            | Works |
+| ------------------- | ---------------- | :---: |
+| **OpenAI**          | GPT-4o           |   ✅   |
+|                     | GPT-5-Fast      |   ✅   |
+|                     | GPT-5-Thinking    |   ✅   |
+| **Anthropic**       | Claude Sonnet 4   |   ✅   |
+|                     | Claude Opus 3  |   ✅   |
+|                     | Claude Haiku 3.5   |   ✅   |
+| **Google DeepMind** | Gemini 2.5 Pro   |   ✅   |
+|                     | Gemini 2.5 Flash |   ✅   |
+
+## Open Source & Other Models
+
+| **Moonshot AI**            | Kimi K2       |   ✅   |
+|                     | Kimi 1.5 |   ✅   |
+| **Meta**            | LLaMA-2 70B      |   ✅   |
+|                     | LLaMA-2 13B      |   ✅   |
+|                     | LLaMA-2 7B       |   ✅   |
+| **Mistral**         | Mixtral-8x7B     |   ✅   |
+|                     | Mistral-7B       |   ✅   |
+
 # Prompting With a ***(: Smile***!
 
 ⭐ **[Star the repo to help us grow](https://github.com/DrThomasAger/smile)** 
@@ -126,28 +150,6 @@ We provide multiple options to demonstrate the breadth of available instructions
 
 You can easily integrate ***(: Smile*** into your current workflows by using `(:` Smile's instead of brackets `(` when defining your sections in your prompts. No matter how you've been writing your prompts, you can begin adding structure and meaning in a consistent and maintainable way.
 
-## Foundation Models (Compatibility Chart)
-
-| Company             | Model            | Works |
-| ------------------- | ---------------- | :---: |
-| **OpenAI**          | GPT-4o           |   ✅   |
-|                     | GPT-5-Fast      |   ✅   |
-|                     | GPT-5-Thinking    |   ✅   |
-| **Anthropic**       | Claude Sonnet 4   |   ✅   |
-|                     | Claude Opus 3  |   ✅   |
-|                     | Claude Haiku 3.5   |   ✅   |
-| **Google DeepMind** | Gemini 2.5 Pro   |   ✅   |
-|                     | Gemini 2.5 Flash |   ✅   |
-
-## Open Source & Other Models
-
-| **Moonshot AI**            | Kimi K2       |   ✅   |
-|                     | Kimi 1.5 |   ✅   |
-| **Meta**            | LLaMA-2 70B      |   ✅   |
-|                     | LLaMA-2 13B      |   ✅   |
-|                     | LLaMA-2 7B       |   ✅   |
-| **Mistral**         | Mixtral-8x7B     |   ✅   |
-|                     | Mistral-7B       |   ✅   |
 
 # Is (: Smile strict or flexible?
 
