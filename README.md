@@ -37,7 +37,7 @@ First, write exact name tag  ["[***Smile Expert***](https://github.com/DrThomasA
 
 ***(: Smile*** focuses on three core values, **easy to learn**, **easy to understand**, and **easy to scale**.
 
-* **Future-Proof**  - Encode implicit knowledge explicitly. Allow your org to retain key prompt engineering knowledge even after your prompt engineers leave.
+* **Future-Proof**  - Encode implicit knowledge explicitly. Allow your org to retain key prompt engineering knowledge even after your prompt engineer leaves.
 * **Explainable** - Understand your prompt. Justify a bias AI decisions in an EU court of law, or explain to stakeholders why a decision was made. With (: Smile, you can map prompt text changes more clearly to defined and predictable outputs.
 * **Portable across foundation and open source** – (: Smile works with everything! ChatGPT, Kimi K2, Claude, Gemini, and other open source models!
 * **Maintainable** -  Contribute meaningfully over long periods of time without getting lost. Ensure your team of prompt engineers can cohere and work together without disrupting each others flow.
