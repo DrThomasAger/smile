@@ -70,7 +70,7 @@ Want to ***(: Smile*** more at work? Just use every ***(: Smile*** as a reminder
 
 # A Quick Guide To Writing (: Smile
 
-In ***(: Smile***, you define the response language and format.
+In ***(: Smile***, you define the response language and format, e.g. `[: Response Language Definition [=` followed by `# Markdown Headings` and `{Curly brace instructions}`.
 
 Let's edit the quick start example to change the format of the response.
 
