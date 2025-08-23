@@ -51,7 +51,7 @@ Want to ***(: Smile*** more at work? Just use every ***(: Smile*** as a reminder
 
 # Start Writing (: Smile
 
-In (: Smile, you define the response language and format.
+In ***(: Smile***, you define the response language and format.
 
 Let's edit the quick start example to change the format of the response.
 
