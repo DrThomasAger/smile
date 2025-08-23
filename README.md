@@ -34,6 +34,20 @@ First, write exact name tag  ["[☺️ ***Smile Expert***](https://github.com/Dr
 
 
 
+## Technical Advantages of (: Smile
+
+Imagine this moment in prompt engineering as the moment when raw text became HTML, or unstructured data became markdown. 
+
+Now unstructured prompt text can evolve into the ***(: Smile*** prompt language for Large Language Models (LLMs) and humans to read. 
+
+***(: Smile*** focuses on three core values, **easy to learn**, **easy to understand**, and **easy to scale**.
+
+* **Future-Proof** 🚀 - You can now encode implicit knowledge explicitly and consistently. This allow your org to retain key prompt engineering knowledge, even after a prompt engineer leaves.
+* **Explainable** 📝 - You can now explain your prompt. With increasing scrutiny on AI systems, you may need to justify a bias AI decision in an EU court of law. With ***(: Smile***, you can map prompt text changes more clearly to defined and predictable outputs.
+* **Maintainable** 🤝 -  You can now contribute meaningfully over long periods of time without getting lost. Ensure your team of prompt engineers work together coherently without disrupting flow.
+
+
+
 # Why (: Smile?
 
 **Type `(:` and you’ll feel better... And get more leverage out of your prompts.** The act of smiling (even with text) measurably lifts mood and sharpens focus, which makes ***(: Smile*** a tiny habit with outsized returns every time you write.
@@ -50,18 +64,6 @@ First, write exact name tag  ["[☺️ ***Smile Expert***](https://github.com/Dr
 🧠 **Brain Hack Bottom line:** ***(: Smile*** turns two keystrokes into a *neurochemical and workflow advantage*. Make `(:` your default opener, and let the language do double duty. **Structure for the model, uplift for your organization & employees**.
 
 Want to ***(: Smile*** more at work? Just use every ***(: Smile*** as a reminder to smile in real life! That way, you can build a habit of happiness. 
-
-## Technical Advantages of (: Smile
-
-Imagine this moment in prompt engineering as the moment when raw text became HTML, or unstructured data became markdown. 
-
-Now unstructured prompt text can evolve into the ***(: Smile*** prompt language for Large Language Models (LLMs) and humans to read. 
-
-***(: Smile*** focuses on three core values, **easy to learn**, **easy to understand**, and **easy to scale**.
-
-* **Future-Proof** 🚀 - You can now encode implicit knowledge explicitly and consistently. This allow your org to retain key prompt engineering knowledge, even after a prompt engineer leaves.
-* **Explainable** 📝 - You can now explain your prompt. With increasing scrutiny on AI systems, you may need to justify a bias AI decision in an EU court of law. With ***(: Smile***, you can map prompt text changes more clearly to defined and predictable outputs.
-* **Maintainable** 🤝 -  You can now contribute meaningfully over long periods of time without getting lost. Ensure your team of prompt engineers work together coherently without disrupting flow.
 
 
 # Start Writing (: Smile
