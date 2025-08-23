@@ -8,12 +8,7 @@
 
 ***(: Smile*** focuses on three core values, **easy to learn**, **easy to understand**, and **easy to scale**.
 
-You can get started with our quick start copy and paste example below. Just copy and paste it into your favorite model and see the magic of **(: Smiling!**
-
-# (: Smile Basics
-It uses a small set of text emojis like  `(:`, `[;`, and `[=`.
-
-These can open `(:`, or close `:)`, just like brackets.
+Just copy and paste our quick start example below into your favorite model and see the magic of **(: Smiling!**
 
 ## Quick Start
 
@@ -40,7 +35,10 @@ First, write exact name tag  ["[***Smile Expert***](https://github.com/DrThomasA
 If the model echoes the ***[Smile Expert](https://github.com/DrThomasAger/smile)*** name tag and response format, it understands Smile.
 
 
-*Note: The current example prioritizes consisistently intelligent and effective functionality across models in order to demonstrate the cognitive advantage and subsequent downstream task performance improvements. It is deliberately a heavily opinionated prompt in-order to demonstrate how to apply the framework, rather than providing a dense token efficient example that is gibberish or hard to read.*
+# (: Smile Basics
+It uses a small set of text emojis like  `(:`, `[;`, and `[=`.
+
+These can open `(:`, or close `:)`, just like brackets.
 
 # Prompting With a ***(: Smile***!
 
@@ -181,6 +179,10 @@ Develop and launch tools for:
 It enhances instruction following, organization of the prompt, modular composability, and token efficiency.
 
 All the while you are making more **predictable** the **key inference outputs of your organization** for both you and your model.
+
+
+
+*Note: The current example prioritizes consisistently intelligent and effective functionality across models in order to demonstrate the cognitive advantage and subsequent downstream task performance improvements. It is deliberately a heavily opinionated prompt in-order to demonstrate how to apply the framework, rather than providing a dense token efficient example that is gibberish or hard to read.*
 
 
 ## Repository Layout
