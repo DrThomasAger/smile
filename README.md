@@ -47,9 +47,6 @@ As someone who has been in computer science for over a decade, this moment in pr
 
 * **Explainable** 📝 *Clearly map prompt text changes to consistent outputs.* - You can now explain your prompt. With increasing scrutiny on AI systems, you can now justify an AI decision in an EU court of law. 
 
-Don't lose business because you weren't prepared - learn to ***(: Smile*** now 👇
-
-
 
 # (: Smile Basics
 
