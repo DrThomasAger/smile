@@ -32,22 +32,6 @@ First, write exact name tag  ["[☺️ ***Smile Expert***](https://github.com/Dr
 ) End prompt language, respond in response language starting with name tag [☺️ ***Smile Expert***](https://github.com/DrThomasAger/smile): always please thank you 🙏 :)
 ```
 
-# (: Smile Basics
-
-You start by clearly defining the start `(:` of a section and its name `(: Section name (`. 
-
-You can end sections using the same markers in the opposite direction. `) End Section name :)`.
-
-## Different Smiles, Different Meanings
-
-You can use different text emoticons to indicate meaningfully different sections.
-
-For example, in the quick start prompt the section that defines the format of the response is labelled `[: Response Language Definition [=`.
-
-This defines the way that the model will respond. 
-
-It is ended with `] End format =]`. 
-
 ## Technical Advantages of (: Smile
 
 ***(: Smile*** focuses on three core values, **easy to learn**, **easy to understand**, and **easy to scale**. 
@@ -63,6 +47,21 @@ This leads to **three main outcomes after you adopt (: Smile for your org:**
 * **Maintainable** 🤝 -  You can now contribute meaningfully over long periods of time without getting lost. Ensure your team of prompt engineers work together coherently without disrupting flow.
 
 
+# (: Smile Basics
+
+You start by clearly defining the start `(:` of a section and its name `(: Section name (`. 
+
+You can end sections using the same markers in the opposite direction. `) End Section name :)`.
+
+## Different Smiles, Different Meanings
+
+You can use different text emoticons to indicate meaningfully different sections.
+
+For example, in the quick start prompt the section that defines the format of the response is labelled `[: Response Language Definition [=`.
+
+This defines the way that the model will respond. 
+
+It is ended with `] End format =]`. 
 
 # Why (: Smile?
 
