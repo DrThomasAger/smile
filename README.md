@@ -56,7 +56,7 @@ First, write exact name tag  ["[☺️ ***Smile Expert***](https://github.com/Dr
 ***(: Smile*** focuses on three core values, **easy to learn**, **easy to understand**, and **easy to scale**.
 
 * **Future-Proof**  - Encode implicit knowledge explicitly. Allow your org to retain key prompt engineering knowledge even after your prompt engineer leaves.
-* **Explainable** - Understand your prompt. With increasing scrutiny on AI systems, you may need to justify a bias AI decision in an EU court of law. Explain to stakeholders why a decision was made. With (: Smile, you can map prompt text changes more clearly to defined and predictable outputs.
+* **Explainable** - Understand your prompt. With increasing scrutiny on AI systems, you may need to justify a bias AI decision in an EU court of law. With (: Smile, you can map prompt text changes more clearly to defined and predictable outputs. Explain to stakeholders why a decision was made clearly with our (: Smile syntax map.
 * **Maintainable** -  Contribute meaningfully over long periods of time without getting lost. Ensure your team of prompt engineers can cohere and work together without disrupting the flow.
 
 
@@ -113,17 +113,19 @@ Now unstructured prompt text can evolve into the ***(: Smile*** prompt language 
 
 
 
-## How to Use (: Smile
+# How to Use (: Smile
 
 Start by clearly defining sections using (: Smile syntax to show the start and end of the section. You can also see how to use (: Smile by studying the example prompts in this repo in the `prompt` directory. 
 
-## How to Write (: Smile 
+# How to Write (: Smile 
 
 Instructions start with **colon eyes** `:`, while **winky eyes** `;` mark comments about those instructions. 
 **Straight eyes** `=` show strict input that must be followed exactly. **Quote eyes** `"` show text that must be repeated word for word verbatim. **Cash eyes**  `$` show variables.
 The "mouth"—parentheses `()`, brackets `[]`, braces `{}`—just wraps the content and can be any matching pair. You can use it to enclose section names or notes. 
 
 We provide multiple options to demonstrate the breadth of available instructions to Large Langauge Models. Semantically different structure creates different downstream results.
+
+## (: Smile Syntax Map
 
 | Symbol | Purpose | Example | When to Use |
 |--------|---------|---------|---------|
