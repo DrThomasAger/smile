@@ -32,6 +32,21 @@ First, write exact name tag  ["[☺️ ***Smile Expert***](https://github.com/Dr
 ) End prompt language, respond in response language starting with name tag [☺️ ***Smile Expert***](https://github.com/DrThomasAger/smile): always please thank you 🙏 :)
 ```
 
+## Compatible With All Existing Models (Foundation & Open Source LLMs)
+
+Please feel free to try the above prompt on your own model or one we haven't tested and report back the results! We are constantly updating this table with submitted information.
+
+| Company             | Model            | ***(: Smile*** prompt language |
+| ------------------- | ---------------- | :---: |
+| **OpenAI**          | GPT-4o           |   ✅   |
+|                     | GPT-5-Fast      |   ✅   |
+|                     | GPT-5-Thinking    |   ✅   |
+| **Anthropic**       | Claude Sonnet 4   |   ✅   |
+| **Google DeepMind** | Gemini 2.5 Pro   |   ✅   |
+|                     | Gemini 2.5 Flash |   ✅   |
+| **Moonshot AI**            | Kimi K2       |   ✅   |
+|                     | Kimi 1.5 |   ✅   |
+
 # Why (: Smile?
 
 
@@ -42,18 +57,7 @@ First, write exact name tag  ["[☺️ ***Smile Expert***](https://github.com/Dr
 * **Maintainable** -  Contribute meaningfully over long periods of time without getting lost. Ensure your team of prompt engineers can cohere and work together without disrupting the flow.
 
 
-## Compatible With All Existing Models (Foundation & Open Source LLMs)
 
-| Company             | Model            | ***(: Smile*** verified |
-| ------------------- | ---------------- | :---: |
-| **OpenAI**          | GPT-4o           |   ✅   |
-|                     | GPT-5-Fast      |   ✅   |
-|                     | GPT-5-Thinking    |   ✅   |
-| **Anthropic**       | Claude Sonnet 4   |   ✅   |
-| **Google DeepMind** | Gemini 2.5 Pro   |   ✅   |
-|                     | Gemini 2.5 Flash |   ✅   |
-| **Moonshot AI**            | Kimi K2       |   ✅   |
-|                     | Kimi 1.5 |   ✅   |
 
 # Prompting With a ***(: Smile***!
 
