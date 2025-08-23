@@ -4,7 +4,7 @@
 
 The dead simple **structured markup** for **increasing instruction following** in **prompt writing**. 
 
-> Structure your prompts consistently for predictably positive results - even with huge prompts!
+> Structure your prompts consistently for predictably positive results — even with huge prompts!
 
 It uses a small set of text emojis like  `(:`, `[;`, and `[=`. These can open `(:`, or close `:)`, just like brackets. 
 
@@ -52,6 +52,18 @@ As someone who has been in computer science for over a decade, this moment in pr
 You start by clearly defining the start `(:` of a section and its name `(: Section name (`. 
 
 You can end sections using the same markers in the opposite direction. `) End Section name :)`.
+
+Label your instructions with sections, separating meaningfully different parts of the prompt. For example, provide a separate section for the user input text and the instructions for what to do with that text. 
+
+```Smile v0.4
+(: Example user input text section (
+
+[$Replace_this_with_user_input_text$]
+
+) End Example user input text section :)
+
+[: Instructions for response - rewrite user input verbatim but with key text **bolded** :]
+```
 
 # How to (: Smile: A Quick Guide 
 
