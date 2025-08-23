@@ -47,7 +47,7 @@ First, write exact name tag  ["[☺️ ***Smile Expert***](https://github.com/Dr
 
 🧠 **Brain Hack Bottom line:** ***(: Smile*** turns two keystrokes into a *neurochemical and workflow advantage*. Make `(:` your default opener, and let the language do double duty. **Structure for the model, uplift for your organization & employees**.
 
-Want to ***(: Smile*** more at work? Just use every (: Smile as a reminder to smile in real life! That way, you can build a habit of happiness. 
+Want to ***(: Smile*** more at work? Just use every ***(: Smile*** as a reminder to smile in real life! That way, you can build a habit of happiness. 
 
 # Start Writing (: Smile
 
