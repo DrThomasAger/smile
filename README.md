@@ -174,7 +174,7 @@ These are a few different ways to create structure by ***(: Smiling***.
 | `(: Section (` | begin a named section (mouth can be `()`, `[]`, `{}`) | `(: Format (` | Starting any section including a new prompt  |
 | `)` | shortened close for the current section | `) End section :)` | Ending a section of the prompt, can also be used to end the whole prompt  |
 | `:)` | close the whole Smile block | `) End section :)` | This is the final ending marker. Each start and end has two markers  |
-| `[= literal =]` | strict instructions that must be followed more closely | `[= Write this word for word ["Thinking through step by step..."] then reply` | Use this when you want them to repeat words or structural aspects like markdown sections.  |
+| `[= literal =]` | strict instructions that must be followed more closely | `[= Write this word for word ["Thinking through step by step..."] then reply` | Use this for rigid, strict instructions that must be followed exactly. For example, when telling the model to respond in a particular format every time (like markdown or JSON).  |
 | `["Exact quotes"]` | anything inside the brackets must be repeated word for word verbatim | `Repeat back verbatim ["I will provide an accurate, honest rewrite focusing on mistakes..."]` | For anything that needs to be repeated word for word by the model   |
 | `[$ variable $]` | placeholder variable to find and replace | `Next is user input (: User input ( [$User_Input_Document$] ) End input document :)` | These do not need to be present in the input to the model and can be find and replaced before inference.   |
 |  `[! important instruction !] ` | text that the model can allocate attention to | `[! NEVER use an emdash! !]` | For when **bold** isn't enough   |
