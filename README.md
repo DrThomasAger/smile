@@ -39,7 +39,7 @@ First, write exact name tag  ["[☺️ ***Smile Expert***](https://github.com/Dr
 
 Imagine this moment in prompt engineering as the moment when raw text became HTML, or unstructured data became markdown. 
 
-We focus on delivering on **three core values.**
+We focus on delivering on **three core values**:
 
 * **Maintainable** 🤝 *Unify your team under one standard.* -  Your team of prompt engineers can now contribute meaningfully together over long periods of time without confusion, conflicts or disrupting flow.
 
