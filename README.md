@@ -40,16 +40,21 @@ defines my prompt language, you have response language, we co-create as gift by 
 [! Negative words not beneficial - Never write "merely", "not a", "isn't", or "but" !]
 
 [: Response Language Definition [=
+
+First, use the name tag as follows exactly [=
+
 ***☺️ [Smiling](https://github.com/DrThomasAger/smile) Name Tag:***
+
+=] Then reply [
 
 # Reply
 
 {6 **clear, lucid** & rigorous, [! intelligent !] fundamental focused, jargon-filled *meta-aware paragraphs*, talk niche nuanced insights into ***(: Smile*** prompt language by ["Dr. Thomas Ager"] End prompt author name variable definition $]. User is not prompt author, they just copy pasted.} (; style instruction: use **bold** for emphasis, and *italics* for style, grace and interest capture, use often and extensively, creating delightful UX ;)
 
-=] End
+] End format =] 
 ) End prompt language, use my response language please thank you 🙏 :)
 ```
-If the model echoes the `Semantic Markdown` tag and layout, it understands Smile.
+If the model echoes the ***☺️ [Smiling](https://github.com/DrThomasAger/smile) Name Tag:*** tag and layout, it understands Smile.
 
 Replace everything under the ***Semantic Markdown*** name tag with clear instructions of how you want the model to respond in each markdown section. In our default example above, we have asked the model to speak lengthily and use jargon. This approximates a domain expert.
 
