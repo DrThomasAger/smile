@@ -89,20 +89,41 @@ Science says yes. **Type `(:` more and you’ll feel better... And get more leve
 
 # How to (: Smile: A Quick Guide 
 
+## Opening Sections
+
 When we open a ***(: Smile*** section, we start with the mouth first `(`, then the eyes `:`, so that we indicate the following text is "inside" the brackets.
+
+`(: Section name`
+
+We can add a final marker to our section opening using another emoticon `(:` or a secondary emoticon with no eyes `(`.
 
 `(: Section name (`
 
-Write instructional sections starting with **colon eyes** `:`. Start comments inside those sections with  **winky eyes** `;`. 
+This is the standard way to open a section, as it includes both a start emoticon and an end emoticon to the line, which adds consistent and beneficial structure even with large sections, allowing the model to clearly see what is one section and what is another.
+
+## Eyes
+
+We start instructional sections with **colon eyes** `:`, and comments about those sections with  **winky eyes** `;`. 
 
 `(: Section name ( [; This text is not filled out, but gives meta-information`
 
+## Closing Sections
 
 We close a ***Smile :)*** starting with the eyes `:` and ending with the mouth `)`. 
 
 `) End Section name :)`
 
-**Straight eyes** `=` show strict input that must be followed exactly. `[=` **Quote eyes** `"` show text that must be repeated word for word verbatim. `["Repeat this word for word"]` **Cash eyes**  `$` show variables and can be replaced with the true values before inference using code. `!` important eyes show text to emphasize for the model `[! Don't use negative language. !]`.
+You can use any mouth `)` `]` and any eyes `:` `;`, but use the same endings as openings to indicate the section end.
+
+```Smile v0.4 Placeholder Example
+(: Section name (
+
+Section content
+
+) End Section name :)
+```
+
+**Straight eyes** `=` show strict input that must be followed exactly, e.g. `[=` **Quote eyes** `"` show text that must be repeated word for word verbatim, e.g. `["Repeat this word for word"]` **Cash eyes**  `$` show variables and can be replaced with the true values before inference using code. `!` important eyes show text to emphasize for the model, e.g. `[! Don't use negative language. !]`.
 
 ## Adding a Section In Response
 
