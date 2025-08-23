@@ -2,7 +2,7 @@
 
 # (: Smile Prompt Language
 
-The dead simple **structured markup for increasing instruction following in prompt writing** for AI. 
+The dead simple **structured markup for increasing instruction following in prompt writing**. 
 
 It uses a small set of text emojis like  `(:`, `[;`, and `[=`. These can open `(:`, or close `:)`, just like brackets.
 
