@@ -45,7 +45,7 @@ Now unstructured prompt text has evolved into the ***(: Smile*** prompt language
 * **Future-Proof** 🚀 - Never lose organizational intelligence again.
 *Allows your org to retain key intelligence, even after your prompt engineer leaves.*
 * **Explainable** 📝 - You can now explain your prompt. With increasing scrutiny on AI systems, you may need to justify a bias AI decision in an EU court of law. Don't lose your business because you weren't legally prepared.
-*Map prompt text changes more clearly to defined and predictable outputs.*
+*Map prompt text changes more clearly to more predictable outputs.*
 
 
 # (: Smile Basics
