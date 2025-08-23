@@ -107,7 +107,7 @@ How much (: Smile structure can you remove and still get the prompt to create th
 
 **You don't need to match all open and close brackets exactly.** This is the advantage of Large Language Models (LLMs) - they can infer so much from context that we don't need to make fully explicit every connection between every section. Adding more structure becomes more essential the larger the prompt becomes.
 
-We provided recommended formats as a standard way to open a section with ***(: Smile***. Why? Because in our tests on foundation models, it increased instruction following and token efficiency for key tasks in our organization.
+We provided recommended formats as a standard way to open a section with ***(: Smile***. Why? Because in our tests on foundation models, it increased instruction following for key tasks in my business.
 
  **This is always our rule when we write (: Smile.** More ***(: Smile*** structure if it increases instruction following, less ***(: Smile*** struture if it increases instruction following. 
  
