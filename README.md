@@ -74,7 +74,7 @@ We can add an end label to our section start marker using just a mouth bracket `
 
 `(: Section name (`
 
-The model is able to immediately recognize from context that `(:` indicates the beginning of the start marker, and `(` is the end of the start marker, as `(` is a subset of `:`.
+The model is able to immediately recognize from context that `(:` indicates the beginning of the start marker, and `(` is the end of the start marker.
 
 ### An Easy Rule For Writing (: Smile
 
