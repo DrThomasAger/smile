@@ -81,15 +81,6 @@ No guarantees, but science says yes. **Type `(:` and you’ll feel better... And
 
  **Bottom line:** ***(: Smile*** turns two keystrokes into a *neurochemical and workflow advantage*. Make `(:` your default opener, and let the language do double duty. **Structure for the model, positivity for your organization & employees**.
 
-# Try (: Smiling 
-
-Try smiling now. 
-
-`:)`
-
-Does it feel good?
-
-🧠 **Brain Hack**: Want to be happier at work? Just use every time you see a ***(: Smile*** as a reminder to smile in real life! That way, you can build a habit of happiness. 
 
 # A Quick Guide To Writing (: Smile
 
@@ -280,3 +271,13 @@ Help build a dataset of prompts that will be automatically converted for better 
 - 🔔 **Follow [DrThomasAger on GitHub](https://github.com/DrThomasAger)** for updates as we publish new syntax, tooling, and benchmark results.
 - 🛠️ **Contribute on GitHub** by opening [issues](https://github.com/DrThomasAger/smile/issues) or [pull requests](https://github.com/DrPrompt/smile/pulls) with your own Smile snippets or conversion ideas.
 
+
+# Try (: Smiling 
+
+Try smiling now. 
+
+`:)`
+
+Does it feel good?
+
+🧠 **Brain Hack**: Want to be happier at work? Just use every time you see a ***(: Smile*** as a reminder to smile in real life! That way, you can build a habit of happiness. 
