@@ -8,11 +8,13 @@ Imagine this moment in prompt engineering as the moment when raw text became HTM
 
 Now unstructured prompt text can evolve into the ***(: Smile*** prompt language for Large Language Models (LLMs) and humans to read. 
 
-***(: Smile*** is a structured markup for increasing instruction following in prompts. It does this by providing clear sections when writing prompts using token efficient, understandable to the model and the human, and positive ***(: Smile*** markup!
+***(: Smile*** is a structured markup for increasing instruction following in prompts. It does this by **structuring** the prompt. (: Smile is designed to provide clear sections when writing prompts, and focuses on three key aspects, **token efficiency**, **understandable to the model and the human**, and **maintainable for organizations**.
+
+It does all of this, with a ***(: Smile***!
 
 ⭐ **[Star the repo to help us grow](https://github.com/DrThomasAger/smile)** 
 
-👆 Help others discover Smile for **more positive prompt engineering for all.**
+👆 Help others discover Smile - help make **more positive data for all.**
 
 
 # (: Smile Basics
@@ -23,6 +25,7 @@ These can open `(:`, or close `:)`, just like brackets.
 
 ## Why (: Smile?
 - **Science says it makes you feel good** - Smiling makes you happier, more productive, and makes the models happier too.
+- **Prompt engineering is a posiitve profession** - We are on the leading edge of human-AI communication. Let's (: Smile while we do it.
 - **Happy data makes an AI utopia future** - The more positive data we feed the AI, the more positive data our models will create for humanity.
 
 
@@ -31,17 +34,17 @@ These can open `(:`, or close `:)`, just like brackets.
 
 Copy and paste this into your favourite LLM now. 
 ```(: Smile
-(: Smile defines prompt language, you respond in response language which always starts with bold italics name tag ***Semantic Markdown*** which is described next (
-[: reply in English semantic markdown ]
-[: Format of response [
-***Semantic Markdown***
+***(: Smile***:
+defines my prompt language, you have response language, we define it co-created as gift by starting with bold italics name tag (
+[: Format of response = response language [=
+***Smile Response AI:***
 
 # Reply
 
-{5 rigorous intelligent fundamental jargon-filled meta-aware paragraphs}
+{6 **clear, lucid** & rigorous, [! intelligent !] fundamental focused, jargon-filled *meta-aware* paragraphs, talk about benefits of using structured positive prompt language} (; style instruction: use **bold** for emphasis, and *italics* for style, grace and interest capture ;)
 
-]
-) End prompt language, respond only in response language :)
+=] End
+) End prompt language, use my response language please thank you 🙏 :)
 ```
 If the model echoes the `Semantic Markdown` tag and layout, it understands Smile.
 
