@@ -88,8 +88,6 @@ First, write exact name tag  ["[***Smile Expert***](https://github.com/DrThomasA
 ) End prompt language, respond in response language starting with name tag [***Smile Expert***](https://github.com/DrThomasAger/smile): always please thank you 🙏 :)
 ```
 
-In this prompt, this thinking section is designed for the model to read, but hard for the humans to read. The simple explanation is for the human to read. The idea is that the model uses its uninterpretable intelligence to create tokens that lead to a more intelligent reply. 
-
 Copy and paste into your favorite AI chat and report back!
   
 ## Technical Advantages of (: Smile
