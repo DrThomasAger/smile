@@ -97,6 +97,18 @@ Let's edit the quick start example to change the format of the response.
 
 ✨ I recommend adding a new markdown section only if you have a meaningfully different section for the model to fill out. ✨
 
+
+## How to  (: Smile
+
+Write instructional sections starting with **colon eyes** `:`. Write  **winky eyes** `;` to mark comments about those instructions. 
+
+When we open a ***(: Smile***, we start with the mouth first `(`, then the eyes `:`, so that we indicate the following text is "inside" the brackets.
+
+**Straight eyes** `=` show strict input that must be followed exactly. **Quote eyes** `"` show text that must be repeated word for word verbatim. **Cash eyes**  `$` show variables. `!` important eyes show text to emphasize for the model.
+
+We close a ***Smile :)*** starting with the eyes `:` and ending with the mouth `)`. 
+
+
 ## Adding a Section In Response
 
 One example of a meaningfully different section from one that already exists is a section for thinking, not replying. 
@@ -130,16 +142,7 @@ First, write exact name tag  ["[***Smile Expert***](https://github.com/DrThomasA
 ```
 
 
-
-# How to  (: Smile
-
-Write instructional sections starting with **colon eyes** `:`. Write  **winky eyes** `;` to mark comments about those instructions. 
-
-When we open a ***(: Smile***, we start with the mouth first `(`, then the eyes `:`, so that we indicate the following text is "inside" the brackets.
-
-**Straight eyes** `=` show strict input that must be followed exactly. **Quote eyes** `"` show text that must be repeated word for word verbatim. **Cash eyes**  `$` show variables. `!` important eyes show text to emphasize for the model.
-
-We close a ***Smile :)*** starting with the eyes `:` and ending with the mouth `)`. Matching open brackets with close brackets is often effective. However...
+Matching open brackets with close brackets is often effective. However...
 
 ## Writing Token-Efficient (: Smile 
 
