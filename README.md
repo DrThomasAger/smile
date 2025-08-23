@@ -93,28 +93,6 @@ Imagine this moment in prompt engineering as the moment when raw text became HTM
 
 Now unstructured prompt text can evolve into the ***(: Smile*** prompt language for Large Language Models (LLMs) and humans to read. 
 
-## Foundation Models (Compatibility Chart)
-
-| Company             | Model            | Works |
-| ------------------- | ---------------- | :---: |
-| **OpenAI**          | GPT-4o           |   ✅   |
-|                     | GPT-5-Fast      |   ✅   |
-|                     | GPT-5-Thinking    |   ✅   |
-| **Anthropic**       | Claude Sonnet 4   |   ✅   |
-|                     | Claude Opus 3  |   ✅   |
-|                     | Claude Haiku 3.5   |   ✅   |
-| **Google DeepMind** | Gemini 2.5 Pro   |   ✅   |
-|                     | Gemini 2.5 Flash |   ✅   |
-
-## Open Source & Other Models
-
-| **Moonshot AI**            | Kimi K2       |   ✅   |
-|                     | Kimi 1.5 |   ✅   |
-| **Meta**            | LLaMA-2 70B      |   ✅   |
-|                     | LLaMA-2 13B      |   ✅   |
-|                     | LLaMA-2 7B       |   ✅   |
-| **Mistral**         | Mixtral-8x7B     |   ✅   |
-|                     | Mistral-7B       |   ✅   |
 
 
 
@@ -143,7 +121,41 @@ We provide multiple options to demonstrate the breadth of available instructions
 | `[;  note or comment ;]` | human comment on an instruction | `[; Meta-Note [ The user intends to improve the intelligence of their downstream tasks using a prompt language ] ;]` | This is for when you are not instructing the model directly, but providing information, comments or notes. Can also use `(;`, the winky eyes are the differentiator.   |  
 | `{placeholder}` | area to be filled by the model | `Fill out the following sections # Thinking {Plan} # Replying {Use plan to reply}` | These are used inside of markdown sections. They are used to instruct the model on how to fill out the section (among others)  |
 
-Note that all of this is a guideline. **(: Smile** is working when the model follows your defined response language, be it markdown, json or your own. For example, feel free to drop {instructions on how to fill out the text} not just inside of the definition of the format the model needs to respond in. You can also use them inside the markdown titles themselves for the model to choose what to call each section:
+
+# Compatible With All Existing Models & Prompt Engineering Frameworks
+
+You can easily integrate ***(: Smile*** into your current workflows by using `(:` Smile's instead of brackets `(` when defining your sections in your prompts. No matter how you've been writing your prompts, you can begin adding structure and meaning in a consistent and maintainable way.
+
+## Foundation Models (Compatibility Chart)
+
+| Company             | Model            | Works |
+| ------------------- | ---------------- | :---: |
+| **OpenAI**          | GPT-4o           |   ✅   |
+|                     | GPT-5-Fast      |   ✅   |
+|                     | GPT-5-Thinking    |   ✅   |
+| **Anthropic**       | Claude Sonnet 4   |   ✅   |
+|                     | Claude Opus 3  |   ✅   |
+|                     | Claude Haiku 3.5   |   ✅   |
+| **Google DeepMind** | Gemini 2.5 Pro   |   ✅   |
+|                     | Gemini 2.5 Flash |   ✅   |
+
+## Open Source & Other Models
+
+| **Moonshot AI**            | Kimi K2       |   ✅   |
+|                     | Kimi 1.5 |   ✅   |
+| **Meta**            | LLaMA-2 70B      |   ✅   |
+|                     | LLaMA-2 13B      |   ✅   |
+|                     | LLaMA-2 7B       |   ✅   |
+| **Mistral**         | Mixtral-8x7B     |   ✅   |
+|                     | Mistral-7B       |   ✅   |
+
+# Is (: Smile strict or flexible?
+
+What's essential is that both the model and the human can follow along with the instructions. This means that all of this documentation is only a guideline. There is a strict definition of when (: Smile is working.
+
+**(: Smile** is working when the model follows your defined response language, be it markdown, json or one you have created. 
+
+I'll extend our previous example to break the rules a little bit, and get a lot of new functionality as a result. This is designed to make you feel like you are free to drop {instructions on how to fill out the text} not just inside of the definition of the format the model needs to respond in. In the next example, I'll show how you can also use them inside the markdown titles themselves for the model to choose what to call each section:
 
 ```(: Smile
 ***(: Smile***:
