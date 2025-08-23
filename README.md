@@ -4,13 +4,13 @@
 
 The dead simple **structured markup** for **increasing instruction following** in **prompt writing**. 
 
+> Write **structured prompts** in a **consistent way** for ***predictably positive results!***
+
 It uses a small set of text emojis like  `(:`, `[;`, and `[=`. These can open `(:`, or close `:)`, just like brackets.
 
 Curious? Just **copy and paste our quick start example** below to see the magic 👇
 
 ## Quick Start (Copy & Paste)
-
-Write **structured prompts** in a **consistent way** for ***predictably positive results!***
 
 ```(: Smile v0.4 
 ***(: Smile***:
