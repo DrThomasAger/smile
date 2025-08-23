@@ -52,7 +52,7 @@ First, write exact name tag  ["[***Smile Expert***](https://github.com/DrThomasA
 ] End format =] 
 ) End prompt language, respond in response language always please thank you 🙏 :)
 ```
-If the model echoes the ***☺️ [Smiling](https://github.com/DrThomasAger/smile) Name Tag:*** tag and layout, it understands Smile.
+If the model echoes the ***[Smile Expert](https://github.com/DrThomasAger/smile)*** name tag and response format, it understands Smile.
 
 ### How can I edit this?
 
