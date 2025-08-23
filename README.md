@@ -24,16 +24,6 @@ It uses a small set of text emojis like  `(:`, `[;`, and `[=`.
 
 These can open `(:`, or close `:)`, just like brackets.
 
-
-
-### Technical Advantages of a Structured Prompt Language
-- **Maintainable** -  Contribute meaningfully to the same prompt with clear comprehensibility over long periods of time to a team of prompt engineers.
-- **Future-Proof**  - Allow teams of engineers to retain your prompt engineering knowledge even after your key prompt engineer leaves.
-- **Explainable** - Map prompt text changes to response output outcomes, useful for things like allowing you to justify a bias AI decisions in an EU court of law, or explain to stakeholders why a decision was made.
-- **Portable across foundation and open source** – Transform your text prompts so that they work across models like ChatGPT, Kimi K2, Claude, Gemini, or an open source model!
-- **Token efficient** – Symbols such as `(:` and `:)` It compresses well in modern tokenizers to embed single token structure elements to indicate sections, rather than long explanations.
-
-
 ## Quick Start
 
 Copy and paste this into your favourite LLM now. 
@@ -58,9 +48,21 @@ First, write exact name tag  ["[***Smile Expert***](https://github.com/DrThomasA
 ```
 If the model echoes the ***[Smile Expert](https://github.com/DrThomasAger/smile)*** name tag and response format, it understands Smile.
 
-### How can I edit this?
 
-This short example is designed for you to customize the reply from a ***(: Smile*** agent. Inside of the `# Reply` section, inside of the {curly brace instructions}, you can write anything you want the model to do. You can also add a new section, for example, to add a simple step by step thinking (Chain of Thought or "CoT") to the above prompt:
+# Technical Advantages of a Structured Prompt Language
+
+- **Maintainable** -  Contribute meaningfully to the same prompt with clear comprehensibility over long periods of time to a team of prompt engineers.
+- **Future-Proof**  - Allow teams of engineers to retain your prompt engineering knowledge even after your key prompt engineer leaves.
+- **Explainable** - Map prompt text changes to response output outcomes, useful for things like allowing you to justify a bias AI decisions in an EU court of law, or explain to stakeholders why a decision was made.
+- **Portable across foundation and open source** – Transform your text prompts so that they work across models like ChatGPT, Kimi K2, Claude, Gemini, or an open source model!
+- **Token efficient** – Symbols such as `(:` and `:)` It compresses well in modern tokenizers to embed single token structure elements to indicate sections, rather than long explanations.
+
+
+
+
+### How can I start writing (: Smile?
+
+The short quick start example is designed for you to customize the reply from a ***(: Smile*** agent. Inside of the `# Reply` section, inside of the {curly brace instructions}, you can write anything you want the model to do. You can also add a new markdown section if you don't just want to instruct the model to fill out the reply section. For example, to add a simple step by step thinking (Chain of Thought or "CoT") to the above prompt:
 
 ```(: Smile
 ***(: Smile***:
