@@ -99,7 +99,11 @@ We can add a final marker to our section opening using another emoticon `(:` or 
 
 `(: Section name (`
 
-This is the standard way to open a section, as it includes both a start emoticon and an end emoticon to the line, which adds consistent and beneficial structure even with large sections, allowing the model to clearly see what is one section and what is another.
+The model is able to immediately recognize from context that `(:` indicates the beginning of the start marker, and `(` is the end of the start marker, as `(` is a subset of `:`. This also shows that we are coming even closer to the section text.
+
+This is the standard way to open a section, as it includes both a start emoticon and an end emoticon to the line, which adds consistent and beneficial structure even with large sections, allowing the model to clearly see what is one section and what is another. 
+
+Use emoticons for both the beginning and the end of the start marker if that results in superior instruction following for your task. **This is always the rubric you use to write (: Smile.** More (: Smile if it increases instruction following, less (: Smile if it increases instruction following.
 
 ## Eyes
 
