@@ -32,6 +32,8 @@ First, write exact name tag  ["[☺️ ***Smile Expert***](https://github.com/Dr
 ) End prompt language, respond in response language starting with name tag [☺️ ***Smile Expert***](https://github.com/DrThomasAger/smile): always please thank you 🙏 :)
 ```
 
+👆 Become a (: Smiler - help make **more positive data for all.**
+
 ## Compatible With All Existing Models (Foundation & Open Source LLMs)
 
 
@@ -56,15 +58,6 @@ First, write exact name tag  ["[☺️ ***Smile Expert***](https://github.com/Dr
 * **Future-Proof**  - Encode implicit knowledge explicitly. Allow your org to retain key prompt engineering knowledge even after your prompt engineer leaves.
 * **Explainable** - Understand your prompt. With increasing scrutiny on AI systems, you may need to justify a bias AI decision in an EU court of law, or explain to stakeholders why a decision was made. With (: Smile, you can map prompt text changes more clearly to defined and predictable outputs.
 * **Maintainable** -  Contribute meaningfully over long periods of time without getting lost. Ensure your team of prompt engineers can cohere and work together without disrupting the flow.
-
-
-
-
-# Prompting With a ***(: Smile***!
-
-⭐ **[Star the repo to help us grow](https://github.com/DrThomasAger/smile)** 
-
-👆 Become a (: Smiler - help make **more positive data for all.**
 
 
 
@@ -146,10 +139,16 @@ We provide multiple options to demonstrate the breadth of available instructions
 | `{placeholder}` | area to be filled by the model | `Fill out the following sections # Thinking {Plan} # Replying {Use plan to reply}` | These are used inside of markdown sections. They are used to instruct the model on how to fill out the section (among others)  |
 
 
-# Compatible With All Existing Models & Prompt Engineering Frameworks
+# Prompting With a ***(: Smile***!
 
-You can easily integrate ***(: Smile*** into your current workflows by using `(:` Smile's instead of brackets `(` when defining your sections in your prompts. No matter how you've been writing your prompts, you can begin adding structure and meaning in a consistent and maintainable way.
+⭐ **[Star the repo to help us grow](https://github.com/DrThomasAger/smile)** 
 
+
+# Compatible With All Prompt Engineering Frameworks
+
+Compound your results by (: Smiling. You can easily integrate ***(: Smile*** into your current workflows and style of prompt engineering by using `(:` Smile's instead of brackets `(` when defining your sections in your prompts. Try integrating our semantic ***(: Smile***'s like `(!` important, or `[=` strict and rigid when writing your prompts. 
+
+This enables you to Begin adding structure in a consistent and maintainable way. Invest in this now and see the pay off later when your team is able to contribute meaningfully to your organization for the full duration of its lifecycle. Never end up in an awkward meeting trying to explain your gibberish prompt to people who just want results. ***(: Smile*** instead.
 
 # Is (: Smile strict or flexible?
 
@@ -182,6 +181,8 @@ First, write exact name tag  ["[***Smile Expert***](https://github.com/DrThomasA
 ] End format =] 
 ) End prompt language, respond in response language starting with name tag [***Smile Expert***](https://github.com/DrThomasAger/smile): always please thank you 🙏 :)
 ```
+
+
 
 
 ## (: Smile Roadmap
