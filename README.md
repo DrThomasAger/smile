@@ -53,13 +53,16 @@ Want to ***(: Smile*** more at work? Just use every (: Smile as a reminder to sm
 
 # Start Writing (: Smile
 
-Let's edit the quick start example.
+In (: Smile, you define the response language and format.
 
-You can add a new markdown section if you have a meaningfully different section for the model to fill out. 
+Let's edit the quick start example to change the format of the response.
+
+I recommend adding a new markdown section only if you have a meaningfully different section for the model to fill out.  
 
 One example of a meaningfully different section from one that already exists is a section for thinking, not replying. 
 
-In this prompt, this thinking section is designed for the model to read, but hard for the humans to read. The simple explanation is for the human to read. The idea is that the model uses its uninterpretable intelligence to create tokens that lead to a more intelligent reply. 
+This is a 'separation of concerns' that allows us to focus on steps that build on each other one at a time.
+
 
 Let's get right to it and add a simple step by step thinking (Chain of Thought or "CoT"):
 
@@ -87,8 +90,9 @@ First, write exact name tag  ["[***Smile Expert***](https://github.com/DrThomasA
 ) End prompt language, respond in response language starting with name tag [***Smile Expert***](https://github.com/DrThomasAger/smile): always please thank you 🙏 :)
 ```
 
-Copy and paste into your favorite AI chat to test. The text we added creates an uninterpretable, dense thinking section before providing a more intelligent reply.
+In this prompt, this thinking section is designed for the model to read, but hard for the humans to read. The simple explanation is for the human to read. The idea is that the model uses its uninterpretable intelligence to create tokens that lead to a more intelligent reply. 
 
+Copy and paste into your favorite AI chat and report back!
   
 ## Technical Advantages of (: Smile
 
