@@ -29,9 +29,9 @@ These can open `(:`, or close `:)`, just like brackets.
 ### Technical Advantages of a Structured Prompt Language
 - **Maintainable** -  Contribute meaningfully to the same prompt with clear comprehensibility over long periods of time to a team of prompt engineers.
 - **Future-Proof**  - Allow teams of engineers to retain your prompt engineering knowledge even after your key prompt engineer leaves.
-- **Explainable** - Map prompt text changes to response output outcomes, allowing you to justify any AI decisions in a court of law more clearly.
-- **Portable across foundation and open source** – Transform your text prompts so that they work across models like ChatGPT, Kimi K2, Claude or Gemini.
-- **Token efficient** – Symbols such as `(:` and `:)` Compress well in modern tokenizers. 
+- **Explainable** - Map prompt text changes to response output outcomes, useful for things like allowing you to justify a bias AI decisions in an EU court of law, or explain to stakeholders why a decision was made.
+- **Portable across foundation and open source** – Transform your text prompts so that they work across models like ChatGPT, Kimi K2, Claude, Gemini, or an open source model!
+- **Token efficient** – Symbols such as `(:` and `:)` It compresses well in modern tokenizers to embed single token structure elements to indicate sections, rather than long explanations.
 
 
 ## Quick Start
