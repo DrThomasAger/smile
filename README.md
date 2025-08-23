@@ -1,13 +1,14 @@
 ![Smile Prompt Language v0.4](Smile-logo.png)
 
+ Write **structured prompts** in a **consistent way** for ***predictably positive results!***
+
 # (: Smile Prompt Language
 
 ***(: Smile*** is a structured markup for increasing instruction following in prompts. 
 
- Write **structured prompts** in a **consistent way** for ***predictably positive results!***
+***(: Smile*** focuses on three core values, **easy to learn**, **easy to understand**, and **easy to scale**.
 
-***(: Smile*** is focuses on three key values, **token efficiency**, **model and human comprehensibility**, and **organizational scaling**.
-
+You can get started with our quick start copy and paste example below. Just copy and paste it into your favorite model and see the magic of **(: Smiling!**
 
 # (: Smile Basics
 It uses a small set of text emojis like  `(:`, `[;`, and `[=`.
