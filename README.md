@@ -52,10 +52,15 @@ First, write exact name tag  ["[☺️ ***Smile Expert***](https://github.com/Dr
 
 *We are constantly updating this table with community submitted information.*
 
-# Why (: Smile?
+# Why (: Smile? (Technical Advantages)
 
+Science says when you Smile, you can create happiness whether or not you feel happy. Keep it up, and you've got a habit of happiness. Warning! Using (: Smile may lead to a magically happier life!
 
 ***(: Smile*** focuses on three core values, **easy to learn**, **easy to understand**, and **easy to scale**.
+
+Imagine this moment in prompt engineering as the moment when raw text became HTML, or unstructured data became markdown. 
+
+Now unstructured prompt text can evolve into the ***(: Smile*** prompt language for Large Language Models (LLMs) and humans to read. 
 
 * **Future-Proof**  - Encode implicit knowledge explicitly. Allow your org to retain key prompt engineering knowledge even after your prompt engineer leaves.
 * **Explainable** - Understand your prompt. With increasing scrutiny on AI systems, you may need to justify a bias AI decision in an EU court of law. With (: Smile, you can map prompt text changes more clearly to defined and predictable outputs. Explain to stakeholders why a decision was made clearly with our (: Smile syntax map.
@@ -63,11 +68,12 @@ First, write exact name tag  ["[☺️ ***Smile Expert***](https://github.com/Dr
 
 
 
-### How can I start writing (: Smile?
 
-Let's edit the quick start example you already copy pasted! 
+### How Can I Start Writing (: Smile?
 
-The short quick start example is designed for you to customize the reply from a ***(: Smile*** agent. 
+Let's edit the quick start example from above that you already copy pasted.
+
+This short example is designed for you to customize the reply. 
 
 Inside of the `# Reply` section replace the {curly brace instructions} text by writing what you want the model to do. 
 
@@ -99,18 +105,11 @@ First, write exact name tag  ["[***Smile Expert***](https://github.com/DrThomasA
 ) End prompt language, respond in response language starting with name tag [***Smile Expert***](https://github.com/DrThomasAger/smile): always please thank you 🙏 :)
 ```
 
+The text we added creates an uninterpretable, dense thinking section before providing you a more intelligent reply.
 
-## Why (: Smile?
 
-
-- **Science says it makes you feel good** - Smiling makes you happier, more productive, and makes the models happier too.
-- **Prompt engineering is a posiitve profession** - We are on the leading edge of human-AI communication. Let's (: Smile while we do it.
-- **Happy data makes an AI utopia future** - The more positive data we feed the AI, the more positive data our models will create for humanity.
 
   
-Imagine this moment in prompt engineering as the moment when raw text became HTML, or unstructured data became markdown. 
-
-Now unstructured prompt text can evolve into the ***(: Smile*** prompt language for Large Language Models (LLMs) and humans to read. 
 
 
 
