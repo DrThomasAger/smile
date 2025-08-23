@@ -71,23 +71,15 @@ It is ended with `=] End format :]`. The word `End` is often used as an addition
 
 **You don't need to match all open and close brackets exactly.** This is the advantage of Large Language Models (LLMs) - they can infer so much from context that we don't need to make fully explicit every connection between every section. Adding more structure becomes more essential the larger the prompt becomes.
 
-# Does Smiling Make You Happier?
-
-Science says yes. **Type `(:` more and you’ll feel better... And get more leverage out of your prompts.** The act of smiling (even with text) measurably lifts mood and sharpens focus, which makes ***(: Smile*** a tiny habit with outsized returns every time you write.
-
-1. 🙂 **Enhance mood & ease stress on cue** - 
-   Smiling releases **endorphins, serotonin, and dopamine**, the brain’s built-in calm & joy mixture. Even a *forced* smile nudges your physiology toward **relaxation and resilience**, helping you think clearly under pressure. Exactly what you need in a high-stakes business environment. *Evidence:* [Healthline](https://www.healthline.com/health/benefits-of-smiling).
-
-2. 😄 **Symbols trigger the reward system (yes, `:)` counts)** - 
-   Brain activity scans show that real faces *and* symbolic `:)` activate reward regions. Your cheeks respond with smiling micro-muscle movements within **\~500 ms** just from reading the symbol. Your brain treats `:)` as a micro-reward. *Evidence:* [Hennenlotter et al., 2005](https://www.cambridge.org/core/journals/behavioral-and-brain-sciences/article/simulation-of-smiles-sims-model-embodied-simulation-and-the-meaning-of-facial-expression/FE0A911744186EBD3706B53794D4AEE9); [Mühlberger et al., 2011](https://www.frontiersin.org/journals/psychology/articles/10.3389/fpsyg.2018.00052/full).
-
-3. 🤩 **Boosts productivity, stamina, and vibes** - 
-   Regular smiling is linked to **stronger immunity**, **lower pain**, and **higher job satisfaction**—the trifecta for sustained creative work and smoother collaboration. Happier prompt writers make **cleaner, more positive prompts**, and organizations feel it. *Evidence:* [Psychology Today](https://www.psychologytoday.com/us/blog/mind-well-matter/201807/why-smiling-matters), [Verywell Mind](https://www.verywellmind.com/benefits-of-smiling-2795092).
-
- **Bottom line:** ***(: Smile*** means **structure for the model and positivity for your org**.
 
 
 # How to (: Smile: A Quick Guide 
+
+
+***(: Smile***'s are composed of eyes `:`, and mouths  `(`, in-order to label sections of a prompt so that humans and large language models (LLMs) can understand a consistent structure. 
+It enhances **instruction following**, **organization** of the prompt, and **modularity** of prompt text.
+
+All the while you are making more **predictable** the **key outputs of your organization** for you and your models.
 
 ## Opening Sections
 
@@ -106,6 +98,8 @@ This is the standard way to open a section, as it includes both a start emoticon
 Use emoticons for both the beginning and the end of the start marker if that results in superior instruction following for your task. **This is always the rubric you use to write (: Smile.** More (: Smile if it increases instruction following, less (: Smile if it increases instruction following.
 
 ## Eyes
+
+
 
 We start instructional sections with **colon eyes** `:`, and comments about those sections with  **winky eyes** `;`. 
 
@@ -278,14 +272,21 @@ Develop and launch tools for:
   - **Prompt compression**  
   - **Integration into VS Code**  
   - **Additional utilities**
+    
+# Does Smiling Make You Happier?
 
-## Breaking it down - What even is a (: Smile syntactically for LLM's?
+Science says yes. **Type `(:` more and you’ll feel better... And get more leverage out of your prompts.** The act of smiling (even with text) measurably lifts mood and sharpens focus, which makes ***(: Smile*** a tiny habit with outsized returns every time you write.
 
-***(: Smile***'s are composed of eyes `:`, and mouths  `(`, in-order to label sections of a prompt so that humans and large language models (LLMs) can understand a consistent structure. 
-It enhances instruction following, organization of the prompt, modular composability, and token efficiency.
+1. 🙂 **Enhance mood & ease stress on cue** - 
+   Smiling releases **endorphins, serotonin, and dopamine**, the brain’s built-in calm & joy mixture. Even a *forced* smile nudges your physiology toward **relaxation and resilience**, helping you think clearly under pressure. Exactly what you need in a high-stakes business environment. *Evidence:* [Healthline](https://www.healthline.com/health/benefits-of-smiling).
 
-All the while you are making more **predictable** the **key inference outputs of your organization** for both you and your model.
+2. 😄 **Symbols trigger the reward system (yes, `:)` counts)** - 
+   Brain activity scans show that real faces *and* symbolic `:)` activate reward regions. Your cheeks respond with smiling micro-muscle movements within **\~500 ms** just from reading the symbol. Your brain treats `:)` as a micro-reward. *Evidence:* [Hennenlotter et al., 2005](https://www.cambridge.org/core/journals/behavioral-and-brain-sciences/article/simulation-of-smiles-sims-model-embodied-simulation-and-the-meaning-of-facial-expression/FE0A911744186EBD3706B53794D4AEE9); [Mühlberger et al., 2011](https://www.frontiersin.org/journals/psychology/articles/10.3389/fpsyg.2018.00052/full).
 
+3. 🤩 **Boosts productivity, stamina, and vibes** - 
+   Regular smiling is linked to **stronger immunity**, **lower pain**, and **higher job satisfaction**—the trifecta for sustained creative work and smoother collaboration. Happier prompt writers make **cleaner, more positive prompts**, and organizations feel it. *Evidence:* [Psychology Today](https://www.psychologytoday.com/us/blog/mind-well-matter/201807/why-smiling-matters), [Verywell Mind](https://www.verywellmind.com/benefits-of-smiling-2795092).
+
+ **Bottom line:** ***(: Smile*** means **structure for the model and positivity for your org**.
 
 
 *Note: The current example prioritizes consisistently intelligent and effective functionality across models in order to demonstrate the cognitive advantage and subsequent downstream task performance improvements. It is deliberately a heavily opinionated prompt in-order to demonstrate how to apply the framework, rather than providing a dense token efficient example that is gibberish or hard to read.*
