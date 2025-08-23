@@ -87,7 +87,7 @@ Try smiling now.
 
 Does it feel good?
 
-🧠 **Brain Hack**: Want to ***(: Smile*** more at work? Just use every ***(: Smile*** as a reminder to smile in real life! That way, you can build a habit of happiness. 
+🧠 **Brain Hack**: Want to be happier at work? Just use every time you see a ***(: Smile*** as a reminder to smile in real life! That way, you can build a habit of happiness. 
 
 # A Quick Guide To Writing (: Smile
 
