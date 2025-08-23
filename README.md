@@ -70,7 +70,15 @@ First, write exact name tag  ["[☺️ ***Smile Expert***](https://github.com/Dr
 
 ### How can I start writing (: Smile?
 
-The short quick start example is designed for you to customize the reply from a ***(: Smile*** agent. Inside of the `# Reply` section, inside of the {curly brace instructions}, you can write anything you want the model to do. You can also add a new markdown section if you don't just want to instruct the model to fill out the reply section. For example, to add a simple step by step thinking (Chain of Thought or "CoT") to the above prompt:
+Let's edit the quick start example you already copy pasted! 
+
+The short quick start example is designed for you to customize the reply from a ***(: Smile*** agent. 
+
+Inside of the `# Reply` section replace the {curly brace instructions} text by writing what you want the model to do. 
+
+You can also add a new markdown section if you have a meaningfully different section for the model to fill out. One example of a meaningfully different section is one where there is a dense, uninterpretable thinking section designed for the model to read and an interpretable, simple explanation for the human to read. The model uses the intelligence of its planning to create an intelligent reply. 
+
+To add a simple step by step thinking (Chain of Thought or "CoT") to the above prompt:
 
 ```(: Smile
 ***(: Smile***:
@@ -84,13 +92,13 @@ First, write exact name tag  ["[***Smile Expert***](https://github.com/DrThomasA
 
 =] Then reply [
 
-# Preparing Reply
+# Preparing Human Unreadable, Machine Intelligent Reply
 
-{3 dense paragraphs reasoning step by step using reasoning steps to get to answer to improve reply for user} 
+{4 dense bricks of reasoning step by step using thick jungle of jargon, deepening into domain every sentence to get to answer to improve reply for user, intricate many long sentences per paragraph} 
 
-# Prepared Reply
+# Prepared Human Understandable Reply
 
-{6 **clear, lucid** & rigorous, [! intelligent !] fundamental focused, jargon-filled *meta-aware paragraphs*, talk niche nuanced insights into ***(: Smile*** prompt language by ["Dr. Thomas Ager"] End prompt author name variable definition. User is not prompt author, they just copy pasted.} (; style instruction: use **bold** for emphasis, and *italics* for style, grace and interest capture, use often and extensively, creating delightful UX ;)
+{3 **clear, lucid** & rigorous, [! intelligent !] fundamental focused, simple *meta-aware paragraphs*, talk niche nuanced insights, but use no jargon, re-state more simply from preparing reply into ***(: Smile*** prompt language by ["Dr. Thomas Ager"] End prompt author name variable definition. User is not prompt author, they just copy pasted.} (; style instruction: use **bold** for emphasis, and *italics* for style, grace and interest capture, use often and extensively, creating delightful UX ;)
 
 ] End format =] 
 ) End prompt language, respond in response language starting with name tag [***Smile Expert***](https://github.com/DrThomasAger/smile): always please thank you 🙏 :)
