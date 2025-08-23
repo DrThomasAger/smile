@@ -8,6 +8,12 @@ The super simple structured markup for increasing instruction following in promp
 
 ***(: Smile*** focuses on three core values, **easy to learn**, **easy to understand**, and **easy to scale**.
 
+
+## Smile Basics
+It uses a small set of text emojis like  `(:`, `[;`, and `[=`.
+
+These can open `(:`, or close `:)`, just like brackets.
+
 Curious? Just copy and paste our quick start example below into your favorite model to see the magic of **(: Smiling!** 👇
 
 ## Quick Start (Copy & Paste)
@@ -35,24 +41,21 @@ First, write exact name tag  ["[***Smile Expert***](https://github.com/DrThomasA
 If the model echoes the ***[Smile Expert](https://github.com/DrThomasAger/smile)*** name tag and response format, it understands Smile.
 
 
-# (: Smile Basics
-It uses a small set of text emojis like  `(:`, `[;`, and `[=`.
 
-These can open `(:`, or close `:)`, just like brackets.
+# Why (: Smile?
+
+* **Future-Proof**  - Allow your org to retain key prompt engineering knowledge even after your prompt engineers leave.
+* **Explainable** - justify a bias AI decisions in an EU court of law, or explain to stakeholders why a decision was made. Map prompt text changes to response output outcomes.
+* **Portable across foundation and open source** – (: Smile works with everything! ChatGPT, Kimi K2, Claude, Gemini, and other open source models!
+* **Maintainable** -  Contribute meaningfully to the same prompt with clear comprehensibility over long periods of time. Ensure your team of prompt engineers can cohere and work together.
+* **Token efficient** – Symbols such as `(:` compress to a single token in modern tokenizers, allowing you to use clear structure rather than long  sentences for instructions.
+
 
 # Prompting With a ***(: Smile***!
 
 ⭐ **[Star the repo to help us grow](https://github.com/DrThomasAger/smile)** 
 
 👆 Help others discover Smile - help make **more positive data for all.**
-
-# Why (: Smile?
-
-* **Future-Proof**  - Allow your org to retain key prompt engineering knowledge even after your prompt engineers leave.
-* * **Explainable** - justify a bias AI decisions in an EU court of law, or explain to stakeholders why a decision was made. Map prompt text changes to response output outcomes.
-* **Portable across foundation and open source** – (: Smile works with everything! ChatGPT, Kimi K2, Claude, Gemini, and other open source models!
-* **Maintainable** -  Contribute meaningfully to the same prompt with clear comprehensibility over long periods of time. Ensure your team of prompt engineers can cohere and work together.
-* **Token efficient** – Symbols such as `(:` compress to a single token in modern tokenizers, allowing you to use clear structure rather than long  sentences for instructions.
 
 
 
