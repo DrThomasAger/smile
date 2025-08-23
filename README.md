@@ -57,6 +57,8 @@ Let's edit the quick start example to change the format of the response.
 
 ✨ I recommend adding a new markdown section only if you have a meaningfully different section for the model to fill out. ✨
 
+## Adding a Section In Response
+
 One example of a meaningfully different section from one that already exists is a section for thinking, not replying. 
 
 This is a 'separation of concerns' that allows us to focus on steps that build on each other one at a time.
