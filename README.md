@@ -253,7 +253,13 @@ These are a few different ways to create structure by ***(: Smiling***.
 
 Compound your results by (: Smiling. You can easily integrate ***(: Smile*** into your current workflows and style of prompt engineering by using `(:` Smile's instead of brackets `(` when defining your sections in your prompts. Try integrating our semantic ***(: Smile***'s like `(!` important, or `[=` strict and rigid when writing your prompts. 
 
-This enables you to Begin adding structure in a consistent and maintainable way. Invest in this now and see the pay off later when your team is able to contribute meaningfully to your organization for the full duration of its lifecycle. Never end up in an awkward meeting trying to explain your gibberish prompt to people who just want results. ***(: Smile*** instead.
+This enables you to begin adding structure in a consistent and maintainable way. 
+
+You will start seeing real results when you start using meaningful section names and descriptions, effective markdown templating (see our prompt\ folder for examples).
+
+Invest in this now and see the pay off later when your team is able to contribute meaningfully to your organization for the full duration of its lifecycle. 
+
+**For those who need to explain their work to others in the organization**: Never end up in an awkward meeting trying to explain your gibberish prompt to people who just want results. ***(: Smile*** instead.
 
 # Is (: Smile strict or flexible?
 
