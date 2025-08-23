@@ -38,11 +38,11 @@ First, write exact name tag  ["[☺️ ***Smile Expert***](https://github.com/Dr
 
 Want to ***(: Smile*** more while prompt engineering? Just use every (: Smile as a reminder! You can build a habit of happiness by Smiling. 
 
-1. **Enhances Mood and Reduces Stress**: Smiling triggers the release of endorphins, serotonin, and dopamine, which improve your mood, reduce stress, and make you feel more relaxed. Scientists found that even a forced smile can activate the brain's chemical reward centers (source: [Healthline](https://www.healthline.com/health/benefits-of-smiling)).
+1. **Enhances Mood and Reduces Stress**: Smiling triggers the release of endorphins, serotonin, and dopamine, which improve your mood, reduce stress, and make you feel more relaxed. Scientists found that even a forced smile can activate the brain's chemical reward centers ([Healthline](https://www.healthline.com/health/benefits-of-smiling)).
 
-2. **Boosts Productivity and Well-being**: Smiling can strengthen your immune system, reduce pain, and improve overall well-being, leading to increased productivity and better job satisfaction in the workplace. Happier employees are more productive and have lower absenteeism rates (source: [Psychology Today](https://www.psychologytoday.com/us/blog/mind-well-matter/201807/why-smiling-matters)).
+2. **Boosts Productivity and Well-being**: Smiling can strengthen your immune system, reduce pain, and improve overall well-being, leading to increased productivity and better job satisfaction in the workplace ([Psychology Today](https://www.psychologytoday.com/us/blog/mind-well-matter/201807/why-smiling-matters)).
 
-3. **A Positive Work Environment**: A positive work environment makes teams more cohesive and collaborative. Smiling is crucial for effective teamwork and a healthy organizational culture. Positive emotions can spread within a team, enhancing performance of an entire organization. (source: [Verywell Mind](https://www.verywellmind.com/benefits-of-smiling-2795092)).
+3. **A Positive Work Environment**: A positive work environment makes teams more cohesive and collaborative. Smiling is crucial for effective teamwork and a healthy organizational culture. Positive emotions can spread within a team, enhancing performance of an entire organization. ([Verywell Mind](https://www.verywellmind.com/benefits-of-smiling-2795092)).
 
 ## Technical Advantages
 ***(: Smile*** focuses on three core values, **easy to learn**, **easy to understand**, and **easy to scale**.
