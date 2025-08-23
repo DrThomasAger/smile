@@ -49,10 +49,6 @@ First, write exact name tag  ["[☺️ ***Smile Expert***](https://github.com/Dr
 ## Technical Advantages
 ***(: Smile*** focuses on three core values, **easy to learn**, **easy to understand**, and **easy to scale**.
 
-Imagine this moment in prompt engineering as the moment when raw text became HTML, or unstructured data became markdown. 
-
-Now unstructured prompt text can evolve into the ***(: Smile*** prompt language for Large Language Models (LLMs) and humans to read. 
-
 * **Future-Proof** 🚀 - You can now encode implicit knowledge explicitly and consistently. This allow your org to retain key prompt engineering knowledge, even after a prompt engineer leaves.
 * **Explainable** 📝 - You can now explain your prompt. With increasing scrutiny on AI systems, you may need to justify a bias AI decision in an EU court of law. With (: Smile, you can map prompt text changes more clearly to defined and predictable outputs.
 * **Maintainable** 🤝 -  You can now contribute meaningfully over long periods of time without getting lost. Ensure your team of prompt engineers work together coherently without disrupting flow.
@@ -105,13 +101,22 @@ The text we added creates an uninterpretable, dense thinking section before prov
 
 # How to Use (: Smile
 
-Start by clearly defining sections using (: Smile syntax to show the start and end of the section. You can also see how to use (: Smile by studying the example prompts in this repo in the `prompt` directory. 
+Imagine this moment in prompt engineering as the moment when raw text became HTML, or unstructured data became markdown. 
+
+Now unstructured prompt text can evolve into the ***(: Smile*** prompt language for Large Language Models (LLMs) and humans to read. 
+
+Start by clearly defining sections using (: Smile syntax to show the start and end of a section. 
 
 # How to Write (: Smile 
 
 Instructions start with **colon eyes** `:`, while **winky eyes** `;` mark comments about those instructions. 
+When we open a ***(: Smile***, we start with the mouth first `(`, then the eyes `:`, so that we indicate the following text is "inside" the brackets.
 **Straight eyes** `=` show strict input that must be followed exactly. **Quote eyes** `"` show text that must be repeated word for word verbatim. **Cash eyes**  `$` show variables.
-The "mouth"—parentheses `()`, brackets `[]`, braces `{}`—just wraps the content and can be any matching pair. You can use it to enclose section names or notes. 
+We close a ***Smile :)*** starting with the eyes `:` and ending with the mouth `)`. Generally, we match open brackets with close brackets.
+
+## Writing Token-Efficient (: Smile 
+
+Closing the brackets is not always needed for all large language models (LLMs). This is where token efficiency comes into play - how much (: Smile structure can you remove and still get the prompt to create the defined response language?
 
 We provide multiple options to demonstrate the breadth of available instructions to Large Langauge Models. Semantically different structure creates different downstream results.
 
