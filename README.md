@@ -49,17 +49,17 @@ First, write exact name tag  ["[☺️ ***Smile Expert***](https://github.com/Dr
 
 **Bottom line:** ***(: Smile*** turns two keystrokes into a *neurochemical and workflow advantage*. Make `(:` your default opener, and let the language do double duty. **Structure for the model, uplift for you**.
 
-# 🧠 **Brain Hack:** 
-
-Want to ***(: Smile*** more at work? Just use every (: Smile as a reminder to smile in real life! That way, you can build a habit of happiness. 
-
-
 ## Technical Advantages
 ***(: Smile*** focuses on three core values, **easy to learn**, **easy to understand**, and **easy to scale**.
 
 * **Future-Proof** 🚀 - You can now encode implicit knowledge explicitly and consistently. This allow your org to retain key prompt engineering knowledge, even after a prompt engineer leaves.
 * **Explainable** 📝 - You can now explain your prompt. With increasing scrutiny on AI systems, you may need to justify a bias AI decision in an EU court of law. With (: Smile, you can map prompt text changes more clearly to defined and predictable outputs.
 * **Maintainable** 🤝 -  You can now contribute meaningfully over long periods of time without getting lost. Ensure your team of prompt engineers work together coherently without disrupting flow.
+
+
+# 🧠 **Brain Hack** 
+
+Want to ***(: Smile*** more at work? Just use every (: Smile as a reminder to smile in real life! That way, you can build a habit of happiness. 
 
 
 # Start Writing (: Smile
