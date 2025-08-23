@@ -64,7 +64,7 @@ This defines the way that the model will respond. It tells the model to follow t
 
 It is ended with `] End format =]`. The word `End` is often used as an additional word to the name inside of section endings to more clearly delineate the ending of a section.
 
-# Why (: Smile?
+# Does (: Smile Make You Happier?
 
 **Type `(:` and you’ll feel better... And get more leverage out of your prompts.** The act of smiling (even with text) measurably lifts mood and sharpens focus, which makes ***(: Smile*** a tiny habit with outsized returns every time you write.
 
