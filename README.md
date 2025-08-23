@@ -2,7 +2,9 @@
 
 # (: Smile Prompt Language
 
-The dead simple **instruction only markup** for **increasing instruction following** in **raw prompts**. 
+Markdown was never designed as a prompt language, it’s a document formatting standard that LLMs happen to parse decently. 
+
+(: Smile is the dead simple **instruction only markup** for **increasing instruction following** in **large language model prompts**. 
 
 > Structure your prompts consistently for predictable results — even with huge prompts!
 
