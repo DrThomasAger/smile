@@ -36,11 +36,13 @@ First, write exact name tag  ["[☺️ ***Smile Expert***](https://github.com/Dr
 
 ## Technical Advantages of (: Smile
 
+***(: Smile*** focuses on three core values, **easy to learn**, **easy to understand**, and **easy to scale**. 
+
 Imagine this moment in prompt engineering as the moment when raw text became HTML, or unstructured data became markdown. 
 
 Now unstructured prompt text can evolve into the ***(: Smile*** prompt language for models and humans to read. 
 
-***(: Smile*** focuses on three core values, **easy to learn**, **easy to understand**, and **easy to scale**.
+This leads to **three main outcomes after you adopt (: Smile for your org:**
 
 * **Future-Proof** 🚀 - You can now encode implicit knowledge explicitly and consistently. This allow your org to retain key prompt engineering knowledge, even after a prompt engineer leaves.
 * **Explainable** 📝 - You can now explain your prompt. With increasing scrutiny on AI systems, you may need to justify a bias AI decision in an EU court of law. With ***(: Smile***, you can map prompt text changes more clearly to defined and predictable outputs.
