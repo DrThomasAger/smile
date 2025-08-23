@@ -82,27 +82,30 @@ Science says yes. **Type `(:` more and you’ll feel better... And get more leve
  **Bottom line:** ***(: Smile*** means **structure for the model and positivity for your org**.
 
 
-# A Quick Guide To Writing (: Smile
+# How to (: Smile: A Quick Guide 
 
-In ***(: Smile***, you define the response language and format, e.g. `[: Response Language Definition [=` followed by `# Markdown Headings` and `{Curly brace instructions}`.
+When we open a ***(: Smile*** section, we start with the mouth first `(`, then the eyes `:`, so that we indicate the following text is "inside" the brackets.
 
-Let's edit the quick start example to change the format of the response.
+`(: Section name (`
 
-✨ I recommend adding a new markdown section only if you have a meaningfully different section for the model to fill out. ✨
+Write instructional sections starting with **colon eyes** `:`. Start comments inside those sections with  **winky eyes** `;`. 
 
+`(: Section name ( [; This text is not filled out, but gives meta-information`
 
-## How to  (: Smile
-
-Write instructional sections starting with **colon eyes** `:`. Write  **winky eyes** `;` to mark comments about those instructions. 
-
-When we open a ***(: Smile***, we start with the mouth first `(`, then the eyes `:`, so that we indicate the following text is "inside" the brackets.
-
-**Straight eyes** `=` show strict input that must be followed exactly. **Quote eyes** `"` show text that must be repeated word for word verbatim. **Cash eyes**  `$` show variables. `!` important eyes show text to emphasize for the model.
 
 We close a ***Smile :)*** starting with the eyes `:` and ending with the mouth `)`. 
 
+`) End Section name :)`
+
+**Straight eyes** `=` show strict input that must be followed exactly. `[=` **Quote eyes** `"` show text that must be repeated word for word verbatim. `["Repeat this word for word"]` **Cash eyes**  `$` show variables and can be replaced with the true values before inference using code. `!` important eyes show text to emphasize for the model `[! Don't use negative language. !]`.
 
 ## Adding a Section In Response
+
+In ***(: Smile***, you define the response language and format, e.g. `[: Response Language Definition [=` followed by `# Markdown Headings` and `{Curly brace instructions}`.
+
+✨ I recommend adding a new markdown section only if you have a meaningfully different section for the model to fill out. ✨
+
+Let's edit the quick start example to change the format of the response.
 
 One example of a meaningfully different section from one that already exists is a section for thinking, not replying. 
 
