@@ -87,12 +87,10 @@ First, write exact name tag  ["[***Smile Expert***](https://github.com/DrThomasA
 ) End prompt language, respond in response language starting with name tag [***Smile Expert***](https://github.com/DrThomasAger/smile): always please thank you 🙏 :)
 ```
 
-The text we added creates an uninterpretable, dense thinking section before providing you a more intelligent reply.
-
-
+Copy and paste into your favorite AI chat to test. The text we added creates an uninterpretable, dense thinking section before providing a more intelligent reply.
 
   
-## Technical Advantages
+## Technical Advantages of (: Smile
 
 Imagine this moment in prompt engineering as the moment when raw text became HTML, or unstructured data became markdown. 
 
