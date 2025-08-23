@@ -48,7 +48,9 @@ First, write exact name tag  ["[☺️ ***Smile Expert***](https://github.com/Dr
 | **Moonshot AI**            | Kimi K2       |   ✅   |
 |                     | Kimi 1.5 |   ✅   |
 
-**Note:** *Don't see your favorite model? Please feel free to try the above prompt on your own model or one we haven't tested and report back the results. So far it works on everything! We are constantly updating this table with community submitted information.*
+**Note:** *Don't see your favorite model? Please feel free to try the above prompt on your own model or one we haven't tested and report back the results. So far it works on everything!*
+
+*We are constantly updating this table with community submitted information.*
 
 # Why (: Smile?
 
