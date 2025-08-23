@@ -93,6 +93,30 @@ Imagine this moment in prompt engineering as the moment when raw text became HTM
 
 Now unstructured prompt text can evolve into the ***(: Smile*** prompt language for Large Language Models (LLMs) and humans to read. 
 
+## Foundation Models (Compatibility Chart)
+
+| Company             | Model            | Works |
+| ------------------- | ---------------- | :---: |
+| **OpenAI**          | GPT-4o           |   ✅   |
+|                     | GPT-5-Fast      |   ✅   |
+|                     | GPT-5-Thinking    |   ✅   |
+| **Anthropic**       | Claude Sonnet 4   |   ✅   |
+|                     | Claude Opus 3  |   ✅   |
+|                     | Claude Haiku 3.5   |   ✅   |
+| **Google DeepMind** | Gemini 2.5 Pro   |   ✅   |
+|                     | Gemini 2.5 Flash |   ✅   |
+
+## Open Source & Other Models
+
+| **Moonshot AI**            | Kimi K2       |   ✅   |
+|                     | Kimi 1.5 |   ✅   |
+| **Meta**            | LLaMA-2 70B      |   ✅   |
+|                     | LLaMA-2 13B      |   ✅   |
+|                     | LLaMA-2 7B       |   ✅   |
+| **Mistral**         | Mixtral-8x7B     |   ✅   |
+|                     | Mistral-7B       |   ✅   |
+
+
 
 ## How to Use (: Smile
 
