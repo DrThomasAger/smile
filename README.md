@@ -2,13 +2,13 @@
 
 # (: Smile Prompt Language
 
-Write **structured prompts** in a **consistent way** for ***predictably positive results!***
-
 ***(: Smile*** is a structured markup for increasing instruction following in prompts. 
+
+ Write **structured prompts** in a **consistent way** for ***predictably positive results!***
 
 ***(: Smile*** is focuses on three key values, **token efficiency**, **model and human comprehensibility**, and **organizational maintainability, scaling & growth**.
 
-It does all of this, with a ***(: Smile***!
+# Prompting With a ***(: Smile***!
 
 ⭐ **[Star the repo to help us grow](https://github.com/DrThomasAger/smile)** 
 
