@@ -40,7 +40,7 @@ As someone who has been in computer science for over a decade, this moment in pr
 
 * **Maintainable** 🤝 *Unify your team under one standard.* -  Your team of prompt engineers can now contribute meaningfully together over long periods of time without confusion, conflicts or disrupting flow.
 
-* **Future-Proof** 🚀 *Never lose organizational intelligence again.* - Allows your org to retain key intelligence, even after your prompt engineer leaves.
+* **Future-Proof** 🚀 *Never lose organizational intelligence.* - Allows your org to retain key intelligence, even after your prompt engineer leaves.
 
 * **Explainable** 📝 *Clearly map prompt text changes to consistent outputs.* - You can now explain your prompt. With increasing scrutiny on AI systems, you can now justify an AI decision in an EU court of law. 
 
