@@ -36,9 +36,11 @@ First, write exact name tag  ["[☺️ ***Smile Expert***](https://github.com/Dr
 
 You start by clearly defining the start `(:` of a section and its name `(: Section name (`. 
 
+You can use different text emoticons to indicate meaningfully different sections.
+
 For example, a section that defines the format of the response is labelled `[: Response Language Definition [=`.
 
-You end by clearly closing the sections, e.g. `] End format =]` or `) End Section name :)`.
+You end by clearly closing the sections, e.g.  `) End Section name :)` or `] End format =]`.
 
 ## Technical Advantages of (: Smile
 
