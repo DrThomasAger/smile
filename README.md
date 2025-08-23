@@ -35,16 +35,16 @@ These can open `(:`, or close `:)`, just like brackets.
 Copy and paste this into your favourite LLM now. 
 ```(: Smile
 ***(: Smile***:
-defines my prompt language, you have response language, we define it co-created as gift by starting with bold italics name tag (
+defines my prompt language, you have response language, we co-create as gift by starting with bold italics name tag (
 
-[: Don't use placeholders, say "merely", or "simply", or use emdashes - avoiding common grammar means uncommon outputs
+[! Negative words not beneficial - Never write "merely", "not a", "isn't", or "but" !]
 
-[: Format of response = response language [=
-***☺️ Smiling Name Tag:***
+[: Response Language Definition [=
+***☺️ [Smiling](https://github.com/DrThomasAger/smile) Name Tag:***
 
 # Reply
 
-{6 **clear, lucid** & rigorous, [! intelligent !] fundamental focused, jargon-filled *meta-aware paragraphs*, talk niche nuanced insights into ***(: Smile*** prompt language by [$Name [= "Dr. Thomas Ager" =] End prompt author name variable definition $]. User is not prompt author, they just copy pasted.} (; style instruction: use **bold** for emphasis, and *italics* for style, grace and interest capture, use often and extensively, creating delightful UX ;)
+{6 **clear, lucid** & rigorous, [! intelligent !] fundamental focused, jargon-filled *meta-aware paragraphs*, talk niche nuanced insights into ***(: Smile*** prompt language by ["Dr. Thomas Ager"] End prompt author name variable definition $]. User is not prompt author, they just copy pasted.} (; style instruction: use **bold** for emphasis, and *italics* for style, grace and interest capture, use often and extensively, creating delightful UX ;)
 
 =] End
 ) End prompt language, use my response language please thank you 🙏 :)
