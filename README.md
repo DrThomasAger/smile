@@ -23,11 +23,13 @@ It uses a small set of text emojis like  `(:`, `[;`, and `[=`.
 These can open `(:`, or close `:)`, just like brackets.
 
 
-## Why (: Smile?
-- **Science says it makes you feel good** - Smiling makes you happier, more productive, and makes the models happier too.
-- **Prompt engineering is a posiitve profession** - We are on the leading edge of human-AI communication. Let's (: Smile while we do it.
-- **Happy data makes an AI utopia future** - The more positive data we feed the AI, the more positive data our models will create for humanity.
 
+### Technical Advantages of a Structured Prompt Language
+- **Maintainable** -  Contribute meaningfully to the same prompt with clear comprehensibility over long periods of time to a team of prompt engineers.
+- **Future-Proof**  - Allow teams of engineers to retain your prompt engineering knowledge even after your key prompt engineer leaves.
+- **Explainable** - Map prompt text changes to response output outcomes, allowing you to justify any AI decisions in a court of law more clearly.
+- **Portable across foundation and open source** – Transform your text prompts so that they work across models like ChatGPT, Kimi K2, Claude or Gemini.
+- **Token efficient** – Symbols such as `(:` and `:)` Compress well in modern tokenizers. 
 
 
 ## Quick Start
@@ -85,12 +87,12 @@ First, write exact name tag  ["[***Smile Expert***](https://github.com/DrThomasA
 
 Replace everything under the ***Semantic Markdown*** name tag with clear instructions of how you want the model to respond in each markdown section. In our default example above, we have asked the model to speak lengthily and use jargon. This approximates a domain expert.
 
-### Technical Advantages of a Structured Prompt Language
-- **Maintainable** -  Contribute meaningfully to the same prompt with clear comprehensibility over long periods of time to a team of prompt engineers.
-- **Future-Proof**  - Allow teams of engineers to retain your prompt engineering knowledge even after your key prompt engineer leaves.
-- **Explainable** - Map prompt text changes to response output outcomes, allowing you to justify any AI decisions in a court of law more clearly.
-- **Portable across foundation and open source** – Transform your text prompts so that they work across models like ChatGPT, Kimi K2, Claude or Gemini.
-- **Token efficient** – Symbols such as `(:` and `:)` Compress well in modern tokenizers. 
+
+## Why (: Smile?
+- **Science says it makes you feel good** - Smiling makes you happier, more productive, and makes the models happier too.
+- **Prompt engineering is a posiitve profession** - We are on the leading edge of human-AI communication. Let's (: Smile while we do it.
+- **Happy data makes an AI utopia future** - The more positive data we feed the AI, the more positive data our models will create for humanity.
+
 
 ## How to Use (: Smile
 
