@@ -39,7 +39,7 @@ First, write exact name tag  ["[☺️ ***Smile Expert***](https://github.com/Dr
 
 * **Future-Proof**  - Encode implicit knowledge explicitly. Allow your org to retain key prompt engineering knowledge even after your prompt engineer leaves.
 * **Explainable** - Understand your prompt. With increasing scrutiny on AI systems, you may need to justify a bias AI decision in an EU court of law, or explain to stakeholders why a decision was made. With (: Smile, you can map prompt text changes more clearly to defined and predictable outputs.
-* **Maintainable** -  Contribute meaningfully over long periods of time without getting lost. Ensure your team of prompt engineers can cohere and work together without disrupting each others flow.
+* **Maintainable** -  Contribute meaningfully over long periods of time without getting lost. Ensure your team of prompt engineers can cohere and work together without disrupting the flow.
 
 
 ## Compatible With All Existing Models (LLMs)
