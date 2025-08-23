@@ -36,6 +36,9 @@ Copy and paste this into your favourite LLM now.
 ```(: Smile
 ***(: Smile***:
 defines my prompt language, you have response language, we define it co-created as gift by starting with bold italics name tag (
+
+[: Don't use placeholders, say "merely", or "simply", or use emdashes - avoiding common grammar means uncommon outputs
+
 [: Format of response = response language [=
 ***☺️ Smiling Name Tag:***
 
