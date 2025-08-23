@@ -32,8 +32,6 @@ First, write exact name tag  ["[☺️ ***Smile Expert***](https://github.com/Dr
 ) End prompt language, respond in response language starting with name tag [☺️ ***Smile Expert***](https://github.com/DrThomasAger/smile): always please thank you 🙏 :)
 ```
 
-👆 ***(: Smile!*** 
-
 # Why (: Smile?
 
 **Type `(:` and you’ll feel better—and get more leverage out of your prompts.** The act of smiling (even with text) measurably lifts mood and sharpens focus, which makes ***(: Smile*** a tiny habit with outsized returns every time you write.
