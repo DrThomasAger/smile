@@ -99,7 +99,6 @@ We recommend this format as the standard way to open a section for superior inst
 
 ## Eyes
 
-
 We start instructional sections with **colon eyes** `:`, and comments about those sections with  **winky eyes** `;`. 
 
 `(: Section name ( [; This text is not filled out, but gives meta-information`
@@ -108,9 +107,13 @@ We start instructional sections with **colon eyes** `:`, and comments about thos
 
 We close a ***Smile :)*** starting with the eyes `:` and ending with the mouth `)`. 
 
+`End Section name :)`
+
+And we can map all of our brackets if we choose to:
+
 `) End Section name :)`
 
-You can use any mouth `)` `]` and any eyes `:` `;`, but use the same endings as openings to indicate the section end.
+You can use any mouth `)` `]` and any eyes `:` `;` to create a section, but match the brackets between start and end markers, and use the section name to help the model understand which section is being closed.
 
 ```Smile v0.4 Placeholder Example
 (: Section name (
@@ -119,8 +122,6 @@ Section content
 
 ) End Section name :)
 ```
-
-**Straight eyes** `=` show strict input that must be followed exactly, e.g. `[=` **Quote eyes** `"` show text that must be repeated word for word verbatim, e.g. `["Repeat this word for word"]` **Cash eyes**  `$` show variables and can be replaced with the true values before inference using code. `!` important eyes show text to emphasize for the model, e.g. `[! Don't use negative language. !]`.
 
 ## Adding a Section In Response
 
@@ -165,11 +166,17 @@ Matching open brackets with close brackets is often effective. However...
 
 ## Writing Token-Efficient (: Smile 
 
-Closing the brackets is not always needed for all large language models (LLMs). This is where token efficiency comes into play - how much (: Smile structure can you remove and still get the prompt to create the defined response language?
+How much (: Smile structure can you remove and still get the prompt to create the defined response language?
+
+# (: Smile Definition
 
 We provide multiple options to demonstrate the breadth of available instructions to Large Langauge Models. Semantically different structure creates different downstream results.
 
+For example, just with eyes **Straight eyes** `=` can indicate strict input that must be followed exactly, e.g. `[=` **Quote eyes** `"` show text that must be repeated word for word verbatim, e.g. `["Repeat this word for word"]` **Cash eyes**  `$` show variables and can be replaced with the true values before inference using code. `!` important eyes show text to emphasize for the model, e.g. `[! Don't use negative language. !]`.
+
 ## (: Smile Syntax Map
+
+This map is intended to show with examples a few different ways to create structure by ***(: Smiling***.
 
 | Symbol | Purpose | Example | When to Use |
 |--------|---------|---------|---------|
