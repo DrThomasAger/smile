@@ -38,7 +38,7 @@ First, write exact name tag  ["[☺️ ***Smile Expert***](https://github.com/Dr
 
 Imagine this moment in prompt engineering as the moment when raw text became HTML, or unstructured data became markdown. 
 
-Now unstructured prompt text can evolve into the ***(: Smile*** prompt language for models and humans to read. 
+Now unstructured prompt text has evolved into the ***(: Smile*** prompt language for models and humans to read. 
 
 This leads to **three main outcomes after you adopt (: Smile for your org:**
 
