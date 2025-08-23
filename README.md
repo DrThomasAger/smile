@@ -53,15 +53,15 @@ Want to ***(: Smile*** more at work? Just use every (: Smile as a reminder to sm
 
 # Start Writing (: Smile
 
-Let's edit the quick start example from above that you already copy pasted.
+Let's edit the quick start example.
 
-This short example is designed for you to customize the reply. 
+You can add a new markdown section if you have a meaningfully different section for the model to fill out. 
 
-Inside of the `# Reply` section replace the {curly brace instructions} text by writing what you want the model to do. 
+One example of a meaningfully different section from one that already exists is a section for thinking, not replying. 
 
-You can also add a new markdown section if you have a meaningfully different section for the model to fill out. One example of a meaningfully different section is one where there is a dense, uninterpretable thinking section designed for the model to read and an interpretable, simple explanation for the human to read. The model uses the intelligence of its planning to create an intelligent reply. 
+In this prompt, this thinking section is designed for the model to read, but hard for the humans to read. The simple explanation is for the human to read. The idea is that the model uses its uninterpretable intelligence to create tokens that lead to a more intelligent reply. 
 
-To add a simple step by step thinking (Chain of Thought or "CoT") to the above prompt:
+Let's get right to it and add a simple step by step thinking (Chain of Thought or "CoT"):
 
 ```(: Smile
 ***(: Smile***:
