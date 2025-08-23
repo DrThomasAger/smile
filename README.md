@@ -42,9 +42,9 @@ First, write exact name tag  ["[☺️ ***Smile Expert***](https://github.com/Dr
 * **Maintainable** -  Contribute meaningfully over long periods of time without getting lost. Ensure your team of prompt engineers can cohere and work together without disrupting each others flow.
 
 
-## Foundation Models 
+## Compatible With All Existing Models (LLMs)
 
-(: Smile is **portable across foundation models and open source models** – (: Smile works with everything! ChatGPT, Kimi K2, Claude, Gemini, and other open source models!
+(: Smile is **portable across foundation models and open source models** – ChatGPT, Kimi K2, Claude, Gemini, and other open source models!
 
 | Company             | Model            | ***(: Smile*** compatible verified |
 | ------------------- | ---------------- | :---: |
@@ -54,10 +54,6 @@ First, write exact name tag  ["[☺️ ***Smile Expert***](https://github.com/Dr
 | **Anthropic**       | Claude Sonnet 4   |   ✅   |
 | **Google DeepMind** | Gemini 2.5 Pro   |   ✅   |
 |                     | Gemini 2.5 Flash |   ✅   |
-
-## Open Source 
-
-| Company             | Model            | ***(: Smile*** compatible verified |
 | **Moonshot AI**            | Kimi K2       |   ✅   |
 |                     | Kimi 1.5 |   ✅   |
 
