@@ -64,7 +64,7 @@ First, write exact name tag  ["[☺️ ***Smile Expert***](https://github.com/Dr
 
 ⭐ **[Star the repo to help us grow](https://github.com/DrThomasAger/smile)** 
 
-👆 Help others discover Smile - help make **more positive data for all.**
+👆 Become a (: Smiler - help make **more positive data for all.**
 
 
 
