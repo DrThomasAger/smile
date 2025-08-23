@@ -36,7 +36,7 @@ First, write exact name tag  ["[☺️ ***Smile Expert***](https://github.com/Dr
 
 As someone who has been in computer science for over a decade, this moment in prompt engineering reminds me of the moment when raw text became HTML, or unstructured data became markdown. 
 
-***(: Smile*** is easy to **learn**, easy to **read**, and easy to **scale**. It delivers on:
+***(: Smile*** is easy to **learn**, easy to **read**, and easy to **scale**. It makes every prompt:
 
 * **Maintainable** 🤝 *Unify your team under one standard.* -  Your team of prompt engineers can now contribute meaningfully together over long periods of time without confusion, conflicts or disrupting flow.
 
