@@ -55,7 +55,7 @@ In (: Smile, you define the response language and format.
 
 Let's edit the quick start example to change the format of the response.
 
-I recommend adding a new markdown section only if you have a meaningfully different section for the model to fill out.  
+✨ I recommend adding a new markdown section only if you have a meaningfully different section for the model to fill out. ✨
 
 One example of a meaningfully different section from one that already exists is a section for thinking, not replying. 
 
