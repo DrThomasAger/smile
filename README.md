@@ -73,11 +73,6 @@ Wrapping this data inside of a structure helps the model separate the instructio
 
 # How to (: Smile: A Quick Guide 
 
-***(: Smile***'s are composed of eyes `:`, and mouths  `(`, in-order to label sections of a prompt so that humans and large language models (LLMs) can understand a consistent structure. 
-It enhances **instruction following**, **organization** of the prompt, and **modularity** of prompt text.
-
-All the while you are making more **predictable** the **key outputs of your organization** for you and your models.
-
 ## Opening Sections
 
 When we open a ***(: Smile*** section, we start with the mouth first `(`, then the eyes `:`, so that we indicate the following text is "inside" the brackets.
