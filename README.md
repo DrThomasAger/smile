@@ -6,7 +6,7 @@ The dead simple **structured markup** for **increasing instruction following** i
 
 > Write **structured prompts** in a **consistent way** for ***predictably positive results!***
 
-It uses a small set of text emojis like  `(:`, `[;`, and `[=`. These can open `(:`, or close `:)`, just like brackets.
+It uses a small set of text emojis like  `(:`, `[;`, and `[=`. These can open `(:`, or close `:)`, just like brackets. They enable you to structure your prompts consistently even with huge prompts.
 
 ## Quick Start Example
 
@@ -83,7 +83,7 @@ And we can map all of our brackets if we choose to:
 
 `) End Section name :)`
 
-You can use any mouth `)` `]` and any eyes `:` `;` to create a section, but match the brackets between start and end markers, and use the section name to help the model understand which section is being closed.
+You can use any mouth `)` `]` and any eyes `:` `;` to create a section. Howeer, you must match the start marker brackets `(: Start (` to the same end marker brackets `:) End )`. The section name helps the model understand which section is being closed.
 
 
 # An Easy Rule For Writing (: Smile
