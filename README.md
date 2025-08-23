@@ -34,22 +34,6 @@ First, write exact name tag  ["[☺️ ***Smile Expert***](https://github.com/Dr
 
 👆 ***(: Smile!*** - copy and paste into your model now to make **more positive data for the benefit of all.**
 
-## Compatible With All Existing Models (Foundation & Open Source LLMs)
-
-
-| Company             | Model            | ***(: Smile*** prompt language |
-| ------------------- | ---------------- | :---: |
-| **OpenAI** ✔️          | GPT-4o           |   ✅   |
-|                     | GPT-5-Fast      |   ✅   |
-|                     | GPT-5-Thinking    |   ✅   |
-| **Anthropic** ✔️       | Claude Sonnet 4   |   ✅   |
-| **Google DeepMind** ✔️ | Gemini 2.5 Pro   |   ✅   |
-|                     | Gemini 2.5 Flash |   ✅   |
-| **Moonshot AI** ✔️           | Kimi K2       |   ✅   |
-|                     | Kimi 1.5 |   ✅   |
-
-**Note:** *Don't see your favorite model? Please feel free to try the above prompt and report back the results.* *We are constantly updating this table with community submitted information.*
-
 # Why (: Smile? 
 
 According to recent studies, (: Smiling has a profound impact on both individual well-being and the health of your organization:
@@ -150,6 +134,24 @@ We provide multiple options to demonstrate the breadth of available instructions
 # Prompting With a ***(: Smile***!
 
 ⭐ **[Star the repo to help us grow](https://github.com/DrThomasAger/smile)** 
+
+
+## Compatible With All Existing Models (Foundation & Open Source LLMs)
+
+
+| Company             | Model            | ***(: Smile*** prompt language |
+| ------------------- | ---------------- | :---: |
+| **OpenAI** ✔️          | GPT-4o           |   ✅   |
+|                     | GPT-5-Fast      |   ✅   |
+|                     | GPT-5-Thinking    |   ✅   |
+| **Anthropic** ✔️       | Claude Sonnet 4   |   ✅   |
+| **Google DeepMind** ✔️ | Gemini 2.5 Pro   |   ✅   |
+|                     | Gemini 2.5 Flash |   ✅   |
+| **Moonshot AI** ✔️           | Kimi K2       |   ✅   |
+|                     | Kimi 1.5 |   ✅   |
+
+**Note:** *Don't see your favorite model? Please feel free to try the above prompt and report back the results.* *We are constantly updating this table with community submitted information.*
+
 
 
 # Compatible With All Prompt Engineering Frameworks
