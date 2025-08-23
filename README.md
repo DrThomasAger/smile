@@ -144,7 +144,7 @@ How much (: Smile structure can you remove and still get the prompt to create th
 
 We provided recommended formats as a standard way to open a section with ***(: Smile***. Why? Because in our tests on foundation models, it increased instruction following for key tasks in my business.
 
- **This is always our rule when we write (: Smile.** More ***(: Smile*** structure if it increases instruction following, less ***(: Smile*** struture if it increases instruction following. 
+ **This is always our rule when we write (: Smile.** More ***(: Smile*** structure if it increases instruction following... And less ***(: Smile*** structure if it increases instruction following. 
  
  **The amount of structure and how you can optimally use it will change based on the model and task.**
 
