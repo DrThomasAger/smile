@@ -87,7 +87,7 @@ When we open a ***(: Smile*** section, we start with the mouth first `(`, then t
 
 `(: Section name`
 
-We can add a final marker to our section opening using another emoticon `(:` or a secondary emoticon with no eyes `(`.
+We can add an end label to our section start marker using just a mouth bracket `(`.
 
 `(: Section name (`
 
