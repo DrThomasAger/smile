@@ -34,7 +34,6 @@ First, write exact name tag  ["[☺️ ***Smile Expert***](https://github.com/Dr
 
 ## Compatible With All Existing Models (Foundation & Open Source LLMs)
 
-Please feel free to try the above prompt on your own model or one we haven't tested and report back the results! We are constantly updating this table with submitted information.
 
 | Company             | Model            | ***(: Smile*** prompt language |
 | ------------------- | ---------------- | :---: |
@@ -46,6 +45,8 @@ Please feel free to try the above prompt on your own model or one we haven't tes
 |                     | Gemini 2.5 Flash |   ✅   |
 | **Moonshot AI**            | Kimi K2       |   ✅   |
 |                     | Kimi 1.5 |   ✅   |
+
+*Note: Please feel free to try the above prompt on your own model or one we haven't tested and report back the results! We are constantly updating this table with submitted information.*
 
 # Why (: Smile?
 
