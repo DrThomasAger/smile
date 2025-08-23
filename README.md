@@ -71,7 +71,7 @@ It is ended with `=] End format :]`. The word `End` is often used as an addition
 
 **You don't need to match all open and close brackets exactly.** This is the advantage of Large Language Models (LLMs) - they can infer so much from context that we don't need to make fully explicit every connection between every section. Adding more structure becomes more essential the larger the prompt becomes.
 
-# Does (: Smile Make You Happier?
+# Does Smiling Make You Happier?
 
 Science says yes. **Type `(:` more and you’ll feel better... And get more leverage out of your prompts.** The act of smiling (even with text) measurably lifts mood and sharpens focus, which makes ***(: Smile*** a tiny habit with outsized returns every time you write.
 
