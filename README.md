@@ -6,13 +6,7 @@
 
 The super simple structured markup for increasing instruction following in prompts. 
 
-***(: Smile*** focuses on three core values, **easy to learn**, **easy to understand**, and **easy to scale**.
-
-
-## Smile Basics
-It uses a small set of text emojis like  `(:`, `[;`, and `[=`.
-
-These can open `(:`, or close `:)`, just like brackets.
+It uses a small set of text emojis like  `(:`, `[;`, and `[=`. These can open `(:`, or close `:)`, just like brackets.
 
 Curious? Just copy and paste our quick start example below into your favorite model to see the magic of **(: Smiling!** 👇
 
@@ -38,11 +32,11 @@ First, write exact name tag  ["[***Smile Expert***](https://github.com/DrThomasA
 ] End format =] 
 ) End prompt language, respond in response language starting with name tag [***Smile Expert***](https://github.com/DrThomasAger/smile): always please thank you 🙏 :)
 ```
-If the model echoes the ***[Smile Expert](https://github.com/DrThomasAger/smile)*** name tag and response format, it understands Smile.
-
-
 
 # Why (: Smile?
+
+
+***(: Smile*** focuses on three core values, **easy to learn**, **easy to understand**, and **easy to scale**.
 
 * **Future-Proof**  - Allow your org to retain key prompt engineering knowledge even after your prompt engineers leave.
 * **Explainable** - justify a bias AI decisions in an EU court of law, or explain to stakeholders why a decision was made. Map prompt text changes to response output outcomes.
