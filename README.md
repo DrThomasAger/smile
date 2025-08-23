@@ -57,9 +57,9 @@ You can use different text emoticons to indicate meaningfully different sections
 
 For example, in the quick start prompt the section that defines the format of the response is labelled `[: Response Language Definition [=`.
 
-This defines the way that the model will respond. 
+This defines the way that the model will respond. It tells the model to follow these format instructions rigidly `[:` and exactly `[=`. 
 
-It is ended with `] End format =]`. 
+It is ended with `] End format =]`. The word `End` is often used as an additional word to the name inside of section endings to more clearly delineate the ending of a section.
 
 # Why (: Smile?
 
