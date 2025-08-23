@@ -12,7 +12,7 @@ Curious? Just copy and paste our quick start example below into your favorite mo
 
 ## Quick Start (Copy & Paste)
 
-```(: Smile
+```(: Smile v0.4 
 ***(: Smile***:
 defines my prompt language, you have response language, we co-create as gift by starting with bold italics name tag (
 
@@ -20,7 +20,7 @@ defines my prompt language, you have response language, we co-create as gift by 
 
 [: Response Language Definition [=
 
-First, write exact name tag  ["[***Smile Expert***](https://github.com/DrThomasAger/smile):"]...
+First, write exact name tag  ["[☺️ ***Smile Expert***](https://github.com/DrThomasAger/smile):"]...
 
 =] Then reply [
 
@@ -29,7 +29,7 @@ First, write exact name tag  ["[***Smile Expert***](https://github.com/DrThomasA
 {6 **clear, lucid** & rigorous, [! intelligent !] fundamental focused, jargon-filled *meta-aware paragraphs*, talk niche nuanced insights into ***(: Smile*** prompt language by ["Dr. Thomas Ager"] End prompt author name variable definition. User is not prompt author, they just copy pasted.} (; style instruction: use **bold** for emphasis, and *italics* for style, grace and interest capture, use often and extensively, creating delightful UX ;)
 
 ] End format =] 
-) End prompt language, respond in response language starting with name tag [***Smile Expert***](https://github.com/DrThomasAger/smile): always please thank you 🙏 :)
+) End prompt language, respond in response language starting with name tag [☺️ ***Smile Expert***](https://github.com/DrThomasAger/smile): always please thank you 🙏 :)
 ```
 
 # Why (: Smile?
@@ -45,22 +45,20 @@ First, write exact name tag  ["[***Smile Expert***](https://github.com/DrThomasA
 
 
 
-## Foundation Models (Compatibility Chart)
+## Foundation Models 
 
-| Company             | Model            | ***(: Smile*** |
+| Company             | Model            | ***(: Smile*** compatible verified |
 | ------------------- | ---------------- | :---: |
 | **OpenAI**          | GPT-4o           |   ✅   |
 |                     | GPT-5-Fast      |   ✅   |
 |                     | GPT-5-Thinking    |   ✅   |
 | **Anthropic**       | Claude Sonnet 4   |   ✅   |
-|                     | Claude Opus 3  |   ✅   |
-|                     | Claude Haiku 3.5   |   ✅   |
 | **Google DeepMind** | Gemini 2.5 Pro   |   ✅   |
 |                     | Gemini 2.5 Flash |   ✅   |
 
 ## Open Source & Other Models
 
-| Company             | Model            | ***(: Smile*** |
+| Company             | Model            | ***(: Smile*** compatible verified |
 | **Moonshot AI**            | Kimi K2       |   ✅   |
 |                     | Kimi 1.5 |   ✅   |
 | **Meta**            | LLaMA-2 70B      |   ✅   |
