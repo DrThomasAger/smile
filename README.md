@@ -38,11 +38,15 @@ You start by clearly defining the start `(:` of a section and its name `(: Secti
 
 You can use different text emoticons to indicate meaningfully different sections.
 
-### Using the Example as Reference
+You can end sections using the same markers in the opposite direction. `) End Section name :)`.
+
 
 For example, in the quick start prompt the section that defines the format of the response is labelled `[: Response Language Definition [=`.
 
-This is ended by clearly closing the section `] End format =]`.
+This defines the way that the model will respond. 
+
+It is ended with `] End format =]`. 
+
 
 ## Technical Advantages of (: Smile
 
