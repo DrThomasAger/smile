@@ -132,16 +132,12 @@ First, write exact name tag  ["[***Smile Expert***](https://github.com/DrThomasA
 
 
 
-# How to Use (: Smile
+# How to  (: Smile
 
-
-
-# How to Write (: Smile 
-
-Instructions start with **colon eyes** `:`, while **winky eyes** `;` mark comments about those instructions. 
+Write instructional sections starting with **colon eyes** `:`. Write  **winky eyes** `;` to mark comments about those instructions. 
 When we open a ***(: Smile***, we start with the mouth first `(`, then the eyes `:`, so that we indicate the following text is "inside" the brackets.
-**Straight eyes** `=` show strict input that must be followed exactly. **Quote eyes** `"` show text that must be repeated word for word verbatim. **Cash eyes**  `$` show variables.
-We close a ***Smile :)*** starting with the eyes `:` and ending with the mouth `)`. Generally, we match open brackets with close brackets.
+**Straight eyes** `=` show strict input that must be followed exactly. **Quote eyes** `"` show text that must be repeated word for word verbatim. **Cash eyes**  `$` show variables. **!** important eyes show text to emphasize for the model.
+We close a ***Smile :)*** starting with the eyes `:` and ending with the mouth `)`. Matching open brackets with close brackets is often effective. However...
 
 ## Writing Token-Efficient (: Smile 
 
