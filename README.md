@@ -6,7 +6,7 @@
 
  Write **structured prompts** in a **consistent way** for ***predictably positive results!***
 
-***(: Smile*** is focuses on three key values, **token efficiency**, **model and human comprehensibility**, and **organizational maintainability, scaling & growth**.
+***(: Smile*** is focuses on three key values, **token efficiency**, **model and human comprehensibility**, and **organizational scaling**.
 
 
 # (: Smile Basics
