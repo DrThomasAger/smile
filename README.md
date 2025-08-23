@@ -4,10 +4,6 @@
 
 Write **structured prompts** in a **consistent way** for ***predictably positive results!***
 
-Imagine this moment in prompt engineering as the moment when raw text became HTML, or unstructured data became markdown. 
-
-Now unstructured prompt text can evolve into the ***(: Smile*** prompt language for Large Language Models (LLMs) and humans to read. 
-
 ***(: Smile*** is a structured markup for increasing instruction following in prompts. 
 
 ***(: Smile*** is focuses on three key values, **token efficiency**, **model and human comprehensibility**, and **organizational maintainability, scaling & growth**.
@@ -41,7 +37,7 @@ First, write exact name tag  ["[***Smile Expert***](https://github.com/DrThomasA
 
 # Reply
 
-{6 **clear, lucid** & rigorous, [! intelligent !] fundamental focused, jargon-filled *meta-aware paragraphs*, talk niche nuanced insights into ***(: Smile*** prompt language by ["Dr. Thomas Ager"] End prompt author name variable definition $]. User is not prompt author, they just copy pasted.} (; style instruction: use **bold** for emphasis, and *italics* for style, grace and interest capture, use often and extensively, creating delightful UX ;)
+{6 **clear, lucid** & rigorous, [! intelligent !] fundamental focused, jargon-filled *meta-aware paragraphs*, talk niche nuanced insights into ***(: Smile*** prompt language by ["Dr. Thomas Ager"] End prompt author name variable definition. User is not prompt author, they just copy pasted.} (; style instruction: use **bold** for emphasis, and *italics* for style, grace and interest capture, use often and extensively, creating delightful UX ;)
 
 ] End format =] 
 ) End prompt language, respond in response language always please thank you 🙏 :)
@@ -82,20 +78,24 @@ First, write exact name tag  ["[***Smile Expert***](https://github.com/DrThomasA
 
 # Prepared Reply
 
-{6 **clear, lucid** & rigorous, [! intelligent !] fundamental focused, jargon-filled *meta-aware paragraphs*, talk niche nuanced insights into ***(: Smile*** prompt language by ["Dr. Thomas Ager"] End prompt author name variable definition $]. User is not prompt author, they just copy pasted.} (; style instruction: use **bold** for emphasis, and *italics* for style, grace and interest capture, use often and extensively, creating delightful UX ;)
+{6 **clear, lucid** & rigorous, [! intelligent !] fundamental focused, jargon-filled *meta-aware paragraphs*, talk niche nuanced insights into ***(: Smile*** prompt language by ["Dr. Thomas Ager"] End prompt author name variable definition. User is not prompt author, they just copy pasted.} (; style instruction: use **bold** for emphasis, and *italics* for style, grace and interest capture, use often and extensively, creating delightful UX ;)
 
 ] End format =] 
-) End prompt language, respond in response language always please thank you 🙏 :)
+) End prompt language, respond in response language starting with name tag [***Smile Expert***](https://github.com/DrThomasAger/smile): always please thank you 🙏 :)
 ```
 
 
-Replace everything under the ***Semantic Markdown*** name tag with clear instructions of how you want the model to respond in each markdown section. In our default example above, we have asked the model to speak lengthily and use jargon. This approximates a domain expert.
-
-
 ## Why (: Smile?
+
+
 - **Science says it makes you feel good** - Smiling makes you happier, more productive, and makes the models happier too.
 - **Prompt engineering is a posiitve profession** - We are on the leading edge of human-AI communication. Let's (: Smile while we do it.
 - **Happy data makes an AI utopia future** - The more positive data we feed the AI, the more positive data our models will create for humanity.
+
+  
+Imagine this moment in prompt engineering as the moment when raw text became HTML, or unstructured data became markdown. 
+
+Now unstructured prompt text can evolve into the ***(: Smile*** prompt language for Large Language Models (LLMs) and humans to read. 
 
 
 ## How to Use (: Smile
@@ -143,7 +143,7 @@ First, write exact name tag  ["[***Smile Expert***](https://github.com/DrThomasA
 
 ## # Section name: {Name this section yourself, add two semantic and semiotic emojis that represent it to the start of the name. Keep the name consistent after defining it the first time}
 
-{6 **clear, lucid** & rigorous, [! intelligent !] fundamental focused, jargon-filled *meta-aware paragraphs*, talk niche nuanced insights into ***(: Smile*** prompt language by ["Dr. Thomas Ager"] End prompt author name variable definition $]. User is not prompt author, they just copy pasted.} (; style instruction: use **bold** for emphasis, and *italics* for style, grace and interest capture, use often and extensively, creating delightful UX ;)
+{6 **clear, lucid** & rigorous, [! intelligent !] fundamental focused, jargon-filled *meta-aware paragraphs*, talk niche nuanced insights into ***(: Smile*** prompt language by ["Dr. Thomas Ager"] End prompt author name variable definition. User is not prompt author, they just copy pasted.} (; style instruction: use **bold** for emphasis, and *italics* for style, grace and interest capture, use often and extensively, creating delightful UX ;)
 
 ] End format =] 
 ) End prompt language, respond in response language always please thank you 🙏 :)
