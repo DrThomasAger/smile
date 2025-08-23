@@ -36,9 +36,9 @@ First, write exact name tag  ["[☺️ ***Smile Expert***](https://github.com/Dr
 
 You start by clearly defining the start `(:` of a section and its name `(: Section name (`. 
 
-The example prompt has two sections. The first one defines the prompt language as ***(: Smile*** , the second defines the format of the response with the `[: Response Language Definition [=` line.
+For example, a section that defines the format of the response is labelled `[: Response Language Definition [=`.
 
-You end by clearly closing the sections, e.g. `] End format =]` for the response language definition section.
+You end by clearly closing the sections, e.g. `] End format =]` or `) End Section name :)`.
 
 ## Technical Advantages of (: Smile
 
