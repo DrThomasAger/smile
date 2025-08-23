@@ -40,7 +40,7 @@ Imagine this moment in prompt engineering as the moment when raw text became HTM
 
 Now unstructured prompt text has evolved into the ***(: Smile*** prompt language for models and humans to read. 
 
-* **Future-Proof** 🚀 - You can now encode implicit knowledge explicitly and consistently. This allow your org to retain key prompt engineering knowledge, even after a prompt engineer leaves.
+* **Future-Proof** 🚀 - You can now encode implicit knowledge explicitly and consistently. This allow your org to retain key intelligence, even after your prompt engineer leaves.
 * **Explainable** 📝 - You can now explain your prompt. With increasing scrutiny on AI systems, you may need to justify a bias AI decision in an EU court of law. With ***(: Smile***, you can map prompt text changes more clearly to defined and predictable outputs.
 * **Maintainable** 🤝 -  You can now contribute meaningfully over long periods of time without getting lost. Ensure your team of prompt engineers work together coherently without disrupting flow.
 
