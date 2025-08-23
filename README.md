@@ -32,7 +32,7 @@ First, write exact name tag  ["[☺️ ***Smile Expert***](https://github.com/Dr
 ) End prompt language, respond in response language starting with name tag [☺️ ***Smile Expert***](https://github.com/DrThomasAger/smile): always please thank you 🙏 :)
 ```
 
-👆 Become a ***(: Smile***r - copy and paste into your model now to make **more positive data for the benefit of all.**
+👆 ***(: Smile!*** - copy and paste into your model now to make **more positive data for the benefit of all.**
 
 ## Compatible With All Existing Models (Foundation & Open Source LLMs)
 
