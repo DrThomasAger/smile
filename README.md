@@ -51,13 +51,21 @@ You start by clearly defining the start `(:` of a section and its name `(: Secti
 
 You can end sections using the same markers in the opposite direction. `) End Section name :)`.
 
-To unlock the inherent structural understanding of Large Language Models (LLMs), label your instructions with sections, separating meaningfully different parts of the prompt. 
+## Sections
 
-One prime example of a need to separate two meaningfully different pieces of information is when a large raw text chunk from a user is uploaded. Let's imagine a raw text data input, like a wikipedia HTML page. It's full of metadata and information. This is very meaningfully different to the instruction text that we need the model to pay attention to! 
+A section is a meaningfully different part of the prompt from another part of the prompt. 
 
-Instructions in a prompt are for telling the model what to **do with the data**, data in the prompt is for **maximizing in-context learning (ICL) for the model** in the knowledge domain. 
+One prime example of a need to separate two meaningfully different parts of a prompt is when a large raw text chunk from a user is uploaded. 
 
-Wrapping this data inside of a structure helps the model separate the instructions from the input.
+Let's imagine a raw text data input, like a wikipedia HTML page. It's full of metadata and information. A lot of it probably isn't relevant to the user's query, `What is a prompt language?`. There are only some parts of the information that are meaningful.
+
+Without telling the model that we're providing them an input document, and giving a clear section for that document, it may confuse our instructions or what we want to do with that document with the text data inside of the document itself. A HTML page is very meaningfully different to instruction text like `Provide the user a clear definition using the Wikipedia article data` that we need the model to pay attention to! 
+
+## What is the Difference Between Input Data and Instruction Text?
+
+Instructions in a prompt are for telling the model what to **do with the data**, like `extract the key points`, data in the prompt is for **maximizing relevant context for the model**, like a transcript of a meeting. Without the meeting, the model cannot learn in context how to use the prompt instruction. 
+
+In-order to clearly separate for the model what is instructions and what is data, we can use sections.
 
 **In example:** Two separate sections. One for the user input text, another for the instructions for what to do with that text. 
 
