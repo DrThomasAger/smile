@@ -36,8 +36,6 @@ First, write exact name tag  ["[☺️ ***Smile Expert***](https://github.com/Dr
 
 # Why (: Smile? 
 
-According to recent studies, (: Smiling has a profound impact on both individual well-being and the health of your organization:
-
 1. **Enhances Mood and Reduces Stress**: Smiling triggers the release of endorphins, serotonin, and dopamine, which improve your mood, reduce stress, and make you feel more relaxed. In Buddhist meditation you are told that smiling often can build a habit of happiness - and science agrees. Scientists found that even a forced smile can activate the brain's chemical reward centers (source: [Healthline](https://www.healthline.com/health/benefits-of-smiling)).
 
 2. **Boosts Productivity and Well-being**: Smiling can strengthen your immune system, reduce pain, and improve overall well-being, leading to increased productivity and better job satisfaction in the workplace. Happier employees are more productive and have lower absenteeism rates (source: [Psychology Today](https://www.psychologytoday.com/us/blog/mind-well-matter/201807/why-smiling-matters)).
