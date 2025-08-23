@@ -53,6 +53,22 @@ You can end sections using the same markers in the opposite direction. `) End Se
 
 ## Sections
 
+Let's imagine a user query, `What is a prompt language?` and a system that retrieves input data, a HTML page wikipedia article for prompt engineering.
+
+Now, we can create a prompt to handle this query and use the wikipedia article:
+
+```Smile v0.4
+I'm going to give you a Wikipedia article. I need you to extract the relevant data to the user's query, and then build a set of key points and present them to the user.
+
+(: wikipedia article input text to solve task (
+
+[$Replace_this_with_wikipedia article$]
+
+) End input data :)
+
+[: Instructions for response - first identify relevant text from the wikipedia article, then provide your response afterwards. :]
+```
+
 A section is a meaningfully different part of the prompt from another part of the prompt. 
 
 One prime example of a need to separate two meaningfully different parts of a prompt is when a large raw text chunk from a user is uploaded. 
