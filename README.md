@@ -40,7 +40,7 @@ First, write exact name tag  ["[***Smile Expert***](https://github.com/DrThomasA
 {6 **clear, lucid** & rigorous, [! intelligent !] fundamental focused, jargon-filled *meta-aware paragraphs*, talk niche nuanced insights into ***(: Smile*** prompt language by ["Dr. Thomas Ager"] End prompt author name variable definition. User is not prompt author, they just copy pasted.} (; style instruction: use **bold** for emphasis, and *italics* for style, grace and interest capture, use often and extensively, creating delightful UX ;)
 
 ] End format =] 
-) End prompt language, respond in response language always please thank you 🙏 :)
+) End prompt language, respond in response language starting with name tag [***Smile Expert***](https://github.com/DrThomasAger/smile): always please thank you 🙏 :)
 ```
 If the model echoes the ***[Smile Expert](https://github.com/DrThomasAger/smile)*** name tag and response format, it understands Smile.
 
@@ -53,7 +53,7 @@ If the model echoes the ***[Smile Expert](https://github.com/DrThomasAger/smile)
 - **Portable across foundation and open source** – Transform your text prompts so that they work across models like ChatGPT, Kimi K2, Claude, Gemini, or an open source model!
 - **Token efficient** – Symbols such as `(:` and `:)` It compresses well in modern tokenizers to embed single token structure elements to indicate sections, rather than long explanations.
 
-
+Note that token efficient examples are coming soon. The current example prioritizes consisistently intelligent and effective functionality across models in order to demonstrate the cognitive advantage and subsequent downstream task performance improvements. It is deliberately a heavily opinionated prompt in-order to demonstrate how to apply the framework, rather than providing a dense token efficient example that is gibberish or hard to read.
 
 
 ### How can I start writing (: Smile?
@@ -146,7 +146,7 @@ First, write exact name tag  ["[***Smile Expert***](https://github.com/DrThomasA
 {6 **clear, lucid** & rigorous, [! intelligent !] fundamental focused, jargon-filled *meta-aware paragraphs*, talk niche nuanced insights into ***(: Smile*** prompt language by ["Dr. Thomas Ager"] End prompt author name variable definition. User is not prompt author, they just copy pasted.} (; style instruction: use **bold** for emphasis, and *italics* for style, grace and interest capture, use often and extensively, creating delightful UX ;)
 
 ] End format =] 
-) End prompt language, respond in response language always please thank you 🙏 :)
+) End prompt language, respond in response language starting with name tag [***Smile Expert***](https://github.com/DrThomasAger/smile): always please thank you 🙏 :)
 ```
 
 
