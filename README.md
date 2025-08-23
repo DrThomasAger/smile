@@ -73,6 +73,17 @@ Wrapping this data inside of a structure helps the model separate the instructio
 
 # How to (: Smile: A Quick Guide 
 
+
+```Smile v0.4 Placeholder Example
+(: Section name (
+
+Section content
+
+) End Section name :)
+```
+
+
+
 ## Opening Sections
 
 When we open a ***(: Smile*** section, we start with the mouth first `(`, then the eyes `:`, so that we indicate the following text is "inside" the brackets.
@@ -112,15 +123,6 @@ We provided recommended formats as a standard way to open a section with ***(: S
  **This is always our rule when we write (: Smile.** More ***(: Smile*** structure if it increases instruction following, less ***(: Smile*** struture if it increases instruction following. 
  
  **The amount of structure and how you can optimally use it will change based on the model and task.**
-
-```Smile v0.4 Placeholder Example
-(: Section name (
-
-Section content
-
-) End Section name :)
-```
-
 
 # Different Smiles, Different Meanings
 
