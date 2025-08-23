@@ -8,7 +8,14 @@ The dead simple **instruction only markup** for **increasing instruction followi
 
 It uses a small set of positive text emojis like  `(:`, `[;`, and `[=`. These can open `(:`, or close `:)`, just like brackets. 
 
+These are used to define different kinds of sections, with the kind of emoji chosen helping to inform the content. 
+
 ## Quick Start Example
+
+***(: Smile*** is compatible with all models, as it is just a way of structuring instruction text, the same way you might have used XML, YAML, Markdown or json to write prompts with sections so the model can follow your instructions more clearly. 
+
+(: Smile is a prompt instruction language that deliberately separates prompt instruction language from response output language. This enables it to be used in interfaces like GPTs, or other chat engines that render markdown responses, and also output json, or any other format. 
+
 
 Curious? Just **copy and paste our quick start example** below to see the magic 👇
 
