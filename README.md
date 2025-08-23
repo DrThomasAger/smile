@@ -2,15 +2,15 @@
 
 # (: Smile Prompt Language
 
-## Write **structured prompts** in a **consistent way** for ***predictably positive results!***
-
-The super simple structured markup for increasing instruction following in prompts. 
+The dead simple structured markup for increasing instruction following in prompts. 
 
 It uses a small set of text emojis like  `(:`, `[;`, and `[=`. These can open `(:`, or close `:)`, just like brackets.
 
 Curious? Just copy and paste our quick start example below into your favorite model to see the magic 👇
 
 ## Quick Start (Copy & Paste)
+
+Write **structured prompts** in a **consistent way** for ***predictably positive results!***
 
 ```(: Smile v0.4 
 ***(: Smile***:
