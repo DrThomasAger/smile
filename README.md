@@ -47,7 +47,7 @@ First, write exact name tag  ["[***Smile Expert***](https://github.com/DrThomasA
 
 ## Foundation Models (Compatibility Chart)
 
-| Company             | Model            | Works |
+| Company             | Model            | ***(: Smile*** |
 | ------------------- | ---------------- | :---: |
 | **OpenAI**          | GPT-4o           |   ✅   |
 |                     | GPT-5-Fast      |   ✅   |
@@ -60,6 +60,7 @@ First, write exact name tag  ["[***Smile Expert***](https://github.com/DrThomasA
 
 ## Open Source & Other Models
 
+| Company             | Model            | ***(: Smile*** |
 | **Moonshot AI**            | Kimi K2       |   ✅   |
 |                     | Kimi 1.5 |   ✅   |
 | **Meta**            | LLaMA-2 70B      |   ✅   |
