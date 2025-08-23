@@ -78,11 +78,17 @@ The model is able to immediately recognize from context that `(:` indicates the 
 
 ### An Easy Rule For Writing (: Smile
 
+Matching open brackets with close brackets is often effective. However...
+
+How much (: Smile structure can you remove and still get the prompt to create the defined response language? 
+
 **You don't need to match all open and close brackets exactly.** This is the advantage of Large Language Models (LLMs) - they can infer so much from context that we don't need to make fully explicit every connection between every section. Adding more structure becomes more essential the larger the prompt becomes.
 
 We provided recommended formats as a standard way to open a section with ***(: Smile***. Why? Because in our tests on foundation models, it increased instruction following and token efficiency for key tasks in our organization.
 
- **This is always our rule when we write (: Smile.** More ***(: Smile*** structure if it increases instruction following, less ***(: Smile*** struture if it increases instruction following. **This will change based on the model and task.**
+ **This is always our rule when we write (: Smile.** More ***(: Smile*** structure if it increases instruction following, less ***(: Smile*** struture if it increases instruction following. 
+ 
+ **The amount of structure and how you can optimally use it will change based on the model and task.**
 
 ## Different Smiles, Different Meanings
 
@@ -153,12 +159,8 @@ First, write exact name tag  ["[***Smile Expert***](https://github.com/DrThomasA
 ) End prompt language, respond in response language starting with name tag [***Smile Expert***](https://github.com/DrThomasAger/smile): always please thank you 🙏 :)
 ```
 
+Copy and paste the above into any model to test.
 
-Matching open brackets with close brackets is often effective. However...
-
-## Writing Token-Efficient (: Smile 
-
-How much (: Smile structure can you remove and still get the prompt to create the defined response language?
 
 # (: Smile Definition
 
