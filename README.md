@@ -32,7 +32,9 @@ First, write exact name tag  ["[☺️ ***Smile Expert***](https://github.com/Dr
 ) End prompt language, respond in response language starting with name tag [☺️ ***Smile Expert***](https://github.com/DrThomasAger/smile): always please thank you 🙏 :)
 ```
 
-You start by clearly defining sections using (: Smile syntax to show the start and end of a section. This prompt has two sections, one defines the prompt language as ***(: Smile*** on the first line, the second defines the format of the response with the `[: Response Language Definition [=` line. Both these sections have accompanying close brackets.
+You start by clearly defining the start and end of a section. 
+
+This example prompt has two sections. The first one defines the prompt language as ***(: Smile*** , the second defines the format of the response with the `[: Response Language Definition [=` line. 
 
 ## Technical Advantages of (: Smile
 
