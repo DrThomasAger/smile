@@ -12,7 +12,6 @@ Curious? Just copy and paste our quick start example below into your favorite mo
 
 ## Quick Start (Copy & Paste)
 
-Copy and paste this into your favourite AI now. 
 ```(: Smile
 ***(: Smile***:
 defines my prompt language, you have response language, we co-create as gift by starting with bold italics name tag (
