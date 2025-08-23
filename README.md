@@ -8,9 +8,9 @@ Imagine this moment in prompt engineering as the moment when raw text became HTM
 
 Now unstructured prompt text can evolve into the ***(: Smile*** prompt language for Large Language Models (LLMs) and humans to read. 
 
-***(: Smile*** is a structured markup for increasing instruction following in prompts. It does this by **structuring** the prompt. 
+***(: Smile*** is a structured markup for increasing instruction following in prompts. 
 
-***(: Smile*** is designed to provide clear sections when writing prompts, and focuses on three key aspects, **token efficiency**, **understandable to the model and the human**, and **maintainable for organizations**.
+***(: Smile*** is focuses on three key values, **token efficiency**, **model and human comprehensibility**, and **organizational maintainability, scaling & growth**.
 
 It does all of this, with a ***(: Smile***!
 
