@@ -101,8 +101,7 @@ Let's edit the quick start example to change the format of the response.
 
 One example of a meaningfully different section from one that already exists is a section for thinking, not replying. 
 
-This is a 'separation of concerns' that allows us to focus on steps that build on each other one at a time.
-
+⚠️ This is known as a 'separation of concerns'. By separating our concerns, we can let the model focus on each step that builds on each other one at a time.
 
 Let's get right to it and add a simple step by step thinking (Chain of Thought or "CoT"):
 
