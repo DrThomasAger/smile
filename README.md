@@ -36,7 +36,7 @@ First, write exact name tag  ["[☺️ ***Smile Expert***](https://github.com/Dr
 
 # Why (: Smile? 
 
-Want to ***(: Smile*** more while prompt engineering? Just use every (: Smile as a reminder! You can build a habit of happiness by Smiling. 
+Want to ***(: Smile*** more while prompt engineering? Just use every (: Smile as a reminder to smile in real life! That way, you can build a habit of happiness at work. 
 
 1. **Enhances Mood and Reduces Stress**: Smiling triggers the release of endorphins, serotonin, and dopamine, which improve your mood, reduce stress, and make you feel more relaxed. Scientists found that even a forced smile can activate the brain's chemical reward centers ([Healthline](https://www.healthline.com/health/benefits-of-smiling)).
 
