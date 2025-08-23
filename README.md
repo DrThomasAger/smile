@@ -39,20 +39,19 @@ First, write exact name tag  ["[☺️ ***Smile Expert***](https://github.com/Dr
 **Type `(:` and you’ll feel better—and ship better prompts.** The act of smiling (even with text) measurably lifts mood and sharpens focus, which makes **(: Smile** a tiny habit with outsized returns every time you write.
 
 1. 🙂 **Enhances mood & eases stress—on cue**
-   Smiling releases **endorphins, serotonin, and dopamine**, the brain’s built-in calm & joy mixture. Even a *forced* smile nudges your physiology toward **relaxation and resilience**, helping you think clearly under pressure. Exactly what you need in a high-stakes business environment. *(Evidence:)* [Healthline](https://www.healthline.com/health/benefits-of-smiling).
+   Smiling releases **endorphins, serotonin, and dopamine**, the brain’s built-in calm & joy mixture. Even a *forced* smile nudges your physiology toward **relaxation and resilience**, helping you think clearly under pressure. Exactly what you need in a high-stakes business environment. *Evidence:* [Healthline](https://www.healthline.com/health/benefits-of-smiling).
 
 2. 😄 **Symbols trigger the reward system (yes, “:)” counts)**
-   Brain activity scans show that real faces *and* symbolic “**:)**” activate reward regions; they pick up activity within **\~500 ms** just from reading the symbol. Translation: your brain treats `:)` like a micro-reward.* (Evidence:)* [Hennenlotter et al., 2005](https://www.cambridge.org/core/journals/behavioral-and-brain-sciences/article/simulation-of-smiles-sims-model-embodied-simulation-and-the-meaning-of-facial-expression/FE0A911744186EBD3706B53794D4AEE9); [Mühlberger et al., 2011](https://www.frontiersin.org/journals/psychology/articles/10.3389/fpsyg.2018.00052/full).
+   Brain activity scans show that real faces *and* symbolic “**:)**” activate reward regions; they pick up activity within **\~500 ms** just from reading the symbol. Translation: Your brain treats `:)` like a micro-reward.* Evidence:* [Hennenlotter et al., 2005](https://www.cambridge.org/core/journals/behavioral-and-brain-sciences/article/simulation-of-smiles-sims-model-embodied-simulation-and-the-meaning-of-facial-expression/FE0A911744186EBD3706B53794D4AEE9); [Mühlberger et al., 2011](https://www.frontiersin.org/journals/psychology/articles/10.3389/fpsyg.2018.00052/full).
 
 3. 🤩 **Boosts productivity, stamina, and pro-social vibes**
-   Regular smiling is linked to **stronger immunity**, **lower pain**, and **higher job satisfaction**—the trifecta for sustained creative work and smoother collaboration. Happier writers make **cleaner, kinder prompts**, and organizations feel it. *(Evidence:)* [Psychology Today](https://www.psychologytoday.com/us/blog/mind-well-matter/201807/why-smiling-matters), [Verywell Mind](https://www.verywellmind.com/benefits-of-smiling-2795092).
+   Regular smiling is linked to **stronger immunity**, **lower pain**, and **higher job satisfaction**—the trifecta for sustained creative work and smoother collaboration. Happier writers make **cleaner, more positive prompts**, and organizations feel it. *Evidence:* [Psychology Today](https://www.psychologytoday.com/us/blog/mind-well-matter/201807/why-smiling-matters), [Verywell Mind](https://www.verywellmind.com/benefits-of-smiling-2795092).
 
-**Bottom line:** **(: Smile** turns a single keystroke into a *neurochemical advantage* and a *workflow advantage*. Make `(:` your default opener, and let the language do double duty—**structure for the model, uplift for you**.
+**Bottom line:** **(: Smile** turns a single keystroke into a *neurochemical and workflow advantage*. Make `(:` your default opener, and let the language do double duty. **Structure for the model, uplift for you**.
 
+# 🧠 **Brain Hack:** 
 
-
-
-🧠 **Brain Hack:** Want to ***(: Smile*** more while prompt engineering? Just use every (: Smile as a reminder to smile in real life! That way, you can build a habit of happiness at work. 
+Want to ***(: Smile*** more at work? Just use every (: Smile as a reminder to smile in real life! That way, you can build a habit of happiness. 
 
 
 ## Technical Advantages
