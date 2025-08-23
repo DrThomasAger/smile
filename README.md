@@ -39,13 +39,13 @@ First, write exact name tag  ["[☺️ ***Smile Expert***](https://github.com/Dr
 
 | Company             | Model            | ***(: Smile*** prompt language |
 | ------------------- | ---------------- | :---: |
-| **OpenAI**          | GPT-4o           |   ✅   |
+| **OpenAI** ✔️          | GPT-4o           |   ✅   |
 |                     | GPT-5-Fast      |   ✅   |
 |                     | GPT-5-Thinking    |   ✅   |
-| **Anthropic**       | Claude Sonnet 4   |   ✅   |
-| **Google DeepMind** | Gemini 2.5 Pro   |   ✅   |
+| **Anthropic** ✔️       | Claude Sonnet 4   |   ✅   |
+| **Google DeepMind** ✔️ | Gemini 2.5 Pro   |   ✅   |
 |                     | Gemini 2.5 Flash |   ✅   |
-| **Moonshot AI**            | Kimi K2       |   ✅   |
+| **Moonshot AI** ✔️           | Kimi K2       |   ✅   |
 |                     | Kimi 1.5 |   ✅   |
 
 **Note:** *Don't see your favorite model? Please feel free to try the above prompt on your own model or one we haven't tested and report back the results. So far it works on everything!*
