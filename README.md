@@ -40,11 +40,11 @@ Imagine this moment in prompt engineering as the moment when raw text became HTM
 
 We focus on delivering on **three core values.**
 
-* **Maintainable** 🤝 *Unify your team under one standard.* -  You can now contribute meaningfully over long periods of time without getting lost. Ensure your team of prompt engineers work together coherently without disrupting flow.
+* **Maintainable** 🤝 *Unify your team under one standard.* -  Your team of prompt engineers can now contribute meaningfully together over long periods of time without confusion, conflicts or disrupting flow.
 
-* **Future-Proof** 🚀 *Allows your org to retain key intelligence, even after your prompt engineer leaves.* - Never lose organizational intelligence again.
+* **Future-Proof** 🚀 *Never lose organizational intelligence again.* - Allows your org to retain key intelligence, even after your prompt engineer leaves.
 
-* **Explainable** 📝 *Clearly map prompt text changes to consistent outputs.* - You can now explain your prompt. With increasing scrutiny on AI systems, you may need to justify a bias AI decision in an EU court of law. 
+* **Explainable** 📝 *Clearly map prompt text changes to consistent outputs.* - You can now explain your prompt. With increasing scrutiny on AI systems, you can now justify an AI decision in an EU court of law. 
 
 Don't lose business because you weren't prepared - learn to ***(: Smile*** now 👇
 
