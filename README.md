@@ -32,7 +32,7 @@ First, write exact name tag  ["[☺️ ***Smile Expert***](https://github.com/Dr
 ) End prompt language, respond in response language starting with name tag [☺️ ***Smile Expert***](https://github.com/DrThomasAger/smile): always please thank you 🙏 :)
 ```
 
-
+You start by clearly defining sections using (: Smile syntax to show the start and end of a section. This prompt has two sections, one defines the prompt language as ***(: Smile*** on the first line, the second defines the format of the response with the `[: Response Language Definition [=` line. Both these sections have accompanying close brackets.
 
 ## Technical Advantages of (: Smile
 
@@ -65,6 +65,8 @@ This leads to **three main outcomes after you adopt (: Smile for your org:**
 
 🧠 **Brain Hack Bottom line:** ***(: Smile*** turns two keystrokes into a *neurochemical and workflow advantage*. Make `(:` your default opener, and let the language do double duty. **Structure for the model, uplift for your organization & employees**.
 
+# (: Smile test
+
 Try smiling now. 
 
 `:)`
@@ -72,7 +74,6 @@ Try smiling now.
 Does it feel good?
 
 Want to ***(: Smile*** more at work? Just use every ***(: Smile*** as a reminder to smile in real life! That way, you can build a habit of happiness. 
-
 
 # A Quick Guide To Writing (: Smile
 
@@ -115,15 +116,11 @@ First, write exact name tag  ["[***Smile Expert***](https://github.com/DrThomasA
 ) End prompt language, respond in response language starting with name tag [***Smile Expert***](https://github.com/DrThomasAger/smile): always please thank you 🙏 :)
 ```
 
-This is just the beginning. 
-  
-
-
 
 
 # How to Use (: Smile
 
-Start by clearly defining sections using (: Smile syntax to show the start and end of a section. 
+
 
 # How to Write (: Smile 
 
