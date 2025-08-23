@@ -58,7 +58,7 @@ Now unstructured prompt text can evolve into the ***(: Smile*** prompt language 
 * **Maintainable** 🤝 -  You can now contribute meaningfully over long periods of time without getting lost. Ensure your team of prompt engineers work together coherently without disrupting flow.
 
 
-### How Can I Start Writing (: Smile?
+# Start Writing (: Smile
 
 Let's edit the quick start example from above that you already copy pasted.
 
