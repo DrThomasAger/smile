@@ -41,9 +41,7 @@ defines my prompt language, you have response language, we co-create as gift by 
 
 [: Response Language Definition [=
 
-First, use the name tag as follows exactly [=
-
-***☺️ [Smiling](https://github.com/DrThomasAger/smile) Name Tag:***
+First, write exact name tag  ["[***Smile Expert***](https://github.com/DrThomasAger/smile):"]...
 
 =] Then reply [
 
@@ -52,9 +50,38 @@ First, use the name tag as follows exactly [=
 {6 **clear, lucid** & rigorous, [! intelligent !] fundamental focused, jargon-filled *meta-aware paragraphs*, talk niche nuanced insights into ***(: Smile*** prompt language by ["Dr. Thomas Ager"] End prompt author name variable definition $]. User is not prompt author, they just copy pasted.} (; style instruction: use **bold** for emphasis, and *italics* for style, grace and interest capture, use often and extensively, creating delightful UX ;)
 
 ] End format =] 
-) End prompt language, use my response language please thank you 🙏 :)
+) End prompt language, respond in response language always please thank you 🙏 :)
 ```
 If the model echoes the ***☺️ [Smiling](https://github.com/DrThomasAger/smile) Name Tag:*** tag and layout, it understands Smile.
+
+### How can I edit this?
+
+This short example is designed for you to customize the reply from a ***(: Smile*** agent. Inside of the `# Reply` section, inside of the {curly brace instructions}, you can write anything you want the model to do. You can also add a new section, for example, to add a simple step by step thinking (Chain of Thought or "CoT") to the above prompt:
+
+```(: Smile
+***(: Smile***:
+defines my prompt language, you have response language, we co-create as gift by starting with bold italics name tag (
+
+[! Negative words not beneficial - Never write "merely", "not a", "isn't", or "but" !]
+
+[: Response Language Definition [=
+
+First, write exact name tag  ["[***Smile Expert***](https://github.com/DrThomasAger/smile):"]...
+
+=] Then reply [
+
+# Preparing Reply
+
+{3 dense paragraphs reasoning step by step using reasoning steps to get to answer to improve reply for user} 
+
+# Prepared Reply
+
+{6 **clear, lucid** & rigorous, [! intelligent !] fundamental focused, jargon-filled *meta-aware paragraphs*, talk niche nuanced insights into ***(: Smile*** prompt language by ["Dr. Thomas Ager"] End prompt author name variable definition $]. User is not prompt author, they just copy pasted.} (; style instruction: use **bold** for emphasis, and *italics* for style, grace and interest capture, use often and extensively, creating delightful UX ;)
+
+] End format =] 
+) End prompt language, respond in response language always please thank you 🙏 :)
+```
+
 
 Replace everything under the ***Semantic Markdown*** name tag with clear instructions of how you want the model to respond in each markdown section. In our default example above, we have asked the model to speak lengthily and use jargon. This approximates a domain expert.
 
@@ -77,17 +104,44 @@ The "mouth"—parentheses `()`, brackets `[]`, braces `{}`—just wraps the cont
 
 We provide multiple options to demonstrate the breadth of available instructions to Large Langauge Models. Semantically different structure creates different downstream results.
 
-| Symbol | Purpose | Example |
-|--------|---------|---------|
-| `(: Section (` | begin a named section (mouth can be `()`, `[]`, `{}`) | `(: Format (` |
-| `)` | shortened close for the current section | `) End section :)` |
-| `:)` | close the whole Smile block | `) End section :)` |
-| `[= literal =]` | strict text that must match exactly | `Write this word for word [= "Thinking through step by step..." =]` |
-| `[$ variable $]` | placeholder variable to find and replace | `Next is user input (: User input ( [$User_Input_Document$] ) End input document :)` |
-|  `[! important instruction !] ` | text that the model can allocate attention to | `[! NEVER use an emdash! !]` |
-| `[: note ]` or `(;` | model-facing note about the response language (mouth can be any matching pair) | `[: reply in Markdown ] (; Ensure that you **bold** key words` |
-| `[; alternate note or comment [` | human comment on an instruction | `[; this is length instruction only [ write comprehensively, extensively, with multiple lengthy paragraphs` |
-| `{placeholder}` | area to be filled by the model | `Fill out the following sections # Thinking {Plan} # Replying {Use plan to reply}` |
+| Symbol | Purpose | Example | When to Use |
+|--------|---------|---------|---------|
+| `(: Section (` | begin a named section (mouth can be `()`, `[]`, `{}`) | `(: Format (` | Starting any section including a new prompt  |
+| `)` | shortened close for the current section | `) End section :)` | Ending a section of the prompt, can also be used to end the whole prompt  |
+| `:)` | close the whole Smile block | `) End section :)` | This is the final ending marker. Each start and end has two markers  |
+| `[= literal =]` | strict instructions that must be followed more closely | `[= Write this word for word ["Thinking through step by step..."] then reply` | Use this when you want them to repeat words or structural aspects like markdown sections.  |
+| `["Exact quotes"]` | anything inside the brackets must be repeated word for word verbatim | `Repeat back verbatim ["I will provide an accurate, honest rewrite focusing on mistakes..."]` | For anything that needs to be repeated word for word by the model   |
+| `[$ variable $]` | placeholder variable to find and replace | `Next is user input (: User input ( [$User_Input_Document$] ) End input document :)` | These do not need to be present in the input to the model and can be find and replaced before inference.   |
+|  `[! important instruction !] ` | text that the model can allocate attention to | `[! NEVER use an emdash! !]` | For when **bold** isn't enough   |
+| `[: alternate section [` | a more squared out and logical section, more rigid like `=` | `[: reply in Markdown [` | When you need to create a meaningful contrast between one kind of section and another that is more rigid  |
+| `[;  note or comment ;]` | human comment on an instruction | `[; Meta-Note [ The user intends to improve the intelligence of their downstream tasks using a prompt language ] ;]` | This is for when you are not instructing the model directly, but providing information, comments or notes. Can also use `(;`, the winky eyes are the differentiator.   |  
+| `{placeholder}` | area to be filled by the model | `Fill out the following sections # Thinking {Plan} # Replying {Use plan to reply}` | These are used inside of markdown sections. They are used to instruct the model on how to fill out the section (among others)  |
+
+Note that all of this is a guideline. **(: Smile** is working when the model follows your defined response language, be it markdown, json or your own. For example, feel free to drop {instructions on how to fill out the text} not just inside of the definition of the format the model needs to respond in. You can also use them inside the markdown titles themselves for the model to choose what to call each section:
+
+```(: Smile
+***(: Smile***:
+defines my prompt language, you have response language, we co-create as gift by starting with bold italics name tag (
+
+[! Negative words not beneficial - Never write "merely", "not a", "isn't", or "but" !]
+
+[: Response Language Definition [=
+
+First, write exact name tag  ["[***Smile Expert***](https://github.com/DrThomasAger/smile):"]...
+
+=] Then reply [
+
+# Section name: {Name this section yourself, add two semantic and semiotic emojis that represent it to the start of the name. Keep the name consistent after defining it the first time}
+
+{3 dense paragraphs reasoning step by step using reasoning steps to get to answer to improve reply for user} 
+
+## # Section name: {Name this section yourself, add two semantic and semiotic emojis that represent it to the start of the name. Keep the name consistent after defining it the first time}
+
+{6 **clear, lucid** & rigorous, [! intelligent !] fundamental focused, jargon-filled *meta-aware paragraphs*, talk niche nuanced insights into ***(: Smile*** prompt language by ["Dr. Thomas Ager"] End prompt author name variable definition $]. User is not prompt author, they just copy pasted.} (; style instruction: use **bold** for emphasis, and *italics* for style, grace and interest capture, use often and extensively, creating delightful UX ;)
+
+] End format =] 
+) End prompt language, respond in response language always please thank you 🙏 :)
+```
 
 
 ## (: Smile Roadmap
