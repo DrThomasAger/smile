@@ -55,16 +55,11 @@ First, write exact name tag  ["[☺️ ***Smile Expert***](https://github.com/Dr
 | **Google DeepMind** | Gemini 2.5 Pro   |   ✅   |
 |                     | Gemini 2.5 Flash |   ✅   |
 
-## Open Source & Other Models
+## Open Source 
 
 | Company             | Model            | ***(: Smile*** compatible verified |
 | **Moonshot AI**            | Kimi K2       |   ✅   |
 |                     | Kimi 1.5 |   ✅   |
-| **Meta**            | LLaMA-2 70B      |   ✅   |
-|                     | LLaMA-2 13B      |   ✅   |
-|                     | LLaMA-2 7B       |   ✅   |
-| **Mistral**         | Mixtral-8x7B     |   ✅   |
-|                     | Mistral-7B       |   ✅   |
 
 # Prompting With a ***(: Smile***!
 
