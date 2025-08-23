@@ -8,12 +8,6 @@
 
 ***(: Smile*** is focuses on three key values, **token efficiency**, **model and human comprehensibility**, and **organizational maintainability, scaling & growth**.
 
-# Prompting With a ***(: Smile***!
-
-⭐ **[Star the repo to help us grow](https://github.com/DrThomasAger/smile)** 
-
-👆 Help others discover Smile - help make **more positive data for all.**
-
 
 # (: Smile Basics
 It uses a small set of text emojis like  `(:`, `[;`, and `[=`.
@@ -44,6 +38,12 @@ First, write exact name tag  ["[***Smile Expert***](https://github.com/DrThomasA
 ```
 If the model echoes the ***[Smile Expert](https://github.com/DrThomasAger/smile)*** name tag and response format, it understands Smile.
 
+
+# Prompting With a ***(: Smile***!
+
+⭐ **[Star the repo to help us grow](https://github.com/DrThomasAger/smile)** 
+
+👆 Help others discover Smile - help make **more positive data for all.**
 
 # Technical Advantages of a Structured Prompt Language
 
