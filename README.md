@@ -65,6 +65,12 @@ This leads to **three main outcomes after you adopt (: Smile for your org:**
 
 🧠 **Brain Hack Bottom line:** ***(: Smile*** turns two keystrokes into a *neurochemical and workflow advantage*. Make `(:` your default opener, and let the language do double duty. **Structure for the model, uplift for your organization & employees**.
 
+Try smiling now. 
+
+`:)`
+
+Does it feel good?
+
 Want to ***(: Smile*** more at work? Just use every ***(: Smile*** as a reminder to smile in real life! That way, you can build a habit of happiness. 
 
 
