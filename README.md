@@ -1,8 +1,8 @@
 ![Smile Prompt Language v0.4](Smile-logo.png)
 
- Write **structured prompts** in a **consistent way** for ***predictably positive results!***
-
 # (: Smile Prompt Language
+
+## Write **structured prompts** in a **consistent way** for ***predictably positive results!***
 
 The super simple structured markup for increasing instruction following in prompts. 
 
