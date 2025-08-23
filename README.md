@@ -68,7 +68,7 @@ I'm going to give you a Wikipedia article. I need you to extract the relevant da
 
 (: wikipedia article input text to solve task (
 
-[$Replace_this_with_wikipedia article$]
+[$Replace_this_with_wikipedia article$] 
 
 ) End input data :)
 
