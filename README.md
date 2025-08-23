@@ -79,7 +79,7 @@ It is ended with `] End format =]`. The word `End` is often used as an additiona
 
  **Bottom line:** ***(: Smile*** turns two keystrokes into a *neurochemical and workflow advantage*. Make `(:` your default opener, and let the language do double duty. **Structure for the model, uplift for your organization & employees**.
 
-# (: Smile Fast
+# Try (: Smiling 
 
 Try smiling now. 
 
@@ -135,8 +135,11 @@ First, write exact name tag  ["[***Smile Expert***](https://github.com/DrThomasA
 # How to  (: Smile
 
 Write instructional sections starting with **colon eyes** `:`. Write  **winky eyes** `;` to mark comments about those instructions. 
+
 When we open a ***(: Smile***, we start with the mouth first `(`, then the eyes `:`, so that we indicate the following text is "inside" the brackets.
-**Straight eyes** `=` show strict input that must be followed exactly. **Quote eyes** `"` show text that must be repeated word for word verbatim. **Cash eyes**  `$` show variables. **!** important eyes show text to emphasize for the model.
+
+**Straight eyes** `=` show strict input that must be followed exactly. **Quote eyes** `"` show text that must be repeated word for word verbatim. **Cash eyes**  `$` show variables. `!` important eyes show text to emphasize for the model.
+
 We close a ***Smile :)*** starting with the eyes `:` and ending with the mouth `)`. Matching open brackets with close brackets is often effective. However...
 
 ## Writing Token-Efficient (: Smile 
