@@ -8,7 +8,7 @@ The super simple structured markup for increasing instruction following in promp
 
 It uses a small set of text emojis like  `(:`, `[;`, and `[=`. These can open `(:`, or close `:)`, just like brackets.
 
-Curious? Just copy and paste our quick start example below into your favorite model to see the magic of **(: Smiling!** 👇
+Curious? Just copy and paste our quick start example below into your favorite model to see the magic 👇
 
 ## Quick Start (Copy & Paste)
 
