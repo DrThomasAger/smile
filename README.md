@@ -4,9 +4,9 @@
 
 The dead simple **structured markup** for **increasing instruction following** in **prompt writing**. 
 
-> Structure your prompts consistently for predictably positive results — even with huge prompts!
+> Structure your prompts consistently for predictable results — even with huge prompts!
 
-It uses a small set of text emojis like  `(:`, `[;`, and `[=`. These can open `(:`, or close `:)`, just like brackets. 
+It uses a small set of positive text emojis like  `(:`, `[;`, and `[=`. These can open `(:`, or close `:)`, just like brackets. 
 
 ## Quick Start Example
 
