@@ -37,7 +37,7 @@ First, write exact name tag  ["[☺️ ***Smile Expert***](https://github.com/Dr
 
 ***(: Smile*** is easy to **learn**, easy to **read**, and easy to **scale**. 
 
-Imagine this moment in prompt engineering as the moment when raw text became HTML, or unstructured data became markdown. 
+As someone who has been in computer science for over a decade, this moment in prompt engineering reminds me of the moment when raw text became HTML, or unstructured data became markdown. 
 
 We focus on delivering on **three core values**:
 
