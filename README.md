@@ -68,7 +68,7 @@ It is ended with `=] End format :]`. The word `End` is often used as an addition
 
 ## Open and Close Brackets
 
-You don't need to match all open and close brackets, or section names, exactly in the start section indicator and the stop section indicator. This is the advantage of Large Language Models (LLMs) - they can infer so much from context that we don't need to make fully explicit every connection between every section. This becomes more essential the larger the prompt becomes.
+**You don't need to match all open and close brackets exactly.** This is the advantage of Large Language Models (LLMs) - they can infer so much from context that we don't need to make fully explicit every connection between every section. This becomes more essential the larger the prompt becomes.
 
 # Does (: Smile Make You Happier?
 
