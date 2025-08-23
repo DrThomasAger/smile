@@ -38,9 +38,11 @@ You start by clearly defining the start `(:` of a section and its name `(: Secti
 
 You can use different text emoticons to indicate meaningfully different sections.
 
-For example, a section that defines the format of the response is labelled `[: Response Language Definition [=`.
+### Using the Example as Reference
 
-You end by clearly closing the sections, e.g.  `) End Section name :)` or `] End format =]`.
+For example, in the quick start prompt the section that defines the format of the response is labelled `[: Response Language Definition [=`.
+
+This is ended by clearly closing the section `] End format =]`.
 
 ## Technical Advantages of (: Smile
 
