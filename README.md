@@ -8,7 +8,6 @@ The dead simple **structured markup** for **increasing instruction following** i
 
 It uses a small set of text emojis like  `(:`, `[;`, and `[=`. These can open `(:`, or close `:)`, just like brackets.
 
-
 ## Quick Start Example
 
 Curious? Just **copy and paste our quick start example** below to see the magic 👇
@@ -73,30 +72,6 @@ We can add an end label to our section start marker using just a mouth bracket `
 
 The model is able to immediately recognize from context that `(:` indicates the beginning of the start marker, and `(` is the end of the start marker.
 
-### An Easy Rule For Writing (: Smile
-
-Matching open brackets with close brackets is often effective. However...
-
-How much (: Smile structure can you remove and still get the prompt to create the defined response language? 
-
-**You don't need to match all open and close brackets exactly.** This is the advantage of Large Language Models (LLMs) - they can infer so much from context that we don't need to make fully explicit every connection between every section. Adding more structure becomes more essential the larger the prompt becomes.
-
-We provided recommended formats as a standard way to open a section with ***(: Smile***. Why? Because in our tests on foundation models, it increased instruction following and token efficiency for key tasks in our organization.
-
- **This is always our rule when we write (: Smile.** More ***(: Smile*** structure if it increases instruction following, less ***(: Smile*** struture if it increases instruction following. 
- 
- **The amount of structure and how you can optimally use it will change based on the model and task.**
-
-## Different Smiles, Different Meanings
-
-You can use different text emoticons to indicate meaningfully different sections.
-
-For example, in the quick start prompt the section that defines the format of the response is labelled `[: Response Language Definition [=`.
-
-This defines the way that the model will respond. It tells the model to follow these format instructions rigidly `[:` and exactly `[=`. 
-
-It is ended with `=] End format :]`. The word `End` is often used as an additional word to the name inside of section endings to more clearly delineate the ending of a section.
-
 
 ## Closing Sections
 
@@ -110,6 +85,21 @@ And we can map all of our brackets if we choose to:
 
 You can use any mouth `)` `]` and any eyes `:` `;` to create a section, but match the brackets between start and end markers, and use the section name to help the model understand which section is being closed.
 
+
+# An Easy Rule For Writing (: Smile
+
+Matching open brackets with close brackets is often effective. However...
+
+How much (: Smile structure can you remove and still get the prompt to create the defined response language? 
+
+**You don't need to match all open and close brackets exactly.** This is the advantage of Large Language Models (LLMs) - they can infer so much from context that we don't need to make fully explicit every connection between every section. Adding more structure becomes more essential the larger the prompt becomes.
+
+We provided recommended formats as a standard way to open a section with ***(: Smile***. Why? Because in our tests on foundation models, it increased instruction following and token efficiency for key tasks in our organization.
+
+ **This is always our rule when we write (: Smile.** More ***(: Smile*** structure if it increases instruction following, less ***(: Smile*** struture if it increases instruction following. 
+ 
+ **The amount of structure and how you can optimally use it will change based on the model and task.**
+
 ```Smile v0.4 Placeholder Example
 (: Section name (
 
@@ -117,6 +107,19 @@ Section content
 
 ) End Section name :)
 ```
+
+
+# Different Smiles, Different Meanings
+
+You can use different text emoticons to indicate meaningfully different sections.
+
+For example, in the quick start prompt the section that defines the format of the response is labelled `[: Response Language Definition [=`.
+
+This defines the way that the model will respond. It tells the model to follow these format instructions rigidly `[:` and exactly `[=`. 
+
+It is ended with `=] End format :]`. The word `End` is often used as an additional word to the name inside of section endings to more clearly delineate the ending of a section.
+
+
 
 ## Adding a Section In Response
 
@@ -182,6 +185,7 @@ These are a few different ways to create structure by ***(: Smiling***.
 
 | `[;  note or comment ;]` | human comment on an instruction | `[; Meta-Note [ The user intends to improve the intelligence of their downstream tasks using a prompt language ] ;]` | This is for when you are not instructing the model directly, but providing information, comments or notes. Can also use `(;`, the winky eyes are the differentiator.   |  
 | `{placeholder}` | area to be filled by the model | `Fill out the following sections # Thinking {Plan} # Replying {Use plan to reply}` | These are used inside of markdown sections. They are used to instruct the model on how to fill out the section (among others)  |
+
 
 
 # Prompting With a ***(: Smile***!
