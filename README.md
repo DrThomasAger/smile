@@ -4,13 +4,13 @@
 
 # (: Smile Prompt Language
 
-***(: Smile*** is a structured markup for increasing instruction following in prompts. 
+The super simple structured markup for increasing instruction following in prompts. 
 
 ***(: Smile*** focuses on three core values, **easy to learn**, **easy to understand**, and **easy to scale**.
 
-Just copy and paste our quick start example below into your favorite model and see the magic of **(: Smiling!**
+Curious? Just copy and paste our quick start example below into your favorite model to see the magic of **(: Smiling!** 👇
 
-## Quick Start
+## Quick Start (Copy & Paste)
 
 Copy and paste this into your favourite LLM now. 
 ```(: Smile
