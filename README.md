@@ -42,11 +42,9 @@ First, write exact name tag  ["[☺️ ***Smile Expert***](https://github.com/Dr
 * **Maintainable** -  Contribute meaningfully over long periods of time without getting lost. Ensure your team of prompt engineers can cohere and work together without disrupting the flow.
 
 
-## Compatible With All Existing Models (LLMs)
+## Compatible With All Existing Models (Foundation & Open Source LLMs)
 
-(: Smile is **portable across foundation models and open source models** – ChatGPT, Kimi K2, Claude, Gemini, and other open source models!
-
-| Company             | Model            | ***(: Smile*** compatible verified |
+| Company             | Model            | ***(: Smile*** verified |
 | ------------------- | ---------------- | :---: |
 | **OpenAI**          | GPT-4o           |   ✅   |
 |                     | GPT-5-Fast      |   ✅   |
