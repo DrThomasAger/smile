@@ -68,7 +68,7 @@ This leads to **three main outcomes after you adopt (: Smile for your org:**
 Want to ***(: Smile*** more at work? Just use every ***(: Smile*** as a reminder to smile in real life! That way, you can build a habit of happiness. 
 
 
-# Start Writing (: Smile
+# A Quick Guide To Writing (: Smile
 
 In ***(: Smile***, you define the response language and format.
 
