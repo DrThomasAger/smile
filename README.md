@@ -2,7 +2,7 @@
 
 # (: Smile Prompt Language
 
-The dead simple **structured markup** for **increasing instruction following** in **prompt writing**. 
+The dead simple **instruction only markup** for **increasing instruction following** in **raw prompt writing**. 
 
 > Structure your prompts consistently for predictable results — even with huge prompts!
 
