@@ -39,6 +39,8 @@ First, write exact name tag  ["[***Smile Expert***](https://github.com/DrThomasA
 If the model echoes the ***[Smile Expert](https://github.com/DrThomasAger/smile)*** name tag and response format, it understands Smile.
 
 
+*Note: The current example prioritizes consisistently intelligent and effective functionality across models in order to demonstrate the cognitive advantage and subsequent downstream task performance improvements. It is deliberately a heavily opinionated prompt in-order to demonstrate how to apply the framework, rather than providing a dense token efficient example that is gibberish or hard to read.*
+
 # Prompting With a ***(: Smile***!
 
 ⭐ **[Star the repo to help us grow](https://github.com/DrThomasAger/smile)** 
@@ -47,13 +49,12 @@ If the model echoes the ***[Smile Expert](https://github.com/DrThomasAger/smile)
 
 # Why (: Smile?
 
-* **Future-Proof**  - Allow teams of engineers to retain your prompt engineering knowledge even after your key prompt engineer leaves.
-* **Portable across foundation and open source** – Transform your text prompts so that they work across models like ChatGPT, Kimi K2, Claude, Gemini, or an open source model!
-* **Maintainable** -  Contribute meaningfully to the same prompt with clear comprehensibility over long periods of time to a team of prompt engineers.
-* **Explainable** - Map prompt text changes to response output outcomes, useful for things like allowing you to justify a bias AI decisions in an EU court of law, or explain to stakeholders why a decision was made.
-* **Token efficient** – Symbols such as `(:` and `:)` It compresses well in modern tokenizers to embed single token structure elements to indicate sections, rather than long explanations.
+* **Future-Proof**  - Allow your org to retain key prompt engineering knowledge even after your prompt engineers leave.
+* * **Explainable** - justify a bias AI decisions in an EU court of law, or explain to stakeholders why a decision was made. Map prompt text changes to response output outcomes.
+* **Portable across foundation and open source** – (: Smile works with everything! ChatGPT, Kimi K2, Claude, Gemini, and other open source models!
+* **Maintainable** -  Contribute meaningfully to the same prompt with clear comprehensibility over long periods of time. Ensure your team of prompt engineers can cohere and work together.
+* **Token efficient** – Symbols such as `(:` compress to a single token in modern tokenizers, allowing you to use clear structure rather than long  sentences for instructions.
 
-Note that token efficient examples are coming soon. The current example prioritizes consisistently intelligent and effective functionality across models in order to demonstrate the cognitive advantage and subsequent downstream task performance improvements. It is deliberately a heavily opinionated prompt in-order to demonstrate how to apply the framework, rather than providing a dense token efficient example that is gibberish or hard to read.
 
 
 ### How can I start writing (: Smile?
