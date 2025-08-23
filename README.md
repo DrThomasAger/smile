@@ -79,7 +79,7 @@ It is ended with `] End format =]`. The word `End` is often used as an additiona
 
  **Bottom line:** ***(: Smile*** turns two keystrokes into a *neurochemical and workflow advantage*. Make `(:` your default opener, and let the language do double duty. **Structure for the model, uplift for your organization & employees**.
 
-# (: Smile test
+# (: Smile Fast
 
 Try smiling now. 
 
