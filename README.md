@@ -51,13 +51,13 @@ You start by clearly defining the start `(:` of a section and its name `(: Secti
 
 You can end sections using the same markers in the opposite direction. `) End Section name :)`.
 
+To unlock the inherent structural understanding of Large Language Models (LLMs), label your instructions with sections, separating meaningfully different parts of the prompt. 
+
 One prime example of a need to separate two meaningfully different pieces of information is when a large raw text chunk from a user is uploaded. Let's imagine a raw text data input, like a wikipedia HTML page. It's full of metadata and information. This is very meaningfully different to the instruction text that we need the model to pay attention to! 
 
 Instructions in a prompt are for telling the model what to **do with the data**, data in the prompt is for **maximizing in-context learning (ICL) for the model** in the knowledge domain. 
 
 Wrapping this data inside of a structure helps the model separate the instructions from the input.
-
-To unlock the inherent structural understanding of Large Language Models (LLMs), label your instructions with sections, separating meaningfully different parts of the prompt. 
 
 **In example:** Two separate sections. One for the user input text, another for the instructions for what to do with that text. 
 
