@@ -34,7 +34,6 @@ First, write exact name tag  ["[☺️ ***Smile Expert***](https://github.com/Dr
 
 ## Technical Advantages of (: Smile
 
-As someone who has been in computer science for over a decade, this moment in prompt engineering reminds me of the moment when raw text became HTML, or unstructured data became markdown. 
 
 ***(: Smile*** is easy to **learn**, easy to **read**, and easy to **scale**. It makes every prompt:
 
