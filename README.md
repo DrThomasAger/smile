@@ -51,7 +51,11 @@ You start by clearly defining the start `(:` of a section and its name `(: Secti
 
 You can end sections using the same markers in the opposite direction. `) End Section name :)`.
 
-Label your instructions with sections, separating meaningfully different parts of the prompt. For example, provide a separate section for the user input text and the instructions for what to do with that text. 
+One prime example of a need to separate two meaningfully different pieces of information is when a large raw text chunk from a user is uploaded. This is very meaningfully different to the instruction text that we need the model to pay attention to! Wrapping this data inside of a structure helps the model separate the instructions from the input.
+
+To unlock the inherent structural understanding of Large Language Models (LLMs), label your instructions with sections, separating meaningfully different parts of the prompt. 
+
+**In example:** Two separate sections. One for the user input text, another for the instructions for what to do with that text. 
 
 ```Smile v0.4
 (: Example user input text section (
