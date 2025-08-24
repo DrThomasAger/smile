@@ -238,19 +238,6 @@ We provided recommended formats as a standard way to open a section with ***(: S
  
  **The amount of structure and how you can optimally use it will change based on the model and task.**
 
-# Separation of Concerns in an Instruction Language
-
-***(: Smile*** is a language for structuring your plain text instructions to handle separate concerns (separating instructions (like informing an agent to perform a task), from the input data (like RAG, or few-shot ICL examples) and the response language (like JSON or Markdown).
-
-
-Separation of concerns ensures that the presentation your AI gives (through rendering the response language e.g. with markdown) isn't entangled with the meta-understanding needed to know how to retain a role over multiple turns (instruction language like (: Smile) and helps the AI follow instructions even with large and unstructured input data. 
-
-Here, we separate response language (markdown like # Heading 1) and instruction language, which is ***(: Smile***.
-
-This separation of concerns allows us to use **content-agnostic semantic structure** whenever we use input to Large Language Models (LLMs).
-
-In our examples, we use markdown as our response language. This response language can be easily replaced with any other response language, like XML, JSON, or YAML.
-
 
 # Different Smiles, Different Meanings
 
