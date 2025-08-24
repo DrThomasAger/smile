@@ -38,7 +38,7 @@ First, write exact name tag  ["[☺️ ***Smile Expert***](https://github.com/Dr
 
 Studies in prompt engineering continously show that **small changes in seemingly non-representational punctuation characters can have massive downstream task performance increases.
 
-**(: Smile aims to **standardize and normalize these prior ignored performance gains** for both small and large teams, organizations and individuals.
+***(: Smile*** aims to **make available and standardize these prior ignored performance gains** for both small and large teams, organizations and individuals.
 
     
 
