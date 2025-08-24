@@ -90,7 +90,7 @@ You start by clearly defining the start `(:` of a section and its name `(: Secti
 
 You can end sections using the same markers in the opposite direction. `) End Section name :)`.
 
-## Sections
+## Input Data Separation Example
 
 Let's imagine a user query, `What is a prompt language?` and a system that retrieves input data, a HTML page wikipedia article for prompt engineering.
 
@@ -125,7 +125,7 @@ Explainability is essential even with prompt languages (like [POML](https://gith
 
 # Sections
 
-A section is a meaningfully different part of the prompt from another part of the prompt. 
+A **"section"** is defined in ***(: Smile*** meaningfully different ("Semantically unique") part of the prompt from another part of the prompt. 
 
 Let's imagine a raw text data input, like a wikipedia HTML page. It's full of metadata and information. A lot of it probably isn't relevant to the user's query, `What is a prompt language?`. There are only some parts of the information that are meaningful.
 
