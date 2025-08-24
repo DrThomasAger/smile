@@ -13,7 +13,7 @@ It uses a small set of positive text emojis like  `(:`, `[;`, and `[=`. These ca
 
 ***(: Smile*** is compatible with all models, as it is just a way of structuring instruction text, the same way you might have used XML, YAML, Markdown or JSON.
 
-Curious? Just **copy and paste our quick start example** below to see the magic 👇
+Curious? Just **copy and paste our quick start example** below into your **favorite Large Language Model (LLM)** to see the magic 👇
 
 ```(: Smile v0.4 
 ***(: Smile***:
