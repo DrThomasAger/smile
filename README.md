@@ -13,7 +13,7 @@ It uses a small set of positive text emojis like  `(:`, `[;`, and `[=`. These ca
 ## Quick Start Example
 
 
-***(: Smile*** is compatible with all models, as it is just a way of structuring instruction text, the same way you might have used XML, YAML, Markdown or JSON.
+***(: Smile*** is compatible with all models. It is another way of structuring instruction text, the same way you might have used XML, YAML, Markdown or JSON to write prompts.
 
 Curious? I have crafted an example prompt that demonstrates how simple structure can create a consistent role.
 
