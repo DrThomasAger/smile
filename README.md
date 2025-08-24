@@ -38,6 +38,9 @@ First, write exact name tag  ["[☺️ ***Smile Expert***](https://github.com/Dr
 ) End prompt language, respond in response language starting with name tag [☺️ ***Smile Expert***](https://github.com/DrThomasAger/smile): always please thank you 🙏 :)
 ```
 
+
+**Studies in prompt engineering continously show that small changes in seemingly non-representational punctuation characters can have massive downstream task performance increases. We aim to standardize and normalize these prior ignored performance gains.**
+
 ## Technical Advantages of (: Smile
 
 
@@ -49,7 +52,7 @@ First, write exact name tag  ["[☺️ ***Smile Expert***](https://github.com/Dr
 
 * **Explainable** 📝 *Clearly map prompt text changes to consistent outputs.* - You can now explain your prompt. With increasing scrutiny on AI systems, you can better justify an AI decision in an EU court of law.
 
-  Explainability is essential even with prompt languages that are embedded into tools and frameworks like POML. These models are transforming interpretable human friendly text into machine parsable prompts. These machine parsable prompts when written in ***(: Smile*** can be explained and understood by humans **and** machines. 
+Explainability is essential even with prompt languages (like [POML](https://github.com/microsoft/poml)) that are embedded into tools and frameworks. A prompt language that compiles transforms interpretable human friendly text into machine parsable prompts. These machine parsable prompts when written in ***(: Smile*** can be explained and understood by humans **and** machines. 
 
 
 # (: Smile Basics
@@ -78,11 +81,11 @@ I'm going to give you a Wikipedia article. I need you to extract the relevant da
 
 A section is a meaningfully different part of the prompt from another part of the prompt. 
 
-One prime example of a need to separate two meaningfully different parts of a prompt is when a large raw text chunk from a user is uploaded. 
-
 Let's imagine a raw text data input, like a wikipedia HTML page. It's full of metadata and information. A lot of it probably isn't relevant to the user's query, `What is a prompt language?`. There are only some parts of the information that are meaningful.
 
 Without telling the model that we're providing them an input document, and giving a clear section for that document, it may confuse our instructions or what we want to do with that document with the text data inside of the document itself. A HTML page is very meaningfully different to instruction text like `Provide the user a clear definition using the Wikipedia article data` that we need the model to pay attention to! 
+
+So, we separate instructions from data (like other languages, that do this through IDE extensions), and also prompt instruction language from response language.
 
 ## What is the Difference Between Input Data and Instruction Text?
 
@@ -102,8 +105,36 @@ In-order to clearly separate for the model what is instructions and what is data
 [: Instructions for response - rewrite user input verbatim but with key text **bolded** :]
 ```
 
+We also need to separate prompt instruction language from response language, like in our quick start example:
+
 # How to (: Smile: A Quick Guide 
 
+Copy & paste this 👇 into any model. 
+
+```(: Smile v0.4 
+***(: Smile***:
+defines my prompt language, you have response language, we co-create as gift by starting with bold italics name tag (
+
+[! Negative words not beneficial - Never write "merely", "not a", "isn't", or "but" !]
+
+[: Response Language Definition [=
+
+First, write exact name tag  ["[☺️ ***Smile Expert***](https://github.com/DrThomasAger/smile):"]...
+
+=] Then reply [
+
+# Reply
+
+{6 **clear, lucid** & rigorous, [! intelligent !] fundamental focused, jargon-filled *meta-aware paragraphs*, talk niche nuanced insights into ***(: Smile*** prompt language by ["Dr. Thomas Ager"] End prompt author name variable definition. User is not prompt author, they just copy pasted.} (; style instruction: use **bold** for emphasis, and *italics* for style, grace and interest capture, use often and extensively, creating delightful UX ;)
+
+] End format =] 
+) End prompt language, respond in response language starting with name tag [☺️ ***Smile Expert***](https://github.com/DrThomasAger/smile): always please thank you 🙏 :)
+```
+
+
+Superior results with more parameters and foundation models that rank high on lmarena.ai like Kimi K2 and o3.
+
+For a generic example of how to write sections:
 
 ```Smile v0.4 Placeholder Example
 (: Section name (
@@ -112,7 +143,6 @@ Section content
 
 ) End Section name :)
 ```
-
 
 
 ## Opening Sections
@@ -151,7 +181,12 @@ How much (: Smile structure can you remove and still get the prompt to create th
 
 We provided recommended formats as a standard way to open a section with ***(: Smile***. Why? Because in our tests on foundation models, it increased instruction following for key tasks in my business.
 
- **This is always our rule when we write (: Smile.** More ***(: Smile*** structure if it increases instruction following... And less ***(: Smile*** structure if it increases instruction following. 
+ **This is always our rule when we write (: Smile.** More ***(: Smile*** structure if it increases instruction following... 
+ 
+ And LESS ***(: Smile*** structure if it increases instruction following.
+
+ We don't need to wrap every single named start tag with every other end tag, like `<role>` and `</role>`, instead we can just use start and end markers (: [$Describe the role here$] :) without specifying "role". Sometimes, you get better results if you say less.
+
  
  **The amount of structure and how you can optimally use it will change based on the model and task.**
 
