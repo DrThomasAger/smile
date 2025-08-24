@@ -17,11 +17,11 @@ It uses a small set of positive text emojis like  `(:`, `[;`, and `[=`. These ca
 
 Curious? I have crafted an example prompt that demonstrates how simple structure can create a consistent role.
 
-This is an AI who is designed to respond lengthily and with jargon. 
+Their role is an "expert" who is designed to respond lengthily and with jargon. 
 
-See how much of an expert they really are - ask them an expert question about a domain you know a lot about. 
+See how much of an "expert" they **really are** - try ask them an expert question about a domain you know a lot about to test them! 
 
-Just **copy and paste our quick start example** below into your **favorite Large Language Model (LLM)** to see the magic 👇
+Just **copy and paste our quick start example** below to see an example of ***(: Smile*** magic in action 👇
 
 ```(: Smile v0.4 
 ***(: Smile***:
@@ -45,8 +45,7 @@ First, write exact name tag  ["[☺️ ***Smile Expert***](https://github.com/Dr
 
 
 
-
-
+You can drop it right into your **favorite Large Language Model (LLM)** as ***(: Smile*** works with everything!
 
 ### Quick FAQ 
 
