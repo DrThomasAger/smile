@@ -60,13 +60,11 @@ Structure enables you to write prompts with sections so the model can follow you
 ***(: Smile*** was made to be performant for LLMs. Markdown is a document format that is used for rendering. Just because it works or is similar to the programming language you wrote before, **doesn't mean it brings the biggest performance gains for your key organization tasks.**
 
 
-# Does Smiling Make You Happier?
+# Does (: Smiling Make You Happier?
 
-Science says yes. **Type `(:` more and you’ll feel happy too...** 
+Science says yes. **Smile more and you’ll feel happier more too...** 
 
-Anyone is able to ***(: Smile*** - the act of smiling (even with text) measurably lifts mood and sharpens focus, which makes ***(: Smile*** a tiny habit with outsized returns every time you write.
-
-1. 🙂 **Enhance mood & ease stress on cue** - 
+1. 🙂 **Smiling enhances mood & eases stress on cue** - 
    Smiling releases **endorphins, serotonin, and dopamine**, the brain’s built-in calm & joy mixture. Even a *forced* smile nudges your physiology toward **relaxation and resilience**, helping you think clearly under pressure. Exactly what you need in a high-stakes business environment. *Evidence:* [Healthline](https://www.healthline.com/health/benefits-of-smiling).
 
 2. 😄 **Symbols trigger the reward system (yes, `:)` counts)** - 
@@ -74,6 +72,9 @@ Anyone is able to ***(: Smile*** - the act of smiling (even with text) measurabl
 
 3. 🤩 **Boosts productivity, stamina, and vibes** - 
    Regular smiling is linked to **stronger immunity**, **lower pain**, and **higher job satisfaction**—the trifecta for sustained creative work and smoother collaboration. Happier prompt writers make **cleaner, more positive prompts**, and organizations feel it. *Evidence:* [Psychology Today](https://www.psychologytoday.com/us/blog/mind-well-matter/201807/why-smiling-matters), [Verywell Mind](https://www.verywellmind.com/benefits-of-smiling-2795092).
+
+Anyone is able to ***(: Smile*** - the act of smiling (even with text) measurably lifts mood and sharpens focus, which makes ***(: Smile*** a tiny habit with outsized returns every time you write.
+
 
  **⬆️ Bottom line for you and your org:** ***(: Smile*** boosts **happiness** for the model, **positivity** in your prompts and **structure** for your prompt engineers**.
 
