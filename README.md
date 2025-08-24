@@ -12,7 +12,9 @@ It uses a small set of positive text emojis like  `(:`, `[;`, and `[=`. These ca
 
 ***(: Smile*** is compatible with all models, as it is just a way of structuring instruction text, the same way you might have used XML, YAML, Markdown or JSON.
 
-***(: Smile*** is a language for structuring your plain text instructions to handle data formats, separate concerns (like instruction, data, and response language), and ensure a maintainable and explainable future-proof strategy for the prompt engineering team in your org.
+***(: Smile*** is a language for structuring your plain text instructions to handle separate concerns (separating prompt instruction for an agent from the input data (RAG, ICL) and thenresponse language (JSON or Markdown).
+
+Consistent structure ensures a maintainable and explainable future-proof strategy for the prompt engineering team in your org.
 
 
 ### Quick FAQ 
