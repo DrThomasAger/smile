@@ -24,7 +24,13 @@ Structure enables you to write prompts with sections so the model can follow you
 
 Why structure using (: Smile instead of markdown?
 
-(: Smile was made to be performant for LLMs. Markdown is a document format that is used for rendering. In our examples, we use markdown as our response language. This response language can be easily replaced with any other response language, like XML, JSON, or YAML.
+(: Smile was made to be performant for LLMs. Markdown is a document format that is used for rendering. 
+
+Here, we separate response language (markdown like # Heading 1) and instruction language, which is ***(: Smile***.
+
+This separation of concerns allows us to use **content-agnostic semantic structure** whenever we use input to Large Language Models (LLMs).
+
+In our examples, we use markdown as our response language. This response language can be easily replaced with any other response language, like XML, JSON, or YAML.
 
 Curious? Just **copy and paste our quick start example** below to see the magic 👇
 
