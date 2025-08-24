@@ -63,15 +63,15 @@ Let ***(: Smile*** be one part of making your AI systems **more transparent** fo
 
 # Quick FAQ 
 
-## ▪️ Why structure small prompts?
+### ▪️ Why structure small prompts?
 
 Because models follow structured instructions more consistently. Consistent structure ensures a maintainable and explainable future-proof strategy for the prompt engineering team in your org.
 
-## ◾️ Why structure large prompts?
+### ◾️ Why structure large prompts?
 
 Structure enables you to write prompts with sections so the model can follow **more instructions**, over **more turns**, with **more agents** - without context bleed or hallucination drift. 
 
-## 😉 Why structure using (: Smile instead of markdown?
+### 😉 Why structure using (: Smile instead of markdown?
 
 ***(: Smile*** was made to be performant for LLMs. Markdown is a document format that is used for rendering. Just because it works or is similar to the programming language you wrote before, **doesn't mean it brings the biggest performance gains for your key organization tasks.**
 
