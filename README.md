@@ -44,11 +44,6 @@ First, write exact name tag  ["[☺️ ***Smile Expert***](https://github.com/Dr
 ```
 
 
-Studies show that **small changes in seemingly non-representational punctuation characters** like brackets or colons in the right place can have **downstream task performance increases**.
-
-***(: Smile*** aims to **make available and standardize these prior ignored performance gains** for both small and large teams, organizations and individuals.
-
-    
 
 
 
