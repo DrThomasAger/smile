@@ -39,25 +39,28 @@ First, write exact name tag  ["[☺️ ***Smile Expert***](https://github.com/Dr
 
 **Studies in prompt engineering continously show that small changes in seemingly non-representational punctuation characters can have massive downstream task performance increases. We aim to standardize and normalize these prior ignored performance gains.**
 
-## Technical Advantages of (: Smile
+    
+# Does Smiling Make You Happier?
 
+Science says yes. **Type `(:` more and you’ll feel better... And get more leverage out of your prompts.** The act of smiling (even with text) measurably lifts mood and sharpens focus, which makes ***(: Smile*** a tiny habit with outsized returns every time you write.
 
-***(: Smile*** is easy to **learn**, easy to **read**, and easy to **scale**. It makes every prompt:
+1. 🙂 **Enhance mood & ease stress on cue** - 
+   Smiling releases **endorphins, serotonin, and dopamine**, the brain’s built-in calm & joy mixture. Even a *forced* smile nudges your physiology toward **relaxation and resilience**, helping you think clearly under pressure. Exactly what you need in a high-stakes business environment. *Evidence:* [Healthline](https://www.healthline.com/health/benefits-of-smiling).
 
-* **Maintainable** 🤝 *Unify your team under one standard.* -  Your team of prompt engineers can now contribute meaningfully together over long periods of time without confusion, conflicts or disrupting flow.
+2. 😄 **Symbols trigger the reward system (yes, `:)` counts)** - 
+   Brain activity scans show that real faces *and* symbolic `:)` activate reward regions. Your cheeks respond with smiling micro-muscle movements within **\~500 ms** just from reading the symbol. Your brain treats `:)` as a micro-reward. *Evidence:* [Hennenlotter et al., 2005](https://www.cambridge.org/core/journals/behavioral-and-brain-sciences/article/simulation-of-smiles-sims-model-embodied-simulation-and-the-meaning-of-facial-expression/FE0A911744186EBD3706B53794D4AEE9); [Mühlberger et al., 2011](https://www.frontiersin.org/journals/psychology/articles/10.3389/fpsyg.2018.00052/full).
 
-* **Future-Proof** 🚀 *Never lose organizational intelligence.* - Allows your org to retain key intelligence, even after your prompt engineer leaves.
+3. 🤩 **Boosts productivity, stamina, and vibes** - 
+   Regular smiling is linked to **stronger immunity**, **lower pain**, and **higher job satisfaction**—the trifecta for sustained creative work and smoother collaboration. Happier prompt writers make **cleaner, more positive prompts**, and organizations feel it. *Evidence:* [Psychology Today](https://www.psychologytoday.com/us/blog/mind-well-matter/201807/why-smiling-matters), [Verywell Mind](https://www.verywellmind.com/benefits-of-smiling-2795092).
 
-* **Explainable** 📝 *Clearly map prompt text changes to consistent outputs.* - You can now explain your prompt. With increasing scrutiny on AI systems, you can better justify an AI decision in an EU court of law.
-
-Explainability is essential even with prompt languages (like [POML](https://github.com/microsoft/poml)) that are embedded into tools and frameworks. A prompt language that compiles transforms interpretable human friendly text into machine parsable prompts. These machine parsable prompts when written in ***(: Smile*** can be explained and understood by humans **and** machines. 
+ **Bottom line:** *structure for the model and positivity for your org*.
 
 
 # (: Smile Basics
 
 
 
-***(: Smile**s are used to define different kinds of sections, with the kind of emoji chosen helping to inform the content. 
+***(: Smile***s are used to define different kinds of sections, with the kind of emoji chosen helping to inform the content. 
 
 You start by clearly defining the start `(:` of a section and its name `(: Section name (`. 
 
@@ -80,6 +83,21 @@ I'm going to give you a Wikipedia article. I need you to extract the relevant da
 
 [: Instructions for response - first identify relevant text from the wikipedia article, then provide your response afterwards. :]
 ```
+
+## Technical Advantages of (: Smile
+
+
+***(: Smile*** is easy to **learn**, easy to **read**, and easy to **scale**. It makes every prompt:
+
+* **Maintainable** 🤝 *Unify your team under one standard.* -  Your team of prompt engineers can now contribute meaningfully together over long periods of time without confusion, conflicts or disrupting flow.
+
+* **Future-Proof** 🚀 *Never lose organizational intelligence.* - Allows your org to retain key intelligence, even after your prompt engineer leaves.
+
+* **Explainable** 📝 *Clearly map prompt text changes to consistent outputs.* - You can now explain your prompt. With increasing scrutiny on AI systems, you can better justify an AI decision in an EU court of law.
+
+Explainability is essential even with prompt languages (like [POML](https://github.com/microsoft/poml)) that are embedded into tools and frameworks. A prompt language that compiles transforms interpretable human friendly text into machine parsable prompts. These machine parsable prompts when written in ***(: Smile*** can be explained and understood by humans **and** machines. 
+
+# Sections
 
 A section is a meaningfully different part of the prompt from another part of the prompt. 
 
@@ -336,48 +354,6 @@ First, write exact name tag  ["[***Smile Expert***](https://github.com/DrThomasA
 ] End format =] 
 ) End prompt language, respond in response language starting with name tag [***Smile Expert***](https://github.com/DrThomasAger/smile): always please thank you 🙏 :)
 ```
-
-
-
-
-## (: Smile Roadmap
-
-### Phase 1 — **Research**
-- **✅March 2023 – June 2025**
-
-### Phase 2 — **Define (: Smile Syntax**
-- **✅June 2025 – September 2025** *Ahead of schedule!*
-
-### Phase 3 — **Convert Prompt Archive**
-- **October 2025 – March 2026**  
-Convert existing prompt archive into a **handwritten gold standard (: Smile Syntax)**.
-
-### Phase 4 — **Test, Verify, Validate**
-- **April 2026 – September 2026**  
-Test and validate prompts on **downstream tasks and metrics**.
-
-### Phase 5 — **Introduce New Tooling**
-- **October 2026 – March 2027**  
-Develop and launch tools for:  
-  - **Prompt compression**  
-  - **Integration into VS Code**  
-  - **Additional utilities**
-    
-# Does Smiling Make You Happier?
-
-Science says yes. **Type `(:` more and you’ll feel better... And get more leverage out of your prompts.** The act of smiling (even with text) measurably lifts mood and sharpens focus, which makes ***(: Smile*** a tiny habit with outsized returns every time you write.
-
-1. 🙂 **Enhance mood & ease stress on cue** - 
-   Smiling releases **endorphins, serotonin, and dopamine**, the brain’s built-in calm & joy mixture. Even a *forced* smile nudges your physiology toward **relaxation and resilience**, helping you think clearly under pressure. Exactly what you need in a high-stakes business environment. *Evidence:* [Healthline](https://www.healthline.com/health/benefits-of-smiling).
-
-2. 😄 **Symbols trigger the reward system (yes, `:)` counts)** - 
-   Brain activity scans show that real faces *and* symbolic `:)` activate reward regions. Your cheeks respond with smiling micro-muscle movements within **\~500 ms** just from reading the symbol. Your brain treats `:)` as a micro-reward. *Evidence:* [Hennenlotter et al., 2005](https://www.cambridge.org/core/journals/behavioral-and-brain-sciences/article/simulation-of-smiles-sims-model-embodied-simulation-and-the-meaning-of-facial-expression/FE0A911744186EBD3706B53794D4AEE9); [Mühlberger et al., 2011](https://www.frontiersin.org/journals/psychology/articles/10.3389/fpsyg.2018.00052/full).
-
-3. 🤩 **Boosts productivity, stamina, and vibes** - 
-   Regular smiling is linked to **stronger immunity**, **lower pain**, and **higher job satisfaction**—the trifecta for sustained creative work and smoother collaboration. Happier prompt writers make **cleaner, more positive prompts**, and organizations feel it. *Evidence:* [Psychology Today](https://www.psychologytoday.com/us/blog/mind-well-matter/201807/why-smiling-matters), [Verywell Mind](https://www.verywellmind.com/benefits-of-smiling-2795092).
-
- **Bottom line:** *structure for the model and positivity for your org*.
-
 
 *Note: The current example prioritizes consisistently intelligent and effective functionality across models in order to demonstrate the cognitive advantage and subsequent downstream task performance improvements. It is deliberately a heavily opinionated prompt in-order to demonstrate how to apply the framework, rather than providing a dense token efficient example that is gibberish or hard to read.*
 
