@@ -12,7 +12,21 @@ It uses a small set of positive text emojis like  `(:`, `[;`, and `[=`. These ca
 
 ## Quick Start Example
 
-***(: Smile*** is compatible with all models, as it is just a way of structuring instruction text, the same way you might have used XML, YAML, Markdown or JSON to write prompts with sections so the model can follow your instructions more clearly, over more turns, with more agents. 
+***(: Smile*** is compatible with all models, as it is just a way of structuring instruction text, the same way you might have used XML, YAML, Markdown or JSON.
+
+***(: Smile*** is a language for structuring your plain text instructions to handle data formats, separate concerns (like instruction, data, and response language), and ensure a maintainable and explainable future-proof strategy for the prompt engineering team in your org.
+
+Why structure small prompts?
+
+Because they perform better.
+
+Why structure large prompts?
+
+Structure enables you to write prompts with sections so the model can follow your instructions more clearly, over more turns, with more agents. 
+
+Why structure using (: Smile instead of markdown?
+
+(: Smile was made to be performant for LLMs. Markdown is a document format that is used for rendering. In our examples, we use markdown as our response language. This response language can be easily replaced with any other response language, like XML, JSON, or YAML.
 
 Curious? Just **copy and paste our quick start example** below to see the magic 👇
 
