@@ -47,6 +47,23 @@ First, write exact name tag  ["[☺️ ***Smile Expert***](https://github.com/Dr
 
 You can drop it right into your **favorite Large Language Model (LLM)** as ***(: Smile*** works with everything!
 
+
+## Technical Advantages of (: Smile
+
+
+***(: Smile*** is easy to **learn**, easy to **read**, and easy to **scale**. It makes every prompt:
+
+* **Maintainable** 🤝 *Unify your team under one standard.* -  Your team of prompt engineers can now contribute meaningfully together over long periods of time without confusion, conflicts or disrupting flow.
+
+* **Future-Proof** 🚀 *Never lose organizational intelligence.* - Allows your org to retain key intelligence, even after your prompt engineer leaves.
+
+* **Explainable** 📝 *Clearly map prompt text changes to consistent outputs.* - You can now explain your prompt. With increasing scrutiny on AI systems, you can better justify an AI decision in an EU court of law. 
+
+Let ***(: Smile*** be one part of making your AI systems **more transparent** for **humans and models.**
+
+Explainability is essential even with prompt languages (like [POML](https://github.com/microsoft/poml)) that are embedded into tools and frameworks. A prompt language that compiles interpretable human friendly text into machine parsable prompts. These machine parsable prompts when written in ***(: Smile*** can be explained and understood by humans **and** machines. 
+
+
 ### Quick FAQ 
 
 #### ▪️ Why structure small prompts?
@@ -110,21 +127,6 @@ I'm going to give you a Wikipedia article. I need you to extract the relevant da
 ```
 
 This means that even with a very large wikipedia article input with junk data, we can still copy paste this into ChatGPT or any other model as it is and it will provide relevant text from the wikipedia article.
-
-## Technical Advantages of (: Smile
-
-
-***(: Smile*** is easy to **learn**, easy to **read**, and easy to **scale**. It makes every prompt:
-
-* **Maintainable** 🤝 *Unify your team under one standard.* -  Your team of prompt engineers can now contribute meaningfully together over long periods of time without confusion, conflicts or disrupting flow.
-
-* **Future-Proof** 🚀 *Never lose organizational intelligence.* - Allows your org to retain key intelligence, even after your prompt engineer leaves.
-
-* **Explainable** 📝 *Clearly map prompt text changes to consistent outputs.* - You can now explain your prompt. With increasing scrutiny on AI systems, you can better justify an AI decision in an EU court of law. 
-
-Let ***(: Smile*** be one part of making your AI systems **more transparent** for **humans and models.**
-
-Explainability is essential even with prompt languages (like [POML](https://github.com/microsoft/poml)) that are embedded into tools and frameworks. A prompt language that compiles interpretable human friendly text into machine parsable prompts. These machine parsable prompts when written in ***(: Smile*** can be explained and understood by humans **and** machines. 
 
 # Sections
 
