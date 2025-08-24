@@ -12,11 +12,11 @@ It uses a small set of positive text emojis like  `(:`, `[;`, and `[=`. These ca
 
 ***(: Smile*** is compatible with all models, as it is just a way of structuring instruction text, the same way you might have used XML, YAML, Markdown or JSON.
 
-***(: Smile*** is a language for structuring your plain text instructions to handle separate concerns (separating prompt instruction for an agent from the input data (RAG, ICL) and thenresponse language (JSON or Markdown).
+***(: Smile*** is a language for structuring your plain text instructions to handle separate concerns (separating instructions (like informing an agent to perform a task), from the input data (like RAG, or few-shot ICL examples) and the response language (like JSON or Markdown).
 
 Consistent structure ensures a maintainable and explainable future-proof strategy for the prompt engineering team in your org.
 
-
+Separation of concerns ensures that the presentation your AI gives (through rendering the response language e.g. with markdown) isn't entangled with the meta-understanding needed to know how to retain a role over multiple turns (instruction language like (: Smile) and helps the AI follow instructions even with large and unstructured input data. 
 ### Quick FAQ 
 
 #### Why structure small prompts?
