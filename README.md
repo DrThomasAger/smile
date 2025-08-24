@@ -14,18 +14,22 @@ It uses a small set of positive text emojis like  `(:`, `[;`, and `[=`. These ca
 
 ***(: Smile*** is a language for structuring your plain text instructions to handle data formats, separate concerns (like instruction, data, and response language), and ensure a maintainable and explainable future-proof strategy for the prompt engineering team in your org.
 
-Why structure small prompts?
+
+### Quick FAQ 
+
+#### Why structure small prompts?
 
 Because they perform better.
 
-Why structure large prompts?
+#### Why structure large prompts?
 
 Structure enables you to write prompts with sections so the model can follow your instructions more clearly, over more turns, with more agents. 
 
-Why structure using (: Smile instead of markdown?
+#### Why structure using (: Smile instead of markdown?
 
 (: Smile was made to be performant for LLMs. Markdown is a document format that is used for rendering. 
 
+# Separation of Concerns in an Instruction Language
 Here, we separate response language (markdown like # Heading 1) and instruction language, which is ***(: Smile***.
 
 This separation of concerns allows us to use **content-agnostic semantic structure** whenever we use input to Large Language Models (LLMs).
