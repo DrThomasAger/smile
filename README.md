@@ -61,9 +61,6 @@ You can drop it right into your **favorite Large Language Model (LLM)** as ***(:
 
 Let ***(: Smile*** be one part of making your AI systems **more transparent** for **humans and models.**
 
-Explainability is essential even with prompt languages (like [POML](https://github.com/microsoft/poml)) that are embedded into tools and frameworks. A prompt language that compiles interpretable human friendly text into machine parsable prompts. These machine parsable prompts when written in ***(: Smile*** can be explained and understood by humans **and** machines. 
-
-
 # Quick FAQ 
 
 ## ▪️ Why structure small prompts?
