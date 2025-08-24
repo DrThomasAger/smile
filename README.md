@@ -1,5 +1,7 @@
 ![Smile Prompt Language v0.4](Smile-logo.png)
 
+By [Dr. Thomas Ager](https://www.linkedin.com/in/drprompt?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app) Ph.D In Interpretable Machine Learning for NLP @ Cardiff University, United Kingdom.
+
 # (: Smile Prompt Language
 
 (: Smile is the dead simple **instruction only markup** for **increasing instruction following** in **large language model prompts**. 
@@ -76,7 +78,7 @@ Science says yes. **Smile more and you’ll feel happier more too...**
 Anyone is able to ***(: Smile*** - the act of smiling (even with text) measurably lifts mood and sharpens focus, which makes ***(: Smile*** a tiny habit with outsized returns every time you write.
 
 
- **⬆️ Bottom line for you and your org:** ***(: Smile*** boosts **happiness** for the model, **positivity** in your prompts and **structure** for your prompt engineers**.
+ **⬆️ Bottom line for you and your org:** ***(: Smile*** boosts **happiness** for the model, **positivity** in your prompts and **structure** for your prompt engineers.
 
  **😅 Disclaimer:** Real Smiles from real people work best.
 
