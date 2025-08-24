@@ -84,6 +84,8 @@ I'm going to give you a Wikipedia article. I need you to extract the relevant da
 [: Instructions for response - first identify relevant text from the wikipedia article, then provide your response afterwards. :]
 ```
 
+This means that even with a very large wikipedia article input with junk data, we can still copy paste this into ChatGPT or any other model as it is and it will provide relevant text from the wikipedia article.
+
 ## Technical Advantages of (: Smile
 
 
