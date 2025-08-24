@@ -57,7 +57,7 @@ Structure enables you to write prompts with sections so the model can follow you
 
 #### 😉 Why structure using (: Smile instead of markdown?
 
-***(: Smile*** was made to be performant for LLMs. Markdown is a document format that is used for rendering. 
+***(: Smile*** was made to be performant for LLMs. Markdown is a document format that is used for rendering. Just because it works or is similar to the programming language you wrote before, **doesn't mean it brings the biggest performance gains for your key organization tasks.**
 
 
 # Does Smiling Make You Happier?
