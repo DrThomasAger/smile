@@ -233,7 +233,7 @@ We provided recommended formats as a standard way to open a section with ***(: S
  
  And LESS ***(: Smile*** structure if it increases instruction following.
 
- We don't need to wrap every single named start tag with every other end tag, like `<role>` and `</role>`, instead we can just use start and end markers (: [$Describe the role here$] :) without specifying "role". Sometimes, you get better results if you say less.
+ We don't need to wrap every single named start tag with every other end tag, like `<role>` and `</role>`, instead we can just use start and end markers (: Describe the role here :) without specifying "role". Sometimes, you get better results if you say less.
 
  
  **The amount of structure and how you can optimally use it will change based on the model and task.**
