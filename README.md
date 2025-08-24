@@ -36,7 +36,9 @@ First, write exact name tag  ["[☺️ ***Smile Expert***](https://github.com/Dr
 ```
 
 
-Studies in prompt engineering continously show that **small changes in seemingly non-representational punctuation characters can have massive downstream task performance increases.** We aim to **standardize and normalize these prior ignored performance gains** for both small and large teams, organizations and individuals.
+Studies in prompt engineering continously show that **small changes in seemingly non-representational punctuation characters can have massive downstream task performance increases.
+
+**(: Smile aims to **standardize and normalize these prior ignored performance gains** for both small and large teams, organizations and individuals.
 
     
 
@@ -45,15 +47,15 @@ Studies in prompt engineering continously show that **small changes in seemingly
 
 ### Quick FAQ 
 
-#### ▪️Why structure small prompts?
+#### ▪️ Why structure small prompts?
 
 Because they follow instructions more consistently. Consistent structure ensures a maintainable and explainable future-proof strategy for the prompt engineering team in your org.
 
-#### ◾️Why structure large prompts?
+#### ◾️ Why structure large prompts?
 
 Structure enables you to write prompts with sections so the model can follow your instructions more clearly, over more turns, with more agents. 
 
-#### 😉Why structure using (: Smile instead of markdown?
+#### 😉 Why structure using (: Smile instead of markdown?
 
 ***(: Smile*** was made to be performant for LLMs. Markdown is a document format that is used for rendering. 
 
@@ -77,8 +79,6 @@ Science says yes. **Type `(:` more and you’ll feel better... And get more leve
 
 
 # (: Smile Basics
-
-
 
 ***(: Smile***s are used to define different kinds of sections, with the kind of emoji chosen helping to inform the content. 
 
