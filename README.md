@@ -180,7 +180,7 @@ First, write exact name tag  ["[☺️ ***Smile Expert***](https://github.com/Dr
 ```
 
 
-Superior results with more parameters and foundation models that rank high on lmarena.ai like Kimi K2 and o3.
+Superior results with more parameters and foundation models that rank high on [lmarena.ai](https://lmarena.ai/leaderboard) like Kimi K2 and o3.
 
 For a generic example of how to write sections:
 
