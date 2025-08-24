@@ -105,26 +105,6 @@ You start by clearly defining the start `(:` of a section and its name `(: Secti
 
 You can end sections using the same markers in the opposite direction. `) End Section name :)`.
 
-## Input Data Separation Example
-
-Let's imagine a user query, `What is a prompt language?` and a system that retrieves input data, a HTML page wikipedia article for prompt engineering.
-
-Now, we can create a prompt to handle this query and use the wikipedia article:
-
-```Smile v0.4
-I'm going to give you a Wikipedia article. I need you to extract the relevant data to the user's query, and then build a set of key points and present them to the user.
-
-(: wikipedia article input text to solve task (
-
-[$Replace_this_with_wikipedia article$] 
-
-) End input data :)
-
-[: Instructions for response - first identify relevant text from the wikipedia article, then provide your response afterwards. :]
-```
-
-This means that even with a very large wikipedia article input with junk data, we can still copy paste this into ChatGPT or any other model as it is and it will provide relevant text from the wikipedia article.
-
 # Sections
 
 A **"section"** is defined in ***(: Smile*** as a meaningfully different (or in academic terms, "Semantically unique") part of the prompt from another part of the prompt. 
