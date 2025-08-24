@@ -14,10 +14,7 @@ These are used to define different kinds of sections, with the kind of emoji cho
 
 ## Quick Start Example
 
-***(: Smile*** is compatible with all models, as it is just a way of structuring instruction text, the same way you might have used XML, YAML, Markdown or json to write prompts with sections so the model can follow your instructions more clearly. 
-
-(: Smile is a prompt instruction language that deliberately separates prompt instruction language from response output language. This enables it to be used in interfaces like GPTs, or other chat engines that render markdown responses, and also output json, or any other format. 
-
+***(: Smile*** is compatible with all models, as it is just a way of structuring instruction text, the same way you might have used XML, YAML, Markdown or JSON to write prompts with sections so the model can follow your instructions more clearly. 
 
 Curious? Just **copy and paste our quick start example** below to see the magic 👇
 
@@ -50,7 +47,9 @@ First, write exact name tag  ["[☺️ ***Smile Expert***](https://github.com/Dr
 
 * **Future-Proof** 🚀 *Never lose organizational intelligence.* - Allows your org to retain key intelligence, even after your prompt engineer leaves.
 
-* **Explainable** 📝 *Clearly map prompt text changes to consistent outputs.* - You can now explain your prompt. With increasing scrutiny on AI systems, you can better justify an AI decision in an EU court of law. 
+* **Explainable** 📝 *Clearly map prompt text changes to consistent outputs.* - You can now explain your prompt. With increasing scrutiny on AI systems, you can better justify an AI decision in an EU court of law.
+
+  Explainability is essential even with prompt languages that are embedded into tools and frameworks like POML. These models are transforming interpretable human friendly text into machine parsable prompts. These machine parsable prompts when written in ***(: Smile*** can be explained and understood by humans **and** machines. 
 
 
 # (: Smile Basics
