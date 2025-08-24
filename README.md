@@ -11,35 +11,7 @@ It uses a small set of positive text emojis like  `(:`, `[;`, and `[=`. These ca
 ## Quick Start Example
 
 
-***(: Smile*** is a language for structuring your plain text instructions to handle separate concerns (separating instructions (like informing an agent to perform a task), from the input data (like RAG, or few-shot ICL examples) and the response language (like JSON or Markdown).
-
-Consistent structure ensures a maintainable and explainable future-proof strategy for the prompt engineering team in your org.
-
-Separation of concerns ensures that the presentation your AI gives (through rendering the response language e.g. with markdown) isn't entangled with the meta-understanding needed to know how to retain a role over multiple turns (instruction language like (: Smile) and helps the AI follow instructions even with large and unstructured input data. 
-### Quick FAQ 
-
-#### ▪️Why structure small prompts?
-
-Because they perform better.
-
-#### ◾️Why structure large prompts?
-
-Structure enables you to write prompts with sections so the model can follow your instructions more clearly, over more turns, with more agents. 
-
-#### 😉Why structure using (: Smile instead of markdown?
-
-***(: Smile*** was made to be performant for LLMs. Markdown is a document format that is used for rendering. 
-
-# Separation of Concerns in an Instruction Language
-
-Here, we separate response language (markdown like # Heading 1) and instruction language, which is ***(: Smile***.
-
-This separation of concerns allows us to use **content-agnostic semantic structure** whenever we use input to Large Language Models (LLMs).
-
-In our examples, we use markdown as our response language. This response language can be easily replaced with any other response language, like XML, JSON, or YAML.
-
 ***(: Smile*** is compatible with all models, as it is just a way of structuring instruction text, the same way you might have used XML, YAML, Markdown or JSON.
-
 
 Curious? Just **copy and paste our quick start example** below to see the magic 👇
 
@@ -67,6 +39,25 @@ First, write exact name tag  ["[☺️ ***Smile Expert***](https://github.com/Dr
 Studies in prompt engineering continously show that **small changes in seemingly non-representational punctuation characters can have massive downstream task performance increases.** We aim to **standardize and normalize these prior ignored performance gains** for both small and large teams, organizations and individuals.
 
     
+
+
+
+
+### Quick FAQ 
+
+#### ▪️Why structure small prompts?
+
+Because they follow instructions more consistently. Consistent structure ensures a maintainable and explainable future-proof strategy for the prompt engineering team in your org.
+
+#### ◾️Why structure large prompts?
+
+Structure enables you to write prompts with sections so the model can follow your instructions more clearly, over more turns, with more agents. 
+
+#### 😉Why structure using (: Smile instead of markdown?
+
+***(: Smile*** was made to be performant for LLMs. Markdown is a document format that is used for rendering. 
+
+
 # Does Smiling Make You Happier?
 
 Science says yes. **Type `(:` more and you’ll feel better... And get more leverage out of your prompts.** The act of smiling (even with text) measurably lifts mood and sharpens focus, which makes ***(: Smile*** a tiny habit with outsized returns every time you write.
@@ -240,6 +231,20 @@ We provided recommended formats as a standard way to open a section with ***(: S
 
  
  **The amount of structure and how you can optimally use it will change based on the model and task.**
+
+# Separation of Concerns in an Instruction Language
+
+***(: Smile*** is a language for structuring your plain text instructions to handle separate concerns (separating instructions (like informing an agent to perform a task), from the input data (like RAG, or few-shot ICL examples) and the response language (like JSON or Markdown).
+
+
+Separation of concerns ensures that the presentation your AI gives (through rendering the response language e.g. with markdown) isn't entangled with the meta-understanding needed to know how to retain a role over multiple turns (instruction language like (: Smile) and helps the AI follow instructions even with large and unstructured input data. 
+
+Here, we separate response language (markdown like # Heading 1) and instruction language, which is ***(: Smile***.
+
+This separation of concerns allows us to use **content-agnostic semantic structure** whenever we use input to Large Language Models (LLMs).
+
+In our examples, we use markdown as our response language. This response language can be easily replaced with any other response language, like XML, JSON, or YAML.
+
 
 # Different Smiles, Different Meanings
 
