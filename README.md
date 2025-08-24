@@ -4,7 +4,7 @@
 
 (: Smile is the dead simple **instruction only markup** for **increasing instruction following** in **large language model prompts**. 
 
-> Structure your prompts consistently for predictable results — even with huge prompts!
+> Structure your prompts consistently, get predictable results for your business — even with huge prompts!
 
 It uses a small set of positive text emojis like  `(:`, `[;`, and `[=`. These can open `(:`, or close `:)`, just like brackets. 
 
