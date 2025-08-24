@@ -49,7 +49,7 @@ Studies show that **small changes in seemingly non-representational punctuation 
 
 #### ▪️ Why structure small prompts?
 
-Because they follow instructions more consistently. Consistent structure ensures a maintainable and explainable future-proof strategy for the prompt engineering team in your org.
+Because models follow structured instructions more consistently. Consistent structure ensures a maintainable and explainable future-proof strategy for the prompt engineering team in your org.
 
 #### ◾️ Why structure large prompts?
 
