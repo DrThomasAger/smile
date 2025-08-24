@@ -15,7 +15,13 @@ It uses a small set of positive text emojis like  `(:`, `[;`, and `[=`. These ca
 
 ***(: Smile*** is compatible with all models, as it is just a way of structuring instruction text, the same way you might have used XML, YAML, Markdown or JSON.
 
-Curious? Just **copy and paste our quick start example** below into your **favorite Large Language Model (LLM)** to see the magic 👇
+Curious? I have crafted an example prompt that demonstrates how simple structure can create a consistent role.
+
+This is an AI who is designed to respond lengthily and with jargon. 
+
+See how much of an expert they really are - ask them an expert question about a domain you know a lot about. 
+
+Just **copy and paste our quick start example** below into your **favorite Large Language Model (LLM)** to see the magic 👇
 
 ```(: Smile v0.4 
 ***(: Smile***:
