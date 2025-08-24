@@ -53,7 +53,9 @@ Science says yes. **Type `(:` more and you’ll feel better... And get more leve
 3. 🤩 **Boosts productivity, stamina, and vibes** - 
    Regular smiling is linked to **stronger immunity**, **lower pain**, and **higher job satisfaction**—the trifecta for sustained creative work and smoother collaboration. Happier prompt writers make **cleaner, more positive prompts**, and organizations feel it. *Evidence:* [Psychology Today](https://www.psychologytoday.com/us/blog/mind-well-matter/201807/why-smiling-matters), [Verywell Mind](https://www.verywellmind.com/benefits-of-smiling-2795092).
 
- **Bottom line:** *structure for the model and positivity for your org*.
+ **⬆️ Bottom line for you:** *structure for the model and positivity for your org*.
+
+ **😅 Disclaimer:** Real Smiles from real people work best.
 
 
 # (: Smile Basics
