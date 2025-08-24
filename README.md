@@ -72,7 +72,7 @@ Because models follow structured instructions more consistently. Consistent stru
 
 #### ◾️ Why structure large prompts?
 
-Structure enables you to write prompts with sections so the model can follow **more instructions**, over **more turns**, with **more agents** - without losing precision. 
+Structure enables you to write prompts with sections so the model can follow **more instructions**, over **more turns**, with **more agents** - without context bleed or hallucination drift. 
 
 #### 😉 Why structure using (: Smile instead of markdown?
 
