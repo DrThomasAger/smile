@@ -10,7 +10,6 @@ It uses a small set of positive text emojis like  `(:`, `[;`, and `[=`. These ca
 
 ## Quick Start Example
 
-***(: Smile*** is compatible with all models, as it is just a way of structuring instruction text, the same way you might have used XML, YAML, Markdown or JSON.
 
 ***(: Smile*** is a language for structuring your plain text instructions to handle separate concerns (separating instructions (like informing an agent to perform a task), from the input data (like RAG, or few-shot ICL examples) and the response language (like JSON or Markdown).
 
@@ -38,6 +37,9 @@ Here, we separate response language (markdown like # Heading 1) and instruction 
 This separation of concerns allows us to use **content-agnostic semantic structure** whenever we use input to Large Language Models (LLMs).
 
 In our examples, we use markdown as our response language. This response language can be easily replaced with any other response language, like XML, JSON, or YAML.
+
+***(: Smile*** is compatible with all models, as it is just a way of structuring instruction text, the same way you might have used XML, YAML, Markdown or JSON.
+
 
 Curious? Just **copy and paste our quick start example** below to see the magic 👇
 
