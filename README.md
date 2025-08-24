@@ -12,7 +12,7 @@ It uses a small set of positive text emojis like  `(:`, `[;`, and `[=`. These ca
 
 ## Quick Start Example
 
-***(: Smile*** is compatible with all models, as it is just a way of structuring instruction text, the same way you might have used XML, YAML, Markdown or JSON to write prompts with sections so the model can follow your instructions more clearly. 
+***(: Smile*** is compatible with all models, as it is just a way of structuring instruction text, the same way you might have used XML, YAML, Markdown or JSON to write prompts with sections so the model can follow your instructions more clearly, over more turns, with more agents. 
 
 Curious? Just **copy and paste our quick start example** below to see the magic 👇
 
