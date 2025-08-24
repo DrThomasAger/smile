@@ -64,7 +64,7 @@ Structure enables you to write prompts with sections so the model can follow you
 
 Science says yes. **Type `(:` more and you’ll feel happy too...** 
 
-You can also force your face muscles - the act of smiling (even with text) measurably lifts mood and sharpens focus, which makes ***(: Smile*** a tiny habit with outsized returns every time you write.
+Anyone is able to ***(: Smile*** - the act of smiling (even with text) measurably lifts mood and sharpens focus, which makes ***(: Smile*** a tiny habit with outsized returns every time you write.
 
 1. 🙂 **Enhance mood & ease stress on cue** - 
    Smiling releases **endorphins, serotonin, and dopamine**, the brain’s built-in calm & joy mixture. Even a *forced* smile nudges your physiology toward **relaxation and resilience**, helping you think clearly under pressure. Exactly what you need in a high-stakes business environment. *Evidence:* [Healthline](https://www.healthline.com/health/benefits-of-smiling).
