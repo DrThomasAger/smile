@@ -10,8 +10,6 @@ Markdown was never designed as a prompt language, it’s a document formatting s
 
 It uses a small set of positive text emojis like  `(:`, `[;`, and `[=`. These can open `(:`, or close `:)`, just like brackets. 
 
-These are used to define different kinds of sections, with the kind of emoji chosen helping to inform the content. 
-
 ## Quick Start Example
 
 ***(: Smile*** is compatible with all models, as it is just a way of structuring instruction text, the same way you might have used XML, YAML, Markdown or JSON to write prompts with sections so the model can follow your instructions more clearly. 
@@ -56,6 +54,10 @@ Explainability is essential even with prompt languages (like [POML](https://gith
 
 
 # (: Smile Basics
+
+
+
+***(: Smile**s are used to define different kinds of sections, with the kind of emoji chosen helping to inform the content. 
 
 You start by clearly defining the start `(:` of a section and its name `(: Section name (`. 
 
