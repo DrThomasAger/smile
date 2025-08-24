@@ -15,7 +15,7 @@ It uses a small set of positive text emojis like  `(:`, `[;`, and `[=`. These ca
 
 ***(: Smile*** is compatible with all models. It is another way of structuring instruction text, the same way you might have used XML, YAML, Markdown or JSON to write prompts.
 
-Curious? I have crafted an example prompt that demonstrates how simple structure can create a consistent role.
+Curious? I have written an example prompt that demonstrates how simple structure can create a consistent role.
 
 Their role is an "expert" who is designed to respond lengthily and with jargon. 
 
