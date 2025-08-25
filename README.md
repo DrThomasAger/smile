@@ -51,7 +51,7 @@ Curious? The example prompt demonstrates how simple structure can create a consi
 
 Their role is an "expert" who is designed to respond lengthily and with jargon. 
 
-The **structure** is ***(: Smile***, the content is yours to decide. Check the prompt\ folder for examples of how different content can be structured with ***(: Smile***.
+The **structure** is ***(: Smile***, the content is yours to decide. Check the `prompt/` folder for examples of how different content can be structured with ***(: Smile***.
 
 ## Technical Advantages of (: Smile
 
@@ -285,7 +285,7 @@ Compound your results by (: Smiling. You can easily integrate ***(: Smile*** int
 
 This enables you to begin adding structure in a consistent and maintainable way. 
 
-You will start seeing real results when you start using meaningful section names and descriptions, effective markdown templating (see our prompt\ folder for examples).
+You will start seeing real results when you start using meaningful section names and descriptions, effective markdown templating (see our `prompt/` folder for examples).
 
 Invest in this now and see the pay off later when your team is able to contribute meaningfully to your organization for the full duration of its lifecycle. 
 
