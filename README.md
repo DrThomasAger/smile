@@ -119,14 +119,14 @@ Instructions in a prompt are for telling the model what to **do with the data**,
 
 In-order to clearly separate for the model what is instructions and what is data, we can use sections.
 
-We also need to separate prompt instruction language from response language, like in our quick start example:
+We also need to separate prompt instruction language from response language, like in our quick start example (see next section).
 
 # How to (: Smile: A Quick Guide 
 
 Copy & paste this 👇 into any model. 
 
 ```(: Smile v0.4 
-***(: Smile***:
+***(: Smile***: 
 defines my prompt language, you have response language, we co-create as gift by starting with bold italics name tag (
 
 [! Negative words not beneficial - Never write "merely", "not a", "isn't", or "but" !]
@@ -148,15 +148,6 @@ First, write exact name tag  ["[☺️ ***Smile Expert***](https://github.com/Dr
 
 Superior results with more parameters and foundation models that rank high on [lmarena.ai](https://lmarena.ai/leaderboard) like Kimi K2 and o3.
 
-For a generic example of how to write sections:
-
-```Smile v0.4 Placeholder Example
-(: Section name (
-
-Section content
-
-) End Section name :)
-```
 
 
 ## Opening Sections
