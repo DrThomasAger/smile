@@ -47,7 +47,7 @@ You can drop it right into your **favorite Large Language Model (LLM)** as ***(:
 
 ***(: Smile*** structures instruction text for instruction following, the same way ***HTML*** structures website content into blocks a web browser can render. 
 
-Curious? The example prompt demonstrates how simple structure can create a consistent role.
+**Curious?** The example prompt demonstrates how simple structure can create a consistent role.
 
 Their role is an "expert" who is designed to respond lengthily and with jargon. 
 
