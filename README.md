@@ -6,7 +6,7 @@
 
 ***(: Smile*** is the dead simple **instruction only markup** for **increasing instruction following** in **large language model prompts**. 
 
-> 🎓 ʙʏ [ᴅʀ. ᴛʜᴏᴍᴀꜱ ᴀɢᴇʀ](https://www.linkedin.com/in/drprompt?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app) ᴘʜ.ᴅ ɪɴ [ɪɴᴛᴇʀᴘʀᴇᴛᴀʙʟᴇ ᴍᴀᴄʜɪɴᴇ ʟᴇᴀʀɴɪɴɢ](https://christophm.github.io/interpretable-ml-book/intro.html) ꜰᴏʀ ɴʟᴘ @ [ᴄᴀʀᴅɪꜰꜰ ᴜɴɪᴠᴇʀꜱɪᴛʏ](https://www.topuniversities.com/universities/cardiff-university), ᴜᴋ 🏴󠁧󠁢󠁷󠁬󠁳󠁿
+> 🎓 ʙʏ [ᴅʀ. ᴛʜᴏᴍᴀꜱ ᴀɢᴇʀ](https://www.linkedin.com/in/drprompt?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app) ᴘʜ.ᴅ ɪɴ [ɪɴᴛᴇʀᴘʀᴇᴛᴀʙʟᴇ ᴍᴀᴄʜɪɴᴇ ʟᴇᴀʀɴɪɴɢ](https://christophm.github.io/interpretable-ml-book/intro.html) (ɴʟᴘ) @ [ᴄᴀʀᴅɪꜰꜰ ᴜɴɪᴠᴇʀꜱɪᴛʏ](https://www.topuniversities.com/universities/cardiff-university), ᴜᴋ 🏴󠁧󠁢󠁷󠁬󠁳󠁿
 
 It uses a small set of positive text emojis like  `(:`, `[;`, and `[=`. These can open `(:`, or close `:)`, just like brackets. 
 
