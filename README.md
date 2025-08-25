@@ -57,21 +57,21 @@ Their role is an "expert" who is designed to respond lengthily and with jargon.
 
 ***(: Smile*** is easy to **learn**, easy to **read**, and easy to **scale**. It makes every prompt:
 
-* **Maintainable** (^_^)人(^_^) *Unify your team under one standard.* -  Your team of prompt engineers can now contribute meaningfully together over long periods of time without confusion, conflicts or disrupting flow.
+* **Maintainable** ∞ *Unify your team under one standard.* -  Your team of prompt engineers can now contribute meaningfully together over long periods of time without confusion, conflicts or disrupting flow.
 
-* **Future-Proof** /:=> *Never lose organizational intelligence.* - Allows your org to retain key intelligence, even after your prompt engineer leaves.
+* **Future-Proof** >>> *Never lose organizational intelligence.* - Allows your org to retain key intelligence, even after your prompt engineer leaves.
 
-* **Explainable** [≡◉◡◉] *Clearly map prompt text changes to consistent outputs.* - You can now explain your prompt. With increasing scrutiny on AI systems, you can better justify an AI decision in an EU court of law. 
+* **Explainable** [" *Clearly map prompt text changes to consistent outputs.* - You can now explain your prompt. With increasing scrutiny on AI systems, you can better justify an AI decision in an EU court of law. 
 
 Let ***(: Smile*** be one part of making your AI systems **more transparent** for **humans and models.**
 
 # Quick FAQ 
 
-### ▪️ Why structure small prompts?
+### • Why structure small prompts?
 
 Because models follow structured instructions more consistently. Consistent structure ensures a maintainable and explainable future-proof strategy for the prompt engineering team in your org.
 
-### ◾️ Why structure large prompts?
+### o Why structure large prompts?
 
 You probably already do! Any section, role description, instruction or data is structure. Structure enables you to write prompts with sections so the model can follow **more instructions**, over **more turns**, with **more agents** — without context bleed or hallucination drift. 
 
