@@ -128,7 +128,7 @@ We also need to separate prompt instruction language from response language, lik
 
 # (: Smile Definitions
 
-We provide multiple options to demonstrate the breadth of available instructions to Large Langauge Models. Semantically different structure creates different downstream results.
+We provide multiple options to demonstrate the breadth of available instructions to Large Langauge Models (LLMs).
 
 ## Eyes
 
