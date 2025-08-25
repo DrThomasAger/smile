@@ -76,7 +76,7 @@ Structure enables you to write prompts with sections so the model can follow **m
 
 # Does (: Smiling Make You Happier?
 
-Science says yes. **Smile and you’ll feel instantly happier...** 
+Science says yes. 
 
 **Smiling...**
 
