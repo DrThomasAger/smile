@@ -1,6 +1,4 @@
 ![Smile Prompt Language v1](Smile-logo.png)
- 
-# Let's connect with a ***(: Smile***!
 
 ☆ **Star the repo** to make a prompt engineer ***(: Smile*** -> [![☆ Star the repo](https://img.shields.io/github/stars/DrThomasAger/smile?style=social)](https://github.com/DrThomasAger/smile/stargazers)
 
