@@ -343,4 +343,6 @@ I would love for more prompt engineers to adopt the term "prompt language" for t
 
 I'm happy to help! DM me or raise an issue! :)
 
+ [![☆ Star the repo](https://img.shields.io/github/stars/DrThomasAger/smile?style=social)](https://github.com/DrThomasAger/smile/stargazers)
+
 :) End README.md :)
