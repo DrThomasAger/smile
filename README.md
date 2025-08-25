@@ -76,9 +76,7 @@ Structure enables you to write prompts with sections so the model can follow **m
 
 # Does (: Smiling Make You Happier?
 
-Science says yes. 
-
-**Smiling...**
+Science says yes. **Smiling...**
 
 1. 🤩 **Boosts productivity, stamina, and vibes** - 
    Regular smiling is linked to **stronger immunity**, **lower pain**, and **higher job satisfaction**—the trifecta for sustained creative work and smoother collaboration. Happier prompt writers make **cleaner, more positive prompts**, and organizations feel it. *Evidence:* [Psychology Today](https://www.psychologytoday.com/us/blog/mind-well-matter/201807/why-smiling-matters), [Verywell Mind](https://www.verywellmind.com/benefits-of-smiling-2795092).
