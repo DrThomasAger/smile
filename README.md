@@ -2,7 +2,7 @@
  
 
 
-# (: Smile Prompt Language
+# (: Smile Prompt Engineering Language
 
 ***(: Smile*** is the dead simple **instruction only markup** for **increasing instruction following** in **large language model prompts**. 
 
