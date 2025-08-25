@@ -93,7 +93,6 @@ Anyone is able to ***(: Smile*** - the act of smiling (even with text) measurabl
 
  **⬆️ Bottom line for you and your org:** ***(: Smile*** boosts **happiness** for the model, **positivity** in your prompts and **structure** for your prompt engineers.
 
- **😅 Disclaimer:** Real Smiles from real people work best.
 
 
 # (: Smile Basics
