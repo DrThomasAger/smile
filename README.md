@@ -335,4 +335,12 @@ Does it feel good?
 
 Want to feel happier when you prompt engineer? Just use every time you see a ***(: Smile*** as a reminder to smile in real life! That way, you can build a habit of happiness. 
 
+# Glossary
+
+I coined the term "prompt instruction language" by creating ***(: Smile*** and separating it from the response language.
+
+I would love for more prompt engineers to adopt the term "prompt language" for their method of systematizing text structure. 
+
+I'm happy to help! DM me or raise an issue! :)
+
 :) End README.md :)
