@@ -326,6 +326,8 @@ Try smiling now.
 
 Does it feel good?
 
-# 🧠 **Brain Hack**
+# @@@ **Brain Hack**
 
 Want to feel happier when you prompt engineer? Just use every time you see a ***(: Smile*** as a reminder to smile in real life! That way, you can build a habit of happiness. 
+
+:) End README.md :)
