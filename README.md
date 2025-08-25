@@ -97,7 +97,7 @@ Anyone is able to ***(: Smile*** - the act of smiling (even with text) measurabl
 
 # (: Smile Basics
 
-***(: Smile***s are used to define different kinds of sections, with the kind of emoji chosen helping to inform the content. 
+***(: Smile*** is used to define different kinds of sections, with the kind of emoji chosen helping to inform the content. 
 
 You start by clearly defining the start `(:` of a section and its name `(: Section name (`. 
 
