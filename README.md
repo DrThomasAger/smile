@@ -132,7 +132,11 @@ We provide multiple options to demonstrate the breadth of available instructions
 
 ## Eyes
 
-For example, **Straight eyes** `=` can indicate strict input that must be followed exactly, e.g. `[=` **Quote eyes** `"` show text that must be repeated word for word verbatim, e.g. `["Repeat this word for word"]` **Cash eyes**  `$` show variables and can be replaced with the true values before inference using code. `!` important eyes show text to emphasize for the model, e.g. `[! Don't use negative language. !]`. For more details, read our extensive syntax map now...
+* **Straight eyes** `=` can indicate strict input that must be followed exactly, e.g. `[=` 
+* **Quote eyes** `"` show text that must be repeated word for word verbatim, e.g. `["Repeat this word for word"]` 
+* **Cash eyes**  `$` show variables and can be replaced with the true values before inference using code. `!` important eyes show text to emphasize for the model, e.g. `[! Don't use negative language. !]`. 
+
+Full Syntax Map for ***(: Smile*** 👇
 
 ## (: Smile Syntax Map
 
