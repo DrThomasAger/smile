@@ -12,7 +12,7 @@ It uses a small set of positive text emojis like  `(:`, `[;`, and `[=`. These ca
 
 ## Quick Start Example
 
-Just **copy and paste the quick start example** below to see an example of ***(: Smile*** magic in action 👇
+Just **copy and paste the quick start example** below to see an example of ***(: Smile*** magic in action:
 
 ```(: Smile v1
 ***(: Smile***:
@@ -57,11 +57,11 @@ Their role is an "expert" who is designed to respond lengthily and with jargon.
 
 ***(: Smile*** is easy to **learn**, easy to **read**, and easy to **scale**. It makes every prompt:
 
-* **Maintainable** 🤝 *Unify your team under one standard.* -  Your team of prompt engineers can now contribute meaningfully together over long periods of time without confusion, conflicts or disrupting flow.
+* **Maintainable** (^_^)人(^_^) *Unify your team under one standard.* -  Your team of prompt engineers can now contribute meaningfully together over long periods of time without confusion, conflicts or disrupting flow.
 
-* **Future-Proof** 🚀 *Never lose organizational intelligence.* - Allows your org to retain key intelligence, even after your prompt engineer leaves.
+* **Future-Proof** /:=> *Never lose organizational intelligence.* - Allows your org to retain key intelligence, even after your prompt engineer leaves.
 
-* **Explainable** 📝 *Clearly map prompt text changes to consistent outputs.* - You can now explain your prompt. With increasing scrutiny on AI systems, you can better justify an AI decision in an EU court of law. 
+* **Explainable** [≡◉◡◉] *Clearly map prompt text changes to consistent outputs.* - You can now explain your prompt. With increasing scrutiny on AI systems, you can better justify an AI decision in an EU court of law. 
 
 Let ***(: Smile*** be one part of making your AI systems **more transparent** for **humans and models.**
 
@@ -75,7 +75,7 @@ Because models follow structured instructions more consistently. Consistent stru
 
 You probably already do! Any section, role description, instruction or data is structure. Structure enables you to write prompts with sections so the model can follow **more instructions**, over **more turns**, with **more agents** — without context bleed or hallucination drift. 
 
-### 😉 Why structure using (: Smile instead of markdown?
+### [; Why structure using (: Smile instead of markdown?
 
 ***(: Smile*** was made to be performant for LLMs. Markdown is a document format that is used for rendering. Just because it works or is similar to the programming language you wrote before, **doesn't mean it brings the biggest performance gains for your key organization tasks.**
 
@@ -84,10 +84,10 @@ You probably already do! Any section, role description, instruction or data is s
 
 Science says yes. **Smiling...**
 
-1. 🤩 **Boosts productivity, stamina, and vibes** - 
+1. (= **Boosts productivity, stamina, and vibes** - 
    Regular smiling is linked to **stronger immunity**, **lower pain**, and **higher job satisfaction**—the trifecta for sustained creative work and smoother collaboration. Happier prompt writers make **cleaner, more positive prompts**, and organizations feel it. *Evidence:* [Psychology Today](https://www.psychologytoday.com/us/blog/mind-well-matter/201807/why-smiling-matters), [Verywell Mind](https://www.verywellmind.com/benefits-of-smiling-2795092).
 
-2. 🙂 **Smiling enhances mood & eases stress on cue** - 
+2. [: **Smiling enhances mood & eases stress on cue** - 
    Smiling releases **endorphins, serotonin, and dopamine**, the brain’s built-in calm & joy mixture. Even a *forced* smile nudges your physiology toward **relaxation and resilience**, helping you think clearly under pressure. Exactly what you need in a high-stakes business environment. *Evidence:* [Healthline](https://www.healthline.com/health/benefits-of-smiling).
 
 3. (: **Symbols trigger the reward system (yes, `:)` counts)** - 
@@ -97,7 +97,7 @@ Science says yes. **Smiling...**
 Anyone is able to ***(: Smile*** - the act of smiling (even with text) measurably lifts mood and sharpens focus, which makes ***(: Smile*** a tiny habit with outsized returns every time you write.
 
 
- **⬆️ Bottom line for you and your org:** ***(: Smile*** boosts **happiness** for the model, **positivity** in your prompts and **structure** for your prompt engineers.
+ **↑ Bottom line for you and your org:** ***(: Smile*** boosts **happiness** for the model, **positivity** in your prompts and **structure** for your prompt engineers.
 
 
 
@@ -189,13 +189,13 @@ There are so many options to customize the length of asection in ***(: Smile***.
 
 In ***(: Smile***, you define the response language and format, e.g. `[: Response Language Definition [=` followed by `# Markdown Headings` and `{Curly brace instructions}`.
 
-✨ I recommend adding a new markdown section only if you have a meaningfully different section for the model to fill out. ✨
+(; I recommend adding a new markdown section only if you have a meaningfully different section for the model to fill out. ;)
 
 Let's edit the quick start example to change the format of the response.
 
 One example of a meaningfully different section from one that already exists is a section for thinking, not replying. 
 
-⚠️ This is known as a 'separation of concerns'. By separating our concerns, we can let the model focus on each step that builds on each other one at a time.
+⚠ This is known as a 'separation of concerns'. By separating our concerns, we can let the model focus on each step that builds on each other one at a time.
 
 Let's get right to it and add a simple step by step thinking (Chain of Thought or "CoT"):
 
@@ -233,6 +233,9 @@ Copy and paste the above into any model to test.
 
 🌐 [DM me on LinkedIn for a chat](https://www.linkedin.com/in/drprompt/)
 
+DM me on Discord @DrThomasAger
+
+Follow me on [Github](https://github.com/DrThomasAger/)
 
 ## Compatible With All Existing Models (Foundation & Open Source LLMs)
 
@@ -308,9 +311,8 @@ First, write exact name tag  ["[***Smile Expert***](https://github.com/DrThomasA
 ## Contribute
 Help build a dataset of prompts that will be automatically converted for better performance. Share examples already written in Smile or send raw prompts you'd like translated.
 
-- ⭐ **[Help us grow by **Starr**ing the repository](https://github.com/DrThomasAger/smile)** to help others discover Smile for **more positive prompt engineering for all.**
-- 🔔 **Follow [DrThomasAger on GitHub](https://github.com/DrThomasAger)** for updates as we publish new syntax, tooling, and benchmark results.
-- 🛠️ **Contribute on GitHub** by opening [issues](https://github.com/DrThomasAger/smile/issues) or [pull requests](https://github.com/DrPrompt/smile/pulls) with your own Smile snippets or conversion ideas.
+- ⭐ **[**Star** the repository now](https://github.com/DrThomasAger/smile)** to help others discover Smile for **more positive prompt engineering for all.**
+- 🛠️ **Contribute on GitHub** by opening [issues](https://github.com/DrThomasAger/smile/issues) or [pull requests](https://github.com/DrPrompt/smile/pulls) with your own Smile snippets, original prompts (I will convert) or your conversion (or language!) ideas.
 
 Smile formalizes an entire informal tradition. It takes what prompt engineers were already doing—dropping delimiters, making clear input vs. instruction sections, using repeated markers for emphasis, and codifies it into a coherent and positive syntax designed **to maximize instruction following.** By specifying itself as an instruction only language, it enables a directed core focus to this goal undiluted by IDE integration. Here, just focus on getting text outputs according to our instructions consistently. We do that by clearly structuring our prompts according to (: Smile. 
 
