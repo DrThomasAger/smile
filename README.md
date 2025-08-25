@@ -119,8 +119,6 @@ In-order to tell the model how to use the data, we provide **short instruction t
 
 Without telling the model that we're providing them an input document, and giving a clear section for that document, it may not be able to clearly **pay attention** to the important parts of the prompt - the short instruction text. 
 
-## What is the Difference Between Input Data and Instruction Text?
-
 Instructions in a prompt are for telling the model what to **do with the data**, like `extract the key points`, data in the prompt is for **maximizing relevant context for the model**, like a transcript of a meeting. Without the meeting, the model cannot learn in context how to use the prompt instruction. 
 
 In-order to clearly separate for the model what is instructions and what is data, we can use sections.
