@@ -36,7 +36,7 @@ First, write exact name tag  ["[☺️ ***Smile Expert***](https://github.com/Dr
 
 # How to Use 
 
-You can drop it right into your **favorite Large Language Model (LLM)** as ***(: Smile*** works with everything!
+You can copy and paste it right into your **favorite Large Language Model (LLM)** as ***(: Smile*** works with everything!
 
 ***(: Smile*** is compatible with all models:
 
