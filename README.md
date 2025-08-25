@@ -10,13 +10,6 @@ It uses a small set of positive text emojis like  `(:`, `[;`, and `[=`. These ca
 
 ## Quick Start Example
 
-
-***(: Smile*** is compatible with all models. It is another way of structuring instruction text, the same way you might have used XML, YAML, Markdown or JSON to write prompts.
-
-Curious? I have written an example prompt that demonstrates how simple structure can create a consistent role.
-
-Their role is an "expert" who is designed to respond lengthily and with jargon. 
-
 Just **copy and paste our quick start example** below to see an example of ***(: Smile*** magic in action 👇
 
 ```(: Smile v0.4 
@@ -39,10 +32,17 @@ First, write exact name tag  ["[☺️ ***Smile Expert***](https://github.com/Dr
 ) End prompt language, respond in response language starting with name tag [☺️ ***Smile Expert***](https://github.com/DrThomasAger/smile): always please thank you 🙏 :)
 ```
 
-
+### How to Use 
 
 You can drop it right into your **favorite Large Language Model (LLM)** as ***(: Smile*** works with everything!
 
+***(: Smile*** is compatible with all models. It is another way of structuring instruction text, the same way you might have used XML, YAML, Markdown or JSON to write prompts.
+
+Curious? The example prompt demonstrates how simple structure can create a consistent role.
+
+Their role is an "expert" who is designed to respond lengthily and with jargon. 
+
+The **structure** is ***(: Smile***, the content is yours to decide. Check the prompt\ folder for examples of how different content can be structured with ***(: Smile***.
 
 ## Technical Advantages of (: Smile
 
