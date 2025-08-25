@@ -231,10 +231,14 @@ Copy and paste the above into any model to test.
 
 # Let's connect with a ***(: Smile***!
 
-☆ [Star the repo to help prompt engineers Smile](https://github.com/DrThomasAger/smile)
-<> [DM me on LinkedIn for a chat](https://www.linkedin.com/in/drprompt/)
-@ DM me on Discord [@DrThomasAger](https://discord.com/users/221024427456856064)
-[: Follow me on [Github](https://github.com/DrThomasAger/)
+
+☆ Star the repo to make a prompt engineer in an organization somewhere (: Smile -> [![☆ Star the repo](https://img.shields.io/github/stars/DrThomasAger/smile?style=social)](https://github.com/DrThomasAger/smile/stargazers)
+
+## DMs always open!
+
+* <> [DM me on LinkedIn for a chat](https://www.linkedin.com/in/drprompt/)
+* @ DM me on Discord [@DrThomasAger](https://discord.com/users/221024427456856064)
+* [: Follow me on [Github](https://github.com/DrThomasAger/) for updates!
 
 
 ## Compatible With All Existing Models (Foundation & Open Source LLMs)
