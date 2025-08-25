@@ -229,9 +229,9 @@ Copy and paste the above into any model to test.
 
 # Prompting With a ***(: Smile***!
 
-⭐ **[Star the repo to help us grow](https://github.com/DrThomasAger/smile)** 
+☆ [Star the repo to help us grow](https://github.com/DrThomasAger/smile)
 
-🌐 [DM me on LinkedIn for a chat](https://www.linkedin.com/in/drprompt/)
+<> [DM me on LinkedIn for a chat](https://www.linkedin.com/in/drprompt/)
 
 DM me on Discord @DrThomasAger
 
