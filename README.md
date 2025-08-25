@@ -40,7 +40,7 @@ You can drop it right into your **favorite Large Language Model (LLM)** as ***(:
 
 ***(: Smile*** is compatible with open source, closed foundation (e.g. ***OpenAI***), toolkit (e.g. ***Cursor***) and chat web interface (e.g. ***Gemini***, ***Claude***, ***Kimi***, ***ChatGPT***) models. 
 
-***(: Smile*** structures instruction text for instruction following, the same way HTML structures website content into blocks a web browser can render. 
+***(: Smile*** structures instruction text for instruction following, the same way ***HTML*** structures website content into blocks a web browser can render. 
 
 Curious? The example prompt demonstrates how simple structure can create a consistent role.
 
