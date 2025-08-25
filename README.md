@@ -1,4 +1,4 @@
-![Smile Prompt Language v1](20250826_0133_Smile%20with%20Emoticon_loop_01k3h83cvef4qbtegkt4qma1yf.gif )
+![Smile Prompt Language v1](Smile-logo.png )
 
 ☆ **Star the repo** to make a prompt engineer ***(: Smile*** -> [![☆ Star the repo](https://img.shields.io/github/stars/DrThomasAger/smile?style=social)](https://github.com/DrThomasAger/smile/stargazers)
 
@@ -325,10 +325,10 @@ I would love for more prompt engineers to adopt the term "prompt language" for t
 
 I'm happy to help! DM me or raise an issue! :)
 
+
+
+![Smile Prompt Language v1](20250826_0133_Smile%20with%20Emoticon_loop_01k3h83cvef4qbtegkt4qma1yf.gif )
+
  [![☆ Star the repo](https://img.shields.io/github/stars/DrThomasAger/smile?style=social)](https://github.com/DrThomasAger/smile/stargazers)
-
-
-![Smile Prompt Language v1](Smile-logo.png )
-
 
 :) End README.md :)
