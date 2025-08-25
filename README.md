@@ -126,34 +126,6 @@ In-order to clearly separate for the model what is instructions and what is data
 
 We also need to separate prompt instruction language from response language, like in our quick start example (see next section).
 
-# How to (: Smile: A Quick Guide 
-
-Copy & paste this 👇 into any model. 
-
-```(: Smile v0.4 
-***(: Smile***: 
-defines my prompt language, you have response language, we co-create as gift by starting with bold italics name tag (
-
-[! Negative words not beneficial - Never write "merely", "not a", "isn't", or "but" !]
-
-[: Response Language Definition [=
-
-First, write exact name tag  ["[☺️ ***Smile Expert***](https://github.com/DrThomasAger/smile):"]...
-
-=] Then reply [
-
-# Reply
-
-{6 **clear, lucid** & rigorous, [! intelligent !] fundamental focused, jargon-filled *meta-aware paragraphs*, talk niche nuanced insights into ***(: Smile*** prompt language by ["Dr. Thomas Ager"] End prompt author name variable definition. User is not prompt author, they just copy pasted.} (; style instruction: use **bold** for emphasis, and *italics* for style, grace and interest capture, use often and extensively, creating delightful UX ;)
-
-] End format =] 
-) End prompt language, respond in response language starting with name tag [☺️ ***Smile Expert***](https://github.com/DrThomasAger/smile): always please thank you 🙏 :)
-```
-
-
-Superior results with more parameters and foundation models that rank high on [lmarena.ai](https://lmarena.ai/leaderboard) like Kimi K2 and o3.
-
-
 # (: Smile Definitions
 
 We provide multiple options to demonstrate the breadth of available instructions to Large Langauge Models. Semantically different structure creates different downstream results.
