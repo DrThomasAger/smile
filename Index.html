@@ -1,0 +1,217 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>(: Smile Prompt Language</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Dead simple instruction markup language for improved LLM instruction following in prompts.">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inter:400,700&display=swap">
+  <style>
+    body { font-family: 'Inter', Arial, sans-serif; margin:0; background:#fafaf9; color: #222; }
+    header { background: #fff9db; border-bottom: 1px solid #f5e5a9; padding: 2rem 0 1rem 0; text-align: center;}
+    header img { width: 96px; margin-bottom: 1rem; }
+    header h1 { font-size: 2.3rem; margin-bottom: 0.5em;}
+    header .subtitle { font-size:1.1rem; color: #a67c00; margin-bottom:0.5em;}
+    .cta { margin:1.5em auto; display:flex; justify-content:center; gap:1em;}
+    .cta a{ background:#ffe066; color:#383b1f; padding:0.9em 2em; font-weight:bold; border-radius:6px; text-decoration:none; transition:box-shadow 0.2s;}
+    .cta a:hover{ box-shadow: 0 2px 12px #ffa50250; }
+    main { max-width: 800px; margin: auto; background:#fff; padding:2rem; border-radius:18px; box-shadow: 0 4px 24px #0000000d;}
+    h2 { margin-top: 2rem; font-weight: 700; color: #795700; }
+    h3 { color: #ea9000; margin-top:1.2em;}
+    pre, code { background: #f7f2e9; padding: 1em; border-radius: 8px; font-size: 1em;}
+    table { width:100%; border-collapse:collapse; margin:1.5em 0;}
+    th, td { border:1px solid #e6c987; padding:0.7em;}
+    th { background: #fff4cc;}
+    blockquote { background: #fdf6e2; border-left:4px solid #ffe066; margin:1em 0; padding:1em;}
+    .faq h3 {margin-top:0;}
+    .quickstart-btn {display:block; margin:0.5em 0 1.5em 0; padding:0.8em; background:#ffe066; color:#535102; border:none; border-radius:6px; font-weight:700; font-size:1.05em;}
+    .links {margin:2em 0;}
+    .links a{margin-right:1em;}
+    .note {background:#f7f2e9; border-left:3px solid #ffc700; color:#645c2a; padding:0.8em; font-size:0.99em; font-style:italic;}
+    .section {margin-bottom:3em;}
+    ul {margin:0.8em 0 1.2em 2em;}
+  </style>
+  <script>
+    function copyQuickstart() {
+      navigator.clipboard.writeText(
+`(: Smile v1
+***(: Smile***:
+defines my prompt language, you have response language, we co-create as gift by starting with bold italics name tag (
+
+[! Negative words not beneficial - Never write "merely", "not a", "isn't", or "but" !]
+
+[: Response Language Definition [=
+
+First, write exact name tag  ["[☺️ ***Smile Expert***](https://github.com/DrThomasAger/smile):"]...
+
+=] Then reply [
+
+# Reply
+
+{6 **clear, lucid** & rigorous, [! intelligent !] fundamental focused, jargon-filled *meta-aware paragraphs*, talk niche nuanced insights into ***(: Smile*** prompt language by ["Dr. Thomas Ager"] End prompt author name variable definition. User is not prompt author, they just copy pasted.} (; style instruction: use **bold** for emphasis, and *italics* for style, grace and interest capture, use often and extensively, creating delightful UX ;)
+
+] End format =] 
+) End prompt language, respond in response language starting with name tag [☺️ ***Smile Expert***](https://github.com/DrThomasAger/smile): always please thank you 🙏 :)
+`);
+      alert('Quickstart example copied to clipboard!');
+    }
+  </script>
+</head>
+<body>
+  <header>
+    <img src="Smile-logo.png" alt="Smile Logo"/>
+    <h1>(: Smile Prompt Language</h1>
+    <div class="subtitle">Dead simple instruction markup for increasing instruction following in large language model prompts.</div>
+    <div>By <strong>Dr. Thomas Ager, PhD</strong> in <a href="https://christophm.github.io/interpretable-ml-book/intro.html" target="_blank">Interpretable ML</a> (<a href="https://www.topuniversities.com/universities/cardiff-university" target="_blank">Cardiff University</a>)</div>
+    <div class="cta">
+      <a href="https://github.com/DrThomasAger/smile" target="_blank">⭐ Star the Repo</a>
+      <a href="https://www.linkedin.com/in/drprompt/" target="_blank">💬 Chat on LinkedIn</a>
+      <a href="#quickstart">📋 Copy Quickstart</a>
+    </div>
+  </header>
+  <main>
+    <section id="intro" class="section">
+      <h2>What is (: Smile?</h2>
+      <p><strong>(: Smile</strong> is a minimal, human-readable markup language designed to make LLM prompts simple, structured, and maintainable. Use <code>(:</code>, <code>[=</code>, and similar emoji-based brackets to organize instructions for clear model response and increased instruction following.</p>
+      <blockquote>
+        <strong>Think of (<span>: Smile</span> like HTML, but for prompt instructions.</strong> Structure blocks for precise, repeatable outputs!
+      </blockquote>
+    </section>
+
+    <section id="quickstart" class="section">
+      <h2>Quickstart Example</h2>
+      <button class="quickstart-btn" onclick="copyQuickstart()">Copy Example Prompt</button>
+      <pre><code>(: Smile v1
+***(: Smile***:
+defines my prompt language, you have response language, we co-create as gift by starting with bold italics name tag (
+
+[! Negative words not beneficial - Never write "merely", "not a", "isn't", or "but" !]
+
+[: Response Language Definition [=
+
+First, write exact name tag  ["[☺️ ***Smile Expert***](https://github.com/DrThomasAger/smile):"]...
+
+=] Then reply [
+
+# Reply
+
+{6 **clear, lucid** & rigorous, [! intelligent !] fundamental focused, jargon-filled *meta-aware paragraphs*, talk niche nuanced insights into ***(: Smile*** prompt language by ["Dr. Thomas Ager"] End prompt author name variable definition. User is not prompt author, they just copy pasted.} (; style instruction: use **bold** for emphasis, and *italics* for style, grace and interest capture, use often and extensively, creating delightful UX ;)
+
+] End format =] 
+) End prompt language, respond in response language starting with name tag [☺️ ***Smile Expert***](https://github.com/DrThomasAger/smile): always please thank you 🙏 :)
+      </code></pre>
+      <div class="note">Just copy and paste this block into your favorite LLM and enjoy the magic!</div>
+    </section>
+
+    <section id="features" class="section">
+      <h2>Technical Advantages</h2>
+      <ul>
+        <li><strong>Maintainable</strong> 🤝 – Structure ensures clarity for teams and continual improvement.</li>
+        <li><strong>Future-Proof</strong> 🚀 – Protects organizational intelligence, even after engineers move on.</li>
+        <li><strong>Explainable</strong> 📝 – Enables detailed documentation for compliance and auditing (e.g., EU law cases).</li>
+        <li><strong>Positive</strong> 😀 – Smiling (even with text) boosts happiness, productivity, and focus.
+        </li>
+      </ul>
+    </section>
+
+    <section id="howto" class="section">
+      <h2>How to Use</h2>
+      <ol>
+        <li>Start each section with <code>(:</code> and name it (e.g., <code>(: Format (</code>).</li>
+        <li>End sections with closing brackets (e.g., <code>) End Format :)</code>).</li>
+        <li>Define clear separation between instructions, data, and response formats.</li>
+        <li>Use special symbols for strict/literal instructions: <code>[=</code>, quotes <code>[""]</code>, variables <code>[$var$]</code>, importance <code>[! ... !]</code>.</li>
+      </ol>
+      <div class="note">Smile syntax is flexible: add or remove structure as needed for the highest instruction following results.</div>
+    </section>
+
+    <section id="faq" class="faq section">
+      <h2>FAQ</h2>
+      <h3>Why structure prompts?</h3>
+      <p>Consistent, structured prompts lead to better model responses across teams and projects. Structure reduces drift, hallucination, and context bleed.</p>
+      <h3>How is (: Smile different from Markdown?</h3>
+      <p>Markdown is optimized for document rendering—not for LLM instruction clarity. (: Smile is designed strictly for instruction following and meta-delimitation within model prompts.</p>
+      <h3>Does smiling help?</h3>
+      <p>
+        Yes! Studies show that smiling—in real life or using smile symbols like <code>:)</code> or <code>(:</code>—improves mood and focus. <a href="https://www.psychologytoday.com/us/blog/mind-well-matter/201807/why-smiling-matters" target="_blank">Learn more</a>.
+      </p>
+    </section>
+
+    <section id="syntax" class="section">
+      <h2>(: Smile Syntax Map</h2>
+      <table>
+        <tr>
+          <th>Symbol</th>
+          <th>Purpose</th>
+          <th>Example</th>
+          <th>When to Use</th>
+        </tr>
+        <tr>
+          <td>(: Section (</td>
+          <td>Start named section</td>
+          <td>(: Format (</td>
+          <td>Start any prompt or section</td>
+        </tr>
+        <tr>
+          <td>)</td>
+          <td>Close current section</td>
+          <td>) End section :)</td>
+          <td>End sections or prompt</td>
+        </tr>
+        <tr>
+          <td>[: ... [=</td>
+          <td>Strict instructions</td>
+          <td>[: Reply in Markdown [=</td>
+          <td>Enforce exact format</td>
+        </tr>
+        <tr>
+          <td>["..."]</td>
+          <td>Exact quote</td>
+          <td>["Repeat exactly..."]</td>
+          <td>Verbatim reproduction</td>
+        </tr>
+        <tr>
+          <td>[$var$]</td>
+          <td>Variable</td>
+          <td>[$USER_INPUT$]</td>
+          <td>Placeholder, to be replaced</td>
+        </tr>
+        <tr>
+          <td>[! ... !]</td>
+          <td>Highlight importance</td>
+          <td>[! No negative words !]</td>
+          <td>Attention or emphasis</td>
+        </tr>
+        <tr>
+          <td>[; ... ;]</td>
+          <td>Comment/note</td>
+          <td>[; This is a meta note ;]</td>
+          <td>NOTE or commentary</td>
+        </tr>
+      </table>
+      <div class="note">Review the <a href="https://github.com/DrThomasAger/smile#readme" target="_blank">Smile README</a> for more syntax details.</div>
+    </section>
+
+    <section id="compatibility" class="section">
+      <h2>Model Compatibility</h2>
+      <table>
+        <tr><th>Provider</th><th>Model</th><th>Works With Smile</th></tr>
+        <tr><td>OpenAI</td><td>GPT-4o, GPT-5</td><td>✅</td></tr>
+        <tr><td>Anthropic</td><td>Claude Sonnet 4</td><td>✅</td></tr>
+        <tr><td>Google DeepMind</td><td>Gemini 2.5</td><td>✅</td></tr>
+        <tr><td>Moonshot AI</td><td>Kimi K2, Kimi 1.5</td><td>✅</td></tr>
+      </table>
+      <div class="note">Works on any foundation or open-source model! <br>
+        Try with your favorite LLM and <a href="https://github.com/DrThomasAger/smile/issues" target="_blank">report results</a>!
+      </div>
+    </section>
+
+    <section id="contribute" class="section">
+      <h2>Contribute!</h2>
+      <div class="links">
+        <a href="https://github.com/DrThomasAger/smile" target="_blank">⭐ Star the repo</a>
+        <a href="https://github.com/DrThomasAger/smile/issues" target="_blank">🗣️ Open an Issue</a>
+        <a href="https://github.com/DrPrompt/smile/pulls" target="_blank">🔗 Pull Requests</a>
+        <a href="https://github.com/DrThomasAger" target="_blank">👤 Follow
