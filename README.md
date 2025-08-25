@@ -34,7 +34,7 @@ First, write exact name tag  ["[☺️ ***Smile Expert***](https://github.com/Dr
 ) End prompt language, respond in response language starting with name tag [☺️ ***Smile Expert***](https://github.com/DrThomasAger/smile): always please thank you 🙏 :)
 ```
 
-### How to Use 
+# How to Use 
 
 You can drop it right into your **favorite Large Language Model (LLM)** as ***(: Smile*** works with everything!
 
