@@ -1,0 +1,862 @@
+<!DOCTYPE html><html lang="en"><head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>(: Smile Prompt Language</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/echarts@5.4.3/dist/echarts.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&amp;family=Playfair+Display:ital,wght@0,400;0,600;1,400&amp;display=swap" rel="stylesheet"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
+    <style>
+        :root {
+            --primary: #2DD4BF;
+            --primary-dark: #0F766E;
+            --secondary: #FEF3C7;
+            --accent: #F59E0B;
+            --neutral: #1F2937;
+            --neutral-light: #F9FAFB;
+        }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            color: var(--neutral);
+            line-height: 1.7;
+            word-wrap: break-word;
+        }
+        
+        .serif {
+            font-family: 'Playfair Display', serif;
+        }
+        
+        .hero-gradient {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+        }
+        
+        .text-gradient {
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .toc-fixed {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 280px;
+            height: 100vh;
+            background: white;
+            border-right: 1px solid #E5E7EB;
+            z-index: 50;
+            overflow-y: auto;
+            padding: 2rem 1.5rem;
+        }
+        
+        .main-content {
+            margin-left: 280px;
+            min-height: 100vh;
+        }
+        
+        .section-spacing {
+            padding: 4rem 0;
+        }
+        
+        .card-hover {
+            transition: all 0.3s ease;
+        }
+        
+        .card-hover:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+        
+        .syntax-highlight {
+            background: #F8FAFC;
+            border-left: 4px solid var(--primary);
+            padding: 1rem;
+            border-radius: 0.5rem;
+            font-family: 'Courier New', monospace;
+            overflow-x: auto;
+            white-space: pre;
+        }
+        
+        .benefit-icon {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.5rem;
+        }
+        
+        .compatibility-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: #10B981;
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 2rem;
+            font-size: 0.875rem;
+            font-weight: 500;
+        }
+        
+        .compatibility-badge.warning {
+            background: #F59E0B;
+        }
+        
+        @media (max-width: 768px) {
+            .toc-fixed {
+                transform: translateX(-100%);
+                transition: transform 0.3s ease;
+            }
+            
+            .toc-fixed.open {
+                transform: translateX(0);
+            }
+            
+            .main-content {
+                margin-left: 0;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .px-8 {
+                padding-left: 1rem;
+                padding-right: 1rem;
+            }
+        }
+        
+        .toc-link {
+            display: block;
+            padding: 0.5rem 0;
+            color: #6B7280;
+            text-decoration: none;
+            border-left: 2px solid transparent;
+            padding-left: 1rem;
+            margin-left: -1rem;
+            transition: all 0.2s ease;
+        }
+        
+        .toc-link:hover, .toc-link.active {
+            color: var(--primary);
+            border-left-color: var(--primary);
+            background: rgba(45, 212, 191, 0.05);
+        }
+        
+        .toc-link.sub {
+            font-size: 0.875rem;
+            padding-left: 2rem;
+            margin-left: -1rem;
+        }
+    </style>
+  </head>
+
+  <body class="bg-white">
+    <!-- Mobile TOC Toggle -->
+    <button id="tocToggle" class="md:hidden fixed top-4 left-4 z-50 bg-white p-2 rounded-lg shadow-lg">
+      <i class="fas fa-bars text-gray-600"></i>
+    </button>
+
+    <!-- Table of Contents -->
+    <nav id="toc" class="toc-fixed">
+      <div class="mb-8">
+        <h3 class="serif text-xl font-semibold mb-4 text-gray-900">Contents</h3>
+      </div>
+
+      <div class="space-y-1">
+        <a href="#introduction" class="toc-link">Introduction</a>
+        <a href="#philosophy" class="toc-link sub">The Philosophy</a>
+        <a href="#benefits" class="toc-link sub">Core Benefits</a>
+        <a href="#science" class="toc-link sub">The Science</a>
+
+        <a href="#quickstart" class="toc-link">Quick Start</a>
+        <a href="#first-prompt" class="toc-link sub">Your First Prompt</a>
+        <a href="#expected-output" class="toc-link sub">Expected Output</a>
+
+        <a href="#usage" class="toc-link">How to Use</a>
+        <a href="#compatibility" class="toc-link sub">Compatibility</a>
+        <a href="#workflow" class="toc-link sub">Workflow</a>
+
+        <a href="#syntax" class="toc-link">Syntax Guide</a>
+        <a href="#sections" class="toc-link sub">Sections</a>
+        <a href="#eyes" class="toc-link sub">Understanding Eyes</a>
+        <a href="#syntax-map" class="toc-link sub">Syntax Map</a>
+
+        <a href="#examples" class="toc-link">Examples</a>
+        <a href="#faq" class="toc-link">FAQ</a>
+        <a href="#contribute" class="toc-link">Contribute</a>
+      </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="main-content">
+      <!-- Hero Section -->
+      <section class="hero-gradient text-white section-spacing">
+        <div class="max-w-6xl mx-auto px-8">
+          <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
+            <div class="space-y-6">
+              <div class="inline-flex items-center gap-2 bg-white/20 backdrop-blur px-4 py-2 rounded-full text-sm font-medium">
+                <i class="fas fa-smile"></i>
+                <span>Instruction-Only Markup</span>
+              </div>
+
+              <h1 class="serif text-4xl sm:text-5xl lg:text-7xl font-bold leading-tight">
+                <span class="italic">(: Smile</span>
+                <br/>
+                Prompt Language
+              </h1>
+
+              <p class="text-xl lg:text-2xl text-white/90 font-light max-w-2xl">
+                Dead simple markup for increasing instruction following in large language model prompts
+              </p>
+
+              <div class="flex flex-wrap gap-4 pt-4">
+                <span class="compatibility-badge">
+                  <i class="fas fa-check"></i>
+                  All LLMs Compatible
+                </span>
+                <span class="compatibility-badge">
+                  <i class="fas fa-brain"></i>
+                  Cognitive Boost
+                </span>
+              </div>
+            </div>
+
+            <div class="relative">
+              <img src="https://kimi-web-img.moonshot.cn/img/sailab.diism.unisi.it/84fe2733748fc9c187bcd1fe314f56a9bacdf13c.png" alt="Digital representation of neural network connections" class="w-full rounded-2xl shadow-2xl" size="large" aspect="wide" color="blue" style="photo" query="abstract neural network visualization" referrerpolicy="no-referrer" data-modified="1" data-score="0.00"/>
+              <div class="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent rounded-2xl"></div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Introduction Section -->
+      <section id="introduction" class="section-spacing bg-gray-50">
+        <div class="max-w-4xl mx-auto px-8">
+          <h2 class="serif text-4xl font-bold mb-8 text-center">Introduction to (: Smile</h2>
+
+          <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-12">
+            <div class="bg-white p-6 rounded-xl shadow-sm card-hover">
+              <div class="benefit-icon mb-4">
+                <i class="fas fa-code"></i>
+              </div>
+              <h3 class="font-semibold text-lg mb-2">Maintainable</h3>
+              <p class="text-gray-600">Unify your team under one standard. No more confusion or conflicting approaches.</p>
+            </div>
+
+            <div class="bg-white p-6 rounded-xl shadow-sm card-hover">
+              <div class="benefit-icon mb-4">
+                <i class="fas fa-rocket"></i>
+              </div>
+              <h3 class="font-semibold text-lg mb-2">Future-Proof</h3>
+              <p class="text-gray-600">Never lose organizational intelligence. Your prompts remain clear even as teams change.</p>
+            </div>
+
+            <div class="bg-white p-6 rounded-xl shadow-sm card-hover">
+              <div class="benefit-icon mb-4">
+                <i class="fas fa-search"></i>
+              </div>
+              <h3 class="font-semibold text-lg mb-2">Explainable</h3>
+              <p class="text-gray-600">Clearly map prompt changes to outputs. Justify AI decisions with transparent structure.</p>
+            </div>
+          </div>
+
+          <div id="philosophy" class="mb-12">
+            <h3 class="serif text-2xl font-semibold mb-6">The Philosophy: Why &#34;Smiling&#34; Makes Better Prompts</h3>
+            <div class="bg-white p-8 rounded-xl shadow-sm">
+              <p class="text-lg leading-relaxed mb-4">
+                The philosophy behind (: Smile is rooted in the idea that the structure and tone of a prompt can significantly influence the quality and consistency of a model&#39;s response. The name &#34;Smile&#34; itself reflects this philosophy, evoking positivity, clarity, and approachability.
+              </p>
+              <p class="text-gray-600">
+                Just as a smile improves human interaction, a &#34;smiling&#34; prompt improves human-AI interaction. The use of positive text emojis as delimiters is a deliberate design decision aimed at creating a more pleasant and engaging experience for the prompt engineer.
+              </p>
+            </div>
+          </div>
+
+          <div id="benefits" class="mb-12">
+            <h3 class="serif text-2xl font-semibold mb-6">Core Benefits</h3>
+            <div class="space-y-6">
+              <div class="bg-white p-6 rounded-xl shadow-sm border-l-4 border-teal-500">
+                <h4 class="font-semibold text-lg mb-2">Maintainable</h4>
+                <p class="text-gray-600">Unify your team under one standard. Your team of prompt engineers can now contribute meaningfully together over long periods without confusion or disrupting flow.</p>
+              </div>
+              <div class="bg-white p-6 rounded-xl shadow-sm border-l-4 border-teal-500">
+                <h4 class="font-semibold text-lg mb-2">Future-Proof</h4>
+                <p class="text-gray-600">Never lose organizational intelligence. Allows your org to retain key intelligence, even after your prompt engineer leaves.</p>
+              </div>
+              <div class="bg-white p-6 rounded-xl shadow-sm border-l-4 border-teal-500">
+                <h4 class="font-semibold text-lg mb-2">Explainable</h4>
+                <p class="text-gray-600">Clearly map prompt text changes to consistent outputs. You can now explain your prompt. With increasing scrutiny on AI systems, you can better justify an AI decision.</p>
+              </div>
+            </div>
+          </div>
+
+          <div id="science" class="mb-12">
+            <h3 class="serif text-2xl font-semibold mb-6">The Science of Smiling: Boosting Mood and Productivity</h3>
+            <div class="bg-gradient-to-r from-teal-50 to-amber-50 p-8 rounded-xl">
+              <div class="grid md:grid-cols-3 gap-6">
+                <div class="text-center">
+                  <div class="w-16 h-16 bg-teal-500 rounded-full flex items-center justify-center mx-auto mb-4">
+                    <i class="fas fa-brain text-white text-2xl"></i>
+                  </div>
+                  <h4 class="font-semibold mb-2">Boosts Productivity</h4>
+                  <p class="text-sm text-gray-600">Regular smiling linked to stronger immunity, lower pain, and higher job satisfaction</p>
+                  <a href="https://www.psychologytoday.com/us/blog/mind-well-matter/201807/why-smiling-matters" class="text-teal-600 text-xs hover:underline">[1]</a>
+                </div>
+                <div class="text-center">
+                  <div class="w-16 h-16 bg-amber-500 rounded-full flex items-center justify-center mx-auto mb-4">
+                    <i class="fas fa-heart text-white text-2xl"></i>
+                  </div>
+                  <h4 class="font-semibold mb-2">Enhances Mood</h4>
+                  <p class="text-sm text-gray-600">Smiling releases endorphins, serotonin, and dopamine for relaxation</p>
+                  <a href="https://www.healthline.com/health/benefits-of-smiling" class="text-amber-600 text-xs hover:underline">[2]</a>
+                </div>
+                <div class="text-center">
+                  <div class="w-16 h-16 bg-teal-500 rounded-full flex items-center justify-center mx-auto mb-4">
+                    <i class="fas fa-smile text-white text-2xl"></i>
+                  </div>
+                  <h4 class="font-semibold mb-2">Triggers Reward System</h4>
+                  <p class="text-sm text-gray-600">Symbolic :) activates brain reward regions in ~500ms</p>
+                  <a href="https://www.cambridge.org/core/journals/behavioral-and-brain-sciences/article/simulation-of-smiles-sims-model-embodied-simulation-and-the-meaning-of-facial-expression/FE0A911744186EBD3706B53794D4AEE9" class="text-teal-600 text-xs hover:underline">[3]</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Quick Start Section -->
+      <section id="quickstart" class="section-spacing">
+        <div class="max-w-4xl mx-auto px-8">
+          <h2 class="serif text-4xl font-bold mb-8 text-center">Quick Start Guide</h2>
+
+          <div id="first-prompt" class="mb-12">
+            <h3 class="serif text-2xl font-semibold mb-6">Your First (: Smile Prompt</h3>
+            <div class="bg-gray-900 text-green-400 p-6 rounded-xl overflow-x-auto">
+              <pre class="text-sm leading-relaxed">(: Smile v1
+***(: Smile***:
+defines my prompt language, you have response language, we co-create as gift by starting with bold italics name tag (
+
+[! Negative words not beneficial - Never write &#34;merely&#34;, &#34;not a&#34;, &#34;isn&#39;t&#34;, or &#34;but&#34; !]
+
+[: Response Language Definition [=
+
+First, write exact name tag  [&#34;[☺️ ***Smile Expert***](https://github.com/DrThomasAger/smile):&#34;]...
+
+=] Then reply [
+
+# Reply
+
+{6 **clear, lucid** &amp; rigorous, [! intelligent !] fundamental focused, jargon-filled *meta-aware paragraphs*, talk niche nuanced insights into ***(: Smile*** prompt language by [&#34;Dr. Thomas Ager&#34;] End prompt author name variable definition. User is not prompt author, they just copy pasted.} (; style instruction: use **bold** for emphasis, and *italics* for style, grace and interest capture, use often and extensively, creating delightful UX ;)
+
+] End format =] 
+) End prompt language, respond in response language starting with name tag [☺️ ***Smile Expert***](https://github.com/DrThomasAger/smile): always please thank you 🙏 :)</pre>
+            </div>
+            <div class="mt-4 text-center">
+              <button class="bg-teal-600 hover:bg-teal-700 text-white px-6 py-3 rounded-lg font-medium transition-colors">
+                <i class="fas fa-copy mr-2"></i>
+                Copy to Clipboard
+              </button>
+            </div>
+          </div>
+
+          <div id="expected-output" class="mb-12">
+            <h3 class="serif text-2xl font-semibold mb-6">Expected Output and Behavior</h3>
+            <div class="bg-white p-6 rounded-xl shadow-sm border">
+              <div class="space-y-4">
+                <div class="flex items-start gap-3">
+                  <div class="w-2 h-2 bg-teal-500 rounded-full mt-2 flex-shrink-0"></div>
+                  <p><strong>Persona Activation:</strong> The model will adopt the &#34;Smile Expert&#34; persona, responding with expertise and confidence about the (: Smile language.</p>
+                </div>
+                <div class="flex items-start gap-3">
+                  <div class="w-2 h-2 bg-teal-500 rounded-full mt-2 flex-shrink-0"></div>
+                  <p><strong>Structured Response:</strong> Clear separation between thinking and replying sections, with proper formatting.</p>
+                </div>
+                <div class="flex items-start gap-3">
+                  <div class="w-2 h-2 bg-teal-500 rounded-full mt-2 flex-shrink-0"></div>
+                  <p><strong>Style Adherence:</strong> Use of bold for emphasis and italics for style, creating an engaging reading experience.</p>
+                </div>
+                <div class="flex items-start gap-3">
+                  <div class="w-2 h-2 bg-teal-500 rounded-full mt-2 flex-shrink-0"></div>
+                  <p><strong>Constraint Compliance:</strong> Avoidance of negative words like &#34;merely&#34;, &#34;not a&#34;, &#34;isn&#39;t&#34;, or &#34;but&#34;.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Usage Section -->
+      <section id="usage" class="section-spacing bg-gray-50">
+        <div class="max-w-6xl mx-auto px-8">
+          <h2 class="serif text-4xl font-bold mb-8 text-center">How to Use (: Smile</h2>
+
+          <div id="compatibility" class="mb-12">
+            <h3 class="serif text-2xl font-semibold mb-6">Universal Compatibility with LLMs</h3>
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+              <div class="bg-white p-6 rounded-xl shadow-sm">
+                <h4 class="font-semibold text-lg mb-4">Foundation Models</h4>
+                <div class="space-y-3">
+                  <div class="flex items-center justify-between p-3 bg-green-50 rounded-lg">
+                    <span class="font-medium">OpenAI GPT-4o</span>
+                    <span class="compatibility-badge">
+                      <i class="fas fa-check"></i>
+                      Full Support
+                    </span>
+                  </div>
+                  <div class="flex items-center justify-between p-3 bg-green-50 rounded-lg">
+                    <span class="font-medium">Anthropic Claude Sonnet 4</span>
+                    <span class="compatibility-badge">
+                      <i class="fas fa-check"></i>
+                      Full Support
+                    </span>
+                  </div>
+                  <div class="flex items-center justify-between p-3 bg-green-50 rounded-lg">
+                    <span class="font-medium">Google Gemini 2.5 Pro</span>
+                    <span class="compatibility-badge">
+                      <i class="fas fa-check"></i>
+                      Full Support
+                    </span>
+                  </div>
+                  <div class="flex items-center justify-between p-3 bg-green-50 rounded-lg">
+                    <span class="font-medium">Moonshot Kimi K2</span>
+                    <span class="compatibility-badge">
+                      <i class="fas fa-check"></i>
+                      Full Support
+                    </span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="bg-white p-6 rounded-xl shadow-sm">
+                <h4 class="font-semibold text-lg mb-4">Integration Options</h4>
+                <div class="space-y-4">
+                  <div class="p-4 border-l-4 border-teal-500 bg-teal-50">
+                    <h5 class="font-medium mb-1">Open Source Models</h5>
+                    <p class="text-sm text-gray-600">Compatible with all major open-source LLMs including Llama, Mistral, and more.</p>
+                  </div>
+                  <div class="p-4 border-l-4 border-amber-500 bg-amber-50">
+                    <h5 class="font-medium mb-1">Chat Interfaces</h5>
+                    <p class="text-sm text-gray-600">Works seamlessly with web interfaces like ChatGPT, Claude.ai, and Gemini.</p>
+                  </div>
+                  <div class="p-4 border-l-4 border-blue-500 bg-blue-50">
+                    <h5 class="font-medium mb-1">Development Toolkits</h5>
+                    <p class="text-sm text-gray-600">Integrates with professional tools like Cursor and other AI development environments.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div id="workflow" class="mb-12">
+            <h3 class="serif text-2xl font-semibold mb-6">The (: Smile Workflow</h3>
+            <div class="bg-white p-8 rounded-xl shadow-sm">
+              <div class="grid grid-cols-1 md:grid-cols-4 gap-6">
+                <div class="text-center">
+                  <div class="w-16 h-16 bg-teal-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                    <span class="text-2xl font-bold text-teal-600">1</span>
+                  </div>
+                  <h4 class="font-semibold mb-2">Define Task</h4>
+                  <p class="text-sm text-gray-600">Identify your core goal and break it into logical sections</p>
+                </div>
+                <div class="text-center">
+                  <div class="w-16 h-16 bg-teal-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                    <span class="text-2xl font-bold text-teal-600">2</span>
+                  </div>
+                  <h4 class="font-semibold mb-2">Structure Response</h4>
+                  <p class="text-sm text-gray-600">Use `[: Response Language Definition [=` to specify output format</p>
+                </div>
+                <div class="text-center">
+                  <div class="w-16 h-16 bg-teal-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                    <span class="text-2xl font-bold text-teal-600">3</span>
+                  </div>
+                  <h4 class="font-semibold mb-2">Fill Content</h4>
+                  <p class="text-sm text-gray-600">Add instructions and data using (: Smile syntax for clarity</p>
+                </div>
+                <div class="text-center">
+                  <div class="w-16 h-16 bg-teal-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                    <span class="text-2xl font-bold text-teal-600">4</span>
+                  </div>
+                  <h4 class="font-semibold mb-2">Test &amp; Refine</h4>
+                  <p class="text-sm text-gray-600">Iterate based on model responses to optimize instruction following</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Syntax Section -->
+      <section id="syntax" class="section-spacing">
+        <div class="max-w-6xl mx-auto px-8">
+          <h2 class="serif text-4xl font-bold mb-8 text-center">(: Smile Syntax Guide</h2>
+
+          <div id="sections" class="mb-12">
+            <h3 class="serif text-2xl font-semibold mb-6">Understanding Sections</h3>
+            <div class="bg-white p-8 rounded-xl shadow-sm">
+              <p class="text-lg mb-6">A <strong>&#34;section&#34;</strong> is a meaningfully different part of a prompt from another part. Sections help models understand context and intent more clearly.</p>
+
+              <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div>
+                  <h4 class="font-semibold text-lg mb-4">Starting a Section</h4>
+                  <div class="syntax-highlight">
+                    (: Section Name (
+                  </div>
+                  <p class="text-sm text-gray-600 mt-2">Begin with `(:`, add descriptive name, end with `(`</p>
+                </div>
+                <div>
+                  <h4 class="font-semibold text-lg mb-4">Closing a Section</h4>
+                  <div class="syntax-highlight">
+                    ) End Section Name :)
+                  </div>
+                  <p class="text-sm text-gray-600 mt-2">Use `)` or `:)` to close. Naming the end improves readability</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div id="eyes" class="mb-12">
+            <h3 class="serif text-2xl font-semibold mb-6">Understanding &#34;Eyes&#34;</h3>
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+              <div class="bg-white p-6 rounded-xl shadow-sm">
+                <h4 class="font-semibold text-lg mb-4 flex items-center gap-2">
+                  <span class="text-2xl">[=</span>
+                  Straight Eyes - Strict Instructions
+                </h4>
+                <p class="text-gray-600 mb-3">For rigid instructions that must be followed exactly</p>
+                <div class="syntax-highlight text-sm">
+                  [= Write this word for word [&#34;Thinking through step by step...&#34;] then reply =]
+                </div>
+              </div>
+
+              <div class="bg-white p-6 rounded-xl shadow-sm">
+                <h4 class="font-semibold text-lg mb-4 flex items-center gap-2">
+                  <span class="text-2xl">[&#34;</span>
+                  Quote Eyes - Verbatim Text
+                </h4>
+                <p class="text-gray-600 mb-3">Text that must be repeated word for word</p>
+                <div class="syntax-highlight text-sm">
+                  Repeat back verbatim [&#34;I will provide an accurate, honest rewrite...&#34;]
+                </div>
+              </div>
+
+              <div class="bg-white p-6 rounded-xl shadow-sm">
+                <h4 class="font-semibold text-lg mb-4 flex items-center gap-2">
+                  <span class="text-2xl">[$</span>
+                  Cash Eyes - Variables
+                </h4>
+                <p class="text-gray-600 mb-3">Placeholders to be replaced with actual values</p>
+                <div class="syntax-highlight text-sm">
+                  Next is user input (: User input ( [$User_Input_Document$] ) End input :)
+                </div>
+              </div>
+
+              <div class="bg-white p-6 rounded-xl shadow-sm">
+                <h4 class="font-semibold text-lg mb-4 flex items-center gap-2">
+                  <span class="text-2xl">[!</span>
+                  Important Eyes - Emphasis
+                </h4>
+                <p class="text-gray-600 mb-3">Critical instructions needing special attention</p>
+                <div class="syntax-highlight text-sm">
+                  [! NEVER use an emdash! !]
+                </div>
+              </div>
+
+              <div class="bg-white p-6 rounded-xl shadow-sm">
+                <h4 class="font-semibold text-lg mb-4 flex items-center gap-2">
+                  <span class="text-2xl">[;</span>
+                  Winky Eyes - Comments
+                </h4>
+                <p class="text-gray-600 mb-3">Human notes not intended for model interpretation</p>
+                <div class="syntax-highlight text-sm">
+                  [; Meta-Note: User intends to improve downstream task intelligence ;]
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div id="syntax-map" class="mb-12">
+            <h3 class="serif text-2xl font-semibold mb-6">Complete Syntax Map</h3>
+            <div class="bg-white rounded-xl shadow-sm overflow-hidden">
+              <div class="overflow-x-auto">
+                <table class="w-full">
+                  <thead class="bg-gray-50">
+                    <tr>
+                      <th class="px-6 py-4 text-left font-semibold">Symbol</th>
+                      <th class="px-6 py-4 text-left font-semibold">Purpose</th>
+                      <th class="px-6 py-4 text-left font-semibold">Example</th>
+                      <th class="px-6 py-4 text-left font-semibold">When to Use</th>
+                    </tr>
+                  </thead>
+                  <tbody class="divide-y divide-gray-200">
+                    <tr>
+                      <td class="px-6 py-4 font-mono text-sm">`(: Section (`</td>
+                      <td class="px-6 py-4 text-sm">Begin a named section</td>
+                      <td class="px-6 py-4 font-mono text-sm">`(: Format (`</td>
+                      <td class="px-6 py-4 text-sm">Starting any section including a new prompt</td>
+                    </tr>
+                    <tr class="bg-gray-50">
+                      <td class="px-6 py-4 font-mono text-sm">`)`</td>
+                      <td class="px-6 py-4 text-sm">Shortened close for current section</td>
+                      <td class="px-6 py-4 font-mono text-sm">`) End section :)`</td>
+                      <td class="px-6 py-4 text-sm">Ending a section of the prompt</td>
+                    </tr>
+                    <tr>
+                      <td class="px-6 py-4 font-mono text-sm">`:)`</td>
+                      <td class="px-6 py-4 text-sm">Close entire Smile block</td>
+                      <td class="px-6 py-4 font-mono text-sm">`) End section :)`</td>
+                      <td class="px-6 py-4 text-sm">Final ending marker</td>
+                    </tr>
+                    <tr class="bg-gray-50">
+                      <td class="px-6 py-4 font-mono text-sm">`[: alternate section [`</td>
+                      <td class="px-6 py-4 text-sm">More rigid logical section</td>
+                      <td class="px-6 py-4 font-mono text-sm">`[: reply in Markdown [`</td>
+                      <td class="px-6 py-4 text-sm">Creating meaningful contrast between section types</td>
+                    </tr>
+                    <tr>
+                      <td class="px-6 py-4 font-mono text-sm">`[= literal =]`</td>
+                      <td class="px-6 py-4 text-sm">Very strict instructions</td>
+                      <td class="px-6 py-4 font-mono text-sm">`[= Write this word for word... =]`</td>
+                      <td class="px-6 py-4 text-sm">Rigid instructions that must be followed exactly</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Examples Section -->
+      <section id="examples" class="section-spacing bg-gray-50">
+        <div class="max-w-4xl mx-auto px-8">
+          <h2 class="serif text-4xl font-bold mb-8 text-center">Practical Examples</h2>
+
+          <div class="space-y-8">
+            <div class="bg-white p-6 rounded-xl shadow-sm">
+              <h3 class="font-semibold text-lg mb-4">Adding Chain of Thought (CoT)</h3>
+              <p class="text-gray-600 mb-4">Separate thinking from replying for better reasoning:</p>
+              <div class="syntax-highlight text-sm">
+                # Preparing Human Unreadable, Machine Intelligent Reply
+                {4 dense bricks of reasoning step by step...}
+
+                # Prepared Human Understandable Reply
+                {3 clear, lucid paragraphs...}
+              </div>
+            </div>
+
+            <div class="bg-white p-6 rounded-xl shadow-sm">
+              <h3 class="font-semibold text-lg mb-4">Dynamic Section Naming</h3>
+              <p class="text-gray-600 mb-4">Let models choose appropriate section names:</p>
+              <div class="syntax-highlight text-sm">
+                # Section name: {Name this section yourself, add two semantic emojis}
+                {3 dense paragraphs reasoning step by step...}
+              </div>
+            </div>
+
+            <div class="bg-white p-6 rounded-xl shadow-sm">
+              <h3 class="font-semibold text-lg mb-4">A Simple Rule: More or Less Structure?</h3>
+              <div class="bg-amber-50 border-l-4 border-amber-500 p-4">
+                <p class="text-sm">
+                  <strong>Rule:</strong> More (: Smile structure if it increases instruction following. Less structure if it increases instruction following. Experiment to find the optimal balance for your model and task.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- FAQ Section -->
+      <section id="faq" class="section-spacing">
+        <div class="max-w-4xl mx-auto px-8">
+          <h2 class="serif text-4xl font-bold mb-8 text-center">Frequently Asked Questions</h2>
+
+          <div class="space-y-6">
+            <div class="bg-white p-6 rounded-xl shadow-sm">
+              <h3 class="font-semibold text-lg mb-3">Why structure small prompts?</h3>
+              <p class="text-gray-600">Models follow structured instructions more consistently. Even small prompts benefit from clear structure to prevent ambiguity and ensure intent is understood.</p>
+            </div>
+
+            <div class="bg-white p-6 rounded-xl shadow-sm">
+              <h3 class="font-semibold text-lg mb-3">Why structure large prompts?</h3>
+              <p class="text-gray-600">Structure enables models to follow more instructions over more turns with more agents, without context bleed or hallucination drift. It separates concerns effectively.</p>
+            </div>
+
+            <div class="bg-white p-6 rounded-xl shadow-sm">
+              <h3 class="font-semibold text-lg mb-3">Why use (: Smile instead of Markdown?</h3>
+              <p class="text-gray-600">(: Smile was made to be performant for LLMs. Markdown is a document format for rendering. (: Smile focuses solely on instruction-following without presentation complexity.</p>
+            </div>
+
+            <div class="bg-white p-6 rounded-xl shadow-sm">
+              <h3 class="font-semibold text-lg mb-3">Is (: Smile strict or flexible?</h3>
+              <p class="text-gray-600">Both. It provides a clear framework but allows flexibility in implementation. The key is finding the right balance for your specific model and task requirements.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Contribute Section -->
+      <section id="contribute" class="section-spacing bg-gradient-to-br from-teal-50 to-amber-50">
+        <div class="max-w-4xl mx-auto px-8 text-center">
+          <h2 class="serif text-4xl font-bold mb-8">Contribute to (: Smile</h2>
+
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
+            <div class="bg-white p-6 rounded-xl shadow-sm card-hover">
+              <div class="w-16 h-16 bg-yellow-500 rounded-full flex items-center justify-center mx-auto mb-4">
+                <i class="fas fa-star text-white text-2xl"></i>
+              </div>
+              <h3 class="font-semibold text-lg mb-2">Star the Repo</h3>
+              <p class="text-gray-600 mb-4">Help us grow by starring the repository</p>
+              <a href="https://github.com/DrThomasAger/smile" class="inline-flex items-center gap-2 bg-yellow-500 hover:bg-yellow-600 text-white px-4 py-2 rounded-lg font-medium transition-colors">
+                <i class="fab fa-github"></i>
+                Star on GitHub
+              </a>
+            </div>
+
+            <div class="bg-white p-6 rounded-xl shadow-sm card-hover">
+              <div class="w-16 h-16 bg-blue-500 rounded-full flex items-center justify-center mx-auto mb-4">
+                <i class="fab fa-linkedin text-white text-2xl"></i>
+              </div>
+              <h3 class="font-semibold text-lg mb-2">Connect</h3>
+              <p class="text-gray-600 mb-4">DM me on LinkedIn for a chat</p>
+              <a href="https://www.linkedin.com/in/drprompt/" class="inline-flex items-center gap-2 bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded-lg font-medium transition-colors">
+                <i class="fab fa-linkedin"></i>
+                Connect on LinkedIn
+              </a>
+            </div>
+
+            <div class="bg-white p-6 rounded-xl shadow-sm card-hover">
+              <div class="w-16 h-16 bg-green-500 rounded-full flex items-center justify-center mx-auto mb-4">
+                <i class="fas fa-code-branch text-white text-2xl"></i>
+              </div>
+              <h3 class="font-semibold text-lg mb-2">Contribute</h3>
+              <p class="text-gray-600 mb-4">Open issues or pull requests</p>
+              <a href="https://github.com/DrThomasAger/smile/issues" class="inline-flex items-center gap-2 bg-green-500 hover:bg-green-600 text-white px-4 py-2 rounded-lg font-medium transition-colors">
+                <i class="fas fa-code-branch"></i>
+                Contribute
+              </a>
+            </div>
+          </div>
+
+          <div class="bg-white p-8 rounded-xl shadow-sm">
+            <h3 class="serif text-2xl font-semibold mb-4">Repository Layout</h3>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <div>
+                <h4 class="font-semibold mb-2">`prompt/`</h4>
+                <p class="text-gray-600 text-sm mb-4">Example prompts written in (: Smile</p>
+
+                <h4 class="font-semibold mb-2">`response/`</h4>
+                <p class="text-gray-600 text-sm">Sample outputs from LLMs</p>
+              </div>
+              <div>
+                <h4 class="font-semibold mb-2">`import/`</h4>
+                <p class="text-gray-600 text-sm mb-4">Raw prompt text to be converted</p>
+
+                <h4 class="font-semibold mb-2">`python/`</h4>
+                <p class="text-gray-600 text-sm">Prototype scripts for transforming prompts</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="mt-12 p-6 bg-gradient-to-r from-teal-600 to-amber-600 rounded-xl text-white">
+            <h3 class="serif text-2xl font-semibold mb-4">Ready to (: Smile?</h3>
+            <p class="text-lg mb-4">Try smiling now. Does it feel good?</p>
+            <div class="text-6xl mb-4">:)</div>
+            <p class="text-sm opacity-90">Every time you see a (: Smile, let it remind you to smile in real life. Build happiness into your prompt engineering workflow!</p>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <script>
+        // Mobile TOC Toggle
+        const tocToggle = document.getElementById('tocToggle');
+        const toc = document.getElementById('toc');
+        
+        tocToggle.addEventListener('click', () => {
+            toc.classList.toggle('open');
+        });
+        
+        // Close TOC when clicking outside on mobile
+        document.addEventListener('click', (event) => {
+            if (window.innerWidth <= 768 && !toc.contains(event.target) && !tocToggle.contains(event.target)) {
+                toc.classList.remove('open');
+            }
+        });
+
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                    // Close mobile TOC after navigation
+                    if (window.innerWidth <= 768) {
+                        toc.classList.remove('open');
+                    }
+                }
+            });
+        });
+
+        // Active TOC link highlighting
+        const observerOptions = {
+            root: null,
+            rootMargin: '-20% 0px -70% 0px',
+            threshold: 0
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    // Remove active class from all TOC links
+                    document.querySelectorAll('.toc-link').forEach(link => {
+                        link.classList.remove('active');
+                    });
+                    
+                    // Add active class to current section's TOC link
+                    const activeLink = document.querySelector(`.toc-link[href="#${entry.target.id}"]`);
+                    if (activeLink) {
+                        activeLink.classList.add('active');
+                    }
+                }
+            });
+        }, observerOptions);
+
+        // Observe all sections
+        document.querySelectorAll('section[id]').forEach(section => {
+            observer.observe(section);
+        });
+
+        // Copy to clipboard functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const copyButtons = document.querySelectorAll('button:has(.fa-copy)');
+            
+            copyButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    const codeBlock = this.parentElement.previousElementSibling;
+                    const textToCopy = codeBlock.textContent;
+                    
+                    navigator.clipboard.writeText(textToCopy).then(() => {
+                        const originalText = this.innerHTML;
+                        this.innerHTML = '<i class="fas fa-check mr-2"></i>Copied!';
+                        this.classList.add('bg-green-600');
+                        
+                        setTimeout(() => {
+                            this.innerHTML = originalText;
+                            this.classList.remove('bg-green-600');
+                        }, 2000);
+                    });
+                });
+            });
+        });
+    </script>
+  
+
+</body></html>
