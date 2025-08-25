@@ -38,7 +38,7 @@ First, write exact name tag  ["[☺️ ***Smile Expert***](https://github.com/Dr
 
 You can drop it right into your **favorite Large Language Model (LLM)** as ***(: Smile*** works with everything!
 
-***(: Smile*** is compatible with open source, closed foundation (e.g. OpenAI), toolkit (e.g. Cursor) and chat (e.g. Gemini, Claude, Kimi K2 web interface) models. 
+***(: Smile*** is compatible with open source, closed foundation (e.g. OpenAI), toolkit (e.g. Cursor) and chat web interface (e.g. Gemini, Claude, Kimi, OpenAI) models. 
 
 ***(: Smile*** structures instruction text for instruction following, the same way HTML structures website content into blocks a web browser can render. 
 
