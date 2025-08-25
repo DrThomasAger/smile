@@ -1,4 +1,4 @@
-![Smile Prompt Language v0.4](Smile-logo.png)
+![Smile Prompt Language v1](Smile-logo.png)
  
 
 
@@ -14,7 +14,7 @@ It uses a small set of positive text emojis like  `(:`, `[;`, and `[=`. These ca
 
 Just **copy and paste our quick start example** below to see an example of ***(: Smile*** magic in action 👇
 
-```(: Smile v0.4 
+```(: Smile v1
 ***(: Smile***:
 defines my prompt language, you have response language, we co-create as gift by starting with bold italics name tag (
 
