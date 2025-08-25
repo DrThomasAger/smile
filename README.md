@@ -312,8 +312,8 @@ First, write exact name tag  ["[***Smile Expert***](https://github.com/DrThomasA
 ## Contribute
 Help build a dataset of prompts that will be automatically converted for better performance. Share examples already written in Smile or send raw prompts you'd like translated.
 
-- ⭐ **[**Star** the repository now](https://github.com/DrThomasAger/smile)** to help others discover Smile for **more positive prompt engineering for all.**
-- 🛠️ **Contribute on GitHub** by opening [issues](https://github.com/DrThomasAger/smile/issues) or [pull requests](https://github.com/DrPrompt/smile/pulls) with your own Smile snippets, original prompts (I will convert) or your conversion (or language!) ideas.
+- ☆ **[**Star** the repository now](https://github.com/DrThomasAger/smile)** to help others discover Smile for **more positive prompt engineering for all.**
+- [: **Contribute on GitHub** by opening [issues](https://github.com/DrThomasAger/smile/issues) or [pull requests](https://github.com/DrPrompt/smile/pulls) with your own Smile snippets, original prompts (I will convert) or your conversion (or language!) ideas.
 
 Smile formalizes an entire informal tradition. It takes what prompt engineers were already doing—dropping delimiters, making clear input vs. instruction sections, using repeated markers for emphasis, and codifies it into a coherent and positive syntax designed **to maximize instruction following.** By specifying itself as an instruction only language, it enables a directed core focus to this goal undiluted by IDE integration. Here, just focus on getting text outputs according to our instructions consistently. We do that by clearly structuring our prompts according to (: Smile. 
 
