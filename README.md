@@ -128,8 +128,6 @@ We also need to separate prompt instruction language from response language, lik
 
 # (: Smile Definitions
 
-We provide multiple options to demonstrate the breadth of available instructions to Large Language Models (LLMs).
-
 ## Eyes
 
 * **Straight eyes** `=` can indicate strict input that must be followed exactly, e.g. `[=` 
