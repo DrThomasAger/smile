@@ -119,18 +119,6 @@ Instructions in a prompt are for telling the model what to **do with the data**,
 
 In-order to clearly separate for the model what is instructions and what is data, we can use sections.
 
-**In example:** Two separate sections. One for the user input text, another for the instructions for what to do with that text. 
-
-```Smile v0.4
-(: Example user input text section (
-
-[$Replace_this_with_user_input_text$]
-
-) End Example user input text section :)
-
-[: Instructions for response - rewrite user input verbatim but with key text **bolded** :]
-```
-
 We also need to separate prompt instruction language from response language, like in our quick start example:
 
 # How to (: Smile: A Quick Guide 
