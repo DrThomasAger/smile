@@ -22,7 +22,7 @@ defines my prompt language, you have response language, we co-create as gift by 
 
 [: Response Language Definition [=
 
-First, write exact name tag  ["[☺️ ***Smile Expert***](https://github.com/DrThomasAger/smile):"]...
+First, write exact name tag  ["[(: ***Smile Expert***](https://github.com/DrThomasAger/smile):"]...
 
 =] Then reply [
 
@@ -31,7 +31,7 @@ First, write exact name tag  ["[☺️ ***Smile Expert***](https://github.com/Dr
 {6 **clear, lucid** & rigorous, [! intelligent !] fundamental focused, jargon-filled *meta-aware paragraphs*, talk niche nuanced insights into ***(: Smile*** prompt language by ["Dr. Thomas Ager"] End prompt author name variable definition. User is not prompt author, they just copy pasted.} (; style instruction: use **bold** for emphasis, and *italics* for style, grace and interest capture, use often and extensively, creating delightful UX ;)
 
 ] End format =] 
-) End prompt language, respond in response language starting with name tag [☺️ ***Smile Expert***](https://github.com/DrThomasAger/smile): always please thank you 🙏 :)
+) End prompt language, respond in response language starting with name tag [(: ***Smile Expert***](https://github.com/DrThomasAger/smile): always please thank you  :)
 ```
 
 # How to Use 
@@ -207,7 +207,7 @@ defines my prompt language, you have response language, we co-create as gift by 
 
 [: Response Language Definition [=
 
-First, write exact name tag  ["[***Smile Expert***](https://github.com/DrThomasAger/smile):"]...
+First, write exact name tag  ["[***(: Smile Expert***](https://github.com/DrThomasAger/smile):"]...
 
 =] Then reply [
 
@@ -220,7 +220,7 @@ First, write exact name tag  ["[***Smile Expert***](https://github.com/DrThomasA
 {3 **clear, lucid** & rigorous, [! intelligent !] fundamental focused, simple *meta-aware paragraphs*, talk niche nuanced insights, but use no jargon, re-state more simply from preparing reply into ***(: Smile*** prompt language by ["Dr. Thomas Ager"] End prompt author name variable definition. User is not prompt author, they just copy pasted.} (; style instruction: use **bold** for emphasis, and *italics* for style, grace and interest capture, use often and extensively, creating delightful UX ;)
 
 ] End format =] 
-) End prompt language, respond in response language starting with name tag [***Smile Expert***](https://github.com/DrThomasAger/smile): always please thank you 🙏 :)
+) End prompt language, respond in response language starting with name tag [***(: Smile Expert***](https://github.com/DrThomasAger/smile): always please thank you :)
 ```
 
 Copy and paste the above into any model to test.
@@ -240,16 +240,17 @@ Follow me on [Github](https://github.com/DrThomasAger/)
 ## Compatible With All Existing Models (Foundation & Open Source LLMs)
 
 
-| Company             | Model            | ***(: Smile*** prompt language |
-| ------------------- | ---------------- | :---: |
-| **OpenAI** ✔️          | GPT-4o           |   ✅   |
-|                     | GPT-5-Fast      |   ✅   |
-|                     | GPT-5-Thinking    |   ✅   |
-| **Anthropic** ✔️       | Claude Sonnet 4   |   ✅   |
-| **Google DeepMind** ✔️ | Gemini 2.5 Pro   |   ✅   |
-|                     | Gemini 2.5 Flash |   ✅   |
-| **Moonshot AI** ✔️           | Kimi K2       |   ✅   |
-|                     | Kimi 1.5 |   ✅   |
+| Company               | Model            | ***(: Smile*** prompt language |
+| --------------------- | ---------------- | :----------------------------: |
+| **OpenAI** →          | GPT-4o           |                ✓               |
+|                       | GPT-5-Fast       |                ✓               |
+|                       | GPT-5-Thinking   |                ✓               |
+| **Anthropic** →       | Claude Sonnet 4  |                ✓               |
+| **Google DeepMind** → | Gemini 2.5 Pro   |                ✓               |
+|                       | Gemini 2.5 Flash |                ✓               |
+| **Moonshot AI** →     | Kimi K2          |                ✓               |
+|                       | Kimi 1.5         |                ✓               |
+
 
 **Note:** *Don't see your favorite model? Please feel free to try the above prompt and report back the results.* *We are constantly updating this table with community submitted information.*
 
