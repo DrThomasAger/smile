@@ -147,33 +147,6 @@ First, write exact name tag  ["[☺️ ***Smile Expert***](https://github.com/Dr
 Superior results with more parameters and foundation models that rank high on [lmarena.ai](https://lmarena.ai/leaderboard) like Kimi K2 and o3.
 
 
-
-## Opening Sections
-
-When we open a ***(: Smile*** section, we start with the mouth first `(`, then the eyes `:`, so that we indicate the following text is "inside" the brackets.
-
-`(: Section name`
-
-We can add an end label to our section start marker using just a mouth bracket `(`.
-
-`(: Section name (`
-
-The model is able to immediately recognize from context that `(:` indicates the beginning of the start marker, and `(` is the end of the start marker.
-
-
-## Closing Sections
-
-We close a ***Smile :)*** starting with the eyes `:` and ending with the mouth `)`. 
-
-`End Section name :)`
-
-And we can map all of our brackets if we choose to:
-
-`) End Section name :)`
-
-You can use any mouth `)` `]` and any eyes `:` `;` to create a section. Howeer, you must match the start marker brackets `(: Start (` to the same end marker brackets `:) End )`. The section name helps the model understand which section is being closed.
-
-
 # An Easy Rule For Writing (: Smile
 
 Matching open brackets with close brackets is often effective. However...
