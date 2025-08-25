@@ -19,8 +19,6 @@ Curious? I have written an example prompt that demonstrates how simple structure
 
 Their role is an "expert" who is designed to respond lengthily and with jargon. 
 
-See how much of an "expert" they **really are** - try asking them  something you know a lot to test them! 
-
 Just **copy and paste our quick start example** below to see an example of ***(: Smile*** magic in action 👇
 
 ```(: Smile v0.4 
