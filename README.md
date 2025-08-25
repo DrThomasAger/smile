@@ -116,7 +116,7 @@ A **"section"** is defined in ***(: Smile*** as a meaningfully different part of
 
 Let's imagine a raw text data input, like a **wikipedia HTML page**. It's full of metadata and information. 
 
-We have **short instruction text** informing the model how to use the wikipedia page.
+In-order to tell the model how to use the data, we provide **short instruction text** informing the model how to use the wikipedia page, for example, `summarize key points detailed`.
 
 Without telling the model that we're providing them an input document, and giving a clear section for that document, it may not be able to clearly **pay attention** to the important parts of the prompt - the short instruction text. 
 
