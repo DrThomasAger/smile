@@ -105,7 +105,7 @@ You can end sections using the same markers in the opposite direction. `) End Se
 
 # Sections
 
-A **"section"** is defined in ***(: Smile*** as a meaningfully different (or in academic terms, "Semantically unique") part of the prompt from another part of the prompt. 
+A **"section"** is defined in ***(: Smile*** as a meaningfully different part of the prompt from another part of the prompt. 
 
 Let's imagine a raw text data input, like a wikipedia HTML page. It's full of metadata and information. A lot of it probably isn't relevant to the user's query, `What is a prompt language?`. There are only some parts of the information that are meaningful.
 
