@@ -1,6 +1,6 @@
 ![Smile Prompt Language v0.4](Smile-logo.png)
 
-By [Dr. Thomas Ager](https://www.linkedin.com/in/drprompt?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app) Ph.D In Interpretable Machine Learning for NLP @ Cardiff University, United Kingdom.
+By [Dr. Thomas Ager](https://www.linkedin.com/in/drprompt?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app) Ph.D In Interpretable Machine Learning for NLP @ Cardiff University, UK.
 
 # (: Smile Prompt Language
 
