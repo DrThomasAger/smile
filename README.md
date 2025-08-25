@@ -107,11 +107,9 @@ You can end sections using the same markers in the opposite direction. `) End Se
 
 A **"section"** is defined in ***(: Smile*** as a meaningfully different part of the prompt from another part of the prompt. 
 
-Let's imagine a raw text data input, like a wikipedia HTML page. It's full of metadata and information. A lot of it probably isn't relevant to the user's query, `What is a prompt language?`. There are only some parts of the information that are meaningful.
+Let's imagine a raw text data input, like a wikipedia HTML page. It's full of metadata and information. 
 
-Without telling the model that we're providing them an input document, and giving a clear section for that document, it may confuse our instructions or what we want to do with that document with the text data inside of the document itself. A HTML page is very meaningfully different to instruction text like `Provide the user a clear definition using the Wikipedia article data` that we need the model to pay attention to! 
-
-So, we separate instructions from data (like other languages, that do this through IDE extensions), and also prompt instruction language from response language.
+Without telling the model that we're providing them an input document, and giving a clear section for that document, it may not be able to clearly **pay attention** to the important parts of the prompt - the short instruction text. 
 
 ## What is the Difference Between Input Data and Instruction Text?
 
