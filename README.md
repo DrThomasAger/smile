@@ -1,6 +1,8 @@
 ![Smile Prompt Language v1](Smile-logo.png)
  
+# Let's connect with a ***(: Smile***!
 
+☆ [Star the repo to help a prompt engineer (: Smile](https://github.com/DrThomasAger/smile)
 
 # (: Smile Prompt Engineering Language
 
@@ -227,15 +229,13 @@ Copy and paste the above into any model to test.
 
 
 
-# Prompting With a ***(: Smile***!
+# Let's connect with a ***(: Smile***!
 
-☆ [Star the repo to help us grow](https://github.com/DrThomasAger/smile)
-
+☆ [Star the repo to help prompt engineers Smile](https://github.com/DrThomasAger/smile)
 <> [DM me on LinkedIn for a chat](https://www.linkedin.com/in/drprompt/)
+@ DM me on Discord [@DrThomasAger](https://discord.com/users/221024427456856064)
+[: Follow me on [Github](https://github.com/DrThomasAger/)
 
-DM me on Discord @DrThomasAger
-
-Follow me on [Github](https://github.com/DrThomasAger/)
 
 ## Compatible With All Existing Models (Foundation & Open Source LLMs)
 
