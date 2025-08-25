@@ -40,10 +40,10 @@ You can copy and paste it right into your **favorite Large Language Model (LLM)*
 
 ***(: Smile*** is compatible with all models:
 
-* ✅ Open source
-* ✅ Closed foundation (e.g. ***OpenAI***)
-* ✅ Toolkit (e.g. ***Cursor***) 
-* ✅ Chat web interface (e.g. ***Gemini***, ***Claude***, ***Kimi***, ***ChatGPT***)
+* ✓ Open source
+* ✓ Closed foundation (e.g. ***OpenAI***)
+* ✓ Toolkit (e.g. ***Cursor***)
+* ✓ Chat web interface (e.g. ***Gemini***, ***Claude***, ***Kimi***, ***ChatGPT***)
 
 ***(: Smile*** structures instruction text for instruction following, the same way ***HTML*** structures website content into blocks a web browser can render. 
 
