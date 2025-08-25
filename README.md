@@ -40,7 +40,7 @@ You can drop it right into your **favorite Large Language Model (LLM)** as ***(:
 
 ***(: Smile*** is compatible with open source, closed foundation (e.g. OpenAI), toolkit (e.g. Cursor) and chat (e.g. Gemini, Claude, Kimi K2 web interface) models. 
 
-(: Smile structures instruction text for instruction following, the same way HTML structures website content into blocks a web browser can render. 
+***(: Smile*** structures instruction text for instruction following, the same way HTML structures website content into blocks a web browser can render. 
 
 Curious? The example prompt demonstrates how simple structure can create a consistent role.
 
@@ -69,14 +69,14 @@ Because models follow structured instructions more consistently. Consistent stru
 
 ### ◾️ Why structure large prompts?
 
-Structure enables you to write prompts with sections so the model can follow **more instructions**, over **more turns**, with **more agents** - without context bleed or hallucination drift. 
+Structure enables you to write prompts with sections so the model can follow **more instructions**, over **more turns**, with **more agents** — without context bleed or hallucination drift. 
 
 ### 😉 Why structure using (: Smile instead of markdown?
 
 ***(: Smile*** was made to be performant for LLMs. Markdown is a document format that is used for rendering. Just because it works or is similar to the programming language you wrote before, **doesn't mean it brings the biggest performance gains for your key organization tasks.**
 
 
-# Does (: Smiling Make You Happier?
+# Does Smiling Make You Happier?
 
 Science says yes. **Smiling...**
 
@@ -149,9 +149,11 @@ First, write exact name tag  ["[☺️ ***Smile Expert***](https://github.com/Dr
 Superior results with more parameters and foundation models that rank high on [lmarena.ai](https://lmarena.ai/leaderboard) like Kimi K2 and o3.
 
 
-# (: Smile Definition
+# (: Smile Definitions
 
 We provide multiple options to demonstrate the breadth of available instructions to Large Langauge Models. Semantically different structure creates different downstream results.
+
+## Eyes
 
 For example, **Straight eyes** `=` can indicate strict input that must be followed exactly, e.g. `[=` **Quote eyes** `"` show text that must be repeated word for word verbatim, e.g. `["Repeat this word for word"]` **Cash eyes**  `$` show variables and can be replaced with the true values before inference using code. `!` important eyes show text to emphasize for the model, e.g. `[! Don't use negative language. !]`. For more details, read our extensive syntax map now...
 
@@ -179,9 +181,9 @@ These are a few different ways to create structure by ***(: Smiling***.
 
 Matching open brackets with close brackets is often effective. However...
 
-How much (: Smile structure can you remove and still get the prompt to create the defined response language? 
+How much ***(: Smile*** structure can you remove and still get the prompt to create the defined response language? 
 
-**You don't need to match all open and close brackets exactly.** This is the advantage of Large Language Models (LLMs) - they can infer so much from context that we don't need to make fully explicit every connection between every section. Adding more structure becomes more essential the larger the prompt becomes.
+**You don't need to match all open and close brackets exactly.** This is the advantage of Large Language Models (LLMs) — they can infer so much from context that we don't need to make fully explicit every connection between every section. Adding more structure becomes more essential the larger the prompt becomes.
 
 We provided recommended formats as a standard way to open a section with ***(: Smile***. Why? Because in our tests on foundation models, it increased instruction following for key tasks in my business.
 
@@ -189,7 +191,7 @@ We provided recommended formats as a standard way to open a section with ***(: S
  
  And LESS ***(: Smile*** structure if it increases instruction following.
 
- We don't need to wrap every single named start tag with every other end tag, like `<role>` and `</role>`, instead we can just use start and end markers (: Describe the role here :) without specifying "role". Sometimes, you get better results if you say less.
+ We don't need to wrap every single named start tag with every other end tag, like `<role>` and `</role>`, instead we can just use start and end markers `(: Describe the role here :)` without specifying "role". Sometimes, you get better results if you say less.
 
  
  **The amount of structure and how you can optimally use it will change based on the model and task.**
