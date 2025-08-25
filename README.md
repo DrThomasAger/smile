@@ -114,7 +114,9 @@ You can end sections using the same markers in the opposite direction. `) End Se
 
 A **"section"** is defined in ***(: Smile*** as a meaningfully different part of the prompt from another part of the prompt. 
 
-Let's imagine a raw text data input, like a wikipedia HTML page. It's full of metadata and information. 
+Let's imagine a raw text data input, like a **wikipedia HTML page**. It's full of metadata and information. 
+
+We have **short instruction text** informing the model how to use the wikipedia page.
 
 Without telling the model that we're providing them an input document, and giving a clear section for that document, it may not be able to clearly **pay attention** to the important parts of the prompt - the short instruction text. 
 
@@ -133,8 +135,6 @@ We also need to separate prompt instruction language from response language, lik
 * **Straight eyes** `=` can indicate strict input that must be followed exactly, e.g. `[=` 
 * **Quote eyes** `"` show text that must be repeated word for word verbatim, e.g. `["Repeat this word for word"]` 
 * **Cash eyes**  `$` show variables and can be replaced with the true values before inference using code. `!` important eyes show text to emphasize for the model, e.g. `[! Don't use negative language. !]`. 
-
-Full Syntax Map for ***(: Smile*** 👇
 
 ## (: Smile Syntax Map
 
