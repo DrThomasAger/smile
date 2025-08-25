@@ -12,7 +12,7 @@ It uses a small set of positive text emojis like  `(:`, `[;`, and `[=`. These ca
 
 ## Quick Start Example
 
-Just **copy and paste our quick start example** below to see an example of ***(: Smile*** magic in action 👇
+Just **copy and paste the quick start example** below to see an example of ***(: Smile*** magic in action 👇
 
 ```(: Smile v1
 ***(: Smile***:
@@ -51,10 +51,9 @@ You can copy and paste it right into your **favorite Large Language Model (LLM)*
 
 Their role is an "expert" who is designed to respond lengthily and with jargon. 
 
-The **structure** is ***(: Smile***, the content is yours to decide. Check the `prompt/` folder for examples of how different content can be structured with ***(: Smile***.
+> The **structure** is ***(: Smile***, the content is yours to decide. Check the `prompt/` folder for examples of how different content can be structured with ***(: Smile***.
 
 ## Technical Advantages of (: Smile
-
 
 ***(: Smile*** is easy to **learn**, easy to **read**, and easy to **scale**. It makes every prompt:
 
@@ -74,7 +73,7 @@ Because models follow structured instructions more consistently. Consistent stru
 
 ### ◾️ Why structure large prompts?
 
-Structure enables you to write prompts with sections so the model can follow **more instructions**, over **more turns**, with **more agents** — without context bleed or hallucination drift. 
+You probably already do! Any section, role description, instruction or data is structure. Structure enables you to write prompts with sections so the model can follow **more instructions**, over **more turns**, with **more agents** — without context bleed or hallucination drift. 
 
 ### 😉 Why structure using (: Smile instead of markdown?
 
