@@ -319,7 +319,7 @@ Want to feel happier when you prompt engineer? Just use every time you see a ***
 
 # Glossary
 
-I coined the term "prompt instruction language" by creating ***(: Smile*** and separating it from the response language.
+I coined the term "prompt instruction language" by creating ***(: Smile*** and separating the "prompt language" from the "response language".
 
 I would love for more prompt engineers to adopt the term "prompt language" for their method of systematizing text structure. 
 
