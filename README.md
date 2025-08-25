@@ -259,23 +259,7 @@ Copy and paste the above into any model to test.
 
 
 
-# Compatible With All Prompt Engineering Frameworks
-
-Compound your results by (: Smiling. You can easily integrate ***(: Smile*** into your current workflows and style of prompt engineering by using `(:` Smile's instead of brackets `(` when defining your sections in your prompts. Try integrating our semantic ***(: Smile***'s like `(!` important, or `[=` strict and rigid when writing your prompts. 
-
-This enables you to begin adding structure in a consistent and maintainable way. 
-
-You will start seeing real results when you start using meaningful section names and descriptions, effective markdown templating (see our `prompt/` folder for examples).
-
-Invest in this now and see the pay off later when your team is able to contribute meaningfully to your organization for the full duration of its lifecycle. 
-
-**For those who need to explain their work to others in the organization**: Never end up in an awkward meeting trying to explain your gibberish prompt to people who just want results. ***(: Smile*** instead.
-
-# Is (: Smile strict or flexible?
-
-What's essential is that both the model and the human can follow along with the instructions. This means that all of this documentation is only a guideline. There is a strict definition of when (: Smile is working.
-
-**(: Smile** is working when the model follows your defined response language, be it markdown, json or one you have created. 
+# **(: Smile** is working when the model follows your defined response language, be it markdown, json or one you have created. 
 
 I'll extend our previous example to break the rules a little bit, and get a lot of new functionality as a result. This is designed to make you feel like you are free to drop {instructions on how to fill out the text} not just inside of the definition of the format the model needs to respond in. In the next example, I'll show how you can also use them inside the markdown titles themselves for the model to choose what to call each section:
 
