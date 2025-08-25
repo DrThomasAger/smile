@@ -2,7 +2,7 @@
  
 # Let's connect with a ***(: Smile***!
 
-☆ [Star the repo to help a prompt engineer (: Smile](https://github.com/DrThomasAger/smile)
+[![☆ Star the repo](https://img.shields.io/github/stars/DrThomasAger/smile?style=social)](https://github.com/DrThomasAger/smile/stargazers)
 
 # (: Smile Prompt Engineering Language
 
