@@ -1,6 +1,7 @@
 
 ![Smile Prompt Language v1](20250826_0133_Smile%20with%20Emoticon_loop_01k3h83cvef4qbtegkt4qma1yf.gif )
 
+Developed during the OpenAI Hackathon on Kaggle for [gpt-oss-20b](https://gpt-oss.com/).
 
 # (: Smile Prompt Engineering Language
 
