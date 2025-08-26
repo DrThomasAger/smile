@@ -75,6 +75,10 @@ You start by clearly defining the start `(:` of a section and its name `(: Secti
 
 You can end sections using the same markers in the opposite direction. `) End Section name :)`.
 
+These abbreviated ***(: Smile*** structures e.g. `(` indicate they are the second part of a set. 
+
+Two (: Smile's surround the name of the section. The line indicates the start or end of the section, and the text inside the section changes with the prompt and task required.
+
 ## Sections
 
 A **"section"** is defined in ***(: Smile*** as a meaningfully different part of the prompt from another part of the prompt. 
