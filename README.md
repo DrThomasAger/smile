@@ -53,11 +53,11 @@ First, write exact name tag  ["[(: ***Smile Expert***](https://github.com/DrThom
 
 ### Links to major AI's
 
-Copy and paste into any of these:
+[= Copy and paste into any of these:
 
-***Kimi K2:*** Powerful & free. [https://www.kimi.com](https://www.kimi.com/)
-***ChatGPT:*** #1 For a Reason. [https://chatgpt.com/](https://chatgpt.com/)
-***Claude:*** I love Claude. [https://claude.ai/](https://claude.ai/)
+1. (: ***Kimi K2:*** Powerful & free. [https://www.kimi.com](https://www.kimi.com/)
+2. [: ***ChatGPT:*** #1 For a Reason. [https://chatgpt.com/](https://chatgpt.com/)
+3. { ***Claude:*** I love Claude. [https://claude.ai/](https://claude.ai/)
 
 ## Model-Agnostic & Ultra-flexible!
 
