@@ -6,7 +6,9 @@
 
 ***(: Smile*** is the dead simple **instruction only markup** for **increasing instruction following** in **large language model prompts**. 
 
-> [: by [Dr. Thomas Ager](https://www.linkedin.com/in/drprompt?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app) [ Ph.D in (= [Interpretable Machine Learning](https://christophm.github.io/interpretable-ml-book/intro.html) =) ("NLP") ] from [Cardiff Univeristy](https://www.topuniversities.com/universities/cardiff-university) :] (; Wales, UK ;) 
+> "May all prompters be happy"
+
+> - [: by [Dr. Thomas Ager](https://www.linkedin.com/in/drprompt?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app) [ Ph.D in (= [Interpretable Machine Learning](https://christophm.github.io/interpretable-ml-book/intro.html) =) ("NLP") ] from [Cardiff Univeristy](https://www.topuniversities.com/universities/cardiff-university) :] (; Wales, UK ;) 
 
 It uses a small set of positive text emojis like  `(:`, `[;`, and `[=`. These can open `(:`, or close `:)`, just like brackets. 
 
@@ -14,7 +16,7 @@ It uses a small set of positive text emojis like  `(:`, `[;`, and `[=`. These ca
 
 ***(: Smile*** is a language for writing **prompts** to models like ***Gemini***, ***ChatGPT***, ***Claude*** or ***Kimi*** that informs them more clearly of the **structure** of your prompt. 
 
-Understanding structure for a model means it understands your prompt better, it performs better, and you're both happy.  **The goal of (: Smile is happiness for all prompters.**  
+Understanding structure for a model means it understands your prompt better, it performs better, and you're both happy.   
 
 ## Quick Start Example
 
