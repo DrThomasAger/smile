@@ -1,4 +1,5 @@
-![Smile Prompt Language v1](Smile-logo.png )
+
+![Smile Prompt Language v1](20250826_0133_Smile%20with%20Emoticon_loop_01k3h83cvef4qbtegkt4qma1yf.gif )
 
 ☆ **Star the repo** to make a prompt engineer ***(: Smile*** -> [![☆ Star the repo](https://img.shields.io/github/stars/DrThomasAger/smile?style=social)](https://github.com/DrThomasAger/smile/stargazers)
 
@@ -62,6 +63,7 @@ Their role is an "expert" who is designed to respond lengthily and with jargon.
 
 > The **structure** is ***(: Smile***, the content is yours to decide. Check the `prompt/` folder for examples of how different content can be structured with ***(: Smile***.
 
+![Smile Prompt Language v1](Smile-logo.png )
 
 
 # (: Smile Basics
@@ -346,8 +348,6 @@ Want to feel happier when you prompt engineer? Just use every time you see a ***
 I'm happy to help! DM me or raise an issue! :)
 
 
-
-![Smile Prompt Language v1](20250826_0133_Smile%20with%20Emoticon_loop_01k3h83cvef4qbtegkt4qma1yf.gif )
 
  [![☆ Star the repo](https://img.shields.io/github/stars/DrThomasAger/smile?style=social)](https://github.com/DrThomasAger/smile/stargazers)
 
