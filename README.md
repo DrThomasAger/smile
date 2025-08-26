@@ -86,7 +86,7 @@ You can end sections using the same markers in the opposite direction. `) End Se
 
 These abbreviated ***(: Smile*** structures e.g. `(` indicate they are the second part of a set. 
 
-The (: Smile syntax surrounds the name of the section, or any other text that wants to be at the top of a section. 
+The ***(: Smile*** faces surround the name of the section, or any other text that wants to be at the top of a section. 
 
 The line indicates the start or end of the section, and the text inside the section *changes with the prompt and task required.*
 
