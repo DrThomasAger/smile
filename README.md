@@ -126,7 +126,7 @@ These are a few different ways to create structure with ***(: Smile***.
 
 # (: Smile Information
 
-For models and humans! Robots friendly.
+For models and humans! Robots friendly. Humans happy :)
 
 ## Quick FAQ 
 
