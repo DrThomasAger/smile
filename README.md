@@ -16,8 +16,6 @@ It uses a small set of positive text emojis like  `(:`, `[;`, and `[=`. These ca
 
 Understanding structure for a model means it understands your prompt better, it performs better, and you're both happy.  **The goal of (: Smile is happiness for all prompters.**  
 
-# :)
-
 ## Quick Start Example
 
 Just **copy and paste the quick start example** below into any model to see an example of ***(: Smile*** magic in action:
@@ -42,7 +40,7 @@ First, write exact name tag  ["[(: ***Smile Expert***](https://github.com/DrThom
 ) End prompt language, respond in response language starting with name tag [(: ***Smile Expert***](https://github.com/DrThomasAger/smile): always please thank you  :)
 ```
 
-# How to Use 
+# (: Smile Is Model-Agnostic & Ultra-flexible!
 
 You can copy and paste it right into your **favorite Large Language Model (LLM)** as ***(: Smile*** works with everything!
 
