@@ -20,7 +20,7 @@ It is the first **prompt instruction language** to use **positive prompting** as
 ☆ **Star the repo** to make a prompt engineer ***(: Smile*** -> [![☆ Star the repo](https://img.shields.io/github/stars/DrThomasAger/smile?style=social)](https://github.com/DrThomasAger/smile/stargazers)
 
 
-## (: Smile For Dummies 
+# (: Smile For Dummies 
 
 ***(: Smile*** is a language for writing **prompts** to models like ***Gemini***, ***ChatGPT***, ***Claude*** or ***Kimi*** that informs them more clearly of the **structure** of your prompt. 
 
@@ -28,7 +28,7 @@ Understanding structure for a model means it **understands** your prompt better,
 
 **↓** Before you write ***(: Smile***, why not play with it first? **↓** 
 
-### Quick Start Example
+## Quick Start Example
 
 Just **copy and paste the quick start example** below into any model to see an example of ***(: Smile***  in action:
 
@@ -52,7 +52,7 @@ First, write exact name tag  ["[(: ***Smile Expert***](https://github.com/DrThom
 ) End prompt language, respond in response language starting with name tag [(: ***Smile Expert***](https://github.com/DrThomasAger/smile): always please thank you  :)
 ```
 
-### Model-Agnostic & Ultra-flexible!
+## Model-Agnostic & Ultra-flexible!
 
 You can copy and paste it right into your **favorite Large Language Model (LLM)** as ***(: Smile*** works with everything!
 
