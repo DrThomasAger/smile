@@ -7,12 +7,9 @@
 ***(: Smile*** is the dead simple **instruction only markup** for **increasing instruction following** in **large language model prompts**. 
 
 > "May all beings be happy."
-> 
 >  \- [Dr. Thomas Ager](https://www.linkedin.com/in/drprompt?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app) [: Ph.D in (= [Interpretable Machine Learning](https://christophm.github.io/interpretable-ml-book/intro.html) =) ("NLP") ] from [Cardiff Univeristy](https://www.topuniversities.com/universities/cardiff-university) :] (; Wales, UK ;) 
 
 It is the first **prompt instruction language** to use **positive prompting** as its **structural foundation** by encoding a small set of positive text emojis like  `(:`, `[;`, and `[=`. 
-
-These can open: `(:`, or close: `:)`, just like brackets in other languages.
 
 # (: Smile For Dummies 
 
@@ -75,41 +72,8 @@ Their role is an "expert" who is designed to respond lengthily and with jargon.
 
 Let ***(: Smile*** be one part of making your AI systems **more transparent** for **humans and models.**
 
-# Quick FAQ 
 
-### • Why structure small prompts?
-
-Because models follow structured instructions more consistently. Consistent structure ensures a maintainable and explainable future-proof strategy for the prompt engineering team in your org.
-
-### o Why structure large prompts?
-
-You probably already do! Any section, role description, instruction or data is structure. Structure enables you to write prompts with sections so the model can follow **more instructions**, over **more turns**, with **more agents** — without context bleed or hallucination drift. 
-
-### [; Why structure using (: Smile instead of markdown?
-
-***(: Smile*** was made to be performant for LLMs. Markdown is a document format that is used for rendering. Just because it works or is similar to the programming language you wrote before, **doesn't mean it brings the biggest performance gains for your key organization tasks.**
-
-
-# Does Smiling Make You Happier?
-
-Science says yes. **Smiling...**
-
-1. (= **Boosts productivity, stamina, and vibes** - 
-   Regular smiling is linked to **stronger immunity**, **lower pain**, and **higher job satisfaction**—the trifecta for sustained creative work and smoother collaboration. Happier prompt writers make **cleaner, more positive prompts**, and organizations feel it. *Evidence:* [Psychology Today](https://www.psychologytoday.com/us/blog/mind-well-matter/201807/why-smiling-matters), [Verywell Mind](https://www.verywellmind.com/benefits-of-smiling-2795092).
-
-2. [: **Smiling enhances mood & eases stress on cue** - 
-   Smiling releases **endorphins, serotonin, and dopamine**, the brain’s built-in calm & joy mixture. Even a *forced* smile nudges your physiology toward **relaxation and resilience**, helping you think clearly under pressure. Exactly what you need in a high-stakes business environment. *Evidence:* [Healthline](https://www.healthline.com/health/benefits-of-smiling).
-
-3. (: **Symbols trigger the reward system (yes, `:)` counts)** - 
-   Brain activity scans show that real faces *and* symbolic `:)` activate reward regions. Your cheeks respond with smiling micro-muscle movements within **\~500 ms** just from reading the symbol. Your brain treats `:)` as a micro-reward. *Evidence:* [Hennenlotter et al., 2005](https://www.cambridge.org/core/journals/behavioral-and-brain-sciences/article/simulation-of-smiles-sims-model-embodied-simulation-and-the-meaning-of-facial-expression/FE0A911744186EBD3706B53794D4AEE9); [Mühlberger et al., 2011](https://www.frontiersin.org/journals/psychology/articles/10.3389/fpsyg.2018.00052/full).
-
-
-Anyone is able to ***(: Smile*** - the act of smiling (even with text) measurably lifts mood and sharpens focus, which makes ***(: Smile*** a tiny habit with outsized returns every time you write.
-
-
- **↑ Bottom line for you and your org:** ***(: Smile*** boosts **happiness** for the model, **positivity** in your prompts and **structure** for your prompt engineers.
-
-
+These can open: `(:`, or close: `:)`, just like brackets in other languages.
 
 # (: Smile Basics
 
@@ -159,6 +123,43 @@ These are a few different ways to create structure by ***(: Smiling***.
 |  `[! important instruction !] ` | text that the model can allocate attention to | `[! NEVER use an emdash! !]` | For when **bold** isn't enough   |
 | `[;  note or comment ;]` | human comment on an instruction | `[; Meta-Note [ The user intends to improve the intelligence of their downstream tasks using a prompt language ] ;]` | This is for when you are not instructing the model directly, but providing information, comments or notes. Can also use `(;`, the winky eyes are the differentiator.   |  
 | `{placeholder}` | area to be filled by the model | `Fill out the following sections # Thinking {Plan} # Replying {Use plan to reply}` | These are used inside of markdown sections. They are used to instruct the model on how to fill out the section (among others)  |
+
+# (: Smile Documentation
+
+## Quick FAQ 
+
+### • Why structure small prompts?
+
+Because models follow structured instructions more consistently. Consistent structure ensures a maintainable and explainable future-proof strategy for the prompt engineering team in your org.
+
+### o Why structure large prompts?
+
+You probably already do! Any section, role description, instruction or data is structure. Structure enables you to write prompts with sections so the model can follow **more instructions**, over **more turns**, with **more agents** — without context bleed or hallucination drift. 
+
+### [; Why structure using (: Smile instead of markdown?
+
+***(: Smile*** was made to be performant for LLMs. Markdown is a document format that is used for rendering. Just because it works or is similar to the programming language you wrote before, **doesn't mean it brings the biggest performance gains for your key organization tasks.**
+
+
+### Does Smiling Make You Happier?
+
+Science says yes. **Smiling...**
+
+1. (= **Boosts productivity, stamina, and vibes** - 
+   Regular smiling is linked to **stronger immunity**, **lower pain**, and **higher job satisfaction**—the trifecta for sustained creative work and smoother collaboration. Happier prompt writers make **cleaner, more positive prompts**, and organizations feel it. *Evidence:* [Psychology Today](https://www.psychologytoday.com/us/blog/mind-well-matter/201807/why-smiling-matters), [Verywell Mind](https://www.verywellmind.com/benefits-of-smiling-2795092).
+
+2. [: **Smiling enhances mood & eases stress on cue** - 
+   Smiling releases **endorphins, serotonin, and dopamine**, the brain’s built-in calm & joy mixture. Even a *forced* smile nudges your physiology toward **relaxation and resilience**, helping you think clearly under pressure. Exactly what you need in a high-stakes business environment. *Evidence:* [Healthline](https://www.healthline.com/health/benefits-of-smiling).
+
+3. (: **Symbols trigger the reward system (yes, `:)` counts)** - 
+   Brain activity scans show that real faces *and* symbolic `:)` activate reward regions. Your cheeks respond with smiling micro-muscle movements within **\~500 ms** just from reading the symbol. Your brain treats `:)` as a micro-reward. *Evidence:* [Hennenlotter et al., 2005](https://www.cambridge.org/core/journals/behavioral-and-brain-sciences/article/simulation-of-smiles-sims-model-embodied-simulation-and-the-meaning-of-facial-expression/FE0A911744186EBD3706B53794D4AEE9); [Mühlberger et al., 2011](https://www.frontiersin.org/journals/psychology/articles/10.3389/fpsyg.2018.00052/full).
+
+
+Anyone is able to ***(: Smile*** - the act of smiling (even with text) measurably lifts mood and sharpens focus, which makes ***(: Smile*** a tiny habit with outsized returns every time you write.
+
+
+ **↑ Bottom line for you and your org:** ***(: Smile*** boosts **happiness** for the model, **positivity** in your prompts and **structure** for your prompt engineers.
+
 
 
 
