@@ -1,7 +1,5 @@
 
-![Smile Prompt Language v1](20250826_0133_Smile%20with%20Emoticon_loop_01k3h83cvef4qbtegkt4qma1yf.gif )
 
-☆ **Star the repo** to make a prompt engineer ***(: Smile*** -> [![☆ Star the repo](https://img.shields.io/github/stars/DrThomasAger/smile?style=social)](https://github.com/DrThomasAger/smile/stargazers)
 
 # (: Smile Prompt Engineering Language
 
@@ -11,6 +9,15 @@
 >  \- [Dr. Thomas Ager](https://www.linkedin.com/in/drprompt?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app) [: Ph.D in (= [Interpretable Machine Learning](https://christophm.github.io/interpretable-ml-book/intro.html) =) ("NLP") ] from [Cardiff Univeristy](https://www.topuniversities.com/universities/cardiff-university) :] (; Wales, UK ;) 
 
 It is the first **prompt instruction language** to use **positive prompting** as its **structural foundation** by encoding a small set of positive text emojis like  `(:`, `[;`, and `[=`. 
+
+## Support Open Source 
+
+![Smile Prompt Language v1](20250826_0133_Smile%20with%20Emoticon_loop_01k3h83cvef4qbtegkt4qma1yf.gif )
+
+☆ **Star the repo** to make a prompt engineer ***(: Smile*** -> [![☆ Star the repo](https://img.shields.io/github/stars/DrThomasAger/smile?style=social)](https://github.com/DrThomasAger/smile/stargazers)
+
+[![Star History Chart](https://api.star-history.com/svg?repos=DrThomasAger/smile&type=Date)](https://star-history.com/#DrThomasAger/smile&Date)
+
 
 ## (: Smile For Dummies 
 
@@ -255,7 +262,6 @@ Copy and paste the above into any model to test.
 
 # Let's connect with a ***(: Smile***!
 
-[![Star History Chart](https://api.star-history.com/svg?repos=DrThomasAger/smile&type=Date)](https://star-history.com/#DrThomasAger/smile&Date)
 
 ☆ Star the repo to make a prompt engineer in an organization somewhere (: Smile -> [![☆ Star the repo](https://img.shields.io/github/stars/DrThomasAger/smile?style=social)](https://github.com/DrThomasAger/smile/stargazers)
 
