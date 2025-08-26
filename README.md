@@ -4,7 +4,7 @@
 
 # (: Smile Prompt Engineering Language
 
-***(: Smile*** is the dead simple **instruction only markup** for **increasing instruction following** in **large language model prompts**. 
+***(: Smile*** is the happy & simple **instruction only markup** for **increasing instruction following** in **large language model prompts**. 
 
 > "May all beings be happy."
 >  \- [Dr. Thomas Ager](https://www.linkedin.com/in/drprompt?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app) [: Ph.D in (= [Interpretable Machine Learning](https://christophm.github.io/interpretable-ml-book/intro.html) =) ("NLP") ] from [Cardiff Univeristy](https://www.topuniversities.com/universities/cardiff-university) :] (; Wales, UK ;) 
