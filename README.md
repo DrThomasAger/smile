@@ -60,24 +60,14 @@ Their role is an "expert" who is designed to respond lengthily and with jargon.
 
 > The **structure** is ***(: Smile***, the content is yours to decide. Check the `prompt/` folder for examples of how different content can be structured with ***(: Smile***.
 
-## Technical Advantages of (: Smile
 
-***(: Smile*** is easy to **learn**, easy to **read**, and easy to **scale**. It makes every prompt:
-
-* **Maintainable** ∞ *Unify your team under one standard.* -  Your team of prompt engineers can now contribute meaningfully together over long periods of time without confusion, conflicts or disrupting flow.
-
-* **Future-Proof** >>> *Never lose organizational intelligence.* - Allows your org to retain key intelligence, even after your prompt engineer leaves.
-
-* **Explainable** [" *Clearly map prompt text changes to consistent outputs.* - You can now explain your prompt. With increasing scrutiny on AI systems, you can better justify an AI decision in an EU court of law. 
-
-Let ***(: Smile*** be one part of making your AI systems **more transparent** for **humans and models.**
-
-
-These can open: `(:`, or close: `:)`, just like brackets in other languages.
 
 # (: Smile Basics
 
 ***(: Smile*** is used to define different kinds of sections, with the kind of emoji chosen helping to inform the content. 
+
+These can open: `(:`, or close: `:)`, just like brackets in other languages.
+
 
 You start by clearly defining the start `(:` of a section and its name `(: Section name (`. 
 
@@ -140,6 +130,18 @@ You probably already do! Any section, role description, instruction or data is s
 
 ***(: Smile*** was made to be performant for LLMs. Markdown is a document format that is used for rendering. Just because it works or is similar to the programming language you wrote before, **doesn't mean it brings the biggest performance gains for your key organization tasks.**
 
+
+### What Are The Business & Technical Advantages of (: Smile For My Organization or Company?
+
+***(: Smile*** is easy to **learn**, easy to **read**, and easy to **scale**. It makes every prompt:
+
+* **Maintainable** ∞ *Unify your team under one standard.* -  Your team of prompt engineers can now contribute meaningfully together over long periods of time without confusion, conflicts or disrupting flow.
+
+* **Future-Proof** >>> *Never lose organizational intelligence.* - Allows your org to retain key intelligence, even after your prompt engineer leaves.
+
+* **Explainable** [" *Clearly map prompt text changes to consistent outputs.* - You can now explain your prompt. With increasing scrutiny on AI systems, you can better justify an AI decision in an EU court of law. 
+
+Let ***(: Smile*** be one part of making your AI systems **more transparent** for **humans and models.**
 
 ### Does Smiling Make You Happier?
 
