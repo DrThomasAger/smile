@@ -21,7 +21,7 @@ It is the first **prompt instruction language** to use **positive prompting** as
 
 # (: Smile For Dummies 
 
-***(: Smile*** is a language for writing **prompts** to models like ***Gemini***, ***ChatGPT***, ***Claude*** or ***Kimi*** that informs them more clearly of the **structure** of your prompt. 
+***(: Smile*** is a language for writing **prompts** to models like ***ChatGPT*** or ***Kimi*** that informs them more clearly of the **structure** of your prompt. 
 
 Understanding structure for a model means it **understands** your prompt better, it **performs** better, and you're both **happy**.   
 
