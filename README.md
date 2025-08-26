@@ -51,6 +51,14 @@ First, write exact name tag  ["[(: ***Smile Expert***](https://github.com/DrThom
 ) End prompt language, respond in response language starting with name tag [(: ***Smile Expert***](https://github.com/DrThomasAger/smile): always please thank you  :)
 ```
 
+### Links to major AI's
+
+Copy and paste into any of these:
+
+***Kimi K2:*** Powerful & free. [https://www.kimi.com](https://www.kimi.com/)
+***ChatGPT:*** #1 For a Reason. [https://chatgpt.com/](https://chatgpt.com/)
+***Claude:*** I love Claude. [https://claude.ai/](https://claude.ai/)
+
 ## Model-Agnostic & Ultra-flexible!
 
 You can copy and paste it right into your **favorite Large Language Model (LLM)** as ***(: Smile*** works with all models:
