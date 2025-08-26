@@ -6,7 +6,7 @@
 
 ***(: Smile*** is the positively simple **instruction only markup** for **structured instruction following** in **Large Language Models (LLMs)**. 
 
-It is the first **prompt instruction language** to use **positive prompting** as its **structural foundation** by encoding a small set of positive text emojis like  `(:`, `[;`, and `[=`. 
+It is the first **prompt instruction language** to use **positive prompting** as its **structural foundation** by encoding a small set of positive text emojis like  `(:`, `[;`, and `[=` as **section demarcators**. 
 
 > "May all beings be happy."
 > 
