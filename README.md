@@ -20,7 +20,7 @@ Understanding structure for a model means it understands your prompt better, it 
 
 ## Quick Start Example
 
-Just **copy and paste the quick start example** below to see an example of ***(: Smile*** magic in action:
+Just **copy and paste the quick start example** below into any model to see an example of ***(: Smile*** magic in action:
 
 ```(: Smile v1
 ***(: Smile***:
