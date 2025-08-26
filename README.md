@@ -10,7 +10,9 @@
 > 
 >  \- [Dr. Thomas Ager](https://www.linkedin.com/in/drprompt?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app) [: Ph.D in (= [Interpretable Machine Learning](https://christophm.github.io/interpretable-ml-book/intro.html) =) ("NLP") ] from [Cardiff Univeristy](https://www.topuniversities.com/universities/cardiff-university) :] (; Wales, UK ;) 
 
-It uses a small set of positive text emojis like  `(:`, `[;`, and `[=`. These can open `(:`, or close `:)`, just like brackets. 
+It is the first **prompt instruction language** to use **positive prompting** as its **structural foundation** by encoding a small set of positive text emojis like  `(:`, `[;`, and `[=`. 
+
+These can open: `(:`, or close: `:)`, just like brackets in other languages.
 
 # (: Smile For Dummies 
 
