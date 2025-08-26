@@ -12,7 +12,7 @@ It uses a small set of positive text emojis like  `(:`, `[;`, and `[=`. These ca
 
 # (: Smile For Dummies 
 
-***(: Smile*** is a language for writing **prompts** to models like ***Gemini***, ***ChatGPT (OpenAI)***, ***Claude (Anthropic)*** or ***Kimi K2 (Moonshot AI)*** that informs them more clearly of the **structure** of your prompt. 
+***(: Smile*** is a language for writing **prompts** to models like ***Gemini***, ***ChatGPT***, ***Claude*** or ***Kimi K2 (Moonshot AI)*** that informs them more clearly of the **structure** of your prompt. 
 
 Understanding structure for a model means it understands your prompt better, it performs better, and you're both happy.  **The goal of (: Smile is happiness for all prompters.**  
 
