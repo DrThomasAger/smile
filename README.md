@@ -16,7 +16,7 @@ It is the first **prompt instruction language** to use **positive prompting** as
 
 [![Star History Chart](https://api.star-history.com/svg?repos=DrThomasAger/smile&type=Date)](https://star-history.com/#DrThomasAger/smile&Date)
 
-☆ **Star the repo** to make a prompt engineer ***(: Smile*** -> [![☆ Star the repo](https://img.shields.io/github/stars/DrThomasAger/smile?style=social)](https://github.com/DrThomasAger/smile/stargazers)
+☆ **Star the repo** to make a prompt engineer ***(: Smile*** [->] [![☆ Star the repo](https://img.shields.io/github/stars/DrThomasAger/smile?style=social)](https://github.com/DrThomasAger/smile/stargazers)
 
 
 # (: Smile For Dummies 
@@ -25,7 +25,7 @@ It is the first **prompt instruction language** to use **positive prompting** as
 
 Understanding structure for a model means it **understands** your prompt better, it **performs** better, and you're both **happy**.   
 
-**↓** Before you write ***(: Smile***, why not play with it first? **↓** 
+**[↓]** Before you write ***(: Smile***, why not play with it first? **[↓]** 
 
 ## Quick Start Example
 
