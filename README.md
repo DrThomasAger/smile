@@ -71,10 +71,11 @@ Their role is an "expert" who is designed to respond lengthily and with jargon.
 
 > The **structure** is ***(: Smile***, the content is yours to decide. Check the `prompt/` folder for examples of how different content can be structured with ***(: Smile***.
 
+# (: Smile Basics
+
 ![Smile Prompt Language v1](Smile-logo.png )
 
 
-# (: Smile Basics
 
 ***(: Smile*** is used to define different kinds of sections, with the kind of emoji chosen helping to inform the content. 
 
