@@ -10,11 +10,13 @@
 
 It uses a small set of positive text emojis like  `(:`, `[;`, and `[=`. These can open `(:`, or close `:)`, just like brackets. 
 
-# What Is (: Smile and How Do I Use It?
+# (: Smile For Dummies 
 
-It's a language for writing prompts to models like Gemini, ChatGPT, Claude or Kimi that informs them more clearly of the structure of your prompt. This means they understand your prompt better, you create a prompt that's easier to read and maintain, and your team appreciates your work. **The goal of (: Smile is happiness for all prompters.** 
+***(: Smile*** is a language for writing **prompts** to models like ***Gemini***, ***ChatGPT (OpenAI)***, ***Claude (Anthropic)*** or ***Kimi K2 (Moonshot AI)*** that informs them more clearly of the **structure** of your prompt. 
 
-I'm hoping you can be one of the first!
+Understanding structure for a model means it understands your prompt better, it performs better, and you're both happy.  **The goal of (: Smile is happiness for all prompters.**  
+
+# :)
 
 ## Quick Start Example
 
