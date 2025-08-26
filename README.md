@@ -53,9 +53,7 @@ First, write exact name tag  ["[(: ***Smile Expert***](https://github.com/DrThom
 
 ## Model-Agnostic & Ultra-flexible!
 
-You can copy and paste it right into your **favorite Large Language Model (LLM)** as ***(: Smile*** works with everything!
-
-***(: Smile*** is compatible with all models:
+You can copy and paste it right into your **favorite Large Language Model (LLM)** as ***(: Smile*** works with all models:
 
 * ✓ Open source
 * ✓ Closed foundation (e.g. ***OpenAI***)
