@@ -56,7 +56,7 @@ First, write exact name tag  ["[(: ***Smile Expert***](https://github.com/DrThom
 [= Copy and paste into any of these:
 
 1. (: ***Kimi K2:*** Powerful & free. [https://www.kimi.com](https://www.kimi.com/)
-2. [: ***ChatGPT:*** #1 For a Reason. [https://chatgpt.com/](https://chatgpt.com/)
+2. [: ***ChatGPT:*** Still good. [https://chatgpt.com/](https://chatgpt.com/)
 3. { ***Claude:*** I love Claude. [https://claude.ai/](https://claude.ai/)
 
 ## Model-Agnostic & Ultra-flexible!
