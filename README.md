@@ -14,9 +14,9 @@ It is the first **prompt instruction language** to use **positive prompting** as
 
 ## Support Open Source 
 
-☆ **Star the repo** to make a prompt engineer ***(: Smile*** -> [![☆ Star the repo](https://img.shields.io/github/stars/DrThomasAger/smile?style=social)](https://github.com/DrThomasAger/smile/stargazers)
-
 [![Star History Chart](https://api.star-history.com/svg?repos=DrThomasAger/smile&type=Date)](https://star-history.com/#DrThomasAger/smile&Date)
+
+☆ **Star the repo** to make a prompt engineer ***(: Smile*** -> [![☆ Star the repo](https://img.shields.io/github/stars/DrThomasAger/smile?style=social)](https://github.com/DrThomasAger/smile/stargazers)
 
 
 ## (: Smile For Dummies 
