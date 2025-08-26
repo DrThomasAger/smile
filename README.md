@@ -43,7 +43,7 @@ First, write exact name tag  ["[(: ***Smile Expert***](https://github.com/DrThom
 ) End prompt language, respond in response language starting with name tag [(: ***Smile Expert***](https://github.com/DrThomasAger/smile): always please thank you  :)
 ```
 
-### (: Smile Is Model-Agnostic & Ultra-flexible!
+### Model-Agnostic & Ultra-flexible!
 
 You can copy and paste it right into your **favorite Large Language Model (LLM)** as ***(: Smile*** works with everything!
 
