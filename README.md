@@ -21,7 +21,7 @@ Before you write ***(: Smile***, why not play with it first?
 
 ## Quick Start Example
 
-Just **copy and paste the quick start example** below into any model to see an example of ***(: Smile*** magic in action:
+Just **copy and paste the quick start example** below into any model to see an example of ***(: Smile***  in action:
 
 ```(: Smile v1
 ***(: Smile***:
