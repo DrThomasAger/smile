@@ -71,10 +71,13 @@ Their role is an "expert" who is designed to respond lengthily and with jargon.
 
 > The **structure** is ***(: Smile***, the content is yours to decide. Check the `prompt/` folder for examples of how different content can be structured with ***(: Smile***.
 
-# (: Smile Basics
+
+# (: Smile Documentation
 
 ![Smile Prompt Language v1](Smile-logo.png )
 
+
+## The Basics
 
 
 ***(: Smile*** is used to define different kinds of sections, with the kind of emoji chosen helping to inform the content. 
@@ -108,11 +111,7 @@ In-order to clearly separate for the model what is instructions and what is data
 
 We also need to separate prompt instruction language from response language, like in our quick start example (see next section).
 
-# (: Smile Documentation
-
-## Definitions
-
-### Eyes
+## Eyes
 
 * **Straight eyes** `=` can indicate strict input that must be followed exactly, e.g. `[=` 
 * **Quote eyes** `"` show text that must be repeated word for word verbatim, e.g. `["Repeat this word for word"]` 
