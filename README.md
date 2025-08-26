@@ -26,7 +26,7 @@ It is the first **prompt instruction language** to use **positive prompting** as
 
 Understanding structure for a model means it **understands** your prompt better, it **performs** better, and you're both **happy**.   
 
-**↓*** Before you write ***(: Smile***, why not play with it first? **↓** 
+**↓** Before you write ***(: Smile***, why not play with it first? **↓** 
 
 ### Quick Start Example
 
