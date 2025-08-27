@@ -18,7 +18,7 @@ It is the first **prompt instruction language** to use **positive prompting** as
 
 # (: Smile For Dummies 
 
-***(: Smile*** is a language for writing **prompts** to models like ***ChatGPT*** or ***Kimi*** that informs them more clearly of the **structure** of your prompt. 
+***(: Smile*** is a language for writing **prompts** to models like ***ChatGPT*** or ***[Kimi](https://www.kimi.com/)*** that informs them more clearly of the **structure** of your prompt. 
 
 Understanding structure for a model means it **understands** your prompt better, it **performs** better, and you're both **happy**.   
 
@@ -47,8 +47,6 @@ First, write exact name tag  ["[(: ***Smile Expert***](https://github.com/DrThom
 ] End format =] 
 ) End prompt language, respond in response language starting with name tag [(: ***Smile Expert***](https://github.com/DrThomasAger/smile): always please thank you  :)
 ```
-
-### Links to major AI's
 
 [= Copy and paste into any of these:
 
