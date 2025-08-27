@@ -81,6 +81,7 @@ Their role is an "expert" who is designed to respond lengthily and with jargon.
 
 ![Smile Prompt Language v1](Smile-logo.png )
 
+☆ **Star the repo** to make a prompt engineer ***(: Smile*** **->** [![☆ Star the repo](https://img.shields.io/github/stars/DrThomasAger/smile?style=social)](https://github.com/DrThomasAger/smile/stargazers)
 
 ## The Basics
 
