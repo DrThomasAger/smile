@@ -3,9 +3,9 @@
 
 # (: Smile Prompt Engineering Language
 
-***(: Smile*** is a markup for prompt engineering. It lets you prompt **Large Language Models (LLMs)** with **structured instructions**. 
-
 `(: Hello world!`
+
+***(: Smile*** is a markup for prompt engineering. It lets you prompt **Large Language Models (LLMs)** with **structured instructions**. 
 
 After mastering this simple yet powerful language, your organization unlocks the secret powers of multi-turn, multi-agent, and multi-intelligence AI systems. 
 
