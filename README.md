@@ -5,7 +5,7 @@
 
 ***(: Smile*** is a markup for prompt engineering. It lets you prompt with **structured instructions** to **Large Language Models (LLMs)**. This unlocks the secret powers of multi-turn, multi-agent, multi-intelligence AI systems. 
 
-As a business, your prompt engineering becomes consistently maintainable, you get measurable performance gains on your tasks, and your employees start to ***(: Smile***.
+As the business that adopts ***(: Smile*** today, your prompt engineering becomes consistently maintainable, you get measurable performance gains on your tasks, and your employees start to ***(: Smile***.
 
 It is the first **prompt instruction language** to use **positive prompting structure** by encoding a small set of positive text emojis like  `(:`, `[;`, and `[=` as **section demarcators**. 
 
