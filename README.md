@@ -9,7 +9,7 @@ As a business, your prompt engineering becomes consistently maintainable, you ge
 
 It is the first **prompt instruction language** to use **positive prompting structure** by encoding a small set of positive text emojis like  `(:`, `[;`, and `[=` as **section demarcators**. 
 
->  (; By [Dr. Thomas Ager](https://www.linkedin.com/in/drprompt?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app) 
+
 
 ## Support Open Source 
 
@@ -17,6 +17,7 @@ It is the first **prompt instruction language** to use **positive prompting stru
 
 ☆ **Star the repo** to make a prompt engineer ***(: Smile*** **->** [![☆ Star the repo](https://img.shields.io/github/stars/DrThomasAger/smile?style=social)](https://github.com/DrThomasAger/smile/stargazers)
 
+>  (; By [Dr. Thomas Ager](https://www.linkedin.com/in/drprompt?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app) 
 
 # (: Smile For Dummies 
 
