@@ -87,13 +87,9 @@ These can open: `(:`, or close: `:)`, just like brackets in other languages.
 
 You start by clearly defining the start `(:` of a section and its name `(: Section name (`. 
 
-You can end sections using the same markers in the opposite direction. `) End Section name :)`.
+You can end sections using the same markers in the opposite direction. `) End Section name, thank you :)`.
 
-These abbreviated ***(: Smile*** structures e.g. `(` indicate they are the second part of a set. 
-
-The ***(: Smile*** faces surround the name of the section, or any other text that wants to be at the top of a section. 
-
-The line indicates the start or end of the section, and the text inside the section *changes with the prompt and task required.*
+The text inside the section *changes with the prompt and task required.*
 
 ## Sections
 
