@@ -57,8 +57,6 @@ You can copy and paste it right into your **favorite Large Language Model (LLM)*
 * ✓ Toolkit (e.g. ***Cursor***)
 * ✓ Chat web interface (e.g. ***Gemini***, ***DeepSeek***, ***Grok***) ***Claude:*** I love Claude. [https://claude.ai/](https://claude.ai/)
 
-***(: Smile*** structures instruction text for instruction following, the same way ***HTML*** structures website content into blocks a web browser can render. 
-
 **Curious?** The example prompt demonstrates how simple structure can create a consistent role.
 
 Their role is an "expert" who is designed to respond lengthily and with jargon. 
@@ -88,6 +86,8 @@ The text inside the section *changes with the prompt and task required.*
 ## Sections
 
 A **"section"** is defined in ***(: Smile*** as a meaningfully different part of the prompt from another part of the prompt. 
+
+***(: Smile*** structures instruction text for instruction following, the same way ***HTML*** structures website content into blocks a web browser can render. 
 
 Let's imagine a raw text data input, like a **wikipedia HTML page**. It's full of metadata and information. This is **data**.
 
