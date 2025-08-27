@@ -13,7 +13,7 @@ After mastering this simple yet powerful language, your organization unlocks the
 
 As the business that adopts ***(: Smile*** today, your prompt engineering becomes consistently maintainable, you get measurable performance gains on your tasks, and your employees start to ***(: Smile***.
 
-It is the first **prompt instruction language** to use **positive prompting structure** by encoding a small set of positive text emojis like  `(:`, `[;`, and `[=` as **section demarcators**. 
+It is the first **prompt instruction language** to use **positive prompting structure** by encoding a small set of positive text emojis like  `(:`, `[;`, and `[=` as **section markers**. 
 
 It's also free and actively maintained. Are you a tech influencer who wants to share my project? Thank you, go ahead and invite me on your show! :)
 
