@@ -110,7 +110,7 @@ Instructions in a prompt are for telling the model what to **do with the data**,
 ## Eyes
 
 Did you know? 
->*You can tell if someone has a genuine smile if it carries over to the micro muscle movement in their cheeks and eyes*
+>*You can tell if someone has a genuine smile if it carries over to the micro muscle movement in their cheeks and eyes.**
 
 **In (: Smile, we have our own body language:**
 
