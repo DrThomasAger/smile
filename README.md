@@ -50,13 +50,6 @@ First, write exact name tag  ["[(: ***Smile Expert***](https://github.com/DrThom
 
 ## Model-Agnostic & Ultra-flexible!
 
-[= Copy and paste into any of these:
-
-1. 
-2. 
-3. 
-
-
 You can copy and paste it right into your **favorite Large Language Model (LLM)** as ***(: Smile*** works with all models:
 
 * ✓ Open source like gpt-oss, qwen, or (: ***Kimi K2:*** Powerful & free. [https://www.kimi.com](https://www.kimi.com/)
