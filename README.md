@@ -1,15 +1,12 @@
 
 ![Smile Prompt Language v1](20250826_0133_Smile%20with%20Emoticon_loop_01k3h83cvef4qbtegkt4qma1yf.gif )
 
-
 # (: Smile Prompt Engineering Language
 
 ***(: Smile*** is the positively simple **instruction only markup** for **structured instruction following** in **Large Language Models (LLMs)**. 
 
-It is the first **prompt instruction language** to use **positive prompting** as its **structural foundation** by encoding a small set of positive text emojis like  `(:`, `[;`, and `[=`. 
+It is the first **prompt instruction language** to use **positive prompting** as its **structural foundation** by encoding a small set of positive text emojis like  `(:`, `[;`, and `[=` as **section demarcators**. 
 
-> "May all beings be happy."
-> 
 >  (; By [Dr. Thomas Ager](https://www.linkedin.com/in/drprompt?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app) 
 
 ## Support Open Source 
@@ -21,7 +18,7 @@ It is the first **prompt instruction language** to use **positive prompting** as
 
 # (: Smile For Dummies 
 
-***(: Smile*** is a language for writing **prompts** to models like ***Gemini***, ***ChatGPT***, ***Claude*** or ***Kimi*** that informs them more clearly of the **structure** of your prompt. 
+***(: Smile*** is a language for writing **prompts** to models like ***ChatGPT*** or ***[Kimi](https://www.kimi.com/)*** that informs them more clearly of the **structure** of your prompt. 
 
 Understanding structure for a model means it **understands** your prompt better, it **performs** better, and you're both **happy**.   
 
@@ -50,8 +47,6 @@ First, write exact name tag  ["[(: ***Smile Expert***](https://github.com/DrThom
 ] End format =] 
 ) End prompt language, respond in response language starting with name tag [(: ***Smile Expert***](https://github.com/DrThomasAger/smile): always please thank you  :)
 ```
-
-### Links to major AI's
 
 [= Copy and paste into any of these:
 
@@ -92,39 +87,21 @@ These can open: `(:`, or close: `:)`, just like brackets in other languages.
 
 You start by clearly defining the start `(:` of a section and its name `(: Section name (`. 
 
-You can end sections using the same markers in the opposite direction. `) End Section name :)`.
+You can end sections using the same markers in the opposite direction. `) End Section name, thank you :)`.
 
-These abbreviated ***(: Smile*** structures e.g. `(` indicate they are the second part of a set. 
-
-The ***(: Smile*** faces surround the name of the section, or any other text that wants to be at the top of a section. 
-
-The line indicates the start or end of the section, and the text inside the section *changes with the prompt and task required.*
+The text inside the section *changes with the prompt and task required.*
 
 ## Sections
 
-A **"section"** is defined in ***(: Smile*** as a meaningfully different part of the prompt from another part of the prompt. 
-
-Let's imagine a raw text data input, like a **wikipedia HTML page**. It's full of metadata and information. 
-
-In-order to tell the model how to use the data, we provide **short instruction text** informing the model how to use the wikipedia page, for example, `summarize key points detailed`.
-
-Without telling the model that we're providing them an input document, and giving a clear section for that document, it may not be able to clearly **pay attention** to the important parts of the prompt - the short instruction text. 
-
-Instructions in a prompt are for telling the model what to **do with the data**, like `extract the key points`, data in the prompt is for **maximizing relevant context for the model**, like a transcript of a meeting. Without the meeting, the model cannot learn in context how to use the prompt instruction. 
-
 In-order to clearly separate for the model what is instructions and what is data, we can use sections.
 
-We also need to separate prompt instruction language from response language, like in our quick start example (see next section).
+A **"section"** is always defined with a ***(: Smile***.
 
-## Eyes
+If we tell the model that we're providing them an input **section**, and giving a explicit e.g. `markdown` section for that document, the model can pay much more **clear attention**  to the other section of the prompt: **the short instruction section of how to perform the task**. 
 
-* **Straight eyes** `=` can indicate strict input that must be followed exactly, e.g. `[=` 
-* **Quote eyes** `"` show text that must be repeated word for word verbatim, e.g. `["Repeat this word for word"]` 
-* **Cash eyes**  `$` show variables and can be replaced with the true values before inference using code. `!` important eyes show text to emphasize for the model, e.g. `[! Don't use negative language. !]`. 
+In other words: **When we give text clear structure, models know what to pay attention to.** 
 
 ## Syntax Map
-
-These are a few different ways to create structure with ***(: Smile***.
 
 | Symbol | Purpose | Example | When to Use |
 |--------|---------|---------|---------|
@@ -286,6 +263,7 @@ Copy and paste the above into any model to test.
 | **OpenAI** →          | GPT-4o           |                ✓               |
 |                       | GPT-5-Fast       |                ✓               |
 |                       | GPT-5-Thinking   |                ✓               |
+|                       | gpt-oss-20B/120B   |                ✓               |
 | **Anthropic** →       | Claude Sonnet 4  |                ✓               |
 | **Google DeepMind** → | Gemini 2.5 Pro   |                ✓               |
 |                       | Gemini 2.5 Flash |                ✓               |
@@ -293,11 +271,13 @@ Copy and paste the above into any model to test.
 |                       | Kimi 1.5         |                ✓               |
 
 
-**Note:** *Don't see your favorite model? Please feel free to try the above prompt and report back the results.* *We are constantly updating this table with community submitted information.*
+**Note:** *Don't see your favorite model? Please feel free to try the above prompt and [DM me](https://www.linkedin.com/in/drprompt/) the results!
 
 
 
-# **(: Smile** is working when the model follows your defined response language, be it markdown, json or one you have created. 
+# How Do You Know **(: Smile** Is Working?
+
+A prompt language is working When the model follows your defined response language, be it markdown, json or one you have created. 
 
 I'll extend our previous example to break the rules a little bit, and get a lot of new functionality as a result. This is designed to make you feel like you are free to drop {instructions on how to fill out the text} not just inside of the definition of the format the model needs to respond in. In the next example, I'll show how you can also use them inside the markdown titles themselves for the model to choose what to call each section:
 
