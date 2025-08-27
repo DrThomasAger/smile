@@ -18,13 +18,17 @@ It is the first **prompt instruction language** to use **positive prompting stru
 
 # (: Smile For Dummies 
 
-***(: Smile*** is a language for writing **prompts** that informs them more clearly of the different parts of your prompt through model and task agnostic **structure**.
+Like a programming language for talking to AI models, ***(: Smile*** is a language for writing **prompts** that are clear to any model for any task.
+
+**The model just gets it.**
 
 Understanding **structure** for a model means it **understands** your prompt better, it **performs** better, and you're both **happy**.   
 
-Before you write ***(: Smile***, why not play with it first? **↓** 
+
 
 ## Quick Start Example
+
+Before you write ***(: Smile***, why not play with it first? **↓** 
 
 Just **copy and paste the quick start example** below into any model to see an example of ***(: Smile***  in action:
 
