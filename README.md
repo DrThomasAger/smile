@@ -102,7 +102,7 @@ Let's imagine a raw text data input, like a **wikipedia HTML page**. It's full o
 
 In-order to tell the model how to use the data, we provide **short instruction text** informing the model how to use the wikipedia page, for example, `define jargon`.
 
-Instructions in a prompt are for telling the model what to **do with the data**, like `find all mentions of the key phrase`, data in the prompt is for **maximizing relevant context for the model**, like a transcript of a meeting. 
+Instructions in a prompt are for telling the model what to **do with the data**, like `find all mentions of the key phrase`, data in the prompt is for **maximizing relevant context for the model**, like a wikipedia page about "pleasure" gives relevant context to the model for a query like "Why does smiling release happy chemicals like chocolate or the sun?"
 
 ### When Do I Use a Section?
 
