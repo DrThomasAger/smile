@@ -7,8 +7,6 @@
 
 It is the first **prompt instruction language** to use **positive prompting** as its **structural foundation** by encoding a small set of positive text emojis like  `(:`, `[;`, and `[=` as **section demarcators**. 
 
-> "May all beings be happy."
-> 
 >  (; By [Dr. Thomas Ager](https://www.linkedin.com/in/drprompt?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app) 
 
 ## Support Open Source 
