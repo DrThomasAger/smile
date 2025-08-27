@@ -104,11 +104,6 @@ In-order to tell the model how to use the data, we provide **short instruction t
 
 Instructions in a prompt are for telling the model what to **do with the data**, like `find all mentions of the key phrase`, data in the prompt is for **maximizing relevant context for the model**, like a wikipedia page about "pleasure" gives relevant context to the model for a query like "Why does smiling release happy chemicals like chocolate or the sun?"
 
-### When Do I Use a Section?
-
-In-order to clearly separate for the model what is instructions and what is data, we can use sections.
-
-We also need to separate prompt instruction language from response language, like in our quick start example (see next section).
 
 ## Eyes
 
