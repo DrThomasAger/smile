@@ -48,20 +48,21 @@ First, write exact name tag  ["[(: ***Smile Expert***](https://github.com/DrThom
 ) End prompt language, respond in response language starting with name tag [(: ***Smile Expert***](https://github.com/DrThomasAger/smile): always please thank you  :)
 ```
 
+## Model-Agnostic & Ultra-flexible!
+
 [= Copy and paste into any of these:
 
-1. (: ***Kimi K2:*** Powerful & free. [https://www.kimi.com](https://www.kimi.com/)
-2. [: ***ChatGPT:*** Still good. [https://chatgpt.com/](https://chatgpt.com/)
-3. { ***Claude:*** I love Claude. [https://claude.ai/](https://claude.ai/)
+1. 
+2. 
+3. 
 
-## Model-Agnostic & Ultra-flexible!
 
 You can copy and paste it right into your **favorite Large Language Model (LLM)** as ***(: Smile*** works with all models:
 
-* ✓ Open source
-* ✓ Closed foundation (e.g. ***OpenAI***)
+* ✓ Open source like gpt-oss, qwen, or (: ***Kimi K2:*** Powerful & free. [https://www.kimi.com](https://www.kimi.com/)
+* ✓ Closed foundation (e.g. ***OpenAI***)[: ***ChatGPT:*** Still good. [https://chatgpt.com/](https://chatgpt.com/)
 * ✓ Toolkit (e.g. ***Cursor***)
-* ✓ Chat web interface (e.g. ***Gemini***, ***Claude***, ***Kimi***, ***ChatGPT***)
+* ✓ Chat web interface (e.g. ***Gemini***, ***DeepSeek***, ***Grok***) ***Claude:*** I love Claude. [https://claude.ai/](https://claude.ai/)
 
 ***(: Smile*** structures instruction text for instruction following, the same way ***HTML*** structures website content into blocks a web browser can render. 
 
