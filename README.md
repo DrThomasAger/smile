@@ -3,7 +3,9 @@
 
 # (: Smile Prompt Engineering Language
 
-***(: Smile*** is a markup for prompt engineering. It lets you prompt with **structured instructions** to **Large Language Models (LLMs)**. This unlocks the secret powers of multi-turn, multi-agent, multi-intelligence AI systems. 
+***(: Smile*** is a markup for prompt engineering. It lets you prompt **Large Language Models (LLMs)** with **structured instructions**. This unlocks the secret powers of multi-turn, multi-agent, and multi-intelligence AI systems. 
+
+## Adopt (: Smile today for a positive AI future.** :) 
 
 As the business that adopts ***(: Smile*** today, your prompt engineering becomes consistently maintainable, you get measurable performance gains on your tasks, and your employees start to ***(: Smile***.
 
