@@ -107,6 +107,11 @@ Instructions in a prompt are for telling the model what to **do with the data**,
 
 ## Eyes
 
+Did you know? 
+>*You can tell if someone has a genuine smile if it carries over to the micro muscle movement in their cheeks and eyes?*
+
+**In (: Smile, we have our own body language:**
+
 * **Straight eyes** `=` can indicate strict input that must be followed exactly, e.g. `[=` 
 * **Quote eyes** `"` show text that must be repeated word for word verbatim, e.g. `["Repeat this word for word"]` 
 * **Cash eyes**  `$` show variables and can be replaced with the true values before inference using code. `!` important eyes show text to emphasize for the model, e.g. `[! Don't use negative language. !]`. 
