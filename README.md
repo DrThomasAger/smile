@@ -3,7 +3,9 @@
 
 # (: Smile Prompt Engineering Language
 
-***(: Smile*** is the positively simple **instruction only markup** for **structured instruction following** in **Large Language Models (LLMs)**. 
+***(: Smile*** is a **instruction only markup** for **structured instruction following** in **Large Language Models (LLMs)**. 
+
+It brings you maintainability, measurable performance gains, and a ***(: Smile***.
 
 It is the first **prompt instruction language** to use **positive prompting structure** by encoding a small set of positive text emojis like  `(:`, `[;`, and `[=` as **section demarcators**. 
 
