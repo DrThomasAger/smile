@@ -48,7 +48,6 @@ Their role is an "expert" who is designed to respond lengthily and with jargon.
 > The **structure** is ***(: Smile***, the content is yours to decide. Check the `prompt/` folder for examples of how different content can be structured with ***(: Smile***.
 
 
-Just **copy and paste the quick start example** below into any model to see an example of ***(: Smile***  in action:
 
 ```(: Smile v1
 ***(: Smile***:
@@ -70,10 +69,7 @@ First, write exact name tag  ["[(: ***Smile Expert***](https://github.com/DrThom
 ) End prompt language, respond in response language starting with name tag [(: ***Smile Expert***](https://github.com/DrThomasAger/smile): always please thank you  :)
 ```
 
-## Model-Agnostic & Ultra-flexible!
-
-You can copy and paste it right into your **favorite Large Language Model (LLM)** as ***(: Smile*** works with all models:
-
+**↑**  Just **copy and paste the quick start example** above into any model now   **↑**
 
 * ✓ Chat web interface (e.g. ***Gemini***, ***DeepSeek***, ***Grok***) ***Claude:*** I love Claude. [https://claude.ai/](https://claude.ai/)
 
