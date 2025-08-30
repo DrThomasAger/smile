@@ -114,9 +114,9 @@ You can end sections using the same markers in the opposite direction. `) End Se
 
 ## Tasks
 
-The text inside the section *changes with the prompt and task required.
+The text inside the section **changes with the prompt and task required.**
 
-Tasks are defined processes with inputs and outputs, usually also with input data. We normally have expected results and test cases for them. Now, run tasks with a (: Smile!
+Tasks are defined processes with inputs and outputs, usually also with input data. We normally have expected results and test cases for them. Now, run tasks with a ***(: Smile***!
 
 ## Sections
 
