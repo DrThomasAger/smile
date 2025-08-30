@@ -2,9 +2,9 @@
 
 # (: Smile 
 
-Like a programming language for talking to AI models, ***(: Smile*** is a language for writing **prompts** that are clear to any AI for any task.
+ ***(: Smile*** is like a programming language for talking to AI models. 
 
-**The model just gets it.**
+With ***(: Smile***, **The model just gets it.**
 
 Writing ***(: Smile*** for a Large Language Model (LLM) means they **understand** your prompt better, **perform** better, and you're both **happy**.   
 
