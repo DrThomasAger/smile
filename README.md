@@ -11,25 +11,31 @@ Welcome to the universe's first positively oriented language for prompting ***La
 
 ***(: Smile*** is a markup for writing prompts. It lets you write  **structured instructions** any model can understand. 
 
-## [= Advanced (: Smile :) =]
-
-After mastering this simple yet powerful language, your organization unlocks the secret powers of **multi-turn**, **multi-agent**, and **multi-intelligence** AI systems. 
-
 ## Adopt (: Smile today for a positive AI future. :)
 
 As the business that adopts ***(: Smile*** today, your ***Prompt Engineering*** becomes consistently **maintainable**, you get **measurable performance gains** on your tasks, and your employees are **happy**. 
 
 ***(: Smile*** is the first **prompt instruction language** to use **positive prompting structure** by encoding a small set of positive text emojis like  `(:`, `[;`, and `[=` as **section markers**. 
 
-It's also free and actively maintained. **Are you a tech influencer who wants to *share my project?*** (: Thank you, go ahead and invite me on your show! :)
+### [= Advanced (: Smile :) =]
+
+After mastering this simple yet powerful language, your organization unlocks the secret powers of **multi-turn**, **multi-agent**, and **multi-intelligence** AI systems. 
+
+
 
 ## Support Open Source 
+
+/ Thank you so much for starring the repo!
 
 [![Star History Chart](https://api.star-history.com/svg?repos=DrThomasAger/smile&type=Date)](https://star-history.com/#DrThomasAger/smile&Date)
 
 ☆ **Star the repo** to make a prompt engineer ***(: Smile*** **->** [![☆ Star the repo](https://img.shields.io/github/stars/DrThomasAger/smile?style=social)](https://github.com/DrThomasAger/smile/stargazers)
 
 >  (; By [Dr. Thomas Ager](https://www.linkedin.com/in/drprompt?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app) 
+
+## Media Contact 
+
+***(: Smile*** is free and actively maintained. **Are you a tech influencer who wants to *share my project?*** (: Thank you, go ahead and invite me on your show! :)
 
 # (: Smile For Dummies 
 
