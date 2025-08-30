@@ -35,7 +35,9 @@ After mastering this simple yet powerful language, your organization unlocks the
 
 
 
-## Support Open Source 
+## Support Open Source
+
+☆ **Star the repo** to make a prompt engineer ***(: Smile*** **->** [![☆ Star the repo](https://img.shields.io/github/stars/DrThomasAger/smile?style=social)](https://github.com/DrThomasAger/smile/stargazers)
 
 / Thank you so much for starring the repo!
 
