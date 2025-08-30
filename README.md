@@ -1,5 +1,17 @@
-
 ![Smile Prompt Language v1](20250826_0133_Smile%20with%20Emoticon_loop_01k3h83cvef4qbtegkt4qma1yf.gif)
+
+# (: Smile 
+
+Like a programming language for talking to AI models, ***(: Smile*** is a language for writing **prompts** that are clear to any model for any task.
+
+**The model just gets it.**
+
+Understanding **structure** for a model means it **understands** your prompt better, it **performs** better, and you're both **happy**.   
+
+
+
+
+
 
 # (: Smile Prompt Engineering Language
 
@@ -36,14 +48,6 @@ After mastering this simple yet powerful language, your organization unlocks the
 ## Media Contact 
 
 ***(: Smile*** is free and actively maintained. **Are you a tech influencer who wants to *share my project?*** (: Thank you, go ahead and invite me on your show! :)
-
-# (: Smile For Dummies 
-
-Like a programming language for talking to AI models, ***(: Smile*** is a language for writing **prompts** that are clear to any model for any task.
-
-**The model just gets it.**
-
-Understanding **structure** for a model means it **understands** your prompt better, it **performs** better, and you're both **happy**.   
 
 
 
