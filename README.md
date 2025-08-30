@@ -15,7 +15,7 @@ As the business that adopts ***(: Smile*** today, your prompt engineering become
 
 It is the first **prompt instruction language** to use **positive prompting structure** by encoding a small set of positive text emojis like  `(:`, `[;`, and `[=` as **section markers**. 
 
-It's also free and actively maintained. Are you a tech influencer who wants to share my project? Thank you, go ahead and invite me on your show! :)
+It's also free and actively maintained. **Are you a tech influencer who wants to *share my project?*** (: Thank you, go ahead and invite me on your show! :)
 
 ## Support Open Source 
 
