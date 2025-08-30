@@ -22,11 +22,16 @@ Writing ***(: Smile*** for a ***Large Language Model (LLM)*** means they **under
 
 `(: Hello world!`
 
-For the first time in the history of ***Artificial Intelligence (AI)***, ***(: Smile*** with true confidence that you will get the **outcomes** you **intended** to get, **in the way you intended to get them.**
 
-Welcome to the universe's first positively oriented language for prompting ***Large Language Models (LLMs)***.
+Welcome to the first positively oriented language for prompting ***Large Language Models (LLMs)***.
 
-***(: Smile*** is a markup for writing prompts. It lets you write  **structured instructions** any model can understand. 
+For the first time in the history of ***Artificial Intelligence (AI)***, you can prompt with a ***(: Smile***. 
+
+(: Smile is a structured prompt language. It's a markup- but for writing prompts! It lets you write  **structured instructions** any model can understand. 
+
+Structured prompts mean you can move with true confidence that you will get the **outcomes** you **intended** to get, **in the way you intended to get them.**
+
+***(: Smile*** is a  
 
 ## Adopt (: Smile today for a positive AI future. :)
 
