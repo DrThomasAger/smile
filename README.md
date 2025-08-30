@@ -30,7 +30,7 @@ Welcome to the universe's first positively oriented language for prompting ***La
 
 ## Adopt (: Smile today for a positive AI future. :)
 
-As the business that adopts ***(: Smile*** today, your ***prompt engineering*** becomes consistently **maintainable**, you get **measurable performance gains** on your tasks, and your employees are **happy**. 
+Why adopt ***(: Smile*** today? Because your ***prompt engineering*** will become **maintainable**, you get **measurable performance gains** on your tasks, and your employees will **(: Smile**. 
 
 ***(: Smile*** is the first **prompt instruction language** to use **positive prompting structure** by encoding a small set of positive text emojis like  `(:`, `[;`, and `[=` as **semantically unique markers**. 
 
