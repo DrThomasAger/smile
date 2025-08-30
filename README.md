@@ -5,9 +5,11 @@
 
 `(: Hello world!`
 
-Welcome to the positively oriented language for prompting ***Large Language Models (LLMs)***.
+For the first time in the history of AI, you can ***(: Smile*** with true confidence that you will **get the outcomes you intended to get, in the way you intended to get them.**
 
-***(: Smile*** is a markup for writing prompts. It lets you write  **structured instructions** any model can understand. For the first time in the history of AI, you can ***(: Smile*** with true confidence that you will **get the outcomes you intended to get, in the way you intended to get them.**
+Welcome to the universe's first positively oriented language for prompting ***Large Language Models (LLMs)***.
+
+***(: Smile*** is a markup for writing prompts. It lets you write  **structured instructions** any model can understand. 
 
 ## [= Advanced (: Smile :) =]
 
