@@ -73,7 +73,7 @@ First, write exact name tag  ["[(: ***Smile Expert***](https://github.com/DrThom
 
 * ✓ Chat web interface (e.g. [https://claude.ai/](https://claude.ai/), ***Gemini***, ***DeepSeek***, ***Grok***)
 
-  Even if you have never learned to code or used an API, and just create your own prompts in ChatGPT or another chat interface, you can (: Smile!
+Even if you have never learned to code or used an API, and just create your own prompts in ChatGPT or another chat interface, you can (: Smile!
 
 
 * ✓ Open source like gpt-oss, qwen, or (:  ***Kimi K2:*** [https://www.kimi.com](https://www.kimi.com/)  - All powerful, low priced & free.
