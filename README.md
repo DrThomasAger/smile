@@ -35,33 +35,6 @@ Welcome to the first positively oriented language for prompting ***Large Languag
 It follows that writing ***(: Smile*** for a ***Large Language Model (LLM)*** means they **understand** your prompt better, **perform** better, and you're both **happy**.   
 
 
-## Why adopt ***(: Smile*** today?  Adopt (: Smile today 
-
-For a positive AI future. :) Because your ***prompt engineering*** will become **maintainable**, you get **measurable performance gains** on your tasks, and your employees will **(: Smile**. 
-
-***(: Smile*** is the first **prompt instruction language** to use **positive prompting structure** by encoding a small set of positive text emojis like  `(:`, `[;`, and `[=` as **semantically unique markers**. 
-
-### [= Advanced (: Smile :) =]
-
-After mastering this simple yet powerful language, your organization unlocks the secret powers of **multi-turn**, **multi-agent**, and **multi-intelligence** AI systems. 
-
-
-
-## Support Open Source
-
-☆ **Star the repo** to make a prompt engineer ***(: Smile*** **->** [![☆ Star the repo](https://img.shields.io/github/stars/DrThomasAger/smile?style=social)](https://github.com/DrThomasAger/smile/stargazers)
-
-/ Thank you so much for starring the repo!
-
-[![Star History Chart](https://api.star-history.com/svg?repos=DrThomasAger/smile&type=Date)](https://star-history.com/#DrThomasAger/smile&Date)
-
-
-
-## Media Contact 
-
-***(: Smile*** is free and actively maintained. **Are you a tech influencer who wants to *share my project?*** (: Thank you, go ahead and invite me on your show! :)
-
-
 
 ## Quick Start Example
 
@@ -115,6 +88,35 @@ All powerful large, closed and hidden models (like "OpenAI" or other companies a
 * ✓ Toolkits (e.g. ***Cursor***, ***Copilot***)
 
 All of your existing prompt programming and other tools for system prompts can be made happy and performant with (: Smile!
+
+
+
+## Why adopt ***(: Smile*** today?  
+
+For a **positive** AI future. :) Because your ***prompt engineering*** will become **maintainable**, you get **measurable performance gains** on your tasks, and your employees will **(: Smile**. 
+
+***(: Smile*** is the first **prompt instruction language** to use **positive prompting structure** by encoding a small set of positive text emojis like  `(:`, `[;`, and `[=` as **semantically unique markers**. 
+
+### [= Advanced (: Smile :) =]
+
+After mastering this simple yet powerful language, your organization unlocks the secret powers of **multi-turn**, **multi-agent**, and **multi-intelligence** AI systems. 
+
+
+
+## Support Open Source
+
+☆ **Star the repo** to make a prompt engineer ***(: Smile*** **->** [![☆ Star the repo](https://img.shields.io/github/stars/DrThomasAger/smile?style=social)](https://github.com/DrThomasAger/smile/stargazers)
+
+/ Thank you so much for starring the repo!
+
+[![Star History Chart](https://api.star-history.com/svg?repos=DrThomasAger/smile&type=Date)](https://star-history.com/#DrThomasAger/smile&Date)
+
+
+
+## Media Contact 
+
+***(: Smile*** is free and actively maintained. **Are you a tech influencer who wants to *share my project?*** (: Thank you, go ahead and invite me on your show! :)
+
 
 
 
