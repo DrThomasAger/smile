@@ -1,6 +1,11 @@
 ![Smile Prompt Language v1](20250826_0133_Smile%20with%20Emoticon_loop_01k3h83cvef4qbtegkt4qma1yf.gif)
 
+>  (; By [Dr. Thomas Ager](https://www.linkedin.com/in/drprompt?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app) 
+
+
 # (: Smile 
+
+
 
  ***(: Smile*** is like a programming language for talking to AI models. 
 
@@ -43,9 +48,7 @@ After mastering this simple yet powerful language, your organization unlocks the
 
 [![Star History Chart](https://api.star-history.com/svg?repos=DrThomasAger/smile&type=Date)](https://star-history.com/#DrThomasAger/smile&Date)
 
-☆ **Star the repo** to make a prompt engineer ***(: Smile*** **->** [![☆ Star the repo](https://img.shields.io/github/stars/DrThomasAger/smile?style=social)](https://github.com/DrThomasAger/smile/stargazers)
 
->  (; By [Dr. Thomas Ager](https://www.linkedin.com/in/drprompt?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app) 
 
 ## Media Contact 
 
