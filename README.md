@@ -6,7 +6,7 @@
 
 When you ***(: Smile***, **the model loves to follow your instructions.**
 
-Writing ***(: Smile*** for a Large Language Model (LLM) means they **understand** your prompt better, **perform** better, and you're both **happy**.   
+Writing ***(: Smile*** for a ***Large Language Model (LLM)*** means they **understand** your prompt better, **perform** better, and you're both **happy**.   
 
 
 
