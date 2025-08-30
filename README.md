@@ -5,7 +5,7 @@
 
 `(: Hello world!`
 
-For the first time in the history of AI, you can ***(: Smile*** with true confidence that you will get the **outcomes** you **intended** to get, **in the way you intended to get them.**
+For the first time in the history of Artificial Intelligence (AI), ***(: Smile*** with true confidence that you will get the **outcomes** you **intended** to get, **in the way you intended to get them.**
 
 Welcome to the universe's first positively oriented language for prompting ***Large Language Models (LLMs)***.
 
