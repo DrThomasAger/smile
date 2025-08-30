@@ -72,7 +72,7 @@ First, write exact name tag  ["[(: ***Smile Expert***](https://github.com/DrThom
 
 **↑**  Just **copy and paste the quick start example** above into any model now   **↑**
 
-The fastest way to get started is to copy and paste this into your favorite web interaface:
+The fastest way to get started is to copy and paste this into your favorite web interface:
 
 * ✓ Chat web interface (e.g. [https://claude.ai/](https://claude.ai/), ***Gemini***, ***DeepSeek***, ***Grok***)
 
