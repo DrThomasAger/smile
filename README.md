@@ -31,11 +31,9 @@ For the first time in the history of ***Artificial Intelligence (AI)***, you can
 
 Structured prompts mean you can move with true confidence that you will get the **outcomes** you **intended** to get, **in the way you intended to get them.**
 
-***(: Smile*** is a  
+## Why adopt ***(: Smile*** today?  Adopt (: Smile today 
 
-## Adopt (: Smile today for a positive AI future. :)
-
-Why adopt ***(: Smile*** today? Because your ***prompt engineering*** will become **maintainable**, you get **measurable performance gains** on your tasks, and your employees will **(: Smile**. 
+For a positive AI future. :) Because your ***prompt engineering*** will become **maintainable**, you get **measurable performance gains** on your tasks, and your employees will **(: Smile**. 
 
 ***(: Smile*** is the first **prompt instruction language** to use **positive prompting structure** by encoding a small set of positive text emojis like  `(:`, `[;`, and `[=` as **semantically unique markers**. 
 
