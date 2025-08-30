@@ -6,7 +6,7 @@ Like a programming language for talking to AI models, ***(: Smile*** is a langua
 
 **The model just gets it.**
 
-Writing ***(: Smile*** for a Large Language Model (LLM) means they **understand** your prompt better, it **performs** better, and you're both **happy**.   
+Writing ***(: Smile*** for a ***Large Language Model (LLM)*** means they **understand** your prompt better, it **performs** better, and you're both **happy**.   
 
 
 
