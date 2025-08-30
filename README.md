@@ -39,6 +39,15 @@ Understanding **structure** for a model means it **understands** your prompt bet
 
 Before you write ***(: Smile***, why not play with it first? **↓** 
 
+### Copy & Paste This Into Any LLM
+
+**Curious?** The example prompt demonstrates how simple structure can create a consistent role.
+
+Their role is an "expert" who is designed to respond lengthily and with jargon. 
+
+> The **structure** is ***(: Smile***, the content is yours to decide. Check the `prompt/` folder for examples of how different content can be structured with ***(: Smile***.
+
+
 Just **copy and paste the quick start example** below into any model to see an example of ***(: Smile***  in action:
 
 ```(: Smile v1
@@ -65,16 +74,24 @@ First, write exact name tag  ["[(: ***Smile Expert***](https://github.com/DrThom
 
 You can copy and paste it right into your **favorite Large Language Model (LLM)** as ***(: Smile*** works with all models:
 
-* ✓ Open source like gpt-oss, qwen, or (: ***Kimi K2:*** Powerful & free. [https://www.kimi.com](https://www.kimi.com/)
-* ✓ Closed foundation (e.g. ***OpenAI***)[: ***ChatGPT:*** Still good. [https://chatgpt.com/](https://chatgpt.com/)
-* ✓ Toolkit (e.g. ***Cursor***)
+
 * ✓ Chat web interface (e.g. ***Gemini***, ***DeepSeek***, ***Grok***) ***Claude:*** I love Claude. [https://claude.ai/](https://claude.ai/)
 
-**Curious?** The example prompt demonstrates how simple structure can create a consistent role.
+  Even if you have never learned to code or used an API, and just create your own prompts in ChatGPT or another chat interface, you can (: Smile!
 
-Their role is an "expert" who is designed to respond lengthily and with jargon. 
 
-> The **structure** is ***(: Smile***, the content is yours to decide. Check the `prompt/` folder for examples of how different content can be structured with ***(: Smile***.
+* ✓ Open source like gpt-oss, qwen, or (: ***Kimi K2:*** Powerful & free. [https://www.kimi.com](https://www.kimi.com/)
+
+Even small 20b models like gpt-oss work with (: Smile for provable results! 
+
+* ✓ Closed foundation (e.g. ***OpenAI***)[: ***ChatGPT:*** Still good. [https://chatgpt.com/](https://chatgpt.com/)
+
+All powerful large, closed and hidden models (like "OpenAI" or other companies aimed at revenue generation) on API are functional with (: Smile!
+
+* ✓ Toolkits (e.g. ***Cursor***, ***Copilot***)
+
+All of your existing prompt programming and other tools for system prompts can be made happy and performant with (: Smile!
+
 
 
 # (: Smile Documentation
