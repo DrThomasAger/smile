@@ -9,6 +9,8 @@ Welcome to the positively oriented language for prompting ***Large Language Mode
 
 ***(: Smile*** is a markup for writing prompts. It lets you write  **structured instructions** any model can understand. For the first time in the history of AI, you can ***(: Smile*** with true confidence that you will **get the outcomes you intended to get, in the way you intended to get them.**
 
+## [= Advanced (: Smile :) =]
+
 After mastering this simple yet powerful language, your organization unlocks the secret powers of **multi-turn**, **multi-agent**, and **multi-intelligence** AI systems. 
 
 ## Adopt (: Smile today for a positive AI future. :)
