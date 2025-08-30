@@ -132,11 +132,6 @@ You start by clearly defining the start `(:` of a section and its name `(: Secti
 
 You can end sections using the same markers in the opposite direction. `) End Section name, thank you :)`.
 
-## Tasks
-
-The text inside the section **changes with the prompt and task required.**
-
-Tasks are defined processes with inputs and outputs, usually also with input data. We normally have expected results and test cases for them. Now, run tasks with a ***(: Smile***!
 
 ## Sections
 
@@ -152,6 +147,15 @@ In-order to tell the model how to use the data, we provide **short instruction t
 
 Instructions in a prompt are for telling the model what to **do with the data**, like `find all mentions of the key phrase`, data in the prompt is for **maximizing relevant context for the model**, like a wikipedia page about "pleasure" gives relevant context to the model for a query like "Why does smiling release happy chemicals like chocolate or the sun?"
 
+### Tasks
+
+The text inside the section **changes with the prompt and task required.**
+
+Tasks are defined processes with inputs and outputs, usually also with input data. We normally have expected results and test cases for them. 
+
+Think of things like automatic website builders with many steps, with a task of `make a website that matches the brand's dataset`.
+
+In ***(: Smile***, we separate these different types of instruction, like `task inforimation` or `data` or `personality` or `name tag` into sections with clearly different demarcations and names. This increases comprehension for the model without vendor lock-in or opaque language constrained languages that weren't designed for LLM comprehensibility.
 
 ## Eyes
 
