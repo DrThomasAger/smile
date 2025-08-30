@@ -30,11 +30,9 @@ When you ***(: Smile***, **the model loves to follow your instructions.**
 
 Welcome to the first positively oriented language for prompting ***Large Language Models (LLMs)***.
 
-Writing ***(: Smile*** for a ***Large Language Model (LLM)*** means they **understand** your prompt better, **perform** better, and you're both **happy**.   
-
-This means that in the first time in the history of ***Artificial Intelligence (AI)***, you can prompt with a ***(: Smile***. 
-
 (: Smile is a structured prompt language. It's a markup- but for writing prompts! It lets you write  **structured instructions** any model can understand. 
+
+It follows that writing ***(: Smile*** for a ***Large Language Model (LLM)*** means they **understand** your prompt better, **perform** better, and you're both **happy**.   
 
 
 ## Why adopt ***(: Smile*** today?  Adopt (: Smile today 
