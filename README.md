@@ -112,7 +112,11 @@ You start by clearly defining the start `(:` of a section and its name `(: Secti
 
 You can end sections using the same markers in the opposite direction. `) End Section name, thank you :)`.
 
-The text inside the section *changes with the prompt and task required.*
+## Tasks
+
+The text inside the section *changes with the prompt and task required.
+
+Tasks are defined processes with inputs and outputs, usually also with input data. We normally have expected results and test cases for them. Now, run tasks with a (: Smile!
 
 ## Sections
 
