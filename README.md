@@ -61,9 +61,9 @@ After mastering this simple yet powerful language, your organization unlocks the
 
 ## Quick Start Example
 
-Before you write ***(: Smile***, why not play with it first? **↓** 
+**↓** Before you write ***(: Smile***, why not play with it first? **↓** 
 
-### Copy & Paste This Into Any LLM
+### Copy & Paste This Now To (: Smile
 
 **Curious?** The example prompt demonstrates how simple structure can create a consistent role.
 
