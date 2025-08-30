@@ -5,9 +5,9 @@
 
 `(: Hello world!`
 
-Welcome to the first technical and positively oriented language for prompting Large Language Models (LLMs).  
+Welcome to the first technical and positively oriented language for prompting ***Large Language Models (LLMs)***.
 
-***(: Smile*** is a markup for prompt engineering. It lets you write  **structured instructions** any model can understand. This structure helps you and the AI communicate with crystal clarity. 
+***(: Smile*** is a markup for writing prompts. It lets you write  **structured instructions** any model can understand. This structure helps you and the AI communicate with crystal clarity. 
 
 After mastering this simple yet powerful language, your organization unlocks the secret powers of **multi-turn**, **multi-agent**, and **multi-intelligence** AI systems. 
 
