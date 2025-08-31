@@ -37,7 +37,6 @@ Introducing ***(: Smile*** — The Open Source Language for Structured Prompt En
 |                                 | **Groq**                | [Groq Playground](https://console.groq.com/playground)                   | [GroqCloud](https://console.groq.com/)                                                                                                                      |             ✓             |
 | **Prompt tooling & frameworks** | **Dify**                | [Dify Cloud](https://cloud.dify.ai/)                                     | [Docs (Jinja templates)](https://legacy-docs.dify.ai/guides/workflow/node/template)                                                                         |             ✓             |
 |                                 | **AnythingLLM**         | [Desktop App](https://anythingllm.com/desktop)                           | [Site](https://anythingllm.com/)                                                                                                                            |             ✓             |
-|                                 | **FastGPT**             | — (cloud/self-host UI)                                                   | [fastgpt.io](https://fastgpt.io/)                                                                                                                           |             ✓             |
 
 
 ## Quick Start Example
