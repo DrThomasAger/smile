@@ -69,26 +69,6 @@ Their role is an "expert" who is designed to respond lengthily and with jargon.
 
 
 
-# Exhaustive (: Smile AI List
-
-|             **Type**            | **Product / Company**   | **Paste & Try**                                                               | **Dev / Playground**                                                                                                                                        | ***(: Smile*** Compatible |
-| :-----------------------------: | ----------------------- | ----------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------- | :-----------------------: |
-|     **Open (open-weights)**     | **Moonshot AI**  | [Kimi Chat](https://www.kimi.com/)                                            | [API](https://platform.moonshot.ai/) • [GitHub (Kimi-K2)](https://github.com/MoonshotAI/Kimi-K2) • [HF](https://huggingface.co/moonshotai/Kimi-K2-Instruct) |             ✓             |
-|            **Mixed**            | **Mistral**             | [Le Chat](https://chat.mistral.ai)                                            | [Playground — mistral-large-2411](https://console.mistral.ai/playground?model=mistral-large-2411)                                                           |             ✓             |
-|                                 | **DeepSeek**            | [DeepSeek Chat](https://chat.deepseek.com)                                    | [Playground — deepseek-chat-2025-07-24](https://platform.deepseek.com/playground?model=deepseek-chat-2025-07-24)                                            |             ✓             |
-|            **Closed**           | **OpenAI**              | [ChatGPT](https://chat.openai.com)                                            | [GPT-5 Editor](https://platform.openai.com/chat/edit?models=gpt-5)                                                                                          |             ✓             |
-|                                 | **Anthropic**           | [Claude](https://claude.ai/new)                                               | [Playground — claude-3-5-sonnet-20241022](https://console.anthropic.com/playground?model=claude-3-5-sonnet-20241022)                                        |             ✓             |
-|                                 | **Google DeepMind**     | [Gemini](https://gemini.google.com/app)                                       | [AI Studio — gemini-2.0-flash-exp](https://aistudio.google.com/app/prompts/new_chat?model=gemini-2.0-flash-exp)                                             |             ✓             |
-|                                 | **Perplexity**          | [Perplexity Labs](https://labs.perplexity.ai)                                 | [Playground — pplx-8b-online](https://labs.perplexity.ai/playground?model=pplx-8b-online)                                                                   |             ✓             |
-|            **Tools**            | **Microsoft — Copilot** | [Copilot Chat](https://copilot.microsoft.com)                                 | [Playground — gpt-4o-mini](https://copilot.microsoft.com/playground?model=gpt-4o-mini)                                                                      |             ✓             |
-|                                 | **Cohere**              | [Cohere Chat (Playground)](https://dashboard.cohere.com/playground/chat)      | [Model Playground](https://dashboard.cohere.com/playground?model=command-r-plus-08-2024)                                                                    |             ✓             |
-|                                 | **Hugging Face**        | [HuggingChat](https://huggingface.co/chat)                                    | —                                                                                                                                                           |             ✓             |
-|                                 | **Groq**                | [Groq Playground](https://console.groq.com/playground?utm_source=chatgpt.com) | [GroqCloud](https://console.groq.com/)                                                                                                                      |             ✓             |
-|                                 | **LM Studio**           | [Download App](https://lmstudio.ai/)                                          | [Docs — API Server](https://lmstudio.ai/docs/api) • [OpenAI-compatible](https://lmstudio.ai/docs/api/openai-api) • [CLI](https://lmstudio.ai/docs/cli)      |             ✓             |
-| **Prompt tooling & frameworks** | **AnythingLLM**         | [Desktop App](https://anythingllm.com/desktop)                                | [Site](https://anythingllm.com/)                                                                                                                            |             ✓             |
-
-
-
 
 # (: Smile Documentation
 
@@ -396,6 +376,30 @@ Help build a dataset of prompts that will be automatically converted for better 
 - [: **Contribute on GitHub** by opening [issues](https://github.com/DrThomasAger/smile/issues) or [pull requests](https://github.com/DrPrompt/smile/pulls) with your own Smile snippets, original prompts (I will convert) or your conversion (or language!) ideas.
 
 ***(: Smile*** formalizes an entire informal tradition. It takes what prompt engineers were already doing—dropping delimiters, making clear input vs. instruction sections, using repeated markers for emphasis, and codifies it into a coherent and positive syntax designed **to maximize instruction following.** By specifying itself as an instruction only language, it enables a directed core focus to this goal undiluted by IDE integration. Here, just focus on getting text outputs according to our instructions consistently. We do that by clearly structuring our prompts according to ***(: Smile***. 
+
+
+
+# Comprehensive Compatibility (: Smile AI List
+
+Let us know if you test one of our prompts on a model! 
+
+|             **Type**            | **Product / Company**   | **Paste & Try**                                                               | **Dev / Playground**                                                                                                                                        | ***(: Smile*** Compatible |
+| :-----------------------------: | ----------------------- | ----------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------- | :-----------------------: |
+|     **Open (open-weights)**     | **Moonshot AI**  | [Kimi Chat](https://www.kimi.com/)                                            | [API](https://platform.moonshot.ai/) • [GitHub (Kimi-K2)](https://github.com/MoonshotAI/Kimi-K2) • [HF](https://huggingface.co/moonshotai/Kimi-K2-Instruct) |             ✓             |
+|            **Mixed**            | **Mistral**             | [Le Chat](https://chat.mistral.ai)                                            | [Playground — mistral-large-2411](https://console.mistral.ai/playground?model=mistral-large-2411)                                                           |             ✓             |
+|                                 | **DeepSeek**            | [DeepSeek Chat](https://chat.deepseek.com)                                    | [Playground — deepseek-chat-2025-07-24](https://platform.deepseek.com/playground?model=deepseek-chat-2025-07-24)                                            |             ✓             |
+|            **Closed**           | **OpenAI**              | [ChatGPT](https://chat.openai.com)                                            | [GPT-5 Editor](https://platform.openai.com/chat/edit?models=gpt-5)                                                                                          |             ✓             |
+|                                 | **Anthropic**           | [Claude](https://claude.ai/new)                                               | [Playground — claude-3-5-sonnet-20241022](https://console.anthropic.com/playground?model=claude-3-5-sonnet-20241022)                                        |             ✓             |
+|                                 | **Google DeepMind**     | [Gemini](https://gemini.google.com/app)                                       | [AI Studio — gemini-2.0-flash-exp](https://aistudio.google.com/app/prompts/new_chat?model=gemini-2.0-flash-exp)                                             |             ✓             |
+|                                 | **Perplexity**          | [Perplexity Labs](https://labs.perplexity.ai)                                 | [Playground — pplx-8b-online](https://labs.perplexity.ai/playground?model=pplx-8b-online)                                                                   |             ✓             |
+|            **Tools**            | **Microsoft — Copilot** | [Copilot Chat](https://copilot.microsoft.com)                                 | [Playground — gpt-4o-mini](https://copilot.microsoft.com/playground?model=gpt-4o-mini)                                                                      |             ✓             |
+|                                 | **Cohere**              | [Cohere Chat (Playground)](https://dashboard.cohere.com/playground/chat)      | [Model Playground](https://dashboard.cohere.com/playground?model=command-r-plus-08-2024)                                                                    |             ✓             |
+|                                 | **Hugging Face**        | [HuggingChat](https://huggingface.co/chat)                                    | —                                                                                                                                                           |             ✓             |
+|                                 | **Groq**                | [Groq Playground](https://console.groq.com/playground?utm_source=chatgpt.com) | [GroqCloud](https://console.groq.com/)                                                                                                                      |             ✓             |
+|                                 | **LM Studio**           | [Download App](https://lmstudio.ai/)                                          | [Docs — API Server](https://lmstudio.ai/docs/api) • [OpenAI-compatible](https://lmstudio.ai/docs/api/openai-api) • [CLI](https://lmstudio.ai/docs/cli)      |             ✓             |
+| **Prompt tooling & frameworks** | **AnythingLLM**         | [Desktop App](https://anythingllm.com/desktop)                                | [Site](https://anythingllm.com/)                                                                                                                            |             ✓             |
+
+
 
 
 # Try (: Smiling 
