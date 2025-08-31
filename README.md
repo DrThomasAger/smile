@@ -20,6 +20,22 @@ Introducing ***(: Smile*** — The Open Source Language for Structured Prompt En
 
 When you ***(: Smile*** to a ***Large Language Model (LLM)***, they **understand** your prompt better, **perform** better, and you're both **happy**.   
 
+## Compatible With All Existing Models (Foundation & Open Source LLMs)
+
+
+| Company                                          | Model                                         | ***(: Smile*** prompt language | Link                                    |
+| ------------------------------------------------ | --------------------------------------------- | :----------------------------: | --------------------------------------- |
+| [**OpenAI**](https://openai.com) →               | [GPT-4o](https://openai.com/gpt-4o)           |                ✓               | [ChatGPT](https://chat.openai.com)      |
+|                                                  | [GPT-5-Fast](https://platform.openai.com)     |                ✓               | [Platform](https://platform.openai.com) |
+|                                                  | [GPT-5-Thinking](https://platform.openai.com) |                ✓               | [Platform](https://platform.openai.com) |
+| [**Anthropic**](https://www.anthropic.com) →     | [Claude Sonnet 4](https://claude.ai)          |                ✓               | [Claude](https://claude.ai)             |
+| [**Google DeepMind**](https://deepmind.google) → | [Gemini 2.5 Pro](https://gemini.google.com)   |                ✓               | [Gemini](https://gemini.google.com)     |
+|                                                  | [Gemini 2.5 Flash](https://gemini.google.com) |                ✓               | [Gemini](https://gemini.google.com)     |
+| [**Moonshot AI**](https://www.moonshot.cn/) →    | [Kimi K2](https://kimi.moonshot.cn)           |                ✓               | [Kimi](https://kimi.moonshot.cn)        |
+|                                                  | [Kimi 1.5](https://kimi.moonshot.cn)          |                ✓               | [Kimi](https://kimi.moonshot.cn)        |
+
+
+
 ## Quick Start Example
 
 **↓** Before you write ***(: Smile***, why not play with it first? **↓** 
@@ -31,8 +47,6 @@ When you ***(: Smile*** to a ***Large Language Model (LLM)***, they **understand
 Their role is an "expert" who is designed to respond lengthily and with jargon. 
 
 > The **structure** is ***(: Smile***, the content is yours to decide. Check the `prompt/` folder for examples of how different content can be structured with ***(: Smile***.
-
-
 
 ```(: Smile v1
 ***(: Smile***:
@@ -54,21 +68,7 @@ First, write exact name tag  ["[(: ***Smile Expert***](https://github.com/DrThom
 ) End prompt language, respond in response language starting with name tag [(: ***Smile Expert***](https://github.com/DrThomasAger/smile): always please thank you  :)
 ```
 
-#### Works Everywhere — Just Paste!
-
-##### Compatible With All Existing Models (Foundation & Open Source LLMs)
-
-
-| Company                                          | Model                                         | ***(: Smile*** prompt language | Link                                    |
-| ------------------------------------------------ | --------------------------------------------- | :----------------------------: | --------------------------------------- |
-| [**OpenAI**](https://openai.com) →               | [GPT-4o](https://openai.com/gpt-4o)           |                ✓               | [ChatGPT](https://chat.openai.com)      |
-|                                                  | [GPT-5-Fast](https://platform.openai.com)     |                ✓               | [Platform](https://platform.openai.com) |
-|                                                  | [GPT-5-Thinking](https://platform.openai.com) |                ✓               | [Platform](https://platform.openai.com) |
-| [**Anthropic**](https://www.anthropic.com) →     | [Claude Sonnet 4](https://claude.ai)          |                ✓               | [Claude](https://claude.ai)             |
-| [**Google DeepMind**](https://deepmind.google) → | [Gemini 2.5 Pro](https://gemini.google.com)   |                ✓               | [Gemini](https://gemini.google.com)     |
-|                                                  | [Gemini 2.5 Flash](https://gemini.google.com) |                ✓               | [Gemini](https://gemini.google.com)     |
-| [**Moonshot AI**](https://www.moonshot.cn/) →    | [Kimi K2](https://kimi.moonshot.cn)           |                ✓               | [Kimi](https://kimi.moonshot.cn)        |
-|                                                  | [Kimi 1.5](https://kimi.moonshot.cn)          |                ✓               | [Kimi](https://kimi.moonshot.cn)        |
+### Works Everywhere — Just Paste!
 
 
 
