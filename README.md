@@ -100,7 +100,7 @@ Love ***(: Smile***?  Want to share your support? [PayPal me](https://paypal.me/
 
 ### Media Contact 
 
-**Are you a tech influencer who wants to *share my project?*** Feel free (and Smile!) :)
+I want everyone and everything to ***(: Smile***! **Are you a tech influencer who wants to *share my project?*** Please do! (and Smile!) :)
 
 
 ## Why adopt ***(: Smile*** today?  
