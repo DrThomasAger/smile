@@ -22,17 +22,20 @@ When you ***(: Smile*** to a ***Large Language Model (LLM)***, they **understand
 
 ## Compatible With All Existing Models (Foundation & Open Source LLMs)
 
-
-| Company                                          | Model                                         | ***(: Smile*** prompt language | Link                                    |
-| ------------------------------------------------ | --------------------------------------------- | :----------------------------: | --------------------------------------- |
-| [**OpenAI**](https://openai.com) →               | [GPT-4o](https://openai.com/gpt-4o)           |                ✓               | [ChatGPT](https://chat.openai.com)      |
-|                                                  | [GPT-5-Fast](https://platform.openai.com)     |                ✓               | [Platform](https://platform.openai.com) |
-|                                                  | [GPT-5-Thinking](https://platform.openai.com) |                ✓               | [Platform](https://platform.openai.com) |
-| [**Anthropic**](https://www.anthropic.com) →     | [Claude Sonnet 4](https://claude.ai)          |                ✓               | [Claude](https://claude.ai)             |
-| [**Google DeepMind**](https://deepmind.google) → | [Gemini 2.5 Pro](https://gemini.google.com)   |                ✓               | [Gemini](https://gemini.google.com)     |
-|                                                  | [Gemini 2.5 Flash](https://gemini.google.com) |                ✓               | [Gemini](https://gemini.google.com)     |
-| [**Moonshot AI**](https://www.moonshot.cn/) →    | [Kimi K2](https://kimi.moonshot.cn)           |                ✓               | [Kimi](https://kimi.moonshot.cn)        |
-|                                                  | [Kimi 1.5](https://kimi.moonshot.cn)          |                ✓               | [Kimi](https://kimi.moonshot.cn)        |
+| Company             | Model                      | Web-UI Link                                                            | API Playground / Key Link                                              |
+| ------------------- | -------------------------- | ---------------------------------------------------------------------- | ---------------------------------------------------------------------- |
+| **OpenAI**          | GPT-4o                     | <https://chat.openai.com/?model=gpt-4o>                                | <https://platform.openai.com/playground/chat?model=gpt-4o>             |
+| **Anthropic**       | Claude 3.5 Sonnet          | <https://claude.ai/new>                                                | <https://console.anthropic.com/dashboard>                              |
+| **Google DeepMind** | Gemini 1.5 Pro             | <https://gemini.google.com/app>                                        | <https://aistudio.google.com/prompts/new_chat>                         |
+| **Moonshot AI**     | Kimi 1.5                   | <https://kimi.moonshot.cn/?new=1>                                      | <https://platform.moonshot.cn/playground>                              |
+| **Meta**            | Llama 3.1 405B             | <https://www.meta.ai/llama/chat>                                       | <https://huggingface.co/chat?model=meta-llama/Llama-3.1-405B-Instruct> |
+| **Microsoft**       | Copilot GPT-4o             | <https://copilot.microsoft.com>                                        | <https://copilot.microsoft.com> (API via Azure)                        |
+| **Cohere**          | Command R+                 | <https://dashboard.cohere.com/playground/chat>                         | <https://dashboard.cohere.com/playground/chat>                         |
+| **Mistral**         | Mistral Large 2            | <https://chat.mistral.ai>                                              | <https://console.mistral.ai/chat>                                      |
+| **Hugging Face**    | HuggingChat Llama 3.1 405B | <https://huggingface.co/chat?model=meta-llama/Llama-3.1-405B-Instruct> | <https://huggingface.co/chat?model=meta-llama/Llama-3.1-405B-Instruct> |
+| **Perplexity**      | pplx-70b-online            | <https://labs.perplexity.ai>                                           | <https://labs.perplexity.ai>                                           |
+| **Groq**            | Llama 3.1 405B             | <https://groq.com/playground?model=llama-3.1-405b-instruct>            | <https://console.groq.com/playground>                                  |
+| **DeepSeek**        | DeepSeek-Coder V2          | <https://chat.deepseek.com>                                            | <https://platform.deepseek.com/playground>                             |
 
 
 
