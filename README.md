@@ -1,32 +1,36 @@
+![Smile Prompt Language v1](20250826_0133_Smile%20with%20Emoticon_loop_01k3h83cvef4qbtegkt4qma1yf.gif)
 
-![Smile Prompt Language v1](20250826_0133_Smile%20with%20Emoticon_loop_01k3h83cvef4qbtegkt4qma1yf.gif )
-
-# (: Smile Prompt Engineering Language
-
-***(: Smile*** is the positively simple **instruction only markup** for **structured instruction following** in **Large Language Models (LLMs)**. 
-
-It is the first **prompt instruction language** to use **positive prompting** as its **structural foundation** by encoding a small set of positive text emojis like  `(:`, `[;`, and `[=` as **section demarcators**. 
+Introducing ***(: Smile*** — The Open Source Language for Structured Prompt Engineering
 
 >  (; By [Dr. Thomas Ager](https://www.linkedin.com/in/drprompt?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app) 
 
-## Support Open Source 
+☆ **Star the repo** to make a prompt engineer ***(: Smile*** [![☆ Star the repo](https://img.shields.io/github/stars/DrThomasAger/smile?style=social)] **)** **:)**(https://github.com/DrThomasAger/smile/stargazers)
 
-[![Star History Chart](https://api.star-history.com/svg?repos=DrThomasAger/smile&type=Date)](https://star-history.com/#DrThomasAger/smile&Date)
+# (: Smile 
 
-☆ **Star the repo** to make a prompt engineer ***(: Smile*** **->** [![☆ Star the repo](https://img.shields.io/github/stars/DrThomasAger/smile?style=social)](https://github.com/DrThomasAger/smile/stargazers)
+`(: Hello world!`
 
 
-# (: Smile For Dummies 
 
-***(: Smile*** is a language for writing **prompts** to models like ***ChatGPT*** or ***[Kimi](https://www.kimi.com/)*** that informs them more clearly of the **structure** of your prompt. 
+ ***(: Smile*** is the first **structured** and **positive** language (like a markup) for talking to ***Artificial Intelligence (AI)*** models. 
 
-Understanding structure for a model means it **understands** your prompt better, it **performs** better, and you're both **happy**.   
+ When you structure your prompts,  you can move with true confidence that you will get the **outcomes** you **intended** to get, **in the way you intended to get them.**
 
-Before you write ***(: Smile***, why not play with it first? **↓** 
+When you ***(: Smile*** to a ***Large Language Model (LLM)***, they **understand** your prompt better, **perform** better, and you're both **happy**.   
 
 ## Quick Start Example
 
-Just **copy and paste the quick start example** below into any model to see an example of ***(: Smile***  in action:
+**↓** Before you write ***(: Smile***, why not play with it first? **↓** 
+
+### Copy & Paste This Now To (: Smile
+
+**Curious?** The example prompt demonstrates how simple structure can create a consistent role.
+
+Their role is an "expert" who is designed to respond lengthily and with jargon. 
+
+> The **structure** is ***(: Smile***, the content is yours to decide. Check the `prompt/` folder for examples of how different content can be structured with ***(: Smile***.
+
+
 
 ```(: Smile v1
 ***(: Smile***:
@@ -48,33 +52,58 @@ First, write exact name tag  ["[(: ***Smile Expert***](https://github.com/DrThom
 ) End prompt language, respond in response language starting with name tag [(: ***Smile Expert***](https://github.com/DrThomasAger/smile): always please thank you  :)
 ```
 
-[= Copy and paste into any of these:
+#### Works Everywhere — Just Paste the [Quick Start](https://github.com/DrThomasAger/smile#quick-start-example)
 
-1. (: ***Kimi K2:*** Powerful & free. [https://www.kimi.com](https://www.kimi.com/)
-2. [: ***ChatGPT:*** Still good. [https://chatgpt.com/](https://chatgpt.com/)
-3. { ***Claude:*** I love Claude. [https://claude.ai/](https://claude.ai/)
+Try ***(: Smile*** in top AI models:
 
-## Model-Agnostic & Ultra-flexible!
+##### **Chat Interfaces**:
+[Claude](https://claude.ai/) · [Gemini](https://gemini.google.com/) · [ChatGPT](https://chat.openai.com/) · [Grok](https://x.ai/) · [Kimi](https://kimi.moonshot.cn/) · [DeepSeek](https://www.deepseek.com/)
 
-You can copy and paste it right into your **favorite Large Language Model (LLM)** as ***(: Smile*** works with all models:
+##### **Dev Tools**:
+[Cursor](https://www.cursor.so/) · [GitHub Copilot](https://github.com/features/copilot)
 
-* ✓ Open source
-* ✓ Closed foundation (e.g. ***OpenAI***)
-* ✓ Toolkit (e.g. ***Cursor***)
-* ✓ Chat web interface (e.g. ***Gemini***, ***Claude***, ***Kimi***, ***ChatGPT***)
+##### **Open-Source Models**:
+[GPT-OSS](https://huggingface.co/collections/teknium/gpt-oss-65b-666fdb6a2ad510b153c6e7dc) · [Qwen](https://huggingface.co/Qwen) · [Mistral](https://mistral.ai/news/) · [LLaMA 3](https://ai.meta.com/llama/)
 
-***(: Smile*** structures instruction text for instruction following, the same way ***HTML*** structures website content into blocks a web browser can render. 
+##### **APIs**:
+[OpenAI](https://platform.openai.com/) · [Anthropic](https://console.anthropic.com/) · [Gemini API](https://makersuite.google.com/app)
 
-**Curious?** The example prompt demonstrates how simple structure can create a consistent role.
+**No code needed** — just paste and watch it work.
 
-Their role is an "expert" who is designed to respond lengthily and with jargon. 
 
-> The **structure** is ***(: Smile***, the content is yours to decide. Check the `prompt/` folder for examples of how different content can be structured with ***(: Smile***.
+
+
 
 
 # (: Smile Documentation
 
 ![Smile Prompt Language v1](Smile-logo.png )
+
+## Support Open Source
+
+☆ **Star the repo** to make a prompt engineer ***(: Smile*** **->** [![☆ Star the repo](https://img.shields.io/github/stars/DrThomasAger/smile?style=social)](https://github.com/DrThomasAger/smile/stargazers)
+
+/ Thank you so much for starring the repo!
+
+[![Star History Chart](https://api.star-history.com/svg?repos=DrThomasAger/smile&type=Date)](https://star-history.com/#DrThomasAger/smile&Date)
+
+
+### Media Contact 
+
+***(: Smile*** is free and actively maintained. **Are you a tech influencer who wants to *share my project?*** (: Thank you, go ahead and invite me on your show! :)
+
+
+## Why adopt ***(: Smile*** today?  
+
+For a **positive** AI future. :) Because your ***prompt engineering*** will become **maintainable**, you get **measurable performance gains** on your tasks, and your employees will **(: Smile**. 
+
+***(: Smile*** is the first **prompt instruction language** to use **positive prompting structure** by encoding a small set of positive text emojis like  `(:`, `[;`, and `[=` as **semantically unique markers**. 
+
+### [= Advanced (: Smile :) =]
+
+After mastering this simple yet powerful language, your organization unlocks the secret powers of **multi-turn**, **multi-agent**, and **multi-intelligence** AI systems. 
+
+
 
 
 ## The Basics
@@ -89,19 +118,45 @@ You start by clearly defining the start `(:` of a section and its name `(: Secti
 
 You can end sections using the same markers in the opposite direction. `) End Section name, thank you :)`.
 
-The text inside the section *changes with the prompt and task required.*
 
 ## Sections
 
-In-order to clearly separate for the model what is instructions and what is data, we can use sections.
+A **"section"** is defined in ***(: Smile*** as a meaningfully different part of the prompt from another part of the prompt. 
 
-A **"section"** is always defined with a ***(: Smile***.
+***(: Smile*** structures instruction text for instruction following, the same way ***HTML*** structures website content into blocks a web browser can render. 
 
-If we tell the model that we're providing them an input **section**, and giving a explicit e.g. `markdown` section for that document, the model can pay much more **clear attention**  to the other section of the prompt: **the short instruction section of how to perform the task**. 
+Let's imagine a raw text data input, like a **wikipedia HTML page**. It's full of metadata and information. This is **data**.
 
-In other words: **When we give text clear structure, models know what to pay attention to.** 
+### Separating Prompt Instructions & Data
+
+In-order to tell the model how to use the data, we provide **short instruction text** informing the model how to use the wikipedia page, for example, `define jargon`.
+
+Instructions in a prompt are for telling the model what to **do with the data**, like `find all mentions of the key phrase`, data in the prompt is for **maximizing relevant context for the model**, like a wikipedia page about "pleasure" gives relevant context to the model for a query like "Why does smiling release happy chemicals like chocolate or the sun?"
+
+### Tasks
+
+The text inside the section **changes with the prompt and task required.**
+
+Tasks are defined processes with inputs and outputs, usually also with input data. We normally have expected results and test cases for them. 
+
+Think of things like automatic website builders with many steps, with a task of `make a website that matches the brand's dataset`.
+
+In ***(: Smile***, we separate these different types of instruction, like `task inforimation` or `data` or `personality` or `name tag` into sections with clearly different demarcations and names. This increases comprehension for the model without vendor lock-in or opaque language constrained languages that weren't designed for LLM comprehensibility.
+
+## Eyes
+
+Did you know? 
+>**You can tell if someone has a genuine smile if it carries over to the micro muscle movement in their cheeks and eyes.**
+
+**In (: Smile, we have our own body language:**
+
+* **Straight eyes** `=` can indicate strict input that must be followed exactly, e.g. `[=` 
+* **Quote eyes** `"` show text that must be repeated word for word verbatim, e.g. `["Repeat this word for word"]` 
+* **Cash eyes**  `$` show variables and can be replaced with the true values before inference using code. `!` important eyes show text to emphasize for the model, e.g. `[! Don't use negative language. !]`. 
 
 ## Syntax Map
+
+These are a few different ways to create structure with ***(: Smile***.
 
 | Symbol | Purpose | Example | When to Use |
 |--------|---------|---------|---------|
@@ -263,7 +318,6 @@ Copy and paste the above into any model to test.
 | **OpenAI** →          | GPT-4o           |                ✓               |
 |                       | GPT-5-Fast       |                ✓               |
 |                       | GPT-5-Thinking   |                ✓               |
-|                       | gpt-oss-20B/120B   |                ✓               |
 | **Anthropic** →       | Claude Sonnet 4  |                ✓               |
 | **Google DeepMind** → | Gemini 2.5 Pro   |                ✓               |
 |                       | Gemini 2.5 Flash |                ✓               |
@@ -271,13 +325,11 @@ Copy and paste the above into any model to test.
 |                       | Kimi 1.5         |                ✓               |
 
 
-**Note:** *Don't see your favorite model? Please feel free to try the above prompt and [DM me](https://www.linkedin.com/in/drprompt/) the results!
+**Note:** *Don't see your favorite model? Please feel free to try the above prompt and report back the results.* *We are constantly updating this table with community submitted information.*
 
 
 
-# How Do You Know **(: Smile** Is Working?
-
-A prompt language is working When the model follows your defined response language, be it markdown, json or one you have created. 
+# **(: Smile** is working when the model follows your defined response language, be it markdown, json or one you have created. 
 
 I'll extend our previous example to break the rules a little bit, and get a lot of new functionality as a result. This is designed to make you feel like you are free to drop {instructions on how to fill out the text} not just inside of the definition of the format the model needs to respond in. In the next example, I'll show how you can also use them inside the markdown titles themselves for the model to choose what to call each section:
 
