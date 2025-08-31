@@ -178,7 +178,7 @@ These are a few different ways to create structure with ***(: Smile***.
 
 # (: Smile FAQ 
 
-### Does Smiling Really Make You Happier?
+## Does Smiling Really Make You Happier?
 
 Science says yes. **Smiling...**
 
@@ -194,20 +194,20 @@ Science says yes. **Smiling...**
 
  **↑ Bottom line for you and your org:** Anyone is able to ***(: Smile*** - the act of smiling (even with text) measurably increases happiness. ***(: Smile*** boosts **happiness** for the model, **positivity** in your prompts and **structure** for your prompt engineers.
 
-### • Why structure small prompts?
+## • Why structure small prompts?
 
 Because models follow structured instructions more consistently. Consistent structure ensures a maintainable and explainable future-proof strategy for the prompt engineering team in your org.
 
-### o Why structure large prompts?
+## o Why structure large prompts?
 
 You probably already do! Any section, role description, instruction or data is structure. Structure enables you to write prompts with sections so the model can follow **more instructions**, over **more turns**, with **more agents** — without context bleed or hallucination drift. 
 
-### # Why structure using (: Smile instead of markdown?
+## # Why structure using (: Smile instead of markdown?
 
 ***(: Smile*** was made to be performant for LLMs. Markdown is a document format that is used for rendering. Just because it works or is similar to the programming language you wrote before, **doesn't mean it brings the biggest performance gains for your key organization tasks.**
 
 
-### What Are The Business & Technical Advantages of (: Smile For My Organization or Company?
+## What Are The Business & Technical Advantages of (: Smile For My Organization or Company?
 
 ***(: Smile*** is easy to **learn**, easy to **read**, and easy to **scale**. It makes every prompt:
 
@@ -225,7 +225,7 @@ Let ***(: Smile*** be one part of making your AI systems **more transparent** fo
 
 
 
-# An Easy Rule For Writing (: Smile
+# An Easy Way To Write (: Smile
 
 Matching open brackets with close brackets is often effective. However...
 
