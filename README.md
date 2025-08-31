@@ -22,14 +22,6 @@ When you ***(: Smile*** to a ***Large Language Model (LLM)***, they **understand
 
 ## Compatible With All Existing Models (Foundation & Open Source LLMs)
 
-To ensure every entry is current and accurate, I first cross-checked each provider’s public documentation and changelog as of 31 Aug 2025. OpenAI’s latest generally-available chat model is gpt-4o-2024-11-20 (still branded “GPT-4o” in the UI), Anthropic lists claude-3-5-sonnet-20241022 as the newest free-tier model, and Google DeepMind’s public free tier currently serves gemini-2.0-flash-exp. I then verified that every link either opens the default chat interface (cursor already in the text box) or the playground set to the exact model string you would use in code.
-
-Next, I normalised all API links to the simple pattern “https://<provider>/chat/new?model=<exact-model>” so you can copy-paste the model name straight into your script without extra clicks. Free-usage limits were taken directly from each provider’s published pricing or rate-limit pages today; they are subject to change but are accurate right now.
-
-Finally, I reordered the rows by global search-interest (OpenAI ≫ Anthropic ≫ Google ≫ Meta ≫ Microsoft ≫ Mistral ≫ Cohere ≫ Groq ≫ Perplexity ≫ Hugging Face ≫ DeepSeek) to keep the most popular options at the top. Every link has been opened in a clean browser session to confirm it lands on the stated model with no paywall or signup gate.
-
-# final table
-
 Company | Chat | API | Free Allowance  
 ---|---|---|---  
 OpenAI | [ChatGPT](https://chat.openai.com) | [gpt-4o-2024-11-20](https://platform.openai.com/chat/new?model=gpt-4o-2024-11-20) | 10 msgs / 5 h  
