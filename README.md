@@ -27,14 +27,12 @@ Introducing ***(: Smile*** — The Open Source Language for Structured Prompt En
 
 # Quick Chat
 
-|             **Type**              | **Paste & Try**                                                               | **Dev / Playground**                                                                                                                                        | ***(: Smile*** Compatible |
-| :-----------------------------:  | ----------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------- | :-----------------------: |
-|     **Open**     | [Kimi Chat (***Moonshot AI***)](https://www.kimi.com/)     |   [API](https://platform.moonshot.ai/)  |             ✓             |
-|                      | [Le Chat (***Mistral***)](https://chat.mistral.ai)                                             | [Playground — mistral-large-2411](https://console.mistral.ai/playground?model=mistral-large-2411)                                                           |             ✓             |
-|            **Closed**         | [ChatGPT (***OpenAI***)](https://chat.openai.com)                                             | [GPT-5 Editor](https://platform.openai.com/chat/edit?models=gpt-5)                                                                                          |             ✓             |
-|                               | [Claude (***Anthropic***)](https://claude.ai/new)                                                 | [Playground — claude-3-5-sonnet-20241022](https://console.anthropic.com/playground?model=claude-3-5-sonnet-20241022)                                        |             ✓             |
-
-
+|  **Type**  | ***(: Smile*** Compatible | **Paste & Try**                                        | **Dev / Playground**                                                                                                 |
+| :--------: | :-----------------------: | ------------------------------------------------------ | -------------------------------------------------------------------------------------------------------------------- |
+|  **Open**  |             ✓             | [Kimi Chat (***Moonshot AI***)](https://www.kimi.com/) | [API](https://platform.moonshot.ai/)                                                                                 |
+|            |             ✓             | [Le Chat (***Mistral***)](https://chat.mistral.ai)     | [Playground — mistral-large-2411](https://console.mistral.ai/playground?model=mistral-large-2411)                    |
+| **Closed** |             ✓             | [ChatGPT (***OpenAI***)](https://chat.openai.com)      | [GPT-5 Editor](https://platform.openai.com/chat/edit?models=gpt-5)                                                   |
+|            |             ✓             | [Claude (***Anthropic***)](https://claude.ai/new)      | [Playground — claude-3-5-sonnet-20241022](https://console.anthropic.com/playground?model=claude-3-5-sonnet-20241022) |
 
 ## Quick Start Example
 
