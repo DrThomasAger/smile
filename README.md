@@ -18,7 +18,7 @@ Introducing ***(: Smile*** — The Open Source Language for Structured Prompt En
 
  When you structure your prompts,  you can move with true confidence that you will get the **outcomes** you **intended** to get, **in the way you intended to get them.**
 
-**(: Smile *"for dummies"*** ( When you ***(: Smile*** to a ***Large Language Model (LLM)***, they **understand** your prompt better, **perform** better, and you're both **happy** ) :)   
+**(: Smile *"for dummies"*** ( When you ***(: Smile*** to a ***Large Language Model (LLM)***, they **understand** your prompt better, **perform** better, and you're both **happy**.
 
 ## Compatible With All Existing Models (Foundation & Open Source LLMs)
 
