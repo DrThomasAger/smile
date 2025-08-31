@@ -88,6 +88,8 @@ Their role is an "expert" who is designed to respond lengthily and with jargon.
 
 / Thank you so much for starring the repo!
 
+Give generously to me directly on [PayPal](https://paypal.me/hanjopurebuddha), or DM me on discord for more options. 
+
 ### Media Contact 
 
 ***(: Smile*** is free and actively maintained. **Are you a tech influencer who wants to *share my project?*** Thank you, go ahead and invite me on your show! :)
