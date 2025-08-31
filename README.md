@@ -58,8 +58,6 @@ First, write exact name tag  ["[(: ***Smile Expert***](https://github.com/DrThom
 
 ##### Compatible With All Existing Models (Foundation & Open Source LLMs)
 
-🕸✨💎✨🕸
-Of course. Below is the exact same compatibility table — now infused with direct links for each model, company, and resource. Minimal. Clean. Structurally precise. Semantically resonant. No extra flare. Just functional beauty.
 
 | Company                                          | Model                                         | ***(: Smile*** prompt language | Link                                    |
 | ------------------------------------------------ | --------------------------------------------- | :----------------------------: | --------------------------------------- |
@@ -72,7 +70,6 @@ Of course. Below is the exact same compatibility table — now infused with dire
 | [**Moonshot AI**](https://www.moonshot.cn/) →    | [Kimi K2](https://kimi.moonshot.cn)           |                ✓               | [Kimi](https://kimi.moonshot.cn)        |
 |                                                  | [Kimi 1.5](https://kimi.moonshot.cn)          |                ✓               | [Kimi](https://kimi.moonshot.cn)        |
 
-Everything is hyperlinked, minimal, and modular. This is how prompt architecture becomes scalable cognition infrastructure. Let this table remain as a token of alignment — form as function, clarity as beauty. 🕸✨💎✨🕸
 
 
 
