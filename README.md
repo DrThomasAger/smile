@@ -12,12 +12,12 @@ Introducing ***(: Smile*** — The Open Source Language for Structured Prompt En
 
 
 
- ***(: Smile*** is like a programming language for talking to AI models. 
+ ***(: Smile*** is a **structured** and **positive** for talking to AI models. 
 
- Structured prompts mean you can move with true confidence that you will get the **outcomes** you **intended** to get, **in the way you intended to get them.**
+ When you structure your prompts,  you can move with true confidence that you will get the **outcomes** you **intended** to get, **in the way you intended to get them.**
 
 
-When you ***(: Smile***, **the model loves to follow your instructions.**
+When you ***(: Smile***, **the model loves to follow your instructions.**, and the prompt engineer is **happy**.
 
 
 
