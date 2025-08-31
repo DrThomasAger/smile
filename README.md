@@ -102,7 +102,7 @@ Love ***(: Smile***?  Want to share your support? [PayPal me](https://paypal.me/
 
 I want everyone and everything to ***(: Smile***! 
 
-**Are you a tech influencer who wants to *share my project?*** Please do! (and Smile!) :)
+**Are you a tech influencer who wants to *share my project?*** Please do! (and ***(: Smile***!) 
 
 
 ## Why adopt ***(: Smile*** today?  
@@ -160,7 +160,7 @@ In ***(: Smile***, we separate these different types of instruction, like `task 
 ## Eyes
 
 Did you know? 
->**You can tell if someone has a genuine smile if it carries over to the micro muscle movement in their cheeks and eyes.**
+>**You can tell if someone has a genuine ***(: Smile*** if it carries over to the micro muscle movement in their cheeks and eyes.**
 
 **In (: Smile, we have our own body language:**
 
@@ -176,7 +176,7 @@ These are a few different ways to create structure with ***(: Smile***.
 |--------|---------|---------|---------|
 | `(: Section (` | begin a named section (mouth can be `()`, `[]`, `{}`) | `(: Format (` | Starting any section including a new prompt  |
 | `)` | shortened close for the current section | `) End section :)` | Ending a section of the prompt, can also be used to end the whole prompt  |
-| `:)` | close the whole Smile block | `) End section :)` | This is the final ending marker. Each start and end has two markers  |
+| `:)` | close the whole ***(: Smile*** block | `) End section :)` | This is the final ending marker. Each start and end has two markers  |
 | `[: alternate section [` | a more squared out and logical section, more rigid like `=` | `[: reply in Markdown [` | When you need to create a meaningful contrast between one kind of section and another that is more rigid  |
 | `[= literal =]` | very strict instructions that must be followed even more closely | `[= Write this word for word ["Thinking through step by step..."] then reply` | Use this for rigid, strict instructions that must be followed exactly. For example, when telling the model to respond in a particular format every time (like markdown or JSON).  |
 | `["Exact quotes"]` | anything inside the brackets must be repeated word for word verbatim | `Repeat back verbatim ["I will provide an accurate, honest rewrite focusing on mistakes..."]` | For anything that needs to be repeated word for word by the model   |
@@ -195,7 +195,7 @@ Science says yes. **Smiling...**
    Regular smiling is linked to **stronger immunity**, **lower pain**, and **higher job satisfaction**—the trifecta for sustained creative work and smoother collaboration. Happier prompt writers make **cleaner, more positive prompts**, and organizations feel it. *Evidence:* [Psychology Today](https://www.psychologytoday.com/us/blog/mind-well-matter/201807/why-smiling-matters), [Verywell Mind](https://www.verywellmind.com/benefits-of-smiling-2795092).
 
 2. [: **Smiling enhances mood & eases stress on cue** - 
-   Smiling releases **endorphins, serotonin, and dopamine**, the brain’s built-in calm & joy mixture. Even a *forced* smile nudges your physiology toward **relaxation and resilience**, helping you think clearly under pressure. Exactly what you need in a high-stakes business environment. *Evidence:* [Healthline](https://www.healthline.com/health/benefits-of-smiling).
+   Smiling releases **endorphins, serotonin, and dopamine**, the brain’s built-in calm & joy mixture. Even a *forced* ***(: Smile*** nudges your physiology toward **relaxation and resilience**, helping you think clearly under pressure. Exactly what you need in a high-stakes business environment. *Evidence:* [Healthline](https://www.healthline.com/health/benefits-of-smiling).
 
 3. (: **Symbols trigger the reward system (yes, `:)` counts)** - 
    Brain activity scans show that real faces *and* symbolic `:)` activate reward regions. Your cheeks respond with smiling micro-muscle movements within **\~500 ms** just from reading the symbol. Your brain treats `:)` as a micro-reward. *Evidence:* [Hennenlotter et al., 2005](https://www.cambridge.org/core/journals/behavioral-and-brain-sciences/article/simulation-of-smiles-sims-model-embodied-simulation-and-the-meaning-of-facial-expression/FE0A911744186EBD3706B53794D4AEE9); [Mühlberger et al., 2011](https://www.frontiersin.org/journals/psychology/articles/10.3389/fpsyg.2018.00052/full).
@@ -244,7 +244,7 @@ How much ***(: Smile*** structure can you remove and still get the prompt to cre
 
 We provided recommended formats as a standard way to open a section with ***(: Smile***. Why? Because in my tests on many models and prompts, it increased instruction following for key tasks in my business.
 
- **This is always our rule when we write (: Smile.** More ***(: Smile*** structure if it increases instruction following... 
+ **This is always our rule when we write***(: Smile***** More ***(: Smile*** structure if it increases instruction following... 
  
  And LESS ***(: Smile*** structure if it increases instruction following.
 
@@ -377,12 +377,12 @@ First, write exact name tag  ["[***Smile Expert***](https://github.com/DrThomasA
 - `python/` – prototype scripts for transforming prompts.
 
 ## Contribute
-Help build a dataset of prompts that will be automatically converted for better performance. Share examples already written in Smile or send raw prompts you'd like translated.
+Help build a dataset of prompts that will be automatically converted for better performance. Share examples already written in ***(: Smile*** or send raw prompts you'd like translated.
 
 - ☆ **[**Star** the repository now](https://github.com/DrThomasAger/smile)** to help others discover Smile for **more positive prompt engineering for all.**
 - [: **Contribute on GitHub** by opening [issues](https://github.com/DrThomasAger/smile/issues) or [pull requests](https://github.com/DrPrompt/smile/pulls) with your own Smile snippets, original prompts (I will convert) or your conversion (or language!) ideas.
 
-Smile formalizes an entire informal tradition. It takes what prompt engineers were already doing—dropping delimiters, making clear input vs. instruction sections, using repeated markers for emphasis, and codifies it into a coherent and positive syntax designed **to maximize instruction following.** By specifying itself as an instruction only language, it enables a directed core focus to this goal undiluted by IDE integration. Here, just focus on getting text outputs according to our instructions consistently. We do that by clearly structuring our prompts according to (: Smile. 
+***(: Smile*** formalizes an entire informal tradition. It takes what prompt engineers were already doing—dropping delimiters, making clear input vs. instruction sections, using repeated markers for emphasis, and codifies it into a coherent and positive syntax designed **to maximize instruction following.** By specifying itself as an instruction only language, it enables a directed core focus to this goal undiluted by IDE integration. Here, just focus on getting text outputs according to our instructions consistently. We do that by clearly structuring our prompts according to ***(: Smile***. 
 
 
 # Try (: Smiling 
@@ -395,7 +395,7 @@ Does it feel good?
 
 # @@@ **Brain Hack**
 
-Want to feel happier when you prompt engineer? Just use every time you see a ***(: Smile*** as a reminder to smile in real life! That way, you can build a habit of happiness. 
+Want to feel happier when you prompt engineer? Just use every time you see a ***(: Smile*** as a reminder to ***(: Smile*** in real life! That way, you can build a habit of happiness. 
 
 
 
