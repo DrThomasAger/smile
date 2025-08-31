@@ -22,20 +22,19 @@ When you ***(: Smile*** to a ***Large Language Model (LLM)***, they **understand
 
 ## Compatible With All Existing Models (Foundation & Open Source LLMs)
 
-Company | Chat | API | Free Allowance  
----|---|---|---  
-OpenAI | [ChatGPT](https://chat.openai.com) | [gpt-4o-2024-11-20](https://platform.openai.com/chat/new?model=gpt-4o-2024-11-20) | 10 msgs / 5 h  
-Anthropic | [Claude](https://claude.ai/new) | [claude-3-5-sonnet-20241022](https://console.anthropic.com/chat/new?model=claude-3-5-sonnet-20241022) | 30 msgs / day  
-Google DeepMind | [Gemini](https://gemini.google.com/app) | [gemini-2.0-flash-exp](https://aistudio.google.com/chat/new?model=gemini-2.0-flash-exp) | 60 QPM, 1.5 k / day  
-Meta | [Llama Chat](https://www.meta.ai/llama/chat) | [llama-3.3-70b-instruct](https://huggingface.co/chat/new?model=meta-llama/Llama-3.3-70B-Instruct) | unlimited  
-Microsoft | [Copilot](https://copilot.microsoft.com) | [gpt-4o-mini](https://copilot.microsoft.com/chat/new?model=gpt-4o-mini) | 30 turns / day  
-Mistral | [Le Chat](https://chat.mistral.ai) | [mistral-large-2411](https://console.mistral.ai/chat/new?model=mistral-large-2411) | 500 k tokens / month  
-Cohere | [Cohere Playground](https://dashboard.cohere.com/playground/chat) | [command-r-plus-08-2024](https://dashboard.cohere.com/chat/new?model=command-r-plus-08-2024) | 1 k tokens / day  
-Groq | [Groq Playground](https://groq.com/playground) | [llama-3.3-70b-versatile](https://console.groq.com/chat/new?model=llama-3.3-70b-versatile) | 14 k req / day  
-Perplexity | [Perplexity Labs](https://labs.perplexity.ai) | [pplx-8b-online](https://labs.perplexity.ai/chat/new?model=pplx-8b-online) | 30 queries / day  
-Hugging Face | [HuggingChat](https://huggingface.co/chat) | [meta-llama-3.3-70b-instruct](https://huggingface.co/chat/new?model=meta-llama/Llama-3.3-70B-Instruct) | unlimited  
-DeepSeek | [DeepSeek Chat](https://chat.deepseek.com) | [deepseek-chat-2025-07-24](https://platform.deepseek.com/chat/new?model=deepseek-chat-2025-07-24) | 500 msgs / day
-
+| Company | Chat | API |
+|---|---|---|
+| **OpenAI** | [ChatGPT](https://chat.openai.com ) | [gpt-5](https://platform.openai.com/chat/edit?models=gpt-5 ) |
+| **Anthropic** | [Claude](https://claude.ai/new ) | [claude-3-5-sonnet-20241022](https://console.anthropic.com/playground?model=claude-3-5-sonnet-20241022 ) |
+| **Google DeepMind** | [Gemini](https://gemini.google.com/app ) | [gemini-2.0-flash-exp](https://aistudio.google.com/playground?model=gemini-2.0-flash-exp ) |
+| **Meta** | [Llama Chat](https://www.meta.ai/llama/chat ) | [llama-3.3-70b-instruct](https://huggingface.co/spaces/huggingface-projects/llama-3.3-70B-Instruct ) |
+| **Microsoft** | [Copilot](https://copilot.microsoft.com ) | [gpt-4o-mini](https://copilot.microsoft.com/playground?model=gpt-4o-mini ) |
+| **Cohere** | [Cohere Playground](https://dashboard.cohere.com/playground/chat ) | [command-r-plus-08-2024](https://dashboard.cohere.com/playground?model=command-r-plus-08-2024 ) |
+| **Mistral** | [Le Chat](https://chat.mistral.ai ) | [mistral-large-2411](https://console.mistral.ai/playground?model=mistral-large-2411 ) |
+| **Hugging Face** | [HuggingChat](https://huggingface.co/chat ) | [meta-llama-3.3-70b-instruct](https://huggingface.co/chat?model=meta-llama/Llama-3.3-70B-Instruct ) |
+| **Perplexity** | [Perplexity Labs](https://labs.perplexity.ai ) | [pplx-8b-online](https://labs.perplexity.ai/playground?model=pplx-8b-online ) |
+| **Groq** | [Groq Playground](https://groq.com/playground ) | [llama-3.3-70b-versatile](https://console.groq.com/playground?model=llama-3.3-70b-versatile ) |
+| **DeepSeek** | [DeepSeek Chat](https://chat.deepseek.com ) | [deepseek-chat-2025-07-24](https://platform.deepseek.com/playground?model=deepseek-chat-2025-07-24 ) |
 
 ## Quick Start Example
 
