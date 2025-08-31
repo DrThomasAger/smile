@@ -91,7 +91,8 @@ Their role is an "expert" who is designed to respond lengthily and with jargon.
 [![Star History Chart](https://api.star-history.com/svg?repos=DrThomasAger/smile&type=Date)](https://star-history.com/#DrThomasAger/smile&Date)
 
 
-/ Thank you so much for starring the repo!
+
+### Thank You!
 
 Love ***(: Smile***? Want to share your support? [PayPal me](https://paypal.me/hanjopurebuddha) :)
 
