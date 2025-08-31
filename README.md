@@ -22,6 +22,8 @@ Introducing ***(: Smile*** — The Open Source Language for Structured Prompt En
 
 ## Compatible With All Existing Models (Foundation & Open Source LLMs)
 
+**✓** Copy & paste our quickstart example below now to ***(: Smile***:
+
 |             **Type**            | **Product / Company**   | **Paste & Try**                                                               | **Dev / Playground**                                                                                                                                        | ***(: Smile*** Compatible |
 | :-----------------------------: | ----------------------- | ----------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------- | :-----------------------: |
 |     **Open (open-weights)**     | **Moonshot AI**  | [Kimi Chat](https://www.kimi.com/)                                            | [API](https://platform.moonshot.ai/) • [GitHub (Kimi-K2)](https://github.com/MoonshotAI/Kimi-K2) • [HF](https://huggingface.co/moonshotai/Kimi-K2-Instruct) |             ✓             |
@@ -42,8 +44,6 @@ Introducing ***(: Smile*** — The Open Source Language for Structured Prompt En
 ## Quick Start Example
 
 **↓** Before you write ***(: Smile***, why not play with it first? **↓** 
-
-### Copy & Paste This Now To (: Smile
 
 
 ```(: Smile v1
