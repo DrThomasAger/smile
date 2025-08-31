@@ -22,19 +22,20 @@ When you ***(: Smile*** to a ***Large Language Model (LLM)***, they **understand
 
 ## Compatible With All Existing Models (Foundation & Open Source LLMs)
 
-| Company | Chat | API |
-|---|---|---|
-| **OpenAI** | [ChatGPT](https://chat.openai.com ) | [gpt-5](https://platform.openai.com/chat/edit?models=gpt-5 ) |
-| **Anthropic** | [Claude](https://claude.ai/new ) | [claude-3-5-sonnet-20241022](https://console.anthropic.com/playground?model=claude-3-5-sonnet-20241022 ) |
-| **Google DeepMind** | [Gemini](https://gemini.google.com/app ) | [gemini-2.0-flash-exp](https://aistudio.google.com/playground?model=gemini-2.0-flash-exp ) |
-| **Meta** | [Llama Chat](https://www.meta.ai/llama/chat ) | [llama-3.3-70b-instruct](https://huggingface.co/spaces/huggingface-projects/llama-3.3-70B-Instruct ) |
-| **Microsoft** | [Copilot](https://copilot.microsoft.com ) | [gpt-4o-mini](https://copilot.microsoft.com/playground?model=gpt-4o-mini ) |
-| **Cohere** | [Cohere Playground](https://dashboard.cohere.com/playground/chat ) | [command-r-plus-08-2024](https://dashboard.cohere.com/playground?model=command-r-plus-08-2024 ) |
-| **Mistral** | [Le Chat](https://chat.mistral.ai ) | [mistral-large-2411](https://console.mistral.ai/playground?model=mistral-large-2411 ) |
-| **Hugging Face** | [HuggingChat](https://huggingface.co/chat ) | [meta-llama-3.3-70b-instruct](https://huggingface.co/chat?model=meta-llama/Llama-3.3-70B-Instruct ) |
-| **Perplexity** | [Perplexity Labs](https://labs.perplexity.ai ) | [pplx-8b-online](https://labs.perplexity.ai/playground?model=pplx-8b-online ) |
-| **Groq** | [Groq Playground](https://groq.com/playground ) | [llama-3.3-70b-versatile](https://console.groq.com/playground?model=llama-3.3-70b-versatile ) |
-| **DeepSeek** | [DeepSeek Chat](https://chat.deepseek.com ) | [deepseek-chat-2025-07-24](https://platform.deepseek.com/playground?model=deepseek-chat-2025-07-24 ) |
+| **Company**                                              | **Chat Interface**                                                | **API / Playground**                                                                                    | ***(: Smile*** Compatible |
+| -------------------------------------------------------- | ----------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------- | :-----------------------: |
+| [**OpenAI**](https://openai.com)                         | [ChatGPT](https://chat.openai.com)                                | [GPT-5 Editor](https://platform.openai.com/chat/edit?models=gpt-5)                                      |             ✓             |
+| [**Anthropic**](https://www.anthropic.com)               | [Claude](https://claude.ai/new)                                   | [claude-3-5-sonnet-20241022](https://console.anthropic.com/playground?model=claude-3-5-sonnet-20241022) |             ✓             |
+| [**Google DeepMind**](https://deepmind.google)           | [Gemini](https://gemini.google.com/app)                           | [gemini-2.0-flash-exp](https://aistudio.google.com/app/prompts/new_chat?model=gemini-2.0-flash-exp)     |             ✓             |
+| [**Meta (LLaMA)**](https://www.meta.ai/llama)            | [LLaMA Chat](https://www.meta.ai/llama/chat)                      | [llama-3.3-70b-instruct](https://huggingface.co/spaces/huggingface-projects/llama-3.3-70B-Instruct)     |             ✓             |
+| [**Microsoft (Copilot)**](https://copilot.microsoft.com) | [Copilot Chat](https://copilot.microsoft.com)                     | [gpt-4o-mini (preview)](https://copilot.microsoft.com/playground?model=gpt-4o-mini)                     |             ✓             |
+| [**Cohere**](https://cohere.com)                         | [Cohere Playground](https://dashboard.cohere.com/playground/chat) | [command-r-plus-08-2024](https://dashboard.cohere.com/playground?model=command-r-plus-08-2024)          |             ✓             |
+| [**Mistral**](https://mistral.ai)                        | [Le Chat](https://chat.mistral.ai)                                | [mistral-large-2411](https://console.mistral.ai/playground?model=mistral-large-2411)                    |             ✓             |
+| [**Hugging Face**](https://huggingface.co)               | [HuggingChat](https://huggingface.co/chat)                        | [meta-llama-3.3-70b-instruct](https://huggingface.co/chat?model=meta-llama/Llama-3.3-70B-Instruct)      |             ✓             |
+| [**Perplexity**](https://www.perplexity.ai)              | [Perplexity Labs](https://labs.perplexity.ai)                     | [pplx-8b-online](https://labs.perplexity.ai/playground?model=pplx-8b-online)                            |             ✓             |
+| [**Groq**](https://groq.com)                             | [Groq Playground](https://groq.com/playground)                    | [llama-3.3-70b-versatile](https://console.groq.com/playground?model=llama-3.3-70b-versatile)            |             ✓             |
+| [**DeepSeek**](https://www.deepseek.com)                 | [DeepSeek Chat](https://chat.deepseek.com)                        | [deepseek-chat-2025-07-24](https://platform.deepseek.com/playground?model=deepseek-chat-2025-07-24)     |             ✓             |
+
 
 ## Quick Start Example
 
