@@ -176,11 +176,7 @@ These are a few different ways to create structure with ***(: Smile***.
 | `[;  note or comment ;]` | human comment on an instruction | `[; Meta-Note [ The user intends to improve the intelligence of their downstream tasks using a prompt language ] ;]` | This is for when you are not instructing the model directly, but providing information, comments or notes. Can also use `(;`, the winky eyes are the differentiator.   |  
 | `{placeholder}` | area to be filled by the model | `Fill out the following sections # Thinking {Plan} # Replying {Use plan to reply}` | These are used inside of markdown sections. They are used to instruct the model on how to fill out the section (among others)  |
 
-# (: Smile Information
-
-For models and humans! Robots friendly. Humans happy :)
-
-## Quick FAQ 
+# (: Smile FAQ 
 
 ### Does Smiling Really Make You Happier?
 
