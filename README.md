@@ -83,10 +83,11 @@ First, write exact name tag  ["[(: ***Smile Expert***](https://github.com/DrThom
 
 ☆ **Star the repo** to make a prompt engineer ***(: Smile*** **->** [![☆ Star the repo](https://img.shields.io/github/stars/DrThomasAger/smile?style=social)](https://github.com/DrThomasAger/smile/stargazers)
 
-/ Thank you so much for starring the repo!
-
 [![Star History Chart](https://api.star-history.com/svg?repos=DrThomasAger/smile&type=Date)](https://star-history.com/#DrThomasAger/smile&Date)
 
+ [![☆ Star the repo](https://img.shields.io/github/stars/DrThomasAger/smile?style=social)](https://github.com/DrThomasAger/smile/stargazers)
+
+/ Thank you so much for starring the repo!
 
 ### Media Contact 
 
