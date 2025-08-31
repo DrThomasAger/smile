@@ -94,11 +94,13 @@ Their role is an "expert" who is designed to respond lengthily and with jargon.
 
 ### Thank You!
 
-Love ***(: Smile***? Want to share your support? [PayPal me](https://paypal.me/hanjopurebuddha) :)
+***(: Smile*** is free and actively maintained. 
+
+Love ***(: Smile***?  Want to share your support? [PayPal me](https://paypal.me/hanjopurebuddha) :)
 
 ### Media Contact 
 
-***(: Smile*** is free and actively maintained. **Are you a tech influencer who wants to *share my project?*** Thank you, go ahead and invite me on your show! :)
+**Are you a tech influencer who wants to *share my project?*** Feel free (and Smile!) :)
 
 
 ## Why adopt ***(: Smile*** today?  
