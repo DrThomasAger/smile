@@ -90,7 +90,7 @@ Their role is an "expert" who is designed to respond lengthily and with jargon.
 
 ### Media Contact 
 
-***(: Smile*** is free and actively maintained. **Are you a tech influencer who wants to *share my project?*** (: Thank you, go ahead and invite me on your show! :)
+***(: Smile*** is free and actively maintained. **Are you a tech influencer who wants to *share my project?*** Thank you, go ahead and invite me on your show! :)
 
 
 ## Why adopt ***(: Smile*** today?  
