@@ -54,9 +54,7 @@ First, write exact name tag  ["[(: ***Smile Expert***](https://github.com/DrThom
 ) End prompt language, respond in response language starting with name tag [(: ***Smile Expert***](https://github.com/DrThomasAger/smile): always please thank you  :)
 ```
 
-#### Works Everywhere — Just Paste the [Quick Start](https://github.com/DrThomasAger/smile#quick-start-example)
-
-Try ***(: Smile*** in top AI models:
+#### Works Everywhere — Just Paste!
 
 ##### **Chat Interfaces**:
 [Claude](https://claude.ai/) · [Gemini](https://gemini.google.com/) · [ChatGPT](https://chat.openai.com/) · [Grok](https://x.ai/) · [Kimi](https://kimi.moonshot.cn/) · [DeepSeek](https://www.deepseek.com/)
