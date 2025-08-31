@@ -54,27 +54,28 @@ First, write exact name tag  ["[(: ***Smile Expert***](https://github.com/DrThom
 ) End prompt language, respond in response language starting with name tag [(: ***Smile Expert***](https://github.com/DrThomasAger/smile): always please thank you  :)
 ```
 
-**↑**  Just **copy and paste the quick start example** above into any model now   **↑**
+#### Works Everywhere — Just Paste the [Quick Start](https://github.com/DrThomasAger/smile#quick-start-example)
 
-The fastest way to get started is to copy and paste this into your favorite web interface:
+Try ***(: Smile*** in top AI models:
 
-* ✓ Chat web interface (e.g. [https://claude.ai/](https://claude.ai/), ***Gemini***, ***DeepSeek***, ***Grok***)
+##### **Chat Interfaces**:
+[Claude](https://claude.ai/) · [Gemini](https://gemini.google.com/) · [ChatGPT](https://chat.openai.com/) · [Grok](https://x.ai/) · [Kimi](https://kimi.moonshot.cn/) · [DeepSeek](https://www.deepseek.com/)
 
-### (: Smile Compatibility
+##### **Dev Tools**:
+[Cursor](https://www.cursor.so/) · [GitHub Copilot](https://github.com/features/copilot)
 
-Even if you have never learned to code or used an API, and just create your own prompts in ChatGPT or another chat interface, you can (: Smile!
+##### **Open-Source Models**:
+[GPT-OSS](https://huggingface.co/collections/teknium/gpt-oss-65b-666fdb6a2ad510b153c6e7dc) · [Qwen](https://huggingface.co/Qwen) · [Mistral](https://mistral.ai/news/) · [LLaMA 3](https://ai.meta.com/llama/)
 
-* ✓ Open source like gpt-oss, qwen, or (:  ***Kimi K2:*** [https://www.kimi.com](https://www.kimi.com/)  - All powerful, low priced & free.
+##### **APIs**:
+[OpenAI](https://platform.openai.com/) · [Anthropic](https://console.anthropic.com/) · [Gemini API](https://makersuite.google.com/app)
 
-Even small 20b models like gpt-oss work with (: Smile for provable results! 
+**No code needed** — just paste and watch it work.
 
-* ✓ Closed foundation (e.g. ***OpenAI***)[: ***ChatGPT:*** Still good. [https://chatgpt.com/](https://chatgpt.com/)
+---
 
-All powerful large, closed and hidden models (like "OpenAI" or other companies aimed at revenue generation) on API are functional with (: Smile!
+Would you like a version in ***(: Smile*** format next?
 
-* ✓ Toolkits (e.g. ***Cursor***, ***Copilot***)
-
-All of your existing prompt programming and other tools for system prompts can be made happy and performant with (: Smile!
 
 
 
