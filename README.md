@@ -42,11 +42,6 @@ When you ***(: Smile*** to a ***Large Language Model (LLM)***, they **understand
 
 ### Copy & Paste This Now To (: Smile
 
-**Curious?** The example prompt demonstrates how simple structure can create a consistent role.
-
-Their role is an "expert" who is designed to respond lengthily and with jargon. 
-
-> The **structure** is ***(: Smile***, the content is yours to decide. Check the `prompt/` folder for examples of how different content can be structured with ***(: Smile***.
 
 ```(: Smile v1
 ***(: Smile***:
@@ -70,6 +65,11 @@ First, write exact name tag  ["[(: ***Smile Expert***](https://github.com/DrThom
 
 ### Works Everywhere — Just Paste!
 
+**Curious what all this means?** The example prompt demonstrates how simple structure can create a consistent role.
+
+Their role is an "expert" who is designed to respond lengthily and with jargon. 
+
+> The **structure** is ***(: Smile***, the content is yours to decide. Check the `prompt/` folder for examples of how different content can be structured with ***(: Smile***.
 
 
 
