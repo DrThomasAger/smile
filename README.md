@@ -72,11 +72,27 @@ Try ***(: Smile*** in top AI models:
 
 **No code needed** — just paste and watch it work.
 
----
-
-Would you like a version in ***(: Smile*** format next?
 
 
+
+
+
+# (: Smile Documentation
+
+![Smile Prompt Language v1](Smile-logo.png )
+
+## Support Open Source
+
+☆ **Star the repo** to make a prompt engineer ***(: Smile*** **->** [![☆ Star the repo](https://img.shields.io/github/stars/DrThomasAger/smile?style=social)](https://github.com/DrThomasAger/smile/stargazers)
+
+/ Thank you so much for starring the repo!
+
+[![Star History Chart](https://api.star-history.com/svg?repos=DrThomasAger/smile&type=Date)](https://star-history.com/#DrThomasAger/smile&Date)
+
+
+### Media Contact 
+
+***(: Smile*** is free and actively maintained. **Are you a tech influencer who wants to *share my project?*** (: Thank you, go ahead and invite me on your show! :)
 
 
 ## Why adopt ***(: Smile*** today?  
@@ -91,28 +107,6 @@ After mastering this simple yet powerful language, your organization unlocks the
 
 
 
-## Support Open Source
-
-☆ **Star the repo** to make a prompt engineer ***(: Smile*** **->** [![☆ Star the repo](https://img.shields.io/github/stars/DrThomasAger/smile?style=social)](https://github.com/DrThomasAger/smile/stargazers)
-
-/ Thank you so much for starring the repo!
-
-[![Star History Chart](https://api.star-history.com/svg?repos=DrThomasAger/smile&type=Date)](https://star-history.com/#DrThomasAger/smile&Date)
-
-
-
-## Media Contact 
-
-***(: Smile*** is free and actively maintained. **Are you a tech influencer who wants to *share my project?*** (: Thank you, go ahead and invite me on your show! :)
-
-
-
-
-# (: Smile Documentation
-
-![Smile Prompt Language v1](Smile-logo.png )
-
-☆ **Star the repo** to make a prompt engineer ***(: Smile*** **->** [![☆ Star the repo](https://img.shields.io/github/stars/DrThomasAger/smile?style=social)](https://github.com/DrThomasAger/smile/stargazers)
 
 ## The Basics
 
