@@ -10,32 +10,15 @@ Introducing ***(: Smile*** — The Open Source Language for Structured Prompt En
 
 # (: Smile 
 
-
-
- ***(: Smile*** is a **structured** and **positive** language for talking to ***Artificial Intelligence (AI)*** models. 
-
- When you structure your prompts,  you can move with true confidence that you will get the **outcomes** you **intended** to get, **in the way you intended to get them.**
-
-
-When you ***(: Smile***, **the model loves to follow your instructions.**, and the prompt engineer is **happy**.
-
-
-
-
-
-
-# (: Smile Prompt Engineering Language
-
 `(: Hello world!`
 
 
-Welcome to the first positively oriented language for prompting ***Large Language Models (LLMs)***.
 
-(: Smile is a structured prompt language. It's a markup- but for writing prompts! It lets you write  **structured instructions** any model can understand. 
+ ***(: Smile*** is the first **structured** and **positive** language (like a programming language or markup) for talking to ***Artificial Intelligence (AI)*** models. 
 
-It follows that writing ***(: Smile*** for a ***Large Language Model (LLM)*** means they **understand** your prompt better, **perform** better, and you're both **happy**.   
+ When you structure your prompts,  you can move with true confidence that you will get the **outcomes** you **intended** to get, **in the way you intended to get them.**
 
-
+When you ***(: Smile*** to a ***Large Language Model (LLM)***, they **understand** your prompt better, **perform** better, and you're both **happy**.   
 
 ## Quick Start Example
 
