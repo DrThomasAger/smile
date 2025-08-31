@@ -22,7 +22,7 @@ Introducing ***(: Smile*** — The Open Source Language for Structured Prompt En
 
 ## Compatible With All Existing Models (Foundation & Open Source LLMs)
 
-**✓** Copy & paste our quickstart example below now to ***(: Smile***:
+**✓** Copy & paste our quickstart example below now to ***(: Smile***!
 
 |             **Type**            | **Product / Company**   | **Paste & Try**                                                               | **Dev / Playground**                                                                                                                                        | ***(: Smile*** Compatible |
 | :-----------------------------: | ----------------------- | ----------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------- | :-----------------------: |
