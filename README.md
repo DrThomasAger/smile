@@ -100,12 +100,16 @@ Love ***(: Smile***?  Want to share your support? [PayPal me](https://paypal.me/
 
 ### Media Contact 
 
-I want everyone and everything to ***(: Smile***! **Are you a tech influencer who wants to *share my project?*** Please do! (and Smile!) :)
+I want everyone and everything to ***(: Smile***! 
+
+**Are you a tech influencer who wants to *share my project?*** Please do! (and Smile!) :)
 
 
 ## Why adopt ***(: Smile*** today?  
 
-For a **positive** AI future. :) Because your ***prompt engineering*** will become **maintainable**, you get **measurable performance gains** on your tasks, and your employees will **(: Smile**. 
+For a **positive** AI future. :) 
+
+**For real:** Because your ***prompt engineering*** will become **maintainable**, you get **measurable performance gains** on your tasks, and your employees will **(: Smile**. 
 
 ***(: Smile*** is the first **prompt instruction language** to use **positive prompting structure** by encoding a small set of positive text emojis like  `(:`, `[;`, and `[=` as **semantically unique markers**. 
 
