@@ -5,6 +5,10 @@
 
 Introducing ***(: Smile*** — The Open Source Language for Structured Prompt Engineering
 
+
+***(: Smile*** structures instruction text for instruction following, the same way ***HTML*** structures website content into blocks a web browser can render. 
+
+
 >  (; By [Dr. Thomas Ager](https://www.linkedin.com/in/drprompt?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app)  ;)         [![☆ Star the repo](https://img.shields.io/github/stars/DrThomasAger/smile?style=social)](https://github.com/DrThomasAger/smile/stargazers)
 
 
@@ -128,8 +132,6 @@ You can end sections using the same markers in the opposite direction. `) End Se
 ## Sections
 
 A **"section"** is defined in ***(: Smile*** as a meaningfully different part of the prompt from another part of the prompt. 
-
-***(: Smile*** structures instruction text for instruction following, the same way ***HTML*** structures website content into blocks a web browser can render. 
 
 Let's imagine a raw text data input, like a **wikipedia HTML page**. It's full of metadata and information. This is **data**.
 
