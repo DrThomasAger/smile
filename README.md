@@ -105,28 +105,6 @@ You start by clearly defining the start `(:` of a section and its name `(: Secti
 You can end sections using the same markers in the opposite direction. `) End Section name, thank you :)`.
 
 
-## Is My (: Smile Correct?
-
-You will know an ***LLM*** is compatible with the quick start example when it responds with a ***{name tag}***, in this case ***(: Smile Expert:***
-
-A name tag is created correctly if the model always...
-
-* responds immediately with their name
-* at the beginning of **every response** 
-* using the name provided verbatim word for word 
-* in the same markdown ***bold and italics*** format as given
-* ended with a colon `:` followed by a newline:
-
-For example:
-
-`***(: Smile***:`
-
-If we wanted the model to write it's own name, we can use curly braces `{}`:
-
-`***{Write a name that describes the AI clearly}***:`
-
-It can be any name, but the name **must match the task or function the AI is fulfilling**. 
-
 
 
 ## Sections
@@ -135,17 +113,6 @@ A **"section"** is defined in ***(: Smile*** as a meaningfully different part of
 
 Let's imagine a raw text data input, like a **wikipedia HTML page**. It's full of metadata and information. This is **data**.
 
-### Separating Prompt Instructions & Data
-
-In-order to tell the model how to use the **data**, we provide **instruction text**.
-
-This separation between **data** and **instruction text** helps the model know how to use data. 
-
-In a task to `Answer the user query with data from a wiki article` and the user query `"Why does smiling release happy chemicals like chocolate or the sun?"`, we can use ***Retrival Augmented Generation (RAG)*** to get relevant context to the model like the Wikipedia article for `Pleasure`. 
-
-The final instructions placed at the top and bottom could be something like:
-
-`[: Clearly identify all relevant information to the user's query and write it out first, then reconstruct it into sturdy and rigorously intelligent paragraphs afterwards :] (; Remember to always respond with name tag now!`
 
 #### How To Make The Model Follow Instructions
 
@@ -450,6 +417,43 @@ Help build a dataset of prompts that will be automatically converted for better 
 
 
 # (: Smile Appendices
+
+## Is My (: Smile Correct?
+
+You will know an ***LLM*** is compatible with the quick start example when it responds with a ***{name tag}***, in this case ***(: Smile Expert:***
+
+A name tag is created correctly if the model always...
+
+* responds immediately with their name
+* at the beginning of **every response** 
+* using the name provided verbatim word for word 
+* in the same markdown ***bold and italics*** format as given
+* ended with a colon `:` followed by a newline:
+
+For example:
+
+`***(: Smile***:`
+
+If we wanted the model to write it's own name, we can use curly braces `{}`:
+
+`***{Write a name that describes the AI clearly}***:`
+
+It can be any name, but the name **must match the task or function the AI is fulfilling**. 
+
+
+
+### Separating Prompt Instructions & Data
+
+In-order to tell the model how to use the **data**, we provide **instruction text**.
+
+This separation between **data** and **instruction text** helps the model know how to use data. 
+
+In a task to `Answer the user query with data from a wiki article` and the user query `"Why does smiling release happy chemicals like chocolate or the sun?"`, we can use ***Retrival Augmented Generation (RAG)*** to get relevant context to the model like the Wikipedia article for `Pleasure`. 
+
+The final instructions placed at the top and bottom could be something like:
+
+`[: Clearly identify all relevant information to the user's query and write it out first, then reconstruct it into sturdy and rigorously intelligent paragraphs afterwards :] (; Remember to always respond with name tag now!`
+
 
 ### Prompt Language and Response Language
 
