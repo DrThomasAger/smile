@@ -88,7 +88,9 @@ An LLM is only responding correctly with a name tag if they respond **immediatel
 
 This defines the response language: it starts with a name tag that is the role it is fulfilling in this instance. In this case, the role is an expert on the ***(: Smile*** prompt instruction language. 
 
-but not bolded or italic'd, this means that it has correctly followed these example prompts in this README. In the example prompt, I additionally added:
+***(: Smile*** can ask the model to respond in all kinds of formats. We in this repo ask the model to respond with the name tag as it is our quickest and easiest trick to increase instruction following and confirm immediately if the promot was written correctly.
+
+ In the example prompt, I additionally added:
 
 `) End prompt language, respond in response language starting with name tag [(: ***Smile Expert***](https://github.com/DrThomasAger/smile): always please thank you  :)`
 
