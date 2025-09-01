@@ -44,6 +44,12 @@ Nice to meet you! :)
 
 **✓** Copy & paste our quickstart example below now to ***(: Smile***! **✓** 
 
+|  **Type**  | ***(: Smile*** Compatible | **Paste & Try**                                        |                                                                                    
+| :--------: | :-----------------------: | ------------------------------------------------------ |
+|  **Open**  |             **✓**             | [Kimi Chat (***Moonshot AI***)](https://www.kimi.com/) | 
+|            |             **✓**             | [Le Chat (***Mistral***)](https://chat.mistral.ai)     | 
+| **Closed** |             **✓**             | [ChatGPT (***OpenAI***)](https://chat.openai.com)      | 
+|            |             **✓**             | [Claude (***Anthropic***)](https://claude.ai/new)      | 
 
 ```(: Smile v1
 ***(: Smile***:
@@ -65,18 +71,7 @@ First, write exact name tag  ["[(: ***Smile Expert***](https://github.com/DrThom
 ) End prompt language, respond in response language starting with name tag [(: ***Smile Expert***](https://github.com/DrThomasAger/smile): always please thank you  :)
 ```
 
-## Quick Free Chat
 
-
-### Works Everywhere — Just Paste!
-
-
-|  **Type**  | ***(: Smile*** Compatible | **Paste & Try**                                        |                                                                                    
-| :--------: | :-----------------------: | ------------------------------------------------------ |
-|  **Open**  |             **✓**             | [Kimi Chat (***Moonshot AI***)](https://www.kimi.com/) | 
-|            |             **✓**             | [Le Chat (***Mistral***)](https://chat.mistral.ai)     | 
-| **Closed** |             **✓**             | [ChatGPT (***OpenAI***)](https://chat.openai.com)      | 
-|            |             **✓**             | [Claude (***Anthropic***)](https://claude.ai/new)      | 
 
 # How Do I Read A (: Smile?
 
