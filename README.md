@@ -96,11 +96,6 @@ Because your ***prompt engineering*** will become...
  Let's let ***(: Smile*** be a vital step towards creating a positively oriented org by investing time into helping your employees learn to ***(: Smile***. 
 
 
-### [= Advanced (: Smile :) =]
-
-After mastering this simple yet powerful language, your organization unlocks the secret powers of **multi-turn**, **multi-agent**, and **multi-intelligence** AI systems. 
-
-
 
 
 ## The Basics
@@ -286,6 +281,11 @@ First, write exact name tag  ["[***(: Smile Expert***](https://github.com/DrThom
 ```
 
 Copy and paste the above into any model to test.
+
+### [= Advanced (: Smile :) =]
+
+After mastering this simple yet powerful language, your organization unlocks the secret powers of **multi-turn**, **multi-agent**, and **multi-intelligence** AI systems. 
+
 
 # The HTML of Prompt Engineering
 
