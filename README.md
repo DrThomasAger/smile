@@ -1,6 +1,17 @@
+
+
 # (: Smile 
 
 ![Smile Prompt Language v1](20250826_0133_Smile%20with%20Emoticon_loop_01k3h83cvef4qbtegkt4qma1yf.gif)
+
+
+
+
+
+ [![☆ Star the repo](https://img.shields.io/github/stars/DrThomasAger/smile?style=social)](https://github.com/DrThomasAger/smile/stargazers)
+
+# (: Smile Documentation
+
 
 `(: Hello world!`
 
@@ -61,17 +72,6 @@ Want to quickly try ***(: Smile*** on a ***LLM?***
 
 
 [: *Just copy and paste the quick start example into one of the chats above, or check out the **comprehensive portability and compatibility** of ***(: Smile*** [here](#portability-and-compatibility) for alternative options.*
-
-
-# (: Smile Documentation
-
-![Smile Prompt Language v1](Smile-logo.png )
-
-
-
-
- [![☆ Star the repo](https://img.shields.io/github/stars/DrThomasAger/smile?style=social)](https://github.com/DrThomasAger/smile/stargazers)
-
 
 
 # Why Adopt ***(: Smile*** For Your Org?  
