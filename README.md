@@ -70,7 +70,9 @@ Their role is an intelligent knowledge expert for any domain who is designed to 
 
 > The **structure** is ***(: Smile***, the content is yours to decide. For now, try talking to the AI that is created when you copy and paste the quickstart example into a chat. From here, you can try other examples in this README or start integrating ***(: Smile*** structure into your own prompts.
 
-# How Do I Know If The AI's (: Smile Is Communicated?
+# Is My (: Smile Correct?
+
+Of course it is. But to know for sure:
 
 You know that the AI has a ***(: Smile*** behind its text if it uses the `***{name tag}***:`. 
 
