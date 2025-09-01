@@ -96,8 +96,7 @@ With ***(: Smile***, your ***prompt engineering*** teams are now producing AI sy
 
 ## Support Open Source
 
-☆ **Star the repo** to make a prompt engineer ***(: Smile***!  [![☆ Star the repo](https://img.shields.io/github/stars/DrThomasAger/smile?style=social)](https://github.com/DrThomasAger/smile/stargazers)
-
+☆ **Star the repo** to make a prompt engineer ***(: Smile***!  
 
 [![Star History Chart](https://api.star-history.com/svg?repos=DrThomasAger/smile&type=Date)](https://star-history.com/#DrThomasAger/smile&Date)
 
