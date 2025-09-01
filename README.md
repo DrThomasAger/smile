@@ -79,7 +79,7 @@ For a **positive** AI future. :)
 
  When your prompt database has structured prompts,  your business will get the **outcomes** you **intended** to get, **in the way you intended to get them**, **more consistently**.
 
-This means that you can ***(: Smile*** for  **positivity** in your **home**, **organizational outcomes**, and a **wholesome mood**.
+This means that you can ***(: Smile*** for  **positivity** in your **home**, **consistent outcomes**, and a **wholesome mood**.
 
 
 # Why Does (: Smile Make Models And Orgs Happy?
