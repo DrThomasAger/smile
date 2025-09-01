@@ -21,23 +21,6 @@ Nice to meet you! :)
 
  ***(: Smile*** is the first **structured** and **positive** markup for talking to ***Large Language Models (LLMs)***. 
 
- When you structure your prompts,  you will get the **outcomes** you **intended** to get, **in the way you intended to get them.**
-
- When you ***(: Smile*** to a ***LLM***, they're happy. They **understand** your prompt better, **perform** better, and you're both **doing what you agreed to do together**. 
-  
-
-
-# Why adopt ***(: Smile*** for your org?  
-
-For a **positive** AI future. :) 
-
-Because your ***prompt engineering*** will become...
-
-* **Maintainable** over long periods of **time**.
-* **Portable** across **models**, **tools** and **libraries**.
-* **Performant** on **instruction following** for **tasks**.
-
-
 
 ## Compatible With All Existing Models (Foundation & Open Source LLMs)
 
@@ -93,8 +76,25 @@ First, write exact name tag  ["[(: ***Smile Expert***](https://github.com/DrThom
 [![Star History Chart](https://api.star-history.com/svg?repos=DrThomasAger/smile&type=Date)](https://star-history.com/#DrThomasAger/smile&Date)
 
 
+# Why adopt ***(: Smile*** for your org?  
 
-***(: Smile*** for  **positivity** in your **home**, **organizational outcomes**, and **mood**.
+
+
+For a **positive** AI future. :) 
+
+You can ***(: Smile*** for  **positivity** in your **home**, **organizational outcomes**, and **mood**.
+
+
+ When you structure your prompts,  you will get the **outcomes** you **intended** to get, **in the way you intended to get them.**
+
+ When you ***(: Smile*** to a ***LLM***, they're happy. They **understand** your prompt better, **perform** better, and you're both **doing what you agreed to do together**. 
+  
+
+Your ***prompt engineering*** will become...
+
+* **Maintainable** over long periods of **time**.
+* **Portable** across **models**, **tools** and **libraries**.
+* **Performant** on **instruction following** for **tasks**.
 
 
 
