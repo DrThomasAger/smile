@@ -69,9 +69,7 @@ First, write exact name tag  ["[(: ***Smile Expert***](https://github.com/DrThom
 
 
 
-# Why adopt ***(: Smile*** for your org?  
-
-
+# Why Adopt ***(: Smile*** For Your Org?  
 
 For a **positive** AI future. :) 
 
@@ -79,7 +77,13 @@ For a **positive** AI future. :)
 
 This means that you can ***(: Smile*** for  **positivity** in your **home**, **organizational outcomes**, and **mood**.
 
-Obviously, if you ***(: Smile***, you're happier. So, if you ***(: Smile*** to an ***LLM*** we hope they're happy too. They're going to be happy because they **understand** your prompt better, **perform** better, and you're both **doing what you agreed to do together**. 
+Obviously, if you ***(: Smile***, you're happier... 
+
+When you talk to an ***LLM***, do you make them  ***(: Smile***too?
+
+# Why Does (: Smile Make Models And Orgs Happy?
+
+Everyone's happy when you ***(: Smile*** because  they **understand** your prompt better, **perform** better, which means that you can both **do what you agreed to do now together**. 
   
 
 Your ***prompt engineering*** will become...
