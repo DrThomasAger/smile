@@ -72,13 +72,16 @@ First, write exact name tag  ["[(: ***Smile Expert***](https://github.com/DrThom
 
 An LLM is only responding correctly with a name tag if they respond **immediately** at the beginning of **every response** in ***bold and italics*** with a colon `:` 
 
-`***(: Smile Expert***:`
+`***{Write a name that describes the AI clearly}***:`
 
 It can be any name, but the name **must match the task or function the AI is fulfilling**. 
 
 ## Prompt Language and Response Language
 
 This defines the response language: it starts with a name tag that is the role it is fulfilling in this instance. In this case, the role is an expert on the ***(: Smile*** prompt instruction language. 
+
+
+`***(: Smile Expert***:`
 
 ***(: Smile*** can ask the model to respond in all kinds of formats. We in this repo ask the model to respond with the name tag as it is our quickest and easiest trick to increase instruction following and confirm immediately if the promot was written correctly.
 
