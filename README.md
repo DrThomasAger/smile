@@ -91,10 +91,10 @@ Because your ***prompt engineering*** will become...
 * **Maintainable** over long periods of **time**.
 * **Portable** across **models**, **tools** and **libraries**.
 * **Performant** on **instruction following** for **tasks**.
-* **Positive** in your **home**, **work environment**, and **mood**.
 
  Let's let ***(: Smile*** be a vital step towards creating a positively oriented org by investing time into helping your employees learn to ***(: Smile***. 
 
+***(: Smile*** for  **positivity** in your **home**, **organizational outcomes**, and **mood**.
 
 
 
