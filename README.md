@@ -125,12 +125,12 @@ For a **positive** AI future. :)
 
 Because your ***prompt engineering*** will become...
 
-* **Maintainable** over long periods of time
-* **Portable** across models, toolsets and languages
-* **Performant** on  instruction following for tasks
-* **Positive** in your home, digital space, or work environment
+* **Maintainable** over long periods of **time**.
+* **Portable** across **models**, **tools** and **libraries**.
+* **Performant** on **instruction following** for **tasks**.
+* **Positive** in your **home**, **work environment**, and **mood**.
 
- Let ***(: Smile*** be one step towards creating a positive and mindful mental health attitude in your org at the root of the AI team by investing time into helping your employees learn to ***(: Smile***. 
+ Let's let ***(: Smile*** be one step towards creating a positive and mindful mental health attitude in your org at the root of the AI team by investing time into helping your employees learn to ***(: Smile***. 
 
  ### Why Is (: Smile Novel, Original, and Interesting?
 
