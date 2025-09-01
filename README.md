@@ -85,18 +85,6 @@ Their role is an "expert" who is designed to respond lengthily and with jargon.
 
 
 
-### Thank You!
-
-***(: Smile*** is free and actively maintained. 
-
-Love ***(: Smile***?  Want to share your support? [PayPal me](https://paypal.me/hanjopurebuddha) :)
-
-### Media Contact 
-
-I want everyone and everything to ***(: Smile***! 
-
-**Are you a tech influencer who wants to *share my project?*** Please do! (and ***(: Smile***!) 
-
 
 ## Why adopt ***(: Smile*** today?  
 
@@ -419,6 +407,18 @@ Want to feel happier when you prompt engineer? Just use every time you see a ***
 I'm happy to help! DM me or raise an issue! :)
 
 
+
+### Thank You!
+
+***(: Smile*** is free and actively maintained. 
+
+Love ***(: Smile***?  Want to share your support? [PayPal me](https://paypal.me/hanjopurebuddha) :)
+
+### Media Contact 
+
+I want everyone and everything to ***(: Smile***! 
+
+**Are you a tech influencer who wants to *share my project?*** Please do! (and ***(: Smile***!) 
 
  [![☆ Star the repo](https://img.shields.io/github/stars/DrThomasAger/smile?style=social)](https://github.com/DrThomasAger/smile/stargazers)
 
