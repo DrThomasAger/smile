@@ -15,7 +15,7 @@ Nice to meet you! :)
 
 # (: Smile — pocket cheat sheet
 
-This documentation is exhaustive! Here's something to refer to quickly (:
+This documentation is extensive! Here's something to refer to quickly (:
 
 **Sections (open/close):**
 
