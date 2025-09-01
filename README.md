@@ -70,11 +70,13 @@ First, write exact name tag  ["[(: ***Smile Expert***](https://github.com/DrThom
 
 (: Of course it is. But to know for sure:
 
-You know that the AI has a ***(: Smile*** behind its text if it uses the `***{name tag}***:`. 
-
 An LLM is only responding correctly with a name tag if they respond **immediately** at the beginning of **every response** in ***bold and italics*** with a colon `:` 
 
 `***(: Smile Expert***:`
+
+It can be any name, but the name **must match the task or function the AI is fulfilling**. 
+
+## Prompt Language and Response Language
 
 This defines the response language: it starts with a name tag that is the role it is fulfilling in this instance. In this case, the role is an expert on the ***(: Smile*** prompt instruction language. 
 
