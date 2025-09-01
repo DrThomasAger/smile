@@ -27,8 +27,6 @@ Nice to meet you! :)
 
  When you structure your prompts,  you will get the **outcomes** you **intended** to get, **in the way you intended to get them.**
 
-***(: Smile*** structures *****Large Language Model (LLM)*** prompt instruction text** for **instruction following**, the same way ***HTML*** structures **website text** into **structured blocks** a browser can render. 
-
  When you ***(: Smile*** to a ***Large Language Model (LLM)***, they're happy. They **understand** your prompt better, **perform** better, and you're both **doing what you agreed to do together**. 
   
 
@@ -323,6 +321,32 @@ First, write exact name tag  ["[***(: Smile Expert***](https://github.com/DrThom
 
 Copy and paste the above into any model to test.
 
+# The HTML of Prompt Engineering
+
+
+***(: Smile*** structures *****Large Language Model (LLM)*** prompt instruction text** for **instruction following**, the same way ***HTML*** structures **website text** into **structured blocks** a browser can render. 
+
+# An Example With HTML
+
+Let's look at what happens if we structure a simple prompt, one that asks the model to respond in paragraphs, with HTML.
+
+```
+<div class="start">
+<h1> Prompt Instructions </h1>
+<p class="instructions">
+Respond in paragraphs with crystal clear jargon.
+</p>
+</div class="end">
+```
+
+And compare that to ***(: Smile***:
+
+```
+(: Start (
+Prompt Instructions:
+Respond in paragraphs with crystal clear jargon.
+) This is the end of a section :)
+```
 
 
 # Let's connect with a ***(: Smile***!
