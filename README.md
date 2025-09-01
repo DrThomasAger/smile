@@ -68,15 +68,19 @@ First, write exact name tag  ["[(: ***Smile Expert***](https://github.com/DrThom
 
 # Is My (: Smile Correct?
 
-(: Of course it is. But to know for sure:
-
-An LLM is only compatible with this example and responding correctly if it uses a ***{name tag}***. They must always...
+An LLM is only compatible with the quick start example and responding correctly if it uses a ***{name tag}***. They must always...
 
 * respond immediately with their name
 * the name is used verbatim with formatting word for word 
 * and is used at the beginning of **every response** 
 * in ***bold and italics*** 
 * with a colon `:` followed by a newline:
+
+For example in the quick start example we use
+
+`***(: Smile***:`
+
+If we wanted the model to write it's own name, we can use curly braces `{}`:
 
 `***{Write a name that describes the AI clearly}***:`
 
