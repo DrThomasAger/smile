@@ -42,14 +42,7 @@ Nice to meet you! :)
 
 # Quickstart
 
-**✓** Copy & paste our quickstart example below now to ***(: Smile***! **✓** 
-
-|  **Type**  | ***(: Smile*** Compatible | **Paste & Try**                                        |                                                                                    
-| :--------: | :-----------------------: | ------------------------------------------------------ |
-|  **Open**  |             **✓**             | [Kimi Chat (***Moonshot AI***)](https://www.kimi.com/) | 
-|            |             **✓**             | [Le Chat (***Mistral***)](https://chat.mistral.ai)     | 
-| **Closed** |             **✓**             | [ChatGPT (***OpenAI***)](https://chat.openai.com)      | 
-|            |             **✓**             | [Claude (***Anthropic***)](https://claude.ai/new)      | 
+**✓** Copy, open your favorite LLM, & paste our quickstart example below now to ***(: Smile***! **✓** 
 
 ```(: Smile v1
 ***(: Smile***:
@@ -70,6 +63,13 @@ First, write exact name tag  ["[(: ***Smile Expert***](https://github.com/DrThom
 ] End format =] 
 ) End prompt language, respond in response language starting with name tag [(: ***Smile Expert***](https://github.com/DrThomasAger/smile): always please thank you  :)
 ```
+
+|  **Type**  | ***(: Smile*** Compatible | **Paste & Try**                                        |                                                                                    
+| :--------: | :-----------------------: | ------------------------------------------------------ |
+|  **Open**  |             **✓**             | [Kimi Chat (***Moonshot AI***)](https://www.kimi.com/) | 
+|            |             **✓**             | [Le Chat (***Mistral***)](https://chat.mistral.ai)     | 
+| **Closed** |             **✓**             | [ChatGPT (***OpenAI***)](https://chat.openai.com)      | 
+|            |             **✓**             | [Claude (***Anthropic***)](https://claude.ai/new)      | 
 
 
 
