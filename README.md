@@ -88,7 +88,7 @@ The role demonstrated is an intelligent knowledge expert for any domain who is d
 
 # Is My (: Smile Correct?
 
-Of course it is. But to know for sure:
+(: Of course it is. But to know for sure:
 
 You know that the AI has a ***(: Smile*** behind its text if it uses the `***{name tag}***:`. 
 
