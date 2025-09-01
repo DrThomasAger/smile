@@ -6,8 +6,6 @@
 Introducing ***(: Smile*** — The Open Source Language for Structured Prompt Engineering
 
 
-***(: Smile*** structures instruction text for instruction following, the same way ***HTML*** structures website content into blocks a web browser can render. 
-
 
 >  (; By [Dr. Thomas Ager](https://www.linkedin.com/in/drprompt?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app)  ;)         [![☆ Star the repo](https://img.shields.io/github/stars/DrThomasAger/smile?style=social)](https://github.com/DrThomasAger/smile/stargazers)
 
@@ -19,6 +17,14 @@ Introducing ***(: Smile*** — The Open Source Language for Structured Prompt En
 
 
  ***(: Smile*** is the first **structured** and **positive** markup for talking to ***Artificial Intelligence (AI)*** models. 
+
+ 
+
+***(: Smile*** structures *****Large Language Model (LLM)*** prompt instruction text** for **instruction following**, the same way ***HTML*** structures **website text** into **structured blocks** a browser can read to create a rendered website. 
+
+## Why (: Smile?
+
+To be happy :)
 
  When you structure your prompts,  you will get the **outcomes** you **intended** to get, **in the way you intended to get them.**
 
