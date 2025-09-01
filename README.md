@@ -82,9 +82,11 @@ The role demonstrated is an intelligent knowledge expert for any domain who is d
 
 You know that the AI has a ***(: Smile*** behind its text if it uses the `***{name tag}***:`. 
 
-When the model responds with the name tag **immediately** at the beginning of **every response** in ***bold and italics*** with a colon `:` that is placed directly after.
+An LLM is only responding correctly with a name tag if they respond **immediately** at the beginning of **every response** in ***bold and italics*** with a colon `:` 
 
-`***(: Smile***:`
+`***(: Smile Expert***:`
+
+This defines the response language: it starts with a name tag that is the role it is fulfilling in this instance. In this case, the role is an expert on the ***(: Smile*** prompt instruction language. 
 
 but not bolded or italic'd, this means that it has correctly followed these example prompts in this README. In the example prompt, I additionally added:
 
