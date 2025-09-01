@@ -19,14 +19,6 @@
 
 I'm ***(: Smile***, nice to meet you! :)
 
-
-
-
-## Why (: Smile?
-
-
-
-
  `(:` ***Smile*** **structures prompts**  using **positive emoticons** as brackets  `:) `
 
 
