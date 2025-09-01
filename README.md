@@ -52,7 +52,7 @@ First, write exact name tag  ["[(: ***Smile Expert***](https://github.com/DrThom
 
 Want to quickly try ***(: Smile*** on a ***LLM?***
 
-| **Type**   | ✓ [Link to copy & paste]                                 |
+| **Type**   | ✓ Link to copy & paste                                |
 |:----------:|:------------------------------------------|
 | **Open**   | [Kimi Chat (Moonshot AI)](https://www.kimi.com/) |
 |            | [Le Chat (Mistral)](https://chat.mistral.ai)     |
