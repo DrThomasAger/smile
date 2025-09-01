@@ -18,8 +18,9 @@
 
 I'm ***(: Smile***, nice to meet you! :)
 
- `(:` ***(: Smile*** **structures prompts**  using **positive emoticons** as brackets  `:) `
+`(: My info ( I structure prompts using emoticons that act as brackets ) End :)`
 
+This means that the model can clearly understand your instructions, making your AI outcomes **consistent** and **reliable**.
 
 
 # Quickstart
