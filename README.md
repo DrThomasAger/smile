@@ -100,7 +100,7 @@ Because your ***prompt engineering*** will become...
 ## The Basics
 
 
-***(: Smile*** is used to define different kinds of sections, with the kind of emoticon e.g. `(:` chosen  informing how to interpret the instructions. 
+***(: Smile*** is used to define different kinds of sections, with the kind of emoticon e.g. `(:` chosen  aiding the model in interpreting the instructions. 
 
 These can open: `(:`, or close: `:)`, just like brackets in other languages.
 
