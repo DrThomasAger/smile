@@ -63,7 +63,7 @@ First, write exact name tag  ["[(: ***Smile Expert***](https://github.com/DrThom
 |            |             **✓**             | [Claude (***Anthropic***)](https://claude.ai/new)      | 
 
 
-[: Smile is compatible with all models and frameworks! Check out the **comprehensive portability and compatibility** of ***(: Smile*** [here](#portability-and-compatibility)
+[: *Check out the **comprehensive portability and compatibility** of ***(: Smile*** [here](#portability-and-compatibility)*
 
 
 # Is My (: Smile Correct?
