@@ -79,7 +79,7 @@ This means that you can ***(: Smile*** for  **positivity** in your **home**, **o
 
 Obviously, if you ***(: Smile***, you're happier... 
 
-When you talk to an ***LLM***, do you make them  ***(: Smile***too?
+When you talk to an ***LLM***, will you make them  ***(: Smile*** too? 
 
 # Why Does (: Smile Make Models And Orgs Happy?
 
