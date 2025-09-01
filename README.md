@@ -159,7 +159,9 @@ In-order to tell the model how to use the **data**, we provide **instruction tex
 
 This separation between **data** and **instruction text** helps the model know how to use data. 
 
-In a task to `Answer the user query with data from a wiki article` and the user query `"Why does smiling release happy chemicals like chocolate or the sun?"`, we can use ***Retrival Augmented Generation (RAG)*** to get relevant context to the model like the Wikipedia article for `Pleasure`. 
+In a task to `Answer the user query with data from a wiki article` and the user query `"Why does smiling release happy chemicals like chocolate or the sun?"`, we can use ***Retrival Augmented Generation (RAG)*** to get relevant context to the model like the Wikipedia article for `Pleasure`. The final instructions placed at the top and bottom could be something like:
+
+`[: Clearly identify all relevant information to the user's query and write it out first, then reconstruct it into sturdy and rigorously intelligent paragraphs afterwards :] (; Remember to always respond with name tag now!`
 
 #### How To Make The Model Follow Instructions
 
