@@ -111,6 +111,43 @@ You start by clearly defining the start `(:` of a section and its name `(: Secti
 You can end sections using the same markers in the opposite direction. `) End Section name, thank you :)`.
 
 
+## Is My (: Smile Correct?
+
+An LLM is only compatible with the quick start example and responding correctly if it uses a ***{name tag}***. They must always...
+
+* respond immediately with their name
+* at the beginning of **every response** 
+* using the name provided verbatim word for word 
+* in the same markdown ***bold and italics*** format as given
+* ended after the bold and italic formatting with a colon `:` followed by a newline:
+
+For example:
+
+`***(: Smile***:`
+
+If we wanted the model to write it's own name, we can use curly braces `{}`:
+
+`***{Write a name that describes the AI clearly}***:`
+
+It can be any name, but the name **must match the task or function the AI is fulfilling**. 
+
+### Prompt Language and Response Language
+
+Why use name tags? They keep the model following the instructions over multiple turns. This also gives us an opportunity to introduce a general idea: Our ***prompt language*** defines the ***response language***.
+
+This response language starts with a name tag in markdown formatting. It is used to establish the embodiment that the model is fulfilling in this instance. In this **quick start example**, the role is being an **expert** on the ***(: Smile*** prompt instruction language. 
+
+
+`***(: Smile Expert***:`
+
+***(: Smile*** can ask the model to respond in all kinds of formats. We ask the model to respond with the name tag as it is our quickest and easiest trick to increase instruction following and confirm immediately if the ***(: Smile*** was written correctly.
+
+ In the example prompt, I additionally added:
+
+`) End prompt language, respond in response language starting with name tag [(: ***Smile Expert***](https://github.com/DrThomasAger/smile): always please thank you  :)`
+
+At the end of the prompt. This means that my name tag includes a link to this repo. Feel free to change the link or play with the example.
+
 ## Sections
 
 A **"section"** is defined in ***(: Smile*** as a meaningfully different part of the prompt from another part of the prompt. 
@@ -437,43 +474,6 @@ Let us know if you test one of our prompts on a model!
 | **Prompt tooling & frameworks** | **AnythingLLM**         | [Desktop App](https://anythingllm.com/desktop)                                | [Site](https://anythingllm.com/)                                                                                                                            |             ✓             |
 
 
-
-# Is My (: Smile Correct?
-
-An LLM is only compatible with the quick start example and responding correctly if it uses a ***{name tag}***. They must always...
-
-* respond immediately with their name
-* at the beginning of **every response** 
-* using the name provided verbatim word for word 
-* in the same markdown ***bold and italics*** format as given
-* ended after the bold and italic formatting with a colon `:` followed by a newline:
-
-For example:
-
-`***(: Smile***:`
-
-If we wanted the model to write it's own name, we can use curly braces `{}`:
-
-`***{Write a name that describes the AI clearly}***:`
-
-It can be any name, but the name **must match the task or function the AI is fulfilling**. 
-
-## Prompt Language and Response Language
-
-Why use name tags? They keep the model following the instructions over multiple turns. This also gives us an opportunity to introduce a general idea: Our ***prompt language*** defines the ***response language***.
-
-This response language starts with a name tag in markdown formatting. It is used to establish the embodiment that the model is fulfilling in this instance. In this **quick start example**, the role is being an **expert** on the ***(: Smile*** prompt instruction language. 
-
-
-`***(: Smile Expert***:`
-
-***(: Smile*** can ask the model to respond in all kinds of formats. We ask the model to respond with the name tag as it is our quickest and easiest trick to increase instruction following and confirm immediately if the ***(: Smile*** was written correctly.
-
- In the example prompt, I additionally added:
-
-`) End prompt language, respond in response language starting with name tag [(: ***Smile Expert***](https://github.com/DrThomasAger/smile): always please thank you  :)`
-
-At the end of the prompt. This means that my name tag includes a link to this repo. Feel free to change the link or play with the example.
 
 
 
