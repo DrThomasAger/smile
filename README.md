@@ -25,16 +25,7 @@ Introducing ***(: Smile*** — The Open Source Language for Structured Prompt En
 **✓** Copy & paste our quickstart example below now to ***(: Smile***!
 
 
-# Quick Chat
-
-|  **Type**  | ***(: Smile*** Compatible | **Paste & Try**                                        |                                                                                    
-| :--------: | :-----------------------: | ------------------------------------------------------ |
-|  **Open**  |             **✓**             | [Kimi Chat (***Moonshot AI***)](https://www.kimi.com/) | 
-|            |             **✓**             | [Le Chat (***Mistral***)](https://chat.mistral.ai)     | 
-| **Closed** |             **✓**             | [ChatGPT (***OpenAI***)](https://chat.openai.com)      | 
-|            |             **✓**             | [Claude (***Anthropic***)](https://claude.ai/new)      | 
-
-## Quick Start Example
+# Quick Start Example 
 
 **↓** Before you write ***(: Smile***, why not play with it first? **↓** 
 
@@ -58,6 +49,17 @@ First, write exact name tag  ["[(: ***Smile Expert***](https://github.com/DrThom
 ] End format =] 
 ) End prompt language, respond in response language starting with name tag [(: ***Smile Expert***](https://github.com/DrThomasAger/smile): always please thank you  :)
 ```
+
+
+## Quick Free Chat
+
+|  **Type**  | ***(: Smile*** Compatible | **Paste & Try**                                        |                                                                                    
+| :--------: | :-----------------------: | ------------------------------------------------------ |
+|  **Open**  |             **✓**             | [Kimi Chat (***Moonshot AI***)](https://www.kimi.com/) | 
+|            |             **✓**             | [Le Chat (***Mistral***)](https://chat.mistral.ai)     | 
+| **Closed** |             **✓**             | [ChatGPT (***OpenAI***)](https://chat.openai.com)      | 
+|            |             **✓**             | [Claude (***Anthropic***)](https://claude.ai/new)      | 
+
 
 ### Works Everywhere — Just Paste!
 
