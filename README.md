@@ -6,8 +6,6 @@
 
 Nice to meet you! :)
 
-[: Want to go **fast? [Jump to Quickstart](#quickstart)**
-
 >  (; By [Dr. Thomas Ager](https://www.linkedin.com/in/drprompt?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app)  ;)         [![☆ Star the repo](https://img.shields.io/github/stars/DrThomasAger/smile?style=social)](https://github.com/DrThomasAger/smile/stargazers)
 
 
