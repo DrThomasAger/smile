@@ -98,8 +98,10 @@ Because your ***prompt engineering*** will become...
 
 * **Maintainable** over long periods of time
 * **Portable** across models, toolsets and languages
-* **Measurable Performance Gains** on  instruction following for tasks
-* **Positive Work Environment** create a positive and mindful mental health attitude in your org at the root of the AI team by investing time into helping your employees learn to ***(: Smile***. 
+* **Performant** on  instruction following for tasks
+* **Positive** in your home, digital space, or work environment
+
+ Let ***(: Smile*** be one step towards creating a positive and mindful mental health attitude in your org at the root of the AI team by investing time into helping your employees learn to ***(: Smile***. 
 
 ***(: Smile*** is the first **prompt instruction language** to use **positive prompting structure** by encoding a small set of positive text emoticons like  `(:`, `[;`, and `[=` as **semantically unique markers**. 
 
