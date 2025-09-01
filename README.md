@@ -61,13 +61,8 @@ Want to quickly try ***(: Smile*** on a ***LLM?***
 [: *Just copy and paste the quick start example into one of the chats above, or check [here](#portability-and-compatibility) for alternative options.*
 
 
-# Why Adopt ***(: Smile*** For Your Org?  
 
-For a **positive** AI future. :) 
 
- When your prompt database has structured prompts,  your business will get the **outcomes** you **intended** to get, **in the way you intended to get them**, **more consistently**.
-
-This means that you can ***(: Smile*** for  **positivity** in your **home**, **consistent outcomes**, and a **wholesome mood**.
 
 
 # Why Does (: Smile Make Models And Orgs Happy?
@@ -80,6 +75,8 @@ With ***(: Smile***, your ***prompt engineering*** teams are now producing AI sy
 * **Maintainable** over long periods of **time**.
 * **Portable** across **models**, **tools** and **libraries**.
 * **Performant** on **instruction following** for **tasks**, **consistently**.
+
+ Structured prompts get you the **outcomes** you **intended** to get, **in the way you intended to get them**, **more consistently**.
 
 
 ## Support Open Source
