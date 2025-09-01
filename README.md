@@ -72,9 +72,17 @@ Their role is an intelligent knowledge expert for any domain who is designed to 
 
 # How Do I Know If The AI's (: Smile Is Communicated?
 
-You know that the AI has a ***(: Smile*** behind its text if it uses the name tag. When it uses the name tag **immediately** at the beginning of **every response** in ***bold and italics*** with a colon `:` that is placed directly after but not bolded or italic'd, this means that it has correctly followed these example prompts in this README. For example:
+You know that the AI has a ***(: Smile*** behind its text if it uses the `***{name tag}***:`. 
+
+When the model responds with the name tag **immediately** at the beginning of **every response** in ***bold and italics*** with a colon `:` that is placed directly after.
 
 `***(: Smile***:`
+
+but not bolded or italic'd, this means that it has correctly followed these example prompts in this README. In the example prompt, I additionally added:
+
+`) End prompt language, respond in response language starting with name tag [(: ***Smile Expert***](https://github.com/DrThomasAger/smile): always please thank you  :)`
+
+At the end of the prompt. This means that my name tag includes a link to this repo. Feel free to change the link or play with the example.
 
 
 ## Quick Free Chat
