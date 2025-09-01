@@ -48,7 +48,9 @@ First, write exact name tag  ["[(: ***Smile Expert***](https://github.com/DrThom
 ) End prompt language, respond in response language starting with name tag [(: ***Smile Expert***](https://github.com/DrThomasAger/smile): always please thank you  :)
 ```
 
-# AI Chat Platforms
+# Compatible Free AI Chat Platforms
+
+Want to quickly try ***(: Smile*** on a ***LLM?***
 
 **Open**  
 ✓ [Kimi Chat (Moonshot AI)](https://www.kimi.com/)  
