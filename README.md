@@ -94,7 +94,12 @@ Their role is an "expert" who is designed to respond lengthily and with jargon.
 
 For a **positive** AI future. :) 
 
-**For real:** Because your ***prompt engineering*** will become **maintainable**, you get **measurable performance gains** on your tasks, and your employees will **(: Smile**. 
+Because your ***prompt engineering*** will become...
+
+* **Maintainable** over long periods of time
+* **Portable** across models, toolsets and languages
+* **Measurable Performance Gains** on  instruction following for tasks
+* **Positive Work Environment** create a positive and mindful mental health attitude in your org at the root of the AI team by investing time into helping your employees learn to ***(: Smile***. 
 
 ***(: Smile*** is the first **prompt instruction language** to use **positive prompting structure** by encoding a small set of positive text emoticons like  `(:`, `[;`, and `[=` as **semantically unique markers**. 
 
