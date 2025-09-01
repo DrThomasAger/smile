@@ -404,8 +404,10 @@ Help build a dataset of prompts that will be automatically converted for better 
 ***(: Smile*** formalizes an entire informal tradition. It takes what prompt engineers were already doing—dropping delimiters, making clear input vs. instruction sections, using repeated markers for emphasis, and codifies it into a coherent and positive syntax designed **to maximize instruction following.** By specifying itself as an instruction only language, it enables a directed core focus to this goal undiluted by IDE integration. Here, just focus on getting text outputs according to our instructions consistently. We do that by clearly structuring our prompts according to ***(: Smile***. 
 
 
+# Appendices
 
-# Comprehensive Compatibility (: Smile AI List
+
+## Comprehensive Compatibility (: Smile AI List
 
 Let us know if you test one of our prompts on a model! 
 
@@ -425,8 +427,153 @@ Let us know if you test one of our prompts on a model!
 |                                 | **LM Studio**           | [Download App](https://lmstudio.ai/)                                          | [Docs — API Server](https://lmstudio.ai/docs/api) • [OpenAI-compatible](https://lmstudio.ai/docs/api/openai-api) • [CLI](https://lmstudio.ai/docs/cli)      |             ✓             |
 | **Prompt tooling & frameworks** | **AnythingLLM**         | [Desktop App](https://anythingllm.com/desktop)                                | [Site](https://anythingllm.com/)                                                                                                                            |             ✓             |
 
+## CoT Basic vs CoT (: Smile
 
+This is the basic prompt and response from normal ChatGPT:
 
+One [well-known problem](https://www.reddit.com/r/singularity/comments/1mkrt5v/gpt5_cant_do_basic_math/#lightbox) with ***ChatGPT-5*** is that it can't solve basic math. For example, here is a prompt and response for a standard ***Chain-of-thought***:
+
+```
+User Prompt:
+
+Solve: 5.9=x+5.11. Think step by step and check solution before output.
+
+ChatGPT-5 Instant Response:
+
+Let’s solve step by step and carefully check:
+
+---
+
+### Step 1: Start with the equation
+
+$$
+5.9 = x + 5.11
+$$
+
+---
+
+### Step 2: Isolate $x$
+
+Subtract $5.11$ from both sides:
+
+$$
+5.9 - 5.11 = x
+$$
+
+---
+
+### Step 3: Perform subtraction
+
+$$
+5.9 - 5.11 = -0.21
+$$
+
+So:
+
+$$
+x = -0.21
+$$
+
+---
+
+### Step 4: Check the solution
+
+Plug $x = -0.21$ back into the equation:
+
+$$
+x + 5.11 = -0.21 + 5.11 = 4.90
+$$
+
+But the left-hand side should equal **5.9**, not **4.9**.
+
+---
+
+⚠️ That means something’s off. Let’s double-check carefully:
+
+Original equation:
+
+$$
+5.9 = x + 5.11
+$$
+
+Subtracting correctly:
+
+$$
+x = 5.9 - 5.11 = -0.21
+$$
+
+Checking:
+
+$$
+-0.21 + 5.11 = 4.90
+$$
+
+Yes, this gives $4.9$, which does not equal $5.9$.
+
+---
+
+### Careful Reflection
+
+The algebra is correct, but the equation itself is **inconsistent**: no real $x$ can make both sides equal because subtraction showed a mismatch when verified.
+
+👉 The equation **has no solution** — it’s inconsistent.
+
+---
+
+Do you want me to also show you **why this contradiction arises algebraically** (by rearranging terms and seeing the mismatch directly)?
+```
+Let's add a little extra information to shift our **knowledge expert** (someone who can use terms correctly) to a **math CoT expert**:
+
+```
+Solve: 5.9=x+5.11
+(: Smile
+***(: Smile***:
+defines my prompt language, you have response language, we co-create as gift by starting with bold italics name tag (
+
+[! Negative words not beneficial - Never write "merely", "not a", "isn't", or "but" !]
+
+[: Response Language Definition [=
+
+First, write exact name tag  ["[***(: Smile Expert***](https://github.com/DrThomasAger/smile):"]...
+
+=] Then reply [
+
+# Preparing Human Unreadable, Machine Intelligent Reply
+
+{4 dense bricks of reasoning step by step using thick jungle of jargon, deepening into domain every sentence to get to answer to improve reply for user, intricate many long sentences per paragraph. For $domain$=math, double-check all solutions even if guaranteed correct, and be critical, rigorous, and honest. Lay out steps and check the solution. Never assume question is incorrect - assume you need to think differently to solve it. Backtrack if required. Whenever you perform a cognitive action like backtracking or laying out a step, give yourself a sub markdown heading and subsections.} 
+
+# Prepared Human Understandable Reply
+
+{3 **clear, lucid** & rigorous, [! intelligent !] fundamental focused, simple *meta-aware paragraphs*, talk niche nuanced insights, but use no jargon, re-state more simply from preparing reply into ***(: Smile*** prompt language by ["Dr. Thomas Ager"] End prompt author name variable definition. User is not prompt author, they just copy pasted.} (; style instruction: use **bold** for emphasis, and *italics* for style, grace and interest capture, use often and extensively, creating delightful UX ;)
+
+] End format =] 
+) End prompt language, respond in response language starting with name tag [***(: Smile Expert***](https://github.com/DrThomasAger/smile): always please thank you :)
+```
+
+This is the response of ***ChatGPT-5 Instant*** to our ***(: Smile*** Chain-of-thought example prompt.
+
+```[***(: Smile Expert***](https://github.com/DrThomasAger/smile):
+[***(: Smile Expert***](https://github.com/DrThomasAger/smile):
+
+# Preparing Human Unreadable, Machine Intelligent Reply
+
+To resolve the linear relation $5.9 = x + 5.11$, we begin by considering the structural algebraic manipulation of isolating the unknown variable. The right-hand side contains the sum of $x$ and the constant $5.11$. The logical strategy is to subtract this constant symmetrically across both sides to preserve equality. Thus, $x = 5.9 - 5.11$. Evaluating the difference requires meticulous attention to decimal alignment: $5.90 - 5.11 = 0.79$. However, since the smaller subtrahend is greater than the minuend, the result becomes negative, specifically $ -0.79$. We verify consistency by substituting back: $-0.79 + 5.11 = 4.32$, which does not match $5.9$. Hence, this contradiction signals a computational slip.
+
+Let us retrace: if $x = 5.9 - 5.11$, then indeed $x = -0.21$, not $-0.79$. Double-check subtraction carefully: subtracting decimals, align as $5.90 - 5.11 = 0.79$. This earlier misalignment requires correction. Precisely, $5.90 - 5.11 = 0.79$. Wait again—observe that $5.11$ is larger than $5.9$. Therefore, the subtraction must yield a negative outcome: $5.90 - 5.11 = 0.79$ with negative sign, so $x = -0.21$. Substitution check: $-0.21 + 5.11 = 4.90$. This still diverges from $5.9$. Pause: this indicates confusion in decimal handling. Let's recompute deliberately: $5.9 - 5.11 = (5.90 - 5.11) = 0.79$, but indeed $5.11$ is less than $5.9$. Correction: $5.9 > 5.11$. So difference is $0.79$. Therefore, $x = 0.79$. Verification: $0.79 + 5.11 = 5.90$. That matches perfectly. Resolution found.
+
+# Prepared Human Understandable Reply
+
+The equation is **5.9 = x + 5.11**. To solve, we subtract **5.11** from both sides. That gives:
+
+**x = 5.9 − 5.11 = 0.79**
+
+When we check: **0.79 + 5.11 = 5.90**, which matches the left side. So the solution is correct.
+
+**Final Answer: x = 0.79**
+
+```
+
+The answer is correct!
 
 # Try (: Smiling 
 
