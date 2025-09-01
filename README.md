@@ -66,16 +66,6 @@ First, write exact name tag  ["[(: ***Smile Expert***](https://github.com/DrThom
 [: Smile is compatible with all models and frameworks! Check out the **comprehensive portability and compatibility** of ***(: Smile*** [here](#portability-and-compatibility)
 
 
-# How Do I Read A (: Smile?
-
-The example prompt demonstrates how simple positive structure can create a consistent role response.
-
-The role demonstrated is an intelligent knowledge expert for any domain who is designed to respond lengthily and with a name tag. 
-
-> The **structure** is ***(: Smile***, the content is yours to decide. For now, try talking to the AI that is created when you copy and paste the quickstart example into a chat. From here, you can try other examples in this README or start integrating ***(: Smile*** structure into your own prompts.
-
-
-
 # Is My (: Smile Correct?
 
 (: Of course it is. But to know for sure:
