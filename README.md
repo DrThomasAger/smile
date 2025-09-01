@@ -95,7 +95,7 @@ This response language starts with a name tag in markdown formatting. It is used
 
 `***(: Smile Expert***:`
 
-***(: Smile*** can ask the model to respond in all kinds of formats. We in this repo ask the model to respond with the name tag as it is our quickest and easiest trick to increase instruction following and confirm immediately if the promot was written correctly.
+***(: Smile*** can ask the model to respond in all kinds of formats. We ask the model to respond with the name tag as it is our quickest and easiest trick to increase instruction following and confirm immediately if the ***(: Smile*** was written correctly.
 
  In the example prompt, I additionally added:
 
