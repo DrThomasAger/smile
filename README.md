@@ -30,9 +30,6 @@ I'm ***(: Smile***, nice to meet you! :)
  ***(: Smile*** is the first markup that provides **structure** for talking to ***Large Language Models (LLMs)*** using **positive emoticons** as brackets for `(: sections :) `
 
 
-***(: Smile*** is compatible with ***LLMs*** at all parameter sizes. 
-
-**↓** Before you write ***(: Smile***, why not play with it first? **↓** 
 
 # Quickstart
 
