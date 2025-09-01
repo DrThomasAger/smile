@@ -27,7 +27,7 @@ Introducing ***(: Smile*** — The Open Source Language for Structured Prompt En
 
 # Quick Chat
 
-|  **Type**  | ***(: Smile*** Compatible | **Paste & Try**                                        |                                                                                           |
+|  **Type**  | ***(: Smile*** Compatible | **Paste & Try**                                        |                                                                                    
 | :--------: | :-----------------------: | ------------------------------------------------------ |
 |  **Open**  |             ✓             | [Kimi Chat (***Moonshot AI***)](https://www.kimi.com/) | 
 |            |             ✓             | [Le Chat (***Mistral***)](https://chat.mistral.ai)     | 
