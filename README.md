@@ -79,7 +79,7 @@ Their role is an "expert" who is designed to respond lengthily and with jargon.
 
 ## Support Open Source
 
-☆ **Star the repo** to make a prompt engineer ***(: Smile*** **->** [![☆ Star the repo](https://img.shields.io/github/stars/DrThomasAger/smile?style=social)](https://github.com/DrThomasAger/smile/stargazers)
+☆ **Star the repo** to make a prompt engineer ***(: Smile***!
 
 [![Star History Chart](https://api.star-history.com/svg?repos=DrThomasAger/smile&type=Date)](https://star-history.com/#DrThomasAger/smile&Date)
 
