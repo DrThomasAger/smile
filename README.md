@@ -67,12 +67,6 @@ First, write exact name tag  ["[(: ***Smile Expert***](https://github.com/DrThom
  [![☆ Star the repo](https://img.shields.io/github/stars/DrThomasAger/smile?style=social)](https://github.com/DrThomasAger/smile/stargazers)
 
 
-## Support Open Source
-
-☆ **Star the repo** to make a prompt engineer ***(: Smile***!
-
-[![Star History Chart](https://api.star-history.com/svg?repos=DrThomasAger/smile&type=Date)](https://star-history.com/#DrThomasAger/smile&Date)
-
 
 # Why adopt ***(: Smile*** for your org?  
 
@@ -94,6 +88,12 @@ Your ***prompt engineering*** will become...
 * **Portable** across **models**, **tools** and **libraries**.
 * **Performant** on **instruction following** for **tasks**.
 
+
+## Support Open Source
+
+☆ **Star the repo** to make a prompt engineer ***(: Smile***!
+
+[![Star History Chart](https://api.star-history.com/svg?repos=DrThomasAger/smile&type=Date)](https://star-history.com/#DrThomasAger/smile&Date)
 
 
 # (: Smile — pocket cheat sheet
