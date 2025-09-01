@@ -106,36 +106,6 @@ With ***(: Smile***, your ***prompt engineering*** teams are now producing AI sy
   [![☆ Star the repo](https://img.shields.io/github/stars/DrThomasAger/smile?style=social)](https://github.com/DrThomasAger/smile/stargazers)
 
 
-# (: Smile — pocket cheat sheet
-
-This documentation is extensive! Here's something to refer to quickly (:
-
-**Sections (open/close):**
-
-* `(: Section name (` … `) End Section name :)`
-* Square for stricter tone: `[: … :]`
-* Literal/strict block: `[= … =]` (model must follow exactly)
-
-**“Eyes” (meaning cues):**
-
-* **Quote eyes** `["text"]` → repeat verbatim
-* **Literal eyes** `[= exact rules =]` → rigid instructions
-* **Important eyes** `[! emphasis !]` → highlight must-dos
-* **Variable eyes** `[$Var$]` → replace before sending
-* **Note/Wink** `[; comment ;]` or `(; comment ;)` → human notes
-
-**Name tag (must start every reply):**
-
-* Exact, bold-italic, ends with `:` then newline
-  Example: `***(: Smile Expert***:`
-  (or with link) `[(: ***Smile Expert***](https://example.com):`
-
-**Common sections you’ll use:**
-
-* `(: Task ( … ) :)` — what to do
-* `(: Data ( … ) :)` — context/RAG snippets
-* `[: Definition of response language and format of response [= … =] :]` — how to reply (format, tone)
-
 
 
 ## The Basics
@@ -508,6 +478,36 @@ Help build a dataset of prompts that will be automatically converted for better 
 
 # (: Smile Appendices
 
+
+# (: Smile — pocket cheat sheet
+
+This documentation is extensive! Here's something to refer to quickly (:
+
+**Sections (open/close):**
+
+* `(: Section name (` … `) End Section name :)`
+* Square for stricter tone: `[: … :]`
+* Literal/strict block: `[= … =]` (model must follow exactly)
+
+**“Eyes” (meaning cues):**
+
+* **Quote eyes** `["text"]` → repeat verbatim
+* **Literal eyes** `[= exact rules =]` → rigid instructions
+* **Important eyes** `[! emphasis !]` → highlight must-dos
+* **Variable eyes** `[$Var$]` → replace before sending
+* **Note/Wink** `[; comment ;]` or `(; comment ;)` → human notes
+
+**Name tag (must start every reply):**
+
+* Exact, bold-italic, ends with `:` then newline
+  Example: `***(: Smile Expert***:`
+  (or with link) `[(: ***Smile Expert***](https://example.com):`
+
+**Common sections you’ll use:**
+
+* `(: Task ( … ) :)` — what to do
+* `(: Data ( … ) :)` — context/RAG snippets
+* `[: Definition of response language and format of response [= … =] :]` — how to reply (format, tone)
 
 # Portability and Compatibility
 
