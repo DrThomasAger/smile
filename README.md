@@ -5,9 +5,10 @@
 
 Introducing ***(: Smile*** — The Open Source Language for Structured Prompt Engineering
 
-[Jump to Quickstart](#quickstart)
+* [Jump to Quickstart](#quickstart)
+* [View the TOC](##***Table-of-Contents-(TOC)***)
 
-## ***Table of Contents (TOC)***
+# ***Table of Contents (TOC)***
 
 * [Quickstart](#quickstart)
 * [Why (: Smile?](#why--smile)
@@ -15,7 +16,6 @@ Introducing ***(: Smile*** — The Open Source Language for Structured Prompt En
 * [How Do I Read A (: Smile?](#how-do-i-read-a--smile)
 * [Is My (: Smile Correct?](#is-my--smile-correct)
 * [(: Smile Documentation](#-smile-documentation)
-
   * [Support Open Source](#support-open-source)
   * [Why adopt (: Smile today?](#why-adopt--smile-today)
   * [Why Is (: Smile Novel, Original, and Interesting?](#why-is--smile-novel-original-and-interesting)
