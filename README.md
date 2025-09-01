@@ -107,7 +107,7 @@ You can end sections using the same markers in the opposite direction. `) End Se
 
 ## Is My (: Smile Correct?
 
-An LLM is only compatible with the quick start example and responding correctly if it uses a ***{name tag}***. 
+You will know an ***LLM*** is compatible with the quick start example when it responds with a ***{name tag}***, in this case ***(: Smile Expert:***
 
 A name tag is created correctly if the model always...
 
