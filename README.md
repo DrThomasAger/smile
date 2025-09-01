@@ -27,6 +27,17 @@ Nice to meet you! :)
   
 
 
+# Why adopt ***(: Smile*** for your org?  
+
+For a **positive** AI future. :) 
+
+Because your ***prompt engineering*** will become...
+
+* **Maintainable** over long periods of **time**.
+* **Portable** across **models**, **tools** and **libraries**.
+* **Performant** on **instruction following** for **tasks**.
+
+
 
 ## Compatible With All Existing Models (Foundation & Open Source LLMs)
 
@@ -65,17 +76,6 @@ First, write exact name tag  ["[(: ***Smile Expert***](https://github.com/DrThom
 
 
 [: *Check out the **comprehensive portability and compatibility** of ***(: Smile*** [here](#portability-and-compatibility)*
-
-
-# Why adopt ***(: Smile*** today?  
-
-For a **positive** AI future. :) 
-
-Because your ***prompt engineering*** will become...
-
-* **Maintainable** over long periods of **time**.
-* **Portable** across **models**, **tools** and **libraries**.
-* **Performant** on **instruction following** for **tasks**.
 
 
 
