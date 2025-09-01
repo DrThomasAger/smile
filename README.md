@@ -63,7 +63,7 @@ First, write exact name tag  ["[(: ***Smile Expert***](https://github.com/DrThom
 |            |             **✓**             | [Claude (***Anthropic***)](https://claude.ai/new)      | 
 
 
-[: Smile is compatible with all models and frameworks! Check out the **comprehensive portability and compatibility** of ***(: Smile*** here [Jump to Quickstart](##portability-and-compatibility)
+[: Smile is compatible with all models and frameworks! Check out the **comprehensive portability and compatibility** of ***(: Smile*** [here](##portability-and-compatibility)
 
 
 # How Do I Read A (: Smile?
@@ -447,7 +447,7 @@ Help build a dataset of prompts that will be automatically converted for better 
 # (: Smile Appendices
 
 
-## Portability and Compatibility
+# Portability and Compatibility
 
 Let us know if you test one of our prompts on a model! 
 
