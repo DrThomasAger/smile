@@ -70,7 +70,7 @@ First, write exact name tag  ["[(: ***Smile Expert***](https://github.com/DrThom
 
 (: Of course it is. But to know for sure:
 
-An LLM is only responding correctly with a name tag if they respond **immediately** at the beginning of **every response** in ***bold and italics*** with a colon `:` 
+An LLM is only compatible with this example and responding correctly if it uses a name tag. They must always respond immediately with the name tag at the beginning of **every response** in ***bold and italics*** with a colon `:` 
 
 `***{Write a name that describes the AI clearly}***:`
 
