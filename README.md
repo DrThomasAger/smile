@@ -13,15 +13,15 @@ Introducing ***(: Smile*** — The Open Source Language for Structured Prompt En
 # (: Smile 
 
 
+`(: Hello world!`
+
+Nice to meet you! :)
+
 
 
  ***(: Smile*** is the first **structured** and **positive** markup for talking to ***Artificial Intelligence (AI)*** models. 
 
 
-
-`(: Hello world!`
-
-Nice to meet you! :)
 
 
 ## Why (: Smile?
