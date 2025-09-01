@@ -86,11 +86,11 @@ When you talk to an ***LLM***, will you make them  ***(: Smile*** too?
 Everyone's happy when you ***(: Smile*** because  they **understand** your prompt better, **perform** better, which means that you can both **do what you agreed to do now together**. 
   
 
-Your ***prompt engineering*** will become...
+With ***(: Smile***, your ***prompt engineering*** team are producing AI systems that are...
 
 * **Maintainable** over long periods of **time**.
 * **Portable** across **models**, **tools** and **libraries**.
-* **Performant** on **instruction following** for **tasks**.
+* **Performant** on **instruction following** for **tasks**, **consistently**.
 
 
 ## Support Open Source
