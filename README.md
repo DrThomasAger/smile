@@ -52,13 +52,12 @@ First, write exact name tag  ["[(: ***Smile Expert***](https://github.com/DrThom
 
 Want to quickly try ***(: Smile*** on a ***LLM?***
 
-**Open**  
-✓ [Kimi Chat (Moonshot AI)](https://www.kimi.com/)  
-✓ [Le Chat (Mistral)](https://chat.mistral.ai)  
-
-**Closed**  
-✓ [ChatGPT (OpenAI)](https://chat.openai.com)  
-✓ [Claude (Anthropic)](https://claude.ai/new)
+| **Type**   | ✓ [Link to copy & paste]                                 |
+|:----------:|:------------------------------------------|
+| **Open**   | [Kimi Chat (Moonshot AI)](https://www.kimi.com/) |
+|            | [Le Chat (Mistral)](https://chat.mistral.ai)     |
+| **Closed** | [ChatGPT (OpenAI)](https://chat.openai.com)      |
+|            | [Claude (Anthropic)](https://claude.ai/new)      |
 
 
 [: *Just copy and paste the quick start example into one of the chats above, or check out the **comprehensive portability and compatibility** of ***(: Smile*** [here](#portability-and-compatibility) for alternative options.*
