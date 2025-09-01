@@ -155,9 +155,9 @@ Let's imagine a raw text data input, like a **wikipedia HTML page**. It's full o
 
 ### Separating Prompt Instructions & Data
 
-In-order to tell the model how to use the data, we provide **short instruction text** informing the model how to use the wikipedia page, for example, `define jargon`.
+In-order to tell the model how to use the data, we provide **short instruction text** informing the model how to use the wikipedia page, for example, `[: After providing jargon, define it clearly in brackets with a long sentence :]`.
 
-Instructions in a prompt are for telling the model what to **do with the data**, like `find all mentions of the key phrase`, data in the prompt is for **maximizing relevant context for the model**, like a wikipedia page about "pleasure" gives relevant context to the model for a query like "Why does smiling release happy chemicals like chocolate or the sun?"
+Instructions in a prompt are for telling the model what to **do with the data**, like `[: find all jargon about the topic and provide it in its own markdown section :]`, data in the prompt is for **maximizing relevant context for the model**. For example, **data** would be a wikipedia page about "pleasure". This data may be retrieved through ***Retrival Augmented Generation (RAG)*** to gives relevant context to the model for a prompt language query like `"Why does smiling release happy chemicals like chocolate or the sun?"`. If we threw this wikipedia article in wholesale to the model and asked the question it may answer correctly, but it makes everyone happier if it can clearly understand the instructions and what it is going to do with the data **before it reads the data** and is reminded of the format to respond in **after seeing the data**. This is a hot tip to maximize instruction following!
 
 ### Tasks
 
