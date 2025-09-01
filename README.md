@@ -36,7 +36,7 @@ Nice to meet you! :)
 **✓** Copy, open your favorite LLM, & paste our quickstart example below now to ***(: Smile***! **✓** 
 
 ```(: Smile v1
-***(: Smile Expert***:
+***(: Smile***:
 defines my prompt language, you have response language, we co-create as gift by starting with bold italics name tag (
 
 [! Negative words not beneficial - Never write "merely", "not a", "isn't", or "but" !]
@@ -414,7 +414,7 @@ I want everyone and everything to ***(: Smile***!
 I'll extend our previous example to break the rules a little bit, and get a lot of new functionality as a result. This is designed to make you feel like you are free to drop {instructions on how to fill out the text} not just inside of the definition of the format the model needs to respond in. In the next example, I'll show how you can also use them inside the markdown titles themselves for the model to choose what to call each section:
 
 ```(: Smile
-***(: Smile***:
+***(: Smile Section Expert***:
 defines my prompt language, you have response language, we co-create as gift by starting with bold italics name tag (
 
 [! Negative words not beneficial - Never write "merely", "not a", "isn't", or "but" !]
