@@ -15,8 +15,7 @@ Nice to meet you! :)
 
 
 
-* [Jump to Quickstart](#quickstart)
-* [View the TOC](##***Table-of-Contents-(TOC)***)
+* [: [Jump to Quickstart](#quickstart) :]
 
 >  (; By [Dr. Thomas Ager](https://www.linkedin.com/in/drprompt?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app)  ;)         [![☆ Star the repo](https://img.shields.io/github/stars/DrThomasAger/smile?style=social)](https://github.com/DrThomasAger/smile/stargazers)
 
@@ -464,45 +463,6 @@ I want everyone and everything to ***(: Smile***!
  [![☆ Star the repo](https://img.shields.io/github/stars/DrThomasAger/smile?style=social)](https://github.com/DrThomasAger/smile/stargazers)
 
  
-# ***Table of Contents (TOC)***
-
-* [Quickstart](#quickstart)
-* [Why (: Smile?](#why--smile)
-* [Compatible With All Existing Models (Foundation & Open Source LLMs)](#compatible-with-all-existing-models-foundation--open-source-llms)
-* [How Do I Read A (: Smile?](#how-do-i-read-a--smile)
-* [Is My (: Smile Correct?](#is-my--smile-correct)
-* [(: Smile Documentation](#-smile-documentation)
-  
-  * [Support Open Source](#support-open-source)
-  * [Why adopt (: Smile today?](#why-adopt--smile-today)
-  * [Why Is (: Smile Novel, Original, and Interesting?](#why-is--smile-novel-original-and-interesting)
-  * [= Advanced (: Smile :) =](#=-advanced--smile---=)
-* [The Basics](#the-basics)
-* [Sections](#sections)
-  
-  * [Separating Prompt Instructions & Data](#separating-prompt-instructions--data)
-  * [Tasks](#tasks)
-* [Eyes](#eyes)
-* [Syntax Map](#syntax-map)
-* [(: Smile FAQ](#-smile-faq)
-  
-  * [Does Smiling Really Make You Happier?](#does-smiling-really-make-you-happier)
-  * [• Why structure small prompts?](#-why-structure-small-prompts)
-  * [o Why structure large prompts?](#o-why-structure-large-prompts)
-  * [# Why structure using (: Smile instead of markdown?](#-why-structure-using--smile-instead-of-markdown)
-* [What Are The Business & Technical Advantages of (: Smile For My Organization or Company?](#what-are-the-business--technical-advantages-of--smile-for-my-organization-or-company)
-* [An Easy Way To Write (: Smile](#an-easy-way-to-write--smile)
-* [Different Smiles, Different Meanings](#different-smiles-different-meanings)
-  
-  * [Adding a Section In Response](#adding-a-section-in-response)
-* [Repository Layout](#repository-layout)
-* [Contribute](#contribute)
-* [Comprehensive Compatibility (: Smile AI List](#comprehensive-compatibility--smile-ai-list)
-* [Try (: Smiling](#try--smiling)
-* [@@@ Brain Hack](#-brain-hack)
-* [Thank You!](#thank-you)
-* [Media Contact](#media-contact)
-
 
 
 :) End README.md :)
