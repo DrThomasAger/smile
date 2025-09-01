@@ -56,13 +56,14 @@ First, write exact name tag  ["[(: ***Smile Expert***](https://github.com/DrThom
 |            |             **✓**             | [Claude (***Anthropic***)](https://claude.ai/new)      | 
 
 
-[: *Check out the **comprehensive portability and compatibility** of ***(: Smile*** [here](#portability-and-compatibility)*
-
-
 
 # (: Smile Documentation
 
 ![Smile Prompt Language v1](Smile-logo.png )
+
+[: *Check out the **comprehensive portability and compatibility** of ***(: Smile*** [here](#portability-and-compatibility)*
+
+
 
  [![☆ Star the repo](https://img.shields.io/github/stars/DrThomasAger/smile?style=social)](https://github.com/DrThomasAger/smile/stargazers)
 
