@@ -50,8 +50,19 @@ First, write exact name tag  ["[(: ***Smile Expert***](https://github.com/DrThom
 ) End prompt language, respond in response language starting with name tag [(: ***Smile Expert***](https://github.com/DrThomasAger/smile): always please thank you  :)
 ```
 
+**Curious what all this means?** The example prompt demonstrates how simple structure can create a consistent role.
+
+Their role is an "expert" who is designed to respond lengthily and with jargon. 
+
+> The **structure** is ***(: Smile***, the content is yours to decide. Check the `prompt/` folder for examples of how different content can be structured with ***(: Smile***. For now, try talking to the AI that is created when you copy and paste the quickstart example into a chat.
+
+
 
 ## Quick Free Chat
+
+
+### Works Everywhere — Just Paste!
+
 
 |  **Type**  | ***(: Smile*** Compatible | **Paste & Try**                                        |                                                                                    
 | :--------: | :-----------------------: | ------------------------------------------------------ |
@@ -59,15 +70,6 @@ First, write exact name tag  ["[(: ***Smile Expert***](https://github.com/DrThom
 |            |             **✓**             | [Le Chat (***Mistral***)](https://chat.mistral.ai)     | 
 | **Closed** |             **✓**             | [ChatGPT (***OpenAI***)](https://chat.openai.com)      | 
 |            |             **✓**             | [Claude (***Anthropic***)](https://claude.ai/new)      | 
-
-
-### Works Everywhere — Just Paste!
-
-**Curious what all this means?** The example prompt demonstrates how simple structure can create a consistent role.
-
-Their role is an "expert" who is designed to respond lengthily and with jargon. 
-
-> The **structure** is ***(: Smile***, the content is yours to decide. Check the `prompt/` folder for examples of how different content can be structured with ***(: Smile***. For now, try talking to the AI that is created when you copy and paste the quickstart example into a chat.
 
 
 
