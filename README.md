@@ -71,9 +71,9 @@ First, write exact name tag  ["[(: ***Smile Expert***](https://github.com/DrThom
 An LLM is only compatible with the quick start example and responding correctly if it uses a ***{name tag}***. They must always...
 
 * respond immediately with their name
-* the name is used verbatim with formatting word for word 
-* and is used at the beginning of **every response** 
-* in ***bold and italics*** 
+* at the beginning of **every response** 
+* usint the name verbatim word for word 
+* in the same markdown ***bold and italics*** format as given in example
 * with a colon `:` followed by a newline:
 
 For example in the quick start example we use
