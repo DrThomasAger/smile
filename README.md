@@ -14,7 +14,7 @@ Introducing ***(: Smile*** — The Open Source Language for Structured Prompt En
 
 
 
- ***(: Smile*** is the first **structured** and **positive** language (a ***markup***) for talking to ***Artificial Intelligence (AI)*** models. 
+ ***(: Smile*** is the first **structured** and **positive** markup for talking to ***Artificial Intelligence (AI)*** models. 
 
  When you structure your prompts,  you will get the **outcomes** you **intended** to get, **in the way you intended to get them.**
 
