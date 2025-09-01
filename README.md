@@ -90,7 +90,7 @@ It can be any name, but the name **must match the task or function the AI is ful
 
 Why use name tags? They keep the model following the instructions over multiple turns. This also gives us an opportunity to introduce a general idea: Our ***prompt language*** defines the ***response language***.
 
-This response language starts with a name tag in markdowb formatting. It is used to establish the embodiment that the model is fulfilling in this instance. In this **quick start example**, the role is being an **expert** on the ***(: Smile*** prompt instruction language. 
+This response language starts with a name tag in markdown formatting. It is used to establish the embodiment that the model is fulfilling in this instance. In this **quick start example**, the role is being an **expert** on the ***(: Smile*** prompt instruction language. 
 
 
 `***(: Smile Expert***:`
