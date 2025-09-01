@@ -13,38 +13,6 @@ Nice to meet you! :)
 
 
 
-# (: Smile — pocket cheat sheet
-
-This documentation is extensive! Here's something to refer to quickly (:
-
-**Sections (open/close):**
-
-* `(: Section name (` … `) End Section name :)`
-* Square for stricter tone: `[: … :]`
-* Literal/strict block: `[= … =]` (model must follow exactly)
-
-**“Eyes” (meaning cues):**
-
-* **Quote eyes** `["text"]` → repeat verbatim
-* **Literal eyes** `[= exact rules =]` → rigid instructions
-* **Important eyes** `[! emphasis !]` → highlight must-dos
-* **Variable eyes** `[$Var$]` → replace before sending
-* **Note/Wink** `[; comment ;]` or `(; comment ;)` → human notes
-
-**Name tag (must start every reply):**
-
-* Exact, bold-italic, ends with `:` then newline
-  Example: `***(: Smile Expert***:`
-  (or with link) `[(: ***Smile Expert***](https://example.com):`
-
-**Common sections you’ll use:**
-
-* `(: Task ( … ) :)` — what to do
-* `(: Data ( … ) :)` — context/RAG snippets
-* `[: Definition of response language and format of response [= … =] :]` — how to reply (format, tone)
-
-
-
 
 ## Why (: Smile?
 
@@ -99,6 +67,18 @@ First, write exact name tag  ["[(: ***Smile Expert***](https://github.com/DrThom
 [: *Check out the **comprehensive portability and compatibility** of ***(: Smile*** [here](#portability-and-compatibility)*
 
 
+# Why adopt ***(: Smile*** today?  
+
+For a **positive** AI future. :) 
+
+Because your ***prompt engineering*** will become...
+
+* **Maintainable** over long periods of **time**.
+* **Portable** across **models**, **tools** and **libraries**.
+* **Performant** on **instruction following** for **tasks**.
+
+
+
 # (: Smile Documentation
 
 ![Smile Prompt Language v1](Smile-logo.png )
@@ -114,19 +94,39 @@ First, write exact name tag  ["[(: ***Smile Expert***](https://github.com/DrThom
 
 
 
-
-## Why adopt ***(: Smile*** today?  
-
-For a **positive** AI future. :) 
-
-Because your ***prompt engineering*** will become...
-
-* **Maintainable** over long periods of **time**.
-* **Portable** across **models**, **tools** and **libraries**.
-* **Performant** on **instruction following** for **tasks**.
-
-
 ***(: Smile*** for  **positivity** in your **home**, **organizational outcomes**, and **mood**.
+
+
+
+# (: Smile — pocket cheat sheet
+
+This documentation is extensive! Here's something to refer to quickly (:
+
+**Sections (open/close):**
+
+* `(: Section name (` … `) End Section name :)`
+* Square for stricter tone: `[: … :]`
+* Literal/strict block: `[= … =]` (model must follow exactly)
+
+**“Eyes” (meaning cues):**
+
+* **Quote eyes** `["text"]` → repeat verbatim
+* **Literal eyes** `[= exact rules =]` → rigid instructions
+* **Important eyes** `[! emphasis !]` → highlight must-dos
+* **Variable eyes** `[$Var$]` → replace before sending
+* **Note/Wink** `[; comment ;]` or `(; comment ;)` → human notes
+
+**Name tag (must start every reply):**
+
+* Exact, bold-italic, ends with `:` then newline
+  Example: `***(: Smile Expert***:`
+  (or with link) `[(: ***Smile Expert***](https://example.com):`
+
+**Common sections you’ll use:**
+
+* `(: Task ( … ) :)` — what to do
+* `(: Data ( … ) :)` — context/RAG snippets
+* `[: Definition of response language and format of response [= … =] :]` — how to reply (format, tone)
 
 
 
