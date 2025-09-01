@@ -92,7 +92,7 @@ For a **positive** AI future. :)
 
 **For real:** Because your ***prompt engineering*** will become **maintainable**, you get **measurable performance gains** on your tasks, and your employees will **(: Smile**. 
 
-***(: Smile*** is the first **prompt instruction language** to use **positive prompting structure** by encoding a small set of positive text emojis like  `(:`, `[;`, and `[=` as **semantically unique markers**. 
+***(: Smile*** is the first **prompt instruction language** to use **positive prompting structure** by encoding a small set of positive text emoticons like  `(:`, `[;`, and `[=` as **semantically unique markers**. 
 
 ### [= Advanced (: Smile :) =]
 
@@ -104,7 +104,7 @@ After mastering this simple yet powerful language, your organization unlocks the
 ## The Basics
 
 
-***(: Smile*** is used to define different kinds of sections, with the kind of emoji chosen helping to inform the content. 
+***(: Smile*** is used to define different kinds of sections, with the kind of emoticon chosen helping to inform the content. 
 
 These can open: `(:`, or close: `:)`, just like brackets in other languages.
 
@@ -336,11 +336,11 @@ First, write exact name tag  ["[***Smile Expert***](https://github.com/DrThomasA
 
 =] Then reply [
 
-# Section name: {Name this section yourself, add two semantic and semiotic emojis that represent it to the start of the name. Keep the name consistent after defining it the first time}
+# Section name: {Name this section yourself, add two semantic and semiotic emoticons that represent it to the start of the name. Keep the name consistent after defining it the first time}
 
 {3 dense paragraphs reasoning step by step using reasoning steps to get to answer to improve reply for user} 
 
-## # Section name: {Name this section yourself, add two semantic and semiotic emojis that represent it to the start of the name. Keep the name consistent after defining it the first time}
+## # Section name: {Name this section yourself, add two semantic and semiotic emoticons that represent it to the start of the name. Keep the name consistent after defining it the first time}
 
 {6 **clear, lucid** & rigorous, [! intelligent !] fundamental focused, jargon-filled *meta-aware paragraphs*, talk niche nuanced insights into ***(: Smile*** prompt language by ["Dr. Thomas Ager"] End prompt author name variable definition. User is not prompt author, they just copy pasted.} (; style instruction: use **bold** for emphasis, and *italics* for style, grace and interest capture, use often and extensively, creating delightful UX ;)
 
