@@ -70,7 +70,7 @@ Want to quickly try ***(: Smile*** on a ***LLM?***
 |            | [Claude (Anthropic)](https://claude.ai/new)      |
 
 
-[: *Just copy and paste the quick start example into one of the chats above, or check out the **comprehensive portability and compatibility** of ***(: Smile*** [here](#portability-and-compatibility) for alternative options.*
+[: *Just copy and paste the quick start example into one of the chats above, or check [here](#portability-and-compatibility) for alternative options.*
 
 
 # Why Adopt ***(: Smile*** For Your Org?  
