@@ -5,7 +5,7 @@
 
 Introducing ***(: Smile*** — The Open Source Language for Structured Prompt Engineering
 
-
+[Jump to Quickstart](#quickstart)
 
 >  (; By [Dr. Thomas Ager](https://www.linkedin.com/in/drprompt?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app)  ;)         [![☆ Star the repo](https://img.shields.io/github/stars/DrThomasAger/smile?style=social)](https://github.com/DrThomasAger/smile/stargazers)
 
@@ -40,6 +40,7 @@ Nice to meet you! :)
 
 **↓** Before you write ***(: Smile***, why not play with it first? **↓** 
 
+# Quickstart
 
 **✓** Copy & paste our quickstart example below now to ***(: Smile***! **✓** 
 
@@ -64,12 +65,6 @@ First, write exact name tag  ["[(: ***Smile Expert***](https://github.com/DrThom
 ) End prompt language, respond in response language starting with name tag [(: ***Smile Expert***](https://github.com/DrThomasAger/smile): always please thank you  :)
 ```
 
-**Curious what all this means?** The example prompt demonstrates how simple structure can create a consistent role.
-
-Their role is an intelligent knowledge expert for any domain who is designed to respond lengthily and with a name tag. 
-
-> The **structure** is ***(: Smile***, the content is yours to decide. For now, try talking to the AI that is created when you copy and paste the quickstart example into a chat. From here, you can try other examples in this README or start integrating ***(: Smile*** structure into your own prompts.
-
 ## Quick Free Chat
 
 
@@ -82,6 +77,14 @@ Their role is an intelligent knowledge expert for any domain who is designed to 
 |            |             **✓**             | [Le Chat (***Mistral***)](https://chat.mistral.ai)     | 
 | **Closed** |             **✓**             | [ChatGPT (***OpenAI***)](https://chat.openai.com)      | 
 |            |             **✓**             | [Claude (***Anthropic***)](https://claude.ai/new)      | 
+
+# How Do I Read A (: Smile?
+
+The example prompt demonstrates how simple positive structure can create a consistent role response.
+
+The role demonstrated is an intelligent knowledge expert for any domain who is designed to respond lengthily and with a name tag. 
+
+> The **structure** is ***(: Smile***, the content is yours to decide. For now, try talking to the AI that is created when you copy and paste the quickstart example into a chat. From here, you can try other examples in this README or start integrating ***(: Smile*** structure into your own prompts.
 
 
 
