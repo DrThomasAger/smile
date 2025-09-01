@@ -18,11 +18,11 @@ Nice to meet you! :)
 
 
 
- ***(: Smile*** is the first **structured** and **positive** markup for talking to ***Artificial Intelligence (AI)*** models. 
+ ***(: Smile*** is the first **structured** and **positive** markup for talking to ***Large Language Models (LLMs)***. 
 
  When you structure your prompts,  you will get the **outcomes** you **intended** to get, **in the way you intended to get them.**
 
- When you ***(: Smile*** to a ***Large Language Model (LLM)***, they're happy. They **understand** your prompt better, **perform** better, and you're both **doing what you agreed to do together**. 
+ When you ***(: Smile*** to a ***LLM***, they're happy. They **understand** your prompt better, **perform** better, and you're both **doing what you agreed to do together**. 
   
 
 
