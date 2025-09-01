@@ -93,7 +93,7 @@ Because your ***prompt engineering*** will become...
 * **Performant** on **instruction following** for **tasks**.
 * **Positive** in your **home**, **work environment**, and **mood**.
 
- Let's let ***(: Smile*** be one step towards creating a positive and mindful mental health attitude in your org at the root of the AI team by investing time into helping your employees learn to ***(: Smile***. 
+ Let's let ***(: Smile*** be a vital step towards creating a positively oriented org by investing time into helping your employees learn to ***(: Smile***. 
 
  ### Why Is (: Smile Novel, Original, and Interesting?
 
