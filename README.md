@@ -29,10 +29,10 @@ Introducing ***(: Smile*** — The Open Source Language for Structured Prompt En
 
 |  **Type**  | ***(: Smile*** Compatible | **Paste & Try**                                        |                                                                                    
 | :--------: | :-----------------------: | ------------------------------------------------------ |
-|  **Open**  |             ✓             | [Kimi Chat (***Moonshot AI***)](https://www.kimi.com/) | 
-|            |             ✓             | [Le Chat (***Mistral***)](https://chat.mistral.ai)     | 
-| **Closed** |             ✓             | [ChatGPT (***OpenAI***)](https://chat.openai.com)      | 
-|            |             ✓             | [Claude (***Anthropic***)](https://claude.ai/new)      | 
+|  **Open**  |             **✓**             | [Kimi Chat (***Moonshot AI***)](https://www.kimi.com/) | 
+|            |             **✓**             | [Le Chat (***Mistral***)](https://chat.mistral.ai)     | 
+| **Closed** |             **✓**             | [ChatGPT (***OpenAI***)](https://chat.openai.com)      | 
+|            |             **✓**             | [Claude (***Anthropic***)](https://claude.ai/new)      | 
 
 ## Quick Start Example
 
