@@ -76,7 +76,7 @@ An LLM is only compatible with the quick start example and responding correctly 
 * in the same markdown ***bold and italics*** format as given
 * ended after the bold and italic formatting with a colon `:` followed by a newline:
 
-For example in the quick start example we use
+For example:
 
 `***(: Smile***:`
 
