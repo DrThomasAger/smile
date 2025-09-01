@@ -68,8 +68,9 @@ Want to quickly try ***(: Smile*** on a ***LLM?***
 
 # Why Does (: Smile Make Models And Orgs Happy?
 
-Everyone's happy when you ***(: Smile*** because  they **understand** your prompt better, **perform** better, so you can both **do what you agreed to do together**. 
+Both you and your model will be happy more often when you ***(: Smile***. This is because  the model **understand** your prompt better, so they can **perform** better, ultimately leading you to complete **what you both agreed to do together**. 
   
+## Benefits of (: Smile
 
 With ***(: Smile***, your ***prompt engineering*** teams are now producing AI systems that are...
 
