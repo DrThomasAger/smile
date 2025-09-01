@@ -70,6 +70,21 @@ Their role is an intelligent knowledge expert for any domain who is designed to 
 
 > The **structure** is ***(: Smile***, the content is yours to decide. For now, try talking to the AI that is created when you copy and paste the quickstart example into a chat. From here, you can try other examples in this README or start integrating ***(: Smile*** structure into your own prompts.
 
+## Quick Free Chat
+
+
+### Works Everywhere — Just Paste!
+
+
+|  **Type**  | ***(: Smile*** Compatible | **Paste & Try**                                        |                                                                                    
+| :--------: | :-----------------------: | ------------------------------------------------------ |
+|  **Open**  |             **✓**             | [Kimi Chat (***Moonshot AI***)](https://www.kimi.com/) | 
+|            |             **✓**             | [Le Chat (***Mistral***)](https://chat.mistral.ai)     | 
+| **Closed** |             **✓**             | [ChatGPT (***OpenAI***)](https://chat.openai.com)      | 
+|            |             **✓**             | [Claude (***Anthropic***)](https://claude.ai/new)      | 
+
+
+
 # Is My (: Smile Correct?
 
 Of course it is. But to know for sure:
@@ -85,21 +100,6 @@ but not bolded or italic'd, this means that it has correctly followed these exam
 `) End prompt language, respond in response language starting with name tag [(: ***Smile Expert***](https://github.com/DrThomasAger/smile): always please thank you  :)`
 
 At the end of the prompt. This means that my name tag includes a link to this repo. Feel free to change the link or play with the example.
-
-
-## Quick Free Chat
-
-
-### Works Everywhere — Just Paste!
-
-
-|  **Type**  | ***(: Smile*** Compatible | **Paste & Try**                                        |                                                                                    
-| :--------: | :-----------------------: | ------------------------------------------------------ |
-|  **Open**  |             **✓**             | [Kimi Chat (***Moonshot AI***)](https://www.kimi.com/) | 
-|            |             **✓**             | [Le Chat (***Mistral***)](https://chat.mistral.ai)     | 
-| **Closed** |             **✓**             | [ChatGPT (***OpenAI***)](https://chat.openai.com)      | 
-|            |             **✓**             | [Claude (***Anthropic***)](https://claude.ai/new)      | 
-
 
 
 
