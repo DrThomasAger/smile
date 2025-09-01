@@ -332,11 +332,32 @@ Copy and paste the above into any model to test.
 
 ☆ Star the repo to make a prompt engineer in an organization somewhere (: Smile -> [![☆ Star the repo](https://img.shields.io/github/stars/DrThomasAger/smile?style=social)](https://github.com/DrThomasAger/smile/stargazers)
 
+
+
 ## DMs always open!
 
 * <> [DM me on LinkedIn for a chat](https://www.linkedin.com/in/drprompt/)
 * @ DM me on Discord [@DrThomasAger](https://discord.com/users/221024427456856064)
 * [: Follow me on [Github](https://github.com/DrThomasAger/) for updates!
+
+  
+
+
+### Thank You!
+
+***(: Smile*** is free and actively maintained. 
+
+Love ***(: Smile***?  Want to share your support? [PayPal me](https://paypal.me/hanjopurebuddha) :)
+
+### Media Contact 
+
+I want everyone and everything to ***(: Smile***! 
+
+**Are you a tech influencer who wants to *share my project?*** Please do! (and ***(: Smile***!) 
+
+ [![☆ Star the repo](https://img.shields.io/github/stars/DrThomasAger/smile?style=social)](https://github.com/DrThomasAger/smile/stargazers)
+
+ 
 
 
 ## Compatible With All Existing Models (Foundation & Open Source LLMs)
@@ -591,23 +612,6 @@ Want to feel happier when you prompt engineer? Just use every time you see a ***
 
 I'm happy to help! DM me or raise an issue! :)
 
-
-
-### Thank You!
-
-***(: Smile*** is free and actively maintained. 
-
-Love ***(: Smile***?  Want to share your support? [PayPal me](https://paypal.me/hanjopurebuddha) :)
-
-### Media Contact 
-
-I want everyone and everything to ***(: Smile***! 
-
-**Are you a tech influencer who wants to *share my project?*** Please do! (and ***(: Smile***!) 
-
- [![☆ Star the repo](https://img.shields.io/github/stars/DrThomasAger/smile?style=social)](https://github.com/DrThomasAger/smile/stargazers)
-
- 
 
 
 :) End README.md :)
