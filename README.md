@@ -75,12 +75,11 @@ First, write exact name tag  ["[(: ***Smile Expert***](https://github.com/DrThom
 
 For a **positive** AI future. :) 
 
-You can ***(: Smile*** for  **positivity** in your **home**, **organizational outcomes**, and **mood**.
+ When your prompt database has structured prompts,  your business will get the **outcomes** you **intended** to get, **in the way you intended to get them**, **more consistently**.
 
+This means that you can ***(: Smile*** for  **positivity** in your **home**, **organizational outcomes**, and **mood**.
 
- When you structure your prompts,  you will get the **outcomes** you **intended** to get, **in the way you intended to get them.**
-
- When you ***(: Smile*** to a ***LLM***, they're happy. They **understand** your prompt better, **perform** better, and you're both **doing what you agreed to do together**. 
+Obviously, if you ***(: Smile***, you're happier. So, if you ***(: Smile*** to an ***LLM*** we hope they're happy too. They're going to be happy because they **understand** your prompt better, **perform** better, and you're both **doing what you agreed to do together**. 
   
 
 Your ***prompt engineering*** will become...
