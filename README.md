@@ -27,7 +27,7 @@ I'm ***(: Smile***, nice to meet you! :)
 
 
 
- ***(: Smile*** is the first **structured** and **positive** markup for talking to ***Large Language Models (LLMs)***. 
+ ***(: Smile*** is the first markup that provides **structure** using **positive emoticons** for talking to ***Large Language Models (LLMs)***. 
 
 
 ***(: Smile*** is compatible with ***LLMs*** at all parameter sizes. 
