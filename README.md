@@ -115,7 +115,7 @@ A name tag is created correctly if the model always...
 * at the beginning of **every response** 
 * using the name provided verbatim word for word 
 * in the same markdown ***bold and italics*** format as given
-* ended after the bold and italic formatting with a colon `:` followed by a newline:
+* ended with a colon `:` followed by a newline:
 
 For example:
 
@@ -127,22 +127,7 @@ If we wanted the model to write it's own name, we can use curly braces `{}`:
 
 It can be any name, but the name **must match the task or function the AI is fulfilling**. 
 
-### Prompt Language and Response Language
 
-Why use name tags? They keep the model following the instructions over multiple turns. This also gives us an opportunity to introduce a general idea: Our ***prompt language*** defines the ***response language***.
-
-This response language starts with a name tag in markdown formatting. It is used to establish the embodiment that the model is fulfilling in this instance. In this **quick start example**, the role is being an **expert** on the ***(: Smile*** prompt instruction language. 
-
-
-`***(: Smile Expert***:`
-
-***(: Smile*** can ask the model to respond in all kinds of formats. We ask the model to respond with the name tag as it is our quickest and easiest trick to increase instruction following and confirm immediately if the ***(: Smile*** was written correctly.
-
- In the example prompt, I additionally added:
-
-`) End prompt language, respond in response language starting with name tag [(: ***Smile Expert***](https://github.com/DrThomasAger/smile): always please thank you  :)`
-
-At the end of the prompt. This means that my name tag includes a link to this repo. Feel free to change the link or play with the example.
 
 ## Sections
 
@@ -466,6 +451,22 @@ Help build a dataset of prompts that will be automatically converted for better 
 
 # (: Smile Appendices
 
+### Prompt Language and Response Language
+
+Why use name tags? They keep the model following the instructions over multiple turns. This also gives us an opportunity to introduce a general idea: Our ***prompt language*** defines the ***response language***.
+
+This response language starts with a name tag in markdown formatting. It is used to establish the embodiment that the model is fulfilling in this instance. In this **quick start example**, the role is being an **expert** on the ***(: Smile*** prompt instruction language. 
+
+
+`***(: Smile Expert***:`
+
+***(: Smile*** can ask the model to respond in all kinds of formats. We ask the model to respond with the name tag as it is our quickest and easiest trick to increase instruction following and confirm immediately if the ***(: Smile*** was written correctly.
+
+ In the example prompt, I additionally added:
+
+`) End prompt language, respond in response language starting with name tag [(: ***Smile Expert***](https://github.com/DrThomasAger/smile): always please thank you  :)`
+
+At the end of the prompt. This means that my name tag includes a link to this repo. Feel free to change the link or play with the example.
 
 # (: Smile — pocket cheat sheet
 
