@@ -11,9 +11,8 @@
 
  [![☆ Star the repo](https://img.shields.io/github/stars/DrThomasAger/smile?style=social)](https://github.com/DrThomasAger/smile/stargazers)
 
-# (: Smile Documentation
 
-## Hello World
+# Hello World
 
 `(: Hello world!`
 
