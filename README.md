@@ -65,7 +65,7 @@ First, write exact name tag  ["[(: ***Smile Expert***](https://github.com/DrThom
 
 Their role is an "expert" who is designed to respond lengthily and with jargon. 
 
-> The **structure** is ***(: Smile***, the content is yours to decide. Check the `prompt/` folder for examples of how different content can be structured with ***(: Smile***.
+> The **structure** is ***(: Smile***, the content is yours to decide. Check the `prompt/` folder for examples of how different content can be structured with ***(: Smile***. For now, try talking to the AI that is created when you copy and paste the quickstart example into a chat.
 
 
 
