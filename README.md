@@ -95,9 +95,6 @@ Because your ***prompt engineering*** will become...
 
  Let's let ***(: Smile*** be a vital step towards creating a positively oriented org by investing time into helping your employees learn to ***(: Smile***. 
 
- ### Why Is (: Smile Novel, Original, and Interesting?
-
-***(: Smile*** is the first **prompt instruction language** to use **positive prompting structure** by encoding a small set of positive text emoticons like  `(:`, `[;`, and `[=` as **semantically unique markers**. 
 
 ### [= Advanced (: Smile :) =]
 
