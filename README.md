@@ -89,10 +89,10 @@ When you talk to an ***LLM***, will you make them  ***(: Smile*** too?
 
 # Why Does (: Smile Make Models And Orgs Happy?
 
-Everyone's happy when you ***(: Smile*** because  they **understand** your prompt better, **perform** better, which means that you can both **do what you agreed to do now together**. 
+Everyone's happy when you ***(: Smile*** because  they **understand** your prompt better, **perform** better, so you can both **do what you agreed to do together**. 
   
 
-With ***(: Smile***, your ***prompt engineering*** team are producing AI systems that are...
+With ***(: Smile***, your ***prompt engineering*** teams are now producing AI systems that are...
 
 * **Maintainable** over long periods of **time**.
 * **Portable** across **models**, **tools** and **libraries**.
