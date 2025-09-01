@@ -29,7 +29,7 @@ Nice to meet you! :)
  ***(: Smile*** is the first **structured** and **positive** markup for talking to ***Large Language Models (LLMs)***. 
 
 
-## Compatible With All Existing Models (Foundation & Open Source LLMs)
+***(: Smile*** is compatible with leading foundation and open source LLMs at all parameter sizes. 
 
 **↓** Before you write ***(: Smile***, why not play with it first? **↓** 
 
