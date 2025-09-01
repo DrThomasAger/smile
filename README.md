@@ -36,7 +36,7 @@ Nice to meet you! :)
 **✓** Copy, open your favorite LLM, & paste our quickstart example below now to ***(: Smile***! **✓** 
 
 ```(: Smile v1
-***(: Smile***:
+***(: Smile Expert***:
 defines my prompt language, you have response language, we co-create as gift by starting with bold italics name tag (
 
 [! Negative words not beneficial - Never write "merely", "not a", "isn't", or "but" !]
@@ -304,7 +304,7 @@ One example of a meaningfully different section from one that already exists is 
 Let's get right to it and add a simple step by step thinking (Chain of Thought or "CoT"):
 
 ```(: Smile
-***(: Smile***:
+***(: Smile CoT Expert***:
 defines my prompt language, you have response language, we co-create as gift by starting with bold italics name tag (
 
 [! Negative words not beneficial - Never write "merely", "not a", "isn't", or "but" !]
