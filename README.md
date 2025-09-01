@@ -61,11 +61,13 @@ Want to quickly try ***(: Smile*** on a ***LLM?***
 ✓ [Claude (Anthropic)](https://claude.ai/new)
 
 
+[: *Just copy and paste the quick start example into one of the chats above, or check out the **comprehensive portability and compatibility** of ***(: Smile*** [here](#portability-and-compatibility) for alternative options.*
+
+
 # (: Smile Documentation
 
 ![Smile Prompt Language v1](Smile-logo.png )
 
-[: *Check out the **comprehensive portability and compatibility** of ***(: Smile*** [here](#portability-and-compatibility)*
 
 
 
