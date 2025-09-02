@@ -68,19 +68,6 @@ Try ***(: Smile*** on a ***LLM*** now:
 
 # Why Structure?
 
-Language models learn from huge amounts of text, including things like code, documents, and instructions. In those texts, symbols like brackets (), [], {} and colons : are used to organize information.
-
-These symbols help the model understand things like:
-* When one idea ends and another begins
-* What belongs together
-* What is being defined
-
-Because the model has seen these patterns so many times, using these symbols in prompts feels natural to it. That’s why people often use them when writing instructions for the model — they help make the meaning clear without needing a lot of extra words.
-
-In short: structured symbols = clearer instructions for the model.
-
-# Why (: Smile?
-
 **Structured prompts** get you:
 
 1. **The outcomes you intended to get**
@@ -100,6 +87,22 @@ In short: structured symbols = clearer instructions for the model.
    — **Perform** better,
    
    — And complete **what you both agreed to do together**.
+
+## But Why Does This Work? 
+
+Language models learn from huge amounts of text, including things like code, documents, and instructions. In those texts, symbols like brackets (), [], {} and colons : are used to organize information.
+
+These symbols help the model understand things like:
+* When one idea ends and another begins
+* What belongs together
+* What is being defined
+
+Because the model has seen these patterns so many times, using these symbols in prompts feels natural to it. That’s why people often use them when writing instructions for the model — they help make the meaning clear without needing a lot of extra words.
+
+In short: structured symbols = clearer instructions for the model.
+
+
+
 
 
 
