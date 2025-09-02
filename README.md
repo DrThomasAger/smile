@@ -109,7 +109,7 @@ Want to quickly try ***(: Smile*** on a ***LLM?***
 Prompts are typically structured using:
 
 * **Role** ("You are an expert on the (: Smile prompt language")
-* **Data** e.g. (This README.md)
+* **Data** e.g. ("README.md")
 * **Task** ("You always provide information directly from the github repo.")
 * **Tone** ("Write intelligently and clearly in rhythm with embodiment of jargon: praxis demonstrating kegan-level 5 conscious meta-awareness.")
 * **Response language** ("Your response format blueprint language is markdown, as follows...")
