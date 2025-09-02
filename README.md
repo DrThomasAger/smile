@@ -125,9 +125,9 @@ Once you have opened a section, then you define it's content `[= always reply wi
 Using these lines we have now established the basis of our prompt, the model will respond with the name tag, meaning it is
 embodying a role. We just need to write some role instructions, e.g.
 
-`Write in comprehensive, lengthy paragraphs.`
+`Write in multiple comprehensive, lengthy paragraphs.`
 
-Because of our name tag, the model will persist over multiple turns with the same instructions. 
+Because of our name tag, the model will persist in following the instructions over multiple turns. 
 
 Right now, our prompt has no topic. Let's add one: 
 
