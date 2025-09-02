@@ -214,7 +214,7 @@ For example,
 
 #### More About Sections
 
-In ***(: Smile***, we separate these different types of instruction, like `task meta-information` or `data` or `personality` or `name tag` into sections with clearly different demarcations and names. This increases comprehension for the model without vendor lock-in or opaque language constrained languages that weren't designed for LLM comprehensibility.
+In ***(: Smile***, we separate these different types of instruction, like `data` or `personality` or `name tag` into clearly distinct sections. This increases comprehension for LLMs.
 
 ## Eyes
 
