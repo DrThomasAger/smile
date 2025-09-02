@@ -102,15 +102,24 @@ Want to quickly try ***(: Smile*** on a ***LLM?***
   [![☆ Star the repo](https://img.shields.io/github/stars/DrThomasAger/smile?style=social)](https://github.com/DrThomasAger/smile/stargazers)
 
 
-
-
-## The Basics
+# (: Smile
 
 In ***(: Smile***, prompts are typically structured using `(:` emoticons. 
 
 These can open: `(:`, or close: `:)`, just like brackets in other languages.
 
-These are used to define **sections**, like **role**, or **tone**. 
+These are used to define **sections**, like **role**.
+
+
+## The Basics
+
+You start by clearly defining the start of a section and its name `(: Role & nametag - ***(: Smile Expert***: ( `. 
+
+And then its content `[= always reply with this name tag immediately at the beginning of all responses =] `
+
+You can end sections using the same markers in the opposite direction. `) End Role & nametag definition :)`.
+
+
 
 ## Section Examples
 
@@ -128,12 +137,6 @@ Feel free to create new section types - this is just what has worked for me to i
 | **Any other section type** | `(: Novel and unique section name - {You figure out what's missing!} :)`                                                                                                                                                                                   | Extend the schema with custom sections (e.g., Validation, Risks, Examples). Name clearly; keep one concern per section.                          |
 
 **Note:** In Smile, the choice of delimiters conveys intent: `(: … :)` for general sections, `[: … :]` for more rigid structure, and `[= … =]` for literal, must-follow blocks.
-
-
-
-You start by clearly defining the start `(:` of a section and its name `(: Section name (`. 
-
-You can end sections using the same markers in the opposite direction. `) End Section name, thank you :)`.
 
 
   
