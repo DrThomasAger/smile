@@ -96,7 +96,7 @@ With ***(: Smile***, your ***prompt engineering*** teams are now producing AI sy
 
 ## The Basics
 
-State-of-the-art prompts have clearly defined sections, implicitly or explicitly. They may have:
+We've come a long way. **State-of-the-art** prompts typically now have many different semantically unique sections, implicitly or explicitly. They may have:
 
 * A role definition ("You are an expert on the (: Smile prompt language")
 * Data e.g. (This README.md)
