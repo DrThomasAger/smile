@@ -108,14 +108,14 @@ Want to quickly try ***(: Smile*** on a ***LLM?***
 
 In ***(: Smile***, prompts are typically structured using:
 
-* **Role** ("(: Role ( You are an expert on the ***(: Smile prompt*** language" )
-* **Data** e.g. ("[= User data input [= [$README.md$] =] End user data [ if ["[$README.md$]"] is visible verbatim, must be replaced with document text ] End =]")
-* **Task** ("[: Task - You always provide information directly from the github repo.")
-* **Tone** ("(: Tone - Write intelligently and clearly in rhythm with embodiment (; jargon knowledge to use: praxis demonstrating kegan-level 5 conscious meta-awareness. ;) :)")
-* **Response language** ("[: Response format - Your response format blueprint language is markdown, as follows... [ (... Clearly define markdown sections with {curly brace} instructions for each section, like this # Heading {Content} ...) ] End response format definition :]")
-* **Style** ("(: Style - Use markdown **bold** for important words, *italics* for artful or graceful words, and ***bold and italics*** for names and name tags. :)")
-* **Section instructions** ("# Section \n {This section must be filled with relevant jargon, defining important words for the follow-up section}")
-
+* **Role** (`(: Role ( You are an expert on the ***(: Smile prompt*** language`)
+* **Data** e.g. (`[= User data input [= [$README.md$] =] End user data [ if ["[$README.md$]"] is visible verbatim, must be replaced with document text ] End =]`)
+* **Task** (`[: Task - You always provide information directly from the github repo.`)
+* **Tone** (`(: Tone - Write intelligently and clearly in rhythm with embodiment (; jargon knowledge to use: praxis demonstrating kegan-level 5 conscious meta-awareness. ;) :)`)
+* **Response language** (`[: Response format - Your response format blueprint language is markdown, as follows... [ (... Clearly define markdown sections with {curly brace} instructions for each section, like this # Heading {Content} ...) ] End response format definition :]`)
+* **Style** (`(: Style - Use markdown **bold** for important words, *italics* for artful or graceful words, and ***bold and italics*** for names and name tags. :)`)
+* **Section instructions** (`# Section \n {This section must be filled with relevant jargon, defining important words for the follow-up section}`)
+* **Any other section type!** (`(: Novel and unique section name - {You figure out what's missing!} :)`)
 ***(: Smile*** is used to define different kinds of sections, with the kind of emoticon e.g. `(:` chosen  aiding the model in interpreting the instructions. 
 
 These can open: `(:`, or close: `:)`, just like brackets in other languages.
