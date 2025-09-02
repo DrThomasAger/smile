@@ -123,6 +123,20 @@ A **"section"** is defined in ***(: Smile*** as a meaningfully different part of
 
 Let's imagine a raw text data input, like a **wikipedia HTML page**. It's full of metadata and information. This is **data**.
 
+In the following example prompt, we will separate **instruction** from **data** using ***(: Smile***.
+
+```
+(: Section - Instructions (
+    Please ensure that you identify all important words from this wikipedia article.
+) End Section :)
+[: Section - Data [
+    $relevant_wikipedia_article$
+] End Data :]
+```
+
+In the same way, using ***(: Smile*** we can separate our **role definition** from our **task instructions**, and our ***(: Smile*** **prompt language** from our **markdown**, **JSON**,  or other **response language**.
+
+This is the power of ***(: Smile*** sections!
 
 ### Tasks
 
