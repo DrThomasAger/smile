@@ -116,22 +116,24 @@ These are used to define **sections**, like **role**.
 `(: Smile`
 ---
 
-Let' talk about three example lines of (: Smile, and how you could place your own prompt inside of it.
-
 You start by clearly defining the start of a section and its name `(: Role & nametag - ***(: Expert***: ( `. 
 
-And then its content `[= always reply with this name tag immediately at the beginning of all responses =]`
+Once you have openef a section, then you define it's content `[= always reply with this name tag immediately at the beginning of all responses =]`
 
-We have now established the basis of our prompt, the model will respond with the name tag, meaning it is
+Using these lines we have now established the basis of our prompt, the model will respond with the name tag, meaning it is
 embodying a role. We just need to write some role instructions, e.g.
 
 `Write in comprehensive, lengthy paragraphs using positive, rigorous quiet clarity.`
 
-We can also add a section for the topic. 
+Because of our name tag, the model will persist over multiple turns with the same instructions. 
+
+Right now, our prompt has no topic. Let's add one: 
 
 ```
 Topic (; replace with your topic. Semiotics and communication eroding boundary of separation between intelligences
 ```
+
+Feel free to replace with your own subject or domain that is your interest instead.
 
 You can end sections using the same markers in the opposite direction. `) End Role & nametag definition :)`.
 
