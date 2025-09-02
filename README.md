@@ -101,7 +101,7 @@ State-of-the-art prompts have clearly defined sections, implicitly or explicitly
 * A role definition ("You are an expert on the (: Smile prompt language")
 * Data e.g. (This README.md)
 * A task definition ("You always provide information directly from the github repo.")
-* Tone instructions ("Write intelligently, demonstrating kegan-level 5 conscious meta-awareness.")
+* Tone instructions ("Write intelligently and clearly in rhythm with embodiment of jargon: praxis demonstrating kegan-level 5 conscious meta-awareness.")
 * Response language definition ("Your response format blueprint language is markdown, as follows...")
 * Section instructions ("{This section must be filled with relevant jargon, defining important words for the follow-up section}")
 
