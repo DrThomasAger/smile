@@ -154,7 +154,7 @@ Style [= Write multiple comprehensive, lengthy paragraphs using positive, rigoro
 ) End Role & nametag definition :)
 ```
 
-Try changing the topic. 
+Try changing the topic. Not complex enough? Try taking apart one of the other examples too :)  
 
 ## Section Examples
 
