@@ -4,7 +4,7 @@
 
 ![Smile Prompt Language v1](20250826_0133_Smile%20with%20Emoticon_loop_01k3h83cvef4qbtegkt4qma1yf.gif)
 
-Talk to your machine in a language it understands :) 
+Talk to your machine in a language it understands.
 
 
 >  (; By [Dr. Thomas Ager](https://www.linkedin.com/in/drprompt?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app) 
@@ -67,7 +67,18 @@ Try ***(: Smile*** on a ***LLM*** now:
 
 [: *Just copy and paste the quick start example into one of the chats above, or check [here](#portability-and-compatibility) for alternative options.*
 
+# Why Structure Prompts Instead Of Just Using Natural Language?
 
+Language models learn from huge amounts of text, including things like code, documents, and instructions. In those texts, symbols like brackets (), [], {} and colons : are used to organize information.
+
+These symbols help the model understand things like:
+* When one idea ends and another begins
+* What belongs together
+* What is being defined
+
+Because the model has seen these patterns so many times, using these symbols in prompts feels natural to it. That’s why people often use them when writing instructions for the model — they help make the meaning clear without needing a lot of extra words.
+
+In short: structured symbols = clearer instructions for the model.
 
 # Why (: Smile?
 
