@@ -141,7 +141,9 @@ This creates a solid basis to play around with. We can add prompting like **topi
 ) End Role & nametag definition :)
 ```
 
-Here, the ***(: Smile*** is the **structure** around the instructions, while also acting as the instructions themselves and creating a clear separation between prompt language and responss format. 
+Here, the ***(: Smile*** is the **structure** around the instructions. This is a key essential point. We  create a clear separation between prompt language and responss language and focus on how to help the model follow instructions.
+
+**We do not tell you what to instruct the model with.**
 
 ## Section Examples
 
