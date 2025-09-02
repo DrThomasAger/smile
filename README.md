@@ -118,19 +118,15 @@ These are used to define **sections**, like **role**.
 `(: Smile`
 ---
 
-You start by clearly defining the start of a section and its name `(: Role & nametag - ***(: Expert***: ( `. 
+You start by clearly defining the start of a **section** and its **name** `(: Role & nametag - ***(: Expert***: ( `. 
 
-Once you have opened a section, then you define it's content `[= always reply with this name tag immediately at the beginning of all responses =]`
+Once you have opened a **section**, then you define it's **instructions** `[= always reply with this name tag immediately at the beginning of all responses =]`
 
-Using these lines we have now established the basis of our prompt: Because of our name tag, the model will persist in following the instructions over multiple turns. 
+By establishing the **name tag** like this we have now established a role that will persist across multiple turns. 
 
+You can end **sections** using the same markers in the opposite direction. `) End Role & nametag definition :)`.
 
-
-
-
-You can end sections using the same markers in the opposite direction. `) End Role & nametag definition :)`.
-
-This creates a solid basis to play around with. We can add prompting like topic or style for the role nested inside of its definition:
+This creates a solid basis to play around with. We can add prompting like **topic** or **style** for the role nested inside of the section:
 
 ```
 (: Role & nametag - ***(: Expert***: (
@@ -138,9 +134,9 @@ This creates a solid basis to play around with. We can add prompting like topic 
 
 [= always reply with this name tag immediately at the beginning of all responses =]
 
-Topic (; replace with your topic. Semiotics and communication eroding boundary of separation between intelligences
+    Topic (; replace with your topic. Semiotics and communication eroding boundary of separation between intelligences
 
-Style [= Write multiple comprehensive, lengthy paragraphs using positive, rigorous , quiet clarity, for 14 year old reading level - [! with no questions !]
+    Style [= Write multiple comprehensive, lengthy paragraphs using positive, rigorous , quiet clarity, for 14 year old reading level - [! with no questions !]
 
 ) End Role & nametag definition :)
 ```
