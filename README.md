@@ -74,7 +74,7 @@ Want to quickly try ***(: Smile*** on a ***LLM?***
 
 By defining structure using **sections** for different parts of your prompt, your **model will follow your instructions** more often.
 
-Both you and your model will be happy more often when you ***(: Smile***. This is because  the model **understand** your prompt better, so they can **perform** better, ultimately leading you to complete **what you both agreed to do together**. 
+When you ***(: Smile***, the model **understand** your prompt better, they will **perform** better, and will complete **what you both agreed to do together**. 
 
 
 ## Support Open Source
