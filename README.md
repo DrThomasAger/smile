@@ -64,7 +64,7 @@ Try ***(: Smile*** on a ***LLM*** now:
 
 [: *Just copy and paste the quick start example into one of the chats above, or check [here](#portability-and-compatibility) for alternative options.*
 
->  (; By [Dr. Thomas Ager](https://www.linkedin.com/in/drprompt?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app) 
+>  By [Dr. Thomas Ager](https://www.linkedin.com/in/drprompt?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app) |  [![☆ Star the repo](https://img.shields.io/github/stars/DrThomasAger/smile?style=social)](https://github.com/DrThomasAger/smile/stargazers) | Love ***(: Smile?*** [PayPal me](https://www.paypal.me/hanjopurebuddha) 
 
 # Why Structure?
 
@@ -285,12 +285,8 @@ Because models follow structured instructions more consistently. Consistent stru
 
 You probably already do! Any section, role description, instruction or data is structure. Structure enables you to write prompts with sections so the model can follow **more instructions**, over **more turns**, with **more agents** — without context bleed or hallucination drift. 
 
-## # Why structure using (: Smile instead of markdown?
 
-***(: Smile*** was made to be performant for LLMs. Markdown is a document format that is used for rendering. Just because it works or is similar to the programming language you wrote before, **doesn't mean it brings the biggest performance gains for your key organization tasks.**
-
-
-## What Are The Business & Technical Advantages of (: Smile For My Organization or Company?
+## Technical Advantages For Organizations
 
 ***(: Smile*** is easy to **learn**, easy to **read**, and easy to **scale**. It makes every prompt:
 
