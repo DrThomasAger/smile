@@ -144,7 +144,16 @@ The text inside the section **changes with the prompt and task required.**
 
 Tasks are defined processes with inputs and outputs, usually also with input data. We normally have expected results and test cases for them. 
 
-For example, `(: Task definition, summarize web page ( INPUT [= Wiki page, PROCESS (: identify any text on this web page that is useful, then summarize all of it, OUTPUT [: summary ) End task definition :)`
+For example, 
+```
+(: Task definition, summarize web page (
+
+ INPUT [= Wiki page,
+ PROCESS (: identify any text on this web page that is useful, then summarize all of it,
+ OUTPUT [: summary
+
+) End task definition :)`
+```
 
 #### More About Sections
 
