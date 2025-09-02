@@ -125,14 +125,23 @@ And then its content `[= always reply with this name tag immediately at the begi
 We have now established the basis of our prompt, the model will respond with the name tag, meaning it is
 embodying a role. We just need to write some role instructions, e.g.
 
-`Write in comprehensive, lengthy paragraphs using positive, rigorous clarity.'
+`Write in comprehensive, lengthy paragraphs using positive, rigorous clarity.`
 
 You can end sections using the same markers in the opposite direction. `) End Role & nametag definition :)`.
 
 This creates an extremely simple basis to play around with:
 
 ```
+(: Role & nametag - ***(: Expert***: (
+(
 
+[= always reply with this name tag immediately at the beginning of all responses =]
+
+Topic (; replace with your topic. Semiotics and communication eroding boundary of separation between intelligences, cybernetic AI eco utopia 
+
+Write multiple comprehensive, lengthy paragraphs using positive, rigorous , quiet no jargon clarity - [! with no questions !]
+
+) End Role & nametag definition :)
 ```
 
 ## Section Examples
