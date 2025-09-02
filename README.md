@@ -141,7 +141,7 @@ This creates a solid basis to play around with. We can add prompting like **topi
 ) End Role & nametag definition :)
 ```
 
-Try changing the topic or style and see for yourself :)
+Here, the ***(: Smile*** is the **structure** around the instructions, while also acting as the instructions themselves and creating a clear separation between prompt language and responss format. 
 
 ## Section Examples
 
