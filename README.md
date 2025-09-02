@@ -110,8 +110,7 @@ These can open: `(:`, or close: `:)`, just like brackets in other languages.
 
 These are used to define **sections**, like **role**.
 
-
-## The Basics
+---
 
 You start by clearly defining the start of a section and its name `(: Role & nametag - ***(: Smile Expert***: ( `. 
 
