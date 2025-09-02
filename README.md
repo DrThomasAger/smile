@@ -117,9 +117,15 @@ In short: structured symbols = clearer instructions for the model.
 
 In ***(: Smile***, prompts are typically structured using `(:` emoticons. 
 
+:) and ) are both a single token, and the former is more **expressive**.
+
+When we use **emoticons**, we can change the **eyes** and **mouth** to convey the **type of instruction**. 
+
 These can open: `(:`, or close: `:)`, just like brackets in other languages.
 
 These are used to define **sections**, like **role**.
+
+`(: Role & nametag [= ***(: Expert***: (`
 
 ---
 ---
@@ -140,7 +146,6 @@ This creates a solid basis to play around with. We can add prompting like **topi
 
 ```
 (: Role & nametag - ***(: Expert***: (
-(
 
 [= always reply with this name tag immediately at the beginning of all responses =]
 
