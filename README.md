@@ -124,18 +124,6 @@ A **"section"** is defined in ***(: Smile*** as a meaningfully different part of
 Let's imagine a raw text data input, like a **wikipedia HTML page**. It's full of metadata and information. This is **data**.
 
 
-#### How To Make The Model Follow Instructions
-
-It makes everyone happier if it can clearly understand the instructions and what it is going to do with the data **before it reads the data**.
-
-Models are more aware of the top and bottom of the prompt input. Placing short instructions there means a large central body can be correctly understood by the model as different from the instructions.
-
-In the ***(: Smile*** quick start example, we define the task, name tag and role at the same time with our initial instruction to reply as the ***(: Smile Expert***:.
-
-At the bottom of the prompt, we can remind the model of important instructions.
-
-Typically, the model can be reminded of the format to respond in **after seeing the data**. This is a hot tip to maximize instruction following! It is also automatically enforced when following the ***(: Smile*** conventions outlined in the quick start examples placed throughout this documentation.
-
 ### Tasks
 
 The text inside the section **changes with the prompt and task required.**
@@ -481,6 +469,18 @@ This response language starts with a name tag in markdown formatting. It is used
 `) End prompt language, respond in response language starting with name tag [(: ***Smile Expert***](https://github.com/DrThomasAger/smile): always please thank you  :)`
 
 At the end of the prompt. This means that my name tag includes a link to this repo. Feel free to change the link or play with the example.
+
+#### How To Make The Model Follow Instructions
+
+It makes everyone happier if it can clearly understand the instructions and what it is going to do with the data **before it reads the data**.
+
+Models are more aware of the top and bottom of the prompt input. Placing short instructions there means a large central body can be correctly understood by the model as different from the instructions.
+
+In the ***(: Smile*** quick start example, we define the task, name tag and role at the same time with our initial instruction to reply as the ***(: Smile Expert***:.
+
+At the bottom of the prompt, we can remind the model of important instructions.
+
+Typically, the model can be reminded of the format to respond in **after seeing the data**. This is a hot tip to maximize instruction following! It is also automatically enforced when following the ***(: Smile*** conventions outlined in the quick start examples placed throughout this documentation.
 
 # (: Smile — pocket cheat sheet
 
