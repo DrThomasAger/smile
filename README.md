@@ -308,7 +308,7 @@ This defines the way that the model will respond. It tells the model to follow t
 
 It is ended with `=] End format :]`. The word `End` is often used as an additional word to the name inside of section endings to more clearly delineate the ending of a section.
 
-There are so many options to customize the length of asection in ***(: Smile***. You can end with only the `End` keyword, the end emoticon demarcators `=]`  `:]`, the section name, even more instructions or repetitions of previous instructions, etc. 
+There are so many options to customize the length of a section in ***(: Smile***. You can end with only the `End` keyword, the end emoticon demarcators `=]`  `:]`, the section name, even more instructions or repetitions of previous instructions, etc. 
 
 ## Adding a Section In Response
 
