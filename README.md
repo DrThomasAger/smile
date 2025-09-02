@@ -70,6 +70,7 @@ Want to quickly try ***(: Smile*** on a ***LLM?***
 1. **The outcomes you intended to get**
 
    — in **the way you intended to get them**,
+   
    — **more consistently**.
 
 3. By writing `(: Smile` **structured sections** in your prompt,
@@ -79,7 +80,9 @@ Want to quickly try ***(: Smile*** on a ***LLM?***
 5. The model will:
    
    — **Understand** your prompt better,
+   
    — **Perform** better,
+   
    — And complete **what you both agreed to do together**.
 
 
