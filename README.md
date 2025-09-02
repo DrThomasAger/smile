@@ -106,19 +106,25 @@ Want to quickly try ***(: Smile*** on a ***LLM?***
 
 ## The Basics
 
-In ***(: Smile***, prompts are typically structured using:
-
-* **Role** (`(: Role ( You are an expert on the ***(: Smile prompt*** language`)
-* **Data** e.g. (`[= User data input [= [$README.md$] =] End user data [ if ["[$README.md$]"] is visible verbatim, must be replaced with document text ] End =]`)
-* **Task** (`[: Task - You always provide information directly from the github repo.`)
-* **Tone** (`(: Tone - Write intelligently and clearly in rhythm with embodiment (; jargon knowledge to use: praxis demonstrating kegan-level 5 conscious meta-awareness. ;) :)`)
-* **Response language** (`[: Response format - Your response format blueprint language is markdown, as follows... [ (... Clearly define markdown sections with {curly brace} instructions for each section, like this # Heading {Content} ...) ] End response format definition :]`)
-* **Style** (`(: Style - Use markdown **bold** for important words, *italics* for artful or graceful words, and ***bold and italics*** for names and name tags. :)`)
-* **Section instructions** (`# Section \n {This section must be filled with relevant jargon, defining important words for the follow-up section}`)
-* **Any other section type!** (`(: Novel and unique section name - {You figure out what's missing!} :)`)
-***(: Smile*** is used to define different kinds of sections, with the kind of emoticon e.g. `(:` chosen  aiding the model in interpreting the instructions. 
+In ***(: Smile***, prompts are typically structured using `(:` emoticons. 
 
 These can open: `(:`, or close: `:)`, just like brackets in other languages.
+
+Here you go—clean, scannable, and emoji-free:
+
+| **Section**                | **Smile syntax (example)**                                                                                                                                                                                                                                 | **Purpose / Tips**                                                                                                                               |
+| -------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------ |
+| **Role**                   | `(: Role ( You are an expert on the ***(: Smile prompt*** language ) :)`                                                                                                                                                                                   | Sets the model’s identity/scope so later instructions resolve from the right point of view. Keep succinct and domain-specific.                   |
+| **Data**                   | `[= User data input [= [$README.md$] =] End user data [ if ["[$README.md$]"] is visible verbatim, must be replaced with document text ] End =]`                                                                                                            | Provides raw context. Use `$…$` variables for pre-inference substitution; keep literals inside `[= … =]` blocks when they must be used verbatim. |
+| **Task**                   | `[: Task - You always provide information directly from the github repo. :]`                                                                                                                                                                               | States what to do with the Data. Prefer action verbs and explicit constraints (sources, scope, success criteria).                                |
+| **Tone**                   | `(: Tone - Write intelligently and clearly in rhythm with embodiment (; jargon knowledge to use: praxis demonstrating kegan-level 5 conscious meta-awareness. ;) :)`                                                                                       | Guides voice/stance. Keep tone separate from format so it doesn’t contaminate strict output rules.                                               |
+| **Response language**      | `[: Response format - Your response format blueprint language is markdown, as follows... [ (... Clearly define markdown sections with {curly brace} instructions for each section, like this # Heading {Content} ...) ] End response format definition :]` | Defines the output contract. Place strict, testable format rules here; use `{…}` placeholders to tell the model what to fill in.                 |
+| **Style**                  | `(: Style - Use markdown **bold** for important words, *italics* for artful or graceful words, and ***bold and italics*** for names and name tags. :)`                                                                                                     | Visual/stylistic conventions. Keep separate from Response language so style never overrides structure.                                           |
+| **Section instructions**   | `# Section\n{This section must be filled with relevant jargon, defining important words for the follow-up section}`                                                                                                                                        | Inline guidance for each output section. Curly-brace directives describe content/rigor for that section.                                         |
+| **Any other section type** | `(: Novel and unique section name - {You figure out what's missing!} :)`                                                                                                                                                                                   | Extend the schema with custom sections (e.g., Validation, Risks, Examples). Name clearly; keep one concern per section.                          |
+
+**Note:** In Smile, the choice of delimiters conveys intent: `(: … :)` for general sections, `[: … :]` for more rigid structure, and `[= … =]` for literal, must-follow blocks.
+
 
 
 You start by clearly defining the start `(:` of a section and its name `(: Section name (`. 
