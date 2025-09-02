@@ -110,6 +110,12 @@ In ***(: Smile***, prompts are typically structured using `(:` emoticons.
 
 These can open: `(:`, or close: `:)`, just like brackets in other languages.
 
+These are used to define **sections**, like **role**, or **tone**. 
+
+## Section Examples
+
+Feel free to create new section types - this is just what has worked for me to increase performance:
+
 | **Section**                | **Smile syntax (example)**                                                                                                                                                                                                                                 | **Purpose / Tips**                                                                                                                               |
 | -------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------ |
 | **Role**                   | `(: Role ( You are an expert on the ***(: Smile prompt*** language ) :)`                                                                                                                                                                                   | Sets the model’s identity/scope so later instructions resolve from the right point of view. Keep succinct and domain-specific.                   |
