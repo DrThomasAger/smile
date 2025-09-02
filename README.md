@@ -86,14 +86,6 @@ Want to quickly try ***(: Smile*** on a ***LLM?***
    — And complete **what you both agreed to do together**.
 
 
-# Why Does (: Smile Make Models And Orgs Happy?
-
-
-**Structured prompts** get you:
-* The **outcomes** you **intended** to get, **in the way you intended to get them**, **more consistently**.
-* By writing ***(: Smile*** **structured** **sections** in your prompt, your **model will follow your instructions** more often.
-* The model **understand** your prompt better, they will **perform** better, and will complete **what you both agreed to do together**. 
-
 
 ## Support Open Source
 
