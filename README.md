@@ -113,9 +113,8 @@ These are used to define **sections**, like **role**.
 ---
 ---
 ---
+
 `(: Smile`
----
----
 ---
 
 You start by clearly defining the start of a section and its name `(: Role & nametag - ***(: Smile Expert***: ( `. 
