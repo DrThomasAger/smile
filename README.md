@@ -123,7 +123,7 @@ You can end sections using the same markers in the opposite direction. `) End Ro
 
 ## Section Examples
 
-Feel free to create new section types - this is just what has worked for me to increase performance:
+Feel free to create new section types - everybody has their own unique genuine ***(: Smile***:
 
 | **Section**                | **Smile syntax (example)**                                                                                                                                                                                                                                 | **Purpose / Tips**                                                                                                                               |
 | -------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------ |
