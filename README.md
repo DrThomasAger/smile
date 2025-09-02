@@ -1,6 +1,6 @@
 
 
-# (: Smile 
+
 
 ![Smile Prompt Language v1](20250826_0133_Smile%20with%20Emoticon_loop_01k3h83cvef4qbtegkt4qma1yf.gif)
 
@@ -10,7 +10,7 @@ Talk to your machine in a language it understands.
  [![☆ Star the repo](https://img.shields.io/github/stars/DrThomasAger/smile?style=social)](https://github.com/DrThomasAger/smile/stargazers)
 
 
-# Hello World
+# (: Smile
 
 ```
 ***(: Smile Expert***:
