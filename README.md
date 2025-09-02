@@ -54,9 +54,9 @@ First, write exact name tag  ["[(: ***Smile Expert***](https://github.com/DrThom
 ) End prompt language, respond in response language starting with name tag [(: ***Smile Expert***](https://github.com/DrThomasAger/smile): always please thank you  :)
 ```
 
-# Compatible Free AI Chat Platforms
+# Compatible & Free Quick Chat
 
-Want to quickly try ***(: Smile*** on a ***LLM?***
+Try ***(: Smile*** on a ***LLM*** now:
 
 | **Type**   | ✓ Link to copy & paste                                |
 |:----------:|:------------------------------------------|
@@ -69,7 +69,7 @@ Want to quickly try ***(: Smile*** on a ***LLM?***
 
 
 
-# Why Does `(: Smile` Make Models and Orgs Happy?
+# Why (: Smile?
 
 **Structured prompts** get you:
 
