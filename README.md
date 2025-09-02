@@ -68,19 +68,13 @@ Want to quickly try ***(: Smile*** on a ***LLM?***
 
 # Why Does (: Smile Make Models And Orgs Happy?
 
-By defining structure using sections for different parts of your prompt, your model will follow your instructions more often.
-
-Both you and your model will be happy more often when you ***(: Smile***. This is because  the model **understand** your prompt better, so they can **perform** better, ultimately leading you to complete **what you both agreed to do together**. 
-  
-## Benefits of (: Smile
-
-With ***(: Smile***, your ***prompt engineering*** teams are now producing AI systems that are...
-
-* **Maintainable** over long periods of **time**.
-* **Portable** across **models**, **tools** and **libraries**.
-* **Performant** on **instruction following** for **tasks**, **consistently**.
 
  Structured prompts get you the **outcomes** you **intended** to get, **in the way you intended to get them**, **more consistently**.
+
+
+By defining structure using **sections** for different parts of your prompt, your **model will follow your instructions** more often.
+
+Both you and your model will be happy more often when you ***(: Smile***. This is because  the model **understand** your prompt better, so they can **perform** better, ultimately leading you to complete **what you both agreed to do together**. 
 
 
 ## Support Open Source
@@ -116,6 +110,14 @@ You start by clearly defining the start `(:` of a section and its name `(: Secti
 You can end sections using the same markers in the opposite direction. `) End Section name, thank you :)`.
 
 
+  
+## Benefits of (: Smile
+
+With ***(: Smile***, your ***prompt engineering*** teams are now producing AI systems that are...
+
+* **Maintainable** over long periods of **time**.
+* **Portable** across **models**, **tools** and **libraries**.
+* **Performant** on **instruction following** for **tasks**, **consistently**.
 
 
 ## Sections
