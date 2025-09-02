@@ -165,7 +165,7 @@ Everybody has their own unique genuine ***(: Smile***, suited to **you**, your t
 
 
   
-## Benefits of (: Smile
+## Benefits of (: Smile For Your Org
 
 With ***(: Smile***, your ***prompt engineering*** teams are now producing AI systems that are...
 
@@ -214,12 +214,12 @@ For example,
 
 #### More About Sections
 
-In ***(: Smile***, we separate these different types of instruction, like `data` or `personality` or `name tag` into clearly distinct sections. This increases comprehension for LLMs.
+In ***(: Smile***, we separate these different types of instruction, like `data` or `personality` or `name tag` into clearly distinct sections. This increases comprehension for ***LLMs***.
 
 ## Eyes
 
 Did you know? 
->**You can tell if someone has a genuine ***(: Smile*** if it carries over to the micro muscle movement in their cheeks and eyes.**
+> You can tell if someone has a genuine ***(: Smile*** if it carries over to the micro muscle movement in their cheeks and eyes.
 
 **In (: Smile, we have our own body language:**
 
