@@ -106,7 +106,7 @@ Want to quickly try ***(: Smile*** on a ***LLM?***
 
 ## The Basics
 
-Prompts are typically structured using:
+In ***(: Smile***, prompts are typically structured using:
 
 * **Role** ("You are an expert on the (: Smile prompt language")
 * **Data** e.g. ("README.md")
