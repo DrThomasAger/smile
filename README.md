@@ -98,12 +98,13 @@ With ***(: Smile***, your ***prompt engineering*** teams are now producing AI sy
 
 We've come a long way. **State-of-the-art** prompts typically now have many different semantically unique sections, implicitly or explicitly. They may have:
 
-* A role definition ("You are an expert on the (: Smile prompt language")
-* Data e.g. (This README.md)
-* A task definition ("You always provide information directly from the github repo.")
-* Tone instructions ("Write intelligently and clearly in rhythm with embodiment of jargon: praxis demonstrating kegan-level 5 conscious meta-awareness.")
-* Response language definition ("Your response format blueprint language is markdown, as follows...")
-* Section instructions ("{This section must be filled with relevant jargon, defining important words for the follow-up section}")
+* **Role** ("You are an expert on the (: Smile prompt language")
+* **Data** e.g. (This README.md)
+* **Task** ("You always provide information directly from the github repo.")
+* **Tone** ("Write intelligently and clearly in rhythm with embodiment of jargon: praxis demonstrating kegan-level 5 conscious meta-awareness.")
+* **Response language** ("Your response format blueprint language is markdown, as follows...")
+* **Style** ("Use markdown **bold** for important words, *italics* for artful or graceful words, and ***bold and italics*** for names and name tags.")
+* **Section instructions** ("{This section must be filled with relevant jargon, defining important words for the follow-up section}")
 
 ***(: Smile*** is used to define different kinds of sections, with the kind of emoticon e.g. `(:` chosen  aiding the model in interpreting the instructions. 
 
