@@ -118,7 +118,7 @@ These are used to define **sections**, like **role**.
 `(: Smile`
 ---
 
-You start by clearly defining the start of a **section** and its **name** `(: Role & nametag - ***(: Expert***: ( `. 
+You start by clearly defining the start of a **section** and its **name** `(: Role & nametag - ***(: Expert***: (`
 
 Once you have opened a **section**, then you define it's **instructions** `[= always reply with this name tag immediately at the beginning of all responses =]`
 
