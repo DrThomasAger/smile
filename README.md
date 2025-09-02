@@ -144,7 +144,9 @@ The text inside the section **changes with the prompt and task required.**
 
 Tasks are defined processes with inputs and outputs, usually also with input data. We normally have expected results and test cases for them. 
 
-Think of things like automatic website builders with many steps, with a task of `make a website that matches the brand's dataset`.
+For example, `(: Task definition, summarize web page ( INPUT [= Wiki page, PROCESS (: identify any text on this web page that is useful, then summarize all of it, OUTPUT [: summary ) End task definition :)`
+
+#### More About Sections
 
 In ***(: Smile***, we separate these different types of instruction, like `task meta-information` or `data` or `personality` or `name tag` into sections with clearly different demarcations and names. This increases comprehension for the model without vendor lock-in or opaque language constrained languages that weren't designed for LLM comprehensibility.
 
