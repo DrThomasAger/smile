@@ -68,6 +68,15 @@ Try ***(: Smile*** on a ***LLM*** now:
 
 # Why Structure?
 
+Language models learn from huge amounts of text, including things like code, documents, and instructions. In those texts, symbols like brackets (), [], {} and colons : are used to organize information.
+
+These symbols help the model understand things like:
+* When one idea ends and another begins
+* What belongs together
+* What is being defined
+
+Because the model has seen these patterns so many times, using these symbols in prompts feels natural to it. That’s why people often use them when writing instructions for the model — they help make the meaning clear without needing a lot of extra words.
+
 **Structured prompts** get you:
 
 1. **The outcomes you intended to get**
@@ -88,23 +97,6 @@ Try ***(: Smile*** on a ***LLM*** now:
    
    — And complete **what you both agreed to do together**.
 
-## But Why Does This Work? 
-
-Language models learn from huge amounts of text, including things like code, documents, and instructions. In those texts, symbols like brackets (), [], {} and colons : are used to organize information.
-
-These symbols help the model understand things like:
-* When one idea ends and another begins
-* What belongs together
-* What is being defined
-
-Because the model has seen these patterns so many times, using these symbols in prompts feels natural to it. That’s why people often use them when writing instructions for the model — they help make the meaning clear without needing a lot of extra words.
-
-In short: structured symbols = clearer instructions for the model.
-
-
-
-
-
 
 ## Support Open Source
 
@@ -115,7 +107,15 @@ In short: structured symbols = clearer instructions for the model.
   [![☆ Star the repo](https://img.shields.io/github/stars/DrThomasAger/smile?style=social)](https://github.com/DrThomasAger/smile/stargazers)
 
 
-# Why emoticons :)?
+# Why A Language?
+
+For large prompts, multi-turn interactions, and multi-agent systems we need structure. 
+
+To ensure maintainability and comprehensibiliry over time, easy knowledge transfer, and consistent outcomes we can use a **language** of **structure** like ***(: Smile***.
+
+## How Do I Structure A Prompt?
+
+ ***(: Smile***!
 
 In ***(: Smile***, prompts are typically structured using `(:` emoticons. 
 
