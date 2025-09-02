@@ -5,8 +5,7 @@
 ![Smile Prompt Language v1](20250826_0133_Smile%20with%20Emoticon_loop_01k3h83cvef4qbtegkt4qma1yf.gif)
 
 
->  (; By [Dr. Thomas Ager](https://www.linkedin.com/in/drprompt?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app)  ;)    
-
+>  (; By [Dr. Thomas Ager](https://www.linkedin.com/in/drprompt?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app) 
 
 
  [![☆ Star the repo](https://img.shields.io/github/stars/DrThomasAger/smile?style=social)](https://github.com/DrThomasAger/smile/stargazers)
@@ -26,7 +25,7 @@ I'm ***(: Smile***, nice to meet you! :)
 
 `(: I structure prompts using emoticons that act as brackets :)`
 
-This means that the model can clearly understand your instructions, making your AI outcomes **consistent** and **reliable**.
+This means that the model can clearly understand your instructions, so they can **consistently** and **reliably** follow them.
 
 
 # Quickstart
