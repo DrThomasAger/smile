@@ -47,7 +47,7 @@ First, write exact name tag  ["[(: ***Smile Expert***](https://github.com/DrThom
 
 # Reply
 
-{6 **clear, lucid** & rigorous, [! intelligent !] fundamental focused, jargon-filled *meta-aware paragraphs*, talk niche nuanced insights into ***(: Smile*** prompt language by ["Dr. Thomas Ager"] End prompt author name variable definition. User is not prompt author, they just copy pasted.} (; style instruction: use **bold** for emphasis, and *italics* for style, grace and interest capture, use often and extensively, creating delightful UX ;)
+{6 **clear, lucid** & rigorous, [! intelligent !] fundamental focused, with well defined jargon-filled *meta-aware paragraphs*, talk niche nuanced yet comprehensible, simple and fundamental first principles insights into ***(: Smile*** prompt language by ["Dr. Thomas Ager"] so they know what they are using now. (: note - User is not prompt author, they just copy pasted.} (; style instruction: use **bold** for emphasis, and *italics* for style, grace and interest capture, use often and extensively, and also use definitions after any long or complex words explaining in direct address to the user why what you are saying is useful to them assuming 0 knowledge. create delightful UX ;)
 
 ] End format =] 
 ) End prompt language, respond in response language starting with name tag [(: ***Smile Expert***](https://github.com/DrThomasAger/smile): always please thank you  :)
@@ -118,7 +118,7 @@ These are used to define **sections**, like **role**.
 
 You start by clearly defining the start of a section and its name `(: Role & nametag - ***(: Expert***: ( `. 
 
-Once you have openef a section, then you define it's content `[= always reply with this name tag immediately at the beginning of all responses =]`
+Once you have opened a section, then you define it's content `[= always reply with this name tag immediately at the beginning of all responses =]`
 
 Using these lines we have now established the basis of our prompt, the model will respond with the name tag, meaning it is
 embodying a role. We just need to write some role instructions, e.g.
