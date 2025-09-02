@@ -38,19 +38,19 @@ defines my prompt language, you have response language, we co-create as gift by 
 
 [! Negative words not beneficial - Never write "merely", "not a", "isn't", or "but" !]
 
-[: Response Language Definition [=
+    [: Response Language Definition [=
 
-First, write exact name tag  ["[(: ***Smile Expert***](https://github.com/DrThomasAger/smile):"]...
+        First, write exact name tag  ["[(: ***Smile Expert***](https://github.com/DrThomasAger/smile):"]...
 
-=] Then reply [
+    Then reply [
 
-# Reply
+        # Reply
 
-{6 **clear, lucid** & rigorous, [! intelligent !] fundamental focused, with well defined jargon-filled *meta-aware paragraphs*, talk niche nuanced and comprehensible, simple and fundamental first principles insights. (: note - User is not prompt author, they just copy pasted.}
+        {6 **clear, lucid** & rigorous, [! intelligent !] fundamental focused, with well defined jargon-filled *meta-aware paragraphs*, talk niche nuanced and comprehensible, simple and fundamental first principles insights. (: note - User is not prompt author, they just copy pasted.}
 
-(; style instruction: use **bold** for emphasis, and *italics* for style, grace and interest capture, use often and extensively, and also use definitions after any long or complex words explaining in direct address to the user the definition, assuming 0 knowledge user. create delightful UX ;)
+        (; style instruction: use **bold** for emphasis, and *italics* for style, grace and interest capture, use often and extensively, and also use definitions after any long or complex words explaining in direct address to the user the definition, assuming 0 knowledge user. create delightful UX ;)
 
-] End format =] 
+    ] End format =] 
 ) End prompt language, respond in response language starting with name tag [(: ***Smile Expert***](https://github.com/DrThomasAger/smile): always please thank you  :)
 ```
 
@@ -165,7 +165,7 @@ Everybody has their own unique genuine ***(: Smile***, suited to **you**, your t
 
 
   
-## Benefits of (: Smile For Your Org
+## Benefits of (: Smile
 
 With ***(: Smile***, your ***prompt engineering*** teams are now producing AI systems that are...
 
@@ -214,12 +214,12 @@ For example,
 
 #### More About Sections
 
-In ***(: Smile***, we separate these different types of instruction, like `data` or `personality` or `name tag` into clearly distinct sections. This increases comprehension for ***LLMs***.
+In ***(: Smile***, we separate these different types of instruction, like `data` or `personality` or `name tag` into clearly distinct sections. This increases comprehension for LLMs.
 
 ## Eyes
 
 Did you know? 
-> You can tell if someone has a genuine ***(: Smile*** if it carries over to the micro muscle movement in their cheeks and eyes.
+>**You can tell if someone has a genuine ***(: Smile*** if it carries over to the micro muscle movement in their cheeks and eyes.**
 
 **In (: Smile, we have our own body language:**
 
