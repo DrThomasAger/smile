@@ -122,7 +122,11 @@ You can end sections using the same markers in the opposite direction. `) End Ro
 
 ## Section Examples
 
-Feel free to create new section types - everybody has their own unique genuine ***(: Smile***:
+These are useful default section types, ***(: Smile*** is compatible with all languages as these are **not mandatory**. However, they are recommended as defaults.
+
+Everybody has their own unique genuine ***(: Smile***, suited to them, their task, their data, and their model :)
+
+Feel free to create new section types.
 
 | **Section**                | **Smile syntax (example)**                                                                                                                                                                                                                                 | **Purpose / Tips**                                                                                                                               |
 | -------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------ |
