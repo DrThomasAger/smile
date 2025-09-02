@@ -20,7 +20,7 @@ Talk to your machine in a language it understands.
 :)
 ```
 
-I'm ***(: Smile***, nice to meet you! :)
+I'm ***(: Smile***, nice to meet you! 
 
 `(: I structure prompts using emoticons that act as brackets :)`
 
