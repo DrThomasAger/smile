@@ -110,8 +110,6 @@ In ***(: Smile***, prompts are typically structured using `(:` emoticons.
 
 These can open: `(:`, or close: `:)`, just like brackets in other languages.
 
-Here you go—clean, scannable, and emoji-free:
-
 | **Section**                | **Smile syntax (example)**                                                                                                                                                                                                                                 | **Purpose / Tips**                                                                                                                               |
 | -------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------ |
 | **Role**                   | `(: Role ( You are an expert on the ***(: Smile prompt*** language ) :)`                                                                                                                                                                                   | Sets the model’s identity/scope so later instructions resolve from the right point of view. Keep succinct and domain-specific.                   |
