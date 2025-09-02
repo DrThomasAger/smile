@@ -125,7 +125,7 @@ These can open: `(:`, or close: `:)`, just like brackets in other languages.
 
 These are used to define **sections**, like **role**.
 
-`(: Role & nametag [= ***(: Expert***: (`
+`(: Role [= ***(: Knowledge Expert***: (`
 
 ---
 ---
