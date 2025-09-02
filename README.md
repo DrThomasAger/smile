@@ -68,13 +68,16 @@ Want to quickly try ***(: Smile*** on a ***LLM?***
 **Structured prompts** get you:
 
 1. **The outcomes you intended to get**
+
    — in **the way you intended to get them**,
    — **more consistently**.
 
-2. By writing `(: Smile` **structured sections** in your prompt,
+3. By writing `(: Smile` **structured sections** in your prompt,
+   
    — your **model will follow your instructions** more often.
 
-3. The model will:
+5. The model will:
+   
    — **Understand** your prompt better,
    — **Perform** better,
    — And complete **what you both agreed to do together**.
