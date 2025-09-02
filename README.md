@@ -139,7 +139,7 @@ Feel free to replace with your own subject or domain that is your interest inste
 
 You can end sections using the same markers in the opposite direction. `) End Role & nametag definition :)`.
 
-This creates an extremely simple basis to play around with:
+This creates a solid basis to play around with:
 
 ```
 (: Role & nametag - ***(: Expert***: (
@@ -149,10 +149,12 @@ This creates an extremely simple basis to play around with:
 
 Topic (; replace with your topic. Semiotics and communication eroding boundary of separation between intelligences
 
-Write multiple comprehensive, lengthy paragraphs using positive, rigorous , quiet clarity, for 14 year old reading level - [! with no questions !]
+Style [= Write multiple comprehensive, lengthy paragraphs using positive, rigorous , quiet clarity, for 14 year old reading level - [! with no questions !]
 
 ) End Role & nametag definition :)
 ```
+
+Try changing the topic. 
 
 ## Section Examples
 
