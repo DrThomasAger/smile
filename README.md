@@ -67,7 +67,7 @@ Try ***(: Smile*** on a ***LLM*** now:
 
 [: *Just copy and paste the quick start example into one of the chats above, or check [here](#portability-and-compatibility) for alternative options.*
 
-# Why Structure Prompts Instead Of Just Using Natural Language?
+# Why Structure?
 
 Language models learn from huge amounts of text, including things like code, documents, and instructions. In those texts, symbols like brackets (), [], {} and colons : are used to organize information.
 
@@ -113,7 +113,7 @@ In short: structured symbols = clearer instructions for the model.
   [![☆ Star the repo](https://img.shields.io/github/stars/DrThomasAger/smile?style=social)](https://github.com/DrThomasAger/smile/stargazers)
 
 
-# (: Smile
+# Why emoticons :)?
 
 In ***(: Smile***, prompts are typically structured using `(:` emoticons. 
 
