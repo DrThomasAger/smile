@@ -153,7 +153,7 @@ These **section types** are **not mandatory**. However, they are **recommended a
 
 Everybody has their own unique genuine ***(: Smile***, suited to **you**, your task, your data, and your model :)
 
-So  ***(: Smile*** is compatible with all languages! **Feel free to create new section types.**
+***(: Smile*** is compatible with all languages! **Feel free to use any combinations of these section types, or create new ones.**
 
 | **Section**                | **Smile syntax (example)**                                                                                                                                                                                                                                 | **Purpose / Tips**                                                                                                                               |
 | -------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------ |
