@@ -40,9 +40,7 @@ defines my prompt language, you have response language, we co-create as gift by 
 
     [: Response Language Definition [=
 
-        First, write exact name tag  ["[(: ***Smile Expert***](https://github.com/DrThomasAger/smile):"]...
-
-    Then reply [
+        First, write exact name tag  ["[(: ***Smile Expert***](https://github.com/DrThomasAger/smile):"] Then reply [
 
         # Reply
 
