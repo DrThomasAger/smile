@@ -106,7 +106,7 @@ Want to quickly try ***(: Smile*** on a ***LLM?***
 
 ## The Basics
 
-We've come a long way. **State-of-the-art** prompts typically now have many different semantically unique sections, implicitly or explicitly. They may have:
+Prompts are typically structured using:
 
 * **Role** ("You are an expert on the (: Smile prompt language")
 * **Data** e.g. (This README.md)
