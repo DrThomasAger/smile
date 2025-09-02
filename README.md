@@ -116,13 +116,24 @@ These are used to define **sections**, like **role**.
 `(: Smile`
 ---
 
-You start by clearly defining the start of a section and its name `(: Role & nametag - ***(: Smile Expert***: ( `. 
+Let' talk about three example lines of (: Smile, and how you could place your own prompt inside of it.
 
-And then its content `[= always reply with this name tag immediately at the beginning of all responses =] `
+You start by clearly defining the start of a section and its name `(: Role & nametag - ***(: Expert***: ( `. 
+
+And then its content `[= always reply with this name tag immediately at the beginning of all responses =]`
+
+We have now established the basis of our prompt, the model will respond with the name tag, meaning it is
+embodying a role. We just need to write some role instructions, e.g.
+
+`Write in comprehensive, lengthy paragraphs using positive, rigorous clarity.'
 
 You can end sections using the same markers in the opposite direction. `) End Role & nametag definition :)`.
 
+This creates an extremely simple basis to play around with:
 
+```
+
+```
 
 ## Section Examples
 
