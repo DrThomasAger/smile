@@ -23,7 +23,7 @@ This means that the model can clearly understand your instructions, so they can 
 
 # Quick Start
 
-**✓** Copy, open your favorite LLM, & paste our quickstart example below now to ***(: Smile***! **✓** 
+**✓** Copy, open your favorite LLM, & paste the quickstart example below now to ***(: Smile***! **✓** 
 
 ```(: Smile v1
 ***(: Smile***:
