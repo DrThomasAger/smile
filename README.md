@@ -117,13 +117,19 @@ To ensure maintainability and comprehensibiliry over time, easy knowledge transf
 
  ***(: Smile***!
 
-In ***(: Smile***, prompts are typically structured using `(:` emoticons. 
+In ***(: Smile***, prompts are typically structured using `(:` emoticons or brackets `(`
 
-:) and ) are both a single token, and the former is more **expressive**.
+`:)` and `)` are both a single token, and the former is more **expressive**.
 
 When we use **emoticons**, we can change the **eyes** and **mouth** to convey the **type of instruction**. 
 
 These can open: `(:`, or close: `:)`, just like brackets in other languages.
+
+In the context of ***(: Smile***, single brackets can also be used as end of line indicators:
+
+`(: Section start (`
+
+The model understands the section is ending more clearly because we used `(` rather than the full emoticon `(:` at the end, it is both semantically unique and connected to the prior emoticon by using the same mouth. 
 
 These are used to define **sections**, like **role**.
 
