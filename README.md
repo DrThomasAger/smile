@@ -10,11 +10,9 @@ The **positive** language for **structured** prompt engineering.
 
 Love ***(: Smile?*** [PayPal me](https://www.paypal.me/hanjopurebuddha) and support the project. Thank you! 
 
+# (: Smile Intro
 
-
-***(: Smile***:
-
-    `(: Hello world!` :)
+***(: Smile***:   `(: Hello world! :)`
 
 I'm ***(: Smile***, nice to meet you! 
 
