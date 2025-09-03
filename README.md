@@ -59,8 +59,8 @@ Try ***(: Smile*** on a ***LLM*** now:
 
 | **Type**   | ✓ Link to copy & paste                                |
 |:----------:|:------------------------------------------|
-| **Open**   | [Kimi Chat (Moonshot AI)|
-|            | [Claude (Anthropic)](https://claude.ai/new)      |
+| **Open**   | [Kimi Chat (Moonshot AI)](https://www.kimi.com/)|
+|    **Closed**    | [Claude (Anthropic)](https://claude.ai/new)      |
 
 **Just copy and paste the quick start example into one of the chats above, or check [here](#portability-and-compatibility) for alternative options.**
 
