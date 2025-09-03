@@ -1,5 +1,8 @@
-
 # (: Smile
+
+![Smile Prompt Language v1](20250826_0133_Smile%20with%20Emoticon_loop_01k3h83cvef4qbtegkt4qma1yf.gif)
+
+> Talk to your machine in a language it understands.
 
 The **positive** language for **structured** prompt engineering.
 
@@ -7,12 +10,8 @@ The **positive** language for **structured** prompt engineering.
 
 Love ***(: Smile?*** [PayPal me](https://www.paypal.me/hanjopurebuddha) and support the project. Thank you! 
 
----
 
-![Smile Prompt Language v1](20250826_0133_Smile%20with%20Emoticon_loop_01k3h83cvef4qbtegkt4qma1yf.gif)
----
 
-Talk to your machine in a language it understands.
 
 
  [![☆ Star the repo](https://img.shields.io/github/stars/DrThomasAger/smile?style=social)](https://github.com/DrThomasAger/smile/stargazers)
