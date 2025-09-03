@@ -11,13 +11,6 @@ The **positive** language for **structured** prompt engineering.
 Love ***(: Smile?*** [PayPal me](https://www.paypal.me/hanjopurebuddha) and support the project. Thank you! 
 
 
-
-
-
- [![☆ Star the repo](https://img.shields.io/github/stars/DrThomasAger/smile?style=social)](https://github.com/DrThomasAger/smile/stargazers)
-
-
-
 ```
 ***(: Smile Expert***:
 
