@@ -59,12 +59,10 @@ Try ***(: Smile*** on a ***LLM*** now:
 
 | **Type**   | ✓ Link to copy & paste                                |
 |:----------:|:------------------------------------------|
-| **Open**   | [Kimi Chat (Moonshot AI)](https://www.kimi.com/) |
-| **Closed** | [ChatGPT (OpenAI)](https://chat.openai.com)      |
+| **Open**   | [Kimi Chat (Moonshot AI)|
 |            | [Claude (Anthropic)](https://claude.ai/new)      |
-|            | [Le Chat (Mistral)](https://chat.mistral.ai)     |
 
-[: *Just copy and paste the quick start example into one of the chats above, or check [here](#portability-and-compatibility) for alternative options.*
+**Just copy and paste the quick start example into one of the chats above, or check [here](#portability-and-compatibility) for alternative options.**
 
 > [![☆ Star the repo](https://img.shields.io/github/stars/DrThomasAger/smile?style=social)](https://github.com/DrThomasAger/smile/stargazers) | By [Dr. Thomas Ager](https://www.linkedin.com/in/drprompt?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app) | Love ***(: Smile?*** [PayPal me](https://www.paypal.me/hanjopurebuddha) and support the project. Thank you! 
 
