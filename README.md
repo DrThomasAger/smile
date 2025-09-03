@@ -12,7 +12,7 @@ Love ***(: Smile?*** [PayPal me](https://www.paypal.me/hanjopurebuddha) and supp
 
 # (: Smile Intro
 
-***(: Smile***:   `(: Hello world! :)`
+`(: Hello world! :)`
 
 I'm ***(: Smile***, nice to meet you! 
 
