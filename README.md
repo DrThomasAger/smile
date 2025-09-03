@@ -3,7 +3,10 @@
 
 The **positive** language for **structured** prompt engineering.
 
-> [![☆ Star the repo](https://img.shields.io/github/stars/DrThomasAger/smile?style=social)](https://github.com/DrThomasAger/smile/stargazers) | By [Dr. Thomas Ager](https://www.linkedin.com/in/drprompt?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app) | Love ***(: Smile?*** [PayPal me](https://www.paypal.me/hanjopurebuddha) and support the project. Thank you! 
+> [![☆ Star the repo](https://img.shields.io/github/stars/DrThomasAger/smile?style=social)](https://github.com/DrThomasAger/smile/stargazers) | By [Dr. Thomas Ager](https://www.linkedin.com/in/drprompt?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app) 
+
+Love ***(: Smile?*** [PayPal me](https://www.paypal.me/hanjopurebuddha) and support the project. Thank you! 
+
 ---
 
 ![Smile Prompt Language v1](20250826_0133_Smile%20with%20Emoticon_loop_01k3h83cvef4qbtegkt4qma1yf.gif)
