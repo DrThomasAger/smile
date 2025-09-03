@@ -21,7 +21,7 @@ I'm ***(: Smile***, nice to meet you!
 This means that the model can clearly understand your instructions, so they can **consistently** and **reliably** follow them.
 
 
-# Quickstart
+# Quick Start
 
 **✓** Copy, open your favorite LLM, & paste our quickstart example below now to ***(: Smile***! **✓** 
 
@@ -103,11 +103,11 @@ That’s why people often use **structured sections** when writing instructions 
   [![☆ Star the repo](https://img.shields.io/github/stars/DrThomasAger/smile?style=social)](https://github.com/DrThomasAger/smile/stargazers)
 
 
-# Why A Language?
+# Why a Structured Instruction Language?
 
 For large prompts, multi-turn interactions, and multi-agent systems we need structure. 
 
-To ensure maintainability and comprehensibiliry over time, easy knowledge transfer, and consistent outcomes we can use a **language** of **structure** like ***(: Smile***.
+To ensure maintainability and comprehensibility over time, easy knowledge transfer, and consistent outcomes we can use a **language** of **structure** like ***(: Smile***.
 
 ## How Do I Structure A Prompt?
 
