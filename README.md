@@ -68,14 +68,16 @@ Try ***(: Smile*** on a ***LLM*** now:
 
 # Why Structure?
 
-Language models learn from huge amounts of text, including things like code, documents, and instructions. In those texts, symbols like brackets (), [], {} and colons : are used to organize information.
+Language models learn from huge amounts of text, including things like code, documents, and instructions. In those texts, syntax like brackets (), [], {} and colons : are used to organize information.
 
-These symbols help the model understand things like:
+These brackets help the model **understand** things like:
 * When one idea ends and another begins
 * What belongs together
 * What is being defined
 
-Because the model has seen these patterns so many times, using these symbols in prompts feels natural to it. That’s why people often use them when writing instructions for the model — they help make the meaning clear without needing a lot of extra words.
+Because the model has seen these structures so many times (in so many different programming languages) using this syntax or mixtures of this syntax in prompts feels natural to it. It's easy for it to pick up. 
+
+That’s why people often use **structured sections** when writing instructions for the model — they help make the **meaning clear** without needing a lot of extra words.
 
 **Structured prompts** get you:
 
