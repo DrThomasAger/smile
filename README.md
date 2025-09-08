@@ -167,7 +167,7 @@ This creates a solid basis to play around with. We can add prompting like **topi
 ) End Role & nametag definition :)
 ```
 
-Here, the ***(: Smile*** is the **structure** around the instructions. This is a key essential point. ***(: Smile*** creates a clear separation between prompt language and response language using **structure** in order to increase the model's **instruction following**. It does not enforce content or instruction types, instead **only** providing **positive** supoort to the writer's intent. 
+Here, the ***(: Smile*** is the **structure** around the instructions. This is a key essential point. ***(: Smile*** creates a clear separation between prompt language and response language using **structure** in order to increase the model's **instruction following**. It does not enforce content or instruction types, instead **only** providing **positive** support to the writer's intent. 
 
 ## How Do I Structure A Prompt?
 
@@ -175,21 +175,22 @@ Here, the ***(: Smile*** is the **structure** around the instructions. This is a
 
 In ***(: Smile***, prompts are typically structured using `(:` emoticons or brackets `(`
 
-`:)` and `)` are both a single token, and the former is more **expressive**.
+These are used to define **sections**, like **role**.
 
-When we use **emoticons**, we can change the **eyes** and **mouth** to convey the **type of instruction**. 
+`(: Role section start (`
 
 These can open: `(:`, or close: `:)`, just like brackets in other languages.
 
-In the context of ***(: Smile***, single brackets can also be used as end of line indicators:
+`) End Role section :)`
 
-`(: Section start (`
+In terms of token efficiency, `:)` and `)` are both a single token, and the former is more **expressive**.
 
-The model understands the section is ending more clearly because we used `(` rather than the full emoticon `(:` at the end, it is both semantically unique and connected to the prior emoticon by using the same mouth. 
+When we use **emoticons**, we can change the **eyes** and **mouth** to convey the **type of instruction**. For example, strictly providing the name tag:
 
-These are used to define **sections**, like **role**.
+`[= name tag [ ***(: Knowledge Expert***: ] end name tag =] (`
 
-`(: Role [= ***(: Knowledge Expert***: (`
+
+
 
 ## Section Examples
 
