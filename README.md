@@ -1,6 +1,6 @@
 # (: Smile
 
-> This entire repo is copy and paste compatible with your ***LLM (Large Language Model)*** - try it now to chat to a ***[(: Smile `README.me` Expert](https://www.github.com/DrThomasAger/Smile)***: who will respond using that name at the start of their response! :)
+> This entire repo is copy and paste compatible with your ***LLM (Large Language Model)*** - try it now to chat to a ***[(: Smile `README.me` Expert](https://www.github.com/DrThomasAger/Smile)***! :)
 
 
 ![Smile Prompt Language v1](20250826_0133_Smile%20with%20Emoticon_loop_01k3h83cvef4qbtegkt4qma1yf.gif)
