@@ -150,32 +150,6 @@ For large prompts, multi-turn interactions, and multi-agent systems we need stru
 
 To ensure maintainability and comprehensibility over time, easy knowledge transfer, and consistent outcomes we can use a **language** of **structure** like ***(: Smile***.
 
-## How Do I Structure A Prompt?
-
- ***(: Smile***!
-
-In ***(: Smile***, prompts are typically structured using `(:` emoticons or brackets `(`
-
-`:)` and `)` are both a single token, and the former is more **expressive**.
-
-When we use **emoticons**, we can change the **eyes** and **mouth** to convey the **type of instruction**. 
-
-These can open: `(:`, or close: `:)`, just like brackets in other languages.
-
-In the context of ***(: Smile***, single brackets can also be used as end of line indicators:
-
-`(: Section start (`
-
-The model understands the section is ending more clearly because we used `(` rather than the full emoticon `(:` at the end, it is both semantically unique and connected to the prior emoticon by using the same mouth. 
-
-These are used to define **sections**, like **role**.
-
-`(: Role [= ***(: Knowledge Expert***: (`
-
----
----
----
-
 `(: Smile`
 ---
 
@@ -202,6 +176,28 @@ This creates a solid basis to play around with. We can add prompting like **topi
 ```
 
 Here, the ***(: Smile*** is the **structure** around the instructions. This is a key essential point. ***(: Smile*** creates a clear separation between prompt language and response language using **structure** in order to increase the model's **instruction following**. It does not enforce content or instruction types, instead **only** providing **positive** supoort to the writer's intent. 
+
+## How Do I Structure A Prompt?
+
+ ***(: Smile***!
+
+In ***(: Smile***, prompts are typically structured using `(:` emoticons or brackets `(`
+
+`:)` and `)` are both a single token, and the former is more **expressive**.
+
+When we use **emoticons**, we can change the **eyes** and **mouth** to convey the **type of instruction**. 
+
+These can open: `(:`, or close: `:)`, just like brackets in other languages.
+
+In the context of ***(: Smile***, single brackets can also be used as end of line indicators:
+
+`(: Section start (`
+
+The model understands the section is ending more clearly because we used `(` rather than the full emoticon `(:` at the end, it is both semantically unique and connected to the prior emoticon by using the same mouth. 
+
+These are used to define **sections**, like **role**.
+
+`(: Role [= ***(: Knowledge Expert***: (`
 
 ## Section Examples
 
