@@ -106,7 +106,7 @@ Try ***(: Smile*** on a ***LLM*** now:
 
 
 | **Type**   | ✓ Link to copy & paste                                | Smile Compatible? |
-|:----------:|:------------------------------------------|
+|:----------:|:------------------------------------------|-------------|
 | **Open**   | [Kimi Chat (Moonshot AI)](https://www.kimi.com/)|             ✓             |
 |    **Closed**    | [Claude (Anthropic)](https://claude.ai/new)      |             ✓             |
 |    **Closed**    | [ChatGPT (OpenAI)](https://chatgpt.com/)      |             ✓             |
