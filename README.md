@@ -187,7 +187,7 @@ In terms of token efficiency, `:)` and `)` are both a single token, and the form
 
 When we use **emoticons**, we can change the **eyes** and **mouth** to convey the **type of instruction**. For example, strictly providing the name tag:
 
-`[= name tag [ ***(: Knowledge Expert***: ] end name tag =] (`
+`[= name tag [ ***(: Knowledge Expert***: ] end name tag =]`
 
 
 
