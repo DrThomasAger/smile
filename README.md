@@ -62,6 +62,8 @@ This means that the model can clearly understand your instructions, so they can 
 
 # Quick Start
 
+This README is filled with example ***(: Smile*** prompt patterns that you can copy and paste to test. 
+
 **✓** Copy, open your favorite LLM, & paste the quickstart example below now to ***(: Smile***! **✓** 
 
 ```(: Smile v1
