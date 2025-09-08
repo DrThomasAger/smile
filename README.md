@@ -10,7 +10,9 @@ This structure helps the model understand your instructions more **clearly**, wh
 
 ## CoT (Chain-Of-Thought) Example
 
-Here's an example that uses the **CoT (Chain-of-Thought)** format. Similar to thinking models, it gets better results than if the model doesn't first think out loud.
+One popular prompt engineering pattern is to let the model think before it responds. 
+
+This is popularly called **CoT (Chain-of-Thought)**. Here we share a prompt that uses this pattern, structured using emoticons in ***(: Smile***.
 
 ```
 (: Prompt language is **(: Smile** (
