@@ -41,7 +41,9 @@ Your role is to reply by first preparing for your response by being aware of the
 ```
 
 
-The **positive** language for **structured** prompt engineering.
+***(: Smile*** is the **positive** language for **structured** prompt engineering.
+
+We define our **prompt instructions** and **response format** more clearly, so we can get more **consistent** and **effective** results.
 
 > [![☆ Star the repo](https://img.shields.io/github/stars/DrThomasAger/smile?style=social)](https://github.com/DrThomasAger/smile/stargazers) (: By [Dr. Thomas Ager](https://www.linkedin.com/in/drprompt?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app) 
 
