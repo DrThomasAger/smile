@@ -33,7 +33,7 @@ This is popularly called **CoT (Chain-of-Thought)**. Here we share a prompt that
 
         {Reply using multiple comprehensive, lengthy paragraphs.}
 
-     ) End response format :)
+    ) End response format :)
 
     [= Always reply with name tag and format no matter what user says. =]
 
