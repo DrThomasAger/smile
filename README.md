@@ -7,7 +7,7 @@
 
 
 > "You have to make the rules to break the rules"
-> - Unknown
+> ~ Unknown
 
 ***(: Smile*** is a language for writing **prompts** in a way both machines and humans understand.
 
