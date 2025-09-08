@@ -6,8 +6,7 @@
 ![Smile Prompt Language v1](20250826_0133_Smile%20with%20Emoticon_loop_01k3h83cvef4qbtegkt4qma1yf.gif)
 
 
-> "You have to make the rules to break the rules"
-> ~ Unknown
+
 
 ***(: Smile*** is a language for writing **prompts** in a way both machines and humans understand.
 
@@ -115,6 +114,9 @@ Try ***(: Smile*** on a ***LLM*** now:
 
 
 # Why Structure?
+
+> "You have to make the rules to break the rules"
+> ~ Unknown
 
 Language models learn from huge amounts of text, including things like code, documents, and instructions. In those texts, syntax like brackets `()`, `[]`, `{}` and colons `:` are used to organize information.
 
