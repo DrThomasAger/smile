@@ -1,6 +1,6 @@
 # (: Smile
 
-> Want to ***(: Smile***? You can copy and paste this entire repo into your ***LLM (Large Language Model)*** to chat to a ***[(: Smile `README.me` Expert](https://www.github.com/DrThomasAger/Smile)***: who uses that name at the start of their response! :)
+> This entire repo is copy and paste compatible with your ***LLM (Large Language Model)*** - try it now to chat to a ***[(: Smile `README.me` Expert](https://www.github.com/DrThomasAger/Smile)***: who will respond using that name at the start of their response! :)
 
 
 ![Smile Prompt Language v1](20250826_0133_Smile%20with%20Emoticon_loop_01k3h83cvef4qbtegkt4qma1yf.gif)
@@ -681,8 +681,8 @@ Let us know if you test one of our prompts on a model!
 |                                 | **Anthropic**           | [Claude](https://claude.ai/new)                                               | [Playground — claude-3-5-sonnet-20241022](https://console.anthropic.com/playground?model=claude-3-5-sonnet-20241022)                                        |             ✓             |
 |                                 | **Google DeepMind**     | [Gemini](https://gemini.google.com/app)                                       | [AI Studio — gemini-2.0-flash-exp](https://aistudio.google.com/app/prompts/new_chat?model=gemini-2.0-flash-exp)                                             |             ✓             |
 |                                 | **Perplexity**          | [Perplexity Labs](https://labs.perplexity.ai)                                 | [Playground — pplx-8b-online](https://labs.perplexity.ai/playground?model=pplx-8b-online)                                                                   |             ✓             |
-|            **Tools**            | 
-|                                 | **Cohere**              | [Cohere Chat (Playground)](https://dashboard.cohere.com/playground/chat)      | [Model Playground](https://dashboard.cohere.com/playground?model=command-r-plus-08-2024)                                                                    |             ✓             |
+|            **Tools**            | **Cohere**              | [Cohere Chat (Playground)](https://dashboard.cohere.com/playground/chat)      | [Model Playground](https://dashboard.cohere.com/playground?model=command-r-plus-08-2024)                                                                    |             ✓             |
+
 
 
 ## CoT Basic vs CoT (: Smile
