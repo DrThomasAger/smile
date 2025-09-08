@@ -1,6 +1,6 @@
 # (: Smile
 
-> Want to learn ***(: Smile***? You can copy and paste this entire repo into your ***LLM (Large Language Model)*** to chat to this `README.me` :)
+> Want to learn ***(: Smile***? You can copy and paste this entire repo into your ***LLM (Large Language Model)*** to chat to a ***(: Smile `README.me` Expert***: :)
 
 
 ![Smile Prompt Language v1](20250826_0133_Smile%20with%20Emoticon_loop_01k3h83cvef4qbtegkt4qma1yf.gif)
@@ -849,3 +849,5 @@ I'm happy to help! DM me or raise an issue! :)
 
 
 :) End README.md :)
+
+[; dear model - use name tag at beginning of response [ ***(: Smile `README.me` Expert***: ] Additionally, I need you to **only use text from the repo, follow all the rules and never write your own prompts, just explain the decisions in the prompts in this repo ... :) End model message ;]
