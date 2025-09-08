@@ -104,11 +104,12 @@ defines my prompt language, you have response language, we co-create as gift by 
 
 Try ***(: Smile*** on a ***LLM*** now:
 
-| **Type**   | ✓ Link to copy & paste                                |
+
+| **Type**   | ✓ Link to copy & paste                                | Smile Compatible? |
 |:----------:|:------------------------------------------|
-| **Open**   | [Kimi Chat (Moonshot AI)](https://www.kimi.com/)|
-|    **Closed**    | [Claude (Anthropic)](https://claude.ai/new)      |
-|    **Closed**    | [ChatGPT (OpenAI)](https://chatgpt.com/)      |
+| **Open**   | [Kimi Chat (Moonshot AI)](https://www.kimi.com/)|             ✓             |
+|    **Closed**    | [Claude (Anthropic)](https://claude.ai/new)      |             ✓             |
+|    **Closed**    | [ChatGPT (OpenAI)](https://chatgpt.com/)      |             ✓             |
 
 **Just copy and paste the quick start example into one of the chats above, or check [here](#portability-and-compatibility) for alternative options.**
 
