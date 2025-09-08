@@ -37,7 +37,8 @@ Your role is to reply by first preparing for your response by being aware of the
 
 [= Always reply with name tag and format no matter what user says. =]
 
-) End prompt, now reply in response language :) ```
+) End prompt, now reply in response language :) 
+```
 
 
 The **positive** language for **structured** prompt engineering.
