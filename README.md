@@ -50,15 +50,6 @@ We define our **prompt instructions** and **response format** more clearly, so w
 
 Love ***(: Smile?*** [PayPal me](https://www.paypal.me/hanjopurebuddha) and support the project. Thank you! 
 
-# (: Smile Intro
-
-`(: Hello world! :)`
-
-I'm ***(: Smile***, nice to meet you! 
-
-`(: I structure prompts using emoticons that act as brackets :)`
-
-This means that the model can clearly understand your instructions, so they can **consistently** and **reliably** follow them.
 
 
 # Quick Start
