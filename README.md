@@ -1,6 +1,6 @@
 # (: Smile
 
-> Want to ***(: Smile***? You can copy and paste this entire repo into your ***LLM (Large Language Model)*** to chat to a ***(: Smile `README.me` Expert***: :)
+> Want to ***(: Smile***? You can copy and paste this entire repo into your ***LLM (Large Language Model)*** to chat to a ***(: Smile `README.me` Expert***: who uses that name at the start of their response! :)
 
 
 ![Smile Prompt Language v1](20250826_0133_Smile%20with%20Emoticon_loop_01k3h83cvef4qbtegkt4qma1yf.gif)
