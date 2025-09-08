@@ -4,7 +4,9 @@
 
 ***(: Smile*** is a language for writing prompts in a way both machines and humans understand.
 
-It uses **emoticons** the same way **programming languages** use **brackets**. This structure helps the model understand your instructions more clearly, and allows you to **design the response of the model** clearly so that the model **responds the same way consistently.** 
+It uses **emoticons** the same way **programming languages** use **brackets**. 
+
+This structure helps the model understand your instructions more **clearly**, which lets it follow those instructions **consistently**.
 
 ## CoT (Chain-Of-Thought) Example
 
