@@ -109,7 +109,7 @@ Try ***(: Smile*** on a ***LLM*** now:
 
 # Why Structure?
 
-Language models learn from huge amounts of text, including things like code, documents, and instructions. In those texts, syntax like brackets (), [], {} and colons : are used to organize information.
+Language models learn from huge amounts of text, including things like code, documents, and instructions. In those texts, syntax like brackets `()`, `[]`, `{}` and colons `:` are used to organize information.
 
 These brackets help the model **understand** things like:
 * When one idea ends and another begins
