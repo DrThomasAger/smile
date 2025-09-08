@@ -108,6 +108,7 @@ Try ***(: Smile*** on a ***LLM*** now:
 |:----------:|:------------------------------------------|
 | **Open**   | [Kimi Chat (Moonshot AI)](https://www.kimi.com/)|
 |    **Closed**    | [Claude (Anthropic)](https://claude.ai/new)      |
+|    **Closed**    | [ChatGPT (OpenAI)](https://chatgpt.com/)      |
 
 **Just copy and paste the quick start example into one of the chats above, or check [here](#portability-and-compatibility) for alternative options.**
 
