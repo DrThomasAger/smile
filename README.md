@@ -10,13 +10,13 @@
 
 It uses **emoticons** the same way **programming languages** use **brackets**. 
 
-It's like Markdown or HTML, but tailor-made specifically as an LLM prompt instruction language. 
+It's like ***Markdown*** or ***HTML***, but tailor-made specifically as an ***LLM*** **prompt instruction language**. 
 
 ## Why Structure Your Prompts?
 
-Studies show even small changes in prompt syntax can have massive downstream effects on task performance and instruction following.
+Studies show even **small changes** in prompt syntax can have **massive downstream effects** on **task performance** and **instruction following**.
 
-Using a consistent and reliable structure helps the model understand your instructions more **clearly**, which lets it follow those instructions **consistently**.
+Using a **consistent** and **reliable** structure helps the model understand your instructions more **clearly**, which lets it follow those instructions **consistently**.
 
 This is essential for:
 
