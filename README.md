@@ -506,26 +506,11 @@ I want everyone and everything to ***(: Smile***!
  
 
 
-## Compatible With All Existing Models (Foundation & Open Source LLMs)
 
 
-| Company               | Model            | ***(: Smile*** prompt language |
-| --------------------- | ---------------- | :----------------------------: |
-| **OpenAI** →          | GPT-4o           |                ✓               |
-|                       | GPT-5-Fast       |                ✓               |
-|                       | GPT-5-Thinking   |                ✓               |
-| **Anthropic** →       | Claude Sonnet 4  |                ✓               |
-| **Google DeepMind** → | Gemini 2.5 Pro   |                ✓               |
-|                       | Gemini 2.5 Flash |                ✓               |
-| **Moonshot AI** →     | Kimi K2          |                ✓               |
-|                       | Kimi 1.5         |                ✓               |
+# **(: Smile** is working when...?
 
-
-**Note:** *Don't see your favorite model? Please feel free to try the above prompt and report back the results.* *We are constantly updating this table with community submitted information.*
-
-
-
-# **(: Smile** is working when the model follows your defined response language, be it markdown, json or one you have created. 
+It's working when the model follows your instructions. In other words, the model follows your defined response language, be it ***markdown***, ***json*** or one you have created. 
 
 I'll extend our previous example to break the rules a little bit, and get a lot of new functionality as a result. This is designed to make you feel like you are free to drop {instructions on how to fill out the text} not just inside of the definition of the format the model needs to respond in. In the next example, I'll show how you can also use them inside the markdown titles themselves for the model to choose what to call each section:
 
@@ -639,9 +624,7 @@ At the bottom of the prompt, we can remind the model of important instructions.
 
 Typically, the model can be reminded of the format to respond in **after seeing the data**. This is a hot tip to maximize instruction following! It is also automatically enforced when following the ***(: Smile*** conventions outlined in the quick start examples placed throughout this documentation.
 
-# (: Smile — pocket cheat sheet
-
-This documentation is extensive! Here's something to refer to quickly (:
+# (: Smile 
 
 **Sections (open/close):**
 
