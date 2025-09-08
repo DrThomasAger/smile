@@ -28,7 +28,9 @@ This is essential for:
 
 One popular prompt engineering pattern is to let the model think before it responds. 
 
-This is popularly called **CoT (Chain-of-Thought)**. Here we share a prompt that uses this pattern, structured using emoticons in ***(: Smile***.
+This is popularly called **CoT (Chain-of-Thought)**. 
+
+Here we share a prompt that uses this pattern, structured using emoticons in ***(: Smile***.
 
 ```
 (: Prompt language is **(: Smile** (
