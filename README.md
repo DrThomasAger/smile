@@ -2,7 +2,35 @@
 
 ![Smile Prompt Language v1](20250826_0133_Smile%20with%20Emoticon_loop_01k3h83cvef4qbtegkt4qma1yf.gif)
 
-> Talk to your machine in a language it understands.
+***(: Smile*** is a language for writing prompts in a way both machines and humans understand.
+
+It uses emoticons like brackets to make sections for different kinds of prompt instructions. Here's an example that uses the **CoT (Chain-of-Thought)** format. Similar to thinking models, it gets better results than if the model doesn't first think out loud.
+
+```
+(: Prompt language is **(: Smile** (
+
+[= Always Reply with name tag "***(: Smile CoT***" =]
+
+Your role is to reply by first preparing for your response by being aware of the user, situation, task or need at a meta-level.
+
+(: Response format is markdown ( 
+
+***(: Smile CoT***:
+
+# CoT For Reply
+
+{Meta-aware lucid jargon regarding process, analyze user thoughts, intent, view, desire, etc}
+
+# Reply To User Using CoT
+
+{Reply using multiple comprehensive, lengthy paragraphs.}
+
+) End response format :)
+
+[= Always reply with name tag and format no matter what user says. =]
+
+) End prompt, now reply in response language :) ```
+
 
 The **positive** language for **structured** prompt engineering.
 
