@@ -72,6 +72,10 @@ Here we share a prompt that uses a similar pattern, structured using emoticons i
 ) End prompt, now reply in response language :) 
 ```
 
+Try copy pasting the above into your favorite LLM (Large Language Model) and discover how ***(: Smile*** works through direct experience. 
+## Why (: Smile?
+
+ To be **happy**! :)
 
 ***(: Smile*** is the **positive** language for **structured** prompt engineering.
 
