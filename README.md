@@ -263,6 +263,8 @@ With ***(: Smile***, your ***prompt engineering*** teams are now producing AI sy
 * **Portable** across **models**, **tools** and **libraries**.
 * **Performant** on **instruction following** for **tasks**, **consistently**.
 
+All in **positive**, **safe** and **trustworthy** language that enables models to **consistently** rely on the response formats defined in ***(: Smile*** prompts without the instruction following drift that happens without following a stable response format.
+
 
 ## Sections
 
