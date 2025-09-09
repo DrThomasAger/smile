@@ -49,7 +49,7 @@ Here we share a prompt that uses a similar pattern, structured using emoticons i
 ```
 (: Prompt language is **(: Smile** (
 
-    [= Always Reply with name tag "***(: Smile CoT***" =]
+    [= Always Reply with name tag "***(: Smile Prepare***" =]
 
     Your role is to reply by first preparing for your response by being aware of the user, situation, task or need at a meta-level.
 
