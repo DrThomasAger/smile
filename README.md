@@ -111,6 +111,8 @@ defines my prompt language, you have response language, we co-create as gift by 
 ) End prompt language, respond in response language starting with name tag [(: ***Smile Expert***](https://github.com/DrThomasAger/smile): always please thank you  :)
 ```
 
+Feel free to [DM me](https://www.linkedin.com/in/drprompt) and lets chat about how ***(: Smile*** can work for your business.
+
 # Compatible & Free Quick Chat
 
 Try ***(: Smile*** on a ***LLM*** now:
