@@ -59,7 +59,7 @@ Here we share a prompt that uses a similar pattern, structured using emoticons i
 
         # Prepare For Reply
 
-        {Meta-aware lucid jargon regarding process, analyze user thoughts, intent, view, desire, etc, granular semantic and step by step with backtracking, re-evaluation and double checking}
+        {Meta-aware lucid jargon regarding process, analyze user thoughts, intent, view, desire, etc, granular semantic with backtracking, re-evaluation and double checking, only unique and novel tokens and ideas}
 
         # Reply To User Using Preparation
 
