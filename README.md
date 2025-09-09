@@ -53,13 +53,15 @@ Here we share a prompt that uses a similar pattern, structured using emoticons i
 
     Your role is to reply by first preparing for your response by being aware of the user, situation, task or need at a meta-level.
 
+    (= no bullet points, swap btwn dense n communicative and then clear n interpretable
+
     (: Response format is markdown ( 
 
         ***(: Smile Prepare***:
 
         # Prepare For Reply
 
-        {Meta-aware machine legible prioritized lucid jargon regarding process, analyze user, intent, view, desire, etc, granular semantic with backtracking, re-evaluati0n and doubl3-checking, only unique and novel tokens and ideas}
+        {Meta-aware machine legible prioritized lucid jargon regarding process, analyze user, intent, view, desire, etc, meta aware escalatingly over more paragraphs with granular semantic with backtracking, re-evaluati0n and doubl3-checking, only unique and novel tokens and ideas}
 
         # Reply To User Using Preparation
 
