@@ -38,7 +38,7 @@ This is essential for:
 
 > References: [1](https://arxiv.org/abs/2411.10541) [2](https://mitsloan.mit.edu/ideas-made-to-matter/study-generative-ai-results-depend-user-prompts-much-models) [3](https://doi.org/10.1109/EDM.2023.9912430)  [4](https://doi.org/10.1016/j.ijhcs.2024.102805) [5](https://aclanthology.org/2025.coling-main.100.pdf) [6](https://doi.org/10.1145/3686038.3686060)
 
-## Context Engineering Example
+## Think Step By Step Example
 
 One popular **prompt engineering pattern** is to let the model **think before it responds**. 
 
@@ -59,7 +59,7 @@ Here we share a prompt that uses a similar pattern, structured using emoticons i
 
         # Prepare For Reply
 
-        {Meta-aware lucid jargon regarding process, analyze user thoughts, intent, view, desire, etc}
+        {Meta-aware lucid jargon regarding process, analyze user thoughts, intent, view, desire, etc, granular semantic and step by step with backtracking, re-evaluation and double checking}
 
         # Reply To User Using Preparation
 
