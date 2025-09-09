@@ -27,13 +27,15 @@ Using a consistent and reliable structure helps the model understand your instru
 
 This is essential for:
 
-* **Businesses** that need secure **reliability** and **consistency**.
-* **Large prompts** that need careful **structure** and **organization**.
-* **Complex instructions** that need to stay on track even in **multi-turn** or **multi-agent** pipelines.
+* **Businesses** that need *secure* **reliability** and **consistency**.
+* **Large prompts** that need *careful* **structure** and **organization**.
+* **Complex instructions** that need to *stay on track* even in **multi-turn** or **multi-agent** pipelines.
 
 ## Context Engineering Example
 
-One popular prompt engineering pattern is to let the model think before it responds. 
+One popular **prompt engineering pattern** is to let the model **think before it responds**. 
+
+This is often called "Chain-of-thought" and has historically been created using the prompt `Think this through step by step`.
 
 Here we share a prompt that uses a similar pattern, structured using emoticons in ***(: Smile***.
 
