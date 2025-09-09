@@ -16,13 +16,12 @@ It's like ***Markdown*** or ***HTML***, but tailor-made specifically as an ***LL
 
 ## Why Structure Your Prompts?
 
-Studies show even **small changes** in prompt syntax can have **massive downstream effects** on **task performance** and **instruction following**.
+Studies show even **small changes** in prompt syntax can have **massive downstream effects** on **task performance** and **instruction following**[^1][^2][^3].
 
-Using a **consistent** and **reliable** structure helps the model understand your instructions more **clearly**, which lets it follow those instructions **consistently**.
+Using a **consistent** and **reliable** structure helps the model understand your instructions more **clearly**, which lets it follow those instructions **consistently**[^4][^5][^6].
 
-Studies show even small changes in prompt syntax can have massive downstream effects on task performance and instruction following[1][2][3].
 
-Using a consistent and reliable structure helps the model understand your instructions more clearly, which lets it follow those instructions consistently[4][5][6].
+
 
 
 This is essential for:
