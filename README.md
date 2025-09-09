@@ -29,13 +29,11 @@ This is essential for:
 
 * **Businesses** that need secure **reliability** and **consistency**.
 * **Large prompts** that need careful **structure** and **organization**.
-* **Complex instructions** like **multi-turn** or **multi-agent** pipelines.
+* **Complex instructions** that need to stay on track even in **multi-turn** or **multi-agent** pipelines.
 
 ## Context Engineering Example
 
 One popular prompt engineering pattern is to let the model think before it responds. 
-
-This is popularly called **CoT (Chain-of-Thought)**. 
 
 Here we share a prompt that uses a similar pattern, structured using emoticons in ***(: Smile***.
 
@@ -70,7 +68,7 @@ Here we share a prompt that uses a similar pattern, structured using emoticons i
 
 We define our **prompt instructions** and **response format** more clearly, so we can get more **consistent** and **effective** results.
 
-We stay happy and safe by giving our model (and hopefully our mouth!) a  ***(: Smile*** for happier outcomes for all :) 
+When we give our model a ***(: Smile***, we get **outcomes** that make our organization **happy**.
 
 # Star the Repo and Support Open Source! :)
 > [![☆ Star the repo](https://img.shields.io/github/stars/DrThomasAger/smile?style=social)](https://github.com/DrThomasAger/smile/stargazers) (: By [Dr. Thomas Ager](https://www.linkedin.com/in/drprompt?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app) 
