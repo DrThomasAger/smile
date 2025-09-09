@@ -31,13 +31,13 @@ This is essential for:
 * **Large prompts** that need **structure** and **organization**.
 * **Complex instructions** like **multi-turn** or **multi-agent** pipelines.
 
-## CoT (Chain-Of-Thought) Example
+## Context Engineering Example
 
 One popular prompt engineering pattern is to let the model think before it responds. 
 
 This is popularly called **CoT (Chain-of-Thought)**. 
 
-Here we share a prompt that uses this pattern, structured using emoticons in ***(: Smile***.
+Here we share a prompt that uses a similar pattern, structured using emoticons in ***(: Smile***.
 
 ```
 (: Prompt language is **(: Smile** (
@@ -48,13 +48,13 @@ Here we share a prompt that uses this pattern, structured using emoticons in ***
 
     (: Response format is markdown ( 
 
-        ***(: Smile CoT***:
+        ***(: Smile Prepare***:
 
-        # CoT For Reply
+        # Prepare For Reply
 
         {Meta-aware lucid jargon regarding process, analyze user thoughts, intent, view, desire, etc}
 
-        # Reply To User Using CoT
+        # Reply To User Using Preparation
 
         {Reply using multiple comprehensive, lengthy paragraphs.}
 
