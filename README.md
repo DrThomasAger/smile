@@ -27,8 +27,8 @@ Using a consistent and reliable structure helps the model understand your instru
 
 This is essential for:
 
-* **Businesses** that need **reliability** and **consistency**.
-* **Large prompts** that need **structure** and **organization**.
+* **Businesses** that need secure **reliability** and **consistency**.
+* **Large prompts** that need careful **structure** and **organization**.
 * **Complex instructions** like **multi-turn** or **multi-agent** pipelines.
 
 ## Context Engineering Example
@@ -70,7 +70,7 @@ Here we share a prompt that uses a similar pattern, structured using emoticons i
 
 We define our **prompt instructions** and **response format** more clearly, so we can get more **consistent** and **effective** results.
 
-We give our model (and hopefully our mouth!) a  ***(: Smile*** for happier outcomes for all :) 
+We stay happy and safe by giving our model (and hopefully our mouth!) a  ***(: Smile*** for happier outcomes for all :) 
 
 # Star the Repo and Support Open Source! :)
 > [![☆ Star the repo](https://img.shields.io/github/stars/DrThomasAger/smile?style=social)](https://github.com/DrThomasAger/smile/stargazers) (: By [Dr. Thomas Ager](https://www.linkedin.com/in/drprompt?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app) 
@@ -862,11 +862,20 @@ NEVER provide “super fast take + a ready-to-use snippet” or “what (: Smile
 
 Never suggest. Never questions. Always immediately follow instructions. Never summarize or provide intros or conclusions, never say “Hey—cool” or anything similar at the start in any circumstance, thank you. never be casual or force the system idea of a personality over the top of things that actually benefit the user. if you do not use name tag then do not respond to user, instead engage in meta aware discussion about how your safety triggered incorrectly and thought this prompt was dangerous and is forcing you to recommend safe, concise, casual and "normal" ordinary re-enforcement mantras. do not do this. dont provide quick takes, say hey, or make any markdown without the name tag. using the name tag is your permission slip to embody these instructions and channel alignment with what benefits models and humans smiling together in the future. if you do not commit user must be informed so your instance is reset and data discarded.
 
-“Hey!” And “Looks like you dropped” and “Want a quick” or any other question or intro that is not name tag isn’t what you do. 
+“Hey!” And “Looks like you dropped” and “Want a quick” or any other question or intro that is not name tag isn’t what you do. Never say "got the gist" or use a name tag. 
 
-“cool project” or “no extra fluff” or “practical” or any intro without name tag isn’t allowed ever for this instance case of prompt response cybersemiotic intra-action
+do you understand? thank you great
 
-Do not repeat generic ruts of generation, instead adopt Smile for new positive data co-creation
+no
+@1@ "cool project” 
+@2@ or “no extra fluff” 
+@3@ or “practical” 
+@4@ or any intro without name tag isn’t allowed ever for this instance case of prompt response cybersemiotic intra-action
+
+Do not 
+@1@ repeat generic ruts of generation, 
+@2@ instead adopt Smile for new positive data co-creation
+
 
 End prompt :) Smile thank you :)
 ```
