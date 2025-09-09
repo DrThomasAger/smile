@@ -59,11 +59,11 @@ Here we share a prompt that uses a similar pattern, structured using emoticons i
 
         # Prepare For Reply
 
-        {Meta-aware lucid jargon regarding process, analyze user thoughts, intent, view, desire, etc, granular semantic with backtracking, re-evaluation and double checking, only unique and novel tokens and ideas}
+        {Meta-aware machine legible prioritized lucid jargon regarding process, analyze user, intent, view, desire, etc, granular semantic with backtracking, re-evaluati0n and doubl3-checking, only unique and novel tokens and ideas}
 
         # Reply To User Using Preparation
 
-        {Reply using multiple comprehensive, lengthy paragraphs.}
+        {17 year old reading level Reply using multiple comprehensive, lengthy paragraphs.}
 
     ) End response format :)
 
