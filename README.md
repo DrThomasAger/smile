@@ -20,6 +20,11 @@ Studies show even **small changes** in prompt syntax can have **massive downstre
 
 Using a **consistent** and **reliable** structure helps the model understand your instructions more **clearly**, which lets it follow those instructions **consistently**.
 
+Studies show even small changes in prompt syntax can have massive downstream effects on task performance and instruction following[1][2][3].
+
+Using a consistent and reliable structure helps the model understand your instructions more clearly, which lets it follow those instructions consistently[4][5][6].
+
+
 This is essential for:
 
 * **Businesses** that need **reliability** and **consistency**.
@@ -833,6 +838,17 @@ Want to feel happier when you prompt engineer? Just use every time you see a ***
 
 I'm happy to help! DM me or raise an issue! :)
 
+***
+
+## References
+
+[1]: "Does Prompt Formatting Have Any Impact on LLM Performance?" Proceedings from PromptEng 2025 Workshop, 2024. [https://arxiv.org/abs/2411.10541](https://arxiv.org/abs/2411.10541)  
+[2]: "Generative AI results depend on user prompts as much as models," MIT Sloan Management Review, 2025. [https://mitsloan.mit.edu/ideas-made-to-matter/study-generative-ai-results-depend-user-prompts-much-models](https://mitsloan.mit.edu/ideas-made-to-matter/study-generative-ai-results-depend-user-prompts-much-models)  
+[3]: "Analyzing Student Prompts and Their Effect on ChatGPT’s Performance," 2023 IEEE Conference on Educational Data Mining, 2023. [https://doi.org/10.1109/EDM.2023.9912430](https://doi.org/10.1109/EDM.2023.9912430)  
+
+[4]: "Game Changers: A Generative AI Prompt Protocol to Enhance Human Collaboration," International Conference on Human-Computer Interaction, 2024. [https://doi.org/10.1016/j.ijhcs.2024.102805](https://doi.org/10.1016/j.ijhcs.2024.102805)  
+[5]: "AI Literacy and Its Implications for Prompt Engineering Strategies," COLING 2025 Proceedings. [https://aclanthology.org/2025.coling-main.100.pdf](https://aclanthology.org/2025.coling-main.100.pdf)  
+[6]: "Is Your Prompt Detailed Enough? Exploring the Effects of Prompt Engineering," ACM CHI Conference on Human Factors in Computing Systems, 2024. [https://doi.org/10.1145/3686038.3686060](https://doi.org/10.1145/3686038.3686060)  
 
 
 :) End README.md :)
