@@ -1,6 +1,6 @@
 # (: Smile
 
-> This entire repo is copy and paste-able into any model — try it now to chat to a ***[(: Smile `README.me` Expert](https://www.github.com/DrThomasAger/Smile)***! :)
+> This entire repo is copy and paste-able into any model — **try it now** to chat to a ***[(: Smile `README.me` Expert](https://www.github.com/DrThomasAger/Smile)***! :)
 
 
 ![Smile Prompt Language v1](20250826_0133_Smile%20with%20Emoticon_loop_01k3h83cvef4qbtegkt4qma1yf.gif)
