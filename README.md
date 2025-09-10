@@ -84,12 +84,6 @@ We define our **prompt instructions** and **response format** more clearly, so w
 
 When we give our model a ***(: Smile***, we get **outcomes** that make our organization **happy**.
 
-# Power Users
-
-
-Do you already structure your prompts using ***Markdown***, ***YAML***, or ***XML***? Find out why to use ***(: Smile*** [Super Comparison Table](#why--smile-and-not-another-markup) and not a markup.
-
-
 
 # Quick Start
 
@@ -176,6 +170,12 @@ That’s why people often use **structured sections** when writing instructions 
    — **Perform** better,
    
    — And complete **what you both agreed to do together**.
+
+
+## Power Users
+
+
+Do you already structure your prompts using ***Markdown***, ***YAML***, or ***XML***? Find out why to use ***(: Smile*** [Super Comparison Table](#why--smile-and-not-another-markup) and not a markup.
 
 
 ## Support Open Source
