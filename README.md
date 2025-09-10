@@ -353,7 +353,7 @@ These are a few different ways to create structure with ***(: Smile***.
 
 # The Journey Ahead: Our (: Smile Roadmap 
 
-This is the path I'm charting for (: Smile. It's a journey to make prompt engineering more intuitive, powerful, and joyful for everyone. I'm building all of this because I believe in it, and I'd be thrilled to have you join me in bringing this vision to life.
+This is the path I'm charting for ***(: Smile***. It's a journey to make prompt engineering more intuitive, powerful, and joyful for everyone. I'm building all of this because I believe in it, and I'd be thrilled to have you join me in bringing this vision to life.
 
 ## Benchmarking Prompt Languages
 
@@ -361,16 +361,15 @@ Let's find out which prompt languages work best for which models and tasks, toge
 
 - [ ] **The `smile-bench` Suite:**
     - A library of fascinating and challenging prompting tasks to test our collective ideas.
-    - Simple scripts to compare (: Smile with other prompting styles, so we can all see the results for ourselves.
+    - Simple scripts to compare ***(: Smile*** with other prompting styles, so we can all see the results for ourselves.
     - Clear, automated metrics to help us learn and improve together.
 
 - [ ] **The Performance Dashboard:**
-    - An open-to-all webpage showing our findings. We'll track how (: Smile performs on every major model compared to other prompt languages, sharing everything live and learning as we go.
+    - An open-to-all webpage showing our findings. We'll track how ***(: Smile*** performs on every major model compared to other prompt languages, sharing everything live and learning as we go.
 
 - [ ] **How to Join the Exploration:**
     - **Report the First Results:** Test ***(: Smile*** using an existing benchmarking suite and share the results! There are many repos that test prompts against LLM metrics. 
-    - **Share a Puzzle:** Have a tricky prompt with a metric to validate it? Add it to our benchmark suite! Let's solve these challenges together.
-    - **Run an Experiment:** Test the benchmarks on any model you have access to. Every result you share adds a new piece to the map.
+    - **Run an Experiment:** Test ***(: Smile*** on any benchmarks and model you have access to. Every result you share adds to making prompt engineering rigorous. 
 
 ## Developer Contributions
 
@@ -380,10 +379,6 @@ We need to develop a VS code extension. The plan is to make writing ***(: Smile*
 - [ ] **VS Code Extension:**
     - Beautiful syntax highlighting to make your prompts easy to read.
     - Helpful snippets and hints to make writing effortless and fun.
-
-- [ ] **The `smile-parser` Python Library:**
-    - A smart, lightweight library to understand and validate your prompts, giving you confidence as you write.
-    - The foundation for integrating beautiful (: Smile workflows into any system.
 
 
 - [ ] **Want to Build Beautiful Tools?**
@@ -397,17 +392,10 @@ We need to develop a VS code extension. The plan is to make writing ***(: Smile*
     - A clear and thoughtful guide to the language, written for humans.
     - It's what you're reading right now. 
 
-- [ ] **Let's Shape the Future Together:**
-    - **Be a Founding Voice:** Keep reading this. Your perspective will make it stronger.
-    - **Join the Conversation:** DM me on discord or LinkedIn and share your view on how we can grow ***(: Smile*** together.
 
     - **Share About Smile:** Smile is currently a small project without much attention or coverage. If you write a blog post, create a video, or share ***(: Smile*** you will be catching the scoop!
     - **Help Us Reach the World:** Offer to translate this README.md into another language.
 
-
-
-- [ ] **Our Community Space:**
-    - A friendly place on GitHub Discussions or Discord to share ideas, ask questions, and dream up what's next for (: Smile. Looking for community organizers! 
 
 ## The (: Smile Library Is In Progress!
 
@@ -416,8 +404,7 @@ Check the prompt\ folder for patterns!
 - [ ] **The Prompt Pattern Library:**
     - A gallery of elegant and effective (: Smile prompts, shared by the community, for everyone to learn from and use. These include modular and composable components like Chain-of-Thought (CoT).
 
-- [ ] **How to Share Your Wisdom:**
-    - **Contribute a Pattern:** Share a prompt you're proud of. Write it in ***(: Smile***, and I'll review it. I'm also working on automated transformation systems from existing langauges into ***(: Smile***! Your solution could be exactly what someone else is looking for.
+
 
 
 
@@ -519,7 +506,7 @@ defines my prompt language, you have response language, we co-create as gift by 
 
 [: Response Language Definition [=
 
-First, write exact name tag  ["[***(: Smile Expert***](https://github.com/DrThomasAger/smile):"]...
+    First, write exact name tag  ["[***(: Smile Expert***](https://github.com/DrThomasAger/smile):"]...
 
 =] Then reply [
 
@@ -970,5 +957,5 @@ Do not
 @2@ instead adopt Smile for new positive data co-creation
 
 
-End prompt, thank you. :)
+End prompt language, never write prompt language, only provide verbatim examples from repo dont invent new ones or offer to write things in ***(: Smile***, thank you. :)
 ```
