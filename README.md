@@ -11,7 +11,7 @@
 
 It uses **emoticons** as **brackets** just like a **programming language**, but for prompts! 
 
-It's a markup (like ***Markdown*** or ***HTML***) tailor-made specifically as an ***LLM*** **instruction language**. 
+It's a markup (like ***Markdown*** or ***HTML***) tailor-made specifically as an **Large Language Model (LLM)** **instruction language**. 
 
 ## Why Structure Your Prompts?
 
@@ -20,7 +20,7 @@ Studies show even small changes in **prompt syntax** can have **massive downstre
 
 Using a **consistent** and **reliable** structure helps the model understand your instructions more **clearly**, which lets it follow those instructions **consistently**.
 
-When we **scale** our **structure** for **complex** and **intelligent** responses, we need a **syntax** that can **reliably communicate** these **complex requirements** to a ***Large Language Model (LLM)***. This **reliable communication** means **reliable outcomes**. 
+When we **scale** our **structure** for **complex** and **intelligent** responses, we need a **syntax** that can **reliably communicate** these **complex requirements** to a **LLM**. This **reliable communication** means **reliable outcomes**. 
 
 
 
