@@ -74,6 +74,8 @@ Here we share a prompt that uses a similar pattern, structured using emoticons i
 ```
 
 **Copy and paste** the above **now** into your favorite language model and discover how ***(: Smile*** works through direct experience. 
+
+
 ## Why (: Smile?
 
  To be **happy**! :)
@@ -84,13 +86,12 @@ We define our **prompt instructions** and **response format** more clearly, so w
 
 When we give our model a ***(: Smile***, we get **outcomes** that make our organization **happy**.
 
-# Star the Repo and Support Open Source! :)
+# Power Users
 
-> [![☆ Star the repo](https://img.shields.io/github/stars/DrThomasAger/smile?style=social)](https://github.com/DrThomasAger/smile/stargazers) (: By [Dr. Thomas Ager](https://www.linkedin.com/in/drprompt?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app) 
 
-Love ***(: Smile?*** you can also [PayPal me](https://www.paypal.me/hanjopurebuddha) and support the project. Thank you! 
+Do you already structure your prompts using ***Markdown***, ***YAML***, or ***XML***? Find out why to use ***(: Smile*** [Super Comparison Table](#why--smile-and-not-another-markup) and not a markup.
 
-Do you already structure your prompts using ***Markdown***, ***YAML*** or ***XML***? Find out why to use ***(: Smile*** using our [Super Comparison Table](#why--smile-and-not-another-markup)
+
 
 # Quick Start
 
@@ -133,7 +134,12 @@ Try ***(: Smile*** on a ***LLM*** now:
 
 **Just copy and paste the quick start example into one of the chats above, or check [here](#portability-and-compatibility) for alternative options.**
 
+# Star the Repo and Support Open Source! :)
 
+
+> [![☆ Star the repo](https://img.shields.io/github/stars/DrThomasAger/smile?style=social)](https://github.com/DrThomasAger/smile/stargazers) (: By [Dr. Thomas Ager](https://www.linkedin.com/in/drprompt?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app) 
+
+Love ***(: Smile?*** you can also [PayPal me](https://www.paypal.me/hanjopurebuddha) and support the project. Thank you! 
 
 # Why Structure?
 
