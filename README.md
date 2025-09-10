@@ -11,7 +11,7 @@
 
 It uses **emoticons** as **brackets** just like a **programming language**, but for prompts! 
 
-It's like ***Markdown*** or ***HTML***, but tailor-made specifically as an ***LLM*** **instruction language**. 
+It's a markup (like ***Markdown*** or ***HTML***) tailor-made specifically as an ***LLM*** **instruction language**. 
 
 ## Why Structure Your Prompts?
 
