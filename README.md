@@ -249,23 +249,6 @@ For example,
 ```
 
 
-## Power Users
-
-
-Do you already structure your prompts using ***Markdown***, ***YAML***, or ***XML***? Find out why to use ***(: Smile*** [Super Comparison Table](#why--smile-and-not-another-markup) and not a markup.
-
-
-  
-## Benefits of (: Smile
-
-With ***(: Smile***, your ***prompt engineering*** teams are now producing AI systems that are...
-
-* **Maintainable** over long periods of **time**.
-* **Portable** across **models**, **tools** and **libraries**.
-* **Performant** on **instruction following** for **tasks**, **consistently**.
-
-All in **positive**, **safe** and **trustworthy** language that enables models to **consistently** rely on the response formats defined in ***(: Smile*** prompts without the instruction following drift that happens without following a stable response format.
-
 
 #### More About Sections
 
@@ -299,6 +282,23 @@ These are a few different ways to create structure with ***(: Smile***.
 | `[;  note or comment ;]` | human comment on an instruction | `[; Meta-Note [ The user intends to improve the intelligence of their downstream tasks using a prompt language ] ;]` | This is for when you are not instructing the model directly, but providing information, comments or notes. Can also use `(;`, the winky eyes are the differentiator.   |  
 | `{placeholder}` | area to be filled by the model | `Fill out the following sections # Thinking {Plan} # Replying {Use plan to reply}` | These are used inside of markdown sections. They are used to instruct the model on how to fill out the section (among others)  |
 
+
+## Power Users
+
+
+Do you already structure your prompts using ***Markdown***, ***YAML***, or ***XML***? Find out why to use ***(: Smile*** [Super Comparison Table](#why--smile-and-not-another-markup) and not a markup.
+
+
+  
+## Benefits of (: Smile
+
+With ***(: Smile***, your ***prompt engineering*** teams are now producing AI systems that are...
+
+* **Maintainable** over long periods of **time**.
+* **Portable** across **models**, **tools** and **libraries**.
+* **Performant** on **instruction following** for **tasks**, **consistently**.
+
+All in **positive**, **safe** and **trustworthy** language that enables models to **consistently** rely on the response formats defined in ***(: Smile*** prompts without the instruction following drift that happens without following a stable response format.
 
 
 # The Journey Ahead: Our (: Smile Roadmap 
