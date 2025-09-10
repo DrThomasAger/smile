@@ -9,7 +9,7 @@
 
 ***(: Smile*** is a language for writing **prompts** in a way both machines and humans understand.
 
-It uses **emoticons** the same way **programming languages** use **brackets**. 
+It uses **emoticons** as **brackets** just like a **programming language**, but for prompts! 
 
 It's like ***Markdown*** or ***HTML***, but tailor-made specifically as an ***LLM*** **instruction language**. 
 
