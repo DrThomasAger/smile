@@ -135,7 +135,7 @@ Love ***(: Smile?*** you can also [PayPal me](https://www.paypal.me/hanjopurebud
 
 # Why Structure?
 
-> "You have to make the rules to break the rules"
+> "You have to make the rules to break the rules."
 > ~ Unknown
 
 Language models learn from huge amounts of text, including things like code, documents, and instructions. In those texts, syntax like brackets `()`, `[]`, `{}` and colons `:` are used to organize information.
