@@ -349,6 +349,86 @@ These are a few different ways to create structure with ***(: Smile***.
 | `[;  note or comment ;]` | human comment on an instruction | `[; Meta-Note [ The user intends to improve the intelligence of their downstream tasks using a prompt language ] ;]` | This is for when you are not instructing the model directly, but providing information, comments or notes. Can also use `(;`, the winky eyes are the differentiator.   |  
 | `{placeholder}` | area to be filled by the model | `Fill out the following sections # Thinking {Plan} # Replying {Use plan to reply}` | These are used inside of markdown sections. They are used to instruct the model on how to fill out the section (among others)  |
 
+
+
+# The Journey Ahead: Our (: Smile Roadmap 
+
+# This is the path I'm charting for (: Smile. It's a journey to make prompt engineering
+# more intuitive, powerful, and joyful for everyone. I'm building all of this because I 
+# believe in it, and I'd be thrilled to have you join me in bringing this vision to life.
+
+#------------------------------------------------------------------------------------------------
+## I. Discovering What Works: The Performance Lab
+# GOAL: To build an open, honest, and powerful suite of tools to deeply understand how
+# different prompt structures perform across all models. We're moving beyond guesswork
+# to create a shared map of what truly works, and I'm excited to see what we find.
+#------------------------------------------------------------------------------------------------
+
+- [ ] **The `smile-bench` Suite:**
+    - A library of fascinating and challenging prompting tasks to test our collective ideas.
+    - Simple scripts to compare (: Smile with other prompting styles, so we can all see the results for ourselves.
+    - Clear, automated metrics to help us learn and improve together.
+
+- [ ] **The Performance Dashboard:**
+    - An open-to-all webpage showing our findings. We'll track how (: Smile performs on every major model compared to other prompt languages, sharing everything live and learning as we go.
+
+- [ ] **How to Join the Exploration:**
+    - **Share a Puzzle:** Have a tricky prompt with a metric to validate it? Add it to our benchmark suite! Let's solve these challenges together.
+    - **Run an Experiment:** Test the benchmarks on any model you have access to. Every result you share adds a new piece to the map.
+
+#------------------------------------------------------------------------------------------------
+## II. Crafting the Perfect Workflow: Developer Joy
+# GOAL: To make writing (: Smile prompts a genuinely delightful experience. I'm building tools
+# that feel intuitive and powerful, getting out of the way so your creativity can flow.
+#------------------------------------------------------------------------------------------------
+
+- [ ] **The `smile-parser` Python Library:**
+    - A smart, lightweight library to understand and validate your prompts, giving you confidence as you write.
+    - The foundation for integrating beautiful (: Smile workflows into any system.
+
+- [ ] **VS Code Extension:**
+    - Beautiful syntax highlighting to make your prompts easy to read.
+    - Helpful snippets and hints to make writing effortless and fun.
+
+- [ ] **Want to Build Beautiful Tools?**
+    - **Lend Your Skills to the Parser:** Help refine the Python library, write tests, or dream up new features.
+    - **Create for Your Favorite Editor:** If you love JetBrains, Sublime, or Neovim, bring the joy of (: Smile to your community.
+
+#------------------------------------------------------------------------------------------------
+## III. Creating Our Shared Language: A Home for the Community
+# GOAL: To evolve (: Smile from an idea into a living, breathing language that we all share and
+# shape together. This is about building a welcoming home for prompt engineers to connect and create.
+#------------------------------------------------------------------------------------------------
+
+- [:)] **The `SMILE-README-v1.0`:**
+    - A clear and thoughtful guide to the language, written for humans.
+    - It's what you're reading right now. 
+
+- [ ] **Our Community Space:**
+    - A friendly place on GitHub Discussions or Discord to share ideas, ask questions, and dream up what's next for (: Smile. Looking for community organizers! 
+
+- [ ] **Let's Shape the Future Together:**
+    - **Be a Founding Voice:** Keep reading this. Your perspective will make it stronger.
+    - **Join the Conversation:** DM me on discord or LinkedIn and share your view on how we can grow ***(: Smile*** together.
+
+#------------------------------------------------------------------------------------------------
+## IV. Sharing the Knowledge: The Learning Garden
+# GOAL: To create beautiful, clear, and inspiring resources that make it easy for anyone,
+# anywhere, to learn and master the art of structured prompting with (: Smile.
+#------------------------------------------------------------------------------------------------
+
+
+- [ ] **The Prompt Pattern Library:**
+    - A gallery of elegant and effective (: Smile prompts, shared by the community, for everyone to learn from and use. These include modular and composable components like Chain-of-Thought (CoT).
+
+- [ ] **How to Share Your Wisdom:**
+    - **Contribute a Pattern:** Share a prompt you're proud of. Write it in ***(: Smile***, and I'll review it. I'm also working on automated transformation systems from existing langauges into ***(: Smile***! Your solution could be exactly what someone else is looking for.
+    - **Share About Smile:** Smile is currently a small project without much attention or coverage. If you write a blog post, create a video, or share ***(: Smile*** you will be catching the scoop!
+    - **Help Us Reach the World:** Offer to translate this README.md into another language.
+
+
+
+
 # (: Smile FAQ 
 
 ## Does Smiling Really Make You Happier?
