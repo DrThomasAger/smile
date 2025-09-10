@@ -15,10 +15,10 @@ It's like ***Markdown*** or ***HTML***, but tailor-made specifically as an ***LL
 
 ## Why Structure Your Prompts?
 
-Studies show even small changes in **prompt syntax** can have **massive downstream effects** on **task performance** and **instruction following**. [1 2 3]
+Studies show even small changes in **prompt syntax** can have **massive downstream effects** on **task performance** and **instruction following**. 
 
 
-Using a **consistent** and **reliable** structure helps the model understand your instructions more **clearly**, which lets it follow those instructions **consistently**. [4 5 6]
+Using a **consistent** and **reliable** structure helps the model understand your instructions more **clearly**, which lets it follow those instructions **consistently**.
 
 When we **scale** our **structure** for **complex** and **intelligent** responses, we need a **syntax** that can **reliably communicate** these **complex requirements** to a ***Large Language Model (LLM)***. This **reliable communication** means **reliable outcomes**. 
 
