@@ -690,6 +690,19 @@ Let us know if you test one of our prompts on a model!
 |                                 | **Perplexity**          | [Perplexity Labs](https://labs.perplexity.ai)                                 | [Playground — pplx-8b-online](https://labs.perplexity.ai/playground?model=pplx-8b-online)                                                                   |             ✓             |
 |            **Tools**            | **Cohere**              | [Cohere Chat (Playground)](https://dashboard.cohere.com/playground/chat)      | [Model Playground](https://dashboard.cohere.com/playground?model=command-r-plus-08-2024)                                                                    |             ✓             |
 
+# Why (: Smile and Not Another Markup?
+
+Traditional markup languages like YAML, JSON, and HTML were built for rigid data parsing, so even small mistakes—like a missing comma, misaligned space, or unclosed tag—cause them to fail, making them brittle for flexible prompt instructions. (: Smile was created specifically for prompt engineering, combining structure with forgiveness: indentation is optional, endings can be long for clarity or short for efficiency, and emoticon-based markers keep sections clear to both humans and models. The table below shows how each rigid rule in existing languages is transformed in Smile into a positive, flexible feature that improves instruction following and multi-turn consistency.
+
+
+Language	Rigid Rule (Not Adapted to Prompts)	Smile Comparison (Positive & Accurate)
+YAML	Requires exact indentation. One misplaced space or tab invalidates the structure.	(: Smile uses indentation only as an optional aid for nesting. It can help readability and improve instruction following, but is never mandatory.
+JSON	Strings must use double quotes, commas/brackets must be exact. A single missing character breaks the whole structure.	(: Smile can run in fully strict mode for parser-like behavior, but also allows freer natural text with [= literal blocks =] and optional delimiters.
+XML	Every tag must be explicitly closed, misnesting invalidates everything.	(: Smile has optional long or short endings: fully explicit for clarity, or compact (:)) for efficiency. Both are valid, by design.
+Markdown	Headings/lists require exact symbols. Missing syntax changes output or fails recognition.	(: Smile sections are always recognized by their emoticons, even if endings are short. Human and model can both infer meaning, preserving intent.
+HTML	Attributes and nesting order must be exact. Misquotes or mismatched tags break rendering.	(: Smile tolerates loose closures and varied nesting. It maintains clarity for the model without the brittleness of strict DOM rules.
+Smile	Not rigid, but structured. Can be strict for parsing or flexible for instruction following. Indentation, section length, and endings are all optional tools chosen by the prompt writer.	Built for prompt engineering: expressive, positive, multi-turn consistent, and maintainable. (: Smile adapts structure to maximize comprehension for both humans and models.
+
 
 
 ## CoT Basic vs CoT (: Smile
