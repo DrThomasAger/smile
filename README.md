@@ -353,16 +353,9 @@ These are a few different ways to create structure with ***(: Smile***.
 
 # The Journey Ahead: Our (: Smile Roadmap 
 
-# This is the path I'm charting for (: Smile. It's a journey to make prompt engineering
-# more intuitive, powerful, and joyful for everyone. I'm building all of this because I 
-# believe in it, and I'd be thrilled to have you join me in bringing this vision to life.
+This is the path I'm charting for (: Smile. It's a journey to make prompt engineering more intuitive, powerful, and joyful for everyone. I'm building all of this because I believe in it, and I'd be thrilled to have you join me in bringing this vision to life.
 
-#------------------------------------------------------------------------------------------------
-## I. Discovering What Works: The Performance Lab
-# GOAL: To build an open, honest, and powerful suite of tools to deeply understand how
-# different prompt structures perform across all models. We're moving beyond guesswork
-# to create a shared map of what truly works, and I'm excited to see what we find.
-#------------------------------------------------------------------------------------------------
+## Benchmarking Prompt Languages
 
 - [ ] **The `smile-bench` Suite:**
     - A library of fascinating and challenging prompting tasks to test our collective ideas.
@@ -376,11 +369,7 @@ These are a few different ways to create structure with ***(: Smile***.
     - **Share a Puzzle:** Have a tricky prompt with a metric to validate it? Add it to our benchmark suite! Let's solve these challenges together.
     - **Run an Experiment:** Test the benchmarks on any model you have access to. Every result you share adds a new piece to the map.
 
-#------------------------------------------------------------------------------------------------
-## II. Crafting the Perfect Workflow: Developer Joy
-# GOAL: To make writing (: Smile prompts a genuinely delightful experience. I'm building tools
-# that feel intuitive and powerful, getting out of the way so your creativity can flow.
-#------------------------------------------------------------------------------------------------
+## Developer Contributions
 
 - [ ] **The `smile-parser` Python Library:**
     - A smart, lightweight library to understand and validate your prompts, giving you confidence as you write.
@@ -394,11 +383,8 @@ These are a few different ways to create structure with ***(: Smile***.
     - **Lend Your Skills to the Parser:** Help refine the Python library, write tests, or dream up new features.
     - **Create for Your Favorite Editor:** If you love JetBrains, Sublime, or Neovim, bring the joy of (: Smile to your community.
 
-#------------------------------------------------------------------------------------------------
-## III. Creating Our Shared Language: A Home for the Community
-# GOAL: To evolve (: Smile from an idea into a living, breathing language that we all share and
-# shape together. This is about building a welcoming home for prompt engineers to connect and create.
-#------------------------------------------------------------------------------------------------
+## Community Contributions
+
 
 - [:)] **The `SMILE-README-v1.0`:**
     - A clear and thoughtful guide to the language, written for humans.
@@ -410,12 +396,6 @@ These are a few different ways to create structure with ***(: Smile***.
 - [ ] **Let's Shape the Future Together:**
     - **Be a Founding Voice:** Keep reading this. Your perspective will make it stronger.
     - **Join the Conversation:** DM me on discord or LinkedIn and share your view on how we can grow ***(: Smile*** together.
-
-#------------------------------------------------------------------------------------------------
-## IV. Sharing the Knowledge: The Learning Garden
-# GOAL: To create beautiful, clear, and inspiring resources that make it easy for anyone,
-# anywhere, to learn and master the art of structured prompting with (: Smile.
-#------------------------------------------------------------------------------------------------
 
 
 - [ ] **The Prompt Pattern Library:**
@@ -467,12 +447,6 @@ You probably already do! Any section, role description, instruction or data is s
 * **Explainable** [" *Clearly map prompt text changes to consistent outputs.* - You can now explain your prompt. With increasing scrutiny on AI systems, you can better justify an AI decision in an EU court of law. 
 
 Let ***(: Smile*** be one part of making your AI systems **more transparent** for **humans and models.**
-
-
-
-
-
-
 
 # An Easy Way To Write (: Smile
 
