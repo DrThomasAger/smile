@@ -22,8 +22,7 @@ Studies show even small changes in **prompt syntax** can have **massive downstre
 
 Using a **consistent** and **reliable** structure helps the model understand your instructions more **clearly**, which lets it follow those instructions **consistently**. [4 5 6]
 
-
-
+When we **scale** our **structure** for **complex** and **intelligent** responses, we need a **syntax** that can **reliably communicate** these **complex requirements** to a ***Large Language Model (LLM)***. This **reliable communication** means **reliable outcomes**. 
 
 
 
@@ -696,12 +695,12 @@ Traditional markup languages like YAML, JSON, and HTML were built for rigid data
 
 | Language | Rigid Rule (Not Adapted to Prompts) | Smile Comparison (Positive & Accurate) |
 |----------|--------------------------------------|-----------------------------------------|
-| **YAML** | Requires exact indentation. One misplaced space or tab invalidates the structure. | (: Smile uses indentation only as an optional aid for nesting. It can help readability and improve instruction following, but is never mandatory. |
-| **JSON** | Strings must use double quotes, commas/brackets must be exact. A single missing character breaks the whole structure. | (: Smile can run in fully strict mode for parser-like behavior, but also allows freer natural text with [= literal blocks =] and optional delimiters. |
-| **XML** | Every tag must be explicitly closed, misnesting invalidates everything. | (: Smile has optional long or short endings: fully explicit for clarity, or compact (:)) for efficiency. Both are valid, by design. |
-| **Markdown** | Headings/lists require exact symbols. Missing syntax changes output or fails recognition. | (: Smile sections are always recognized by their emoticons, even if endings are short. Human and model can both infer meaning, preserving intent. |
-| **HTML** | Attributes and nesting order must be exact. Misquotes or mismatched tags break rendering. | (: Smile tolerates loose closures and varied nesting. It maintains clarity for the model without the brittleness of strict DOM rules. |
-| **Smile** | Not rigid, but structured. Can be strict for parsing or flexible for instruction following. Indentation, section length, and endings are all optional tools chosen by the prompt writer. | Built for prompt engineering: expressive, positive, multi-turn consistent, and maintainable. (: Smile adapts structure to maximize comprehension for both humans and models. |
+| ***YAML*** | Requires exact indentation. One misplaced space or tab invalidates the structure. | (: Smile uses indentation only as an optional aid for nesting. It can help readability and improve instruction following, but is never mandatory. |
+| ***JSON*** | Strings must use double quotes, commas/brackets must be exact. A single missing character breaks the whole structure. | (: Smile can run in fully strict mode for parser-like behavior, but also allows freer natural text with [= literal blocks =] and optional delimiters. |
+| ***XML*** | Every tag must be explicitly closed, misnesting invalidates everything. | (: Smile has optional long or short endings: fully explicit for clarity, or compact (:)) for efficiency. Both are valid, by design. |
+| ***Markdown*** | Headings/lists require exact symbols. Missing syntax changes output or fails recognition. | (: Smile sections are always recognized by their emoticons, even if endings are short. Human and model can both infer meaning, preserving intent. |
+| ***HTML*** | Attributes and nesting order must be exact. Misquotes or mismatched tags break rendering. | (: Smile tolerates loose closures and varied nesting. It maintains clarity for the model without the brittleness of strict DOM rules. |
+| ***(: Smile*** | Not rigid, but structured. Can be strict for parsing or flexible for instruction following. Indentation, section length, and endings are all optional tools chosen by the prompt writer. | Built for prompt engineering: expressive, positive, multi-turn consistent, and maintainable. (: Smile adapts structure to maximize comprehension for both humans and models. |
 
 
 
