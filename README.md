@@ -753,7 +753,7 @@ Let us know if you test one of our prompts on a model!
 
 # Why (: Smile and Not Another Markup?
 
-Traditional markup languages like YAML, JSON, and HTML were built for rigid data parsing, so even small mistakes—like a missing comma, misaligned space, or unclosed tag—cause them to fail, making them brittle for flexible prompt instructions. (: Smile was created specifically for prompt engineering, combining structure with forgiveness: indentation is optional, endings can be long for clarity or short for efficiency, and emoticon-based markers keep sections clear to both humans and models. The table below shows how each rigid rule in existing languages is transformed in Smile into a positive, flexible feature that improves instruction following and multi-turn consistency.
+Traditional markup languages like YAML, JSON, and HTML were built for rigid data parsing, so they are designed with the idea that even small mistakes—like a missing comma, misaligned space, or unclosed tag—cause them to fail. (: Smile was created specifically for prompt engineering, combining structure with forgiveness: indentation is optional, endings can be long for clarity or short for efficiency, and emoticon-based markers keep sections clear to both humans and models. The table below shows how each rigid rule in existing languages is transformed in Smile into a positive, flexible feature that improves instruction following and multi-turn consistency.
 
 | Language | Rigid Rule (Not Adapted to Prompts) | Smile Comparison (Positive & Accurate) |
 |----------|--------------------------------------|-----------------------------------------|
