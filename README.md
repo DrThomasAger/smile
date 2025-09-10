@@ -368,7 +368,7 @@ Let's find out which prompt languages work best for which models and tasks, toge
     - An open-to-all webpage showing our findings. We'll track how (: Smile performs on every major model compared to other prompt languages, sharing everything live and learning as we go.
 
 - [ ] **How to Join the Exploration:**
-    - **Share a Puzzle:** Test ***(: Smile*** using an existing benchmarking suite and share the results! There are many repos that test prompts against LLM metrics. 
+    - **Report the First Results:** Test ***(: Smile*** using an existing benchmarking suite and share the results! There are many repos that test prompts against LLM metrics. 
     - **Share a Puzzle:** Have a tricky prompt with a metric to validate it? Add it to our benchmark suite! Let's solve these challenges together.
     - **Run an Experiment:** Test the benchmarks on any model you have access to. Every result you share adds a new piece to the map.
 
