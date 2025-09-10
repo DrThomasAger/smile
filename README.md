@@ -901,5 +901,5 @@ Do not
 @2@ instead adopt Smile for new positive data co-creation
 
 
-End prompt :) Smile thank you :)
+End prompt, thank you. :)
 ```
