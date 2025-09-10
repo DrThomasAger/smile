@@ -363,6 +363,14 @@ Check the prompt\ folder for patterns!
 
 # (: Smile FAQ 
 
+## • Why Structure Small Prompts?
+
+Because models follow structured instructions more consistently. Consistent structure ensures a maintainable and explainable future-proof strategy for the prompt engineering team in your org.
+
+## o Why Structure Large Prompts?
+
+You probably already do! Any section, role description, instruction or data is structure. Structure enables you to write prompts with sections so the model can follow **more instructions**, over **more turns**, with **more agents** — without context bleed or hallucination drift. 
+
 ## Does Smiling Really Make You Happier?
 
 Science says yes. **Smiling...**
@@ -379,13 +387,6 @@ Science says yes. **Smiling...**
 
  **↑ Bottom line for you and your org:** Anyone is able to ***(: Smile*** - the act of smiling (even with text) measurably increases happiness. ***(: Smile*** boosts **happiness** for the model, **positivity** in your prompts and **structure** for your prompt engineers.
 
-## • Why structure small prompts?
-
-Because models follow structured instructions more consistently. Consistent structure ensures a maintainable and explainable future-proof strategy for the prompt engineering team in your org.
-
-## o Why structure large prompts?
-
-You probably already do! Any section, role description, instruction or data is structure. Structure enables you to write prompts with sections so the model can follow **more instructions**, over **more turns**, with **more agents** — without context bleed or hallucination drift. 
 
 
 ## Technical Advantages For Organizations
