@@ -91,7 +91,7 @@ When we give our model a ***(: Smile***, we get **outcomes** that make our organ
 
 Love ***(: Smile?*** you can also [PayPal me](https://www.paypal.me/hanjopurebuddha) and support the project. Thank you! 
 
-
+Do you already structure your prompts using ***Markdown***, ***YAML*** or ***XML***? Find out why to use ***(: Smile*** using our [Super Comparison Table](#why--smile-and-not-another-markup)
 
 # Quick Start
 
