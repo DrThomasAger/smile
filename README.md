@@ -164,14 +164,7 @@ Do you already structure your prompts using ***Markdown***, ***YAML***, or ***XM
 
   [![☆ Star the repo](https://img.shields.io/github/stars/DrThomasAger/smile?style=social)](https://github.com/DrThomasAger/smile/stargazers)
 
-
-# Why a Structured Instruction Language?
-
-For large prompts, multi-turn interactions, and multi-agent systems we need structure. 
-
-To ensure maintainability and comprehensibility over time, easy knowledge transfer, and consistent outcomes we can use a **language** of **structure** like ***(: Smile***.
-
-`(: Smile`
+# `(: Smile`
 ---
 
 You start by clearly defining the start of a **section** and its **name** `(: Role & nametag - ***(: Expert***: (`
