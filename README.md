@@ -149,28 +149,6 @@ Because the model has seen these structures so many times (in so many different 
 
 That’s why people often use **structured sections** when writing instructions for the model — they help make the **meaning clear** without needing a lot of extra words.
 
-## Benefits Of (: Smile 
-
-**Structured prompts** get you:
-
-1. **The outcomes you intended to get**
-
-   — in **the way you intended to get them**,
-   
-   — **more consistently**.
-
-3. By writing `(: Smile` **structured sections** in your prompt,
-   
-   — your **model will follow your instructions** more often.
-
-5. The model will:
-   
-   — **Understand** your prompt better,
-   
-   — **Perform** better,
-   
-   — And complete **what you both agreed to do together**.
-
 
 ## Power Users
 
