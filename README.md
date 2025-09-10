@@ -357,6 +357,8 @@ This is the path I'm charting for (: Smile. It's a journey to make prompt engine
 
 ## Benchmarking Prompt Languages
 
+Let's find out which prompt languages work best for which models and tasks, together! 
+
 - [ ] **The `smile-bench` Suite:**
     - A library of fascinating and challenging prompting tasks to test our collective ideas.
     - Simple scripts to compare (: Smile with other prompting styles, so we can all see the results for ourselves.
@@ -391,25 +393,33 @@ We need to develop a VS code extension. The plan is to make writing ***(: Smile*
 ## Community Contributions
 
 
-- [:)] **The `SMILE-README-v1.0`:**
+- [ ] **The `SMILE-README-v1.0`:**
     - A clear and thoughtful guide to the language, written for humans.
     - It's what you're reading right now. 
-
-- [ ] **Our Community Space:**
-    - A friendly place on GitHub Discussions or Discord to share ideas, ask questions, and dream up what's next for (: Smile. Looking for community organizers! 
 
 - [ ] **Let's Shape the Future Together:**
     - **Be a Founding Voice:** Keep reading this. Your perspective will make it stronger.
     - **Join the Conversation:** DM me on discord or LinkedIn and share your view on how we can grow ***(: Smile*** together.
 
+    - **Share About Smile:** Smile is currently a small project without much attention or coverage. If you write a blog post, create a video, or share ***(: Smile*** you will be catching the scoop!
+    - **Help Us Reach the World:** Offer to translate this README.md into another language.
+
+
+
+- [ ] **Our Community Space:**
+    - A friendly place on GitHub Discussions or Discord to share ideas, ask questions, and dream up what's next for (: Smile. Looking for community organizers! 
+
+## The (: Smile Library Is In Progress!
+
+Check the prompt\ folder for patterns! 
 
 - [ ] **The Prompt Pattern Library:**
     - A gallery of elegant and effective (: Smile prompts, shared by the community, for everyone to learn from and use. These include modular and composable components like Chain-of-Thought (CoT).
 
 - [ ] **How to Share Your Wisdom:**
     - **Contribute a Pattern:** Share a prompt you're proud of. Write it in ***(: Smile***, and I'll review it. I'm also working on automated transformation systems from existing langauges into ***(: Smile***! Your solution could be exactly what someone else is looking for.
-    - **Share About Smile:** Smile is currently a small project without much attention or coverage. If you write a blog post, create a video, or share ***(: Smile*** you will be catching the scoop!
-    - **Help Us Reach the World:** Offer to translate this README.md into another language.
+
+
 
 
 
