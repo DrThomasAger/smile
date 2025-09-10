@@ -191,27 +191,6 @@ This creates a solid basis to play around with. We can add prompting like **topi
 
 Here, the ***(: Smile*** is the **structure** around the instructions. This is a key essential point. ***(: Smile*** creates a clear separation between prompt language and response language using **structure** in order to increase the model's **instruction following**. It does not enforce content or instruction types, instead **only** providing **positive** support to the writer's intent. 
 
-## How Do I Structure A Prompt?
-
- ***(: Smile***!
-
-In ***(: Smile***, prompts are typically structured using `(:` emoticons or brackets `(`
-
-These are used to define **sections**, like **role**.
-
-`(: Role section start (`
-
-These can open: `(:`, or close: `:)`, just like brackets in other languages.
-
-`) End Role section :)`
-
-In terms of token efficiency, `:)` and `)` are both a single token, and the former is more **expressive**.
-
-When we use **emoticons**, we can change the **eyes** and **mouth** to convey the **type of instruction**. For example, strictly providing the name tag:
-
-`[= name tag [ ***(: Knowledge Expert***: ] end name tag =]`
-
-
 
 
 ## Section Examples
