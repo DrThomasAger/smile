@@ -77,7 +77,7 @@ Here we share a prompt that uses a similar pattern, structured using emoticons i
 
 ***(: Smile*** is the **positive** language for **structured** prompt engineering.
 
-We define our **prompt instructions** and **response format** more clearly, so we can get more **consistent** and **effective** results.
+We use ***(: Smile*** as our **prompt instruction language**. With it, we define our  **response language** for the model clearly,  for **consistent** and **effective** results.
 
 When we give our model a ***(: Smile***, we get **outcomes** that make our organization **happy**.
 
