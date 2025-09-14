@@ -1,6 +1,3 @@
-
-
-
 ![Smile Prompt Language v1](20250826_0133_Smile%20with%20Emoticon_loop_01k3h83cvef4qbtegkt4qma1yf.gif)
 
 
@@ -354,13 +351,6 @@ Check the prompt\ folder for patterns!
 - [ ] **The Prompt Pattern Library:**
     - A gallery of elegant and effective (: Smile prompts, shared by the community, for everyone to learn from and use. These include modular and composable components like Chain-of-Thought (CoT).
 
-
-
-
-
-
-
-
 # (: Smile FAQ 
 
 # Prompt Engineering FAQ
@@ -371,15 +361,17 @@ How to use a prompt language for prompt engineering to structure text for reliab
 
 * No bleedover of prompt language e.g. (: Smile brackets, into response language (Like Markdown or JSON).
   
-** Solution: Try increasing meta-description of process e.g. "respond now in Markdown, not prompt language",
-** Solution: Try removing excess brackets (overly closed sections can sometimes result in imitation, if for example you close every (: Smile bracket the same way every time.
+**Solution:** Try increasing meta-description of process e.g. "respond now in Markdown, not prompt language".
+
+**Solution:** Try removing excess brackets (overly closed sections can sometimes result in imitation, if for example you close every (: Smile bracket the same way every time.
 
 * Response language follows the definition and curly braces are fully replaced and not present in the response. e.g. the model says "This is a cat." not "{Describe the image}" or {This is a cat.}.
-** Solution: Explain briefly that "curly braces are placeholders that contain instructions. these placeholders are replaced by text that follows those instructions.
+  
+**Solution:** Explain briefly that "curly braces are placeholders that contain instructions. these placeholders are replaced by text that follows those instructions.
   
 * All key instructions are followed in every response. If a name tag is present, this is guaranteed over multiple turns.
   
-** **Solution:** It certain instructions need more priority, use [! Emphasis wrappers !], place the instructions at the top and the bottom (the middle is often lost in LLM attention) and if need be, use **BOLD AND CAPS**.
+**Solution:** It certain instructions need more priority, use [! Emphasis wrappers !], place the instructions at the top and the bottom (the middle is often lost in LLM attention) and if need be, use **BOLD AND CAPS**.
 
 ## • Why Structure Small Prompts?
 
