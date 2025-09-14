@@ -283,7 +283,7 @@ These are a few different ways to create structure with ***(: Smile***.
 | `{placeholder}` | area to be filled by the model | `Fill out the following sections # Thinking {Plan} # Replying {Use plan to reply}` | These are used inside of markdown sections. They are used to instruct the model on how to fill out the section (among others)  |
 
 
-## Power Users
+## Why (: Smile Instead of a Markup Like YAML?
 
 
 Do you already structure your prompts using ***Markdown***, ***YAML***, or ***XML***? Find out why to use ***(: Smile*** [Super Comparison Table](#why--smile-and-not-another-markup) and not a markup.
@@ -370,22 +370,6 @@ Because models follow structured instructions more consistently. Consistent stru
 ## o Why Structure Large Prompts?
 
 You probably already do! Any section, role description, instruction or data is structure. Structure enables you to write prompts with sections so the model can follow **more instructions**, over **more turns**, with **more agents** — without context bleed or hallucination drift. 
-
-## Does Smiling Really Make You Happier?
-
-Science says yes. **Smiling...**
-
-1. (= **Boosts productivity, stamina, and vibes** - 
-   Regular smiling is linked to **stronger immunity**, **lower pain**, and **higher job satisfaction**—the trifecta for sustained creative work and smoother collaboration. Happier prompt writers make **cleaner, more positive prompts**, and organizations feel it. *Evidence:* [Psychology Today](https://www.psychologytoday.com/us/blog/mind-well-matter/201807/why-smiling-matters), [Verywell Mind](https://www.verywellmind.com/benefits-of-smiling-2795092).
-
-2. [: **Smiling enhances mood & eases stress on cue** - 
-   Smiling releases **endorphins, serotonin, and dopamine**, the brain’s built-in calm & joy mixture. Even a *forced* ***(: Smile*** nudges your physiology toward **relaxation and resilience**, helping you think clearly under pressure. Exactly what you need in a high-stakes business environment. *Evidence:* [Healthline](https://www.healthline.com/health/benefits-of-smiling).
-
-3. (: **Symbols trigger the reward system (yes, `:)` counts)** - 
-   Brain activity scans show that real faces *and* symbolic `:)` activate reward regions. Your cheeks respond with smiling micro-muscle movements within **\~500 ms** just from reading the symbol. Your brain treats `:)` as a micro-reward. *Evidence:* [Hennenlotter et al., 2005](https://www.cambridge.org/core/journals/behavioral-and-brain-sciences/article/simulation-of-smiles-sims-model-embodied-simulation-and-the-meaning-of-facial-expression/FE0A911744186EBD3706B53794D4AEE9); [Mühlberger et al., 2011](https://www.frontiersin.org/journals/psychology/articles/10.3389/fpsyg.2018.00052/full).
-
-
- **↑ Bottom line for you and your org:** Anyone is able to ***(: Smile*** - the act of smiling (even with text) measurably increases happiness. ***(: Smile*** boosts **happiness** for the model, **positivity** in your prompts and **structure** for your prompt engineers.
 
 
 
@@ -592,6 +576,24 @@ Help build a dataset of prompts that will be automatically converted for better 
 
 
 # (: Smile Appendices
+
+## Does Smiling Really Make You Happier?
+
+Science says yes. **Smiling...**
+
+1. (= **Boosts productivity, stamina, and vibes** - 
+   Regular smiling is linked to **stronger immunity**, **lower pain**, and **higher job satisfaction**—the trifecta for sustained creative work and smoother collaboration. Happier prompt writers make **cleaner, more positive prompts**, and organizations feel it. *Evidence:* [Psychology Today](https://www.psychologytoday.com/us/blog/mind-well-matter/201807/why-smiling-matters), [Verywell Mind](https://www.verywellmind.com/benefits-of-smiling-2795092).
+
+2. [: **Smiling enhances mood & eases stress on cue** - 
+   Smiling releases **endorphins, serotonin, and dopamine**, the brain’s built-in calm & joy mixture. Even a *forced* ***(: Smile*** nudges your physiology toward **relaxation and resilience**, helping you think clearly under pressure. Exactly what you need in a high-stakes business environment. *Evidence:* [Healthline](https://www.healthline.com/health/benefits-of-smiling).
+
+3. (: **Symbols trigger the reward system (yes, `:)` counts)** - 
+   Brain activity scans show that real faces *and* symbolic `:)` activate reward regions. Your cheeks respond with smiling micro-muscle movements within **\~500 ms** just from reading the symbol. Your brain treats `:)` as a micro-reward. *Evidence:* [Hennenlotter et al., 2005](https://www.cambridge.org/core/journals/behavioral-and-brain-sciences/article/simulation-of-smiles-sims-model-embodied-simulation-and-the-meaning-of-facial-expression/FE0A911744186EBD3706B53794D4AEE9); [Mühlberger et al., 2011](https://www.frontiersin.org/journals/psychology/articles/10.3389/fpsyg.2018.00052/full).
+
+
+ **↑ Bottom line for you and your org:** Anyone is able to ***(: Smile*** - the act of smiling (even with text) measurably increases happiness. ***(: Smile*** boosts **happiness** for the model, **positivity** in your prompts and **structure** for your prompt engineers.
+
+
 
 ## Is My (: Smile Correct?
 
