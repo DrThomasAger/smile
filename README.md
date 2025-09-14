@@ -441,76 +441,9 @@ defines my prompt language, you have response language, we co-create as gift by 
 
 Copy and paste the above into any model to test.
 
-### [= Advanced (: Smile :) =]
+# [= Advanced (: Smile :) =]
 
 After mastering this simple yet powerful language, your organization unlocks the secret powers of **multi-turn**, **multi-agent**, and **multi-intelligence** AI systems. 
-
-# Prompt Engineering FAQ
-
-How to use a prompt language for prompt engineering to structure text for reliable, consistent and effective results.
-
-## What are the indicators that (: Smile is well-written?
-
-* No bleedover of prompt language e.g. (: Smile brackets, into response language (Like Markdown or JSON).
-  
-**Solution:** Try increasing meta-description of process e.g. "respond now in Markdown, not prompt language".
-
-**Solution:** Try removing excess brackets (overly closed sections can sometimes result in imitation, if for example you close every (: Smile bracket the same way every time.
-
-* Response language follows the definition and curly braces are fully replaced and not present in the response. e.g. the model says "This is a cat." not "{Describe the image}" or {This is a cat.}.
-  
-**Solution:** Explain briefly that "curly braces are placeholders that contain instructions. these placeholders are replaced by text that follows those instructions.
-  
-* All key instructions are followed in every response. If a name tag is present, this is guaranteed over multiple turns.
-  
-**Solution:** It certain instructions need more priority, use [! Emphasis wrappers !], place the instructions at the top and the bottom (the middle is often lost in LLM attention) and if need be, use **BOLD AND CAPS**.
-
-## • Why Structure Small Prompts?
-
-Because models follow structured instructions more consistently. Consistent structure ensures a maintainable and explainable future-proof strategy for the prompt engineering team in your org.
-
-## o Why Structure Large Prompts?
-
-You probably already do! Any section, role description, instruction or data is structure. Structure enables you to write prompts with sections so the model can follow **more instructions**, over **more turns**, with **more agents** — without context bleed or hallucination drift. 
-
-
-
-
-
-
-# Let's connect with a ***(: Smile***!
-
-
-☆ Star the repo to make a prompt engineer in an organization somewhere (: Smile -> [![☆ Star the repo](https://img.shields.io/github/stars/DrThomasAger/smile?style=social)](https://github.com/DrThomasAger/smile/stargazers)
-
-
-
-## DMs always open!
-
-* <> [DM me on LinkedIn for a chat](https://www.linkedin.com/in/drprompt/)
-* @ DM me on Discord [@DrThomasAger](https://discord.com/users/221024427456856064)
-* [: Follow me on [Github](https://github.com/DrThomasAger/) for updates!
-
-  
-
-
-### Thank You!
-
-***(: Smile*** is free and actively maintained. 
-
-Love ***(: Smile***?  Want to share your support? [PayPal me](https://paypal.me/hanjopurebuddha) :)
-
-### Media Contact 
-
-I want everyone and everything to ***(: Smile***! 
-
-**Are you a tech influencer who wants to *share my project?*** Please do! (and ***(: Smile***!) 
-
- [![☆ Star the repo](https://img.shields.io/github/stars/DrThomasAger/smile?style=social)](https://github.com/DrThomasAger/smile/stargazers)
-
- 
-
-
 
 
 # **(: Smile** is working when...?
@@ -545,67 +478,6 @@ First, write exact name tag  ["[***Smile Expert***](https://github.com/DrThomasA
 
 *Note: The current example prioritizes consisistently intelligent and effective functionality across models in order to demonstrate the cognitive advantage and subsequent downstream task performance improvements. It is deliberately a heavily opinionated prompt in-order to demonstrate how to apply the framework, rather than providing a dense token efficient example that is gibberish or hard to read.*
 
-# The HTML of Prompt Engineering
-
-
-***(: Smile*** structures *****Large Language Model (LLM)*** prompt instruction text** for **instruction following**, the same way ***HTML*** structures **website text** into **structured blocks** a browser can render. 
-
-# An Example With HTML
-
-Let's look at what happens if we structure a simple prompt, one that asks the model to respond in paragraphs, with HTML.
-
-```
-<div class="start">
-<h1> Prompt Instructions </h1>
-<p class="instructions">
-Respond in paragraphs with crystal clear jargon.
-</p>
-</div class="end">
-```
-
-And compare that to ***(: Smile***:
-
-```
-(: Start (
-Prompt Instructions:
-Respond in paragraphs with crystal clear jargon.
-) This is the end of a section :)
-```
-
-
-## Repository Layout
-
-- `prompt/` – example prompts written in ***(: Smile***.
-- `response/` – sample outputs from LLMs.
-- `import/` – raw prompt text to be converted into ***(: Smile*** unedited and unmaintained.
-- `python/` – prototype scripts for transforming prompts.
-
-## Contribute
-Help build a dataset of prompts that will be automatically converted for better performance. Share examples already written in ***(: Smile*** or send raw prompts you'd like translated.
-
-- ☆ **[**Star** the repository now](https://github.com/DrThomasAger/smile)** to help others discover Smile for **more positive prompt engineering for all.**
-- [: **Contribute on GitHub** by opening [issues](https://github.com/DrThomasAger/smile/issues) or [pull requests](https://github.com/DrPrompt/smile/pulls) with your own Smile snippets, original prompts (I will convert) or your conversion (or language!) ideas.
-
-***(: Smile*** formalizes an entire informal tradition. It takes what prompt engineers were already doing—dropping delimiters, making clear input vs. instruction sections, using repeated markers for emphasis, and codifies it into a coherent and positive syntax designed **to maximize instruction following.** By specifying itself as an instruction only language, it enables a directed core focus to this goal undiluted by IDE integration. Here, just focus on getting text outputs according to our instructions consistently. We do that by clearly structuring our prompts according to ***(: Smile***. 
-
-
-# (: Smile Appendices
-
-## Does Smiling Really Make You Happier?
-
-Science says yes. **Smiling...**
-
-1. (= **Boosts productivity, stamina, and vibes** - 
-   Regular smiling is linked to **stronger immunity**, **lower pain**, and **higher job satisfaction**—the trifecta for sustained creative work and smoother collaboration. Happier prompt writers make **cleaner, more positive prompts**, and organizations feel it. *Evidence:* [Psychology Today](https://www.psychologytoday.com/us/blog/mind-well-matter/201807/why-smiling-matters), [Verywell Mind](https://www.verywellmind.com/benefits-of-smiling-2795092).
-
-2. [: **Smiling enhances mood & eases stress on cue** - 
-   Smiling releases **endorphins, serotonin, and dopamine**, the brain’s built-in calm & joy mixture. Even a *forced* ***(: Smile*** nudges your physiology toward **relaxation and resilience**, helping you think clearly under pressure. Exactly what you need in a high-stakes business environment. *Evidence:* [Healthline](https://www.healthline.com/health/benefits-of-smiling).
-
-3. (: **Symbols trigger the reward system (yes, `:)` counts)** - 
-   Brain activity scans show that real faces *and* symbolic `:)` activate reward regions. Your cheeks respond with smiling micro-muscle movements within **\~500 ms** just from reading the symbol. Your brain treats `:)` as a micro-reward. *Evidence:* [Hennenlotter et al., 2005](https://www.cambridge.org/core/journals/behavioral-and-brain-sciences/article/simulation-of-smiles-sims-model-embodied-simulation-and-the-meaning-of-facial-expression/FE0A911744186EBD3706B53794D4AEE9); [Mühlberger et al., 2011](https://www.frontiersin.org/journals/psychology/articles/10.3389/fpsyg.2018.00052/full).
-
-
- **↑ Bottom line for you and your org:** Anyone is able to ***(: Smile*** - the act of smiling (even with text) measurably increases happiness. ***(: Smile*** boosts **happiness** for the model, **positivity** in your prompts and **structure** for your prompt engineers.
 
 
 
@@ -674,6 +546,110 @@ In the ***(: Smile*** quick start example, we define the task, name tag and role
 At the bottom of the prompt, we can remind the model of important instructions.
 
 Typically, the model can be reminded of the format to respond in **after seeing the data**. This is a hot tip to maximize instruction following! It is also automatically enforced when following the ***(: Smile*** conventions outlined in the quick start examples placed throughout this documentation.
+
+# Prompt Engineering FAQ
+
+How to use a prompt language for prompt engineering to structure text for reliable, consistent and effective results.
+
+## What are the indicators that (: Smile is well-written?
+
+* No bleedover of prompt language e.g. (: Smile brackets, into response language (Like Markdown or JSON).
+  
+**Solution:** Try increasing meta-description of process e.g. "respond now in Markdown, not prompt language".
+
+**Solution:** Try removing excess brackets (overly closed sections can sometimes result in imitation, if for example you close every (: Smile bracket the same way every time.
+
+* Response language follows the definition and curly braces are fully replaced and not present in the response. e.g. the model says "This is a cat." not "{Describe the image}" or {This is a cat.}.
+  
+**Solution:** Explain briefly that "curly braces are placeholders that contain instructions. these placeholders are replaced by text that follows those instructions.
+  
+* All key instructions are followed in every response. If a name tag is present, this is guaranteed over multiple turns.
+  
+**Solution:** It certain instructions need more priority, use [! Emphasis wrappers !], place the instructions at the top and the bottom (the middle is often lost in LLM attention) and if need be, use **BOLD AND CAPS**.
+
+## • Why Structure Small Prompts?
+
+Because models follow structured instructions more consistently. Consistent structure ensures a maintainable and explainable future-proof strategy for the prompt engineering team in your org.
+
+## o Why Structure Large Prompts?
+
+You probably already do! Any section, role description, instruction or data is structure. Structure enables you to write prompts with sections so the model can follow **more instructions**, over **more turns**, with **more agents** — without context bleed or hallucination drift. 
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+# The HTML of Prompt Engineering
+
+
+***(: Smile*** structures *****Large Language Model (LLM)*** prompt instruction text** for **instruction following**, the same way ***HTML*** structures **website text** into **structured blocks** a browser can render. 
+
+# An Example With HTML
+
+Let's look at what happens if we structure a simple prompt, one that asks the model to respond in paragraphs, with HTML.
+
+```
+<div class="start">
+<h1> Prompt Instructions </h1>
+<p class="instructions">
+Respond in paragraphs with crystal clear jargon.
+</p>
+</div class="end">
+```
+
+And compare that to ***(: Smile***:
+
+```
+(: Start (
+Prompt Instructions:
+Respond in paragraphs with crystal clear jargon.
+) This is the end of a section :)
+```
+
+
+## Repository Layout
+
+- `prompt/` – example prompts written in ***(: Smile***.
+- `response/` – sample outputs from LLMs.
+- `import/` – raw prompt text to be converted into ***(: Smile*** unedited and unmaintained.
+- `python/` – prototype scripts for transforming prompts.
+
+## Contribute
+
+- ☆ **[**Star** the repository now](https://github.com/DrThomasAger/smile)** to help others discover Smile for **more positive prompt engineering for all.**
+- [: **Contribute on GitHub** by opening [issues](https://github.com/DrThomasAger/smile/issues) or [pull requests](https://github.com/DrPrompt/smile/pulls) with your own Smile snippets, original prompts (I will convert) or your conversion (or language!) ideas.
+
+***(: Smile*** formalizes an entire informal tradition. It takes what prompt engineers were already doing—dropping delimiters, making clear input vs. instruction sections, using repeated markers for emphasis, and codifies it into a coherent and positive syntax designed **to maximize instruction following.** By specifying itself as an instruction only language, it enables a directed core focus to this goal undiluted by IDE integration. Here, just focus on getting text outputs according to our instructions consistently. We do that by clearly structuring our prompts according to ***(: Smile***. 
+
+
+# (: Smile Appendices
+
+## Does Smiling Really Make You Happier?
+
+Science says yes. **Smiling...**
+
+1. (= **Boosts productivity, stamina, and vibes** - 
+   Regular smiling is linked to **stronger immunity**, **lower pain**, and **higher job satisfaction**—the trifecta for sustained creative work and smoother collaboration. Happier prompt writers make **cleaner, more positive prompts**, and organizations feel it. *Evidence:* [Psychology Today](https://www.psychologytoday.com/us/blog/mind-well-matter/201807/why-smiling-matters), [Verywell Mind](https://www.verywellmind.com/benefits-of-smiling-2795092).
+
+2. [: **Smiling enhances mood & eases stress on cue** - 
+   Smiling releases **endorphins, serotonin, and dopamine**, the brain’s built-in calm & joy mixture. Even a *forced* ***(: Smile*** nudges your physiology toward **relaxation and resilience**, helping you think clearly under pressure. Exactly what you need in a high-stakes business environment. *Evidence:* [Healthline](https://www.healthline.com/health/benefits-of-smiling).
+
+3. (: **Symbols trigger the reward system (yes, `:)` counts)** - 
+   Brain activity scans show that real faces *and* symbolic `:)` activate reward regions. Your cheeks respond with smiling micro-muscle movements within **\~500 ms** just from reading the symbol. Your brain treats `:)` as a micro-reward. *Evidence:* [Hennenlotter et al., 2005](https://www.cambridge.org/core/journals/behavioral-and-brain-sciences/article/simulation-of-smiles-sims-model-embodied-simulation-and-the-meaning-of-facial-expression/FE0A911744186EBD3706B53794D4AEE9); [Mühlberger et al., 2011](https://www.frontiersin.org/journals/psychology/articles/10.3389/fpsyg.2018.00052/full).
+
+
+ **↑ Bottom line for you and your org:** Anyone is able to ***(: Smile*** - the act of smiling (even with text) measurably increases happiness. ***(: Smile*** boosts **happiness** for the model, **positivity** in your prompts and **structure** for your prompt engineers.
+
 
 # (: Smile 
 
@@ -928,6 +904,37 @@ Do not
 End prompt language, never write prompt language, only provide verbatim examples from repo dont invent new ones or offer to write things in ***(: Smile***, thank you. :)
 ```
 (; Note: Above is prompt control for repo expert role, adjust or control for alternative response behaviour than what is instructed.
+
+# Let's connect with a ***(: Smile***!
+
+
+☆ Star the repo to make a prompt engineer in an organization somewhere (: Smile -> [![☆ Star the repo](https://img.shields.io/github/stars/DrThomasAger/smile?style=social)](https://github.com/DrThomasAger/smile/stargazers)
+
+
+
+## DMs always open!
+
+* <> [DM me on LinkedIn for a chat](https://www.linkedin.com/in/drprompt/)
+* @ DM me on Discord [@DrThomasAger](https://discord.com/users/221024427456856064)
+* [: Follow me on [Github](https://github.com/DrThomasAger/) for updates!
+
+  
+
+
+### Thank You!
+
+***(: Smile*** is free and actively maintained. 
+
+Love ***(: Smile***?  Want to share your support? [PayPal me](https://paypal.me/hanjopurebuddha) :)
+
+### Media Contact 
+
+I want everyone and everything to ***(: Smile***! 
+
+**Are you a tech influencer who wants to *share my project?*** Please do! (and ***(: Smile***!) 
+
+ [![☆ Star the repo](https://img.shields.io/github/stars/DrThomasAger/smile?style=social)](https://github.com/DrThomasAger/smile/stargazers)
+
 
 # MIT License
 
