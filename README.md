@@ -351,39 +351,11 @@ Check the prompt\ folder for patterns!
 - [ ] **The Prompt Pattern Library:**
     - A gallery of elegant and effective (: Smile prompts, shared by the community, for everyone to learn from and use. These include modular and composable components like Chain-of-Thought (CoT).
 
-# (: Smile FAQ 
-
-# Prompt Engineering FAQ
-
-How to use a prompt language for prompt engineering to structure text for reliable, consistent and effective results.
-
-## What are the indicators that (: Smile is well-written?
-
-* No bleedover of prompt language e.g. (: Smile brackets, into response language (Like Markdown or JSON).
-  
-**Solution:** Try increasing meta-description of process e.g. "respond now in Markdown, not prompt language".
-
-**Solution:** Try removing excess brackets (overly closed sections can sometimes result in imitation, if for example you close every (: Smile bracket the same way every time.
-
-* Response language follows the definition and curly braces are fully replaced and not present in the response. e.g. the model says "This is a cat." not "{Describe the image}" or {This is a cat.}.
-  
-**Solution:** Explain briefly that "curly braces are placeholders that contain instructions. these placeholders are replaced by text that follows those instructions.
-  
-* All key instructions are followed in every response. If a name tag is present, this is guaranteed over multiple turns.
-  
-**Solution:** It certain instructions need more priority, use [! Emphasis wrappers !], place the instructions at the top and the bottom (the middle is often lost in LLM attention) and if need be, use **BOLD AND CAPS**.
-
-## • Why Structure Small Prompts?
-
-Because models follow structured instructions more consistently. Consistent structure ensures a maintainable and explainable future-proof strategy for the prompt engineering team in your org.
-
-## o Why Structure Large Prompts?
-
-You probably already do! Any section, role description, instruction or data is structure. Structure enables you to write prompts with sections so the model can follow **more instructions**, over **more turns**, with **more agents** — without context bleed or hallucination drift. 
 
 
 
-## Technical Advantages For Organizations
+
+# Technical Advantages For Organizations
 
 ***(: Smile*** is easy to **learn**, easy to **read**, and easy to **scale**. It makes every prompt:
 
@@ -473,33 +445,37 @@ Copy and paste the above into any model to test.
 
 After mastering this simple yet powerful language, your organization unlocks the secret powers of **multi-turn**, **multi-agent**, and **multi-intelligence** AI systems. 
 
+# Prompt Engineering FAQ
 
-# The HTML of Prompt Engineering
+How to use a prompt language for prompt engineering to structure text for reliable, consistent and effective results.
+
+## What are the indicators that (: Smile is well-written?
+
+* No bleedover of prompt language e.g. (: Smile brackets, into response language (Like Markdown or JSON).
+  
+**Solution:** Try increasing meta-description of process e.g. "respond now in Markdown, not prompt language".
+
+**Solution:** Try removing excess brackets (overly closed sections can sometimes result in imitation, if for example you close every (: Smile bracket the same way every time.
+
+* Response language follows the definition and curly braces are fully replaced and not present in the response. e.g. the model says "This is a cat." not "{Describe the image}" or {This is a cat.}.
+  
+**Solution:** Explain briefly that "curly braces are placeholders that contain instructions. these placeholders are replaced by text that follows those instructions.
+  
+* All key instructions are followed in every response. If a name tag is present, this is guaranteed over multiple turns.
+  
+**Solution:** It certain instructions need more priority, use [! Emphasis wrappers !], place the instructions at the top and the bottom (the middle is often lost in LLM attention) and if need be, use **BOLD AND CAPS**.
+
+## • Why Structure Small Prompts?
+
+Because models follow structured instructions more consistently. Consistent structure ensures a maintainable and explainable future-proof strategy for the prompt engineering team in your org.
+
+## o Why Structure Large Prompts?
+
+You probably already do! Any section, role description, instruction or data is structure. Structure enables you to write prompts with sections so the model can follow **more instructions**, over **more turns**, with **more agents** — without context bleed or hallucination drift. 
 
 
-***(: Smile*** structures *****Large Language Model (LLM)*** prompt instruction text** for **instruction following**, the same way ***HTML*** structures **website text** into **structured blocks** a browser can render. 
 
-# An Example With HTML
 
-Let's look at what happens if we structure a simple prompt, one that asks the model to respond in paragraphs, with HTML.
-
-```
-<div class="start">
-<h1> Prompt Instructions </h1>
-<p class="instructions">
-Respond in paragraphs with crystal clear jargon.
-</p>
-</div class="end">
-```
-
-And compare that to ***(: Smile***:
-
-```
-(: Start (
-Prompt Instructions:
-Respond in paragraphs with crystal clear jargon.
-) This is the end of a section :)
-```
 
 
 # Let's connect with a ***(: Smile***!
@@ -569,8 +545,36 @@ First, write exact name tag  ["[***Smile Expert***](https://github.com/DrThomasA
 
 *Note: The current example prioritizes consisistently intelligent and effective functionality across models in order to demonstrate the cognitive advantage and subsequent downstream task performance improvements. It is deliberately a heavily opinionated prompt in-order to demonstrate how to apply the framework, rather than providing a dense token efficient example that is gibberish or hard to read.*
 
+# The HTML of Prompt Engineering
+
+
+***(: Smile*** structures *****Large Language Model (LLM)*** prompt instruction text** for **instruction following**, the same way ***HTML*** structures **website text** into **structured blocks** a browser can render. 
+
+# An Example With HTML
+
+Let's look at what happens if we structure a simple prompt, one that asks the model to respond in paragraphs, with HTML.
+
+```
+<div class="start">
+<h1> Prompt Instructions </h1>
+<p class="instructions">
+Respond in paragraphs with crystal clear jargon.
+</p>
+</div class="end">
+```
+
+And compare that to ***(: Smile***:
+
+```
+(: Start (
+Prompt Instructions:
+Respond in paragraphs with crystal clear jargon.
+) This is the end of a section :)
+```
+
 
 ## Repository Layout
+
 - `prompt/` – example prompts written in ***(: Smile***.
 - `response/` – sample outputs from LLMs.
 - `import/` – raw prompt text to be converted into ***(: Smile*** unedited and unmaintained.
