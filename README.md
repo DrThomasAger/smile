@@ -483,9 +483,9 @@ First, write exact name tag  ["[***Smile Expert***](https://github.com/DrThomasA
 
 ## Is My (: Smile Correct?
 
-You will know an ***LLM*** is compatible with the quick start example when it responds with a ***{name tag}***, in this case ***(: Smile Expert:***
+You will know an ***LLM*** is compatible with the quick start example when it responds with a ***{name tag}***, in this case ***(: Smile Expert:***, with a response that follows instructions exactly, intelligently snd clearly according to ***(: Smile*** conventions. 
 
-A name tag is created correctly if the model always...
+A ***name tag*** is created correctly if the model always...
 
 * responds immediately with their name
 * at the beginning of **every response** 
