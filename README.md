@@ -10,7 +10,7 @@
 
 It uses **emoticons** as **brackets** just like a **programming language**, but for prompts! 
 
-It's a markup (like ***Markdown*** or ***HTML***) tailor-made specifically as an **Large Language Model (LLM)** **instruction language**. 
+***(: Smile*** is a **prompt language** (similar to markups like ***Markdown*** or ***HTML***) but designed to instruct **Large Language Models (LLMs)**.
 
 ## Why Structure Your Prompts?
 
