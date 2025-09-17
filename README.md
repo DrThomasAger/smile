@@ -70,6 +70,18 @@ Here we share a prompt that uses a similar pattern, structured using emoticons i
 
 **Copy and paste** the above **now** into your favorite language model and discover how ***(: Smile*** works through direct experience. 
 
+# Compatible & Free Quick Chat
+
+***(: Smile*** is portable across any LLM! Try the example ***(: Smile*** prompt on a free ***LLM*** quick chat now:
+
+
+| **Type**   | ✓ Link to copy & paste                                | Smile Compatible? |
+|:----------:|:------------------------------------------|-------------|
+| **Open**   | [Kimi Chat (Moonshot AI)](https://www.kimi.com/)|             ✓             |
+|    **Closed**    | [Claude (Anthropic)](https://claude.ai/new)      |             ✓             |
+|    **Closed**    | [ChatGPT (OpenAI)](https://chatgpt.com/)      |             ✓             |
+
+**Just copy and paste the quick start example into one of the chats above, or check [here](#portability-and-compatibility) for alternative options.**
 
 ## Why (: Smile?
 
@@ -110,18 +122,7 @@ defines my prompt language, you have response language, we co-create as gift by 
 
 Feel free to [DM me](https://www.linkedin.com/in/drprompt) and lets chat about ***(: Smile***.
 
-# Compatible & Free Quick Chat
 
-Try ***(: Smile*** on a ***LLM*** now:
-
-
-| **Type**   | ✓ Link to copy & paste                                | Smile Compatible? |
-|:----------:|:------------------------------------------|-------------|
-| **Open**   | [Kimi Chat (Moonshot AI)](https://www.kimi.com/)|             ✓             |
-|    **Closed**    | [Claude (Anthropic)](https://claude.ai/new)      |             ✓             |
-|    **Closed**    | [ChatGPT (OpenAI)](https://chatgpt.com/)      |             ✓             |
-
-**Just copy and paste the quick start example into one of the chats above, or check [here](#portability-and-compatibility) for alternative options.**
 
 # Star the Repo and Support Open Source! :)
 
