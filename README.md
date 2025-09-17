@@ -1,4 +1,4 @@
->(: want to chat to ***(: Smile***? Talk to this repo by copy-and-pasting it into any LLM! :) 
+>(: want to chat to ***(: Smile***? Talk to this repo by copy-and-pasting it into any [LLM](https://claude.ai/new)
 
 ![Smile Prompt Language v1](20250826_0133_Smile%20with%20Emoticon_loop_01k3h83cvef4qbtegkt4qma1yf.gif)
 
