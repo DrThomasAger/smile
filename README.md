@@ -77,11 +77,11 @@ Here we share a prompt that uses a similar pattern, structured using emoticons i
 ***(: Smile*** is portable across any LLM! Try the example ***(: Smile*** prompt on a free ***LLM*** quick chat now:
 
 
-| **Type**   | ✓ Link to copy & paste                                | Smile Compatible? |
-|:----------:|:------------------------------------------|-------------|
-| **Open**   | [Kimi Chat (Moonshot AI)](https://www.kimi.com/)|             ✓             |
-|    **Closed**    | [Claude (Anthropic)](https://claude.ai/new)      |             ✓             |
-|    **Closed**    | [ChatGPT (OpenAI)](https://chatgpt.com/)      |             ✓             |
+| ✓ Link to copy & paste                                | Smile Compatible? |
+|:------------------------------------------|-------------|
+| [Kimi Chat (Moonshot AI)](https://www.kimi.com/)|             ✓             |
+   | [Claude (Anthropic)](https://claude.ai/new)      |             ✓             |
+  | [ChatGPT (OpenAI)](https://chatgpt.com/)      |             ✓             |
 
 **Just copy and paste the quick start example into one of the chats above, or check [here](#portability-and-compatibility) for alternative options.**
 
