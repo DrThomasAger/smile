@@ -1,4 +1,4 @@
->(: want to chat to this [README.md](https://github.com/DrThomasAger/smile/blob/main/README.md)? Copy-and-paste the full raw text into any [LLM](https://claude.ai/new) to explore ***(: Smile*** now! 
+>(: want to chat to this [README.md](https://github.com/DrThomasAger/smile/blob/main/README.md)? Copy-and-paste the [full raw text](https://github.com/DrThomasAger/smile/blob/main/README.md) into any [LLM](https://claude.ai/new) to explore ***(: Smile*** now! 
 
 ![Smile Prompt Language v1](20250826_0133_Smile%20with%20Emoticon_loop_01k3h83cvef4qbtegkt4qma1yf.gif)
 
