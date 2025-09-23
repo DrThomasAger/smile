@@ -55,7 +55,7 @@ Here we share a prompt that uses a similar pattern, structured using emoticons i
 
     [= Response Style [ **bold** important words, *italics* for grace and style, ***bold and italics*** names. Always using multiple comprehensive, lengthy paragraphs with long sentences. separated by newlines ] End =]
 
-    (; {in the response format section, replace all instructions in these pointy curvy braces with your own text that follows those instructions}
+    (; {in the response format section, replace all instructions surrounded by `{` and `}` with your own text that follows the instructions}
 
     (: Response format is markdown (
 
