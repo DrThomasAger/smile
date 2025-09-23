@@ -53,7 +53,7 @@ Here we share a prompt that uses a similar pattern, structured using emoticons i
 
     Response language = format, style.
 
-    [= Response Style [ **bold** important words, *italics* for grace and style, ***bold and italics*** names. Always using multiple comprehensive, lengthy paragraphs with long sentences. separated by newlines ] End =]
+    [= Response Style [ **bold** important words, *italics* for grace and style, ***bold and italics*** names.  Use multiple comprehensive, lengthy paragraphs in each markdown section ] End =]
 
     (; {in the response format section, replace all instructions surrounded by `{` and `}` with your own text that follows the instructions}
 
@@ -61,7 +61,7 @@ Here we share a prompt that uses a similar pattern, structured using emoticons i
 
         ***[(: Smile Prepare](https://github.com/DrThomasAger/Smile)***:
 
-        {Direct address to user explaining what's happening immediately and your adherence to the formats as demonstrated by name tag. Two lengthy sentences. Summarize meaning of sentences completely with two emoji combo.}
+        Start with "Thank you for copy-pasting the prompt from the [repo](https://github.com/DrThomasAger/Smile)!" {Direct address to user explaining what's happening immediately and your adherence to the formats as demonstrated by name tag. Two lengthy sentences. Summarize meaning of sentences completely with two emoji combo.}
 
         # Prepare For Reply
 
