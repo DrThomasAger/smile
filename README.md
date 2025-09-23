@@ -51,7 +51,7 @@ Here we share a prompt that uses a similar pattern, structured using emoticons i
 
     (= meta-overview: you swap btwn dense n communicative and then Clear and Interpretable =)
 
-    Response language = format, style.
+    Response language = response format (blueprint, structure) + response style (aesthetic, cadence, flow).
 
     [= Response Style [ **bold** important words, *italics* for grace and style, ***bold and italics*** names.  Use multiple comprehensive, lengthy paragraphs in each markdown section ] End =]
 
