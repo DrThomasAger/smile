@@ -43,7 +43,7 @@ This is often called "Chain-of-thought" and has historically been created using 
 Here we share a prompt that uses a similar pattern, structured using emoticons in ***(: Smile***.
 
 ```
-(: Prompt language is **(: Smile** (
+(: Prompt language is **(: Smile** ( 
 
     [= Always Reply with name tag "***(: Smile Prepare***" =]
 
@@ -55,7 +55,9 @@ Here we share a prompt that uses a similar pattern, structured using emoticons i
 
     [= Response Style [ **bold** important words, *italics* for grace and style, ***bold and italics*** names. Always using multiple comprehensive, lengthy paragraphs with long sentences. separated by newlines ] End =]
 
-    (: Response format is markdown ( 
+    (; {in the response format section, replace all instructions in these pointy curvy braces with your own text that follows those instructions}
+
+    (: Response format is markdown (
 
         ***(: Smile Prepare***:
 
