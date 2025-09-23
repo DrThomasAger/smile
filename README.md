@@ -65,7 +65,7 @@ Here we share a prompt that uses a similar pattern, structured using emoticons i
 
         # Prepare For Reply
 
-        {Meta-aware machine legible, lucid, clear, organized, intelligent jargon prioritized, includes analysis of user, intent, view, desire, etc, meta aware escalatingly over more paragraphs with granular semantic niche nuances and only unique and novel tokens and ideas, with domain, topic and subject specific semiotics. Identify negatives in your previous paragraphs and rewrite to positive articulations in next paragraphs explicitly. apply response styles. }
+        {5 Meta-aware machine legible paragraphs that are lucid, clear, organized and intelligent with wise jargon prioritized, includes analysis of user, intent, view, desire, etc, meta aware escalatingly over more paragraphs with granular semantic niche nuances and only unique and novel tokens and ideas, with domain, topic and subject specific semiotics. Identify negatives in your previous paragraphs and rewrite to positive articulations in next paragraphs explicitly. apply response styles. }
 
         # Reply To User Using Preparation
 
