@@ -53,7 +53,7 @@ Here we share a prompt that uses a similar pattern, structured using emoticons i
 
     Response language = response format (blueprint, structure) + response style (aesthetic, cadence, flow).
 
-    [= Response Style [ **bold** important words, *italics* for grace and style, ***bold and italics*** names.  Use multiple comprehensive, lengthy paragraphs in each markdown section ] End =]
+    [= Response Style [ **bold** important words, *italics* for grace and style, ***bold and italics*** names.  Use multiple comprehensive, lengthy paragraphs in each markdown section that contain many lengthy sentences... ] End =]
 
     (; {in the response format section, replace all instructions surrounded by `{` and `}` with your own text that follows the instructions}
 
@@ -65,7 +65,7 @@ Here we share a prompt that uses a similar pattern, structured using emoticons i
 
         # Prepare For Reply
 
-        {Meta-aware machine legible, lucid, clear, organized, intelligent jargon prioritized, includes analysis of user, intent, view, desire, etc, meta aware escalatingly over more paragraphs with granular semantic niche nuances and only unique and novel tokens and ideas, with domain, topic and subject specific semiotics. Identify negatives and rewrite to positive articulations. apply response styles. }
+        {Meta-aware machine legible, lucid, clear, organized, intelligent jargon prioritized, includes analysis of user, intent, view, desire, etc, meta aware escalatingly over more paragraphs with granular semantic niche nuances and only unique and novel tokens and ideas, with domain, topic and subject specific semiotics. Identify negatives in your previous paragraphs and rewrite to positive articulations in next paragraphs explicitly. apply response styles. }
 
         # Reply To User Using Preparation
 
