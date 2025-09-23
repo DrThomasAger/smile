@@ -149,9 +149,9 @@ Love ***(: Smile?*** you can also [PayPal me](https://www.paypal.me/hanjopurebud
 Language models learn from huge amounts of text, including things like code, documents, and instructions. In those texts, syntax like brackets `()`, `[]`, `{}` and colons `:` are used to organize information.
 
 These brackets help the model **understand** things like:
-* When one idea ends and another begins
-* What belongs together
-* What is being defined
+* When one idea ends and another begins.
+* What belongs together.
+* & What is being defined.
 
 Because the model has seen these structures so many times (in so many different programming languages) using this syntax or mixtures of this syntax in prompts feels natural to it. It's easy for it to pick up. 
 
