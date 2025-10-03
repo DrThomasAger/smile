@@ -9,7 +9,7 @@
 
 > ***(: Smile*** is a language for writing **prompts** in a way both machines and humans understand.
 
-It uses **emoticons** as **brackets** in a ***prompt programming language*** :)
+It uses **[: emoticon brackets :] ** as a **prompt programming language**.
 
 
 
