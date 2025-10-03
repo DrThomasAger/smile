@@ -1,4 +1,3 @@
->Want to chat to this [README.md](https://github.com/DrThomasAger/smile/blob/main/README.md)? Copy-and-paste the [full raw text](https://github.com/DrThomasAger/smile/blob/main/README.md) into any [LLM](https://claude.ai/new) to explore ***(: Smile*** now! 
 
 ![Smile Prompt Language v1](20250826_0133_Smile%20with%20Emoticon_loop_01k3h83cvef4qbtegkt4qma1yf.gif)
 
@@ -7,7 +6,7 @@
 
 ***(: Smile*** is a markup (like ***Markdown*** or ***HTML***) designed to instruct **Large Language Models (LLMs)** in a way both machines and humans understand.
 
-It uses token flexible model agnostix  **[: emoticon brackets :]** as a **prompt programming language**, creating discrete prompting structures readable to LLMs of all shapes and sizes, while sharing a ***(: Smile***!
+It uses token flexible model agnostic  **[: emoticon brackets :]** to create discrete prompt instruction structures while being readable to LLMs of all shapes and sizes, with a ***(: Smile***!
 
 # Table of Contents
 
