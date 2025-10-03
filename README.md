@@ -5,12 +5,13 @@
 
 > [![☆ Star the repo](https://img.shields.io/github/stars/DrThomasAger/smile?style=social)](https://github.com/DrThomasAger/smile/stargazers) (: By [Dr. Thomas Ager](https://www.linkedin.com/in/drprompt?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app) 
 
+***(: Smile*** is a **prompt language** (similar to markups like ***Markdown*** or ***HTML***) but designed to instruct **Large Language Models (LLMs)**.
 
-***(: Smile*** is a language for writing **prompts** in a way both machines and humans understand.
+> ***(: Smile*** is a language for writing **prompts** in a way both machines and humans understand.
 
 It uses **emoticons** as **brackets** in a ***prompt programming language*** :)
 
-***(: Smile*** is a **prompt language** (similar to markups like ***Markdown*** or ***HTML***) but designed to instruct **Large Language Models (LLMs)**.
+
 
 # Table of Contents
 
