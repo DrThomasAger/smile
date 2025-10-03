@@ -47,24 +47,9 @@ It uses **[: emoticon brackets :]** as a **prompt programming language**.
   - [Separating Prompt Instructions & Data](#separating-prompt-instructions--data)  
   - [Prompt Language and Response Language](#prompt-language-and-response-language)  
     - [How To Make The Model Follow Instructions](#how-to-make-the-model-follow-instructions)  
-- [Prompt Engineering FAQ](#prompt-engineering-faq)  
-  - [Indicators that (: Smile is Well-Written](#what-are-the-indicators-that--smile-is-well-written)  
-  - [Why Structure Small Prompts?](#-why-structure-small-prompts)  
-  - [Why Structure Large Prompts?](#o-why-structure-large-prompts)  
-- [The HTML of Prompt Engineering](#the-html-of-prompt-engineering)  
-  - [An Example With HTML](#an-example-with-html)  
-- [Repository Layout](#repository-layout)  
-- [Contribute](#contribute)  
-- [(: Smile Appendices](#-smile-appendices)  
-  - [Does Smiling Really Make You Happier?](#does-smiling-really-make-you-happier)  
-- [(: Smile](#-smile-1)  
-- [Portability and Compatibility](#portability-and-compatibility)  
-- [Why (: Smile and Not Another Markup?](#why--smile-and-not-another-markup)  
-- [CoT Basic vs CoT (: Smile](#cot-basic-vs-cot--smile)  
-- [Try (: Smiling](#try--smiling)  
-- [Brain Hack](#-brain-hack)  
-- [References](#references)  
-- [MIT License](#mit-license)  
+
+
+... And more! 
 
 ## Why Structure Your Prompts?
 
