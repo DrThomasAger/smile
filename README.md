@@ -188,6 +188,8 @@ These brackets help the model **understand** things like:
 
 Because the model has seen these structures so many times (in so many different programming languages) using this syntax or mixtures of this syntax in prompts feels natural to it. It's easy for it to pick up. 
 
+For example, it knows open bracket ( means the start of something. It also knows that a colon indicates something next :. When we combine them together, we get a bundle of positivity that is more **legible** to the model than either separately and uniquely **positive**. It is exclusive to prompt engineering and is combined of semantic primitives that can be intuitively read as [= Very strict and requiring equal adherence to the instructions, like 'Always use paragraphs rather than bullet points or numbered lists.' =] or (: Open to interpretation instructions like 'Always speak with intelligence, clarity and depth.'
+
 That’s why people often use **structured sections** when writing instructions for the model — they help make the **meaning clear** without needing a lot of extra words.
 
 ## Support Open Source
