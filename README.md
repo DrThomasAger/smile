@@ -6,11 +6,10 @@
 
 ***(: Smile*** is a markup (like ***Markdown*** or ***HTML***) designed to instruct **Large Language Models (LLMs)** in a way both machines and humans understand.
 
-It uses token flexible model agnostic  **[: emoticon brackets :]** to create discrete prompt instruction structures while being readable to LLMs of all shapes and sizes (prompting for LLMs of any parameter count, open source, closed, chat, instruction, etc)
+It uses token flexible model agnostic  **[: emoticon brackets :]** to create discrete prompt instruction structures while being readable to LLMs of all shapes and sizes.
 
 # Table of Contents
 
-- [Smile Prompt Language v1](#smile-prompt-language-v1)  
 - [Why Structure Your Prompts?](#why-structure-your-prompts)  
 - [Prompt Pattern Example](#prompt-pattern-example)  
 - [Compatible & Free Quick Chat](#compatible--free-quick-chat)  
