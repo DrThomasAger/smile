@@ -11,7 +11,7 @@
 
 It uses **[: emoticon brackets :]** as a **prompt programming language**.
 
-By using simple token efficient emoticons to indicate discrete prompting structures, and normalizing a format that is designed to be readable to LLMs of all different parameter sizes. 
+These token efficient emoticons indicate discrete prompting structures, designed to be readable to LLMs of all different parameter sizes. 
 
 # Table of Contents
 
