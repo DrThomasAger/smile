@@ -11,7 +11,7 @@
 
 It uses **[: emoticon brackets :]** as a **prompt programming language**.
 
-  to indicate discrete prompting structures, ***(: Smile*** uses token efficient emoticons in a format that is designed to be readable to LLMs of all shapes and sizes, while sharing a ***(: Smile***!
+***(: Smile*** uses token efficient emoticons to indicate discrete prompting structures designed to be readable to LLMs of all shapes and sizes, while sharing a ***(: Smile***!
 
 # Table of Contents
 
