@@ -6,7 +6,11 @@
 
 ***(: Smile*** is a markup (like ***Markdown*** or ***HTML***) designed to instruct **Large Language Models (LLMs)** in a way both machines and humans understand.
 
-It uses token-flexible (you can use more tokens if the model is not following the instructions, and less if they are) and model-agnostic (portable across all kinds of LLMs)  **[: emoticon brackets :]** to create discrete sections of prompt instructions. 
+It is:
+
+* **token-flexible**: (you can use more tokens if the model is not following the instructions, and less if they are)
+* **model-agnostic**: (portable across all kinds of LLMs)
+* **inherently positive**: **[: emoticon brackets :]** to create discrete sections of prompt instructions. 
 
 # Table of Contents
 
