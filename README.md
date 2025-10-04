@@ -8,9 +8,9 @@
 
 It is:
 
-* **token-flexible**: Use more tokens if the model is not following the instructions, and less if they are. This lets you manage your performance/inference budget ratio.
-* **model-agnostic**: LLMs of all parameter sizes can read structure written in ***(: Smile***). If you're writing in ChatGPT, or talking to an open source LLM on your phone,  ***(: Smile*** just works.
-* **inherently positive**: **[: emoticon brackets :]** signify different kinds of instructions. Make your day with AI happier!
+* **Token-Flexible**: Use more tokens if the model is not following the instructions, and less if they are. This lets you manage your performance/inference budget ratio.
+* **Model-Agnostic**: LLMs of all parameter sizes can read structure written in ***(: Smile***). If you're writing in ChatGPT, or talking to an open source LLM on your phone,  ***(: Smile*** just works.
+* **Inherently Positive**: **[: emoticon brackets :]** signify different kinds of instructions. Make your day with AI happier!
 
 # Table of Contents
 
