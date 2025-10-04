@@ -54,7 +54,7 @@ It is:
 Studies show even small changes in **prompt syntax** can have **massive downstream effects** on **task performance** and **instruction following**. 
 
 
-Using a **consistent** and **reliable** structure helps the model understand your instructions more **clearly**, which lets it follow those instructions **every time**.
+Using a **consistent** and **reliable** prompt language ensures the model responds in the same way  **every time**.
 
 When we **scale** our **structure** for **complex** and **intelligent** responses, we need a **syntax** that can **reliably communicate** these **complex requirements** to a **LLM**. This **reliable communication** means **reliable outcomes**. 
 
