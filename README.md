@@ -77,6 +77,14 @@ One popular **prompt engineering pattern** is to let the model **think before it
 
 This is often called "Chain-of-thought" and has historically been created using the prompt `Think this through step by step`.
 
+**Prompt engineers** invest inference tokens into **thinking budget** because it makes the final response smarter.
+
+Later if we want to show a final intelligent reply to the user, we only show them the reply that uses the thinking preparation, rather than showing the thinking itself.
+
+Here we get to see behind the curtain at how the model prepares it's response:
+
+---
+
 Here we share a prompt that uses a similar pattern, structured using emoticons in ***(: Smile***.
 
 ```
