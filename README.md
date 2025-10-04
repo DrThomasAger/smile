@@ -198,7 +198,13 @@ Because the model has seen these structures so many times (in so many different 
 
 For example, it knows open bracket `(` means start, as this is used in many programming languages (like clojure) to indicate a start. It also knows intuitively and grammatically that a colon indicates something next `:`. When we combine them together `(:` we get a face that indicates the start of a section.
 
-This bundle of positivity is more **legible** to the model than either `(` or `:` separately and uniquely **positive**. It is exclusive to prompt engineering and is combined of semantic primitives that can be intuitively read as `[= Very strict and requiring equal adherence to the instructions, - 'Always use paragraphs rather than bullet points or numbered lists.' =]` or `(: Open to interpretation instructions - 'Always speak with intelligence, clarity and depth.'`
+This bundle of positivity is more **legible** to the model than either `(` or `:` separately and uniquely **positive**. It is exclusive to prompt engineering - meaning that in the future there will be no dataset contamination of other meaning into ***(: Smile***. This will be a dataset and language that is only for prompt writing, written by humans and LLMs. 
+
+For now, it's just us human prompt engineers.
+
+
+
+***(: Smile*** is combined of semantic primitives that can be intuitively read as `[= Very strict and requiring equal adherence to the instructions, - 'Always use paragraphs rather than bullet points or numbered lists.' =]` or `(: Open to interpretation instructions - 'Always speak with intelligence, clarity and depth.'`
 
 That’s why prompt writers that need complex behaviour (like in agents) often use **structured sections** when writing instructions for the model — they help make the **meaning clear** to the model so that it can understand more instructions with less tokens. By clearly separating different parts of the prompt like input, style instructions, and response format, the model is able to **do more with less**.
 
