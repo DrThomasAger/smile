@@ -9,7 +9,7 @@
 It is:
 
 * **token-flexible**: (you can use more tokens if the model is not following the instructions, and less if they are)
-* **model-agnostic**: (portable across all kinds of LLMs)
+* **model-agnostic**: (LLMs of all parameter sizes can read structure written in ***(: Smile***)
 * **inherently positive**: **[: emoticon brackets :]** to create discrete sections of prompt instructions. 
 
 # Table of Contents
