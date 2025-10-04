@@ -83,10 +83,6 @@ Later if we want to show a final intelligent reply to the user, we only show the
 
 Here we get to see behind the curtain at how the model prepares it's response:
 
----
-
-Here we share a prompt that uses a similar pattern, structured using emoticons in ***(: Smile***.
-
 ```
 (: Prompt language is ***(: Smile*** ( 
 
