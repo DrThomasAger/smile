@@ -79,7 +79,7 @@ This is often called "Chain-of-thought" and has historically been created using 
 
 **Prompt engineers** invest inference tokens into **thinking budget** because it makes the final response smarter.
 
-In the front-end, we would only show the user the part of the respones that uses the **thinking preparation**, rather than showing the thinking itself.
+In the front-end, we only show the user the part of the response that uses the **thinking preparation**, rather than showing the thinking itself.
 
 This prompt is a peek behind the curtain at how a LLM can prepare an **intelligent** response:
 
