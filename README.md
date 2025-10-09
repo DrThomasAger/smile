@@ -8,19 +8,23 @@
 
 ***(: Smile*** is a markup (like ***Markdown*** or ***HTML***) designed to instruct **Large Language Models (LLMs)** in a way both machines and humans understand.
 
-In it you:
 
-1. Define sections that are discrete and semantic i.e. (meaningfully different) from each other.
-2. Set the type of those sections e.g. (data input, personality guidance, or output response format).
-3. Name those sections e.g. (meeting transcript, ***(: Smile*** expert who is only positive, and markdown). 
-
-This lets you and your model maintain readable and structured positive prompting.
 
 It is:
 
 * **Token-Flexible**: Use more tokens if the model is not following the instructions, and less if they are. This lets you manage your performance/inference budget ratio.
 * **Model-Agnostic**: LLMs of all parameter sizes can read structure written in ***(: Smile***). If you're writing in ChatGPT, or talking to an open source LLM on your phone,  ***(: Smile*** just works.
 * **Inherently Positive**: **[: emoticon brackets :]** signify different kinds of instructions. Make your day with AI happier!
+
+# How To Use (: Smile 
+
+In it you:
+
+1. Define sections that are **discrete** i.e. (meaningfully different) from each other.
+2. Set the type of those sections semantically e.g. (Section 1 - data input, Section 2 - personality guidance, or Section 3 - Output response format).
+3. Name those sections e.g. (Section 1 - meeting transcript, Section 2 - ***(: Smile*** expert who is only positive, and Section 3 - markdown). 
+
+This lets you and your model have a prompt base of **maintainable**,  **structured** **positive** prompting.
 
 # The Constraints Of Smiling
 
