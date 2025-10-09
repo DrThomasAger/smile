@@ -9,8 +9,8 @@
 In it you:
 
 1. Define sections that are discrete and semantic i.e. (meaningfully different) from each other.
-2. Set their type e.g. (data input, personality guidance, or output response format).
-3. Name them e.g. (meeting transcript, ***(: Smile*** expert who is only positive, and markdown). 
+2. Set the type of those sections e.g. (data input, personality guidance, or output response format).
+3. Name those sections e.g. (meeting transcript, ***(: Smile*** expert who is only positive, and markdown). 
 
 This lets you and your model maintain readable and structured positive prompting.
 
