@@ -17,17 +17,7 @@ It is:
 * **Token-Flexible**: You can use more tokens if the model is not following the instructions, and less if they are. This lets you manage your performance/inference budget ratio.
 * **Inherently Positive**: **[: emoticon brackets :]** signify different kinds of instructions. Make your day with AI happier!
 
-# How To Structure With (: Smile 
 
-In it you:
-
-1. Define sections that are **discrete** i.e. (meaningfully different) from each other.
-2. Set the type of those sections semantically e.g. (Section 1 - data input, Section 2 - personality guidance, or Section 3 - Output response format).
-3. Name those sections e.g. (Section 1 - meeting transcript, Section 2 - ***(: Smile*** expert who is only positive, and Section 3 - markdown). 
-
-This is all done flexibly with resonant semiotics. For example, when exact data or instructions need to be used or followed strict start and end enclosure brackets can be used as follows: `[= Strict section - use this data exactly [`, and for more flexible instructions that are open to interpretation, use more flexible emoticons `(: Flexible instruction - be emotionally connected to the user (`.
-
-This lets you and your model have a prompt base of **maintainable**,  **structured** **positive** prompting.
 
 # The Constraints Of Smiling
 
@@ -724,6 +714,18 @@ Respond in paragraphs with crystal clear jargon.
 
 
 # (: Smile Appendices
+
+# How To Structure With (: Smile 
+
+In it you:
+
+1. Define sections that are **discrete** i.e. (meaningfully different) from each other.
+2. Set the type of those sections semantically e.g. (Section 1 - data input, Section 2 - personality guidance, or Section 3 - Output response format).
+3. Name those sections e.g. (Section 1 - meeting transcript, Section 2 - ***(: Smile*** expert who is only positive, and Section 3 - markdown). 
+
+This is all done flexibly with resonant semiotics. For example, when exact data or instructions need to be used or followed strict start and end enclosure brackets can be used as follows: `[= Strict section - use this data exactly [`, and for more flexible instructions that are open to interpretation, use more flexible emoticons `(: Flexible instruction - be emotionally connected to the user (`.
+
+This lets you and your model have a prompt base of **maintainable**,  **structured** **positive** prompting.
 
 ## Does Smiling Really Make You Happier?
 
