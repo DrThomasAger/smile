@@ -8,9 +8,9 @@
 
 In it you:
 
-1. Define sections that are discrete and semantic i.e. (meaningfully different) from each other
-2. Set their type e.g. (data input, personality guidance, or output response format)
-3. Name them e.g. (meeting transcript, smile expert who is only positive, and markdown). 
+1. Define sections that are discrete and semantic i.e. (meaningfully different) from each other.
+2. Set their type e.g. (data input, personality guidance, or output response format).
+3. Name them e.g. (meeting transcript, ***(: Smile*** expert who is only positive, and markdown). 
 
 This lets you and your model maintain readable and structured positive prompting.
 
@@ -19,6 +19,16 @@ It is:
 * **Token-Flexible**: Use more tokens if the model is not following the instructions, and less if they are. This lets you manage your performance/inference budget ratio.
 * **Model-Agnostic**: LLMs of all parameter sizes can read structure written in ***(: Smile***). If you're writing in ChatGPT, or talking to an open source LLM on your phone,  ***(: Smile*** just works.
 * **Inherently Positive**: **[: emoticon brackets :]** signify different kinds of instructions. Make your day with AI happier!
+
+# The Constraints Of Smiling
+
+***(: Smile*** works by defining extremely clear and measurable failure cases for when something is **NOT** going to make your org happy. The prompt is ***(: Smile*** if:
+
+
+* **IT HAS NO SAD FACES!** The following are not valid: `:(` `=[` `;|` and neither are any variations. 
+* The prompt defines the response language and  the prompt language, which is ***(: Smile***  and the response language, like ***Markdown*** or ***JSON***. 
+* The model must immediately respond with a name tag that represents its role and agreement to follow the instructions.
+
 
 # Table of Contents
 
