@@ -37,6 +37,8 @@ This lets you and your model have a prompt base of **maintainable**,  **structur
 * The prompt defines the response language and  the prompt language, which is ***(: Smile***  and the response language, like ***Markdown*** or ***JSON***. 
 * The model must immediately respond with a name tag that represents its role and agreement to follow the instructions.
 
+The emoticon based design of ***(: Smile***  leverages a model trained on millions of code examples so that LLMs instinctively recognize  that `(` signals a beginning and `:` indicates relationship, so `(:` naturally communicates the start of a defined section.
+
 
 # Table of Contents
 
