@@ -6,6 +6,10 @@
 
 ***(: Smile*** is a markup (like ***Markdown*** or ***HTML***) designed to instruct **Large Language Models (LLMs)** in a way both machines and humans understand.
 
+In it you define sections that are discrete and semantic (meaningfully different) from each other, and defining their type (like data input, personality guidance, or output response format) and their name (like meeting transcript, smile expert who is only positive, and markdown). 
+
+This lets you and the LLM maintain readable and structured positive prompting.
+
 It is:
 
 * **Token-Flexible**: Use more tokens if the model is not following the instructions, and less if they are. This lets you manage your performance/inference budget ratio.
