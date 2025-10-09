@@ -8,7 +8,7 @@
 
 ***(: Smile*** is a markup (like ***Markdown*** or ***HTML***) designed to instruct **Large Language Models (LLMs)** in a way both machines and humans understand.
 
-
+It is an emoticon based markup designed to  leverage a model trained on millions of code examples. The hypothesis of ***(: Smile*** is that LLMs instinctively recognize  that `(` signals a beginning and `:` indicates relationship, so `(:` naturally communicates the start of a defined section.
 
 It is:
 
@@ -17,18 +17,28 @@ It is:
 * **Token-Flexible**: You can use more tokens if the model is not following the instructions, and less if they are. This lets you manage your performance/inference budget ratio.
 * **Inherently Positive**: **[: emoticon brackets :]** signify different kinds of instructions. Make your day with AI happier!
 
+When you learn to leverage these three key advantages, you know your organization is moving towards **structured** and **maintainable** prompt engineering. 
+
+# Measurable and Verifiable Prompt Engineering
+
+***(: Smile*** works by defining extremely clear and measurable failure cases for when something is **NOT** going to make your org happy. 
+
+Often, the model **doesn't know if it has agreed to follow the instructions**. When we let it know that by providing the name tag, it agrees to abide by our instructions and role, a pattern **emerges** in multi-turn interactions.
+
+**A model that provides a name tag consistently and effectively follows instructions, a model that does not provide a name tag after being provided a ***(: Smile*** prompt has misunderstood the instructions and will not follow them consistently.
 
 
-# The Constraints Of Smiling
 
-***(: Smile*** works by defining extremely clear and measurable failure cases for when something is **NOT** going to make your org happy. The prompt is ***(: Smile*** if:
+The prompt is ***(: Smile*** if:
 
-
-* **IT HAS NO SAD FACES!** The following are not valid: `:(` `=[` `;|` and neither are any variations. 
+* The model  responds immediately with a name tag that represents its role and agreement to follow the instructions.
 * The prompt defines the response language and  the prompt language, which is ***(: Smile***  and the response language, like ***Markdown*** or ***JSON***. 
-* The model must immediately respond with a name tag that represents its role and agreement to follow the instructions.
+* **IT HAS NO SAD FACES!** The following are not valid: `:(` `=[` `;|` and neither are any variations. 
 
-The emoticon based design of ***(: Smile***  leverages a model trained on millions of code examples so that LLMs instinctively recognize  that `(` signals a beginning and `:` indicates relationship, so `(:` naturally communicates the start of a defined section.
+
+
+
+
 
 
 # Table of Contents
