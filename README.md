@@ -8,16 +8,15 @@
 
 ***(: Smile*** is a markup (like ***Markdown*** or ***HTML***) where emoticons are used as brackets to instruct **Large Language Models (LLMs)** in a structured way both machines and humans understand.
 
-It results in a more effective, consistent and maintainable prompt library for your organization. Just like a programming language, all of your prompts turn from simple isolated scripts to a predictable system once your team switches to a common language that is effective for the task. 
+It results in a more effective, consistent and maintainable prompt library for your organization. In programming, we moved from  simple isolated scripts to organizational norms and common languages. Now there is a lively opportunity to have the same kind of predictable and maintainable systems for our increasingly important LLM prompts. 
 
 It is:
 
+* **Future Proof**: AI needs structure. The time for hinging your entire business on loose text files only one employee understands is over. Enable knowledge transfer for new hires and effective co-working by giving your organization a defined prompt instruction language for them to use.  * **Model-Agnostic**: LLMs of all parameter sizes can read structure written in ***(: Smile***). If you're writing in ChatGPT, or talking to an open source LLM on your phone,  ***(: Smile*** just works.
+* **Token-Flexible**: You can use more tokens if the model is not following the instructions, and less if they are. This lets you manage your performance/inference budget ratio. If you need to save money for a lower performance, you are given natural options inside of the language and clear feedback for what works and what doesn't during prompt compression. 
 
-* **Model-Agnostic**: LLMs of all parameter sizes can read structure written in ***(: Smile***). If you're writing in ChatGPT, or talking to an open source LLM on your phone,  ***(: Smile*** just works.
-* **Token-Flexible**: You can use more tokens if the model is not following the instructions, and less if they are. This lets you manage your performance/inference budget ratio.
-* **Inherently Positive**: **[: emoticon brackets :]** signify different kinds of instructions. Make your day with AI happier!
 
-When you learn to leverage these three key advantages, you know your organization is moving towards **structured** and **maintainable** prompt engineering. 
+If you are reading this, you are on the bleeding edge of text organization. When you learn to leverage these three key advantages, you know your organization is moving towards **structured** and **maintainable** prompt engineering. 
 
 # Measurable and Verifiable Prompt Engineering
 
