@@ -4,11 +4,11 @@
 
 >***Welcome to your positive AI future.***
 
-> [![☆ Star the repo](https://img.shields.io/github/stars/DrThomasAger/smile?style=social)](https://github.com/DrThomasAger/smile/stargazers) (: By [Dr. Thomas Ager](https://www.linkedin.com/in/drprompt?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app) 
+> [![☆ Star the repo](https://img.shields.io/github/stars/DrThomasAger/smile?style=social)](https://github.com/DrThomasAger/smile/stargazers) (: By [Dr. Thomas Ager, Ph.D Interpretable Natural Language Processing (NLP) Machine Learning (ML)](https://www.linkedin.com/in/drprompt?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app) 
 
-***(: Smile*** is a markup (like ***Markdown*** or ***HTML***) designed to instruct **Large Language Models (LLMs)** in a way both machines and humans understand.
+***(: Smile*** is a markup (like ***Markdown*** or ***HTML***) where emoticons are used as brackets to instruct **Large Language Models (LLMs)** in a structured way both machines and humans understand.
 
-It is an emoticon based markup designed to  leverage a model trained on millions of code examples. The hypothesis of ***(: Smile*** is that LLMs instinctively recognize  that `(` signals a beginning and `:` indicates relationship, so `(:` naturally communicates the start of a defined section.
+It results in a more effective, consistent and maintainable prompt library for your organization. Just like a programming language, all of your prompts turn from simple isolated scripts to a predictable system once your team switches to a common language that is effective for the task. 
 
 It is:
 
@@ -37,8 +37,10 @@ The prompt is ***(: Smile*** if:
 
 
 
+# Why Does (: Smile Work?
 
 
+It is designed to  leverage a model trained on millions of code examples. The hypothesis of ***(: Smile*** is that LLMs instinctively recognize  that `(` signals a beginning and `:` indicates relationship, so `(:` naturally communicates the start of a defined section.
 
 
 # Table of Contents
