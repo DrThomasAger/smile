@@ -17,7 +17,7 @@ It results in a more effective, consistent and maintainable prompt library for y
 * **Positively Effective**: Get more value per token. The guide provided for writing ***(: Smile*** can be effectively leveraged to compose compact prompts that save you money and express more per token. 
 
 
-**If you are reading this, you are on the bleeding edge of text organization.** When you learn to leverage these **three key advantages**, you know your organization is moving towards **structured** and **maintainable** prompt engineering. 
+**You are on the bleeding edge of text organization.** When you learn to leverage these **three key advantages**, you know your organization is moving towards **structured** and **maintainable** prompt engineering. 
 
 # Measurable and Verifiable Prompt Engineering
 
