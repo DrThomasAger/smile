@@ -12,7 +12,8 @@ It results in a more effective, consistent and maintainable prompt library for y
 
 It is:
 
-* **Future Proof**: AI needs structure. The time for hinging your entire business on loose text files only one employee understands is over. Enable knowledge transfer for new hires and effective co-working by giving your organization a defined prompt instruction language for them to use.  * **Model-Agnostic**: LLMs of all parameter sizes can read structure written in ***(: Smile***). If you're writing in ChatGPT, or talking to an open source LLM on your phone,  ***(: Smile*** just works.
+* **Future Proof**: AI needs structure. The time for hinging your entire business on loose text files only one employee understands is over. Enable knowledge transfer for new hires and effective co-working by giving your organization a defined prompt instruction language for them to use.  
+* **Model-Agnostic**: LLMs of all parameter sizes can read structure written in ***(: Smile***). If you're writing in ChatGPT, or talking to an open source LLM on your phone,  ***(: Smile*** just works.
 * **Token-Flexible**: You can use more tokens if the model is not following the instructions, and less if they are. This lets you manage your performance/inference budget ratio. If you need to save money for a lower performance, you are given natural options inside of the language and clear feedback for what works and what doesn't during prompt compression. 
 
 
