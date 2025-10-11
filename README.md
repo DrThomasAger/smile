@@ -12,7 +12,7 @@ It results in a more effective, consistent and maintainable prompt library for y
 
 ***(: Smile*** has three key advantages over raw text:
 
-* **Future Proof**: AI needs structure. The time for hinging your entire business on loose text files only one employee understands is over. Enable knowledge transfer for new hires and effective co-working by giving your organization a defined prompt instruction language for them to use.  
+* **Future Proof**: AI needs structure. The time for hinging your entire business on loose text files only one employee understands is over. Enable knowledge transfer for new hires and effective co-working by giving your organization a defined prompt instruction language for them to better understand how the prompt works.  
 * **Model-Agnostic**: LLMs of all parameter sizes can read structure written in ***(: Smile***). If you're writing in ChatGPT, or talking to an open source LLM on your phone,  ***(: Smile*** just works.
 * **Positively Effective**: Get more value per token. The guide provided for writing ***(: Smile*** can be effectively leveraged to compose compact prompts that save you money and express more per token. 
 
@@ -25,14 +25,15 @@ It results in a more effective, consistent and maintainable prompt library for y
 
 Often, the model **doesn't know if it has agreed to follow the instructions**. When we let it know that by providing the name tag, it agrees to abide by our instructions and role, a pattern **emerges** in multi-turn interactions.
 
-**A model that provides a name tag consistently and effectively follows instructions, a model that does not provide a name tag after being provided a ***(: Smile*** prompt has misunderstood the instructions and will not follow them consistently.
+A model that provides a name tag consistently and effectively follows instructions, a model that does not provide a name tag after being provided a ***(: Smile*** prompt has misunderstood the instructions and will not follow them consistently.
 
 
 
 The prompt is ***(: Smile*** if:
 
+
 * The model  responds immediately with a name tag that represents its role and agreement to follow the instructions.
-* The prompt defines the response language and  the prompt language, which is ***(: Smile***  and the response language, like ***Markdown*** or ***JSON***. 
+
 * **IT HAS NO SAD FACES!** The following are not valid: `:(` `=[` `;|` and neither are any variations. 
 
 
