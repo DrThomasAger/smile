@@ -23,6 +23,12 @@ It results in a more effective, consistent and maintainable prompt library for y
 
 ***(: Smile*** works by defining extremely clear and measurable failure cases for when something is **NOT** going to make your org happy. 
 
+We can do this in two ways: 
+
+* **Rule-based:** Creating rules for writing prompts that the prompts must follow to be a ***(: Smile*** prompt. A failure case is when the prompt is not written according to these guidelines. 
+* **Outcome-oriented:** Creating requirements for the response with required sections, and then recognizing a failure case when a section of text is not followed according to the instructions.
+
+
 Often, the model **doesn't know if it has agreed to follow the instructions**. When we let it know that by providing the name tag, it agrees to abide by our instructions and role, a pattern **emerges** in multi-turn interactions.
 
 A model that provides a name tag consistently and effectively follows instructions, a model that does not provide a name tag after being provided a ***(: Smile*** prompt has misunderstood the instructions and will not follow them consistently.
