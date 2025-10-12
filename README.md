@@ -12,7 +12,7 @@ It results in a more effective, consistent and maintainable prompt library for y
 
 ***(: Smile*** has three key advantages over raw text:
 
-* **Future Proof**: AI needs structure. The time for hinging your entire business on loose text files only one employee understands is over. Enable knowledge transfer for new hires and effective co-working by giving your organization a defined prompt instruction language for them to better understand how the prompt works.  
+* **Future Proof**: AI needs structure. The time for hinging your entire business on loose text files only one employee understands is over. Enable knowledge transfer for new hires and effective co-working by giving your organization a defined prompt instruction language so they can actually understand how each section of the prompt works.  
 * **Model-Agnostic**: LLMs of all parameter sizes can read structure written in ***(: Smile***). If you're writing in ChatGPT, or talking to an open source LLM on your phone,  ***(: Smile*** just works. Transform your prompt library into a set of prompts that works anywhere, any time, no matter what model you use. 
 * **Positively Effective**: Get more value per token. The guide provided for writing ***(: Smile*** can be effectively leveraged to compose compact prompts that save you money and express more per token. 
 
