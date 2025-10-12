@@ -25,8 +25,8 @@ It results in a more effective, consistent and maintainable prompt library for y
 
 We can do this in two ways: 
 
-* **Rule-based:** Creating rules for writing prompts that the prompts must follow to be a ***(: Smile*** prompt. A failure case is when the prompt is not written according to these guidelines. 
-* **Outcome-oriented:** Creating requirements for the response with required sections, and then recognizing a failure case when a section of text is not followed according to the instructions.
+* **Rule-based:** Creating rules for writing prompts that the prompts must follow to be a ***(: Smile*** prompt. A failure case is when the prompt is not written according to these guidelines. For example, you cannot use sad emoticons as brackets like =( in ***(: Smile***.
+* **Outcome-oriented:** Creating requirements for the response with required sections, and then recognizing a failure case when a section of text is not followed according to the instructions. For example, you can ask the model to use a name tag representing its role. If it doesn't use the name tag, that means the instructions need different text.
 
 
 Often, the model **doesn't know if it has agreed to follow the instructions**. When we let it know that by providing the name tag, it agrees to abide by our instructions and role, a pattern **emerges** in multi-turn interactions.
