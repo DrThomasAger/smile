@@ -6,17 +6,17 @@
 
 > [![☆ Star the repo](https://img.shields.io/github/stars/DrThomasAger/smile?style=social)](https://github.com/DrThomasAger/smile/stargazers) (: By [Dr. Thomas Ager, Ph.D Interpretable Natural Language Processing (NLP) Machine Learning (ML)](https://www.linkedin.com/in/drprompt?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app) 
 
-***(: Smile*** is a markup (like ***Markdown*** or ***HTML***) where emoticons are used as brackets to instruct **Large Language Models (LLMs)** in a structured way both machines and humans understand.
+***(: Smile*** is a markup (like ***Markdown*** or ***HTML***) where **emoticons** are used as brackets to **instruct** Large Language Models (LLMs) in a **structured** way both machines and humans understand.
 
 `(: Hello World! :)`
 
-It results in a more effective, consistent and maintainable prompt library for your organization. In programming, we moved from  simple isolated scripts to organizational norms and common languages. Now there is a lively opportunity to have the same kind of predictable and maintainable systems for our increasingly important LLM prompts. 
+It results in a more **consistent** and **maintainable** prompt library for your organization. In programming, we moved from  simple isolated scripts to organizational norms and common languages. Now there is a lively opportunity to have the same kind of **predictable** and **reliable** language for our increasingly important LLM prompts. 
 
-***(: Smile*** has three key advantages over raw text:
+Using a prompt instruction language (or, prompt programming language) like ***(: Smile*** for prompt section structure has three key advantages over raw text:
 
 * **Future Proof & Maintainable**: AI needs structure. Are you still hinging your entire business on loose text files only one employee understands? Time to solve it. Enable future knowledge transfer for new hires by giving your organization prompts they can actually explain.
 * **Model-Agnostic & Universal**: LLMs of all parameter sizes can read structure written in ***(: Smile***). If you're writing in ChatGPT, or talking to an open source LLM on your phone,  ***(: Smile*** just works. Transform your prompt library into a set of prompts that works anywhere, any time, no matter what model you use. 
-* **Positive & Effective**: Get more value per token. The guide provided for writing ***(: Smile*** can be effectively leveraged to compose compact prompts that save you money and express more per token. With a happy ***(: Smile***!
+* **Positive & Effective**: Get more value per token. Other markups are designed for structuring data for machines to read. ***(: Smile*** provides the norms to compose compact prompts that save you money and express more per token. Discover optimal tokens with clear failure cases for when the model doesn't understand the onstructins. All woth a happy ***(: Smile***!
 
 
 **You are on the bleeding edge of text organization.** When you learn to leverage these **three key advantages**, your organization is moving towards **structured** and **maintainable** prompt engineering. 
