@@ -16,7 +16,7 @@ Using ***(: Smile*** for prompt structure has three key advantages over raw text
 
 * **Future Proof & Maintainable**: AI needs structure. Are you still hinging your entire business on loose text files only one employee understands? Time to **solve it**. Enable **future** knowledge transfer for **new** hires by giving your organization prompts that are **explainable**.
 * **Model-Agnostic & Universal**: LLMs of all parameter sizes can read structure written in ***(: Smile***. If you're writing in ChatGPT, or talking to an open source LLM on your phone,  ***(: Smile*** just works. Transform your prompt library into a set of prompts that works anywhere, any time, no matter what model you use. 
-* **Positive & Effective**: Get more **value per token**. Other markups are designed for structuring data for machines to read. ***(: Smile*** provides the norms to compose compact prompts that **save you money** and **express more** per token. Discover **optimal** tokens with clear failure cases for when the model doesn't understand the instructions. All woth a happy ***(: Smile***!
+* **Positive & Effective**: Get more **value per token**. Other markups are designed for structuring data for machines to read. ***(: Smile*** provides the norms to compose compact prompts that **save you money** and **express more** per token. All with a happy ***(: Smile***!
 
 
 **You are on the bleeding edge of text organization.** When you learn to leverage these **three key advantages**, your organization is moving towards **structured** and **maintainable** prompt engineering. 
@@ -85,7 +85,11 @@ This is essential for:
 
 # Measurable and Verifiable Prompt Engineering
 
+Discover **optimal** tokens with clear failure cases for when the model doesn't understand the instructions!
+
 Are you measuring the performance of your prompts? Do you know which text changes lead to downstream task performance? In ***(: Smile*** we can always measure when a model has not understood it's role.
+
+
 
 ***(: Smile*** works by defining extremely clear and measurable failure cases for when something is **NOT** going to make your org happy. 
 
