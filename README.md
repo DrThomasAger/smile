@@ -68,7 +68,7 @@ Studies show even small changes in **prompt syntax** can have **massive downstre
 
 Using a **consistent** and **reliable** prompt language ensures the model responds in the same way  **every time**.
 
-When we **scale** our **structure** for **complex** and **intelligent** responses (multi-agent, multi-turn), we need a **syntax** that can **reliably communicate** these **complex requirements** to a **LLM** reliably.
+When we **scale** our **structure** for **complex** and **intelligent** responses (multi-agent, multi-turn), we need a **syntax** that can **reliably communicate** these **complex requirements** in a way an **LLM** can understand.
 
 
 
