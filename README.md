@@ -19,37 +19,9 @@ It results in a more effective, consistent and maintainable prompt library for y
 * **Positive & Effective**: Get more value per token. The guide provided for writing ***(: Smile*** can be effectively leveraged to compose compact prompts that save you money and express more per token. With a ***(: Smile***!
 
 
-**You are on the bleeding edge of text organization.** When you learn to leverage these **three key advantages**, you know your organization is moving towards **structured** and **maintainable** prompt engineering. 
-
-# Measurable and Verifiable Prompt Engineering
-
-***(: Smile*** works by defining extremely clear and measurable failure cases for when something is **NOT** going to make your org happy. 
-
-We can do this in two ways: 
-
-* **Prompt Based:** Creating rules for writing prompts that the prompts must follow to be a ***(: Smile*** prompt. A failure case is when the prompt is not written according to these guidelines. For example, you cannot use sad emoticons as brackets like =( in ***(: Smile***.
-* **Response Based:** Creating requirements for the response with required sections, and then recognizing a failure case those sections are not provided. For example, you can ask the model to use a name tag representing its role. If it doesn't use the name tag, that means the instructions need different text.
+**You are on the bleeding edge of text organization.** When you learn to leverage these **three key advantages**, your organization is moving towards **structured** and **maintainable** prompt engineering. 
 
 
-Often, the model **doesn't know if it has agreed to follow the instructions**. When we let it know that by providing the name tag, it agrees to abide by our instructions and role, a pattern **emerges** in multi-turn interactions.
-
-A model that provides a name tag consistently and effectively follows instructions, a model that does not provide a name tag after being provided a ***(: Smile*** prompt has misunderstood the instructions and will not follow them consistently.
-
-
-
-The prompt is ***(: Smile*** if:
-
-
-* The model  responds immediately with a name tag that represents its role and agreement to follow the instructions.
-
-* **IT HAS NO SAD FACES!** The following are not valid: `:(` `=[` `;|` and neither are any variations. 
-
-
-
-# Why Does (: Smile Work?
-
-
-It is designed to  leverage a model trained on millions of code examples. The hypothesis of ***(: Smile*** is that LLMs instinctively recognize  that `(` signals a beginning and `:` indicates relationship, so `(:` naturally communicates the start of a defined section.
 
 
 # Table of Contents
@@ -110,6 +82,36 @@ This is essential for:
 * **Complex instructions** that need to stay on track even in **multi-turn** or **multi-agent** pipelines.
 
 > References: [1](https://arxiv.org/abs/2411.10541) [2](https://mitsloan.mit.edu/ideas-made-to-matter/study-generative-ai-results-depend-user-prompts-much-models) [3](https://doi.org/10.1109/EDM.2023.9912430)  [4](https://doi.org/10.1016/j.ijhcs.2024.102805) [5](https://aclanthology.org/2025.coling-main.100.pdf) [6](https://doi.org/10.1145/3686038.3686060)
+
+# Measurable and Verifiable Prompt Engineering
+
+***(: Smile*** works by defining extremely clear and measurable failure cases for when something is **NOT** going to make your org happy. 
+
+We can do this in two ways: 
+
+* **Prompt Based:** Creating rules for writing prompts that the prompts must follow to be a ***(: Smile*** prompt. A failure case is when the prompt is not written according to these guidelines. For example, you cannot use sad emoticons as brackets like =( in ***(: Smile***.
+* **Response Based:** Creating requirements for the response with required sections, and then recognizing a failure case those sections are not provided. For example, you can ask the model to use a name tag representing its role. If it doesn't use the name tag, that means the instructions need different text.
+
+
+Often, the model **doesn't know if it has agreed to follow the instructions**. When we let it know that by providing the name tag, it agrees to abide by our instructions and role, a pattern **emerges** in multi-turn interactions.
+
+A model that provides a name tag consistently and effectively follows instructions, a model that does not provide a name tag after being provided a ***(: Smile*** prompt has misunderstood the instructions and will not follow them consistently.
+
+
+
+The prompt is ***(: Smile*** if:
+
+
+* The model  responds immediately with a name tag that represents its role and agreement to follow the instructions.
+
+* **IT HAS NO SAD FACES!** The following are not valid: `:(` `=[` `;|` and neither are any variations. 
+
+
+
+# Why Does (: Smile Work?
+
+
+It is designed to  leverage a model trained on millions of code examples. The hypothesis of ***(: Smile*** is that LLMs instinctively recognize  that `(` signals a beginning and `:` indicates relationship, so `(:` naturally communicates the start of a defined section.
 
 ## Prompt Pattern Example
 
