@@ -87,7 +87,7 @@ This is essential for:
 
 Discover **optimal** tokens with clear failure cases for when the model doesn't understand the instructions!
 
-Are you measuring the performance of your prompts? Do you know which text changes lead to downstream task performance? In ***(: Smile*** we can always measure when a model has not understood it's role.
+Are you measuring the performance of your prompts? Do you know which text changes lead to downstream task performance? In ***(: Smile*** we can always measure when a model has not understood its role.
 
 
 
