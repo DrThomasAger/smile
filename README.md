@@ -8,6 +8,8 @@
 
 ***(: Smile*** is a markup (like ***Markdown*** or ***HTML***) where emoticons are used as brackets to instruct **Large Language Models (LLMs)** in a structured way both machines and humans understand.
 
+`(: Hello World! :)`
+
 It results in a more effective, consistent and maintainable prompt library for your organization. In programming, we moved from  simple isolated scripts to organizational norms and common languages. Now there is a lively opportunity to have the same kind of predictable and maintainable systems for our increasingly important LLM prompts. 
 
 ***(: Smile*** has three key advantages over raw text:
