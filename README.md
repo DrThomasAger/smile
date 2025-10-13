@@ -85,6 +85,8 @@ This is essential for:
 
 # Measurable and Verifiable Prompt Engineering
 
+Are you measuring the performance of your prompts? Do you know which text changes lead to downstream task performance? In ***(: Smile*** we can always measure when a model has not understood it's role.
+
 ***(: Smile*** works by defining extremely clear and measurable failure cases for when something is **NOT** going to make your org happy. 
 
 We can do this in two ways: 
