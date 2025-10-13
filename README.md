@@ -19,7 +19,7 @@ Using ***(: Smile*** for prompt structure has three key advantages over raw text
 * **Positive & Effective**: Get more **value per token**. Other markups are designed for structuring data for machines to read. ***(: Smile*** provides the norms to compose compact prompts that **save you money** and **express more** per token. All with a happy ***(: Smile***!
 
 
-**You are on the bleeding edge of text organization.** When you learn to leverage these **three key advantages**, your organization is moving towards **structured** and **maintainable** prompt engineering. 
+When you learn to leverage these **three key advantages**, your organization is moving towards **structured** and **maintainable** prompt engineering. **You are on the bleeding edge of text organization.** 
 
 
 
