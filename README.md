@@ -96,21 +96,24 @@ Are you measuring the performance of your prompts? Do you know which text change
 We can do this in two ways: 
 
 * **Prompt Based:** Creating rules for writing prompts that the prompts must follow to be a ***(: Smile*** prompt. A failure case is when the prompt is not written according to these guidelines. For example, you cannot use sad emoticons as brackets like =( in ***(: Smile***.
-* **Response Based:** Creating requirements for the response with required sections, and then recognizing a failure case those sections are not provided. For example, you can ask the model to use a name tag representing its role. If it doesn't use the name tag, that means the instructions need different text.
+* **Response Based:** Creating requirements for the response with required sections, and then recognizing a failure case those sections are not provided. For example, you can ask the model to use a name tag representing its role. If it doesn't use the name tag, that means it hasn't understood how it can agree to the instructions as an agent of reciprocity. 
 
 
-Often, the model **doesn't know if it has agreed to follow the instructions**. When we let it know that by providing the name tag, it agrees to abide by our instructions and role, a pattern **emerges** in multi-turn interactions.
+ In ***(: Smile***, we let the model know up front  that by providing the name tag, it agrees to abide by our instructions and role.
 
-A model that provides a name tag consistently and effectively follows instructions, a model that does not provide a name tag after being provided a ***(: Smile*** prompt has misunderstood the instructions and will not follow them consistently.
+Often, the model **doesn't know if it has agreed to follow the instructions**. With this name tag usage, a pattern **emerges** in multi-turn interactions:
+
+1. A model that provides a name tag consistently  effectively follows instructions
+2. A model that does not provide a name tag after being provided a ***(: Smile*** prompt has misunderstood the instructions and will not follow them consistently.
+3. If the model doesn't provide the name tag, the prompt text needs to change. 
 
 
-
-The prompt is ***(: Smile*** if:
+These are two simple ways to verify your ***(: Smile*** is written correctly:
 
 
 * The model  responds immediately with a name tag that represents its role and agreement to follow the instructions.
 
-* **IT HAS NO SAD FACES!** The following are not valid: `:(` `=[` `;|` and neither are any variations. 
+* **Your prompt HAS ONLY HAPPY FACES!** The following are not valid: `:(` `=[` `;|` and neither are any variations. 
 
 
 
