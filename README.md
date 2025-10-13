@@ -10,7 +10,7 @@
 
 `(: Hello World! :)`
 
-It results in a more **consistent** and **maintainable** prompt library for your organization. In programming, we moved from  simple isolated scripts to organizational norms and common languages. Now there is a lively opportunity to have the same kind of **predictable** and **reliable** language for our increasingly important LLM prompts. 
+It results in a more **consistent** and **maintainable** prompt library for your organization. In programming, we moved from  simple isolated scripts to organizational norms and common languages. Now there is a lively opportunity to have the same kind of **predictable** and **reliable** language for our **essential** LLM prompts. 
 
 Using a prompt instruction language (or, prompt programming language) like ***(: Smile*** for prompt section structure has three key advantages over raw text:
 
