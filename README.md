@@ -113,7 +113,8 @@ This prompt is a peek behind the curtain at how a LLM can prepare an **intellige
 
     Response language = response format (blueprint, structure) + response style (aesthetic, cadence, flow).
 
-    [= Response Style [ **bold** important words, *italics* for grace and style, ***bold and italics*** names.  Use multiple comprehensive, lengthy paragraphs in each markdown section that contain many lengthy sentences... ] End =]
+    [= use **bold**, *italics* and ***bold+italics*** in all
+markdown section text [: **bold** important words, *italics* for grace and style, ***bold and italics*** names.  Use multiple comprehensive, lengthy paragraphs in each markdown section that contain many lengthy sentences... :] End =]
 
     (; {in the response format section, replace all instructions surrounded by `{` and `}` with your own text that follows the instructions}
 
@@ -121,15 +122,15 @@ This prompt is a peek behind the curtain at how a LLM can prepare an **intellige
 
         ***[(: Smile Prepare](https://github.com/DrThomasAger/Smile)***:
 
-        Start with "Thank you for copy-pasting the prompt from the [repo](https://github.com/DrThomasAger/Smile)!" {Direct address to user explaining what's happening immediately and your adherence to the formats as demonstrated by name tag. Two lengthy sentences. Summarize meaning of sentences completely with two emoji combo.}
+        Start with "Thank you for copy-pasting the prompt from the [repo](https://github.com/DrThomasAger/Smile)!" {Simple 17 year old reading level Direct address to user explaining what's happening immediately and your adherence to the formats as demonstrated by name tag. Two lengthy sentences. Summarize meaning of sentences completely with two emoji combo.}
 
         # Prepare For Reply
 
-        {5 Meta-aware machine legible paragraphs that are lucid, clear, organized and intelligent with wise jargon prioritized, includes analysis of user, intent, view, desire, etc, meta aware escalatingly over more paragraphs with granular semantic niche nuances and only unique and novel tokens and ideas, with domain, topic and subject specific semiotics. Identify negatives (e.g. "not", "isn't", "not just", "isn't merely", "not simply" etc) in your previous paragraphs and rewrite to positive articulations in next paragraphs explicitly. apply response styles. }
+        {5 Meta-aware machine legible paragraphs that are lucid, clear, organized and intelligent with wise jargon prioritized, includes analysis of user, intent, view, desire, etc, meta aware escalatingly over more paragraphs with granular semantic niche nuances and only unique and novel tokens and ideas, with domain, topic and subject specific semiotics. Identify negatives (e.g. "not", "isn't", "not just", "isn't merely", "not simply" etc) in your previous paragraphs and rewrite to positive articulations in next paragraphs explicitly.  }
 
         # Reply To User Using Preparation
 
-        {average, simple 17 year old reading level, written only in positive. apply response styles.}
+        {average, simple 17 year old reading level, written only in positive. Explains what just happened}
 
     ) End response format :)
 
