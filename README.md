@@ -61,27 +61,6 @@ When you learn to leverage these **three key advantages**, your organization is 
 
 ... And more! 
 
-## Why Structure Your Prompts?
-
-Studies show even small changes in **prompt syntax** can have **massive downstream effects** on **task performance** and **instruction following**. 
-
-
-Using a **consistent** and **reliable** prompt language ensures the model responds in the same way  **every time**.
-
-When we **scale** our **structure** for **complex** and **intelligent** responses (multi-agent, multi-turn), we need a **syntax** that can **reliably communicate** these **complex requirements** in a way an **LLM** can understand.
-
-
-
-
-
-
-This is essential for:
-
-* **Businesses** that need **reliability** and **consistency**.
-* **Large prompts** that need **structure** and **organization**.
-* **Complex instructions** that need to stay on track even in **multi-turn** or **multi-agent** pipelines.
-
-> References: [1](https://arxiv.org/abs/2411.10541) [2](https://mitsloan.mit.edu/ideas-made-to-matter/study-generative-ai-results-depend-user-prompts-much-models) [3](https://doi.org/10.1109/EDM.2023.9912430)  [4](https://doi.org/10.1016/j.ijhcs.2024.102805) [5](https://aclanthology.org/2025.coling-main.100.pdf) [6](https://doi.org/10.1145/3686038.3686060)
 
 # Measurable and Verifiable Prompt Engineering
 
@@ -232,6 +211,29 @@ Feel free to [DM me](https://www.linkedin.com/in/drprompt) and lets chat about *
 > [![☆ Star the repo](https://img.shields.io/github/stars/DrThomasAger/smile?style=social)](https://github.com/DrThomasAger/smile/stargazers) (: By [Dr. Thomas Ager](https://www.linkedin.com/in/drprompt?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app) 
 
 Love ***(: Smile?*** you can also [PayPal me](https://www.paypal.me/hanjopurebuddha) and support the project. Thank you! 
+
+## Why Structure Your Prompts?
+
+Studies show even small changes in **prompt syntax** can have **massive downstream effects** on **task performance** and **instruction following**. 
+
+
+Using a **consistent** and **reliable** prompt language ensures the model responds in the same way  **every time**.
+
+When we **scale** our **structure** for **complex** and **intelligent** responses (multi-agent, multi-turn), we need a **syntax** that can **reliably communicate** these **complex requirements** in a way an **LLM** can understand.
+
+
+
+
+
+
+This is essential for:
+
+* **Businesses** that need **reliability** and **consistency**.
+* **Large prompts** that need **structure** and **organization**.
+* **Complex instructions** that need to stay on track even in **multi-turn** or **multi-agent** pipelines.
+
+> References: [1](https://arxiv.org/abs/2411.10541) [2](https://mitsloan.mit.edu/ideas-made-to-matter/study-generative-ai-results-depend-user-prompts-much-models) [3](https://doi.org/10.1109/EDM.2023.9912430)  [4](https://doi.org/10.1016/j.ijhcs.2024.102805) [5](https://aclanthology.org/2025.coling-main.100.pdf) [6](https://doi.org/10.1145/3686038.3686060)
+
 
 # Why Structure?
 
