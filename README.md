@@ -193,14 +193,18 @@ This creates a solid basis to play around with. We can add prompting like **topi
 ) End Role & nametag definition :)
 ```
 
-Here, the ***(: Smile*** is the **structure** around the instructions. This is a key essential point. ***(: Smile*** creates a clear separation between prompt language and response language using **structure** in order to increase the model's **instruction following**. It introduces additional grammar and syntax the model intuitively recognizes as semantic structure, which allows it to differentiate more meaning based on the emoticon used. For example, the meaning of a more rigid smile using an equals sign `[=` is clear in the context of a softer instruction with a smoother bracket `(:`, e.g. in the example: 
+Here, the ***(: Smile*** is the **structure** around the instructions. This is a key essential point. ***(: Smile*** creates a clear separation between prompt language and response language using **structure** in order to increase the model's **instruction following**. It introduces additional grammar and syntax the model intuitively recognizes as semantic structure, which allows it to differentiate more meaning based on the emoticon used. For example, the meaning of a more rigid bracket `[` is clear in the context of a softer instruction with a smoother bracket `(`, e.g. in the example: 
 
 ```
 (: Smile: I'm a prompt language!
-Write the following text exactly [= "Hello friend!" ]
-    (: Then, write something that connects with the reader based on the context :)
+
+Write the following text exactly [" Hello friend! "]
+    (: Then, write something that connects with the reader based on the context (
     (; This prompt shows the difference between a more rigid instruction and a more flexible one using its surrounding bracket syntax, while also remaining intuitively readable to LLM's as it uses common grammars of opening `(` and continutation `:`.
-Thanks for reading!Response language: Reply in markdown immediately with name tag in bold and italics then follow all instructions "***(: Smile***:"
+
+Thanks for reading! They copy pasted this.
+
+Response language: Reply in markdown immediately with name tag in bold and italics then follow all instructions "***(: Smile***:"
 ```
 
 
