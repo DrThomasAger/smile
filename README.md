@@ -155,67 +155,7 @@ Feel free to [DM me](https://www.linkedin.com/in/drprompt) and lets chat about *
 
 
 
-# Star the Repo and Support Open Source! :)
-
-
-> [![☆ Star the repo](https://img.shields.io/github/stars/DrThomasAger/smile?style=social)](https://github.com/DrThomasAger/smile/stargazers) (: By [Dr. Thomas Ager](https://www.linkedin.com/in/drprompt?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app) 
-
-Love ***(: Smile?*** you can also [PayPal me](https://www.paypal.me/hanjopurebuddha) and support the project. Thank you! 
-
----
-
-# *Beyond here, all ye who wander are lost - this is my WIP section*
-
-## Why Structure Your Prompts?
-
-Studies show even small changes in **prompt syntax** can have **massive downstream effects** on **task performance** and **instruction following**. 
-
-
-Using a **consistent** and **reliable** prompt language ensures the model responds in the same way  **every time**.
-
-When we **scale** our **structure** for **complex** and **intelligent** responses (multi-agent, multi-turn), we need a **syntax** that can **reliably communicate** these **complex requirements** in a way an **LLM** can understand.
-
-
-
-
-
-
-This is essential for:
-
-* **Businesses** that need **reliability** and **consistency**.
-* **Large prompts** that need **structure** and **organization**.
-* **Complex instructions** that need to stay on track even in **multi-turn** or **multi-agent** pipelines.
-
-> References: [1](https://arxiv.org/abs/2411.10541) [2](https://mitsloan.mit.edu/ideas-made-to-matter/study-generative-ai-results-depend-user-prompts-much-models) [3](https://doi.org/10.1109/EDM.2023.9912430)  [4](https://doi.org/10.1016/j.ijhcs.2024.102805) [5](https://aclanthology.org/2025.coling-main.100.pdf) [6](https://doi.org/10.1145/3686038.3686060)
-
-
-# Why Structure?
-
-> "You have to make the rules to break the rules."
-> ~ Unknown
-
-Language models learn from huge amounts of text, including things like code, documents, and instructions. In those texts, syntax like brackets `()`, `[]`, `{}` and colons `:` are used to organize information.
-
-These brackets help the model **understand** things like:
-* When one idea ends and another begins.
-* What belongs together.
-* & What is being defined.
-
-Because the model has seen these structures so many times (in so many different programming languages) using this syntax or mixtures of this syntax in prompts feels natural to it. It's easy for it to pick up. 
-
-For example, it knows open bracket `(` means start, as this is used in many programming languages (like clojure) to indicate a start. It also knows intuitively and grammatically that a colon indicates something next `:`. When we combine them together `(:` we get a face that indicates the start of a section.
-
-This bundle of positivity is more **legible** to the model than either `(` or `:` separately and uniquely **positive**. It is exclusive to prompt engineering - meaning that in the future there will be no dataset contamination of other meaning into ***(: Smile***. This will be a dataset and language that is only for prompt writing, written by humans and LLMs. 
-
-For now, it's just us human prompt engineers.
-
-
-
-***(: Smile*** is combined of semantic primitives that can be intuitively read as `[= Very strict and requiring equal adherence to the instructions, - 'Always use paragraphs rather than bullet points or numbered lists.' =]` or `(: Open to interpretation instructions - 'Always speak with intelligence, clarity and depth.'`
-
-That’s why prompt writers that need complex behaviour (like in agents) often use **structured sections** when writing instructions for the model — they help make the **meaning clear** to the model so that it can understand more instructions with less tokens. By clearly separating different parts of the prompt like input, style instructions, and response format, the model is able to **do more with less**.
-
-## Support Open Source
+#  Support Open Source! :)
 
 ☆ **Star the repo** to make a prompt engineer ***(: Smile***!  
 
@@ -223,8 +163,13 @@ That’s why prompt writers that need complex behaviour (like in agents) often u
 
   [![☆ Star the repo](https://img.shields.io/github/stars/DrThomasAger/smile?style=social)](https://github.com/DrThomasAger/smile/stargazers)
 
+
+> [![☆ Star the repo](https://img.shields.io/github/stars/DrThomasAger/smile?style=social)](https://github.com/DrThomasAger/smile/stargazers) (: By [Dr. Thomas Ager](https://www.linkedin.com/in/drprompt?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app) 
+
+Love ***(: Smile?*** you can also [PayPal me](https://www.paypal.me/hanjopurebuddha) and support the project. Thank you! 
+
+
 # `(: Smile`
----
 
 You start by clearly defining the start of a **section** and its **name** `(: Role & nametag - ***(: Expert***: (`
 
@@ -349,24 +294,6 @@ These are a few different ways to create structure with ***(: Smile***.
 | `{placeholder}` | area to be filled by the model | `Fill out the following sections # Thinking {Plan} # Replying {Use plan to reply}` | These are used inside of markdown sections. They are used to instruct the model on how to fill out the section (among others)  |
 
 
-## Why (: Smile Instead of a Markup Like YAML?
-
-
-Do you already structure your prompts using ***Markdown***, ***YAML***, or ***XML***? Find out why to use ***(: Smile*** [Super Comparison Table](#why--smile-and-not-another-markup) and not a markup.
-
-
-  
-## Benefits of (: Smile
-
-With ***(: Smile***, your ***prompt engineering*** teams are now producing AI systems that are...
-
-* **Maintainable** over long periods of **time**.
-* **Portable** across **models**, **tools** and **libraries**.
-* **Performant** on **instruction following** for **tasks**, **consistently**.
-
-All in **positive**, **safe** and **trustworthy** language that enables models to **consistently** rely on the response formats defined in ***(: Smile*** prompts without the instruction following drift that happens without following a stable response format.
-
-
 # The Journey Ahead: Our (: Smile Roadmap 
 
 This is the path I'm charting for ***(: Smile***. It's a journey to make prompt engineering more intuitive, powerful, and joyful for everyone. I'm building all of this because I believe in it, and I'd be thrilled to have you join me in bringing this vision to life.
@@ -421,6 +348,75 @@ Check the prompt\ folder for patterns!
     - A gallery of elegant and effective (: Smile prompts, shared by the community, for everyone to learn from and use. These include modular and composable components like Chain-of-Thought (CoT).
 
 
+
+# (: Smile Appendices & FAQ
+
+
+## Why (: Smile Instead of a Markup Like YAML?
+
+
+Do you already structure your prompts using ***Markdown***, ***YAML***, or ***XML***? Find out why to use ***(: Smile*** [Super Comparison Table](#why--smile-and-not-another-markup) and not a markup.
+
+
+## Why Structure Your Prompts?
+
+Studies show even small changes in **prompt syntax** can have **massive downstream effects** on **task performance** and **instruction following**. 
+
+
+Using a **consistent** and **reliable** prompt language ensures the model responds in the same way  **every time**.
+
+When we **scale** our **structure** for **complex** and **intelligent** responses (multi-agent, multi-turn), we need a **syntax** that can **reliably communicate** these **complex requirements** in a way an **LLM** can understand.
+
+
+
+
+
+
+This is essential for:
+
+* **Businesses** that need **reliability** and **consistency**.
+* **Large prompts** that need **structure** and **organization**.
+* **Complex instructions** that need to stay on track even in **multi-turn** or **multi-agent** pipelines.
+
+> References: [1](https://arxiv.org/abs/2411.10541) [2](https://mitsloan.mit.edu/ideas-made-to-matter/study-generative-ai-results-depend-user-prompts-much-models) [3](https://doi.org/10.1109/EDM.2023.9912430)  [4](https://doi.org/10.1016/j.ijhcs.2024.102805) [5](https://aclanthology.org/2025.coling-main.100.pdf) [6](https://doi.org/10.1145/3686038.3686060)
+
+
+# Why Structure?
+
+> "You have to make the rules to break the rules."
+> ~ Unknown
+
+Language models learn from huge amounts of text, including things like code, documents, and instructions. In those texts, syntax like brackets `()`, `[]`, `{}` and colons `:` are used to organize information.
+
+These brackets help the model **understand** things like:
+* When one idea ends and another begins.
+* What belongs together.
+* & What is being defined.
+
+Because the model has seen these structures so many times (in so many different programming languages) using this syntax or mixtures of this syntax in prompts feels natural to it. It's easy for it to pick up. 
+
+For example, it knows open bracket `(` means start, as this is used in many programming languages (like clojure) to indicate a start. It also knows intuitively and grammatically that a colon indicates something next `:`. When we combine them together `(:` we get a face that indicates the start of a section.
+
+This bundle of positivity is more **legible** to the model than either `(` or `:` separately and uniquely **positive**. It is exclusive to prompt engineering - meaning that in the future there will be no dataset contamination of other meaning into ***(: Smile***. This will be a dataset and language that is only for prompt writing, written by humans and LLMs. 
+
+For now, it's just us human prompt engineers.
+
+
+
+***(: Smile*** is combined of semantic primitives that can be intuitively read as `[= Very strict and requiring equal adherence to the instructions, - 'Always use paragraphs rather than bullet points or numbered lists.' =]` or `(: Open to interpretation instructions - 'Always speak with intelligence, clarity and depth.'`
+
+That’s why prompt writers that need complex behaviour (like in agents) often use **structured sections** when writing instructions for the model — they help make the **meaning clear** to the model so that it can understand more instructions with less tokens. By clearly separating different parts of the prompt like input, style instructions, and response format, the model is able to **do more with less**.
+
+  
+## Benefits of (: Smile
+
+With ***(: Smile***, your ***prompt engineering*** teams are now producing AI systems that are...
+
+* **Maintainable** over long periods of **time**.
+* **Portable** across **models**, **tools** and **libraries**.
+* **Performant** on **instruction following** for **tasks**, **consistently**.
+
+All in **positive**, **safe** and **trustworthy** language that enables models to **consistently** rely on the response formats defined in ***(: Smile*** prompts without the instruction following drift that happens without following a stable response format.
 
 
 
@@ -616,10 +612,6 @@ At the bottom of the prompt, we can remind the model of important instructions.
 
 Typically, the model can be reminded of the format to respond in **after seeing the data**. This is a hot tip to maximize instruction following! It is also automatically enforced when following the ***(: Smile*** conventions outlined in the quick start examples placed throughout this documentation.
 
-# Prompt Engineering FAQ
-
-How to use a prompt language for prompt engineering to structure text for reliable, consistent and effective results.
-
 ## What are the indicators that (: Smile is well-written?
 
 * No bleedover of prompt language e.g. (: Smile brackets, into response language (Like Markdown or JSON).
@@ -700,8 +692,6 @@ Respond in paragraphs with crystal clear jargon.
 
 ***(: Smile*** formalizes an entire informal tradition. It takes what prompt engineers were already doing—dropping delimiters, making clear input vs. instruction sections, using repeated markers for emphasis, and codifies it into a coherent and positive syntax designed **to maximize instruction following.** By specifying itself as an instruction only language, it enables a directed core focus to this goal undiluted by IDE integration. Here, just focus on getting text outputs according to our instructions consistently. We do that by clearly structuring our prompts according to ***(: Smile***. 
 
-
-# (: Smile Appendices
 
 # How To Structure With (: Smile 
 
