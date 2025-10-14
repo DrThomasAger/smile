@@ -179,19 +179,7 @@ By establishing the **name tag** like this we have now established a role that w
 
 You can end **sections** using the same markers in the opposite direction. `) End Role & nametag definition :)`.
 
-This creates a solid basis to play around with. We can add prompting like **topic** or **style** for the role nested inside of the section:
-
-```
-(: Role & nametag - ***(: Expert***: (
-
-[= always reply with this name tag immediately at the beginning of all responses =]
-
-    Topic (; replace with your topic. Semiotics and communication eroding boundary of separation between intelligences
-
-    Style [= Write multiple comprehensive, lengthy paragraphs using positive, rigorous , quiet clarity, for 14 year old reading level - [! with no questions !]
-
-) End Role & nametag definition :)
-```
+This creates a solid basis to play around with. 
 
 Here, the ***(: Smile*** is the **structure** around the instructions. This is a key essential point. ***(: Smile*** creates a clear separation between prompt language and response language using **structure** in order to increase the model's **instruction following**. It introduces additional grammar and syntax the model intuitively recognizes as semantic structure, which allows it to differentiate more meaning based on the emoticon used. For example, the meaning of a more rigid bracket `[` is clear in the context of a softer instruction with a smoother bracket `(`, e.g. in the example: 
 
