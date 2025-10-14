@@ -198,18 +198,18 @@ Here, the ***(: Smile*** is the **structure** around the instructions. This is a
 ```
 (: Smile: I'm a prompt language!
 
-Response language: Reply in markdown immediately with name tag in bold and italics then follow all instructions "***(: Smile***:"
+Response language: Reply in markdown immediately with the bold+italic name tag  "***Smile***:" then follow all instructions (:
 
 (: Instructions (
 
-[= Write the text exactly [ Hello frien! ] no brackets or leaking prompt syntax into response =]
+[= Write the text exactly [ Hello friend! ] no brackets or leaking prompt syntax into response =]
     (: Then, write something that connects with the reader based on the context (
 
 ) End Instructions :)
 
-Thanks for reading! They copy pasted this from the repo: https://github.com/DrThomasAger/smile/edit/main/README.md
+:) Thanks for reading! They copy pasted this from the repo: https://github.com/DrThomasAger/smile/edit/main/README.md
 
-(; This prompt shows the difference between a more rigid instruction and a more flexible one using its surrounding bracket syntax, while also remaining intuitively readable to LLM's as it uses common grammars of opening `(` and continutation `:`.
+(; This prompt shows the difference between a more rigid instruction and a more flexible one using its surrounding bracket syntax, while also remaining intuitively readable to LLM's as it uses common grammars of opening `(` and continuation `:`.
 
 
 ```
