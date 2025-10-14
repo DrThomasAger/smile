@@ -62,7 +62,7 @@ When you learn to leverage these **three key advantages**, your organization is 
 ... And more! 
 
 
-# Measurable and Verifiable Prompt Engineering
+# Name Tags
 
 Discover **optimal** tokens with clear failure cases for when the model doesn't understand the instructions!
 
@@ -72,34 +72,21 @@ Are you measuring the performance of your prompts? Do you know which text change
 
 ***(: Smile*** works by defining extremely clear and measurable failure cases for when something is **NOT** going to make your org happy. 
 
-We can do this in two ways: 
-
-* **Prompt Based:** Creating rules for writing prompts that the prompts must follow to be a ***(: Smile*** prompt. A failure case is when the prompt is not written according to these guidelines. For example, you cannot use sad emoticons as brackets like =( in ***(: Smile***.
-* **Response Based:** Creating requirements for the response with required sections, and then recognizing a failure case those sections are not provided. For example, you can ask the model to use a name tag representing its role. If it doesn't use the name tag, that means it hasn't understood how it can agree to the instructions as an agent of reciprocity. 
+ For example, in ***(: Smile*** we ask the model to use a name tag representing its role. If it doesn't use the name tag, that means it hasn't agreed to the instructions as an agent of reciprocity. 
 
 
  In ***(: Smile***, we let the model know up front  that by providing the name tag, it agrees to abide by our instructions and role.
 
-Often, the model **doesn't know if it has agreed to follow the instructions**. With this name tag usage, a pattern **emerges** in multi-turn interactions:
-
-1. A model that provides a name tag consistently  effectively follows instructions
+1. A model that provides a name tag consistently  effectively follows instructions.
 2. A model that does not provide a name tag after being provided a ***(: Smile*** prompt has misunderstood the instructions and will not follow them consistently.
 3. If the model doesn't provide the name tag, the prompt text needs to change. 
 
 
-These are two simple ways to verify your ***(: Smile*** is written correctly:
-
-
-* The model  responds immediately with a name tag that represents its role and agreement to follow the instructions.
-
-* **Your prompt HAS ONLY HAPPY FACES!** The following are not valid: `:(` `=[` `;|` and neither are any variations. 
 
 
 
-# Why Does (: Smile Work?
 
 
-It is designed to  leverage a model trained on millions of code examples. The hypothesis of ***(: Smile*** is that LLMs instinctively recognize  that `(` signals a beginning and `:` indicates relationship, so `(:` naturally communicates the start of a defined section.
 
 ## Prompt Pattern Example
 
@@ -760,6 +747,11 @@ In it you:
 This is all done flexibly with resonant semiotics. For example, when exact data or instructions need to be used or followed strict start and end enclosure brackets can be used as follows: `[= Strict section - use this data exactly [`, and for more flexible instructions that are open to interpretation, use more flexible emoticons `(: Flexible instruction - be emotionally connected to the user (`.
 
 This lets you and your model have a prompt base of **maintainable**,  **structured** **positive** prompting.
+
+# Why Does (: Smile Work?
+
+
+It is designed to  leverage a model trained on millions of code examples. The hypothesis of ***(: Smile*** is that LLMs instinctively recognize  that `(` signals a beginning and `:` indicates relationship, so `(:` naturally communicates the start of a defined section.
 
 ## Does Smiling Really Make You Happier?
 
