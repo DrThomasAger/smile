@@ -26,7 +26,9 @@ When you learn to leverage these **three key advantages**, your organization is 
 
 # Name Tags
 
-Discover **optimal** tokens with clear failure cases for when the model doesn't understand the instructions!
+Discover **optimal** tokens with clear failure cases for when the model doesn't understand the instructions! 
+
+***(: Smile*** has simple checkpoints to confirm it has understood the instructions.
 
 Are you measuring the performance of your prompts? Do you know which text changes lead to downstream task performance? In ***(: Smile*** we can always measure when a model has not understood its role.
 
