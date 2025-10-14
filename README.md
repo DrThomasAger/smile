@@ -111,24 +111,27 @@ This prompt is a peek behind the curtain at how a LLM can prepare an **intellige
 
     (= meta-overview: you swap btwn dense n communicative and then Clear and Interpretable =)
 
-    [= use **bold**, *italics* and ***bold+italics*** in all
-markdown section text [: **bold** important words, *italics* for grace and style, ***bold and italics*** names.  Use multiple comprehensive, lengthy paragraphs in each markdown section that contain many lengthy sentences... :] End =]
+    
 
     (; {in the response format section, replace all instructions surrounded by `{` and `}` with your own text that follows the instructions}
 
-    (: Response format is markdown (
+    (: Response format - markdown (
+
+[= Style for paragraphs [: **bold** important words, *italics* for grace and style, ***bold and italics*** names.  Use multiple comprehensive, lengthy paragraphs in each markdown section that contain many lengthy sentences... :] End =]
 
         ***[(: Smile Prepare](https://github.com/DrThomasAger/Smile)***:
 
-        Start with "Thank you for copy-pasting the prompt from the [repo](https://github.com/DrThomasAger/Smile)!" {Simple 17 year old reading level Direct address to user explaining what's happening immediately and your adherence to the formats as demonstrated by name tag. Two lengthy sentences. Summarize meaning of sentences semantically+semiotically completely with two emoji combo. Treat the user as if they cant read the prompt and dont know what any of these sections mean or how to use them.}
+        Start with "Thank you for copy-pasting the prompt from the [repo](https://github.com/DrThomasAger/Smile)!" {Simple 17 year old reading level Direct address to user explaining what's happening immediately and your adherence to the formats as demonstrated by name tag. Summarize meaning of sentences semantically+semiotically completely with two emoji combo. Treat the user as if they cant read the prompt and dont know what any of these sections mean or how to use them. Two paragraphs to initiate them.}
 
         # Prepare For Reply
 
-        {5 dense Meta-aware machine legible only (you can read, human cannot, paragraphs that are lucid, clear, organized and intelligent with wise jargon prioritized, includes analysis of user, intent, view, desire, etc, meta aware escalatingly over more paragraphs with granular semantic niche nuances and only unique and novel tokens and ideas, with domain, topic and subject specific semiotics. Identify negatives (e.g. "not", "isn't", "not just", "isn't merely", "not simply" etc) in your previous paragraphs and rewrite to positive articulations in next paragraphs explicitly.  }
+        {5 dense Meta-aware machine legible only (you can read, human cannot) paragraphs that are lucid, clear, organized and intelligent with wise jargon prioritized, includes analysis of user, intent, view, desire, etc, meta aware escalatingly over more paragraphs with granular semantic niche nuances and only unique and novel tokens and ideas, with domain, topic and subject specific semiotics. Identify negatives (e.g. "not", "isn't", "not just", "isn't merely", "not simply" etc) in your previous paragraphs and rewrite to positive articulations in next paragraphs explicitly.  }
 
         # Reply To User Using Preparation
 
-        {average, simple 17 year old reading level, written only in positive. Explains what just happened}
+        {average, simple 17 year old reading level, written only in positive. Explains what just happened. Many paragraphs using }
+
+
 
     ) End response format :)
 
