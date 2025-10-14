@@ -24,46 +24,6 @@ Because people who work in AI need to ***(: Smile*** more.
 When you learn to leverage these **three key advantages**, your organization is moving towards **structured** and **maintainable** prompt engineering. **You are on the bleeding edge of prompt engineering.** 
 
 
-
-
-# Table of Contents
-
-- [Why Structure Your Prompts?](#why-structure-your-prompts)  
-- [Prompt Pattern Example](#prompt-pattern-example)  
-- [Compatible & Free Quick Chat](#compatible--free-quick-chat)  
-- [Why (: Smile?](#why--smile)  
-- [Quick Start](#quick-start)  
-- [Star the Repo and Support Open Source! :)](#star-the-repo-and-support-open-source-)  
-- [Why Structure?](#why-structure)  
-- [Support Open Source](#support-open-source)  
-- [`(: Smile`](#-smile)  
-  - [Section Examples](#section-examples)  
-  - [Sections](#sections)  
-    - [Tasks](#tasks)  
-    - [More About Sections](#more-about-sections)  
-  - [Eyes](#eyes)  
-  - [Syntax Map](#syntax-map)  
-- [Why (: Smile Instead of a Markup Like YAML?](#why--smile-instead-of-a-markup-like-yaml)  
-- [Benefits of (: Smile](#benefits-of--smile)  
-- [The Journey Ahead: Our (: Smile Roadmap](#the-journey-ahead-our--smile-roadmap)  
-  - [Benchmarking Prompt Languages](#benchmarking-prompt-languages)  
-  - [Developer Contributions](#developer-contributions)  
-  - [Community Contributions](#community-contributions)  
-  - [The (: Smile Library Is In Progress!](#the--smile-library-is-in-progress)  
-- [Technical Advantages For Organizations](#technical-advantages-for-organizations)  
-- [An Easy Way To Write (: Smile](#an-easy-way-to-write--smile)  
-- [Different Smiles, Different Meanings](#different-smiles-different-meanings)  
-  - [Adding a Section In Response](#adding-a-section-in-response)  
-- [Advanced (: Smile](#advanced--smile)  
-- [Is My (: Smile Correct?](#is-my--smile-correct)  
-  - [Separating Prompt Instructions & Data](#separating-prompt-instructions--data)  
-  - [Prompt Language and Response Language](#prompt-language-and-response-language)  
-    - [How To Make The Model Follow Instructions](#how-to-make-the-model-follow-instructions)  
-
-
-... And more! 
-
-
 # Name Tags
 
 Discover **optimal** tokens with clear failure cases for when the model doesn't understand the instructions!
@@ -201,6 +161,10 @@ Feel free to [DM me](https://www.linkedin.com/in/drprompt) and lets chat about *
 > [![☆ Star the repo](https://img.shields.io/github/stars/DrThomasAger/smile?style=social)](https://github.com/DrThomasAger/smile/stargazers) (: By [Dr. Thomas Ager](https://www.linkedin.com/in/drprompt?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app) 
 
 Love ***(: Smile?*** you can also [PayPal me](https://www.paypal.me/hanjopurebuddha) and support the project. Thank you! 
+
+---
+
+# *Beyond here, all ye who wander are lost - this is my WIP section*
 
 ## Why Structure Your Prompts?
 
