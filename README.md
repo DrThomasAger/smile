@@ -773,95 +773,10 @@ This is the basic prompt and response from normal ChatGPT:
 One [well-known problem](https://www.reddit.com/r/singularity/comments/1mkrt5v/gpt5_cant_do_basic_math/#lightbox) with ***ChatGPT-5*** is that it can't solve basic math. For example, here is a prompt and response for a standard ***Chain-of-thought***:
 
 ```
-User Prompt:
-
 Solve: 5.9=x+5.11. Think step by step and check solution before output.
-
-ChatGPT-5 Instant Response:
-
-Let’s solve step by step and carefully check:
-
----
-
-### Step 1: Start with the equation
-
-$$
-5.9 = x + 5.11
-$$
-
----
-
-### Step 2: Isolate $x$
-
-Subtract $5.11$ from both sides:
-
-$$
-5.9 - 5.11 = x
-$$
-
----
-
-### Step 3: Perform subtraction
-
-$$
-5.9 - 5.11 = -0.21
-$$
-
-So:
-
-$$
-x = -0.21
-$$
-
----
-
-### Step 4: Check the solution
-
-Plug $x = -0.21$ back into the equation:
-
-$$
-x + 5.11 = -0.21 + 5.11 = 4.90
-$$
-
-But the left-hand side should equal **5.9**, not **4.9**.
-
----
-
-⚠️ That means something’s off. Let’s double-check carefully:
-
-Original equation:
-
-$$
-5.9 = x + 5.11
-$$
-
-Subtracting correctly:
-
-$$
-x = 5.9 - 5.11 = -0.21
-$$
-
-Checking:
-
-$$
--0.21 + 5.11 = 4.90
-$$
-
-Yes, this gives $4.9$, which does not equal $5.9$.
-
----
-
-### Careful Reflection
-
-The algebra is correct, but the equation itself is **inconsistent**: no real $x$ can make both sides equal because subtraction showed a mismatch when verified.
-
-👉 The equation **has no solution** — it’s inconsistent.
-
----
-
-Do you want me to also show you **why this contradiction arises algebraically** (by rearranging terms and seeing the mismatch directly)?
 ```
-Let's add a little extra information to shift our **knowledge expert** (someone who can use terms correctly) to a **math CoT expert**:
+
+Let's add a little extra information to shift our **knowledge expert** (someone who can use terms correctly) to a **math CoT expert**, and ask them to be rigorous in their thoughts:
 
 ```
 Solve: 5.9=x+5.11
