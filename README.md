@@ -34,7 +34,7 @@ Are you measuring the performance of your prompts? Do you know which text change
 
 ***(: Smile*** works by defining extremely clear and measurable failure cases for when something is **NOT** going to make your org happy. 
 
-In ***(: Smile*** we always explicitly define the method of writing the prompt language and the response language as distinct. In this repo, we use ***Markdown*** as our response language. In our instructions for responding in ***Markdown*** we instruct the model to use a name tag representing its role. 
+In ***(: Smile*** we always explicitly define the **prompt language**  and the **response language**. In this repo, we use ***Markdown*** as our response language. In our instructions for responding in ***Markdown*** we instruct the model to use a name tag representing its role. 
 
 If it doesn't use the name tag, that means it hasn't agreed to the instructions as an agent of reciprocity. 
 
@@ -45,7 +45,7 @@ If it doesn't use the name tag, that means it hasn't agreed to the instructions 
 2. A model that does not provide a name tag after being provided a ***(: Smile*** prompt has misunderstood the instructions and will not follow them consistently.
 3. If the model doesn't provide the name tag, the prompt text needs to change. 
 
-
+This handshake immediately establishes agreement between the mind of the model and the intention of the prompt.
 
 
 
