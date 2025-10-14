@@ -659,34 +659,6 @@ You probably already do! Any section, role description, instruction or data is s
 
 
 
-# The HTML of Prompt Engineering
-
-
-***(: Smile*** structures *****Large Language Model (LLM)*** prompt instruction text** for **instruction following**, the same way ***HTML*** structures **website text** into **structured blocks** a browser can render. 
-
-# An Example With HTML
-
-Let's look at what happens if we structure a simple prompt, one that asks the model to respond in paragraphs, with HTML.
-
-```
-<div class="start">
-<h1> Prompt Instructions </h1>
-<p class="instructions">
-Respond in paragraphs with crystal clear jargon.
-</p>
-</div class="end">
-```
-
-And compare that to ***(: Smile***:
-
-```
-(: Start (
-Prompt Instructions:
-Respond in paragraphs with crystal clear jargon.
-) This is the end of a section :)
-```
-
-
 ## Repository Layout
 
 - `prompt/` – example prompts written in ***(: Smile***.
