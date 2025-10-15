@@ -34,7 +34,7 @@ In ***(: Smile*** we instruct the model to use a name tag representing its role.
 
 This acts as an initial handshake confirming that the model will act as an agent of reciprocity.
 
-If it doesn't use the name tag, that means it hasn't agreed to the instructions as an agent of reciprocity. 
+If it doesn't use the name tag, that means it hasn't agreed to follow the instructions. 
 
 
  In ***(: Smile***, we let the model know up front  that by providing the name tag, it agrees to abide by our instructions and role.
