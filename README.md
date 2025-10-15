@@ -30,17 +30,9 @@ When you learn to leverage these **three key advantages**, your organization is 
 
 # Name Tags
 
-Discover **optimal** tokens with clear failure cases for when the model doesn't understand the instructions! 
+In ***(: Smile*** we instruct the model to use a name tag representing its role. 
 
-***(: Smile*** has simple checkpoints to confirm it has understood the instructions.
-
-Are you measuring the performance of your prompts? Do you know which text changes lead to downstream task performance? In ***(: Smile*** we can always measure when a model has not understood its role.
-
-
-
-***(: Smile*** works by defining extremely clear and measurable failure cases for when something is **NOT** going to make your org happy. 
-
-In ***(: Smile*** we always explicitly define the **prompt language**  and the **response language**. In this repo, we use ***Markdown*** as our response language. In our instructions for responding in ***Markdown*** we instruct the model to use a name tag representing its role. 
+This acts as an initial handshake confirming that the model will act as an agent of reciprocity.
 
 If it doesn't use the name tag, that means it hasn't agreed to the instructions as an agent of reciprocity. 
 
@@ -54,11 +46,9 @@ If it doesn't use the name tag, that means it hasn't agreed to the instructions 
 This handshake immediately establishes agreement between the mind of the model and the intention of the prompt.
 
 
-
-
-
-
 ## Prompt Pattern Example
+
+In the next example, we'll use the name tag ***(: Smile Prepare***: for the role of responding with two stages: one "thinking" or preparatory stage followed by a response that leverages that preparation for a more intelligent reply.
 
 One popular **prompt engineering pattern** is to let the model **think before it responds**. 
 
@@ -120,15 +110,7 @@ markdown section text [: **bold** important words, *italics* for grace and style
 
 **Just copy and paste the quick start example into one of the chats above, or check [here](#portability-and-compatibility) for alternative options.**
 
-## Why (: Smile?
 
- To be **happy**! :)
-
-***(: Smile*** is the **positive** language for **structured** prompt engineering.
-
-We use ***(: Smile*** as our **prompt instruction language**. With it, we define our  **response language** for the model clearly,  for **consistent** and **effective** results.
-
-When we give our model a ***(: Smile***, we get **outcomes** that make our organization **happy**.
 
 
 # Quick Start
@@ -157,7 +139,7 @@ defines my prompt language, you have response language, we co-create as gift by 
 ) End prompt language, respond in response language starting with name tag [(: ***Smile Expert***](https://github.com/DrThomasAger/smile): always please thank you  :)
 ```
 
-Feel free to [DM me](https://www.linkedin.com/in/drprompt) and lets chat about ***(: Smile***.
+Interested in adopting ***(: Smile***? Feel free to [DM me](https://www.linkedin.com/in/drprompt) and lets chat about how you can structure prompts for your organization with ***(: Smile***.
 
 
 
@@ -175,11 +157,23 @@ Feel free to [DM me](https://www.linkedin.com/in/drprompt) and lets chat about *
 Love ***(: Smile?*** you can also [PayPal me](https://www.paypal.me/hanjopurebuddha) and support the project. Thank you! 
 
 
-# `(: Smile`
+# `(: Smile` Documentation
+
+## Why (: Smile?
+
+ To be **happy**! :)
+
+***(: Smile*** is the **positive** language for **structured** prompt engineering.
+
+We use ***(: Smile*** as our **prompt instruction language**. With it, we define our  **response language** for the model clearly,  for **consistent** and **effective** results.
+
+When we give our model a ***(: Smile***, we get **outcomes** that make our organization **happy**.
+
+## An Example (: Smile Prompt Flow 
 
 You start by clearly defining the start of a **section** and its **name** `(: Role & nametag - ***(: Expert***: (`
 
-Once you have opened a **section**, then you define it's **instructions** `[= always reply with this name tag immediately at the beginning of all responses =]`
+Once you have opened a **section**, then you define the **instructions** for the role, that are not specific to sections in the output. These role instructions apply across all sections. For example `(: Section - Role ( provide clear explanations of why this works and the benefits of it over unstructured text ) End Section :)`
 
 By establishing the **name tag** like this we have now established a role that will persist across multiple turns. 
 
@@ -192,6 +186,8 @@ Here, the ***(: Smile*** is the **structure** around the instructions. This is a
 ```
 (: Smile: I'm a prompt language!
 
+(: Section - Role ( provide clear explanations of why this works and the benefits of it over unstructured text ) End Section :) 
+
 Response language: Reply in markdown immediately with the bold+italic name tag  "***Smile***:" then follow all instructions (:
 
 (: Instructions (
@@ -200,6 +196,14 @@ Response language: Reply in markdown immediately with the bold+italic name tag  
     (: Then, write something that connects with the reader based on the context (
 
 ) End Instructions :)
+
+[= Response format [
+
+***(: Smile Example***:
+
+{Response that follows the instructions}
+
+] End Response format =].
 
 :) Thanks for reading! They copy pasted this from the repo: https://github.com/DrThomasAger/smile/edit/main/README.md
 
