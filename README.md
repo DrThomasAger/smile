@@ -14,17 +14,7 @@
 
 A common *prompt language* results in a more **consistent** and **maintainable** *prompt library* for your organization. In programming, we moved from  simple isolated scripts to organizational norms and common languages. Now we have the same kind of **predictable** and **reliable** language for our **essential** LLM prompts. 
 
-## But Seriously... Why Emoticons?
 
-In ***(: Smile***, we explicitly require that the **prompt language** has zero bleedover into the **response language**. 
-
-Whether you need JSON, markdown or just plain text outputs, you can ask for them in ***(: Smile***, define them clearly, and the model will not confuse your instructions for something it needs to replicate verbatim.
-
-By telling the model that this is ***(: Smile*** and then defining the response language clearly, we remove the possibility for context bleed. This repo also contains the norms and methods to reduce this even more.
-
-This also allows us to understand immediately if our prompt needs adjustment: If the prompt language appears in the response, then the model has not sufficiently understood the instructions and they need to be rewritten. 
-
-These essential handshakes and checkpoints make our instruction following consistent and verifiable. 
 
 # Benefits of (: Smile
 
@@ -34,10 +24,11 @@ Using ***(: Smile*** for prompt structure has three key advantages over raw text
 * **Model-Agnostic & Universal**: LLMs of all parameter sizes can read structure written in ***(: Smile***. If you're writing in ChatGPT, or talking to an open source LLM,  ***(: Smile*** just works. Transform your prompt library into a set of prompts that works anywhere, any time, no matter what model you are prompting. 
 * **Positive & Effective**: Get more **value per token**. Other markups are designed for structuring data for machines to read. ***(: Smile*** provides the norms to compose compact prompts that **save you money** and **express more** per token. All with inherently positive syntax!
 
-Because people who work in AI need to ***(: Smile*** more.
-
-
 When you learn to leverage these **three key advantages**, your organization is moving towards **structured** and **maintainable** prompt engineering. **You are on the bleeding edge of prompt engineering.** 
+
+
+
+
 
 
 # Name Tags
@@ -56,6 +47,22 @@ If it doesn't use the name tag, that means it hasn't agreed to follow the instru
 3. If the model doesn't provide the name tag, the prompt text needs to change. 
 
 This handshake immediately establishes agreement between the mind of the model and the intention of the prompt.
+
+## But Seriously... Why Emoticons?
+
+Because people who work in AI need to ***(: Smile*** more.
+
+In ***(: Smile***, we explicitly require that the **prompt language** has zero bleedover into the **response language**. 
+
+Whether you need JSON, markdown or just plain text outputs, you can ask for them in ***(: Smile***, define them clearly, and the model will not confuse your instructions for something it needs to replicate verbatim.
+
+By telling the model that this is ***(: Smile*** and then defining the response language clearly, we remove the possibility for context bleed. This repo also contains the norms and methods to reduce this even more.
+
+This also allows us to understand immediately if our prompt needs adjustment: If the prompt language appears in the response, then the model has not sufficiently understood the instructions and they need to be rewritten. 
+
+These essential handshakes and checkpoints make our instruction following consistent and verifiable. 
+
+
 
 
 ## Prompt Pattern Example
