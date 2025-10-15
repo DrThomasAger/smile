@@ -180,8 +180,11 @@ By establishing the **name tag** like this we have now established a role that w
 You can end **sections** using the same markers in the opposite direction. `) End Role & nametag definition :)`.
 
 This creates a solid basis to play around with. 
+# Why Does It Work?
 
-Here, the ***(: Smile*** is the **structure** around the instructions. This is a key essential point. ***(: Smile*** creates a clear separation between prompt language and response language using **structure** in order to increase the model's **instruction following**. It introduces additional grammar and syntax the model intuitively recognizes as semantic structure, which allows it to differentiate more meaning based on the emoticon used. For example, the meaning of a more rigid bracket `[` is clear in the context of a softer instruction with a smoother bracket `(`, e.g. in the example: 
+Here, the ***(: Smile*** is the **structure** around the instructions. This is a key essential point. ***(: Smile*** creates a clear separation between prompt language and response language using **structure** in order to increase the model's **instruction following**.
+
+It introduces additional grammar and syntax the model recognizes as semantic structure, which allows it to differentiate more meaning based on the emoticon used. For example, the meaning of a more rigid bracket `[` is clear in the context of a softer instruction with a smoother bracket `(`, e.g. in the example: 
 
 ```
 (: Smile: I'm a prompt language!
@@ -212,9 +215,19 @@ Response language: Reply in markdown immediately with the bold+italic name tag  
 
 ```
 
+Using ***(: Smile*** lets you flexibly and semiotically communicate different kinds of instructions using combinations of different mouths, which indicate rigid [ or flexible (, and eyes, which indicate continuation : or equality =. 
 
+We further reserve special emoticons like cash eyes [$ for variable replacement and {pointy curly braces} to show the model where and how to write the instructions. 
 
 ## Section Examples
+
+We define different kinds of instructions with visually different structure, which are emoticons that mean discrete things. But what sections can we use in a prompt to increase instruction following?
+
+***(: Smile*** provides norms that perform effectively for you to use for consistent responses. 
+
+We explicitly recommend that you define your response language. In this repo, the response language is markdown and we use that in all examples. 
+
+Inside of that response language, we recommend using a name tag that represents the role as a handshake. 
 
 These **section types** are **not mandatory**. However, they are **recommended as useful default** section types. 
 
