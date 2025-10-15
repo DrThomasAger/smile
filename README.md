@@ -14,6 +14,18 @@
 
 A common *prompt language* results in a more **consistent** and **maintainable** *prompt library* for your organization. In programming, we moved from  simple isolated scripts to organizational norms and common languages. Now we have the same kind of **predictable** and **reliable** language for our **essential** LLM prompts. 
 
+## But Seriously... Why Emoticons?
+
+In ***(: Smile***, we explicitly require that the **prompt language** has zero bleedover into the **response language**. 
+
+Whether you need JSON, markdown or just plain text outputs, you can ask for them in ***(: Smile***, define them clearly, and the model will not confuse your instructions for something it needs to replicate verbatim.
+
+By telling the model that this is ***(: Smile*** and then defining the response language clearly, we remove the possibility for context bleed. This repo also contains the norms and methods to reduce this even more.
+
+This also allows us to understand immediately if our prompt needs adjustment: If the prompt language appears in the response, then the model has not sufficiently understood the instructions and they need to be rewritten. 
+
+These essential handshakes and checkpoints make our instruction following consistent and verifiable. 
+
 # Benefits of (: Smile
 
 Using ***(: Smile*** for prompt structure has three key advantages over raw text:
