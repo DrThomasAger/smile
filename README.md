@@ -14,6 +14,8 @@
 
 A common *prompt language* results in a more **consistent** and **maintainable** *prompt library* for your organization. In programming, we moved from  simple isolated scripts to organizational norms and common languages. Now we have the same kind of **predictable** and **reliable** language for our **essential** LLM prompts. 
 
+# Benefits of (: Smile
+
 Using ***(: Smile*** for prompt structure has three key advantages over raw text:
 
 * **Future Proof & Maintainable**: AI needs structure at **scale**. Are you still hinging your entire business on loose text files only one employee understands? Time to **solve it**. Enable **future** knowledge transfer for hires by giving your organization prompts that are **explainable**.
