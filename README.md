@@ -22,7 +22,8 @@ Using ***(: Smile*** for prompt structure has three key advantages over raw text
 
 * **Future Proof & Maintainable**: AI needs structure at **scale**. Are you still hinging your entire business on loose text files only one employee understands? Time to **solve it**. Enable **future** knowledge transfer for hires by giving your organization prompts that are **explainable**.
 * **Model-Agnostic & Universal**: LLMs of all parameter sizes can read structure written in ***(: Smile***. If you're writing in ChatGPT, or talking to an open source LLM,  ***(: Smile*** just works. Transform your prompt library into a set of prompts that works anywhere, any time, no matter what model you are prompting. 
-* **Positive & Effective**: Get more consistent instruction following, reduce instruction bleedover, and prevent instruction drift. Other markups are designed for structuring data for machines to read. ***(: Smile*** is made for prompt engineering and provides you the norms to compose compact prompts that **save you money** and **express more** per token. 
+* **Positive & Effective**: Get more consistent instruction following, reduce instruction bleedover and leakage (by using a prompt
+language that is different from the response language) and prevent instruction drift (losing instruction following over time). Other markups are designed for structuring data for machines to read. ***(: Smile*** is made for prompt engineering and provides you the norms to compose compact prompts that **save you money** and **express more** per token. 
 
 When you learn to leverage these **three key advantages**, your organization is moving towards **structured** and **maintainable** prompt engineering. **You are on the bleeding edge of prompt engineering.** 
 
@@ -47,6 +48,8 @@ If it doesn't use the name tag, that means it hasn't agreed to follow the instru
 3. If the model doesn't provide the name tag, the prompt text needs to change. 
 
 This handshake immediately establishes agreement between the mind of the model and the intention of the prompt.
+
+Then, when the model recreates that name tag, it also reminds itself of the instructions associated with it. Every time the response is generated, it has a token steering its response toward the instructions. This also allows existing foundation models with a personality (Like ChatGPT) to be 'overriden' more effectively, as it immediately shifts them out of their "normal" generation pattern that statistically leads to more refusals and 'safe' behaviour. 
 
 ## But Seriously... Why Emoticons?
 
