@@ -10,6 +10,8 @@
 
 `(: Hello World! )`
 
+# Why (: Smile?
+
 A common *prompt language* results in a more **consistent** and **maintainable** *prompt library* for your organization. In programming, we moved from  simple isolated scripts to organizational norms and common languages. Now we have the same kind of **predictable** and **reliable** language for our **essential** LLM prompts. 
 
 Using ***(: Smile*** for prompt structure has three key advantages over raw text:
