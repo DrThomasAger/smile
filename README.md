@@ -401,10 +401,22 @@ Check the prompt\ folder for patterns!
 - [ ] **The Prompt Pattern Library:**
     - A gallery of elegant and effective (: Smile prompts, shared by the community, for everyone to learn from and use. These include modular and composable components like Chain-of-Thought (CoT).
 
+---
+---
+---
+
+Thank you for reading my repository.
+
+---
+---
+---
+
+:)
 
 
 # (: Smile Appendices & FAQ
 
+Here I've placed text that isn't useful to a general audience, but if you're a specialist interested in something in particular, you might find it here! Enjoy exploring ***(: Smile***!
 
 ## Why (: Smile Instead of a Markup Like YAML?
 
