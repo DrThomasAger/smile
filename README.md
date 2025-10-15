@@ -2,7 +2,7 @@
 
 ![Smile Prompt Language v1](20250826_0133_Smile%20with%20Emoticon_loop_01k3h83cvef4qbtegkt4qma1yf.gif)
 
-Meet ***(: SMILE!*** The **S**tructured **M**odel **I**nstruction **L**anguage **w**ith **E**moticons.
+Meet ***(: SMILE!*** The **S**tructured **M**arkup **I**nstruction **L**anguage **w**ith **E**moticons.
 
 ***The Positive AI Future.***
 
