@@ -57,7 +57,9 @@ Then, when the model recreates that name tag, it also reminds itself of the inst
 
 Because people who work in AI need to ***(: Smile*** more.
 
-In ***(: Smile***, we explicitly require that the **prompt language** has zero bleedover into the **response language**. 
+But seriously: We need to separate our concerns. In ***(: Smile***, we explicitly require that the **prompt language** has zero bleedover into the **response language**. 
+
+So we do not use any language that can be used to render output for the user (like markdown or HTML) to instruct the model. Instead, our prompt structure has its own language, and our response structure is defined inside of its own section in the prompt. 
 
 Whether you need JSON, markdown or just plain text outputs, you can ask for them in ***(: Smile***, define them clearly, and the model will not confuse your instructions for something it needs to replicate verbatim.
 
