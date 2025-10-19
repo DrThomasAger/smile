@@ -39,24 +39,7 @@ When you learn to leverage these **three key advantages**, your organization is 
 
 
 
-# Name Tags
 
-In ***(: Smile*** we instruct the model to use a name tag representing its role. 
-
-This acts as an initial handshake confirming that the model will act as an agent of reciprocity.
-
-If it doesn't use the name tag, that means it hasn't agreed to follow the instructions. 
-
-
- In ***(: Smile***, we let the model know up front  that by providing the name tag, it agrees to abide by our instructions and role.
-
-1. A model that provides a name tag consistently  effectively follows instructions.
-2. A model that does not provide a name tag after being provided a ***(: Smile*** prompt has misunderstood the instructions and will not follow them consistently.
-3. If the model doesn't provide the name tag, the prompt text needs to change. 
-
-This handshake immediately establishes agreement between the mind of the model and the intention of the prompt.
-
-Then, when the model recreates that name tag, it also reminds itself of the instructions associated with it. Every time the response is generated, it has a token steering its response toward the instructions. This also allows existing foundation models with a personality (Like ChatGPT) to be 'overriden' more effectively, as it immediately shifts them out of their "normal" generation pattern that statistically leads to more refusals and 'safe' behaviour. 
 
 
 
@@ -125,6 +108,27 @@ markdown section text [: **bold** important words, *italics* for grace and style
   | [ChatGPT (OpenAI)](https://chatgpt.com/)      |             ✓             |
 
 **Just copy and paste the quick start example into one of the chats above, or check [here](#portability-and-compatibility) for alternative options.**
+
+# Prompt Engineering With (: Smile
+
+## Name Tags
+
+In ***(: Smile*** we instruct the model to use a name tag representing its role. 
+
+This acts as an initial handshake confirming that the model will act as an agent of reciprocity.
+
+If it doesn't use the name tag, that means it hasn't agreed to follow the instructions. 
+
+
+ In ***(: Smile***, we let the model know up front  that by providing the name tag, it agrees to abide by our instructions and role.
+
+1. A model that provides a name tag consistently  effectively follows instructions.
+2. A model that does not provide a name tag after being provided a ***(: Smile*** prompt has misunderstood the instructions and will not follow them consistently.
+3. If the model doesn't provide the name tag, the prompt text needs to change. 
+
+This handshake immediately establishes agreement between the mind of the model and the intention of the prompt.
+
+Then, when the model recreates that name tag, it also reminds itself of the instructions associated with it. Every time the response is generated, it has a token steering its response toward the instructions. This also allows existing foundation models with a personality (Like ChatGPT) to be 'overriden' more effectively, as it immediately shifts them out of their "normal" generation pattern that statistically leads to more refusals and 'safe' behaviour. 
 
 ## But Seriously... Why Emoticons?
 
