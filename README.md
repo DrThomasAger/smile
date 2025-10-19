@@ -28,7 +28,7 @@ A common *prompt language* results in a more **consistent** and **maintainable**
 
 Using ***(: Smile*** for prompt structure has three key advantages over raw text:
 
-* **Future Proof & Maintainable**: AI needs structure at **scale**. Are you still hinging your entire business on loose text files only one employee understands? Time to **solve it**. Enable **future** knowledge transfer for hires by giving your organization prompts that are **explainable**.
+* **Maintainable & Explainable**: AI needs structure at **scale**. Are you still hinging your entire business on loose text files only one employee understands? Time to **solve it**. Enable **future** knowledge transfer for hires by giving your organization prompts that are **explainable**.
 * **Model-Agnostic & Universal**: LLMs of all parameter sizes can read structure written in ***(: Smile***. If you're writing in ChatGPT, or talking to an open source LLM,  ***(: Smile*** just works. Transform your prompt library into a set of prompts that works anywhere, any time, no matter what model you are prompting. 
 * **Positive & Effective**: Get more consistent instruction following with discrete  `(: Sections (` and prevent instruction drift (losing instruction following over multiple turns) using name tags. Other markups are designed for structuring data for machines to read. ***(: Smile*** is made for prompt engineering and provides you the norms to compose compact prompts that **save you money** and **express more** per token. 
 
@@ -108,31 +108,6 @@ markdown section text [: **bold** important words, *italics* for grace and style
   | [ChatGPT (OpenAI)](https://chatgpt.com/)      |             ✓             |
 
 **Just copy and paste the quick start example into one of the chats above, or check [here](#portability-and-compatibility) for alternative options.**
-
-
-### Development & Testing Status
-
-***(: Smile*** emerged from extensive prompt engineering work across multiple systems and models. The patterns documented here represent what consistently worked for me in practice.
-
-**What I’ve validated through testing**:
-
-- Cross-model compatibility: tested on Claude (all versions), GPT-4/4.5/5, Gemini, Mistral, DeepSeek, and Kimi
-- Name tags produce approximately consistent instruction-following across multiple turns, compared to significant variance without structure
-- Separating prompt language markedly reduces response variance from instructed format. 
-- The same ***(: Smile*** prompts work across different models without modification
-
-**What’s not yet complete**:
-
-- Systematic benchmark suite with statistical significance testing
-- Published quantified performance metrics 
-- Community replication studies to confirm these results generalize
-
-I’m sharing ***(: Smile*** now because the practical benefits have been substantial enough in my work that others should have access to these patterns. The formal benchmarking infrastructure is a priority on the roadmap. If you test these approaches and observe different results—whether better or worse—please open an issue. That data strengthens the framework for everyone.
-
-**To validate for yourself**: Copy any example from this repository into your preferred LLM. Run it multiple times with the ***(: Smile*** structure, then run equivalent unstructured versions. Compare the consistency of outputs, format compliance, and instruction-following across runs. The difference should be observable within 5-10 trials per approach. If you have metrics, tasks or benchmarks, see how reformatting into ***(: Smile*** sections increases performance.
-
-Don't know how to write excellent, performant prompts yet? Let's chat! 
-
 
 # Prompt Engineering With A (: Smile
 
