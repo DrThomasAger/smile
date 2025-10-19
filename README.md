@@ -109,6 +109,31 @@ markdown section text [: **bold** important words, *italics* for grace and style
 
 **Just copy and paste the quick start example into one of the chats above, or check [here](#portability-and-compatibility) for alternative options.**
 
+
+### Development & Testing Status
+
+***(: Smile*** emerged from extensive prompt engineering work across multiple systems and models. The patterns documented here represent what consistently worked for me in practice.
+
+**What I’ve validated through testing**:
+
+- Cross-model compatibility: tested on Claude (all versions), GPT-4/4.5/5, Gemini, Mistral, DeepSeek, and Kimi
+- Name tags produce approximately consistent instruction-following across multiple turns, compared to significant variance without structure
+- Separating prompt language markedly reduces response variance from instructed format. 
+- The same ***(: Smile*** prompts work across different models without modification
+
+**What’s not yet complete**:
+
+- Systematic benchmark suite with statistical significance testing
+- Published quantified performance metrics 
+- Community replication studies to confirm these results generalize
+
+I’m sharing ***(: Smile*** now because the practical benefits have been substantial enough in my work that others should have access to these patterns. The formal benchmarking infrastructure is a priority on the roadmap. If you test these approaches and observe different results—whether better or worse—please open an issue. That data strengthens the framework for everyone.
+
+**To validate for yourself**: Copy any example from this repository into your preferred LLM. Run it multiple times with the ***(: Smile*** structure, then run equivalent unstructured versions. Compare the consistency of outputs, format compliance, and instruction-following across runs. The difference should be observable within 5-10 trials per approach. If you have metrics, tasks or benchmarks, see how reformatting into ***(: Smile*** sections increases performance.
+
+Don't know how to write excellent, performant prompts yet? Let's chat! 
+
+
 # Prompt Engineering With A (: Smile
 
 In ***(: Smile*** we define structure using brackets mixed with natural text. This is operational syntax which can be used in any text prompt to an LLM.
