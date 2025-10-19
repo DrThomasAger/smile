@@ -176,6 +176,7 @@ defines my prompt language, you have response language, we co-create as gift by 
 ) End prompt language, respond in response language starting with name tag [(: ***Smile Expert***](https://github.com/DrThomasAger/smile): always please thank you  :)
 ```
 
+
 Interested in adopting ***(: Smile***? Feel free to [DM me](https://www.linkedin.com/in/drprompt) and lets chat about how you can structure prompts for your organization with ***(: Smile***.
 
 
@@ -342,6 +343,28 @@ Did you know?
 * **Straight eyes** `=` can indicate strict input that must be followed exactly, e.g. `[=` 
 * **Quote eyes** `"` show text that must be repeated word for word verbatim, e.g. `["Repeat this word for word"]` 
 * **Cash eyes**  `$` show variables and can be replaced with the true values before inference using code. `!` important eyes show text to emphasize for the model, e.g. `[! Don't use negative language. !]`. 
+
+## Open Research Questions & Hypotheses
+
+I am deep in the process of validating ***(: Smile***. These are the questions I am interested in answering, and I'd love for you to join me in the process.
+
+### Measuring Our (: Smile
+
+* How many extra turns does the model follow instructions for when using a ***(: Smile*** name tag?
+* What is the performance increase on standard benchmarks when using ***(: Smile*** to format the instructions? 
+* On which tasks does the ***(: Smile Prepare*** module improve over standard CoT or the latest Cot methods?
+
+### Automating (: Smile
+
+* How can we use (: Smile and something like subsequence pruning to reduce token count automatically, similar to a JSON minify?
+* Can we use prompt engineering to automatically transform existing prompts into ***(: Smile*** prompts st the same quality as the handwritten gold standard examples in this repo?
+* Can we automatically identify cognitive modules for the LLM from existing prompt engineering corporea and automate the decomposition of prompt engineering into its core primitives for formalization and testing?
+
+### Fund My Research
+
+I am an indepedent researcher for this open source project. If you would like these questions answered, I would appreciate your support. Thank you. 
+
+Here's a link to my [PayPal](https://www.PayPal.me/Hanjopurebuddha).
 
 ## Syntax Map
 
