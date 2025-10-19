@@ -509,6 +509,27 @@ For now, it's just us human prompt engineers.
 
 That’s why prompt writers that need complex behaviour (like in agents) often use **structured sections** when writing instructions for the model — they help make the **meaning clear** to the model so that it can understand more instructions with less tokens. By clearly separating different parts of the prompt like input, style instructions, and response format, the model is able to **do more with less**.
 
+### ⚠️ Common Misunderstanding in Prompt Engineering
+
+A frequent mistake in discussions around prompt engineering is **collapsing different layers of the stack into one** — treating *prompt languages*, *frameworks*, and *model interfaces* as if they’re all the same thing.  
+
+In reality, these layers solve **different problems**:
+
+- A **prompt language or syntax** (like `(: Smile)` or XML tags) defines *how you express and organize instructions* for both humans and machines.  
+- A **framework** (like LangChain or Guidance) defines *how those prompts are rendered, templated, or executed* in code.  
+- A **model interface** (like the OpenAI API or Anthropic Claude) defines *how prompts are delivered to the model and how outputs are structured*.  
+
+Mixing these up leads to confused comparisons — for example, saying “Smile competes with LangChain,” when in fact you can (and should) **use Smile *inside* LangChain**.  
+They operate at different abstraction levels, and complement one another rather than overlap.
+
+Here’s a clearer way to think about it:
+
+| Domain | Role |
+|---------|------|
+| Markdown | Lightweight document syntax |
+| HTML | Formal document structure |
+| **Smile** | Lightweight *prompt* structure |
+| LangChain / Guidance | *Rendering engine* for that structure |
   
 ## Benefits of (: Smile
 
