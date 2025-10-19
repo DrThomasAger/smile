@@ -2,7 +2,8 @@
 
 ![Smile Prompt Language v1](20250826_0133_Smile%20with%20Emoticon_loop_01k3h83cvef4qbtegkt4qma1yf.gif)
 
-Meet ***(: SMILE!*** the
+Meet ***(: SMILE!*** 
+
 * **S**tructured 
 * **M**arkup
 * **I**nstruction
