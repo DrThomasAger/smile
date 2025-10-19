@@ -2,7 +2,7 @@
 
 ![Smile Prompt Language v1](20250826_0133_Smile%20with%20Emoticon_loop_01k3h83cvef4qbtegkt4qma1yf.gif)
 
-Meet ***(: SMILE!*** 
+Meet ***(: SMILE!*** v1:
 
 * **S**tructured 
 * **M**arkup
@@ -96,7 +96,7 @@ markdown section text [: **bold** important words, *italics* for grace and style
 
 **Copy and paste** the above **now** into your favorite language model and discover how ***(: Smile*** works through direct experience. 
 
-# Compatible & Free Quick Chat
+## Compatible & Free Quick Chat
 
 ***(: Smile*** is portable across any LLM! Try the example ***(: Smile*** prompt on a free ***LLM*** quick chat now:
 
@@ -109,11 +109,19 @@ markdown section text [: **bold** important words, *italics* for grace and style
 
 **Just copy and paste the quick start example into one of the chats above, or check [here](#portability-and-compatibility) for alternative options.**
 
-# Prompt Engineering With (: Smile
+# Prompt Engineering With A (: Smile
+
+In ***(: Smile*** we define structure using brackets mixed with natural text. This is operational syntax which can be used in any text prompt to an LLM.
+
+We also define standard protocols for prompt engineering and provide them as maintainable, composable "skills". 
+
+The end game is a drag and drop approach, with clearly defined operating conditions, parameters, variables, and a standardized and consistent methodology for forming these cognitive building blocks can be stacked together so that they can generalizs to unseen data and perform on our metrics consistently. 
+
+The first step is discovering the fundamental replicable and consistent prompt engineering strategies effective prompt engineers use every time they need to increase instruction following.  
 
 ## Name Tags
 
-In ***(: Smile*** we instruct the model to use a name tag representing its role. 
+In ***(: Smile*** the firet cognitive action we instruct the model to do is write a a name tag representing its role it is speaking from for the duration of the response.
 
 This acts as an initial handshake confirming that the model will act as an agent of reciprocity.
 
