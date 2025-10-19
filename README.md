@@ -59,21 +59,6 @@ This handshake immediately establishes agreement between the mind of the model a
 
 Then, when the model recreates that name tag, it also reminds itself of the instructions associated with it. Every time the response is generated, it has a token steering its response toward the instructions. This also allows existing foundation models with a personality (Like ChatGPT) to be 'overriden' more effectively, as it immediately shifts them out of their "normal" generation pattern that statistically leads to more refusals and 'safe' behaviour. 
 
-## But Seriously... Why Emoticons?
-
-Because people who work in AI need to ***(: Smile*** more.
-
-But seriously: We need to separate our concerns. In ***(: Smile***, we explicitly require that the **prompt language** has zero bleedover into the **response language**. 
-
-So we do not use any language that can be used to render output for the user (like markdown or HTML) to instruct the model. Instead, our prompt structure has its own language, and our response structure is defined inside of its own section in the prompt. 
-
-Whether you need JSON, markdown or just plain text outputs, you can ask for them in ***(: Smile***, define them clearly, and the model will not confuse your instructions for something it needs to replicate verbatim.
-
-By telling the model that this is ***(: Smile*** and then defining the response language clearly, we remove the possibility for context bleed. This repo also contains the norms and methods to reduce this even more.
-
-This also allows us to understand immediately if our prompt needs adjustment: If the prompt language appears in the response, then the model has not sufficiently understood the instructions and they need to be rewritten. 
-
-These essential handshakes and checkpoints make our instruction following consistent and verifiable. 
 
 
 
@@ -142,6 +127,21 @@ markdown section text [: **bold** important words, *italics* for grace and style
 
 **Just copy and paste the quick start example into one of the chats above, or check [here](#portability-and-compatibility) for alternative options.**
 
+## But Seriously... Why Emoticons?
+
+Because people who work in AI need to ***(: Smile*** more.
+
+But seriously: We need to separate our concerns. In ***(: Smile***, we explicitly require that the **prompt language** has zero bleedover into the **response language**. 
+
+So we do not use any language that can be used to render output for the user (like markdown or HTML) to instruct the model. Instead, our prompt structure has its own language, and our response structure is defined inside of its own section in the prompt. 
+
+Whether you need JSON, markdown or just plain text outputs, you can ask for them in ***(: Smile***, define them clearly, and the model will not confuse your instructions for something it needs to replicate verbatim.
+
+By telling the model that this is ***(: Smile*** and then defining the response language clearly, we remove the possibility for context bleed. This repo also contains the norms and methods to reduce this even more.
+
+This also allows us to understand immediately if our prompt needs adjustment: If the prompt language appears in the response, then the model has not sufficiently understood the instructions and they need to be rewritten. 
+
+These essential handshakes and checkpoints make our instruction following consistent and verifiable. 
 
 
 
