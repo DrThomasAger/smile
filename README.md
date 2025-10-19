@@ -57,6 +57,8 @@ This is often called "Chain-of-thought" and has historically been created using 
 
 In the front-end, we only show the user the part of the response that uses the **thinking preparation**, rather than showing the thinking itself.
 
+*The following example includes specific style preferences in the respone language (positivity, density, formatting) to demonstrate Smile's expressiveness - your own Smile prompts can enforce completely different requirements.*
+
 This prompt is a peek behind the curtain at how a LLM can prepare an **intelligent** response:
 
 ```
