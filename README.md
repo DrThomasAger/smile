@@ -335,8 +335,6 @@ In ***(: Smile***, we separate these different types of instruction, like `data`
 
 ## Eyes
 
-Did you know? 
->**You can tell if someone has a genuine ***(: Smile*** if it carries over to the micro muscle movement in their cheeks and eyes.**
 
 **In (: Smile, we have our own body language:**
 
@@ -454,11 +452,6 @@ Thank you for reading my repository.
 
 Here I've placed text that isn't useful to a general audience, but if you're a specialist interested in something in particular, you might find it here! Enjoy exploring ***(: Smile***!
 
-## Why (: Smile Instead of a Markup Like YAML?
-
-
-Do you already structure your prompts using ***Markdown***, ***YAML***, or ***XML***? Find out why to use ***(: Smile*** [Super Comparison Table](#why--smile-and-not-another-markup) and not a markup.
-
 
 ## Why Structure Your Prompts?
 
@@ -483,27 +476,7 @@ This is essential for:
 > References: [1](https://arxiv.org/abs/2411.10541) [2](https://mitsloan.mit.edu/ideas-made-to-matter/study-generative-ai-results-depend-user-prompts-much-models) [3](https://doi.org/10.1109/EDM.2023.9912430)  [4](https://doi.org/10.1016/j.ijhcs.2024.102805) [5](https://aclanthology.org/2025.coling-main.100.pdf) [6](https://doi.org/10.1145/3686038.3686060)
 
 
-# Why Structure?
-
-> "You have to make the rules to break the rules."
-> ~ Unknown
-
-Language models learn from huge amounts of text, including things like code, documents, and instructions. In those texts, syntax like brackets `()`, `[]`, `{}` and colons `:` are used to organize information.
-
-These brackets help the model **understand** things like:
-* When one idea ends and another begins.
-* What belongs together.
-* & What is being defined.
-
-Because the model has seen these structures so many times (in so many different programming languages) using this syntax or mixtures of this syntax in prompts feels natural to it. It's easy for it to pick up. 
-
-For example, it knows open bracket `(` means start, as this is used in many programming languages (like clojure) to indicate a start. It also knows intuitively and grammatically that a colon indicates something next `:`. When we combine them together `(:` we get a face that indicates the start of a section.
-
-This bundle of positivity is more **legible** to the model than either `(` or `:` separately and uniquely **positive**. It is exclusive to prompt engineering - meaning that in the future there will be no dataset contamination of other meaning into ***(: Smile***. This will be a dataset and language that is only for prompt writing, written by humans and LLMs. 
-
-For now, it's just us human prompt engineers.
-
-
+## More On Structure
 
 ***(: Smile*** is combined of semantic primitives that can be intuitively read as `[= Very strict and requiring equal adherence to the instructions, - 'Always use paragraphs rather than bullet points or numbered lists.' =]` or `(: Open to interpretation instructions - 'Always speak with intelligence, clarity and depth.'`
 
@@ -669,6 +642,7 @@ First, write exact name tag  ["[***Smile Expert***](https://github.com/DrThomasA
 
 
 
+
 ## Is My (: Smile Correct?
 
 You will know an ***LLM*** is compatible with the quick start example when it responds with a ***{name tag}***, in this case ***(: Smile Expert:***, with a response that follows instructions exactly, intelligently snd clearly according to ***(: Smile*** conventions. 
@@ -800,14 +774,11 @@ This is all done flexibly with resonant semiotics. For example, when exact data 
 
 This lets you and your model have a prompt base of **maintainable**,  **structured** **positive** prompting.
 
-# Why Does (: Smile Work?
 
-
-It is designed to  leverage a model trained on millions of code examples. The hypothesis of ***(: Smile*** is that LLMs instinctively recognize  that `(` signals a beginning and `:` indicates relationship, so `(:` naturally communicates the start of a defined section.
 
 ## Does Smiling Really Make You Happier?
 
-Science says yes. **Smiling...**
+If it's a genuine ***(: Smile***, then science says yes. **Smiling...**
 
 1. (= **Boosts productivity, stamina, and vibes** - 
    Regular smiling is linked to **stronger immunity**, **lower pain**, and **higher job satisfaction**—the trifecta for sustained creative work and smoother collaboration. Happier prompt writers make **cleaner, more positive prompts**, and organizations feel it. *Evidence:* [Psychology Today](https://www.psychologytoday.com/us/blog/mind-well-matter/201807/why-smiling-matters), [Verywell Mind](https://www.verywellmind.com/benefits-of-smiling-2795092).
@@ -819,7 +790,7 @@ Science says yes. **Smiling...**
    Brain activity scans show that real faces *and* symbolic `:)` activate reward regions. Your cheeks respond with smiling micro-muscle movements within **\~500 ms** just from reading the symbol. Your brain treats `:)` as a micro-reward. *Evidence:* [Hennenlotter et al., 2005](https://www.cambridge.org/core/journals/behavioral-and-brain-sciences/article/simulation-of-smiles-sims-model-embodied-simulation-and-the-meaning-of-facial-expression/FE0A911744186EBD3706B53794D4AEE9); [Mühlberger et al., 2011](https://www.frontiersin.org/journals/psychology/articles/10.3389/fpsyg.2018.00052/full).
 
 
- **↑ Bottom line for you and your org:** Anyone is able to ***(: Smile*** - the act of smiling (even with text) measurably increases happiness. ***(: Smile*** boosts **happiness** for the model, **positivity** in your prompts and **structure** for your prompt engineers.
+ **↑ Bottom line for you and your org:** ***(: Smile*** boosts **happiness** for the model, **positivity** in your prompts and **structure** for your prompt engineers.
 
 
 # (: Smile 
@@ -865,18 +836,7 @@ Let us know if you test one of our prompts on a model!
 |                                 | **Perplexity**          | [Perplexity Labs](https://labs.perplexity.ai)                                 | [Playground — pplx-8b-online](https://labs.perplexity.ai/playground?model=pplx-8b-online)                                                                   |             ✓             |
 |            **Tools**            | **Cohere**              | [Cohere Chat (Playground)](https://dashboard.cohere.com/playground/chat)      | [Model Playground](https://dashboard.cohere.com/playground?model=command-r-plus-08-2024)                                                                    |             ✓             |
 
-# Why (: Smile and Not Another Markup?
 
-Traditional markup languages like YAML, JSON, and HTML were built for rigid data parsing, so they are designed with the idea that even small mistakes—like a missing comma, misaligned space, or unclosed tag—cause them to fail. (: Smile was created specifically for prompt engineering, combining structure with forgiveness: indentation is optional, endings can be long for clarity or short for efficiency, and emoticon-based markers keep sections clear to both humans and models. The table below shows how each rigid rule in existing languages is transformed in Smile into a positive, flexible feature that improves instruction following and multi-turn consistency.
-
-| Language | Rigid Rule (Not Adapted to Prompts) | Smile Comparison (Positive & Accurate) |
-|----------|--------------------------------------|-----------------------------------------|
-| ***YAML*** | Requires exact indentation. One misplaced space or tab invalidates the structure. | (: Smile uses indentation only as an optional aid for nesting. It can help readability and improve instruction following, but is never mandatory. |
-| ***JSON*** | Strings must use double quotes, commas/brackets must be exact. A single missing character breaks the whole structure. | (: Smile can run in fully strict mode for parser-like behavior, but also allows freer natural text with [= literal blocks =] and optional delimiters. |
-| ***XML*** | Every tag must be explicitly closed, misnesting invalidates everything. | (: Smile has optional long or short endings: fully explicit for clarity, or compact (:)) for efficiency. Both are valid, by design. |
-| ***Markdown*** | Headings/lists require exact symbols. Missing syntax changes output or fails recognition. | (: Smile sections are always recognized by their emoticons, even if endings are short. Human and model can both infer meaning, preserving intent. |
-| ***HTML*** | Attributes and nesting order must be exact. Misquotes or mismatched tags break rendering. | (: Smile tolerates loose closures and varied nesting. It maintains clarity for the model without the brittleness of strict DOM rules. |
-| ***(: Smile*** | Not rigid, but structured. Can be strict for parsing or flexible for instruction following. Indentation, section length, and endings are all optional tools chosen by the prompt writer. | Built for prompt engineering: expressive, positive, multi-turn consistent, and maintainable. (: Smile adapts structure to maximize comprehension for both humans and models. |
 
 
 
