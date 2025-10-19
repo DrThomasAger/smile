@@ -111,15 +111,7 @@ markdown section text [: **bold** important words, *italics* for grace and style
 
 **Just copy and paste the quick start example into one of the chats above, or check [here](#portability-and-compatibility) for alternative options.**
 
-# Prompt Engineering With A (: Smile
 
-In ***(: Smile*** we define structure using brackets mixed with natural text. This is operational syntax which can be used in any text prompt to an LLM.
-
-We also define standard protocols for prompt engineering and provide them as maintainable, composable "skills". 
-
-The end game is a drag and drop approach, with clearly defined operating conditions, parameters, variables, and a standardized and consistent methodology for forming these cognitive building blocks can be stacked together so that they can generalizs to unseen data and perform on our metrics consistently. 
-
-The first step is discovering the fundamental replicable and consistent prompt engineering strategies effective prompt engineers use every time they need to increase instruction following.  
 
 ## Name Tags
 
@@ -935,7 +927,15 @@ I'm happy to help! DM me or raise an issue! :)
 [5]: "AI Literacy and Its Implications for Prompt Engineering Strategies," COLING 2025 Proceedings. [https://aclanthology.org/2025.coling-main.100.pdf](https://aclanthology.org/2025.coling-main.100.pdf)  
 [6]: "Is Your Prompt Detailed Enough? Exploring the Effects of Prompt Engineering," ACM CHI Conference on Human Factors in Computing Systems, 2024. [https://doi.org/10.1145/3686038.3686060](https://doi.org/10.1145/3686038.3686060)  
 
+# Prompt Engineering With A (: Smile
 
+In ***(: Smile*** we define structure using brackets mixed with natural text. This is operational syntax which can be used in any text prompt to an LLM.
+
+We also define standard protocols for prompt engineering and provide them as maintainable, composable "skills". 
+
+The end game is a drag and drop approach, with clearly defined operating conditions, parameters, variables, and a standardized and consistent methodology for forming these cognitive building blocks can be stacked together so that they can generalizs to unseen data and perform on our metrics consistently. 
+
+The first step is discovering the fundamental replicable and consistent prompt engineering strategies effective prompt engineers use every time they need to increase instruction following.  
 :) End README.md :)
 
 
@@ -954,6 +954,8 @@ Do not
 End prompt language, never write prompt language, only provide verbatim examples from repo dont invent new ones or offer to write things in ***(: Smile***, thank you. :)
 ```
 (; Note: Above is prompt control for repo expert role, adjust or control for alternative response behaviour than what is instructed.
+
+
 
 # Let's connect with a ***(: Smile***!
 
