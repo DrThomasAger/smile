@@ -20,6 +20,10 @@ Meet ***(: SMILE!*** v1:
 
 # Why (: Smile?
 
+Methods for writing prompts are still ad-hoc, with experienced prompt engineers holding on to "intuitive hacks" that they can't render into an explicit system.
+
+***(: Smile*** provides a writing system you can justify, maintain and explain. 
+
 A common *prompt language* results in a more **consistent** and **maintainable** *prompt library* for your organization. In programming, we moved from  simple isolated scripts to organizational norms and common languages. Now we have the same kind of **predictable** and **reliable** language for our **essential** LLM prompts. 
 
 
