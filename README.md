@@ -4,7 +4,7 @@
 
 Meet ***(: SMILE!*** the
 * **S**tructured 
-** *M**arkup
+* **M**arkup
 * **I**nstruction
 * **L**anguage with
 * **E**moticons.
