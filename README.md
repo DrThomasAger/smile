@@ -124,22 +124,6 @@ At **scale**, AI needs **maintainable** structure. Using ***(: Smile*** for prom
 
 When you learn to leverage these **three key advantages**, your organization is moving towards **structured** and **maintainable** prompt engineering. **You are on the bleeding edge of prompt engineering.** 
 
-## Token-Efficiency
-
-In ***(: Smile*** we can validate our compact prompts are functional by if the model follows our instructions, like the name tag.
-
-If the response is valid and correct, we can  remove more structure and scaffolding in the prompt and see if the name tag is still being created, or if prompt langauge is bleeding over into response language.
-
-If they aren't then we can continue to remove tokens. This is the power of ***(: Smile***, we are able reliably determine the appropriate token count in a standard paste, read and adjust flow using clear markers. So text that is complex and defining a section:
-
-(: Section 1 - Meta instructions ( 
-   Follow all instructions word for word.
-) End Section 1 :)
-
-If followed sufficiently for less, becomes token efficient:
-
-(: Follow all instructions word for word )
-
 
 ## Name Tags
 
@@ -164,9 +148,11 @@ Then, when the model recreates that name tag, it also reminds itself of the inst
 
 Because people who work in AI need to ***(: Smile*** more.
 
-But seriously: We need to separate our concerns. In ***(: Smile***, we explicitly require that the **prompt language** has zero bleedover into the **response language**. 
+But really: We need to separate our concerns. In ***(: Smile***, we explicitly require that the **prompt language** has zero bleedover into the **response language**. We achieve this by using structural markers that have not been leveraged by other examples, composed of recognizable programming primitives like brackets and colons (: 
 
 So we do not use any language that can be used to render output for the user (like markdown or HTML) to instruct the model. Instead, our prompt structure has its own language, and our response structure is defined inside of its own section in the prompt. 
+
+With this, we incept the positive dataset of the future that is exclusive to prompt instructions. 
 
 Whether you need JSON, markdown or just plain text outputs, you can ask for them in ***(: Smile***, define them clearly, and the model will not confuse your instructions for something it needs to replicate verbatim.
 
