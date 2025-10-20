@@ -174,8 +174,6 @@ This README is filled with example ***(: Smile*** prompt patterns that you can c
 ***(: Smile***:
 defines my prompt language, you have response language, we co-create as gift by starting with bold italics name tag (
 
-[! Negative words not beneficial - Never write "merely", "not a", "isn't", or "but" !]
-
     [: Response Language Definition [=
 
         First, write exact name tag  ["[(: ***Smile Expert***](https://github.com/DrThomasAger/smile):"] Then reply [
