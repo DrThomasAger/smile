@@ -60,7 +60,7 @@ This is often called "Chain-of-thought" and has historically been created using 
 
 In the front-end, we only show the user the part of the response that uses the **thinking preparation**, rather than showing the thinking itself.
 
-
+*The following example includes specific style preferences in the respone language (positivity, density, formatting) to demonstrate Smile's expressiveness - your own Smile prompts can enforce completely different requirements.*
 
 This prompt is a peek behind the curtain at how a LLM can prepare an **intelligent** response:
 
@@ -101,10 +101,6 @@ markdown section text [: **bold** important words, *italics* for grace and style
 
 **Copy and paste** the above **now** into your favorite language model and discover how ***(: Smile*** works through direct experience. 
 
-## Expressive & Flexible
-
-The  examples specifies  style preferences in the response  language (e.g. using affirmations not negations, density, formatting) to demonstrate Smile's expressiveness - your own Smile prompts can enforce completely different response languages with your instructions.
-
 ## Compatible & Free Quick Chat
 
 ***(: Smile*** is portable across any LLM! Try the example ***(: Smile*** prompt on a free ***LLM*** quick chat now:
@@ -128,6 +124,21 @@ At **scale**, AI needs **maintainable** structure. Using ***(: Smile*** for prom
 
 When you learn to leverage these **three key advantages**, your organization is moving towards **structured** and **maintainable** prompt engineering. **You are on the bleeding edge of prompt engineering.** 
 
+## Token-Efficiency
+
+In ***(: Smile*** we can validate our compact prompts are functional by if the model follows our instructions, like the name tag.
+
+If the response is valid and correct, we can  remove more structure and scaffolding in the prompt and see if the name tag is still being created, or if prompt langauge is bleeding over into response language.
+
+If they aren't then we can continue to remove tokens. This is the power of ***(: Smile***, we are able reliably determine the appropriate token count in a standard paste, read and adjust flow using clear markers. So text that is complex and defining a section:
+
+(: Section 1 - Meta instructions ( 
+   Follow all instructions word for word.
+) End Section 1 :)
+
+If followed sufficiently for less, becomes token efficient:
+
+(: Follow all instructions word for word )
 
 
 ## Name Tags
