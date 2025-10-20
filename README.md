@@ -26,8 +26,11 @@ That's why I created ***(: Smile***. As my businesses began to rely more and mor
 
 A common *prompt language* results in a more **consistent** and **maintainable** *prompt library* for your organization. In programming, we moved from  simple isolated scripts to organizational norms and common languages. Now we have the same kind of **predictable** and **reliable** language for our **essential** LLM prompts. 
 
+## Modular Component Library 
 
 ***(: Smile*** provides a writing system you can maintain and explain. This shifts prompt text from opaque and unstructured artifacts into consisistent and reliable sections. These sections are then modular components that can be mix-and-matched and re-used.  
+
+See examples below or in the prompt/ folder. 
 
 
 
