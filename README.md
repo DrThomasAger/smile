@@ -10,13 +10,13 @@ Meet ***(: SMILE!*** v1:
 * **L**anguage with
 * **E**moticons.
 
-***The Positive AI Future.***
 
-> [![☆ Star the repo](https://img.shields.io/github/stars/DrThomasAger/smile?style=social)](https://github.com/DrThomasAger/smile/stargazers) (: By [Dr. Thomas Ager, Ph.D Interpretable Natural Language Processing (NLP) Machine Learning (ML)](https://www.linkedin.com/in/drprompt?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app) 
 
 ***(: Smile*** is the first markup (like ***Markdown*** or ***HTML***) where **emoticons** are used as brackets to **instruct** Large Language Models (LLMs) in a **structured** way both machines and humans understand.
 
 `(: Hello World! )`
+
+> [![☆ Star the repo](https://img.shields.io/github/stars/DrThomasAger/smile?style=social)](https://github.com/DrThomasAger/smile/stargazers) (: By [Dr. Thomas Ager, Ph.D Interpretable Natural Language Processing (NLP) Machine Learning (ML)](https://www.linkedin.com/in/drprompt?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app) 
 
 # Why (: Smile?
 
