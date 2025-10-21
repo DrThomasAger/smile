@@ -53,7 +53,7 @@ This is often called "Chain-of-thought" and has historically been created using 
 **Prompt engineers** invest inference tokens into **thinking budget** because it makes the final response smarter.
 
 
-This prompt is a peek behind the curtain at how a LLM can prepare an **intelligent** response:
+**Copy and paste** the example **now** into your favorite language model and discover how ***(: Smile*** works through direct experience. 
 
 ```
 (: Prompt language is ***(: Smile*** ( 
@@ -90,7 +90,6 @@ markdown section text [: **bold** important words, *italics* for grace and style
 ) End prompt, now reply in response language :) 
 ```
 
-**Copy and paste** the above **now** into your favorite language model and discover how ***(: Smile*** works through direct experience. 
 
 ## Compatible & Free Quick Chat
 
