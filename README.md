@@ -33,8 +33,6 @@ A common *prompt language* results in a more **consistent** and **maintainable**
 
 ***(: Smile*** provides a writing system you can maintain and explain. This shifts prompt text from opaque and unstructured artifacts into consisistent and reliable sections. These sections are then modular components that can be mix-and-matched and re-used.  
 
-See examples below or in the prompt/ folder. 
-
 
 
 
