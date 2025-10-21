@@ -107,7 +107,7 @@ markdown section text [: **bold** important words, *italics* for grace and style
 
 # Benefits of (: Smile
 
-At **scale**, AI needs **maintainable** structure. Using ***(: Smile*** for prompt structure has three key advantages over raw text:
+In an organization, AI needs **maintainable** structure. Using ***(: Smile*** for prompt structure has three key advantages over raw text:
 
 * **Maintainable & Explainable**: Are you still hinging your entire business on loose text files only one employee understands? Will you look back at your prompts in a year and have no idea what they are doing and why? Time to **solve it**. Enable **future** knowledge transfer for hires by giving your organization prompts that are **explainable**. 
 * **Model-Agnostic & Universal**: LLMs of all parameter sizes can read structure written in ***(: Smile***. If you're writing in ChatGPT, or talking to an open source LLM,  ***(: Smile*** just works. Transform your prompt library into a set of prompts that works anywhere, any time, no matter what model you are prompting. 
@@ -118,7 +118,7 @@ When you learn to leverage these **three key advantages**, your organization is 
 
 ## Name Tags
 
-In ***(: Smile*** the firet cognitive action we instruct the model to do is write a a name tag representing its role it is speaking from for the duration of the response.
+In ***(: Smile*** the first cognitive action we instruct the model to do is write a a name tag representing its role it is speaking from for the duration of the response.
 
 This acts as an initial handshake confirming that the model will act as an agent of reciprocity.
 
