@@ -117,7 +117,7 @@ When you learn to leverage these **three key advantages**, your organization is 
 
 ## Name Tags
 
-In ***(: Smile*** the first instruction  is to write a a name tag representing its role it is speaking from for the duration of the response.
+In ***(: Smile*** the first instruction  is to write a name tag representing its role it is speaking from for the duration of the response.
 
 This acts as an initial handshake confirming that the model will act as an agent of reciprocity.
 
