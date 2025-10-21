@@ -29,11 +29,6 @@ That's why I created ***(: Smile***. As my businesses began to rely more and mor
 
 A common *prompt language* results in a more **consistent** and **maintainable** *prompt library* for your organization. In programming, we moved from  simple isolated scripts to organizational norms and common languages. Now we have the same kind of **predictable** and **reliable** language for our **essential** LLM prompts. 
 
-## Modular Component Library 
-
-***(: Smile*** provides a writing system you can maintain and explain. This shifts prompt text from opaque and unstructured artifacts into consisistent and reliable sections. These sections are then modular components that can be mix-and-matched and re-used.  
-
-
 
 
 
@@ -58,8 +53,6 @@ This is often called "Chain-of-thought" and has historically been created using 
 **Prompt engineers** invest inference tokens into **thinking budget** because it makes the final response smarter.
 
 In the front-end, we only show the user the part of the response that uses the **thinking preparation**, rather than showing the thinking itself.
-
-*The following example includes specific style preferences in the respone language (positivity, density, formatting) to demonstrate Smile's expressiveness - your own Smile prompts can enforce completely different requirements.*
 
 This prompt is a peek behind the curtain at how a LLM can prepare an **intelligent** response:
 
