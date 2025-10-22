@@ -231,8 +231,6 @@ This creates a solid basis to play around with.
 
 Here, the ***(: Smile*** is the **structure** around the instructions. This is a key essential point. ***(: Smile*** creates a clear separation between prompt language and response language using **structure** in order to increase the model's **instruction following**.
 
-It introduces additional grammar and syntax the model recognizes as semantic structure, which allows it to differentiate more meaning based on the emoticon used. Essentially, because each emoticon is made of different semantic primitives that mean things to models (like `=` or `:`) our emoticons can mean different things! For example:
-
 ```
 (: Smile: I'm a prompt language!
 
