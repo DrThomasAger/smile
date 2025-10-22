@@ -127,13 +127,31 @@ When our prompts get longer, or our context gets complex (think, many different 
 [= Data - Meeting Transcript [=
     [$ Transcript_here $]
 =] End Data =]
+```
 
+But in the same prompt, our instructions don't need all that structure:
+
+```
 (: Instructions - What To Do With The Transcript (
 
 First identify any errors in your first response, then once I've confirmed, provide the fixes.
 
-) End Instructions :)
+:)
 ```
+
+And we've also helped the model separate the data from the instructions by using different emoticons for each section structure.
+
+When we use an equals sign `[=`, the model can recognize that we're saying the data is equal to this. When we use a curvy emoticon for our other section `(:` the model knows we mean something new - it's different! 
+
+When this scales to many sections in the same prompt, we are building a shared vocabulary in that instance for what we mean with each kind of emoticon.
+
+In ***(: Smile*** we can define our instructions more effectively for our need if we flexibly drop or add structure.  This kind of flexibility can lead to token-efficient structuring:
+
+```
+[= Name [ Smile Expert
+(: Instructions ( Make the user smile by being kind.
+```
+
 
 
 # Benefits of (: Smile
