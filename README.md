@@ -40,7 +40,7 @@ With ***(: Smile*** now we have the same kind of **predictable** and **reliable*
 
 ## Language Showcase
 
-It's amazing the results you can get with just prompting, when you structure it effectively.
+It's amazing the results you can get with just prompting, when you ***(: Smile***. 
 
 In the next example, we provide the name tag ***(: Smile Prepare***: for the role of responding with two stages: one "thinking" or preparatory stage followed by a response that leverages that preparation for a more intelligent reply.
 
@@ -103,7 +103,9 @@ markdown section text [: **bold** important words, *italics* for grace and style
 
 In an organization, AI needs **maintainable** structure.
 
-Current strategies for structuring instructions (Anthropic's XML, OpenAI's Markdown) are insufficient for the needs of prompt writing. 
+Current strategies for structuring instructions (Anthropic's ***XML***, OpenAI's ***Markdown***) are insufficient for the needs of prompt writing. 
+
+These languages weren't designed to instruct LLMs. They were made for programming and rendering text.
 
 XML forces an end tag to match every start tag:
 
@@ -113,7 +115,7 @@ You are an expert on the (: Smile prompt language
 </role>
 ```
 
-But repeating this information may add token overhead and may not be useful for the model to understand the instruction. 
+But repeating this may just be adding tokens 'because the language says so' - not because it's beneficial.   
 
 Markdown doesn't have native endings at all:
 
@@ -122,9 +124,9 @@ Markdown doesn't have native endings at all:
 You are a really smart friend.
 ```
 
-But sometimes you need to make clear the end of a section with more tokens than just starting the next section.
+But sometimes you need to make clear the end of a section. 
 
-These languages weren't designed to instruct LLMs. They were made for programming and rendering text.
+We need a language that's designed for prompt engineering. That let's us use more tokens when required for the model to understand our instructions.
 
 When our prompts get longer, or our context gets complex (think, many different kinds of text documents) we need structure that can support diverse needs. If we have a lot of data, it needs a lot of structure around it so the model can read it and know it's different to the instructions:
 
