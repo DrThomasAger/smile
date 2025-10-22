@@ -142,7 +142,7 @@ But sometimes, we don't need that structure. For example, some short instruction
 
 By adapting the amount of structure we provide based on the need of the LLM, we end up building structure that is comprehensible to both humans and machines, even for long prompts.
 
-## Separation Of Concerns
+## Semantic Syntax
 
 We aren't rendering our prompt, so we don't need it in markdown. We aren't storing data, so we don't need to match end brackets.
 
