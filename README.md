@@ -224,7 +224,7 @@ This creates a solid basis to play around with.
 
 Here, the ***(: Smile*** is the **structure** around the instructions. This is a key essential point. ***(: Smile*** creates a clear separation between prompt language and response language using **structure** in order to increase the model's **instruction following**.
 
-It introduces additional grammar and syntax the model recognizes as semantic structure, which allows it to differentiate more meaning based on the emoticon used. For example, the meaning of a more rigid bracket `[` is clear in the context of a softer instruction with a smoother bracket `(`, e.g. in the example: 
+It introduces additional grammar and syntax the model recognizes as semantic structure, which allows it to differentiate more meaning based on the emoticon used. Essentially, because each emoticon is made of different semantic primitives that mean things to models (like `=` or `:`) our emoticons can mean different things! For example:
 
 ```
 (: Smile: I'm a prompt language!
@@ -254,8 +254,6 @@ Response language: Reply in markdown immediately with the bold+italic name tag  
 
 
 ```
-
-Using ***(: Smile*** lets you flexibly and semiotically communicate different kinds of instructions using combinations of different mouths, which indicate rigid [ or flexible (, and eyes, which indicate continuation : or equality =. 
 
 We further reserve special emoticons like cash eyes [$ for variable replacement and {pointy curly braces} to show the model where and how to write the instructions. 
 
