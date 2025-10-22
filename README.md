@@ -208,13 +208,13 @@ Love ***(: Smile?*** you can also [PayPal me](https://www.paypal.me/hanjopurebud
 
 ## Why (: Smile?
 
- To be **happy**! :)
+
+When we give our model a ***(: Smile***, we get **outcomes** that make our organization **happy**.
 
 ***(: Smile*** is the **positive** language for **structured** prompt engineering.
 
 We use ***(: Smile*** as our **prompt instruction language**. With it, we define our  **response language** for the model clearly,  for **consistent** and **effective** results.
 
-When we give our model a ***(: Smile***, we get **outcomes** that make our organization **happy**.
 
 ## An Example (: Smile Prompt Flow 
 
