@@ -132,7 +132,11 @@ First identify any errors in your first response, then once I've confirmed, prov
 :)
 ```
 
-And we've also helped the model separate the data from the instructions by using different emoticons for each section structure.
+## Separation Of Concerns
+
+We aren't rendering our prompt, so we don't need it in markdown. We aren't storing data, so we don't need to match end brackets.
+
+***(: Smile*** helps the model separate the data from the instructions by using different emoticons for each section structure.
 
 When we use an equals sign `[=`, the model can recognize that we're saying the data is equal to this. When we use a curvy emoticon for our other section `(:` the model knows we mean something new - it's different! 
 
