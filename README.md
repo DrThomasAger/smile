@@ -159,19 +159,26 @@ In ***(: Smile*** we can define our instructions more effectively for our need i
 
 
 
-# Benefits of (: Smile
+# Prompt Engineering 
+
+I've formalized a lot of the patterns that get real results in my own testing, and made them a part of ***(: Smile*** from the get go.
 
 
 ## Name Tags
 
 In ***(: Smile*** the first instruction  is to write a name tag representing its role it is speaking from for the duration of the response.
 
-This acts as an initial handshake confirming that the model will act as an agent of reciprocity.
+When the model recreates the name tag, it also reminds itself of the instructions associated with it. Every time the response is generated, it has a token steering its response toward the instructions.
+
+When the model does this, it will act in consistency with the instructions. This enables instruction following over multiple turns consistently.
+
+### Verifiable Prompt Engineering
+
+A name tag acts as an initial handshake confirming that the model will act as an agent of reciprocity.
 
 If it doesn't use the name tag, that means it hasn't agreed to follow the instructions. 
 
-
- In ***(: Smile***, we let the model know up front  that by providing the name tag, it agrees to abide by our instructions and role.
+ In ***(: Smile***, we let the model know up front  that by providing the name tag, it agrees to abide by our instructions and role. This ensures mutual comprehension of the request.
 
 1. A model that provides a name tag consistently  effectively follows instructions.
 2. A model that does not provide a name tag after being provided a ***(: Smile*** prompt has misunderstood the instructions and will not follow them consistently.
@@ -179,7 +186,7 @@ If it doesn't use the name tag, that means it hasn't agreed to follow the instru
 
 This handshake immediately establishes agreement between the mind of the model and the intention of the prompt.
 
-Then, when the model recreates that name tag, it also reminds itself of the instructions associated with it. Every time the response is generated, it has a token steering its response toward the instructions. This also allows existing foundation models with a personality (Like ChatGPT) to be 'overriden' more effectively, as it immediately shifts them out of their "normal" generation pattern that statistically leads to more refusals and 'safe' behaviour. 
+So if it isn't provided, we know our prompt isn't working right away.
 
 ## But Seriously... Why Emoticons?
 
