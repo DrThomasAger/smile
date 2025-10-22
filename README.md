@@ -136,11 +136,13 @@ Then, when the model recreates that name tag, it also reminds itself of the inst
 
 ## But Seriously... Why Emoticons?
 
-Because people who work in AI need to ***(: Smile*** more.
+Because people who work in AI need to ***(: Smile*** more. We make that more likely with ***(: Smile***.
 
-But really: We need to separate our concerns. In ***(: Smile***, we explicitly require that the **prompt language** has zero bleedover into the **response language**. We achieve this by using structural markers that have not been leveraged by other examples, composed of recognizable programming primitives like brackets and colons (: 
+In ***(: Smile***, we explicitly require that the **prompt language** has zero bleedover into the **response language**. We achieve this **separation of concerns** by using structural markers composed of different kinds of primitives like brackets and colons `(:` & `[=`, as well as semantically informative 'emoticons' to demonstrate importance `(! This text matters !)` and reserved tokens for replacing variables pre-inference `[$Var$]`.  
 
-So we do not use any language that can be used to render output for the user (like markdown or HTML) to instruct the model. Instead, our prompt structure has its own language, and our response structure is defined inside of its own section in the prompt. 
+We do not use the same language that renders output for the user (like markdown or HTML) to instruct the model. Our UX is fundamentally a different concern than how we explain to the model what we want them to do. Instead of mixing them, (like using markdown for prompt and response language) our prompt structure has its own language, and our response structure is defined inside of its own section in the prompt. 
+
+This helps the model understand what's what, and helps your prompt engineers do that too.
 
 With this, we incept the positive dataset of the future that is exclusive to prompt instructions. 
 
