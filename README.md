@@ -140,15 +140,20 @@ Because people who work in AI need to ***(: Smile*** more. We make that more lik
 
 In ***(: Smile***, we explicitly require that the **prompt language** has zero bleedover into the **response language**. We achieve this **separation of concerns** by using structural markers composed of different kinds of primitives like brackets and colons `(:` & `[=`, as well as semantically informative 'emoticons' to demonstrate importance `(! This text matters !)` and reserved tokens for replacing variables pre-inference `[$Var$]`.  
 
-We do not use the same language that renders output for the user (like markdown or HTML) to instruct the model. Our UX is fundamentally a different concern than how we explain to the model what we want them to do. Instead of mixing them, (like using markdown for prompt and response language) our prompt structure has its own language, and our response structure is defined inside of its own section in the prompt. 
+We do not use the same language that renders output for the user (like markdown or HTML) to instruct the model. 
+
+### Why Separate Concerns?
+
+Our UX is fundamentally a different concern than how we explain to the model what we want them to do. Instead of mixing them, (like using markdown for prompt and response language) our prompt structure has its own language, and our response structure is defined inside of its own section in the prompt. 
 
 This helps the model understand what's what, and helps your prompt engineers do that too.
 
-With this, we incept the positive dataset of the future that is exclusive to prompt instructions. 
-
 Whether you need JSON, markdown or just plain text outputs, you can ask for them in ***(: Smile***, define them clearly, and the model will not confuse your instructions for something it needs to replicate verbatim.
 
-By telling the model that this is ***(: Smile*** and then defining the response language clearly, we remove the possibility for context bleed. This repo also contains the norms and methods to reduce this even more.
+By telling the model that this is ***(: Smile*** and then defining the response language clearly, we remove the possibility for context bleed. 
+
+
+### Verifiable Failure Cases
 
 This also allows us to understand immediately if our prompt needs adjustment: If the prompt language appears in the response, then the model has not sufficiently understood the instructions and they need to be rewritten. 
 
