@@ -99,18 +99,30 @@ markdown section text [: **bold** important words, *italics* for grace and style
 
 # The Problem
 
+ Are you still hinging your entire business on loose text files only one employee understands? Will you look back at your prompts in a year and have no idea what they are doing and why? 
+
+In an organization, AI needs **maintainable** structure.
+
 Current strategies for structuring instructions (Anthropic's XML, OpenAI's Markdown) are insufficient for the needs of prompt writing. 
 
-XML forces an end tag, when the model may not need one, forcing additional tokens that may not aid performance.
+XML forces an end tag to match every start tag:
 
-`<role>You are an expert on the (: Smile prompt language</role>`
+```
+<role>
+You are an expert on the (: Smile prompt language
+</role>
+```
 
-Markdown doesn't allow you to define an ending.
+But repeating this information may add token overhead and may not be useful for the model to understand the instruction. 
+
+Markdown doesn't have native endings at all:
 
 ```
 # Role
 You are a really smart friend.
 ```
+
+But sometimes you need to make clear the end of a section with more tokens than just starting the next section.
 
 These languages weren't designed to instruct LLMs. They were made for programming and rendering text.
 
@@ -122,15 +134,13 @@ When our prompts get longer, or our context gets complex (think, many different 
 =] End Data =]
 ```
 
-But in the same prompt, our instructions don't need all that structure:
+But sometimes, we don't need that structure. For example, some short instructions:
 
 ```
-(: Instructions - What To Do With The Transcript (
-
-First identify any errors in your first response, then once I've confirmed, provide the fixes.
-
-:)
+(: identify any errors in your first response, then once I've confirmed, provide the fixes.
 ```
+
+By adapting the amount of structure we provide based on the need of the LLM, we end up building structure that is comprehensible to both humans and machines, even for long prompts.
 
 ## Separation Of Concerns
 
@@ -150,14 +160,6 @@ In ***(: Smile*** we can define our instructions more effectively for our need i
 
 
 # Benefits of (: Smile
-
-In an organization, AI needs **maintainable** structure. Using ***(: Smile*** for prompt structure has three key advantages over raw text:
-
-* **Maintainable & Explainable**: Are you still hinging your entire business on loose text files only one employee understands? Will you look back at your prompts in a year and have no idea what they are doing and why? Time to **solve it**. Enable **future** knowledge transfer for hires by giving your organization prompts that are **explainable**. 
-* **Model-Agnostic & Universal**: LLMs of all parameter sizes can read structure written in ***(: Smile***. If you're writing in ChatGPT, or talking to an open source LLM,  ***(: Smile*** just works. Transform your prompt library into a set of prompts that works anywhere, any time, no matter what model you are prompting. 
-* **Positive & Effective**: Get more consistent instruction following with discrete  `(: Sections (` and prevent instruction drift (losing instruction following over multiple turns) using my battle tested modular prompt engineering patterns (see the sections in the examples in this repo, like thinking or name tags). ***(: Smile*** gives you the tools to compose compact prompts that **save you money** and **express more** per token. 
-
-When you learn to leverage these **three key advantages**, your organization is moving towards **structured** and **maintainable** prompt engineering. **You are on the bleeding edge of prompt engineering.** 
 
 
 ## Name Tags
