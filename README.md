@@ -38,7 +38,9 @@ With ***(: Smile*** now we have the same kind of **predictable** and **reliable*
 
 
 
-## Prompt Pattern Example
+## Language Showcase
+
+It's amazing the results you can get with just prompting, when you structure it effectively.
 
 In the next example, we provide the name tag ***(: Smile Prepare***: for the role of responding with two stages: one "thinking" or preparatory stage followed by a response that leverages that preparation for a more intelligent reply.
 
