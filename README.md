@@ -24,7 +24,9 @@ Meet ***(: SMILE!*** v1:
 
 In programming, we moved from  simple isolated scripts to organizational norms and common languages. 
 
-A common *prompt language* results in a more **consistent** and **maintainable** *prompt library* for your organization.  Now we have the same kind of **predictable** and **reliable** language for our **essential** LLM prompts. 
+A common *prompt language* results in a more **consistent** and **maintainable** *prompt library* for your organization.  
+
+With ***(: Smile*** now we have the same kind of **predictable** and **reliable** language for our **essential** LLM prompts. 
 
 
 
