@@ -44,13 +44,6 @@ It's amazing the results you can get with just prompting, when you structure it 
 
 In the next example, we provide the name tag ***(: Smile Prepare***: for the role of responding with two stages: one "thinking" or preparatory stage followed by a response that leverages that preparation for a more intelligent reply.
 
-One popular **prompt engineering pattern** is to let the model **think before it responds**. 
-
-This is often called "Chain-of-thought" and has historically been created using the prompt `Think this through step by step`.
-
-**Prompt engineers** invest inference tokens into **thinking budget** because it makes the final response smarter.
-
-
 **Copy and paste** the example **now** into your favorite language model and discover how ***(: Smile*** works through direct experience. 
 
 ```
