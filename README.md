@@ -107,6 +107,7 @@ Current strategies for structuring instructions (Anthropic's ***XML***, OpenAI's
 
 These languages weren't designed to instruct LLMs. They were made for programming and rendering text.
 
+
 XML forces an end tag to match every start tag:
 
 ```
@@ -124,9 +125,12 @@ Markdown doesn't have native endings at all:
 You are a really smart friend.
 ```
 
-But sometimes you need to make clear the end of a section. 
 
-We need a language that's designed for prompt engineering. That let's us use more tokens when required for the model to understand our instructions.
+We aren't rendering our prompt, so we don't need it in markdown. We aren't storing data, so we don't need to match end brackets.
+
+But sometimes you need an end tag. If you've ever copy pasted something into an LLM, and it lost track of the instructions - it's because you didn't wrap the data properly.  
+
+## Flexible Structure
 
 When our prompts get longer, or our context gets complex (think, many different kinds of text documents) we need structure that can support diverse needs. If we have a lot of data, it needs a lot of structure around it so the model can read it and know it's different to the instructions:
 
@@ -146,7 +150,6 @@ By adapting the amount of structure we provide based on the need of the LLM, we 
 
 ## Semantic Syntax
 
-We aren't rendering our prompt, so we don't need it in markdown. We aren't storing data, so we don't need to match end brackets.
 
 ***(: Smile*** helps the model separate the data from the instructions by using different emoticons for each section structure.
 
