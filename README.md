@@ -18,19 +18,13 @@ Meet ***(: SMILE!*** v1:
 
 `(: Hello World! )`
 
-> [![☆ Star the repo](https://img.shields.io/github/stars/DrThomasAger/smile?style=social)](https://github.com/DrThomasAger/smile/stargazers) (: By [Dr. Thomas Ager](https://www.linkedin.com/in/drprompt?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app) 
+> [![☆ Star the repo](https://img.shields.io/github/stars/DrThomasAger/smile?style=social)](https://github.com/DrThomasAger/smile/stargazers) (: By [Dr. Thomas Ager](https://www.linkedin.com/in/drprompt?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app)
 
-# Why (: Smile?
+# Why Use A Prompt Language?
 
-Methods for writing prompts are still ad-hoc, with experienced prompt engineers holding on to "intuitive hacks" that they can't render into an explicit system to scale
-their knowledge into their organization.
+In programming, we moved from  simple isolated scripts to organizational norms and common languages. 
 
-That's why I created ***(: Smile***. As my businesses began to rely more and more on prompts, and the processes became collaborative, I needed to be able to hand off knowledge and understanding to the team members I was working with.
-
-A common *prompt language* results in a more **consistent** and **maintainable** *prompt library* for your organization. In programming, we moved from  simple isolated scripts to organizational norms and common languages. Now we have the same kind of **predictable** and **reliable** language for our **essential** LLM prompts. 
-
-
-
+A common *prompt language* results in a more **consistent** and **maintainable** *prompt library* for your organization.  Now we have the same kind of **predictable** and **reliable** language for our **essential** LLM prompts. 
 
 
 
@@ -44,7 +38,7 @@ A common *prompt language* results in a more **consistent** and **maintainable**
 
 ## Prompt Pattern Example
 
-In the next example, we'll use the name tag ***(: Smile Prepare***: for the role of responding with two stages: one "thinking" or preparatory stage followed by a response that leverages that preparation for a more intelligent reply.
+In the next example, we provide the name tag ***(: Smile Prepare***: for the role of responding with two stages: one "thinking" or preparatory stage followed by a response that leverages that preparation for a more intelligent reply.
 
 One popular **prompt engineering pattern** is to let the model **think before it responds**. 
 
@@ -103,6 +97,40 @@ markdown section text [: **bold** important words, *italics* for grace and style
   | [ChatGPT (OpenAI)](https://chatgpt.com/)      |             ✓             |
 
 **Just copy and paste the quick start example into one of the chats above, or check [here](#portability-and-compatibility) for alternative options.**
+
+
+
+# The Problem
+
+Current strategies for structuring instructions (Anthropic's XML, OpenAI's Markdown) are insufficient for the needs of prompt writing. 
+
+XML forces an end tag, when the model may not need one, forcing additional tokens that may not aid performance.
+
+`<role>You are an expert on the (: Smile prompt language</role>`
+
+Markdown doesn't allow you to define an ending.
+
+```
+# Role
+You are a really smart friend.
+```
+
+These languages weren't designed to instruct LLMs. They were made for programming and rendering text.
+
+When our prompts get longer, or our context gets complex (think, many different kinds of text documents) we need structure that can support diverse needs. If we have a lot of data, it needs a lot of structure around it so the model can read it and know it's different to the instructions:
+
+```
+[= Data - Meeting Transcript [=
+    [$ Transcript_here $]
+=] End Data =]
+
+(: Instructions - What To Do With The Transcript (
+
+First identify any errors in your first response, then once I've confirmed, provide the fixes.
+
+) End Instructions :)
+```
+
 
 # Benefits of (: Smile
 
