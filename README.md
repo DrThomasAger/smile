@@ -20,7 +20,7 @@ For long-turn, multi-agent applications.
 
 > [![☆ Star the repo](https://img.shields.io/github/stars/DrThomasAger/smile?style=social)](https://github.com/DrThomasAger/smile/stargazers) (: By [Dr. Thomas Ager](https://www.linkedin.com/in/drprompt?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app)
 
-# Why Use A Prompt Language?
+# Maintainable
 
 In programming, we moved from  simple isolated scripts to organizational norms and common languages. 
 
@@ -28,19 +28,11 @@ A common *prompt language* results in a more **consistent** and **maintainable**
 
 With ***(: Smile*** now we have the same kind of **predictable** and **reliable** language for our **essential** LLM prompts. 
 
-
-
-
-
-
-
-
-
-
-
 ## Language Showcase
 
 It's amazing the results you can get with just prompting, when you ***(: Smile***. 
+
+Here's how to stop instruction drift in its tracks across multiple turns.
 
 In the next example, we provide the name tag ***(: Smile Prepare***: for the role of responding with two stages: one "thinking" or preparatory stage followed by a response that leverages that preparation for a more intelligent reply.
 
