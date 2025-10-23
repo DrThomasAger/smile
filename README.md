@@ -12,7 +12,7 @@ Meet ***(: SMILE!*** v1:
 * **L**anguage with
 * **E**moticons.
 
-For long-turn, multi-agent applications. 
+For long prompts in multi-turn, multi-agent applications. 
 
 ***(: Smile*** is the markup (like ***Markdown*** or ***XML***) where **emoticons** are used as brackets to **instruct** Large Language Models (LLMs) in a **structured** way both machines and humans understand.
 
