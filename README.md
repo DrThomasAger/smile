@@ -20,6 +20,10 @@ For long prompts in multi-turn, multi-agent applications.
 
 > [![☆ Star the repo](https://img.shields.io/github/stars/DrThomasAger/smile?style=social)](https://github.com/DrThomasAger/smile/stargazers) (: By [Dr. Thomas Ager](https://www.linkedin.com/in/drprompt?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app)
 
+# Positive
+
+There's enough dismal despair in AI. We use happy emoticons only. If we can make even one prompt engineer happier, then this project is successful.
+
 # Maintainable
 
 In programming, we moved from  simple isolated scripts to organizational norms and common languages. 
@@ -149,7 +153,6 @@ By adapting the amount of structure we provide based on the need of the LLM, we 
 
 ***(: Smile*** helps the model separate the data from the instructions by using different emoticons for each section structure.
 
-When we use an equals sign `[=`, the model can recognize that we're saying the data is equal to this. When we use a colon  for our other section `(:` the model knows we mean something new - it's different! 
 
 In ***(: Smile*** we can define our instructions more effectively for our need if we flexibly drop or add structure.  This kind of flexibility can lead to token-efficient structuring:
 
@@ -206,6 +209,7 @@ This helps the model understand what's what, and helps your prompt engineers do 
 Whether you need JSON, markdown or just plain text outputs, you can ask for them in ***(: Smile***, define them clearly, and the model will not confuse your instructions for something it needs to replicate verbatim.
 
 By telling the model that this is ***(: Smile*** and then defining the response language clearly, we remove the possibility for context bleed. 
+
 
 
 ### Verifiable Failure Cases
@@ -283,6 +287,9 @@ You can end **sections** using the same markers in the opposite direction. `) En
 
 This creates a solid basis to play around with. 
 # Why Does It Work?
+
+When we use an equals sign `[=`, the model can recognize that we're saying the data is equal to this. When we use a colon  for our other section `(:` the model knows we mean something new - it's different! 
+
 
 Here, the ***(: Smile*** is the **structure** around the instructions. This is a key essential point. ***(: Smile*** creates a clear separation between prompt language and response language using **structure** in order to increase the model's **instruction following**.
 
