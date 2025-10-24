@@ -401,14 +401,6 @@ For example,
 
 In ***(: Smile***, we separate these different types of instruction, like `data` or `personality` or `name tag` into clearly distinct sections. This increases comprehension for LLMs.
 
-## Eyes
-
-
-**In (: Smile, we have our own body language:**
-
-* **Straight eyes** `=` can indicate strict input that must be followed exactly, e.g. `[=` 
-* **Quote eyes** `"` show text that must be repeated word for word verbatim, e.g. `["Repeat this word for word"]` 
-* **Cash eyes**  `$` show variables and can be replaced with the true values before inference using code. `!` important eyes show text to emphasize for the model, e.g. `[! Don't use negative language. !]`. 
 
 
 
@@ -423,7 +415,6 @@ These are a few different ways to create structure with ***(: Smile***.
 | `:)` | close the whole ***(: Smile*** block | `) End section :)` | This is the final ending marker. Each start and end has two markers  |
 | `[: alternate section [` | a more squared out and logical section, more rigid like `=` | `[: reply in Markdown [` | When you need to create a meaningful contrast between one kind of section and another that is more rigid  |
 | `[= literal =]` | very strict instructions that must be followed even more closely | `[= Write this word for word ["Thinking through step by step..."] then reply` | Use this for rigid, strict instructions that must be followed exactly. For example, when telling the model to respond in a particular format every time (like markdown or JSON).  |
-| `["Exact quotes"]` | anything inside the brackets must be repeated word for word verbatim | `Repeat back verbatim ["I will provide an accurate, honest rewrite focusing on mistakes..."]` | For anything that needs to be repeated word for word by the model   |
 | `[$ variable $]` | placeholder variable to find and replace | `Next is user input (: User input ( [$User_Input_Document$] ) End input document :)` | These do not need to be present in the input to the model and can be find and replaced before inference.   |
 |  `[! important instruction !] ` | text that the model can allocate attention to | `[! NEVER use an emdash! !]` | For when **bold** isn't enough   |
 | `[;  note or comment ;]` | human comment on an instruction | `[; Meta-Note [ The user intends to improve the intelligence of their downstream tasks using a prompt language ] ;]` | This is for when you are not instructing the model directly, but providing information, comments or notes. Can also use `(;`, the winky eyes are the differentiator.   |  
