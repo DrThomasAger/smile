@@ -149,7 +149,7 @@ By adapting the amount of structure we provide based on the need of the LLM, we 
 
 ***(: Smile*** helps the model separate the data from the instructions by using different emoticons for each section structure.
 
-When we use an equals sign `[=`, the model can recognize that we're saying the data is equal to this. When we use a curvy emoticon for our other section `(:` the model knows we mean something new - it's different! 
+When we use an equals sign `[=`, the model can recognize that we're saying the data is equal to this. When we use a colon  for our other section `(:` the model knows we mean something new - it's different! 
 
 In ***(: Smile*** we can define our instructions more effectively for our need if we flexibly drop or add structure.  This kind of flexibility can lead to token-efficient structuring:
 
