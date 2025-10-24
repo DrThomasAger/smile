@@ -22,7 +22,7 @@ For long prompts in multi-turn, multi-agent applications.
 
 # Positive
 
-There's enough dismal despair in AI. We use happy emoticons only. If we can make even one prompt engineer happier, then this project is successful.
+Everyone wants to be happy. We use happy emoticons only. If we can make even one prompt engineer happier, then this project is successful.
 
 # Maintainable
 
