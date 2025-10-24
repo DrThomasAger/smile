@@ -201,6 +201,8 @@ So if it isn't provided, we know our prompt isn't working right away.
 
 Because people who work in AI need to ***(: Smile*** more. We make that more likely with ***(: Smile***.
 
+### Emoticons Separate Concerns Clearly
+
 In ***(: Smile***, we explicitly require that the **prompt language** has zero bleedover into the **response language**. We achieve this **separation of concerns** by using structural markers composed of different kinds of primitives like brackets and colons `(:` & `[=`, as well as semantically informative 'emoticons' to demonstrate importance `(! This text matters !)` and reserved tokens for replacing variables pre-inference `[$Var$]`.  
 
 We do not use the same language that renders output for the user (like markdown or HTML) to instruct the model. 
