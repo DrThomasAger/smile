@@ -153,6 +153,7 @@ By adapting the amount of structure we provide based on the need of the LLM, we 
 
 ***(: Smile*** helps the model separate the data from the instructions by using different emoticons for each section structure.
 
+### Token-Optimal Prompt Engineering
 
 In ***(: Smile*** we can define our instructions more effectively for our need if we flexibly drop or add structure.  This kind of flexibility can lead to token-efficient structuring:
 
