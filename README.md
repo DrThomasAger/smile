@@ -99,6 +99,7 @@ Current strategies for structuring instructions (Anthropic's ***XML***, OpenAI's
 
 These languages weren't designed to instruct LLMs. They were made for programming and rendering text.
 
+## Flexibility vs Required Structure
 
 XML forces an end tag to match every start tag:
 
