@@ -36,7 +36,9 @@ With ***(: Smile*** now we have the same kind of **predictable** and **reliable*
 
 It's amazing the results you can get with just prompting, when you ***(: Smile***. 
 
-Here's how to stop instruction drift in its tracks across multiple turns.
+Models already possess substantial capabilities, but those capabilities remain latent until architectural choices surface them. 
+
+Here's how to stop instruction drift (the model losing track of the instructions over multiple turns).
 
 In the next example, we provide the name tag ***(: Smile Prepare***: for the role of responding with two stages: one "thinking" or preparatory stage followed by a response that leverages that preparation for a more intelligent reply.
 
