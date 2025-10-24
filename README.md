@@ -119,9 +119,12 @@ You are a really smart friend.
 ```
 
 
+
+But sometimes you need an end tag. If you've ever copy pasted something into an LLM, and it lost track of the instructions — it's because you didn't wrap the data properly.  
+
 We aren't rendering our prompt, so we don't need it in markdown. We aren't storing data, so we don't need to match end brackets.
 
-But sometimes you need an end tag. If you've ever copy pasted something into an LLM, and it lost track of the instructions - it's because you didn't wrap the data properly.  
+***(: Smile*** is a language for prompt instructions. It not only contains the markup aspects (emoticon brackets defining sections) but also has many useful ideas embedded into its design.  
 
 ## Flexible Structure
 
