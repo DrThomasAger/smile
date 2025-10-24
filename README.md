@@ -134,8 +134,6 @@ But sometimes you need an end tag. If you've ever copy pasted something into an 
 
 We aren't rendering our prompt, so we don't need it in markdown. We aren't storing data, so we don't need to match end brackets.
 
-***(: Smile*** is a language for prompt instructions. It not only contains the markup aspects (emoticon brackets defining sections) but also has many useful ideas embedded into its design.  
-
 ## Flexible Structure
 
 When our prompts get longer, or our context gets complex (think, many different kinds of text documents) we need structure that can support diverse needs. If we have a lot of data, it needs a lot of structure around it so the model can read it and know it's different to the instructions:
