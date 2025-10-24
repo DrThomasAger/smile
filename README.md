@@ -101,11 +101,11 @@ markdown section text [: **bold** important words, *italics* for grace and style
 
 In an organization, AI needs **maintainable** structure.
 
+## Flexibility vs Required Structure
+
+
 Current strategies for structuring instructions (Anthropic's ***XML***, OpenAI's ***Markdown***) are insufficient for the needs of prompt writing. 
 
-These languages weren't designed to instruct LLMs. They were made for programming and rendering text.
-
-## Flexibility vs Required Structure
 
 XML forces an end tag to match every start tag:
 
@@ -116,6 +116,8 @@ You are an expert on the (: Smile prompt language
 ```
 
 But repeating this may just be adding tokens 'because the language says so' - not because it's beneficial.   
+These languages weren't designed to instruct LLMs. They were made for programming and rendering text.
+ 
 
 Markdown doesn't have native endings at all:
 
