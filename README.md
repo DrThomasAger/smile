@@ -34,11 +34,13 @@ With ***(: Smile*** now we have the same kind of **predictable** and **reliable*
 
 ## Language Showcase
 
-It's amazing the results you can get with just prompting, when you ***(: Smile***. 
+Models already possess substantial capabilities, but those capabilities remain latent until text choices in the response surface them. 
 
-Models already possess substantial capabilities, but those capabilities remain latent until architectural choices surface them. 
+One of those text choices, providing a name tag at the start of the response, reveals the capability of multi-turn instruction following. 
 
-Here's how to stop instruction drift (the model losing track of the instructions over multiple turns).
+Here's how to stop instruction drift (the model losing track of the instructions over multiple turns):
+
+### Name Tag Pattern 
 
 In the next example, we provide the name tag ***(: Smile Prepare***: for the role of responding with two stages: one "thinking" or preparatory stage followed by a response that leverages that preparation for a more intelligent reply.
 
