@@ -4,6 +4,8 @@
 
 > **The Positive AI Future.**
 
+
+
 Meet ***(: SMILE!*** v1:
 
 * **S**tructured 
@@ -39,7 +41,28 @@ Models already possess substantial capabilities, but those capabilities remain l
 
 One of those patterns is providing a name tag at the start of the response, and it enables the capability of multi-turn instruction following without  instruction drift (the model losing track of the instructions over multiple turns).
 
-### Name Tag Pattern 
+### Name Tag Pattern
+
+Here, we show a prompt written in ***(: Smile*** that has a name tag. 
+
+```(: Smile v1
+***(: Smile***:
+defines my prompt language, you have response language, we co-create as gift by starting with bold italics name tag (
+
+    [: Response Language Definition [=
+
+        First, write exact name tag  ["[(: ***Smile Expert***](https://github.com/DrThomasAger/smile):"] Then reply [
+
+        {6 **clear, lucid** & rigorous, [! intelligent !] fundamental focused, with well defined jargon-filled *meta-aware lengthy sentence paragraphs*, talk niche nuanced and comprehensible, simple and fundamental first principles insights. (: note - User is not prompt author, they just copy pasted.}
+
+        (; style instruction: use **bold** for emphasis, and *italics* for style, grace and interest capture, use often and extensively, and also use definitions after any long or complex words explaining in direct address to the user the definition, assuming 0 knowledge user. create delightful UX ;)
+
+    ] End format =] 
+) End prompt language, respond in response language starting with name tag [(: ***Smile Expert***](https://github.com/DrThomasAger/smile): always please thank you  :)
+```
+ 
+
+### Chain-Of-Thought Pattern
 
 In the next example, we provide two modular, composable prompt patterns you can use in your own prompts.
 
@@ -95,15 +118,9 @@ markdown section text [: **bold** important words, *italics* for grace and style
    | [Claude (Anthropic)](https://claude.ai/new)      |             ✓             |
   | [ChatGPT (OpenAI)](https://chatgpt.com/)      |             ✓             |
 
-**Just copy and paste the quick start example into one of the chats above, or check [here](#portability-and-compatibility) for alternative options.**
+**Just copy and paste the examples into one of the chats above, or check [here](#portability-and-compatibility) for alternative options.**
 
 
-
-# The Problem
-
- Are you still hinging your entire business on loose text files only one employee understands? Will you look back at your prompts in a year and have no idea what they are doing and why? 
-
-In an organization, AI needs **maintainable** structure.
 
 ## The Solution
 
@@ -119,6 +136,15 @@ Whether you need JSON, markdown or just plain text outputs, you can ask for them
 
 By telling the model that this is ***(: Smile*** and then defining the response language clearly, we remove the possibility for context bleed. 
 
+This README is filled with example ***(: Smile*** prompt patterns that you can copy and paste to test. 
+
+### Separation Of Concerns Example
+
+**✓** Copy, open your favorite LLM, & paste the quickstart example below now to ***(: Smile***! **✓** 
+
+
+
+In this prompt, we define a markdown response format.
 
 # Name Tags
 
@@ -167,27 +193,6 @@ These essential handshakes and checkpoints make our instruction following consis
 
 # Quick Start
 
-This README is filled with example ***(: Smile*** prompt patterns that you can copy and paste to test. 
-
-**✓** Copy, open your favorite LLM, & paste the quickstart example below now to ***(: Smile***! **✓** 
-
-```(: Smile v1
-***(: Smile***:
-defines my prompt language, you have response language, we co-create as gift by starting with bold italics name tag (
-
-    [: Response Language Definition [=
-
-        First, write exact name tag  ["[(: ***Smile Expert***](https://github.com/DrThomasAger/smile):"] Then reply [
-
-        # Reply
-
-        {6 **clear, lucid** & rigorous, [! intelligent !] fundamental focused, with well defined jargon-filled *meta-aware lengthy sentence paragraphs*, talk niche nuanced and comprehensible, simple and fundamental first principles insights. (: note - User is not prompt author, they just copy pasted.}
-
-        (; style instruction: use **bold** for emphasis, and *italics* for style, grace and interest capture, use often and extensively, and also use definitions after any long or complex words explaining in direct address to the user the definition, assuming 0 knowledge user. create delightful UX ;)
-
-    ] End format =] 
-) End prompt language, respond in response language starting with name tag [(: ***Smile Expert***](https://github.com/DrThomasAger/smile): always please thank you  :)
-```
 
 
 Interested in adopting ***(: Smile***? Feel free to [DM me](https://www.linkedin.com/in/drprompt) and lets chat about how you can structure prompts for your organization with ***(: Smile***.
