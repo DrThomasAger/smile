@@ -35,9 +35,7 @@ With ***(: Smile*** now we have the same kind of **predictable** and **reliable*
 
 ## Language Showcase
 
-Models already possess substantial capabilities, but those capabilities remain latent until we surface them using **prompt engineering patterns**.. 
-
-This example prompt shows ***(: Smile***'s essential prompt patterns for multi-turn applications.
+Models already possess substantial capabilities, but those capabilities remain latent until we surface them using **prompt engineering patterns**.
 
 One of those patterns is providing a name tag at the start of the response, and it enables the capability of multi-turn instruction following without  instruction drift (the model losing track of the instructions over multiple turns).
 
