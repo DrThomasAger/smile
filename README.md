@@ -105,77 +105,22 @@ markdown section text [: **bold** important words, *italics* for grace and style
 
 In an organization, AI needs **maintainable** structure.
 
-## Flexibility vs Required Structure
+## The Solution
+
+***(: Smile*** is a language formalized out of the recognition that we need a language that directly addresses prompt writing — and clearly separates concerns inside of our prompts.
+
+## Why Separate Concerns?
+
+Our UX is fundamentally a different concern than how we explain to the model what we want them to do. Instead of mixing them, (like using markdown for prompt and response language) our prompt structure has its own language, and our response structure is defined inside of its own section in the prompt. 
+
+This helps the model understand what's what, and helps your prompt engineers do that too.
+
+Whether you need JSON, markdown or just plain text outputs, you can ask for them in ***(: Smile***, define them clearly, and the model will not confuse your instructions for something it needs to replicate verbatim.
+
+By telling the model that this is ***(: Smile*** and then defining the response language clearly, we remove the possibility for context bleed. 
 
 
-Current strategies for structuring instructions (Anthropic's ***XML***, OpenAI's ***Markdown***) are insufficient for the needs of prompt writing. 
-
-
-XML forces an end tag to match every start tag:
-
-```
-<role>
-You are an expert on the (: Smile prompt language
-</role>
-```
-
-But repeating this may just be adding tokens 'because the language says so' - not because it's beneficial.   
-These languages weren't designed to instruct LLMs. They were made for programming and rendering text.
- 
-
-Markdown doesn't have native endings at all:
-
-```
-# Role
-You are a really smart friend.
-```
-
-
-
-But sometimes you need an end tag. If you've ever copy pasted something into an LLM, and it lost track of the instructions — it's because you didn't wrap the data properly.  
-
-We aren't rendering our prompt, so we don't need it in markdown. We aren't storing data, so we don't need to match end brackets.
-
-## Flexible Structure
-
-When our prompts get longer, or our context gets complex (think, many different kinds of text documents) we need structure that can support diverse needs. If we have a lot of data, it needs a lot of structure around it so the model can read it and know it's different to the instructions:
-
-```
-[= Data - Meeting Transcript [=
-    [$ Transcript_here $]
-=] End Data =]
-```
-
-But sometimes, we don't need that structure. For example, some short instructions:
-
-```
-(: identify any errors in your first response, then once I've confirmed, provide the fixes.
-```
-
-By adapting the amount of structure we provide based on the need of the LLM, we end up building structure that is comprehensible to both humans and machines, even for long prompts.
-
-## Semantic Syntax
-
-
-***(: Smile*** helps the model separate the data from the instructions by using different emoticons for each section structure.
-
-### Token-Optimal Prompt Engineering
-
-In ***(: Smile*** we can define our instructions more effectively for our need if we flexibly drop or add structure.  This kind of flexibility can lead to token-efficient structuring:
-
-```
-[= Name [ Smile Expert
-(: Instructions ( Make the user smile by being kind.
-```
-
-
-
-# Prompt Engineering 
-
-I've formalized a lot of the patterns that get real results in my own testing, and made them a part of ***(: Smile*** from the get go.
-
-
-## Name Tags
+# Name Tags
 
 In ***(: Smile*** the first instruction  is to write a name tag representing its role it is speaking from for the duration of the response.
 
@@ -209,15 +154,6 @@ In ***(: Smile***, we explicitly require that the **prompt language** has zero b
 
 We do not use the same language that renders output for the user (like markdown or HTML) to instruct the model. 
 
-### Why Separate Concerns?
-
-Our UX is fundamentally a different concern than how we explain to the model what we want them to do. Instead of mixing them, (like using markdown for prompt and response language) our prompt structure has its own language, and our response structure is defined inside of its own section in the prompt. 
-
-This helps the model understand what's what, and helps your prompt engineers do that too.
-
-Whether you need JSON, markdown or just plain text outputs, you can ask for them in ***(: Smile***, define them clearly, and the model will not confuse your instructions for something it needs to replicate verbatim.
-
-By telling the model that this is ***(: Smile*** and then defining the response language clearly, we remove the possibility for context bleed. 
 
 
 
