@@ -249,19 +249,8 @@ We use special emoticons like cash eyes [$ for variable replacement and {pointy 
 
 ## Section Examples
 
-We define different kinds of instructions with visually different structure, which are emoticons that mean discrete things. But what sections can we use in a prompt to increase instruction following?
 
-***(: Smile*** provides norms that perform effectively for you to use for consistent responses. 
-
-We explicitly recommend that you define your response language. In this repo, the response language is markdown and we use that in all examples. 
-
-Inside of that response language, we recommend using a name tag that represents the role as a handshake. 
-
-These **section types** are **not mandatory**. However, they are **recommended as useful default** section types. 
-
-Everybody has their own unique genuine ***(: Smile***, suited to **you**, your task, your data, and your model :)
-
-***(: Smile*** is compatible with all languages! **Feel free to use any combinations of these section types, or create new ones.**
+***(: Smile*** is compatible with all prompt engineering strategies! **Feel free to use any combinations of these section types, or create new ones.**
 
 | **Section**                | **Smile syntax (example)**                                                                                                                                                                                                                                 | **Purpose / Tips**                                                                                                                               |
 | -------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------ |
