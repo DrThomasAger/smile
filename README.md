@@ -67,7 +67,20 @@ defines my prompt language, you have response language, start with bold italics 
 
 **Copy and paste** the example **now** into your favorite language model and discover how ***(: Smile*** works through direct experience. 
 
-But what if we aren't just interested in consistent instruction following? 
+
+## Compatible & Free Quick Chat
+
+***(: Smile*** is portable across any LLM! Try the example ***(: Smile*** prompt on a free ***LLM*** quick chat now:
+
+
+| ✓ Link to copy & paste                                | Smile Compatible? |
+|:------------------------------------------|-------------|
+| [Kimi Chat (Moonshot AI)](https://www.kimi.com/)|             ✓             |
+   | [Claude (Anthropic)](https://claude.ai/new)      |             ✓             |
+  | [ChatGPT (OpenAI)](https://chatgpt.com/)      |             ✓             |
+
+**Just copy and paste the examples into one of the chats above, or check [here](#portability-and-compatibility) for alternative options.**
+
 
 ### Making The Model Smarter: Chain-Of-Thought Pattern
 
@@ -114,18 +127,6 @@ markdown section text [: **bold** important words, *italics* for grace and style
 
 With this prompt, the model will respond with it's name tag ***(: Smile Prepare*** and two sections, one that prepares for its reply and a second section that uses that preparation for a more intelligent response.
 
-## Compatible & Free Quick Chat
-
-***(: Smile*** is portable across any LLM! Try the example ***(: Smile*** prompt on a free ***LLM*** quick chat now:
-
-
-| ✓ Link to copy & paste                                | Smile Compatible? |
-|:------------------------------------------|-------------|
-| [Kimi Chat (Moonshot AI)](https://www.kimi.com/)|             ✓             |
-   | [Claude (Anthropic)](https://claude.ai/new)      |             ✓             |
-  | [ChatGPT (OpenAI)](https://chatgpt.com/)      |             ✓             |
-
-**Just copy and paste the examples into one of the chats above, or check [here](#portability-and-compatibility) for alternative options.**
 
 
 
