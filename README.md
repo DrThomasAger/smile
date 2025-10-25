@@ -24,6 +24,15 @@ For **consistent** instruction following in **multi-turn**, **multi-agent** appl
 
 > [![☆ Star the repo](https://img.shields.io/github/stars/DrThomasAger/smile?style=social)](https://github.com/DrThomasAger/smile/stargazers) By [Dr. Thomas Ager, Ph.D](https://www.linkedin.com/in/drprompt?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app)
 
+## Why Not Just Write In Natural Language?
+
+
+In real applications there are natural separations between parts of the prompt. 
+
+For example, the data we are providing the model (like a meeting transcript) and the instructions (summarize this) are two distinct parts of the prompt with different needs. 
+
+When we provide each distinct part in its own structured section it can understand this difference. 
+
 
 
 ## Why Adopt A Formal Language For Prompt Engineering?
