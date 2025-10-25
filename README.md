@@ -31,13 +31,15 @@ A common *prompt language* results in a more **consistent** and **maintainable**
 
 With ***(: Smile*** now we have the same kind of **predictable** and **reliable** language for our **essential** LLM prompts. 
 
+
+
 ## Language Showcase
 
-Models already possess substantial capabilities, but those capabilities remain latent until text choices in the response surface them. 
+Models already possess substantial capabilities, but those capabilities remain latent until we surface them using **prompt engineering patterns**.. 
 
-One of those text choices, providing a name tag at the start of the response, reveals the capability of multi-turn instruction following. 
+This example prompt shows ***(: Smile***'s essential prompt patterns for multi-turn applications.
 
-Here's how to stop instruction drift (the model losing track of the instructions over multiple turns):
+One of those patterns is providing a name tag at the start of the response, and it enables the capability of multi-turn instruction following without  instruction drift (the model losing track of the instructions over multiple turns).
 
 ### Name Tag Pattern 
 
