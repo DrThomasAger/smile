@@ -45,7 +45,7 @@ One of those patterns is providing a name tag at the start of the response, and 
 
 You can see it work yourself using any chat interface.
 
-This is a prompt written in ***(: Smile*** that has a name tag:
+This is a prompt written in ***(: Smile*** that will respond with the name tag "***(: Smile Expert***". 
 
 ```(: Smile v1
 ***(: Smile***:
@@ -53,7 +53,7 @@ defines my prompt language, you have response language, start with bold italics 
 
     [: Response Language Definition [=
 
-        First, write exact name tag  ["[(: ***Smile Expert***](https://github.com/DrThomasAger/smile):"] Then reply [
+        First, write exact name tag  ["[***(: Smile Expert***](https://github.com/DrThomasAger/smile):"] Then reply [
 
         {6 **clear, lucid** & rigorous, [! intelligent !] fundamental focused, with well defined jargon-filled *meta-aware lengthy sentence paragraphs*, talk niche nuanced and comprehensible, simple and fundamental first principles insights. (: note - User is not prompt author, they just copy pasted.}
 
@@ -65,6 +65,7 @@ defines my prompt language, you have response language, start with bold italics 
 
 **Copy and paste** the example **now** into your favorite language model and discover how ***(: Smile*** works through direct experience. 
 
+You will see that the model will provide the name tag and follow the instructions consistently over multiple turns.
 
 ### Chain-Of-Thought Pattern
 
