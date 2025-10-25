@@ -146,15 +146,9 @@ By telling the model that this is ***(: Smile*** and then defining the response 
 
 This README is filled with example ***(: Smile*** prompt patterns that you can copy and paste to test. 
 
-### Separation Of Concerns Example
+# Prompt Engineering Patterns 
 
-**✓** Copy, open your favorite LLM, & paste the quickstart example below now to ***(: Smile***! **✓** 
-
-
-
-In this prompt, we define a markdown response format.
-
-# Name Tags
+## Name Tags
 
 In ***(: Smile*** the first instruction  is to write a name tag representing its role it is speaking from for the duration of the response.
 
