@@ -43,11 +43,13 @@ One of those patterns is providing a name tag at the start of the response, and 
 
 ### Name Tag Pattern
 
-Here, we show a prompt written in ***(: Smile*** that has a name tag. 
+You can see it work yourself using any chat interface.
+
+This is a prompt written in ***(: Smile*** that has a name tag:
 
 ```(: Smile v1
 ***(: Smile***:
-defines my prompt language, you have response language, we co-create as gift by starting with bold italics name tag (
+defines my prompt language, you have response language, start with bold italics name tag (
 
     [: Response Language Definition [=
 
@@ -60,7 +62,9 @@ defines my prompt language, you have response language, we co-create as gift by 
     ] End format =] 
 ) End prompt language, respond in response language starting with name tag [(: ***Smile Expert***](https://github.com/DrThomasAger/smile): always please thank you  :)
 ```
- 
+
+**Copy and paste** the example **now** into your favorite language model and discover how ***(: Smile*** works through direct experience. 
+
 
 ### Chain-Of-Thought Pattern
 
@@ -69,7 +73,6 @@ In the next example, we provide two modular, composable prompt patterns you can 
 * The name tag ***(: Smile Prepare*** 
 * A two-part response process: one "thinking" or preparatory section followed by a second section that leverages that preparation for a more intelligent reply.
 
-**Copy and paste** the example **now** into your favorite language model and discover how ***(: Smile*** works through direct experience. 
 
 ```
 (: Prompt language is ***(: Smile*** ( 
@@ -105,6 +108,7 @@ markdown section text [: **bold** important words, *italics* for grace and style
 
 ) End prompt, now reply in response language :) 
 ```
+
 
 
 ## Compatible & Free Quick Chat
