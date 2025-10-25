@@ -26,12 +26,16 @@ For **consistent** instruction following in **multi-turn**, **multi-agent** appl
 
 ## Why Not Just Write In Natural Language?
 
+If we just throw all our data and instructions into one line without structure, the model won't be able to distinguish what is instructions and what is data.
+
+You may have experienced this if you ever asked the model to do something with a long document you've pasted in. Rather than follow the instruction, it gets lost in the data. 
 
 In real applications there are natural separations between parts of the prompt. 
 
 For example, the data we are providing the model (like a meeting transcript) and the instructions (summarize this) are two distinct parts of the prompt with different needs. 
 
-When we provide each distinct part in its own structured section it can understand this difference. 
+
+In structured prompt engineering, we provide each discrete part of the prompt in its own structured section so the model can understand this difference. 
 
 
 
