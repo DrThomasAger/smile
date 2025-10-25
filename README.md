@@ -43,7 +43,10 @@ One of those patterns is providing a name tag at the start of the response, and 
 
 ### Name Tag Pattern 
 
-In the next example, we provide the name tag ***(: Smile Prepare***: for the role of responding with two stages: one "thinking" or preparatory stage followed by a response that leverages that preparation for a more intelligent reply.
+In the next example, we provide two modular, composable prompt patterns you can use in your own prompts.
+
+* The name tag ***(: Smile Prepare*** 
+* A two-part response process: one "thinking" or preparatory section followed by a second section that leverages that preparation for a more intelligent reply.
 
 **Copy and paste** the example **now** into your favorite language model and discover how ***(: Smile*** works through direct experience. 
 
