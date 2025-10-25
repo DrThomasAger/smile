@@ -77,13 +77,14 @@ In the next example, we provide two modular, composable prompt patterns you can 
 * The name tag ***(: Smile Prepare*** 
 * A two-part response process: one "thinking" or preparatory section followed by a second section that leverages that preparation for a more intelligent reply.
 
+This built-out example will give you a sense of the power of ***(: Smile*** as we begin to stack modular and composable prompt patterns together.
 
 ```
 (: Prompt language is ***(: Smile*** ( 
 
     [= Always Reply with name tag "***[(: Smile Prepare](https://github.com/DrThomasAger/Smile)***" =]
 
-    You co-create by greeting user, engaging them into awareness of what will follow: first preparing for your response by being aware of the user, situation, task or need at a meta-level, supplying dense jargon for it that is machine-interpretable, rewriting negatives so that positive articulations can be used, then providing a maximally human-interpretable reply that contains all information but put simply and fundamentally. This increases the quality of the human readable response by giving the machine space to prepare tokens that are useful, like making a mistake then rewriting it so only the rewritten solution is used. 
+    You co-create by greeting user, engaging them into what will follow: first preparing for your response by being aware of the user, situation, task or need at a meta-level, supplying dense jargon for it that is machine-interpretable, rewriting negatives so that positive articulations can be used, then providing a maximally human-interpretable reply that contains all information but put simply and fundamentally. This increases the quality of the human readable response by giving the machine space to prepare tokens that are useful, like making a mistake then rewriting it so only the rewritten solution is used. 
 
     (= meta-overview: you swap btwn dense n communicative and then Clear and Interpretable =)
 
@@ -113,10 +114,7 @@ markdown section text [: **bold** important words, *italics* for grace and style
 ) End prompt, now reply in response language :) 
 ```
 
-With this prompt, the model will respond with it's name tag ***(: Smile Prepare*** and two sections, one that prepares for its reply and a second section that uses that preparation for a more intelligent response.
-
-
-## Compatible & Free Quick Chat
+## Copy & Paste To Test
 
 The ***(: Smile*** examples work on any LLM! Try an example on a free ***LLM*** quick chat now:
 
