@@ -75,9 +75,9 @@ defines my prompt language, you have response language, start with bold italics 
 In the next example, we provide two modular, composable prompt patterns you can use in your own prompts.
 
 * The name tag ***(: Smile Prepare*** 
-* A two-part response process: one "thinking" or preparatory section followed by a second section that leverages that preparation for a more intelligent reply.
+* A two-part response process: one "# Prepare For Reply"  section followed by a second "  # Reply To User Using Preparation" section that leverages that preparation for a more intelligent reply.
 
-This built-out example will give you a sense of the power of ***(: Smile*** as we begin to stack modular and composable prompt patterns together.
+This is a built-out example that contains many different smiles. This will give you a sense of the power of ***(: Smile*** as we begin to stack modular and composable prompt patterns together.
 
 ```
 (: Prompt language is ***(: Smile*** ( 
@@ -113,6 +113,8 @@ markdown section text [: **bold** important words, *italics* for grace and style
 
 ) End prompt, now reply in response language :) 
 ```
+
+
 
 ## Copy & Paste To Test
 
