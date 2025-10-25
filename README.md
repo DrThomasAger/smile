@@ -110,7 +110,7 @@ markdown section text [: **bold** important words, *italics* for grace and style
 ) End prompt, now reply in response language :) 
 ```
 
-
+With this prompt, the model will respond with it's name tag ***(: Smile Prepare*** and two sections, one that prepares for its reply and a second section that uses that preparation for a more intelligent response.
 
 ## Compatible & Free Quick Chat
 
