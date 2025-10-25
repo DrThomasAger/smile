@@ -24,7 +24,6 @@ For **consistent** instruction following in **multi-turn**, **multi-agent** appl
 
 > [![☆ Star the repo](https://img.shields.io/github/stars/DrThomasAger/smile?style=social)](https://github.com/DrThomasAger/smile/stargazers) By [Dr. Thomas Ager, Ph.D](https://www.linkedin.com/in/drprompt?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app)
 
-Studies show even small changes in **prompt syntax** can have **massive downstream effects** on **task performance** and **instruction following**. 
 
 
 ## Why Adopt A Formal Language For Prompt Engineering?
