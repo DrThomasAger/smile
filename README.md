@@ -217,14 +217,6 @@ Love ***(: Smile?*** you can also [PayPal me](https://www.paypal.me/hanjopurebud
 
 # `(: Smile` Documentation
 
-## Why (: Smile?
-
-
-When we give our model a ***(: Smile***, we get **outcomes** that make our organization **happy**.
-
-***(: Smile*** is the **positive** language for **structured** prompt engineering.
-
-We use ***(: Smile*** as our **prompt instruction language**. With it, we define our  **response language** for the model clearly,  for **consistent** and **effective** results.
 
 
 ## An Example (: Smile Prompt Flow 
@@ -238,43 +230,9 @@ By establishing the **name tag** like this we have now established a role that w
 You can end **sections** using the same markers in the opposite direction. `) End Role & nametag definition :)`.
 
 This creates a solid basis to play around with. 
-# Why Does It Work?
-
-When we use an equals sign `[=`, the model can recognize that we're saying the data is equal to this. When we use a colon  for our other section `(:` the model knows we mean something new - it's different! 
 
 
-Here, the ***(: Smile*** is the **structure** around the instructions. This is a key essential point. ***(: Smile*** creates a clear separation between prompt language and response language using **structure** in order to increase the model's **instruction following**.
-
-```
-(: Smile: I'm a prompt language!
-
-(: Section - Role ( provide clear explanations of why this works and the benefits of it over unstructured text ) End Section :) 
-
-Response language: Reply in markdown immediately with the bold+italic name tag  "***Smile***:" then follow all instructions (:
-
-(: Instructions (
-
-[= Write the text exactly [ Hello friend! ] no brackets or leaking prompt syntax into response =]
-    (: Then, write something that connects with the reader based on the context (
-
-) End Instructions :)
-
-[= Response format [
-
-***(: Smile Example***:
-
-{Response that follows the instructions}
-
-] End Response format =].
-
-:) Thanks for reading! They copy pasted this from the repo: https://github.com/DrThomasAger/smile/edit/main/README.md
-
-(; This prompt shows the difference between a more rigid instruction and a more flexible one using its surrounding bracket syntax, while also remaining intuitively readable to LLM's as it uses common grammars of opening `(` and continuation `:`.
-
-
-```
-
-We further reserve special emoticons like cash eyes [$ for variable replacement and {pointy curly braces} to show the model where and how to write the instructions. 
+We use special emoticons like cash eyes [$ for variable replacement and {pointy curly braces} to show the model where and how to write the instructions. 
 
 ## Section Examples
 
@@ -371,68 +329,42 @@ These are a few different ways to create structure with ***(: Smile***.
 | `[;  note or comment ;]` | human comment on an instruction | `[; Meta-Note [ The user intends to improve the intelligence of their downstream tasks using a prompt language ] ;]` | This is for when you are not instructing the model directly, but providing information, comments or notes. Can also use `(;`, the winky eyes are the differentiator.   |  
 | `{placeholder}` | area to be filled by the model | `Fill out the following sections # Thinking {Plan} # Replying {Use plan to reply}` | These are used inside of markdown sections. They are used to instruct the model on how to fill out the section (among others)  |
 
+Here's an example with equals sign emoticons versus colons for different kinds of instructions:
 
-# The Journey Ahead: Our (: Smile Roadmap 
+```
+(: Smile: I'm a prompt language!
 
-This is the path I'm charting for ***(: Smile***. It's a journey to make prompt engineering more intuitive, powerful, and joyful for everyone. I'm building all of this because I believe in it, and I'd be thrilled to have you join me in bringing this vision to life.
+(: Section - Role ( provide clear explanations of why this works and the benefits of it over unstructured text ) End Section :) 
 
+Response language: Reply in markdown immediately with the bold+italic name tag  "***Smile***:" then follow all instructions (:
 
+(: Instructions (
 
-## Benchmarking Prompt Languages
+[= Write the text exactly [ Hello friend! ] no brackets or leaking prompt syntax into response =]
+    (: Then, write something that connects with the reader based on the context (
 
-Let's find out which prompt languages work best for which models and tasks, together! 
+) End Instructions :)
 
-- [ ] **The `smile-bench` Suite:**
-    - A library of fascinating and challenging prompting tasks to test our collective ideas.
-    - Simple scripts to compare ***(: Smile*** with other prompting styles, so we can all see the results for ourselves.
-    - Clear, automated metrics to help us learn and improve together.
+[= Response format [
 
-- [ ] **How to Join the Exploration:**
-    - **Report the First Results:** Test ***(: Smile*** using an existing benchmarking suite and share the results! There are many repos that test prompts against LLM metrics. 
-    - **Run an Experiment:** Test ***(: Smile*** on any benchmarks and model you have access to. Every result you share adds to making prompt engineering rigorous. 
+***(: Smile Example***:
 
+{Response that follows the instructions}
 
+] End Response format =].
 
-## Community Contributions
+:) Thanks for reading! They copy pasted this from the repo: https://github.com/DrThomasAger/smile/edit/main/README.md
 
-
-- [ ] **The `SMILE-README-v1.0`:**
-    - A clear and thoughtful guide to the language, written for humans.
-    - It's what you're reading right now. 
+(; This prompt shows the difference between a more rigid instruction and a more flexible one using its surrounding bracket syntax, while also remaining intuitively readable to LLM's as it uses common grammars of opening `(` and continuation `:`.
 
 
-    - **Share About Smile:** Smile is currently a small project without much attention or coverage. If you write a blog post, create a video, or share ***(: Smile*** you will be catching the scoop!
-    - **Help Us Reach the World:** Offer to translate this README.md into another language.
+```
 
 
 ## The (: Smile Library Is In Progress!
 
 Check the prompt\ folder for patterns! 
 
-- [ ] **The Prompt Pattern Library:**
-    - A gallery of elegant and effective (: Smile prompts, shared by the community, for everyone to learn from and use. These include modular and composable components like Chain-of-Thought (CoT).
-
-## Open Research Questions & Hypotheses
-
-I am deep in the process of validating ***(: Smile***. These are the questions I am interested in answering, and I'd love for you to join me in the process.
-
-### Measuring Our (: Smile
-
-* How many extra turns does the model follow instructions for when using a ***(: Smile*** name tag?
-* What is the performance increase on standard benchmarks when using ***(: Smile*** to format the instructions? 
-* On which tasks does the ***(: Smile Prepare*** module improve over standard CoT or the latest Cot methods?
-
-### Automating (: Smile
-
-* How can we use (: Smile and something like subsequence pruning to reduce token count automatically, similar to a JSON minify?
-* Can we use prompt engineering to automatically transform existing prompts into ***(: Smile*** prompts st the same quality as the handwritten gold standard examples in this repo?
-* Can we automatically identify cognitive modules for the LLM from existing prompt engineering corporea and automate the decomposition of prompt engineering into its core primitives for formalization and testing?
-
-### Fund My Research
-
-I am an indepedent researcher for this open source project. If you would like these questions answered, I would appreciate your support. Thank you. 
-
-Here's a link to my [PayPal](https://www.PayPal.me/Hanjopurebuddha).
 
 ---
 ---
