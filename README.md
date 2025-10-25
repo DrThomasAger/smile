@@ -41,7 +41,7 @@ This is essential for:
 
 
 
-# A Historic Change 
+# A History Of Formalization
 
 In programming, we moved from  simple isolated scripts to organizational norms and common languages. 
 
