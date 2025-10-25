@@ -24,6 +24,21 @@ For **consistent** instruction following in **multi-turn**, **multi-agent** appl
 
 > [![☆ Star the repo](https://img.shields.io/github/stars/DrThomasAger/smile?style=social)](https://github.com/DrThomasAger/smile/stargazers) By [Dr. Thomas Ager, Ph.D](https://www.linkedin.com/in/drprompt?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app)
 
+Studies show even small changes in **prompt syntax** can have **massive downstream effects** on **task performance** and **instruction following**. 
+
+
+## Why Adopt A Formal Language For Prompt Engineering?
+
+Using a **consistent** and **reliable** prompt language ensures the model responds in the same way  **every time**.
+
+When we **scale** our **structure** for **complex** and **intelligent** responses (multi-agent, multi-turn), we need a **syntax** that can **reliably communicate** these **complex requirements** in a way an **LLM** can understand.
+
+
+This is essential for:
+
+* **Businesses** that need **reliability** and **consistency**.
+* **Large prompts** that need **structure** and **organization**.
+* **Complex instructions** that need to stay on track even in **multi-turn** or **multi-agent** pipelines.
 
 
 
@@ -387,23 +402,6 @@ Here I've placed text that isn't useful to a general audience, but if you're a s
 
 ## Why Structure Your Prompts?
 
-Studies show even small changes in **prompt syntax** can have **massive downstream effects** on **task performance** and **instruction following**. 
-
-
-Using a **consistent** and **reliable** prompt language ensures the model responds in the same way  **every time**.
-
-When we **scale** our **structure** for **complex** and **intelligent** responses (multi-agent, multi-turn), we need a **syntax** that can **reliably communicate** these **complex requirements** in a way an **LLM** can understand.
-
-
-
-
-
-
-This is essential for:
-
-* **Businesses** that need **reliability** and **consistency**.
-* **Large prompts** that need **structure** and **organization**.
-* **Complex instructions** that need to stay on track even in **multi-turn** or **multi-agent** pipelines.
 
 > References: [1](https://arxiv.org/abs/2411.10541) [2](https://mitsloan.mit.edu/ideas-made-to-matter/study-generative-ai-results-depend-user-prompts-much-models) [3](https://doi.org/10.1109/EDM.2023.9912430)  [4](https://doi.org/10.1016/j.ijhcs.2024.102805) [5](https://aclanthology.org/2025.coling-main.100.pdf) [6](https://doi.org/10.1145/3686038.3686060)
 
