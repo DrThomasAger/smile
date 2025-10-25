@@ -35,7 +35,7 @@ A common *prompt language* results in a more **consistent** and **maintainable**
 
 With ***(: Smile*** now we have the same kind of **predictable** and **reliable** language for our **essential** LLM prompts. 
 
-**For Businesses:** This enables **knowledge transfer** among employees, **collaboration**, and **consistently effective** results.
+**For Businesses:** This enables **knowledge transfer** among employees, **collaboration**, and **consistent** results.
 
 ## Language Showcase
 
