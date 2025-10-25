@@ -24,6 +24,16 @@ For **consistent** instruction following in **multi-turn**, **multi-agent** appl
 
 > [![☆ Star the repo](https://img.shields.io/github/stars/DrThomasAger/smile?style=social)](https://github.com/DrThomasAger/smile/stargazers) By [Dr. Thomas Ager, Ph.D](https://www.linkedin.com/in/drprompt?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app)
 
+# A History Of Formalization
+
+In programming, we moved from  simple isolated scripts to organizational norms and common languages. 
+
+
+With ***(: Smile*** now we have the same kind of **predictable** and **reliable** language for our **essential** LLM prompts. 
+
+**For Businesses:** This enables **knowledge transfer** among employees, **collaboration**, and **consistent** results.
+
+
 ## Why Not Just Write In Natural Language?
 
 If we just throw all our data and instructions into one line without structure, the model won't be able to distinguish what is instructions and what is data.
@@ -54,14 +64,6 @@ This is essential for:
 
 
 
-# A History Of Formalization
-
-In programming, we moved from  simple isolated scripts to organizational norms and common languages. 
-
-
-With ***(: Smile*** now we have the same kind of **predictable** and **reliable** language for our **essential** LLM prompts. 
-
-**For Businesses:** This enables **knowledge transfer** among employees, **collaboration**, and **consistent** results.
 
 ## Language Showcase
 
