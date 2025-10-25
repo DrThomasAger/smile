@@ -65,9 +65,9 @@ defines my prompt language, you have response language, start with bold italics 
 
 **Copy and paste** the example **now** into your favorite language model and discover how ***(: Smile*** works through direct experience. 
 
-You will see that the model will provide the name tag and follow the instructions consistently over multiple turns.
+But what if we aren't just interested in consistent instruction following? 
 
-### Chain-Of-Thought Pattern
+### Making The Model Smarter: Chain-Of-Thought Pattern
 
 In the next example, we provide two modular, composable prompt patterns you can use in your own prompts.
 
