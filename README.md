@@ -33,7 +33,7 @@ In programming, we moved from  simple isolated scripts to organizational norms a
 
 With ***(: Smile*** now we have the same kind of **predictable** and **reliable** language for our **essential** LLM prompts. 
 
-We create this with a formalized syntax and a defined separation between front-end (response format) and back-end (prompt language).
+The core idea: A formalized syntax that defines a clear separation between front-end (response format) and back-end (prompt language). 
 
 **For Businesses:** This enables **knowledge transfer** among employees, **collaboration**, and **consistent** results.
 
