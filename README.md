@@ -14,7 +14,7 @@ Meet ***(: SMILE!*** v1:
 * **L**anguage with
 * **E**moticons.
 
-***(: Smile*** is the markup (like ***Markdown*** or ***XML***) where smile **emoticons** are used like brackets to write **structured instructions** for Large Language Models (LLMs).
+***(: Smile*** is the markup for prompt teams where  **emoticons** are used to write **structured instructions** for Large Language Models (LLMs).
 
 
 For **consistent** instruction following in **multi-turn**, **multi-agent** applications. 
