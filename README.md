@@ -35,7 +35,7 @@ With ***(: Smile*** now we have the same kind of **predictable** and **reliable*
 
 The core idea: A formalized syntax that defines a clear separation between front-end (response format) and back-end (prompt language). 
 
-**For Businesses:** This enables **knowledge transfer** among employees, **collaboration**, and **consistent** results.
+This enables **knowledge transfer** among employees, **collaboration**, and **consistent** results.
 
 
 ## Why Not Just Write In Natural Language?
