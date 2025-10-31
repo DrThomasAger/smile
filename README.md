@@ -31,9 +31,7 @@ For **consistent** instruction following in **multi-turn**, **multi-agent** appl
 In programming, we moved from  simple isolated scripts to organizational norms and common languages. 
 
 
-With ***(: Smile*** now we have the same kind of **predictable** and **reliable** language for our **essential** LLM prompts. 
-
-The core idea: A formalized syntax that defines a clear separation between front-end (response format) and back-end (prompt language). 
+With ***(: Smile*** now we have the same kind of **formal** language for our **essential** LLM prompts. 
 
 This enables **knowledge transfer** among employees, **collaboration**, and **consistent** results.
 
