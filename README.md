@@ -38,18 +38,11 @@ This enables **knowledge transfer** among employees, **collaboration**, and **co
 
 ## Why Not Just Write In Natural Language?
 
+In long context, multi-turn and multi-agent scenarios we need to clearly separate the different parts of the prompt so that the LLM can read it.
+
+We need to distinguish our **data** from our **instructions** from our **response format**, and clearly define each one.
+
 If we just throw all our data and instructions into one line without structure, the model won't be able to distinguish what is instructions and what is data.
-
-You may have experienced this if you ever asked the model to do something with a long document you've pasted in. Rather than follow the instruction, it gets lost in the data. 
-
-In real applications there are natural separations between parts of the prompt. 
-
-For example, the data we are providing the model (like a meeting transcript) and the instructions (summarize this) are two distinct parts of the prompt with different needs. 
-
-
-In structured prompt engineering, we provide each discrete part of the prompt in its own structured section so the model can understand this difference. 
-
-
 
 ## Why Adopt A Formal Language For Prompt Engineering?
 
@@ -380,7 +373,28 @@ Response language: Reply in markdown immediately with the bold+italic name tag  
 ```
 
 
-## The (: Smile Library Is In Progress!
+### The Problem Without Prompt Engineering
+
+You may have experienced this if you ever asked the model to do something with a long document you've pasted in. 
+
+It doesn't even see the instructions, or performs them poorly, because there is so much data for it to read and it can't tell the difference. 
+
+This is the most basic example. At a larger scale, the model needs to distinguish many different kinds of text inside of its prompt, have a clear separation of concerns between them, before it is able to execute on each of these  independent needs. For example, data needs to be understood as it is and repeated word for word at times, meanwhile prompt instructions can often be interpreted flexibly and according to the situation. Response format needs to be laid out section by section with instructions specific to each section. Separating out this information lets the model follow the instructions more easily.
+
+In structured prompt engineering, we provide each discrete part of the prompt in its own structured section so the model can understand this difference. 
+
+For example, the data we are providing the model (like a meeting transcript) and the instructions (summarize this) are two distinct parts of the prompt with different needs. 
+
+
+# Smile Philosophy
+
+* We unlock latent capabilities in the model by scaffolding cognitive structures apparent through explicit text markers.
+* More tokens, more instructions, means more capabilities and more instruction following.
+* We scale out to maximize our awareness of capabilities and instruction following first, then cut tokens we don't need later.
+* We make a decision at the intersection between optimal token efficiency and capability unlocking + instruction following.
+* We evaluate on specific metrics and qualities in co-creation with AI assistants.
+
+## The (: Smile Modular Component Library Is In Progress!
 
 Check the prompt\ folder for patterns! 
 
