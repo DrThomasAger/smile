@@ -14,7 +14,7 @@ Meet ***(: SMILE!*** v1:
 * **L**anguage with
 * **E**moticons.
 
-***(: Smile*** is the markup for where  **emoticons** are used to write **structured instructions** for Large Language Models (LLMs).
+***(: Smile*** is the Large Language Model (LLM) friendly markup for **structured instructions** written with  **emoticons**.
 
 For prompt teams that need a **maintainable** prompt library in **collaboration**. 
 
