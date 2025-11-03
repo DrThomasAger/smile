@@ -3,18 +3,18 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Smile Composer — View-First, Precise Delete, Insert-In-Place</title>
+  <title>Smile Composer — Text-First Actions, Direct Edit, Live Move</title>
   <script crossorigin src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
   <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
   <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
   <style>
-    :root { --tab: 32px; --panel-radius: 10px; --soft-bg: #fafafa; --hover-bg: #f6f6f6; --select-bg: #f2f2f2; --rule: rgba(0,0,0,0.08); }
+    :root { --tab: 32px; --soft-bg: #fafafa; --hover-bg: #f6f6f6; --select-bg: #f2f2f2; --rule: rgba(0,0,0,0.08); }
     * { box-sizing: border-box; }
     body { font-family: -apple-system, system-ui, Segoe UI, Helvetica, Arial, sans-serif; background: #fff; color: #111; padding: 24px; margin: 0; }
     .container { display: block; width: 100%; }
 
-    .panel { background: #fff; border-radius: var(--panel-radius); padding: 16px; border: none; box-shadow: 0 1px 0 0 var(--rule); margin-top: 20px; }
-    .panel-title { font-weight: 600; margin-bottom: 10px; display: flex; align-items: center; justify-content: space-between; gap: 8px; flex-wrap: wrap; cursor: default; }
+    .panel { background: #fff; padding: 16px; box-shadow: 0 1px 0 0 var(--rule); margin-top: 20px; border-radius: 10px; }
+    .panel-title { font-weight: 600; margin-bottom: 10px; display: flex; align-items: center; justify-content: space-between; gap: 8px; flex-wrap: wrap; }
     .panel-title .clickable { cursor: pointer; }
     .panel-title-right { display: inline-flex; align-items: center; gap: 8px; }
 
@@ -41,19 +41,14 @@
     .line.held { opacity: 0.35; }
     .line.drop-target { outline: 3px solid #111; outline-offset: -3px; border-radius: 12px; }
     .left-span { flex: 1 1 auto; min-width: 0; }
-    .right-actions { flex: 0 0 auto; display: inline-flex; gap: 6px; }
-    .action-cluster { opacity: 0; pointer-events: none; transition: opacity 0.12s ease; }
-    .line:hover .action-cluster, .line.sel .action-cluster { opacity: 1; pointer-events: auto; }
+
+    .actions-text { font-size: 12px; color: #222; }
+    .actions-text .sep { color: #888; }
+    .actions-text .focus { font-weight: 700; }
 
     .indent-block { margin-top: 8px; }
-    .indent-grid { display: grid; gap: 10px; }
-
     .underline-input, .underline-textarea { width: 100%; background: transparent; border: none; border-bottom: 1px solid #ccc; border-radius: 0; padding: 6px 2px 6px 0; font: inherit; outline: none; resize: vertical; min-height: 34px; }
     .underline-textarea { min-height: 80px; }
-
-    .btn { font: inherit; border: none; background: #fff; padding: 6px 12px; border-radius: 999px; cursor: pointer; font-size: 12px; box-shadow: 0 1px 0 0 var(--rule); white-space: nowrap; }
-    .btn.sel { font-weight: 700; background: var(--select-bg); }
-    .btn + .btn { margin-left: 6px; }
 
     .tree-view { max-height: 500px; overflow: auto; font-size: 13px; line-height: 1.8; }
     .tree-item { padding: 6px 8px; cursor: pointer; user-select: none; border-radius: 8px; }
@@ -71,12 +66,8 @@
 
     .alltext { width: 100%; min-height: 220px; padding: 10px; border: none; border-bottom: 1px solid #ccc; border-radius: 0; resize: vertical; background: #fff; }
 
-    .c-red { color: #c62828; font-weight: 600; }
-    .c-green { color: #2e7d32; }
-    .c-blue { color: #1565c0; }
-
-    .preview-hover { background: var(--select-bg); border-radius: 8px; }
-    .go-to { font-size: 12px; color: #333; margin-left: 12px; }
+    .prompt-preview { white-space: pre-wrap; font-size: 13px; color: #222; }
+    .instructional { font-size: 13px; color: #333; }
   </style>
 </head>
 <body>
@@ -138,16 +129,6 @@
 
     const displayNameFor = (store, dbItem, id) =>
       store.get(`nn-${id}`, store.get(`n-${dbItem.name}`, dbItem.name));
-
-    const ownerKeyOfRow = (row) => {
-      if (!row) return null;
-      if (row.type === 'module-item') return `mod:${row.moduleId}`;
-      if (row.type === 'instr') return `instr:${row.dbId}`;
-      if (row.type === 'settings-panel') {
-        return (row.ownerType === 'module') ? `mod:${row.ownerId}` : `instr:${row.ownerId}`;
-      }
-      return null;
-    };
 
     class RowBuilder {
       constructor(store, path) { this.store = store; this.path = path; this.rows = []; }
@@ -267,105 +248,97 @@
       );
     }
 
-    const LABELS = {
-      view: () => <strong>View Inside [Enter] [v]</strong>,
-      move: (active) => active ? <strong>↑ | ↓</strong> : 'Move',
-      settings: () => 'Settings',
-      duplicate: () => 'Duplicate',
-      delete: () => 'Delete'
-    };
-
-    function ActionCluster({ row, actions, onActionExecute, onHoverAction, onLeaveCluster, focused, moveActive }) {
+    function InlineActions({ actions, focus, onFocus, onExecute }) {
       return (
-        <span
-          className="right-actions action-cluster"
-          onClick={(e) => e.stopPropagation()}
-          onMouseLeave={() => onLeaveCluster && onLeaveCluster()}
-        >
-          {actions.map((a) => (
-            <button
-              key={a}
-              className={`btn ${focused === a ? 'sel' : ''}`}
-              onMouseEnter={() => onHoverAction && onHoverAction(a)}
-              onClick={() => onActionExecute(row, a)}
-              title={a === 'view' ? 'View Inside' : a.charAt(0).toUpperCase() + a.slice(1)}
-            >
-              {a === 'move' ? LABELS.move(moveActive) : LABELS[a]()}
-            </button>
+        <span className="actions-text" onClick={(e)=>e.stopPropagation()}>
+          {actions.map((a, i) => (
+            <React.Fragment key={a}>
+              <span className={focus === a ? 'focus' : ''}
+                    onMouseEnter={() => onFocus && onFocus(a)}
+                    onClick={() => onExecute && onExecute(a)}>
+                {a[0].toUpperCase() + a.slice(1)}
+              </span>
+              {i < actions.length - 1 ? <span className="sep">, </span> : null}
+            </React.Fragment>
           ))}
         </span>
       );
     }
 
-    function PreviewModuleContents({ store, moduleId, depth, interactive, onGoToInstruction }) {
-      const [hoverIdx, setHoverIdx] = React.useState(0);
+    function ModulePreview({ store, moduleId, depth }) {
       const mod = store.getDbItem(moduleId);
       if (!mod) return null;
       const items = store.get(`items-${mod.name}`, mod.items || []);
-      const pad = ((depth || 0) + 1) * 32;
-      useEffect(() => { if (interactive) setHoverIdx(0); }, [interactive]);
-
+      const pad = ((depth || 0) + 1) * TAB;
       return (
         <div className="indent-block" style={{ paddingLeft: pad }}>
-          {items.length === 0 ? <div className="subtle">Empty module</div> : items.map((iid, i) => {
-            const ins = store.getDbItem(iid); if (!ins) return null;
-            const nm = displayNameFor(store, ins, iid);
-            const txt = store.get(`t-${ins.name}`, ins.text || '');
-            const active = interactive && i === hoverIdx;
-            return (
-              <div
-                key={iid}
-                className={`line ${active ? 'preview-hover' : ''}`}
-                style={{ paddingLeft: 0 }}
-                onMouseEnter={() => interactive && setHoverIdx(i)}
-                onClick={() => interactive && onGoToInstruction && onGoToInstruction(i)}
-              >
-                <span className="left-span" title={txt}>{nm}</span>
-                {interactive && active && <span className="go-to">Go To Instruction</span>}
-              </div>
-            );
-          })}
+          {items.length === 0 ? <div className="subtle">Empty module</div> :
+            items.map((iid) => {
+              const ins = store.getDbItem(iid); if (!ins) return null;
+              return <div key={iid} className="prompt-preview">{displayNameFor(store, ins, iid)}</div>;
+            })}
         </div>
       );
     }
 
-    function PreviewInstructionColored({ store, row }) {
+    function InstructionPreview({ store, row }) {
       const dbItem = store.getDbItem(row.dbId);
       if (!dbItem) return null;
-      const name = store.get(`nn-${row.dbId}`, displayNameFor(store, dbItem, row.dbId));
-      const meta = store.get(`meta-${row.dbId}`, '');
       const body = store.get(row.promptKey, dbItem.text || '');
-      const pad = ((row.depth || 0) + 1) * 32;
+      const pad = ((row.depth || 0) + 1) * TAB;
       return (
         <div className="indent-block" style={{ paddingLeft: pad }}>
-          <div className="line" style={{ paddingLeft: 0 }}>
-            <span className="left-span"><span className="c-red">{name}</span></span>
-          </div>
-          {meta ? (
-            <div className="line" style={{ paddingLeft: 0 }}>
-              <span className="left-span"><span className="c-green">{meta}</span></span>
-            </div>
-          ) : null}
-          <div className="line" style={{ paddingLeft: 0 }}>
-            <span className="left-span"><span className="c-blue">{body}</span></span>
-          </div>
+          <div className="prompt-preview">{body}</div>
+        </div>
+      );
+    }
+
+    function InstructionEdit({ store, row, onTextChange, getNameOverride, setNameOverride, getMeta, setMeta, getStruct, setStruct }) {
+      const dbItem = store.getDbItem(row.dbId);
+      if (!dbItem) return null;
+      const pad = ((row.depth || 0) + 1) * TAB;
+      const body = store.get(row.promptKey, dbItem.text || '');
+      return (
+        <div className="indent-block" style={{ paddingLeft: pad }}>
+          <input
+            autoFocus
+            type="text"
+            className="underline-input"
+            value={getNameOverride(row.nameOverrideKey, '')}
+            onChange={(e) => setNameOverride(row.nameOverrideKey, e.target.value)}
+            placeholder="Name…"
+          />
+          <textarea
+            className="underline-textarea"
+            value={getMeta(row.metaKey) || ''}
+            onChange={(e) => setMeta(row.metaKey, e.target.value)}
+            placeholder="Meta information…"
+          />
+          <textarea
+            className="underline-textarea"
+            value={store.get(row.promptKey, '')}
+            onChange={(e) => onTextChange(row.promptKey, e.target.value)}
+            placeholder="Instruction…"
+          />
+          <StructureDots5
+            id={row.dbId}
+            value={getStruct(row.structKey) || 'heavy'}
+            onChange={(v) => setStruct(row.structKey, v)}
+          />
+          <div className="prompt-preview" style={{ marginTop: 8 }}>{body}</div>
         </div>
       );
     }
 
     function LineRenderer({
       row, isSelected, inReorderMode, isDragging, isDropTarget,
-      store, onLineClick, onTextChange,
+      store, onLineClick,
       onDragStart, onDragOver, onDrop, onDragEnd,
       onTouchStartRow, onTouchMoveRow, onTouchEndRow,
-      onActionExecute,
+      actionFocus, setActionFocus, executeRowAction, autoOpenSettings,
       getStruct, setStruct, setNameOverride, getNameOverride, getMeta, setMeta,
-      setRowRef,
-      isSettingsOpenFor,
-      actionFocus, setActionFocus,
-      startMove, commitIfMoving,
-      onHoverSettingsOpen,
-      viewInteractiveForRow, goToInstructionFromPreview
+      onTextChange,
+      editRowKey
     }) {
       const classes = ['line'];
       if (isSelected && !inReorderMode) classes.push('sel');
@@ -373,33 +346,32 @@
       if (isDragging) classes.push('held');
       if (isDropTarget) classes.push('drop-target');
 
-      const style = { paddingLeft: (row.depth || 0) * 32 };
-      const headingRef = useRef(null);
-
+      const style = { paddingLeft: (row.depth || 0) * TAB };
       const canDragAnytime = (row.type === 'instr' || row.type === 'module-item');
+
       const actionsForRow = useMemo(() => {
-        if (row.type === 'module-item') return ['view','move','settings','duplicate','delete'];
-        if (row.type === 'instr') return ['move','settings','duplicate','delete'];
+        if (row.type === 'module-item' || row.type === 'instr') return ['move','settings','duplicate','delete'];
         return [];
       }, [row.type]);
 
-      const settingsPanelForRow = (row.type === 'module-item' || row.type === 'instr') && isSettingsOpenFor(row);
       const focusedAction = (actionFocus && actionFocus.rowKey === row.key) ? actionFocus.action : null;
-      const moveActive = focusedAction === 'move' && actionFocus?.rowKey === row.key;
+      const inActionMode = !!focusedAction;
 
-      useEffect(() => {
-        if (settingsPanelForRow && isSelected && headingRef.current) {
-          headingRef.current.focus();
-          headingRef.current.select();
-        }
-      }, [settingsPanelForRow, isSelected]);
+      const actionInstruction = () => {
+        if (!inActionMode) return null;
+        const kind = row.type === 'module-item' ? 'module' : 'instruction';
+        if (focusedAction === 'move') return `Move the arrow keys up and down to place the ${kind}.`;
+        if (focusedAction === 'duplicate') return `Press Enter to duplicate this ${kind} at this position.`;
+        if (focusedAction === 'delete') return `Press Enter to delete only this ${kind}.`;
+        if (focusedAction === 'settings') return null;
+        return null;
+      };
 
-      const interactiveView = viewInteractiveForRow(row);
+      const showSettings = focusedAction === 'settings';
 
       return (
         <div key={row.key}>
           <div
-            ref={(el) => setRowRef && setRowRef(row.key, el)}
             className={classes.join(' ')}
             style={style}
             data-key={row.key}
@@ -416,66 +388,94 @@
             <span className="left-span">
               {row.isOutput ? <strong>OUTPUT:&nbsp;</strong> : null}{row.label}
             </span>
-            {(row.type === 'module-item' || row.type === 'instr') && (
-              <ActionCluster
-                row={row}
+
+            {(row.type === 'module-item' || row.type === 'instr') && isSelected && (
+              <InlineActions
                 actions={actionsForRow}
-                onActionExecute={onActionExecute}
-                onHoverAction={(a) => {
-                  if (a === 'move') { setActionFocus({ rowKey: row.key, action: 'move' }); startMove(row); }
-                  if (a === 'settings') { onHoverSettingsOpen(row); }
-                  if (a === 'view') { setActionFocus({ rowKey: row.key, action: 'view' }); }
+                focus={focusedAction || 'move'}
+                onFocus={(a) => {
+                  setActionFocus({ rowKey: row.key, action: a });
+                  if (a === 'settings') autoOpenSettings(row);
                 }}
-                onLeaveCluster={() => { if (actionFocus?.action === 'move') commitIfMoving(); }}
-                focused={focusedAction}
-                moveActive={moveActive}
+                onExecute={(a) => executeRowAction(row, a)}
               />
             )}
           </div>
 
-          {/* Default PREVIEW (indented), or interactive View preview when action is 'view' */}
-          {isSelected && !settingsPanelForRow && row.type === 'module-item' && (
-            <PreviewModuleContents
-              store={store}
-              moduleId={row.moduleId}
-              depth={row.depth}
-              interactive={interactiveView}
-              onGoToInstruction={(pos) => goToInstructionFromPreview(row.moduleId, pos)}
-            />
-          )}
-          {isSelected && !settingsPanelForRow && row.type === 'instr' && (
-            <PreviewInstructionColored store={store} row={row} />
-          )}
+          {isSelected && (
+            <>
+              {showSettings && (
+                <div className="indent-block" style={{ paddingLeft: ((row.depth || 0) + 1) * TAB }}>
+                  {row.type === 'module-item' ? (
+                    <>
+                      <input
+                        autoFocus
+                        type="text"
+                        className="underline-input"
+                        value={getNameOverride(row.nameOverrideKey, '')}
+                        onChange={(e) => setNameOverride(row.nameOverrideKey, e.target.value)}
+                        placeholder="Name…"
+                      />
+                      <textarea
+                        className="underline-textarea"
+                        value={getMeta(row.metaKey) || ''}
+                        onChange={(e) => setMeta(row.metaKey, e.target.value)}
+                        placeholder="Meta information…"
+                      />
+                      <textarea
+                        className="underline-textarea"
+                        value={store.get(`prompt-mod-${row.moduleId}`, '')}
+                        onChange={(e) => onTextChange(`prompt-mod-${row.moduleId}`, e.target.value)}
+                        placeholder="Module instruction…"
+                      />
+                      <StructureDots5
+                        id={row.moduleId}
+                        value={getStruct(row.structKey) || 'heavy'}
+                        onChange={(v) => setStruct(row.structKey, v)}
+                      />
+                    </>
+                  ) : (
+                    <InstructionEdit
+                      store={store}
+                      row={row}
+                      onTextChange={onTextChange}
+                      getNameOverride={getNameOverride}
+                      setNameOverride={setNameOverride}
+                      getMeta={getMeta}
+                      setMeta={setMeta}
+                      getStruct={getStruct}
+                      setStruct={setStruct}
+                    />
+                  )}
+                </div>
+              )}
 
-          {/* SETTINGS (indented 1x) */}
-          {settingsPanelForRow && (
-            <div className="indent-block indent-grid" style={{ paddingLeft: ((row.depth || 0) + 1) * 32 }}>
-              <input
-                ref={headingRef}
-                type="text"
-                className="underline-input"
-                value={getNameOverride(row.nameOverrideKey, '')}
-                onChange={(e) => setNameOverride(row.nameOverrideKey, e.target.value)}
-                placeholder="Name…"
-              />
-              <textarea
-                className="underline-textarea"
-                value={getMeta(row.metaKey) || ''}
-                onChange={(e) => setMeta(row.metaKey, e.target.value)}
-                placeholder="Meta information…"
-              />
-              <textarea
-                className="underline-textarea"
-                value={store.get(row.promptKey, '')}
-                onChange={(e) => onTextChange(row.promptKey, e.target.value)}
-                placeholder={row.type === 'module-item' ? 'Module instruction…' : 'Instruction…'}
-              />
-              <StructureDots5
-                id={row.type === 'module-item' ? row.moduleId : row.dbId}
-                value={getStruct(row.structKey) || 'heavy'}
-                onChange={(v) => setStruct(row.structKey, v)}
-              />
-            </div>
+              {!showSettings && actionInstruction() && (
+                <div className="indent-block" style={{ paddingLeft: ((row.depth || 0) + 1) * TAB }}>
+                  <div className="instructional">{actionInstruction()}</div>
+                </div>
+              )}
+
+              {!inActionMode && !showSettings && row.type === 'module-item' && (
+                <ModulePreview store={store} moduleId={row.moduleId} depth={row.depth} />
+              )}
+              {!inActionMode && !showSettings && row.type === 'instr' && (!editRowKey || editRowKey !== row.key) && (
+                <InstructionPreview store={store} row={row} />
+              )}
+              {!inActionMode && row.type === 'instr' && editRowKey === row.key && (
+                <InstructionEdit
+                  store={store}
+                  row={row}
+                  onTextChange={onTextChange}
+                  getNameOverride={getNameOverride}
+                  setNameOverride={setNameOverride}
+                  getMeta={getMeta}
+                  setMeta={setMeta}
+                  getStruct={getStruct}
+                  setStruct={setStruct}
+                />
+              )}
+            </>
           )}
         </div>
       );
@@ -502,9 +502,10 @@
       const [touchDrag, setTouchDrag] = useState(null);
 
       const [settingsOpen, setSettingsOpen] = useState({});
-      const [actionFocus, setActionFocus] = useState(null);  // { rowKey, action }
+      const [actionFocus, setActionFocus] = useState(null);
+      const [editRowKey, setEditRowKey] = useState(null);
 
-      // Omnisearch (single source)
+      // Omnisearch
       const [omniActive, setOmniActive] = useState(false);
       const [omniMode, setOmniMode] = useState('search');
       const [omniQuery, setOmniQuery] = useState('');
@@ -512,6 +513,7 @@
       const [omniFilterType, setOmniFilterType] = useState(null);
       const [omniIntent, setOmniIntent] = useState(null);
       const [omniInsertPos, setOmniInsertPos] = useState(null);
+      const omniInputRef = useRef(null); // single declaration
 
       const rows = useMemo(() => {
         const builder = new RowBuilder(store, path);
@@ -550,7 +552,7 @@
         if (confirm('Reset everything to defaults? This will clear all your customizations.')) {
           store.reset();
           setPath(['expert-maker']); setIdx(2); setNavHistory({}); setReorderState(null);
-          setSettingsOpen({}); setActionFocus(null);
+          setSettingsOpen({}); setActionFocus(null); setEditRowKey(null);
           setOmniActive(false); setOmniQuery(''); setOmniIndex(0); setOmniMode('search'); setOmniFilterType(null); setOmniIntent(null); setOmniInsertPos(null);
           window.location.hash = ''; setStoreVersion(store.getVersion());
         }
@@ -558,7 +560,7 @@
 
       const navigateToPath = useCallback((newPath, autoSelect = true) => {
         setPath(newPath); setReorderState(null);
-        setSettingsOpen({}); setActionFocus(null);
+        setSettingsOpen({}); setActionFocus(null); setEditRowKey(null);
         setIdx(autoSelect ? (newPath.length === 1 ? 2 : 3) : 0);
       }, []);
 
@@ -583,20 +585,6 @@
         }, 0);
       }, []);
 
-      const addInstructionToModule = useCallback((instructionResult) => {
-        if (!module) return;
-        const arr = store.get(`items-${module.name}`, module.items || []);
-        if (instructionResult.isNew) {
-          const newId = 'custom-' + Date.now();
-          store.addCustomDbItem(newId, { name: instructionResult.name, type: 'instr', text: '' });
-          updateData(`items-${module.name}`, [...arr, newId]); setStoreVersion(store.getVersion());
-          openAndFocusSettings('instr', newId);
-        } else {
-          const id = instructionResult.id || instructionResult;
-          updateData(`items-${module.name}`, [...arr, id]);
-        }
-      }, [module, store, updateData, openAndFocusSettings]);
-
       const createNewAgent = useCallback((name) => {
         const id = 'agent-' + Date.now();
         store.addCustomDbItem(id, { name, type: 'agent', input: '', output: '', modules: [] });
@@ -619,25 +607,20 @@
           updateData(`items-${module.name}`, [...arr, id]);
           openAndFocusSettings('instr', id);
         } else {
-          // create module if none, then attach
           const a = store.getDbItem(path[0]); if (!a) return;
           const mods = store.get(`mods-${a.name}`, a.modules || []);
-          if (mods.length === 0) {
-            const newMid = 'mod-' + Date.now();
-            store.addCustomDbItem(newMid, { name: 'Custom Module', type: 'mod', items: [] });
-            updateData(`mods-${a.name}`, [newMid]);
-            updateData(`items-Custom Module`, []);
-            navigateToPath([path[0], newMid], true);
+          if (mods.length) {
+            navigateToPath([path[0], mods[0]], true);
             setTimeout(() => {
-              const arr2 = store.get(`items-Custom Module`, []);
-              updateData(`items-Custom Module`, [...arr2, id]);
+              const m = store.getDbItem(mods[0]);
+              const arr = store.get(`items-${m.name}`, m.items || []);
+              updateData(`items-${m.name}`, [...arr, id]);
               openAndFocusSettings('instr', id);
             }, 0);
           }
         }
       }, [store, atModule, module, updateData, path, openAndFocusSettings]);
 
-      // Delete precisely-at-position
       const removeInstructionAtPos = useCallback((pos) => {
         if (!atModule || !module) return;
         const arr = store.get(`items-${module.name}`, module.items || []);
@@ -677,17 +660,24 @@
         if (el) rowsDomRef.current.set(key, el); else rowsDomRef.current.delete(key);
       }, []);
 
-      const isSettingsOpenFor = useCallback((row) => {
-        if (row.type === 'module-item') return !!settingsOpen[`spanel:mod:${row.moduleId}`];
-        if (row.type === 'instr') return !!settingsOpen[`spanel:instr:${row.dbId}`];
-        return false;
-      }, [settingsOpen]);
+      const autoOpenSettings = useCallback((row) => {
+        if (row.type === 'module-item') {
+          setSettingsOpen(s => ({ ...s, [`spanel:mod:${row.moduleId}`]: true }));
+        } else if (row.type === 'instr') {
+          setSettingsOpen(s => ({ ...s, [`spanel:instr:${row.dbId}`]: true }));
+        }
+      }, []);
 
-      const viewInteractiveForRow = useCallback((row) => {
-        return row.type === 'module-item' && actionFocus?.rowKey === row.key && actionFocus.action === 'view';
-      }, [actionFocus]);
+      const firstActionForRow = (row) => 'move';
+      const nextActionForRow = (row, current, dir) => {
+        const list = (row.type === 'module-item' || row.type === 'instr') ? ['move','settings','duplicate','delete'] : [];
+        const i = Math.max(0, list.indexOf(current));
+        let ni = i + dir;
+        if (ni < 0) ni = 0;
+        if (ni >= list.length) ni = list.length - 1;
+        return list[ni];
+      };
 
-      // Move mode
       const moveItemInReorderMode = useCallback((direction) => {
         if (!reorderState) return;
         const delta = direction === 'up' ? -1 : 1;
@@ -795,69 +785,25 @@
         setTouchDrag(null); setDragItem(null); setDragOver(null);
       }, [touchDrag, dragOver, atModule, module, store, updateData, path]);
 
-      // Execute actions
-      const goToModuleFirstInstruction = useCallback((moduleId) => {
-        const newPath = [...path, moduleId];
-        setPath(newPath);
-        setIdx(3);
-        setTimeout(() => {
-          const firstIdx = rowsRef.current.findIndex(r => r.type === 'instr' && r.pos === 0);
-          if (firstIdx >= 0) setIdx(firstIdx);
-        }, 0);
-      }, [path]);
-
-      const goToInstructionFromPreview = useCallback((moduleId, pos) => {
-        const newPath = [...path, moduleId];
-        setPath(newPath);
-        setIdx(3);
-        setTimeout(() => {
-          const targetIdx = rowsRef.current.findIndex(r => r.type === 'instr' && r.pos === pos);
-          if (targetIdx >= 0) setIdx(targetIdx);
-        }, 0);
-      }, [path]);
-
       const executeRowAction = useCallback((row, action) => {
         if (!row) return;
         if (row.type === 'module-item') {
-          if (action === 'view') { goToModuleFirstInstruction(row.moduleId); return; }
           if (action === 'move') { startMove(row); setActionFocus({ rowKey: row.key, action: 'move' }); return; }
-          if (action === 'settings') {
-            setSettingsOpen(s => ({ ...s, [`spanel:mod:${row.moduleId}`]: !s[`spanel:mod:${row.moduleId}`] }));
-            return;
-          }
+          if (action === 'settings') { autoOpenSettings(row); setActionFocus({ rowKey: row.key, action: 'settings' }); return; }
           if (action === 'duplicate') { duplicateItem(row.moduleId, true); return; }
           if (action === 'delete') { removeModuleAtPos(row.pos); return; }
         }
         if (row.type === 'instr') {
           if (action === 'move') { startMove(row); setActionFocus({ rowKey: row.key, action: 'move' }); return; }
-          if (action === 'settings') {
-            setSettingsOpen(s => ({ ...s, [`spanel:instr:${row.dbId}`]: !s[`spanel:instr:${row.dbId}`] }));
-            return;
-          }
+          if (action === 'settings') { autoOpenSettings(row); setActionFocus({ rowKey: row.key, action: 'settings' }); return; }
           if (action === 'duplicate') { duplicateItem(row.dbId, false); return; }
           if (action === 'delete') { removeInstructionAtPos(row.pos); return; }
         }
-      }, [duplicateItem, removeInstructionAtPos, removeModuleAtPos, startMove, goToModuleFirstInstruction]);
-
-      const onHoverSettingsOpen = useCallback((row) => {
-        if (row.type === 'module-item') {
-          setSettingsOpen(s => ({ ...s, [`spanel:mod:${row.moduleId}`]: true }));
-        } else if (row.type === 'instr') {
-          setSettingsOpen(s => ({ ...s, [`spanel:instr:${row.dbId}`]: true }));
-        }
-      }, []);
-
-      function nextActionForRow(row, current, dir) {
-        const list = (row.type === 'module-item') ? ['view','move','settings','duplicate','delete'] : ['move','settings','duplicate','delete'];
-        const i = Math.max(0, list.indexOf(current));
-        let ni = i + (dir > 0 ? 1 : -1);
-        if (ni < 0) ni = 0;
-        if (ni >= list.length) ni = list.length - 1;
-        return list[ni];
-      }
+      }, [duplicateItem, removeInstructionAtPos, removeModuleAtPos, startMove, autoOpenSettings]);
 
       // Key handling
       const handleKeyDown = useCallback((e) => {
+        // Omnisearch open with '/'
         if (e.key === '/' && !omniActive) {
           const activeEl = document.activeElement;
           const inField = activeEl && (activeEl.tagName === 'INPUT' || activeEl.tagName === 'TEXTAREA');
@@ -866,27 +812,6 @@
         if (omniActive) return;
 
         const sel = rows[idx]; if (!sel) return;
-
-        // Action focus context
-        if (actionFocus && actionFocus.rowKey === sel.key) {
-          if (e.key === 'ArrowUp')   { e.preventDefault(); if (actionFocus.action === 'move') moveItemInReorderMode('up'); return; }
-          if (e.key === 'ArrowDown') { e.preventDefault(); if (actionFocus.action === 'move') moveItemInReorderMode('down'); return; }
-          if (e.key === 'ArrowRight' || e.key === 'ArrowLeft') {
-            e.preventDefault();
-            const next = nextActionForRow(sel, actionFocus.action, e.key === 'ArrowRight' ? +1 : -1);
-            if (actionFocus.action === 'move' && next !== 'move') commitIfMoving();
-            setActionFocus({ rowKey: sel.key, action: next });
-            return;
-          }
-          if (e.key === 'Enter') {
-            e.preventDefault();
-            if (actionFocus.action === 'move') { commitIfMoving(); setActionFocus(null); return; }
-            if (actionFocus.action === 'view' && sel.type === 'module-item') { goToModuleFirstInstruction(sel.moduleId); return; }
-            executeRowAction(sel, actionFocus.action);
-            return;
-          }
-          if (e.key === 'Escape') { e.preventDefault(); if (actionFocus.action === 'move') commitIfMoving(); setActionFocus(null); return; }
-        }
 
         const activeEl = document.activeElement;
         const inField = activeEl && (activeEl.tagName === 'TEXTAREA' || (activeEl.tagName === 'INPUT' && activeEl.type === 'text'));
@@ -899,7 +824,28 @@
           return;
         }
 
-        const gotoIndex = (nextIdx) => { setActionFocus(null); setIdx(nextIdx); };
+        // In action mode
+        if (actionFocus && actionFocus.rowKey === sel.key) {
+          if (e.key === 'ArrowUp')   { e.preventDefault(); if (actionFocus.action === 'move') moveItemInReorderMode('up'); return; }
+          if (e.key === 'ArrowDown') { e.preventDefault(); if (actionFocus.action === 'move') moveItemInReorderMode('down'); return; }
+          if (e.key === 'ArrowRight' || e.key === 'ArrowLeft') {
+            e.preventDefault();
+            const dir = e.key === 'ArrowRight' ? +1 : -1;
+            const next = nextActionForRow(sel, actionFocus.action, dir);
+            setActionFocus({ rowKey: sel.key, action: next });
+            if (next === 'settings') autoOpenSettings(sel);
+            return;
+          }
+          if (e.key === 'Enter') {
+            e.preventDefault();
+            executeRowAction(sel, actionFocus.action);
+            if (actionFocus.action === 'move') { commitIfMoving(); setActionFocus(null); }
+            return;
+          }
+          if (e.key === 'Escape') { e.preventDefault(); if (actionFocus.action === 'move') commitIfMoving(); setActionFocus(null); return; }
+        }
+
+        const gotoIndex = (nextIdx) => { setActionFocus(null); setEditRowKey(null); setIdx(nextIdx); };
 
         if (e.key === 'ArrowUp') {
           e.preventDefault(); gotoIndex(Math.max(0, idx - 1));
@@ -907,37 +853,31 @@
           e.preventDefault(); gotoIndex(Math.min(rows.length - 1, idx + 1));
         } else if (e.key === 'ArrowLeft') {
           e.preventDefault();
-          // universal back: close settings if open, else step up path
-          if (sel.type === 'module-item' && isSettingsOpenFor(sel)) { setSettingsOpen(s => { const k = `spanel:mod:${sel.moduleId}`; const cp = { ...s }; delete cp[k]; return cp; }); return; }
-          if (sel.type === 'instr' && isSettingsOpenFor(sel)) { setSettingsOpen(s => { const k = `spanel:instr:${sel.dbId}`; const cp = { ...s }; delete cp[k]; return cp; }); return; }
-          if (path.length > 1) {
-            const newPath = path.slice(0, -1);
-            const pathKey = newPath.join('/'); const savedIdx = navHistory[pathKey];
-            setPath(newPath);
-            setIdx(savedIdx !== undefined ? savedIdx : (newPath.length === 1 ? 2 : 3));
-            return;
-          }
+          setActionFocus({ rowKey: sel.key, action: 'move' });
+          setEditRowKey(null);
+          return;
         } else if (e.key === 'ArrowRight') {
           e.preventDefault();
           if (sel.type === 'module-item') {
-            setActionFocus({ rowKey: sel.key, action: 'view' }); // View first
+            const newPath = [...path, sel.moduleId];
+            setPath(newPath);
+            setIdx(3);
             return;
           }
           if (sel.type === 'instr') {
-            setActionFocus({ rowKey: sel.key, action: 'move' });
-            startMove(sel);
+            setEditRowKey(sel.key);
             return;
           }
           if (sel.type === 'adder-mod') { openOmniAddModule(); return; }
         } else if (e.key === 'Enter') {
           e.preventDefault();
-          if (sel.type === 'module-item') { goToModuleFirstInstruction(sel.moduleId); return; }
-          if (sel.type === 'instr') { setSettingsOpen(s => ({ ...s, [`spanel:instr:${sel.dbId}`]: true })); return; }
           if (sel.type === 'adder-mod') { openOmniAddModule(); return; }
         } else if (e.key === 'Escape') {
           e.preventDefault();
+          if (actionFocus) { if (reorderState) commitIfMoving(); setActionFocus(null); return; }
+          if (editRowKey) { setEditRowKey(null); return; }
           if (path.length > 1) {
-            const newPath = path.slice(0, -1);
+            const newPath = path.slice(0, - 1);
             const pathKey = newPath.join('/'); const savedIdx = navHistory[pathKey];
             setPath(newPath);
             setIdx(savedIdx !== undefined ? savedIdx : (newPath.length === 1 ? 2 : 3));
@@ -946,10 +886,11 @@
         }
       }, [
         rows, idx, path, navHistory,
-        omniActive, openOmniAddModule, isSettingsOpenFor,
+        omniActive, openOmniAddModule,
         actionFocus, setActionFocus, nextActionForRow,
         startMove, moveItemInReorderMode, commitIfMoving, executeRowAction,
-        goToModuleFirstInstruction
+        reorderState, autoOpenSettings,
+        editRowKey
       ]);
 
       useEffect(() => { window.addEventListener('keydown', handleKeyDown); return () => window.removeEventListener('keydown', handleKeyDown); }, [handleKeyDown]);
@@ -957,19 +898,8 @@
       const handleLineClick = useCallback((row) => {
         const rowIdx = rows.findIndex(r => r.key === row.key);
         if (rowIdx !== -1) setIdx(rowIdx);
-
         if (row.type === 'root') { navigateToPath([path[0]], true); return; }
         if (row.type === 'adder-mod') { openOmniAddModule(); return; }
-
-        if (row.type === 'module-item') {
-          const key = `spanel:mod:${row.moduleId}`;
-          setSettingsOpen(s => ({ ...s, [key]: s[key] ? false : true }));
-          setActionFocus(null);
-        } else if (row.type === 'instr') {
-          const key = `spanel:instr:${row.dbId}`;
-          setSettingsOpen(s => ({ ...s, [key]: s[key] ? false : true }));
-          setActionFocus(null);
-        }
       }, [rows, path, navigateToPath, openOmniAddModule]);
 
       useEffect(() => {
@@ -989,8 +919,7 @@
         return () => window.removeEventListener('popstate', handlePopState);
       }, [navigateToPath]);
 
-      // Omnisearch
-      const omniInputRef = useRef(null);
+      // Omnisearch data
       const db = store.getAllDb();
       const agentModules = useMemo(() => agent ? (store.get(`mods-${agent.name}`, agent.modules || [])) : [], [store, agent]);
 
@@ -1071,10 +1000,7 @@
       const suggestedModuleRows = useMemo(() => {
         if (!(omniIntent === 'add-module' && omniFilterType === 'mod' && (omniQuery || '').trim() === '')) return [];
         const rows = [];
-        topModules.forEach(mid => {
-          const m = db[mid]; if (!m) return;
-          rows.push({ type: 'mod', id: mid, name: m.name, scope: 'library', suggested: true });
-        });
+        topModules.forEach(mid => { const m = db[mid]; if (!m) return; rows.push({ type: 'mod', id: mid, name: m.name, scope: 'library', suggested: true }); });
         return rows;
       }, [omniIntent, omniFilterType, omniQuery, topModules, db]);
 
@@ -1133,9 +1059,9 @@
         }
       }, [omniActive, omniMode, scopeResults, libraryResults, createRows, browseRows, omniIntent, omniFilterType, omniQuery, suggestedModuleRows]);
 
-      const omniInputFocus = useEffect(() => {
+      useEffect(() => {
         if (!omniActive) return;
-        const t = setTimeout(() => { omniInputRef.current && omniInputRef.current.focus(); }, 0);
+        const t = setTimeout(() => { if (omniInputRef.current) omniInputRef.current.focus(); }, 0);
         return () => clearTimeout(t);
       }, [omniActive]);
 
@@ -1151,19 +1077,17 @@
           return;
         }
         if (row.type === 'instr') {
-          // Attach instruction: go to current module or first module if needed
           if (atModule && module) {
-            const arr = store.get(`items-${module.name}`, module.items || []);
-            updateData(`items-${module.name}`, [...arr, row.id]);
+            const arr = store.get(`items-${module.name}`, module.items || []); updateData(`items-${module.name}`, [...arr, row.id]);
           } else {
-            // fallback: add to first module or create one
             const a = store.getDbItem(path[0]); if (!a) return;
             const mods = store.get(`mods-${a.name}`, a.modules || []);
             if (mods.length) {
               navigateToPath([path[0], mods[0]], true);
               setTimeout(() => {
-                const arr = store.get(`items-${store.getDbItem(mods[0]).name}`, store.getDbItem(mods[0]).items || []);
-                updateData(`items-${store.getDbItem(mods[0]).name}`, [...arr, row.id]);
+                const m = store.getDbItem(mods[0]);
+                const arr = store.get(`items-${m.name}`, m.items || []);
+                updateData(`items-${m.name}`, [...arr, row.id]);
               }, 0);
             }
           }
@@ -1264,7 +1188,12 @@
                 <button className={omniMode === 'search' ? 'active' : ''} onClick={() => setOmniMode('search')}>Search</button>
                 <button className={omniMode === 'browse' ? 'active' : ''} onClick={() => setOmniMode('browse')}>Browse</button>
               </div>
-              <button className="btn" title="Add Module" onClick={openOmniAddModule}>
+              <button
+                className="omni-input"
+                title="Add Module"
+                onClick={openOmniAddModule}
+                style={{ cursor: 'pointer', border: 'none', background: 'transparent', textAlign: 'right' }}
+              >
                 Add Module{omniInsertHint !== null ? ` @ ${omniInsertHint}` : ''}
               </button>
             </div>
@@ -1312,8 +1241,7 @@
             <div className="panel-title">
               <span className="clickable" onClick={() => navigateToPath([path[0]], true)}>Smile Composer</span>
               <div className="panel-title-right">
-                <span className="subtle">Right=View/Move • Up/Down=select or reorder • Enter=commit • Left/Esc=Back • Drag=Reorder • /=Omnisearch</span>
-                <button className="btn" onClick={openOmniAddModule}>Add Module</button>
+                <span className="subtle">Left=Actions • Right=Enter (module/edit) • Up/Down=select • In Move: Up/Down=reorder • Esc=exit/back • Drag=Reorder • /=Omnisearch</span>
               </div>
             </div>
             {rows.map((row, i) => {
@@ -1332,7 +1260,6 @@
                   isDropTarget={!!isDropTarget}
                   store={store}
                   onLineClick={handleLineClick}
-                  onTextChange={updateData}
                   onDragStart={handleDragStart}
                   onDragOver={handleDragOver}
                   onDrop={handleDrop}
@@ -1340,28 +1267,27 @@
                   onTouchStartRow={onTouchStartRow}
                   onTouchMoveRow={onTouchMoveRow}
                   onTouchEndRow={onTouchEndRow}
-                  onActionExecute={executeRowAction}
+
+                  actionFocus={actionFocus}
+                  setActionFocus={setActionFocus}
+                  executeRowAction={executeRowAction}
+                  autoOpenSettings={autoOpenSettings}
+
                   getStruct={(k) => store.get(k, 'heavy')}
                   setStruct={(k,v) => updateData(k, v)}
                   getNameOverride={(k, f) => store.get(k, f || '')}
                   setNameOverride={(k, v) => updateData(k, v)}
                   getMeta={(k) => store.get(k, '')}
                   setMeta={(k, v) => updateData(k, v)}
-                  setRowRef={setRowRef}
-                  isSettingsOpenFor={isSettingsOpenFor}
-                  actionFocus={actionFocus}
-                  setActionFocus={setActionFocus}
-                  startMove={startMove}
-                  commitIfMoving={commitIfMoving}
-                  onHoverSettingsOpen={onHoverSettingsOpen}
-                  viewInteractiveForRow={viewInteractiveForRow}
-                  goToInstructionFromPreview={goToInstructionFromPreview}
+                  onTextChange={updateData}
+
+                  editRowKey={editRowKey}
                 />
               );
             })}
           </div>
 
-          {/* Lower panels */}
+          {/* Lower panels moved down */}
           <div className="panel">
             <div className="panel-title"><span>Structure</span></div>
             <TreeView store={store} path={path} onNavigate={navigateToPath} storeVersion={storeVersion} />
@@ -1371,10 +1297,17 @@
             <div className="panel-title"><span>Prompt</span></div>
             <textarea readOnly value={promptText} className="underline-textarea" style={{ minHeight: '120px' }} />
             <div style={{ height: 8 }}></div>
-            <button className="btn" data-hotkey-scope="ui" onClick={() => {
-              const wrap = document.getElementById('alltext-wrapper');
-              if (wrap) wrap.style.display = (wrap.style.display === 'none' ? '' : 'none');
-            }}>Show / Hide All Text</button>
+            <button
+              className="omni-input"
+              data-hotkey-scope="ui"
+              style={{ cursor: 'pointer', border: 'none', background: 'transparent', textAlign: 'left' }}
+              onClick={() => {
+                const wrap = document.getElementById('alltext-wrapper');
+                if (wrap) wrap.style.display = (wrap.style.display === 'none' ? '' : 'none');
+              }}
+            >
+              Show / Hide All Text
+            </button>
             <div id="alltext-wrapper" style={{ marginTop: 8 }}>
               <textarea className="alltext" readOnly value={allTextContent}></textarea>
             </div>
@@ -1383,7 +1316,14 @@
           <div className="panel">
             <div className="panel-title">
               <span>Output</span>
-              <button className="btn" data-hotkey-scope="ui" onClick={resetAll}>Reset All</button>
+              <button
+                className="omni-input"
+                data-hotkey-scope="ui"
+                onClick={resetAll}
+                style={{ cursor: 'pointer', border: 'none', background: 'transparent' }}
+              >
+                Reset All
+              </button>
             </div>
             <textarea className="underline-textarea" value={store.get(outputKey, outputDefault)} onChange={e => updateData(outputKey, e.target.value)} style={{ minHeight: '150px' }}></textarea>
           </div>
