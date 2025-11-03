@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Smile Composer — View Inside, Action Mode, Refactor</title>
+  <title>Smile Composer — Indented Previews + Move-first Actions</title>
   <script crossorigin src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
   <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
   <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
@@ -14,7 +14,8 @@
     .container { display: block; width: 100%; }
 
     .panel { background: #fff; border-radius: var(--panel-radius); padding: 16px; border: none; box-shadow: 0 1px 0 0 var(--rule); margin-top: 20px; }
-    .panel-title { font-weight: 600; margin-bottom: 10px; display: flex; align-items: center; justify-content: space-between; gap: 8px; flex-wrap: wrap; }
+    .panel-title { font-weight: 600; margin-bottom: 10px; display: flex; align-items: center; justify-content: space-between; gap: 8px; flex-wrap: wrap; cursor: default; }
+    .panel-title .clickable { cursor: pointer; }
     .panel-title-right { display: inline-flex; align-items: center; gap: 8px; }
     .panel-subtle { font-size: 12px; color: #666; }
 
@@ -34,7 +35,6 @@
     .badge { font-size: 11px; padding: 2px 8px; border-radius: 999px; background: #eee; }
     .subtle { font-size: 12px; color: #666; }
 
-    /* Composer lines */
     .line { user-select: none; padding: 8px 10px; border-radius: 10px; display: flex; align-items: center; justify-content: space-between; gap: 10px; cursor: pointer; transition: background-color 0.12s ease, opacity 0.12s ease; touch-action: none; position: relative; }
     .line:hover { background-color: var(--hover-bg); }
     .line.sel { font-weight: 600; background-color: var(--select-bg); }
@@ -44,12 +44,11 @@
     .left-span { flex: 1 1 auto; min-width: 0; }
     .right-actions { flex: 0 0 auto; display: inline-flex; gap: 6px; }
     .action-cluster { opacity: 0; pointer-events: none; transition: opacity 0.12s ease; }
-    .line:hover .action-cluster, .line.action-mode .action-cluster { opacity: 1; pointer-events: auto; }
+    .line:hover .action-cluster, .line.sel .action-cluster { opacity: 1; pointer-events: auto; }
 
     .indent-block { margin-top: 8px; }
     .indent-grid { display: grid; gap: 10px; }
 
-    /* Inputs with bottom rule only */
     .underline-input, .underline-textarea { width: 100%; background: transparent; border: none; border-bottom: 1px solid #ccc; border-radius: 0; padding: 6px 2px 6px 0; font: inherit; outline: none; resize: vertical; min-height: 34px; }
     .underline-textarea { min-height: 80px; }
 
@@ -63,6 +62,7 @@
     .tree-item.active { font-weight: 700; background: var(--select-bg); }
 
     .error { color: red; padding: 20px; border: 1px solid red; margin: 20px; border-radius: 8px; }
+
     .seg { display: inline-flex; align-items: center; gap: 8px; padding: 6px 8px; border-radius: 999px; background: var(--soft-bg); }
     .seg .label { font-size: 12px; margin-right: 4px; }
     .seg input[type="radio"] { position: absolute; opacity: 0; pointer-events: none; }
@@ -71,6 +71,10 @@
     .seg input[type="radio"]:checked + .opt .dot { background: #111; }
 
     .alltext { width: 100%; min-height: 220px; padding: 10px; border: none; border-bottom: 1px solid #ccc; border-radius: 0; resize: vertical; background: #fff; }
+
+    .c-red { color: #c62828; font-weight: 600; }
+    .c-green { color: #2e7d32; }
+    .c-blue { color: #1565c0; }
   </style>
 </head>
 <body>
@@ -99,7 +103,7 @@
       'emoji-section': { name: 'Emoji section name', type: 'instr', text: 'Use two emoticons for section names.' },
       'bold-words': { name: 'Bold for important words', type: 'instr', text: 'Use **bold** for attention retention over long contexts.' },
       'top-bottom': { name: 'Maximize adherence through top+bottom replication', type: 'instr', text: 'Replicate critical instructions at beginning and end.' },
-      'negative-rewrite': { name: 'Identify negatives and rewrite to positive', type: 'instr', text: 'Find negatives like "not" and rewrite as positive articulations.' },
+      'negative-rewrite': { name: 'Identify negatives and rewrite to positive', type: 'instr', text: 'Find negatives like “not” and rewrite as positive articulations.' },
       'input-enter': { name: 'Provide Input', type: 'instr', text: 'Enter or paste the incoming question or payload in full fidelity.' },
       'input-understand': { name: 'Reasoning / Understanding', type: 'instr', text: 'Interpret the input; list goals, constraints, and ambiguities.' },
       'input-result': { name: 'Synthesis (Input + Understanding)', type: 'instr', text: 'Combine the raw input with the understanding into a structured representation.' },
@@ -108,6 +112,7 @@
       'output-result': { name: 'Final Output', type: 'instr', text: 'Deliver the polished final output after reasoning and checks.' }
     };
 
+    /* ---------- Data Store ---------- */
     class DataStore {
       constructor() { this.data = this.loadFromStorage(); this.db = { ...INITIAL_DB }; this.version = 0; }
       loadFromStorage() { try { const stored = localStorage.getItem('smileData'); return stored ? JSON.parse(stored) : {}; } catch(e){ return {}; } }
@@ -130,20 +135,6 @@
       return newArr;
     };
 
-    const searchDatabase = (db, query, types = null) => {
-      const lower = (query || '').toLowerCase().trim();
-      if (!lower) return [];
-      const out = [];
-      Object.keys(db).forEach(k => {
-        const item = db[k];
-        if (types && !types.includes(item.type)) return;
-        const nameMatch = (item.name || '').toLowerCase().includes(lower);
-        const textMatch = item.text ? (item.text || '').toLowerCase().includes(lower) : false;
-        if (nameMatch || textMatch) out.push({ id: k, name: item.name, type: item.type });
-      });
-      return out;
-    };
-
     const displayNameFor = (store, dbItem, id) =>
       store.get(`nn-${id}`, store.get(`n-${dbItem.name}`, dbItem.name));
 
@@ -151,7 +142,7 @@
       if (!row) return null;
       if (row.type === 'module-item') return `mod:${row.moduleId}`;
       if (row.type === 'instr') return `instr:${row.dbId}`;
-      if (row.type === 'settings-button' || row.type === 'settings-panel' || row.type === 'prompt') {
+      if (row.type === 'settings-panel') {
         return (row.ownerType === 'module') ? `mod:${row.ownerId}` : `instr:${row.ownerId}`;
       }
       return null;
@@ -159,15 +150,7 @@
 
     /* ---------- Row Builder ---------- */
     class RowBuilder {
-      constructor(store, path, reorderState, revealedOwnerKey, settingsOpen, deleteMode) {
-        this.store = store;
-        this.path = path;
-        this.reorderState = reorderState;
-        this.revealedOwnerKey = revealedOwnerKey || null;
-        this.settingsOpen = settingsOpen || {};
-        this.deleteMode = deleteMode || { active: false };
-        this.rows = [];
-      }
+      constructor(store, path) { this.store = store; this.path = path; this.rows = []; }
       build() {
         this.addRoot(); this.addAgent(); this.addBreadcrumbs();
         if (this.isAtModule()) this.addModuleContent(); else this.addAgentModules();
@@ -196,40 +179,15 @@
 
         visualItems.forEach(({ item: id, originalPos }, i) => {
           const ins = this.store.getDbItem(id); if (!ins) return;
-          const ownerKey = `instr:${id}`;
-          const allowEphemeral = !this.reorderState && !this.deleteMode.active;
-          const revealed = allowEphemeral && (this.revealedOwnerKey === ownerKey);
-          const baseLabel = displayNameFor(this.store, ins, id);
           const isLast = i === visualItems.length - 1;
-
           this.rows.push({
             key: `ins:${id}:${originalPos}`, type: 'instr', depth: 3,
-            label: baseLabel, isOutput: isLast,
+            label: displayNameFor(this.store, ins, id), isOutput: isLast,
             nameKey: `n-${ins.name}`, nameOverrideKey: `nn-${id}`,
             textKey: `t-${ins.name}`, defaultText: ins.text || '',
             metaKey: `meta-${id}`, structKey: `struct-${id}`,
-            promptKey: `t-${ins.name}`,
-            dbId: id, pos: originalPos, canReorder: true, revealed
+            promptKey: `t-${ins.name}`, dbId: id, pos: originalPos, canReorder: true
           });
-
-          if (revealed) {
-            this.rows.push({
-              key: `sbtn:instr:${id}`, type: 'settings-button', depth: 4,
-              ownerType: 'instr', ownerId: id,
-              nameOverrideKey: `nn-${id}`, metaKey: `meta-${id}`,
-              structKey: `struct-${id}`, promptKey: `t-${ins.name}`,
-              label: 'Settings'
-            });
-            const pKey = `spanel:instr:${id}`;
-            if (this.settingsOpen[pKey]) {
-              this.rows.push({
-                key: pKey, type: 'settings-panel', depth: 5,
-                ownerType: 'instr', ownerId: id,
-                nameOverrideKey: `nn-${id}`, metaKey: `meta-${id}`,
-                structKey: `struct-${id}`, promptKey: `t-${ins.name}`
-              });
-            }
-          }
         });
       }
       addAgentModules() {
@@ -239,36 +197,13 @@
 
         visualModules.forEach(({ item: mid, originalPos }, i) => {
           const mod = this.store.getDbItem(mid); if (!mod) return;
-          const ownerKey = `mod:${mid}`;
-          const allowEphemeral = !this.reorderState && !this.deleteMode.active;
-          const revealed = allowEphemeral && (this.revealedOwnerKey === ownerKey);
           const isLast = i === visualModules.length - 1;
-
           this.rows.push({
             key: `mod:${mid}:${originalPos}`, type: 'module-item', depth: 2,
             label: displayNameFor(this.store, mod, mid), isOutput: isLast,
             nameKey: `n-${mod.name}`, nameOverrideKey: `nn-${mid}`,
-            moduleId: mid, pos: originalPos, canReorder: true, revealed
+            moduleId: mid, pos: originalPos, canReorder: true
           });
-
-          if (revealed) {
-            this.rows.push({
-              key: `sbtn:mod:${mid}`, type: 'settings-button', depth: 3,
-              ownerType: 'module', ownerId: mid,
-              nameOverrideKey: `nn-${mid}`, metaKey: `meta-${mid}`,
-              structKey: `struct-${mid}`, promptKey: `prompt-mod-${mid}`,
-              label: 'Settings'
-            });
-            const pKey = `spanel:mod:${mid}`;
-            if (this.settingsOpen[pKey]) {
-              this.rows.push({
-                key: pKey, type: 'settings-panel', depth: 4,
-                ownerType: 'module', ownerId: mid,
-                nameOverrideKey: `nn-${mid}`, metaKey: `meta-${mid}`,
-                structKey: `struct-${mid}`, promptKey: `prompt-mod-${mid}`
-              });
-            }
-          }
         });
 
         this.rows.push({ key: `adder-mod-${agent.name}`, type: 'adder-mod', depth: 2, label: '+ Add Module' });
@@ -303,7 +238,8 @@
       }, [store, path, onNavigate, storeVersion]);
 
       const agentId = 'expert-maker';
-      const agent = store.getDbItem(agentId); if (!agent) return null;
+      const agent = store.getDbItem(agentId);
+      if (!agent) return null;
       const isAgentActive = path.length === 1 && path[0] === agentId;
       const modules = store.get(`mods-${agent.name}`, agent.modules || []);
       return (
@@ -339,24 +275,26 @@
       );
     }
 
-    /* Action Label & Cluster */
     const LABELS = {
-      view: () => <strong>View Inside [Enter] [v]</strong>,
+      view: () => <strong>View Inside [Enter] [↓]</strong>,
+      move: () => 'Move',
       settings: () => 'Settings',
       duplicate: () => 'Duplicate',
-      move: () => 'Move',
       delete: () => 'Delete'
     };
 
-    function ActionCluster({ row, actions, actionModeRowKey, actionIndex, onActionExecute, onActionEnter }) {
-      const isActiveRow = actionModeRowKey === row.key;
+    function ActionCluster({ row, actions, onActionExecute, onHoverAction, onLeaveCluster, focused }) {
       return (
-        <span className="right-actions action-cluster" onClick={(e) => e.stopPropagation()}>
-          {actions.map((a, i) => (
+        <span
+          className="right-actions action-cluster"
+          onClick={(e) => e.stopPropagation()}
+          onMouseLeave={() => onLeaveCluster && onLeaveCluster()}
+        >
+          {actions.map((a) => (
             <button
               key={a}
-              className={`btn${isActiveRow && actionIndex === i ? ' sel' : ''}`}
-              onMouseEnter={() => onActionEnter && onActionEnter(row, i)}
+              className={`btn ${focused === a ? 'sel' : ''}`}
+              onMouseEnter={() => onHoverAction && onHoverAction(a)}
               onClick={() => onActionExecute(row, a)}
               title={a === 'view' ? 'View Inside' : a.charAt(0).toUpperCase() + a.slice(1)}
             >
@@ -367,52 +305,97 @@
       );
     }
 
+    function PreviewModuleContents({ store, moduleId, depth }) {
+      const mod = store.getDbItem(moduleId);
+      if (!mod) return null;
+      const items = store.get(`items-${mod.name}`, mod.items || []);
+      const pad = ((depth || 0) + 1) * TAB;
+      return (
+        <div className="indent-block" style={{ paddingLeft: pad }}>
+          {items.length === 0 ? <div className="subtle">Empty module</div> : items.map((iid) => {
+            const ins = store.getDbItem(iid); if (!ins) return null;
+            const nm = displayNameFor(store, ins, iid);
+            const txt = store.get(`t-${ins.name}`, ins.text || '');
+            return (
+              <div key={iid} className="line" style={{ paddingLeft: 0 }}>
+                <span className="left-span">{nm}</span>
+                <span className="subtle" style={{ maxWidth: '50%', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
+                  {txt}
+                </span>
+              </div>
+            );
+          })}
+        </div>
+      );
+    }
+
+    function PreviewInstructionColored({ store, row }) {
+      const dbItem = store.getDbItem(row.dbId);
+      if (!dbItem) return null;
+      const name = store.get(`nn-${row.dbId}`, displayNameFor(store, dbItem, row.dbId));
+      const meta = store.get(`meta-${row.dbId}`, '');
+      const body = store.get(row.promptKey, dbItem.text || '');
+      const pad = ((row.depth || 0) + 1) * TAB;
+      return (
+        <div className="indent-block" style={{ paddingLeft: pad }}>
+          <div className="line" style={{ paddingLeft: 0 }}>
+            <span className="left-span">
+              <span className="c-red">{name}</span>
+            </span>
+          </div>
+          {meta ? (
+            <div className="line" style={{ paddingLeft: 0 }}>
+              <span className="left-span">
+                <span className="c-green">{meta}</span>
+              </span>
+            </div>
+          ) : null}
+          <div className="line" style={{ paddingLeft: 0 }}>
+            <span className="left-span">
+              <span className="c-blue">{body}</span>
+            </span>
+          </div>
+        </div>
+      );
+    }
+
     function LineRenderer({
       row, isSelected, inReorderMode, isDragging, isDropTarget,
       store, onLineClick, onTextChange,
       onDragStart, onDragOver, onDrop, onDragEnd,
       onTouchStartRow, onTouchMoveRow, onTouchEndRow,
-      onSettingsDuplicate, onSettingsMove, onSettingsDelete,
-      onActionExecute, onActionEnter,
+      onActionExecute,
       getStruct, setStruct, setNameOverride, getNameOverride, getMeta, setMeta,
       setRowRef,
-      actionModeRowKey, actionIndex
+      isSettingsOpenFor,
+      actionFocus, setActionFocus,
+      startMove, commitIfMoving
     }) {
       const classes = ['line'];
       if (isSelected && !inReorderMode) classes.push('sel');
       if (inReorderMode) classes.push('reorder-mode');
       if (isDragging) classes.push('held');
       if (isDropTarget) classes.push('drop-target');
-      if (actionModeRowKey === row.key) classes.push('action-mode');
 
       const style = { paddingLeft: (row.depth || 0) * TAB };
-      const promptRef = useRef(null);
-      useEffect(() => {
-        if (row.type === 'prompt' && isSelected && promptRef.current) {
-          promptRef.current.focus();
-          try {
-            const el = promptRef.current;
-            el.selectionStart = el.value.length;
-            el.selectionEnd = el.value.length;
-          } catch {}
-        }
-      }, [row.type, isSelected]);
-
       const headingRef = useRef(null);
+
+      const canDragAnytime = (row.type === 'instr' || row.type === 'module-item');
+      const actionsForRow = useMemo(() => {
+        if (row.type === 'module-item') return ['view','move','settings','duplicate','delete'];
+        if (row.type === 'instr') return ['move','settings','duplicate','delete'];
+        return [];
+      }, [row.type]);
+
+      const settingsPanelForRow = (row.type === 'module-item' || row.type === 'instr') && isSettingsOpenFor(row);
+      const focusedAction = (actionFocus && actionFocus.rowKey === row.key) ? actionFocus.action : null;
+
       useEffect(() => {
-        if (row.type === 'settings-panel' && isSelected && headingRef.current) {
+        if (settingsPanelForRow && isSelected && headingRef.current) {
           headingRef.current.focus();
           headingRef.current.select();
         }
-      }, [row.type, isSelected]);
-
-      const canDragAnytime = (row.type === 'instr' || row.type === 'module-item');
-      const mainRowHasActions = (row.type === 'instr' || row.type === 'module-item');
-      const actionsForRow = useMemo(() => {
-        if (row.type === 'module-item') return ['view','settings','duplicate','move','delete'];
-        if (row.type === 'instr') return ['settings','duplicate','move','delete'];
-        return [];
-      }, [row.type]);
+      }, [settingsPanelForRow, isSelected]);
 
       return (
         <div key={row.key}>
@@ -434,53 +417,32 @@
             <span className="left-span">
               {row.isOutput ? <strong>OUTPUT:&nbsp;</strong> : null}{row.label}
             </span>
-
-            {mainRowHasActions && (
+            {(row.type === 'module-item' || row.type === 'instr') && (
               <ActionCluster
                 row={row}
                 actions={actionsForRow}
-                actionModeRowKey={actionModeRowKey}
-                actionIndex={actionIndex}
                 onActionExecute={onActionExecute}
-                onActionEnter={onActionEnter}
+                onHoverAction={(a) => {
+                  setActionFocus({ rowKey: row.key, action: a });
+                  if (a === 'move') startMove(row);
+                }}
+                onLeaveCluster={() => { if (actionFocus?.action === 'move') commitIfMoving(); setActionFocus(null); }}
+                focused={focusedAction}
               />
-            )}
-
-            {row.type === 'settings-button' && (
-              <span className="right-actions" onClick={(e)=>e.stopPropagation()}>
-                <button className="btn" onClick={()=>onLineClick(row)} title="Open settings">Settings</button>
-                {row.ownerType === 'instr' && (
-                  <>
-                    <button className="btn" onClick={()=>onSettingsDuplicate(row)} title="Duplicate instruction">Duplicate</button>
-                    <button className="btn" onClick={()=>onSettingsMove(row)} title="Move instruction">Move</button>
-                    <button className="btn" onClick={()=>onSettingsDelete(row)} title="Delete instruction">Delete</button>
-                  </>
-                )}
-                {row.ownerType === 'module' && (
-                  <>
-                    <button className="btn" onClick={()=>onSettingsDuplicate(row)} title="Duplicate module">Duplicate</button>
-                    <button className="btn" onClick={()=>onSettingsMove(row)} title="Move module">Move</button>
-                    <button className="btn" onClick={()=>onSettingsDelete(row)} title="Delete module">Delete</button>
-                  </>
-                )}
-              </span>
             )}
           </div>
 
-          {row.type === 'prompt' && (
-            <div className="indent-block indent-grid" style={{ paddingLeft: (row.depth || 0) * TAB }}>
-              <textarea
-                ref={promptRef}
-                className="underline-textarea"
-                value={store.get(row.promptKey, '')}
-                onChange={e => onTextChange(row.promptKey, e.target.value)}
-                placeholder={row.ownerType === 'module' ? 'Module prompt…' : 'Instruction prompt…'}
-              />
-            </div>
+          {/* Default PREVIEW when selected and settings closed (indented one level) */}
+          {isSelected && !settingsPanelForRow && (row.type === 'module-item') && (
+            <PreviewModuleContents store={store} moduleId={row.moduleId} depth={row.depth} />
+          )}
+          {isSelected && !settingsPanelForRow && (row.type === 'instr') && (
+            <PreviewInstructionColored store={store} row={row} />
           )}
 
-          {row.type === 'settings-panel' && (
-            <div className="indent-block indent-grid" style={{ paddingLeft: (row.depth || 0) * TAB }}>
+          {/* SETTINGS PANEL (indented 1x beyond the heading) */}
+          {settingsPanelForRow && (
+            <div className="indent-block indent-grid" style={{ paddingLeft: ((row.depth || 0) + 1) * TAB }}>
               <input
                 ref={headingRef}
                 type="text"
@@ -499,10 +461,10 @@
                 className="underline-textarea"
                 value={store.get(row.promptKey, '')}
                 onChange={(e) => onTextChange(row.promptKey, e.target.value)}
-                placeholder={row.ownerType === 'module' ? 'Module instruction…' : 'Instruction…'}
+                placeholder={row.type === 'module-item' ? 'Module instruction…' : 'Instruction…'}
               />
               <StructureDots5
-                id={row.ownerId}
+                id={row.type === 'module-item' ? row.moduleId : row.dbId}
                 value={getStruct(row.structKey) || 'heavy'}
                 onChange={(v) => setStruct(row.structKey, v)}
               />
@@ -533,11 +495,10 @@
       const rowsDomRef = useRef(new Map());
       const [touchDrag, setTouchDrag] = useState(null);
 
-      const [revealedOwnerKey, setRevealedOwnerKey] = useState(null);
-      const [settingsOpen, setSettingsOpen] = useState({});
-      const [deleteMode] = useState({ active: false });
+      const [settingsOpen, setSettingsOpen] = useState({}); // spanel:mod|instr:ID => true
+      const [actionFocus, setActionFocus] = useState(null);  // { rowKey, action } | null
 
-      // Omnisearch
+      /* Omnisearch state — single source of truth */
       const [omniActive, setOmniActive] = useState(false);
       const [omniMode, setOmniMode] = useState('search');
       const [omniQuery, setOmniQuery] = useState('');
@@ -545,13 +506,10 @@
       const [omniFilterType, setOmniFilterType] = useState(null);
       const [omniIntent, setOmniIntent] = useState(null);
 
-      // Action Mode (per-row action bar keyboard)
-      const [actionMode, setActionMode] = useState(null); // { rowKey, index }
-
       const rows = useMemo(() => {
-        const builder = new RowBuilder(store, path, reorderState, revealedOwnerKey, settingsOpen, deleteMode);
+        const builder = new RowBuilder(store, path);
         return builder.build();
-      }, [store, path, reorderState, revealedOwnerKey, settingsOpen, deleteMode, storeVersion]);
+      }, [store, path, storeVersion]);
 
       const rowsRef = useRef(rows);
       useEffect(() => { rowsRef.current = rows; }, [rows]);
@@ -572,17 +530,15 @@
         if (confirm('Reset everything to defaults? This will clear all your customizations.')) {
           store.reset();
           setPath(['expert-maker']); setIdx(2); setNavHistory({}); setReorderState(null);
-          setRevealedOwnerKey(null); setSettingsOpen({});
+          setSettingsOpen({}); setActionFocus(null);
           setOmniActive(false); setOmniQuery(''); setOmniIndex(0); setOmniMode('search'); setOmniFilterType(null); setOmniIntent(null);
-          setActionMode(null);
           window.location.hash = ''; setStoreVersion(store.getVersion());
         }
       }, [store]);
 
       const navigateToPath = useCallback((newPath, autoSelect = true) => {
         setPath(newPath); setReorderState(null);
-        setRevealedOwnerKey(null); setSettingsOpen({});
-        setActionMode(null);
+        setSettingsOpen({}); setActionFocus(null);
         setIdx(autoSelect ? (newPath.length === 1 ? 2 : 3) : 0);
       }, []);
 
@@ -597,13 +553,13 @@
       const attachModuleToAgent = useCallback((mid) => { addModuleToAgent({ id: mid }); }, [addModuleToAgent]);
 
       const openAndFocusSettings = useCallback((ownerType, ownerId) => {
-        const key = ownerType === 'module' ? `mod:${ownerId}` : `instr:${ownerId}`;
         const panelKey = ownerType === 'module' ? `spanel:mod:${ownerId}` : `spanel:instr:${ownerId}`;
-        setRevealedOwnerKey(key);
         setSettingsOpen(prev => ({ ...prev, [panelKey]: true }));
-        setActionMode(null);
         setTimeout(() => {
-          const i = rowsRef.current.findIndex(r => r.type === 'settings-panel' && r.ownerType === ownerType && r.ownerId === ownerId);
+          const i = rowsRef.current.findIndex(r =>
+            (r.type === (ownerType === 'module' ? 'module-item' : 'instr')) &&
+            ((ownerType === 'module' ? r.moduleId : r.dbId) === ownerId)
+          );
           if (i >= 0) setIdx(i);
         }, 0);
       }, []);
@@ -709,7 +665,13 @@
         if (el) rowsDomRef.current.set(key, el); else rowsDomRef.current.delete(key);
       }, []);
 
-      /* Reorder */
+      const isSettingsOpenFor = useCallback((row) => {
+        if (row.type === 'module-item') return !!settingsOpen[`spanel:mod:${row.moduleId}`];
+        if (row.type === 'instr') return !!settingsOpen[`spanel:instr:${row.dbId}`];
+        return false;
+      }, [settingsOpen]);
+
+      /* Reorder (Move) */
       const moveItemInReorderMode = useCallback((direction) => {
         if (!reorderState) return;
         const delta = direction === 'up' ? -1 : 1;
@@ -722,47 +684,44 @@
         }
 
         if (newCurrentPos >= 0 && newCurrentPos < arr.length) {
-          let candidateIdx = idx + delta;
-          const within = i => i >= 0 && i < rows.length;
-          while (within(candidateIdx)) {
-            const targetRow = rows[candidateIdx];
-            const okType = reorderState.type === 'instr' ? targetRow.type === 'instr' : targetRow.type === 'module-item';
-            if (okType) break;
-            candidateIdx += delta;
-          }
-          if (!within(candidateIdx)) return;
-          setReorderState(prev => ({ ...prev, currentPos: newCurrentPos })); setIdx(candidateIdx);
-        }
-      }, [reorderState, idx, rows, atModule, module, store, path]);
-
-      const findPlacedIndex = useCallback((type, pos, ownerId) => {
-        return rows.findIndex(r =>
-          (type === 'instr' ? r.type === 'instr' : r.type === 'module-item') &&
-          (type === 'instr' ? r.dbId === ownerId : r.moduleId === ownerId) &&
-          r.pos === pos
-        );
-      }, [rows]);
-
-      const commitReorder = useCallback(() => {
-        if (!reorderState) return;
-        const originalPos = reorderState.originalPos;
-        const theCurrentPos = (reorderState.currentPos !== undefined) ? reorderState.currentPos : originalPos;
-
-        if (theCurrentPos !== originalPos && theCurrentPos >= 0) {
+          setReorderState(prev => ({ ...prev, currentPos: newCurrentPos }));
           if (reorderState.type === 'instr' && atModule && module) {
-            const arr = store.get(`items-${module.name}`, module.items || []); updateData(`items-${module.name}`, moveInList(arr, originalPos, theCurrentPos));
+            updateData(`items-${module.name}`, moveInList(arr, reorderState.originalPos, newCurrentPos));
           } else if (reorderState.type === 'module-item') {
             const a = store.getDbItem(path[0]); if (a) {
-              const arr = store.get(`mods-${a.name}`, a.modules || []); updateData(`mods-${a.name}`, moveInList(arr, originalPos, theCurrentPos));
+              updateData(`mods-${a.name}`, moveInList(arr, reorderState.originalPos, newCurrentPos));
             }
           }
         }
+      }, [reorderState, atModule, module, store, updateData, path]);
 
+      const commitReorder = useCallback(() => {
+        if (!reorderState) return;
+        const theCurrentPos = (reorderState.currentPos !== undefined) ? reorderState.currentPos : reorderState.originalPos;
         const ownerId = reorderState.dbId || reorderState.moduleId;
-        const targetIdx = findPlacedIndex(reorderState.type, theCurrentPos, ownerId);
+        const targetIdx = rowsRef.current.findIndex(r =>
+          (reorderState.type === 'instr' ? r.type === 'instr' : r.type === 'module-item') &&
+          (reorderState.type === 'instr' ? r.dbId === ownerId : r.moduleId === ownerId) &&
+          r.pos === theCurrentPos
+        );
         setReorderState(null);
         if (targetIdx >= 0) setIdx(targetIdx);
-      }, [reorderState, atModule, module, store, updateData, findPlacedIndex, path]);
+      }, [reorderState]);
+
+      const startMove = useCallback((row) => {
+        const i = rowsRef.current.findIndex(r => r.key === row.key);
+        setIdx(i >= 0 ? i : 0);
+        setReorderState({
+          rowKey: row.key,
+          dbId: row.dbId || row.moduleId,
+          type: row.type,
+          originalIdx: i,
+          originalPos: row.pos,
+          currentPos: row.pos
+        });
+      }, []);
+
+      const commitIfMoving = useCallback(() => { if (reorderState) commitReorder(); }, [reorderState, commitReorder]);
 
       /* DnD desktop */
       const handleDragStart = useCallback((e, row) => { e.dataTransfer.effectAllowed = 'move'; setDragItem(row); }, []);
@@ -772,16 +731,14 @@
 
         if (dragItem.type === 'instr' && row.type === 'instr' && atModule && module) {
           const arr = store.get(`items-${module.name}`, module.items || []); updateData(`items-${module.name}`, moveInList(arr, dragItem.pos, row.pos));
-          const newIdx = findPlacedIndex('instr', row.pos, row.dbId); if (newIdx >= 0) setIdx(newIdx);
         } else if (dragItem.type === 'module-item' && row.type === 'module-item') {
           const a = store.getDbItem(path[0]); if (a) {
             const arr = store.get(`mods-${a.name}`, a.modules || []); updateData(`mods-${a.name}`, moveInList(arr, dragItem.pos, row.pos));
-            const newIdx = findPlacedIndex('module-item', row.pos, row.moduleId); if (newIdx >= 0) setIdx(newIdx);
           }
         }
 
         setDragItem(null); setDragOver(null);
-      }, [dragItem, atModule, module, store, updateData, findPlacedIndex, path]);
+      }, [dragItem, atModule, module, store, updateData, path]);
       const handleDragEnd = useCallback(() => { setDragItem(null); setDragOver(null); }, []);
 
       /* Touch DnD */
@@ -822,66 +779,47 @@
         setTouchDrag(null); setDragItem(null); setDragOver(null);
       }, [touchDrag, dragOver, atModule, module, store, updateData, path]);
 
-      /* Action execution */
-      const actionsForRow = useCallback((row) => {
-        if (row.type === 'module-item') return ['view','settings','duplicate','move','delete'];
-        if (row.type === 'instr') return ['settings','duplicate','move','delete'];
-        return [];
-      }, []);
-
+      /* Execute actions */
       const executeRowAction = useCallback((row, action) => {
         if (!row) return;
         if (row.type === 'module-item') {
           if (action === 'view') {
             const pathKey = path.join('/'); setNavHistory(h => ({ ...h, [pathKey]: rows.findIndex(r => r.key === row.key) }));
-            setRevealedOwnerKey(null); setSettingsOpen({});
-            setActionMode(null);
             setPath([...path, row.moduleId]);
             setIdx(3);
             return;
           }
+          if (action === 'move') { startMove(row); setActionFocus({ rowKey: row.key, action: 'move' }); return; }
           if (action === 'settings') {
-            const pKey = `spanel:mod:${row.moduleId}`;
-            setRevealedOwnerKey(`mod:${row.moduleId}`);
-            setSettingsOpen(s => ({ ...s, [pKey]: !s[pKey] }));
-            setActionMode(null);
+            setSettingsOpen(s => ({ ...s, [`spanel:mod:${row.moduleId}`]: !s[`spanel:mod:${row.moduleId}`] }));
             return;
           }
-          if (action === 'duplicate') { duplicateItem(row.moduleId, true); setActionMode(null); return; }
-          if (action === 'move') {
-            const i = rows.findIndex(r => r.key === row.key);
-            setIdx(i);
-            setReorderState({ rowKey: row.key, dbId: row.moduleId, type: row.type, originalIdx: i, originalPos: row.pos, currentPos: row.pos });
-            setActionMode(null);
-            return;
-          }
-          if (action === 'delete') { removeModuleById(row.moduleId); setActionMode(null); return; }
+          if (action === 'duplicate') { duplicateItem(row.moduleId, true); return; }
+          if (action === 'delete') { removeModuleById(row.moduleId); return; }
         }
         if (row.type === 'instr') {
+          if (action === 'move') { startMove(row); setActionFocus({ rowKey: row.key, action: 'move' }); return; }
           if (action === 'settings') {
-            const pKey = `spanel:instr:${row.dbId}`;
-            setRevealedOwnerKey(`instr:${row.dbId}`);
-            setSettingsOpen(s => ({ ...s, [pKey]: !s[pKey] }));
-            setActionMode(null);
+            setSettingsOpen(s => ({ ...s, [`spanel:instr:${row.dbId}`]: !s[`spanel:instr:${row.dbId}`] }));
             return;
           }
-          if (action === 'duplicate') { duplicateItem(row.dbId, false); setActionMode(null); return; }
-          if (action === 'move') {
-            const i = rows.findIndex(r => r.key === row.key);
-            setIdx(i);
-            setReorderState({ rowKey: row.key, dbId: row.dbId, type: row.type, originalIdx: i, originalPos: row.pos, currentPos: row.pos });
-            setActionMode(null);
-            return;
-          }
-          if (action === 'delete') { removeItemById(row.dbId); setActionMode(null); return; }
+          if (action === 'duplicate') { duplicateItem(row.dbId, false); return; }
+          if (action === 'delete') { removeItemById(row.dbId); return; }
         }
-      }, [duplicateItem, removeItemById, removeModuleById, rows, path]);
+      }, [duplicateItem, removeItemById, removeModuleById, rows, path, startMove]);
 
-      const onActionExecute = useCallback((row, action) => { executeRowAction(row, action); }, [executeRowAction]);
-      const onActionEnter = useCallback((row, i) => { if (row && actionMode && actionMode.rowKey === row.key) setActionMode({ rowKey: row.key, index: i }); }, [actionMode]);
+      function nextActionForRow(row, current, dir) {
+        const list = (row.type === 'module-item') ? ['view','move','settings','duplicate','delete'] : ['move','settings','duplicate','delete'];
+        const i = Math.max(0, list.indexOf(current));
+        let ni = i + (dir > 0 ? 1 : -1);
+        if (ni < 0) ni = 0;
+        if (ni >= list.length) ni = list.length - 1;
+        return list[ni];
+      }
 
-      /* Keyboard */
+      /* Global key handling */
       const handleKeyDown = useCallback((e) => {
+        // Quick open Omnisearch
         if (e.key === '/' && !omniActive) {
           const activeEl = document.activeElement;
           const inField = activeEl && (activeEl.tagName === 'INPUT' || activeEl.tagName === 'TEXTAREA');
@@ -891,21 +829,29 @@
 
         const sel = rows[idx]; if (!sel) return;
 
-        // Action mode
-        if (actionMode && actionMode.rowKey) {
-          const row = rows.find(r => r.key === actionMode.rowKey);
-          const actions = row ? actionsForRow(row) : [];
-          if (e.key === 'ArrowLeft') { e.preventDefault(); if (actions.length) setActionMode(m => ({ rowKey: m.rowKey, index: Math.max(0, m.index - 1) })); return; }
-          if (e.key === 'ArrowRight') { e.preventDefault(); if (actions.length) setActionMode(m => ({ rowKey: m.rowKey, index: Math.min(actions.length - 1, m.index + 1) })); return; }
-          if (e.key === 'Enter' || e.key === 'ArrowDown') { e.preventDefault(); if (row && actions.length) executeRowAction(row, actions[Math.max(0, Math.min(actions.length - 1, actionMode.index))]); return; }
-          if (e.key === 'Escape') { e.preventDefault(); setActionMode(null); return; }
-          if (e.key === 'ArrowUp') { e.preventDefault(); return; }
-          return;
+        // Action focus (Move et al.)
+        if (actionFocus && actionFocus.rowKey === sel.key) {
+          if (e.key === 'ArrowUp')   { e.preventDefault(); if (actionFocus.action === 'move') moveItemInReorderMode('up'); return; }
+          if (e.key === 'ArrowDown') { e.preventDefault(); if (actionFocus.action === 'move') moveItemInReorderMode('down'); return; }
+          if (e.key === 'ArrowRight' || e.key === 'ArrowLeft') {
+            e.preventDefault();
+            const next = nextActionForRow(sel, actionFocus.action, e.key === 'ArrowRight' ? +1 : -1);
+            if (actionFocus.action === 'move' && next !== 'move') commitIfMoving();
+            setActionFocus({ rowKey: sel.key, action: next });
+            return;
+          }
+          if (e.key === 'Enter') {
+            e.preventDefault();
+            if (actionFocus.action === 'move') { commitIfMoving(); setActionFocus(null); return; }
+            executeRowAction(sel, actionFocus.action);
+            return;
+          }
+          if (e.key === 'Escape') { e.preventDefault(); if (actionFocus.action === 'move') commitIfMoving(); setActionFocus(null); return; }
         }
 
         const activeEl = document.activeElement;
-        const inTextarea = activeEl && (activeEl.tagName === 'TEXTAREA' || (activeEl.tagName === 'INPUT' && activeEl.type === 'text'));
-        if (inTextarea) {
+        const inField = activeEl && (activeEl.tagName === 'TEXTAREA' || (activeEl.tagName === 'INPUT' && activeEl.type === 'text'));
+        if (inField) {
           const valueLength = activeEl.value.length;
           const start = activeEl.selectionStart ?? 0;
           const end = activeEl.selectionEnd ?? 0;
@@ -914,80 +860,67 @@
           return;
         }
 
-        const inReorderMode = !!reorderState;
-        const gotoIndex = (nextIdx) => {
-          const nextRow = rows[nextIdx];
-          const currentOwner = revealedOwnerKey;
-          if (currentOwner) {
-            const ok = ownerKeyOfRow(nextRow);
-            if (ok !== currentOwner) {
-              const pKey = `spanel:${currentOwner}`;
-              setSettingsOpen(prev => { if (!prev[pKey]) return prev; const copy = { ...prev }; delete copy[pKey]; return copy; });
-              setRevealedOwnerKey(null);
-            }
-          }
-          setIdx(nextIdx);
-        };
+        const gotoIndex = (nextIdx) => { setActionFocus(null); setIdx(nextIdx); };
 
         if (e.key === 'ArrowUp') {
           e.preventDefault();
-          if (inReorderMode) { moveItemInReorderMode('up'); }
-          else { gotoIndex(Math.max(0, idx - 1)); }
+          gotoIndex(Math.max(0, idx - 1));
         } else if (e.key === 'ArrowDown') {
           e.preventDefault();
-          if (inReorderMode) { moveItemInReorderMode('down'); }
-          else { gotoIndex(Math.min(rows.length - 1, idx + 1)); }
+          gotoIndex(Math.min(rows.length - 1, idx + 1));
         } else if (e.key === 'ArrowLeft') {
           e.preventDefault();
-          if (inReorderMode) { commitReorder(); return; }
-          if (sel.type === 'settings-panel') { setSettingsOpen(s => ({ ...s, [sel.key]: false })); return; }
-          if (sel.type === 'settings-button' || sel.type === 'prompt') {
-            const ownerIdx = Math.max(0, idx - 1);
-            const currentOwner = revealedOwnerKey;
-            if (currentOwner) {
-              const pKey = `spanel:${currentOwner}`; setSettingsOpen(prev => { if (!prev[pKey]) return prev; const copy = { ...prev }; delete copy[pKey]; return copy; });
-            }
-            setRevealedOwnerKey(null);
-            setIdx(ownerIdx);
+          // universal back: close settings if open, else step up path
+          if (sel.type === 'module-item' && isSettingsOpenFor(sel)) {
+            setSettingsOpen(s => { const k = `spanel:mod:${sel.moduleId}`; const cp = { ...s }; delete cp[k]; return cp; });
             return;
           }
-          if (sel.canReorder) {
-            setReorderState({ rowKey: sel.key, dbId: sel.dbId || sel.moduleId, type: sel.type, originalIdx: idx, originalPos: sel.pos, currentPos: sel.pos });
+          if (sel.type === 'instr' && isSettingsOpenFor(sel)) {
+            setSettingsOpen(s => { const k = `spanel:instr:${sel.dbId}`; const cp = { ...s }; delete cp[k]; return cp; });
             return;
           }
           if (path.length > 1) {
             const newPath = path.slice(0, -1);
             const pathKey = newPath.join('/'); const savedIdx = navHistory[pathKey];
-            setRevealedOwnerKey(null); setSettingsOpen({});
             setPath(newPath);
             setIdx(savedIdx !== undefined ? savedIdx : (newPath.length === 1 ? 2 : 3));
+            return;
           }
         } else if (e.key === 'ArrowRight') {
           e.preventDefault();
+          // Move-first: focus Move and start moving
           if (sel.type === 'module-item' || sel.type === 'instr') {
-            const defaultIndex = 0; // view for module, settings for instr (both index 0 in their lists)
-            setActionMode({ rowKey: sel.key, index: defaultIndex });
+            setActionFocus({ rowKey: sel.key, action: 'move' });
+            startMove(sel);
             return;
           }
-          if (inReorderMode) { commitReorder(); return; }
-          if (sel.type === 'adder-mod') { openOmniAddModule(); }
+          if (sel.type === 'adder-mod') { openOmniAddModule(); return; }
         } else if (e.key === 'Enter') {
           e.preventDefault();
-          if (inReorderMode) { commitReorder(); return; }
-          if (sel.type === 'adder-mod') { openOmniAddModule(); }
+          if (sel.type === 'module-item') {
+            const pathKey = path.join('/'); setNavHistory(h => ({ ...h, [pathKey]: rows.findIndex(r => r.key === sel.key) }));
+            setPath([...path, sel.moduleId]); setIdx(3); return;
+          }
+          if (sel.type === 'instr') {
+            openAndFocusSettings('instr', sel.dbId); return;
+          }
+          if (sel.type === 'adder-mod') { openOmniAddModule(); return; }
         } else if (e.key === 'Escape') {
           e.preventDefault();
-          if (inReorderMode) { setReorderState(null); return; }
-          if (revealedOwnerKey) {
-            const pKey = `spanel:${revealedOwnerKey}`;
-            setSettingsOpen(prev => { if (!prev[pKey]) return prev; const copy = { ...prev }; delete copy[pKey]; return copy; });
-            setRevealedOwnerKey(null);
+          if (path.length > 1) {
+            const newPath = path.slice(0, -1);
+            const pathKey = newPath.join('/'); const savedIdx = navHistory[pathKey];
+            setPath(newPath);
+            setIdx(savedIdx !== undefined ? savedIdx : (newPath.length === 1 ? 2 : 3));
+            return;
           }
         }
       }, [
-        rows, idx, reorderState, path, navHistory, revealedOwnerKey,
-        moveItemInReorderMode, commitReorder, settingsOpen, atModule, module,
-        omniActive, actionMode, actionsForRow, executeRowAction, openOmniAddModule
+        rows, idx, path, navHistory,
+        omniActive, openOmniAddModule,
+        isSettingsOpenFor, openAndFocusSettings,
+        actionFocus, setActionFocus, nextActionForRow,
+        startMove, moveItemInReorderMode, commitIfMoving, executeRowAction
       ]);
 
       useEffect(() => { window.addEventListener('keydown', handleKeyDown); return () => window.removeEventListener('keydown', handleKeyDown); }, [handleKeyDown]);
@@ -996,220 +929,39 @@
         const rowIdx = rows.findIndex(r => r.key === row.key);
         if (rowIdx !== -1) setIdx(rowIdx);
 
+        if (row.type === 'root') { navigateToPath([path[0]], true); return; }
         if (row.type === 'adder-mod') { openOmniAddModule(); return; }
 
         if (row.type === 'module-item') {
-          const key = `mod:${row.moduleId}`;
-          if (revealedOwnerKey !== key) {
-            setRevealedOwnerKey(key);
-          } else {
-            const pathKey = path.join('/'); setNavHistory(h => ({ ...h, [pathKey]: rowIdx }));
-            setRevealedOwnerKey(null); setSettingsOpen({});
-            setPath([...path, row.moduleId]); setIdx(3);
-          }
+          const key = `spanel:mod:${row.moduleId}`;
+          setSettingsOpen(s => ({ ...s, [key]: s[key] ? false : true }));
+          setActionFocus(null);
         } else if (row.type === 'instr') {
-          const key = `instr:${row.dbId}`;
-          if (revealedOwnerKey !== key) {
-            setRevealedOwnerKey(key);
-          }
-        } else if (row.type === 'settings-button') {
-          const pKey = row.ownerType === 'module' ? `spanel:mod:${row.ownerId}` : `spanel:instr:${row.ownerId}`;
-          setSettingsOpen(s => ({ ...s, [pKey]: !s[pKey] }));
-        } else {
-          if (revealedOwnerKey) {
-            const ok = ownerKeyOfRow(row);
-            if (ok !== revealedOwnerKey) { setRevealedOwnerKey(null); setSettingsOpen({}); }
-          }
+          const key = `spanel:instr:${row.dbId}`;
+          setSettingsOpen(s => ({ ...s, [key]: s[key] ? false : true }));
+          setActionFocus(null);
         }
-      }, [rows, path, revealedOwnerKey, openOmniAddModule]);
+      }, [rows, path, navigateToPath, openOmniAddModule]);
 
-      /* Omnisearch state & helpers passed down */
-      const promptText = useMemo(() => {
-        let text = '(: Smile Composer\n    ' + store.get(`n-${agent.name}`, agent.name);
-        if (atModule) {
-          text += path.slice(1).map(mid => {
-            const m = store.getDbItem(mid);
-            const name = m ? displayNameFor(store, m, mid) : '';
-            return m ? '\n        ' + name : '';
-          }).join('');
-        }
-        return text;
-      }, [path, agent, atModule, store, storeVersion]);
+      useEffect(() => {
+        const hash = '#' + path.join('/'); if (window.location.hash !== hash) window.history.pushState(null, '', hash);
+        if (!window.location.hash) setIdx(path.length === 1 ? 2 : 3);
+      }, [path]);
 
-      const allTextContent = useMemo(() => {
-        let parts = [];
-        if (atModule && module) {
-          const ids = store.get(`items-${module.name}`, module.items || []);
-          ids.forEach(id => {
-            const it = store.getDbItem(id); if (!it) return;
-            const name = store.get(`nn-${id}`, displayNameFor(store, it, id));
-            const text = store.get(`t-${it.name}`, it.text || '');
-            const meta = store.get(`meta-${id}`, '');
-            parts.push(`${name}\n${text}${meta ? `\n(meta) ${meta}` : ''}`);
-          });
-        } else if (agent) {
-          const mods = store.get(`mods-${agent.name}`, agent.modules || []);
-          mods.forEach(mid => {
-            const m = store.getDbItem(mid); if (!m) return;
-            const mname = displayNameFor(store, m, mid);
-            parts.push(`== ${mname} ==`);
-            const ids = store.get(`items-${m.name}`, m.items || []);
-            ids.forEach(id => {
-              const it = store.getDbItem(id); if (!it) return;
-              const name = store.get(`nn-${id}`, displayNameFor(store, it, id));
-              const text = store.get(`t-${it.name}`, it.text || '');
-              const meta = store.get(`meta-${id}`, '');
-              parts.push(`${name}\n${text}${meta ? `\n(meta) ${meta}` : ''}`);
-            });
-          });
-        }
-        return parts.join('\n\n');
-      }, [storeVersion, path, atModule, module, agent, store]);
+      useEffect(() => {
+        const handlePopState = () => {
+          const hash = window.location.hash.slice(1);
+          if (hash) {
+            const parts = hash.split('/').filter(Boolean);
+            if (parts.length > 0) navigateToPath(parts, true);
+          } else navigateToPath(['expert-maker'], true);
+        };
+        window.addEventListener('popstate', handlePopState);
+        return () => window.removeEventListener('popstate', handlePopState);
+      }, [navigateToPath]);
 
-      const outputKey = atModule && module ? `output-${module.name}` : `output-${agent.name}`;
-      const outputDefault = atModule ? '' : agent.output;
-
-      return (
-        <div className="container">
-          {/* Omnisearch header */}
-          <div className="omni">
-            <div className="omni-bar">
-              <input
-                className="omni-input"
-                placeholder="Omnisearch — press / to open, Tab switches modes"
-                value={omniActive ? omniQuery : ''}
-                readOnly={!omniActive}
-                onFocus={() => omniActive ? null : openOmniAddModule()}
-                onChange={e => setOmniQuery(e.target.value)}
-              />
-              <div className={`omni-mode ${omniActive ? 'show' : ''}`}>
-                <button className={omniMode === 'search' ? 'active' : ''} onClick={() => setOmniMode('search')}>Search</button>
-                <button className={omniMode === 'browse' ? 'active' : ''} onClick={() => setOmniMode('browse')}>Browse</button>
-              </div>
-              <button className="btn" title="Add Module" onClick={openOmniAddModule}>Add Module</button>
-            </div>
-          </div>
-
-          <OmniSearch
-            store={store} path={path} atModule={atModule} agent={agent} module={module}
-            omniActive={omniActive} setOmniActive={setOmniActive}
-            omniMode={omniMode} setOmniMode={setOmniMode}
-            omniQuery={omniQuery} setOmniQuery={setOmniQuery}
-            omniIndex={omniIndex} setOmniIndex={setOmniIndex}
-            omniFilterType={omniFilterType} omniIntent={omniIntent}
-            navigateToPath={navigateToPath}
-            attachModuleToAgent={attachModuleToAgent}
-            attachInstruction={attachInstruction}
-            createNewAgent={createNewAgent}
-            createNewModule={createNewModule}
-            createNewInstruction={createNewInstruction}
-          />
-
-          {/* Main Composer */}
-          <div className="panel">
-            <div className="panel-title">
-              <span>Smile Composer</span>
-              <div className="panel-title-right">
-                <span className="panel-subtle">Right → shows actions • Left/Right choose • Enter/Down runs • Esc closes</span>
-                <button className="btn" onClick={openOmniAddModule}>Add Module</button>
-              </div>
-            </div>
-            {rows.map((row, i) => {
-              const isSelected = i === idx;
-              const inReorderMode = reorderState && row.key === reorderState.rowKey;
-              const isDragging = dragItem && dragItem.key === row.key;
-              const isDropTarget = dragOver === row.key;
-
-              return (
-                <LineRenderer
-                  key={row.key}
-                  row={row}
-                  isSelected={isSelected}
-                  inReorderMode={!!inReorderMode}
-                  isDragging={!!isDragging}
-                  isDropTarget={!!isDropTarget}
-                  store={store}
-                  onLineClick={handleLineClick}
-                  onTextChange={updateData}
-                  onDragStart={handleDragStart}
-                  onDragOver={handleDragOver}
-                  onDrop={handleDrop}
-                  onDragEnd={handleDragEnd}
-                  onTouchStartRow={onTouchStartRow}
-                  onTouchMoveRow={onTouchMoveRow}
-                  onTouchEndRow={onTouchEndRow}
-                  onSettingsDuplicate={(row) => {
-                    if (row.ownerType === 'instr') duplicateItem(row.ownerId, false);
-                    else duplicateItem(row.ownerId, true);
-                  }}
-                  onSettingsMove={(row) => {
-                    const ownerRow = rows.find(r =>
-                      (row.ownerType === 'instr' && r.type === 'instr' && r.dbId === row.ownerId) ||
-                      (row.ownerType === 'module' && r.type === 'module-item' && r.moduleId === row.ownerId)
-                    );
-                    if (!ownerRow) return;
-                    const i = rows.findIndex(r => r.key === ownerRow.key);
-                    setIdx(i);
-                    setReorderState({ rowKey: ownerRow.key, dbId: ownerRow.dbId || ownerRow.moduleId, type: ownerRow.type, originalIdx: i, originalPos: ownerRow.pos, currentPos: ownerRow.pos });
-                  }}
-                  onSettingsDelete={(row) => { if (row.ownerType === 'instr') removeItemById(row.ownerId); else removeModuleById(row.ownerId); }}
-                  onActionExecute={onActionExecute}
-                  onActionEnter={onActionEnter}
-                  getStruct={(k) => store.get(k, 'heavy')}
-                  setStruct={(k,v) => updateData(k, v)}
-                  getNameOverride={(k, f) => store.get(k, f || '')}
-                  setNameOverride={(k, v) => updateData(k, v)}
-                  getMeta={(k) => store.get(k, '')}
-                  setMeta={(k, v) => updateData(k, v)}
-                  setRowRef={setRowRef}
-                  actionModeRowKey={actionMode ? actionMode.rowKey : null}
-                  actionIndex={actionMode ? actionMode.index : -1}
-                />
-              );
-            })}
-          </div>
-
-          {/* Lower panels moved down */}
-          <div className="panel">
-            <div className="panel-title"><span>Structure</span></div>
-            <TreeView store={store} path={path} onNavigate={navigateToPath} storeVersion={storeVersion} />
-          </div>
-
-          <div className="panel">
-            <div className="panel-title"><span>Prompt</span></div>
-            <textarea readOnly value={promptText} className="underline-textarea" style={{ minHeight: '120px' }} />
-            <div style={{ height: 8 }}></div>
-            <button className="btn" data-hotkey-scope="ui" onClick={() => {
-              const wrap = document.getElementById('alltext-wrapper');
-              if (wrap) wrap.style.display = (wrap.style.display === 'none' ? '' : 'none');
-            }}>Show / Hide All Text</button>
-            <div id="alltext-wrapper" style={{ marginTop: 8 }}>
-              <textarea className="alltext" readOnly value={allTextContent}></textarea>
-            </div>
-          </div>
-
-          <div className="panel">
-            <div className="panel-title">
-              <span>Output</span>
-              <button className="btn" data-hotkey-scope="ui" onClick={resetAll}>Reset All</button>
-            </div>
-            <textarea className="underline-textarea" value={store.get(outputKey, outputDefault)} onChange={e => updateData(outputKey, e.target.value)} style={{ minHeight: '150px' }}></textarea>
-          </div>
-        </div>
-      );
-    }
-
-    /* ---------- OmniSearch ---------- */
-    function OmniSearch({
-      store, path, atModule, agent, module,
-      omniActive, setOmniActive,
-      omniMode, setOmniMode,
-      omniQuery, setOmniQuery,
-      omniIndex, setOmniIndex,
-      omniFilterType, omniIntent,
-      navigateToPath, attachModuleToAgent, attachInstruction, createNewAgent, createNewModule, createNewInstruction
-    }) {
-      const inputRef = useRef(null);
+      /* ---------- Omnisearch logic (inline) ---------- */
+      const omniInputRef = useRef(null);
       const db = store.getAllDb();
       const agentModules = useMemo(() => agent ? (store.get(`mods-${agent.name}`, agent.modules || [])) : [], [store, agent]);
 
@@ -1354,13 +1106,23 @@
 
       useEffect(() => {
         if (!omniActive) return;
-        const t = setTimeout(() => { inputRef.current && inputRef.current.focus(); }, 0);
+        const t = setTimeout(() => { omniInputRef.current && omniInputRef.current.focus(); }, 0);
         return () => clearTimeout(t);
       }, [omniActive]);
 
-      useEffect(() => { setOmniIndex(0); }, [omniMode, omniQuery, setOmniIndex, omniFilterType, omniIntent]);
+      useEffect(() => { setOmniIndex(0); }, [omniMode, omniQuery, omniFilterType, omniIntent]);
 
-      const onKeyDown = (e) => {
+      const actOnRow = (row) => {
+        if (!row) return;
+        if (row.type === 'agent') { navigateToPath([row.id], true); setOmniActive(false); return; }
+        if (row.type === 'mod')   { attachModuleToAgent(row.id); navigateToPath([path[0], row.id], true); setOmniActive(false); return; }
+        if (row.type === 'instr') { attachInstruction(row.id); setOmniActive(false); return; }
+        if (row.type === 'create-agent') { createNewAgent(omniQuery.trim()); setOmniActive(false); return; }
+        if (row.type === 'create-mod')   { createNewModule(omniQuery.trim()); setOmniActive(false); return; }
+        if (row.type === 'create-instr') { createNewInstruction(omniQuery.trim()); setOmniActive(false); return; }
+      };
+
+      const onOmniKeyDown = (e) => {
         if (!omniActive) return;
         const has = visibleRows.length > 0;
         if (e.key === 'Tab') {
@@ -1382,53 +1144,189 @@
         }
       };
 
-      const actOnRow = (row) => {
-        if (!row) return;
-        if (row.type === 'agent') { navigateToPath([row.id], true); setOmniActive(false); return; }
-        if (row.type === 'mod')   { attachModuleToAgent(row.id); navigateToPath([path[0], row.id], true); setOmniActive(false); return; }
-        if (row.type === 'instr') { attachInstruction(row.id); setOmniActive(false); return; }
-        if (row.type === 'create-agent') { createNewAgent(omniQuery.trim()); setOmniActive(false); return; }
-        if (row.type === 'create-mod')   { createNewModule(omniQuery.trim()); setOmniActive(false); return; }
-        if (row.type === 'create-instr') { createNewInstruction(omniQuery.trim()); setOmniActive(false); return; }
-      };
+      /* Prompt & Output mirrors */
+      const promptText = useMemo(() => {
+        let text = '(: Smile Composer\n    ' + store.get(`n-${agent.name}`, agent.name);
+        if (atModule) {
+          text += path.slice(1).map(mid => {
+            const m = store.getDbItem(mid);
+            const name = m ? displayNameFor(store, m, mid) : '';
+            return m ? '\n        ' + name : '';
+          }).join('');
+        }
+        return text;
+      }, [path, agent, atModule, store, storeVersion]);
 
-      return omniActive ? (
-        <div className="omni-drawer">
-          <div className="subtle" style={{ margin: '4px 6px 8px 6px' }}>
-            {omniMode === 'search'
-              ? (omniIntent === 'add-module' && omniFilterType === 'mod' && (omniQuery || '').trim()===''
-                  ? 'Suggested modules (most used) • Enter to add • Tab to switch modes'
-                  : 'Search names, text, meta in this project and library • Enter to open/add • Tab to switch modes')
-              : 'Browse current project and library • Enter to open or attach'}
-          </div>
-          <div className="omni-list">
-            {visibleRows.length === 0 && (<div className="omni-item"><span>No matches</span></div>)}
-            {visibleRows.map((r, i) => (
-              r.type === 'label' ? (
-                <div key={r.id} className="subtle" style={{ padding: '6px 2px 2px 2px' }}>{r.name}</div>
-              ) : (
-                <div
-                  key={r.type + ':' + r.id + ':' + i}
-                  className={`omni-item${i === omniIndex ? ' sel' : ''}`}
-                  onMouseEnter={() => setOmniIndex(i)}
-                  onClick={() => actOnRow(r)}
-                >
-                  <span>{r.name}</span>
-                  <span className="badge">{r.type}{r.scope ? ` • ${r.scope}` : ''}{r.suggested ? ' • suggested' : ''}</span>
+      const allTextContent = useMemo(() => {
+        let parts = [];
+        if (atModule && module) {
+          const ids = store.get(`items-${module.name}`, module.items || []);
+          ids.forEach(id => {
+            const it = store.getDbItem(id); if (!it) return;
+            const name = store.get(`nn-${id}`, displayNameFor(store, it, id));
+            const text = store.get(`t-${it.name}`, it.text || '');
+            const meta = store.get(`meta-${id}`, '');
+            parts.push(`${name}\n${text}${meta ? `\n(meta) ${meta}` : ''}`);
+          });
+        } else if (agent) {
+          const mods = store.get(`mods-${agent.name}`, agent.modules || []);
+          mods.forEach(mid => {
+            const m = store.getDbItem(mid); if (!m) return;
+            const mname = displayNameFor(store, m, mid);
+            parts.push(`== ${mname} ==`);
+            const ids = store.get(`items-${m.name}`, m.items || []);
+            ids.forEach(id => {
+              const it = store.getDbItem(id); if (!it) return;
+              const name = store.get(`nn-${id}`, displayNameFor(store, it, id));
+              const text = store.get(`t-${it.name}`, it.text || '');
+              const meta = store.get(`meta-${id}`, '');
+              parts.push(`${name}\n${text}${meta ? `\n(meta) ${meta}` : ''}`);
+            });
+          });
+        }
+        return parts.join('\n\n');
+      }, [storeVersion, path, atModule, module, agent, store]);
+
+      const outputKey = atModule && module ? `output-${module.name}` : `output-${agent.name}`;
+      const outputDefault = atModule ? '' : agent.output;
+
+      return (
+        <div className="container">
+          {/* Omnisearch header */}
+          <div className="omni">
+            <div className="omni-bar">
+              <input
+                className="omni-input"
+                placeholder="Omnisearch — press / to open, Tab switches modes"
+                value={omniActive ? omniQuery : ''}
+                readOnly={!omniActive}
+                onFocus={() => omniActive ? null : openOmniAddModule()}
+                onChange={e => setOmniQuery(e.target.value)}
+              />
+              <div className={`omni-mode ${omniActive ? 'show' : ''}`}>
+                <button className={omniMode === 'search' ? 'active' : ''} onClick={() => setOmniMode('search')}>Search</button>
+                <button className={omniMode === 'browse' ? 'active' : ''} onClick={() => setOmniMode('browse')}>Browse</button>
+              </div>
+              <button className="btn" title="Add Module" onClick={openOmniAddModule}>Add Module</button>
+            </div>
+            {omniActive && (
+              <div className="omni-drawer">
+                <div className="subtle" style={{ margin: '4px 6px 8px 6px' }}>
+                  {omniMode === 'search'
+                    ? (omniIntent === 'add-module' && omniFilterType === 'mod' && (omniQuery || '').trim()===''
+                        ? 'Suggested modules (most used) • Enter to add • Tab to switch modes'
+                        : 'Search names, text, meta in this project and library • Enter to open/add • Tab to switch modes')
+                    : 'Browse current project and library • Enter to open or attach'}
                 </div>
-              )
-            ))}
+                <div className="omni-list">
+                  {visibleRows.length === 0 && (<div className="omni-item"><span>No matches</span></div>)}
+                  {visibleRows.map((r, i) => (
+                    r.type === 'label' ? (
+                      <div key={r.id} className="subtle" style={{ padding: '6px 2px 2px 2px' }}>{r.name}</div>
+                    ) : (
+                      <div
+                        key={r.type + ':' + r.id + ':' + i}
+                        className={`omni-item${i === omniIndex ? ' sel' : ''}`}
+                        onMouseEnter={() => setOmniIndex(i)}
+                        onClick={() => actOnRow(r)}
+                      >
+                        <span>{r.name}</span>
+                        <span className="badge">{r.type}{r.scope ? ` • ${r.scope}` : ''}{r.suggested ? ' • suggested' : ''}</span>
+                      </div>
+                    )
+                  ))}
+                </div>
+                <input
+                  ref={omniInputRef}
+                  className="omni-input"
+                  style={{ width: '1px', height: '1px', opacity: 0, pointerEvents: 'none', position: 'absolute' }}
+                  value={omniQuery}
+                  onChange={()=>{}}
+                  onKeyDown={onOmniKeyDown}
+                />
+              </div>
+            )}
           </div>
-          <input
-            ref={inputRef}
-            className="omni-input"
-            style={{ width: '1px', height: '1px', opacity: 0, pointerEvents: 'none', position: 'absolute' }}
-            value={omniQuery}
-            onChange={()=>{}}
-            onKeyDown={onKeyDown}
-          />
+
+          {/* Main Composer */}
+          <div className="panel">
+            <div className="panel-title">
+              <span className="clickable" onClick={() => navigateToPath([path[0]], true)}>Smile Composer</span>
+              <div className="panel-title-right">
+                <span className="panel-subtle">Right = Move • Up/Down = reorder • Enter leaves Move • Left/Esc = Back • Drag to reorder • / = Omnisearch</span>
+                <button className="btn" onClick={openOmniAddModule}>Add Module</button>
+              </div>
+            </div>
+            {rows.map((row, i) => {
+              const isSelected = i === idx;
+              const inReorderMode = reorderState && row.key === reorderState.rowKey;
+              const isDragging = dragItem && dragItem.key === row.key;
+              const isDropTarget = dragOver === row.key;
+
+              return (
+                <LineRenderer
+                  key={row.key}
+                  row={row}
+                  isSelected={isSelected}
+                  inReorderMode={!!inReorderMode}
+                  isDragging={!!isDragging}
+                  isDropTarget={!!isDropTarget}
+                  store={store}
+                  onLineClick={handleLineClick}
+                  onTextChange={updateData}
+                  onDragStart={handleDragStart}
+                  onDragOver={handleDragOver}
+                  onDrop={handleDrop}
+                  onDragEnd={handleDragEnd}
+                  onTouchStartRow={onTouchStartRow}
+                  onTouchMoveRow={onTouchMoveRow}
+                  onTouchEndRow={onTouchEndRow}
+                  onActionExecute={executeRowAction}
+                  getStruct={(k) => store.get(k, 'heavy')}
+                  setStruct={(k,v) => updateData(k, v)}
+                  getNameOverride={(k, f) => store.get(k, f || '')}
+                  setNameOverride={(k, v) => updateData(k, v)}
+                  getMeta={(k) => store.get(k, '')}
+                  setMeta={(k, v) => updateData(k, v)}
+                  setRowRef={setRowRef}
+                  isSettingsOpenFor={isSettingsOpenFor}
+                  actionFocus={actionFocus}
+                  setActionFocus={setActionFocus}
+                  startMove={startMove}
+                  commitIfMoving={commitIfMoving}
+                />
+              );
+            })}
+          </div>
+
+          {/* Lower panels moved down */}
+          <div className="panel">
+            <div className="panel-title"><span>Structure</span></div>
+            <TreeView store={store} path={path} onNavigate={navigateToPath} storeVersion={storeVersion} />
+          </div>
+
+          <div className="panel">
+            <div className="panel-title"><span>Prompt</span></div>
+            <textarea readOnly value={promptText} className="underline-textarea" style={{ minHeight: '120px' }} />
+            <div style={{ height: 8 }}></div>
+            <button className="btn" data-hotkey-scope="ui" onClick={() => {
+              const wrap = document.getElementById('alltext-wrapper');
+              if (wrap) wrap.style.display = (wrap.style.display === 'none' ? '' : 'none');
+            }}>Show / Hide All Text</button>
+            <div id="alltext-wrapper" style={{ marginTop: 8 }}>
+              <textarea className="alltext" readOnly value={allTextContent}></textarea>
+            </div>
+          </div>
+
+          <div className="panel">
+            <div className="panel-title">
+              <span>Output</span>
+              <button className="btn" data-hotkey-scope="ui" onClick={resetAll}>Reset All</button>
+            </div>
+            <textarea className="underline-textarea" value={store.get(outputKey, outputDefault)} onChange={e => updateData(outputKey, e.target.value)} style={{ minHeight: '150px' }}></textarea>
+          </div>
         </div>
-      ) : null;
+      );
     }
 
     try {
