@@ -1,0 +1,985 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Smile Composer - Fixed</title>
+  <script crossorigin src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
+  <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  <style>
+    * { box-sizing: border-box; }
+    body {
+      font-family: -apple-system, system-ui, Segoe UI, Helvetica, Arial, sans-serif;
+      background: white;
+      color: black;
+      padding: 40px;
+      margin: 0;
+    }
+    .container { display: flex; gap: 24px; align-items: flex-start; }
+    .left { flex: 1; min-width: 0; }
+    .right { flex: 0 0 450px; display: flex; flex-direction: column; gap: 24px; }
+    .panel { border: 1px solid #eee; padding: 16px; border-radius: 8px; }
+    .panel-title {
+      font-weight: 600; margin-bottom: 12px;
+      display: flex; justify-content: space-between; align-items: center;
+    }
+
+    .line {
+      user-select: none; padding: 6px 8px; border-radius: 8px;
+      display: block; cursor: pointer; transition: background-color 0.15s ease;
+    }
+    .line.sel { font-weight: 600; background-color: #f5f5f5; }
+    .line.reorder-mode { font-weight: 700; background-color: #f0f0f0; }
+    .line.held { opacity: 0.3; }
+    .line.drop-target { border-top: 3px solid #000; }
+
+    .text-edit { margin-left: 24px; margin-top: 8px; }
+    .text-edit textarea {
+      width: 100%; border: none; border-bottom: 1px solid #ccc; padding: 4px 0;
+      font: inherit; resize: vertical; min-height: 60px; background: transparent; outline: none;
+    }
+    .name-input {
+      border: none; border-bottom: 1px solid #000; font: inherit; padding: 0 2px;
+      background: transparent; min-width: 160px;
+    }
+    textarea, input[type="text"] { font: inherit; }
+    .btn { font: inherit; border: 1px solid #000; background: #fff; padding: 4px 8px; border-radius: 6px; cursor: pointer; font-size: 12px; }
+
+    .search-wrap { padding-left: 24px; margin-top: 8px; }
+    .search-list {
+      max-height: 220px; overflow: auto; border: 1px solid #ddd; border-radius: 6px;
+      margin-top: 6px; background: white;
+    }
+    .search-item { padding: 6px 8px; cursor: pointer; }
+    .search-item:hover { background-color: #f5f5f5; }
+    .search-item.selected { background-color: #e8e8e8; font-weight: 600; }
+    .search-badge { font-size: 11px; border: 1px solid #bbb; border-radius: 10px; padding: 0 6px; margin-left: 6px; }
+
+    .tree-view { max-height: 500px; overflow: auto; font-size: 13px; line-height: 1.8; }
+    .tree-item { padding: 3px 8px; cursor: pointer; user-select: none; border-radius: 4px; }
+    .tree-item:hover { background-color: #f5f5f5; }
+    .tree-item.active { font-weight: 700; background-color: #e8e8e8; }
+
+    .error { color: red; padding: 20px; border: 1px solid red; margin: 20px; }
+  </style>
+</head>
+<body>
+  <div id="root"></div>
+
+  <script type="text/babel" data-presets="env,react">
+  (function() {
+    if (!(window.React && window.ReactDOM)) {
+      document.getElementById('root').innerHTML = '<div class="error">Failed to load React</div>';
+      return;
+    }
+
+    const { useState, useEffect, useRef, useCallback, useMemo } = React;
+
+    // ===== INITIAL DATABASE =====
+    const INITIAL_DB = {
+      'expert-maker': {
+        name: 'Expert Maker',
+        type: 'agent',
+        input: 'Question',
+        output: 'Answer',
+        modules: ['meta-info', 'jargon-cot', 'identify-mistakes']
+      },
+      'input-mod': {
+        name: 'INPUT: Question',
+        type: 'mod',
+        items: ['input-enter', 'input-understand', 'input-result']
+      },
+      'output-mod': {
+        name: 'OUTPUT: Answer',
+        type: 'mod',
+        items: ['output-enter', 'output-understand', 'output-result']
+      },
+      'meta-info': {
+        name: 'Meta-Information MegaBrick',
+        type: 'mod',
+        items: ['smile-info', 'llm-info', 'user-info']
+      },
+      'jargon-cot': {
+        name: 'Jargon CoT',
+        type: 'mod',
+        items: ['emoji-section', 'bold-words', 'top-bottom']
+      },
+      'identify-mistakes': {
+        name: 'Identify Mistakes and Rewrite',
+        type: 'mod',
+        items: ['emoji-section', 'bold-words', 'negative-rewrite']
+      },
+      'smile-info': { name: 'Information About (: Smile', type: 'instr', text: 'Explain Smile syntax: (: flexible, [: rigid, [= literal.' },
+      'llm-info': { name: 'Information About LLMs', type: 'instr', text: 'Meta-knowledge about how LLMs process instructions.' },
+      'user-info': { name: 'Information About User', type: 'instr', text: 'Contextualize user needs and goals.' },
+      'emoji-section': { name: 'Emoji section name', type: 'instr', text: 'Use two emoticons for section names.' },
+      'bold-words': { name: 'Bold for important words', type: 'instr', text: 'Use **bold** for attention retention over long contexts.' },
+      'top-bottom': { name: 'Maximize adherence through top+bottom replication', type: 'instr', text: 'Replicate critical instructions at beginning and end.' },
+      'negative-rewrite': { name: 'Identify negatives and rewrite to positive', type: 'instr', text: 'Find negatives like "not" and rewrite as positive articulations.' },
+      'input-enter': { name: 'Provide Input', type: 'instr', text: 'Enter or paste the incoming question or payload in full fidelity.' },
+      'input-understand': { name: 'Reasoning / Understanding', type: 'instr', text: 'Interpret the input; list goals, constraints, and ambiguities.' },
+      'input-result': { name: 'Synthesis (Input + Understanding)', type: 'instr', text: 'Combine the raw input with the understanding into a structured representation.' },
+      'output-enter': { name: 'Draft Output', type: 'instr', text: 'Produce an initial answer or output shape based on the current state.' },
+      'output-understand': { name: 'Quality / Checks', type: 'instr', text: 'Reason about correctness, coverage, and criteria; refine the output.' },
+      'output-result': { name: 'Final Output', type: 'instr', text: 'Deliver the polished final output after reasoning and checks.' }
+    };
+
+    // ===== DATA STORE =====
+    class DataStore {
+      constructor() {
+        this.data = this.loadFromStorage();
+        this.db = { ...INITIAL_DB };
+        this.version = 0;
+      }
+      loadFromStorage() {
+        try {
+          const stored = localStorage.getItem('smileData');
+          return stored ? JSON.parse(stored) : {};
+        } catch (e) { return {}; }
+      }
+      saveToStorage(data) {
+        try { localStorage.setItem('smileData', JSON.stringify(data)); } catch (e) {}
+      }
+      get(key, def) { return key in this.data ? this.data[key] : def; }
+      set(key, value) { this.data = { ...this.data, [key]: value }; this.version++; this.saveToStorage(this.data); return this.data; }
+      reset() { this.data = {}; localStorage.removeItem('smileData'); this.db = { ...INITIAL_DB }; this.version++; return this.data; }
+      getDbItem(id) { return this.db[id] || null; }
+      addCustomDbItem(id, item) { this.db[id] = item; this.version++; }
+      getAllDb() { return this.db; }
+      getVersion() { return this.version; }
+    }
+
+    // ===== UTIL =====
+    const moveInList = (arr, fromPos, toPos) => {
+      if (fromPos === toPos || fromPos < 0 || toPos < 0 || fromPos >= arr.length) return arr;
+      const newArr = [...arr];
+      const [item] = newArr.splice(fromPos, 1);
+      const insertPos = Math.min(toPos, newArr.length);
+      newArr.splice(insertPos, 0, item);
+      return newArr;
+    };
+
+    // Visual array for movement mode (we no longer allow landing on footer rows)
+    const getVisualArrayOrder = (arr, reorderState) => {
+      if (!reorderState || reorderState.originalPos === undefined) {
+        return arr.map((item, idx) => ({ item, originalPos: idx }));
+      }
+      if (reorderState.moveToDelete || reorderState.moveToCancel) {
+        return arr
+          .map((item, idx) => ({ item, originalPos: idx }))
+          .filter((_, idx) => idx !== reorderState.originalPos);
+      }
+      if (reorderState.currentPos === undefined) {
+        return arr.map((item, idx) => ({ item, originalPos: idx }));
+      }
+      const enriched = arr.map((item, idx) => ({ item, originalPos: idx }));
+      return moveInList(enriched, reorderState.originalPos, reorderState.currentPos);
+    };
+
+    const searchDatabase = (db, query, types = null) => {
+      const lower = (query || '').toLowerCase().trim();
+      if (!lower) return [];
+      const out = [];
+      Object.keys(db).forEach(k => {
+        const item = db[k];
+        if (types && !types.includes(item.type)) return;
+        const nameMatch = (item.name || '').toLowerCase().includes(lower);
+        const textMatch = item.text ? (item.text || '').toLowerCase().includes(lower) : false;
+        if (nameMatch || textMatch) out.push({ id: k, name: item.name, type: item.type });
+      });
+      return out;
+    };
+
+    // ===== ROW BUILDER =====
+    class RowBuilder {
+      constructor(store, path, reorderState, currentIdx) {
+        this.store = store;
+        this.path = path;
+        this.reorderState = reorderState;
+        this.currentIdx = currentIdx;
+        this.rows = [];
+      }
+      build() {
+        this.addRoot();
+        this.addAgent();
+        this.addBreadcrumbs();
+        if (this.isAtModule()) this.addModuleContent();
+        else this.addAgentModules();
+        return this.rows;
+      }
+      addRoot() { this.rows.push({ key: 'root', type: 'root', depth: 0, label: '(: Smile Composer' }); }
+      addAgent() {
+        const agent = this.getAgent(); if (!agent) return;
+        this.rows.push({
+          key: `agent:${this.path[0]}`,
+          type: 'agent',
+          depth: 1,
+          label: this.store.get(`n-${agent.name}`, agent.name)
+        });
+      }
+      addBreadcrumbs() {
+        if (this.path.length <= 2) return;
+        for (let i = 1; i < this.path.length - 1; i++) {
+          const breadcrumbMod = this.store.getDbItem(this.path[i]); if (!breadcrumbMod) continue;
+          this.rows.push({
+            key: `breadcrumb:${i}`,
+            type: 'breadcrumb',
+            depth: i + 1,
+            label: this.store.get(`n-${breadcrumbMod.name}`, breadcrumbMod.name),
+            pathIndex: i
+          });
+        }
+      }
+      addModuleContent() {
+        const module = this.getCurrentModule(); if (!module) return;
+        const moduleDBKey = this.path[this.path.length - 1];
+        this.rows.push({
+          key: `module:${moduleDBKey}`,
+          type: 'module',
+          depth: 2,
+          label: this.store.get(`n-${module.name}`, module.name),
+          moduleId: moduleDBKey
+        });
+
+        const items = this.store.get(`items-${module.name}`, module.items || []);
+        const visualItems = (this.reorderState && this.reorderState.type === 'instr')
+          ? getVisualArrayOrder(items, this.reorderState)
+          : getVisualArrayOrder(items, null);
+
+        if (Array.isArray(visualItems)) {
+          visualItems.forEach(({ item: id, originalPos }, visualPos) => {
+            const ins = this.store.getDbItem(id); if (!ins) return;
+            this.rows.push({
+              key: `ins:${id}:${originalPos}`,
+              type: 'instr',
+              depth: 3,
+              label: this.store.get(`n-${ins.name}`, ins.name),
+              nameKey: `n-${ins.name}`,
+              textKey: `t-${ins.name}`,
+              defaultText: ins.text || '',
+              dbId: id,
+              pos: originalPos,
+              visualPos,
+              canReorder: true
+            });
+          });
+        }
+
+        const reorderingItem = this.findReorderingItem();
+        const addIndex = this.rows.length;
+        const addSuffix = (this.reorderState && this.currentIdx === addIndex && reorderingItem)
+          ? ' - ' + this.store.get(reorderingItem.nameKey || reorderingItem.textKey, reorderingItem.label)
+          : '';
+        this.rows.push({ key: `adder-${module.name}`, type: 'adder', depth: 3, label: '+ Add Instruction' + addSuffix });
+
+        if (this.reorderState) {
+          const delIndex = this.rows.length;
+          const delSuffix = (this.currentIdx === delIndex && reorderingItem)
+            ? ' - ' + this.store.get(reorderingItem.nameKey || reorderingItem.textKey, reorderingItem.label)
+            : '';
+          this.rows.push({ key: 'trash', type: 'trash', depth: 3, label: '- Delete Instruction' + delSuffix });
+
+          const cancelIndex = this.rows.length;
+          const cancelSuffix = (this.currentIdx === cancelIndex && reorderingItem)
+            ? ' - ' + this.store.get(reorderingItem.nameKey || reorderingItem.textKey, reorderingItem.label)
+            : '';
+          this.rows.push({ key: 'cancel-reorder', type: 'cancel-reorder', depth: 3, label: '[Esc] Cancel Movement' + cancelSuffix });
+        }
+      }
+      addAgentModules() {
+        const agent = this.getAgent(); if (!agent) return;
+        const modules = this.store.get(`mods-${agent.name}`, agent.modules || []);
+        const visualModules = (this.reorderState && this.reorderState.type === 'module-item')
+          ? getVisualArrayOrder(modules, this.reorderState)
+          : getVisualArrayOrder(modules, null);
+
+        if (Array.isArray(visualModules)) {
+          visualModules.forEach(({ item: mid, originalPos }, visualPos) => {
+            const mod = this.store.getDbItem(mid); if (!mod) return;
+            this.rows.push({
+              key: `mod:${mid}:${originalPos}`,
+              type: 'module-item',
+              depth: 2,
+              label: this.store.get(`n-${mod.name}`, mod.name),
+              nameKey: `n-${mod.name}`,
+              moduleId: mid,
+              pos: originalPos,
+              visualPos,
+              canReorder: true
+            });
+          });
+        }
+
+        const reorderingItem = this.findReorderingItem();
+        const addIndex = this.rows.length;
+        const addSuffix = (this.reorderState && this.currentIdx === addIndex && reorderingItem)
+          ? ' - ' + this.store.get(reorderingItem.nameKey, reorderingItem.label) : '';
+        this.rows.push({ key: `adder-mod-${agent.name}`, type: 'adder-mod', depth: 2, label: '+ Add Module' + addSuffix });
+
+        const deleteIndex = this.rows.length;
+        const deleteSuffix = (this.reorderState && this.currentIdx === deleteIndex && reorderingItem)
+          ? ' - ' + this.store.get(reorderingItem.nameKey, reorderingItem.label) : '';
+        this.rows.push({ key: 'trash', type: 'trash', depth: 2, label: '- Delete Module' + deleteSuffix });
+
+        if (this.reorderState) {
+          const cancelIndex = this.rows.length;
+          const cancelSuffix = (this.currentIdx === cancelIndex && reorderingItem)
+            ? ' - ' + this.store.get(reorderingItem.nameKey, reorderingItem.label) : '';
+          this.rows.push({ key: 'cancel-reorder', type: 'cancel-reorder', depth: 2, label: '[Esc] Cancel Movement' + cancelSuffix });
+        }
+      }
+      findReorderingItem() {
+        if (!this.reorderState) return null;
+        const row = this.rows.find(r => r.key === this.reorderState.rowKey);
+        if (row) return row;
+        const dbItem = this.store.getDbItem(this.reorderState.dbId); if (!dbItem) return null;
+        const nameKey = `n-${dbItem.name}`;
+        const textKey = dbItem.text !== undefined ? `t-${dbItem.name}` : undefined;
+        const label = this.store.get(nameKey, dbItem.name);
+        return { key: `fallback:${this.reorderState.dbId}`, type: this.reorderState.type, label, nameKey, textKey };
+      }
+      isAtModule() { return this.path.length >= 2; }
+      getAgent() { return this.store.getDbItem(this.path[0]); }
+      getCurrentModule() { return this.isAtModule() ? this.store.getDbItem(this.path[this.length - 1]) : null; }
+      // fix: correct accessor
+      getCurrentModule() { return this.isAtModule() ? this.store.getDbItem(this.path[this.path.length - 1]) : null; }
+    }
+
+    // ===== TREE =====
+    function TreeView({ store, path, onNavigate, storeVersion }) {
+      const renderModule = useCallback((modId, parentPath, depth) => {
+        const mod = store.getDbItem(modId); if (!mod) return null;
+        const modulePath = [...parentPath, modId];
+        const isActive = path.join('/') === modulePath.join('/');
+        const items = store.get(`items-${mod.name}`, mod.items || []);
+        return (
+          <div key={modId}>
+            <div
+              className={`tree-item${isActive ? ' active' : ''}`}
+              style={{ paddingLeft: depth * 12 }}
+              onClick={() => onNavigate(modulePath, true)}
+            >
+              {store.get(`n-${mod.name}`, mod.name)}
+            </div>
+            {items.map(iid => {
+              const ins = store.getDbItem(iid); if (!ins) return null;
+              return (
+                <div key={iid} className="tree-item" style={{ paddingLeft: (depth + 1) * 12 }}>
+                  {store.get(`n-${ins.name}`, ins.name)}
+                </div>
+              );
+            })}
+          </div>
+        );
+      }, [store, path, onNavigate, storeVersion]);
+
+      const agentId = 'expert-maker';
+      const agent = store.getDbItem(agentId); if (!agent) return null;
+      const isAgentActive = path.length === 1 && path[0] === agentId;
+      const modules = store.get(`mods-${agent.name}`, agent.modules || []);
+      return (
+        <div className="tree-view">
+          <div className={`tree-item${isAgentActive ? ' active' : ''}`} onClick={() => onNavigate([agentId], true)}>
+            {store.get(`n-${agent.name}`, agent.name)}
+          </div>
+          {modules.map(mid => renderModule(mid, [agentId], 1))}
+        </div>
+      );
+    }
+
+    // ===== SEARCH ADDER =====
+    function SearchAdder({ type, query, setQuery, onAdd, onCancel, store }) {
+      const inputRef = useRef(null);
+      const [selectedIndex, setSelectedIndex] = useState(0);
+      useEffect(() => { inputRef.current && inputRef.current.focus(); }, []);
+      const isInstructionSearch = type === 'instruction';
+      const results = useMemo(() => {
+        const types = isInstructionSearch ? ['instr'] : null;
+        return searchDatabase(store.getAllDb(), query, types);
+      }, [query, isInstructionSearch, store]);
+      const sortedResults = useMemo(() => isInstructionSearch ? results : [...results].sort((a,b)=>a.type==='mod'?-1:1), [results, isInstructionSearch]);
+      useEffect(() => { setSelectedIndex(0); }, [query]);
+
+      const handleKeyDown = (e) => {
+        if (e.key === 'Enter') {
+          e.preventDefault();
+          if (sortedResults.length > 0 && selectedIndex >= 0 && selectedIndex < sortedResults.length) {
+            onAdd(sortedResults[selectedIndex]);
+          } else if (query.trim() && isInstructionSearch && sortedResults.length === 0) {
+            onAdd({ id: null, name: query.trim(), isNew: true });
+          }
+        } else if (e.key === 'Escape') {
+          e.preventDefault(); onCancel();
+        } else if (e.key === 'ArrowDown') {
+          e.preventDefault();
+          const maxIndex = sortedResults.length > 0 ? sortedResults.length - 1 : 0;
+          setSelectedIndex(prev => Math.min(maxIndex, prev + 1));
+        } else if (e.key === 'ArrowUp') {
+          e.preventDefault(); setSelectedIndex(prev => Math.max(0, prev - 1));
+        }
+      };
+
+      const handleItemClick = (item, index) => { setSelectedIndex(index); onAdd(item); };
+
+      return (
+        <div className="search-wrap">
+          <input
+            ref={inputRef}
+            className="name-input"
+            placeholder={isInstructionSearch ? "Search instructions..." : "Search modules & instructions..."}
+            value={query}
+            onChange={e => setQuery(e.target.value)}
+            onKeyDown={handleKeyDown}
+          />
+          <div className="search-list">
+            {sortedResults.map((res, index) => (
+              <div key={res.id} className={`search-item${index === selectedIndex ? ' selected' : ''}`} onClick={() => handleItemClick(res, index)}>
+                {res.name}<span className="search-badge">{res.type}</span>
+              </div>
+            ))}
+            {!results.length && query && isInstructionSearch && (
+              <div className={`search-item${selectedIndex === 0 ? ' selected' : ''}`} onClick={() => onAdd({ id: null, name: query.trim(), isNew: true })}>
+                Create "{query.trim()}"
+              </div>
+            )}
+          </div>
+        </div>
+      );
+    }
+
+    // ===== LINE RENDERER =====
+    function LineRenderer({
+      row, isSelected, inReorderMode, isDragging, isDropTarget,
+      textOpen, store, onLineClick, onTextChange,
+      onDragStart, onDragOver, onDragLeave, onDrop, onDragEnd,
+      addingState, onAddingComplete, onAddingCancel
+    }) {
+      const classes = ['line'];
+      if (isSelected && !inReorderMode) classes.push('sel');
+      if (inReorderMode) classes.push('reorder-mode');
+      if (isDragging) classes.push('held');
+      if (isDropTarget) classes.push('drop-target');
+
+      const style = { paddingLeft: (row.depth || 0) * 24 };
+      const showAdder = (addingState.isAdding &&
+        ((row.type === 'adder' && addingState.type === 'instruction') ||
+         (row.type === 'adder-mod' && addingState.type === 'module')));
+
+      return (
+        <div key={row.key}>
+          <div
+            className={classes.join(' ')} style={style} onClick={() => onLineClick(row)}
+            draggable={inReorderMode} onDragStart={e => onDragStart(e, row)}
+            onDragOver={e => onDragOver(e, row)} onDragLeave={onDragLeave}
+            onDrop={e => onDrop(e, row)} onDragEnd={onDragEnd}
+          >
+            <span>{row.label}</span>
+          </div>
+
+          {showAdder && (
+            <SearchAdder
+              type={addingState.type}
+              query={addingState.query}
+              setQuery={addingState.setQuery}
+              onAdd={onAddingComplete}
+              onCancel={onAddingCancel}
+              store={store}
+            />
+          )}
+
+          {textOpen && row.type === 'instr' && (
+            <div className="text-edit">
+              <textarea
+                value={store.get(row.textKey, row.defaultText || '')}
+                onChange={e => onTextChange(row.textKey, e.target.value)}
+                placeholder="Enter instruction text..."
+              />
+            </div>
+          )}
+        </div>
+      );
+    }
+
+    // ===== APP =====
+    function App() {
+      const storeRef = useRef(new DataStore());
+      const store = storeRef.current;
+      const [storeVersion, setStoreVersion] = useState(store.getVersion());
+      const [path, setPath] = useState(() => {
+        const hash = window.location.hash.slice(1);
+        if (hash) { const parts = hash.split('/').filter(Boolean); if (parts.length > 0) return parts; }
+        return ['expert-maker'];
+      });
+
+      const [idx, setIdx] = useState(0);
+      const [navHistory, setNavHistory] = useState({});
+      const [reorderState, setReorderState] = useState(null); // { rowKey, dbId, type, originalIdx, originalPos, currentPos }
+      const [textOpen, setTextOpen] = useState({});
+      const [dragItem, setDragItem] = useState(null);
+      const [dragOver, setDragOver] = useState(null);
+      const [addingState, setAddingState] = useState({ isAdding: false, type: null, query: '' });
+      const initialNavRef = useRef(true);
+
+      const rows = useMemo(() => {
+        const builder = new RowBuilder(store, path, reorderState, idx);
+        return builder.build();
+      }, [store, path, reorderState, storeVersion, idx]);
+
+      const atAgent = path.length === 1;
+      const atModule = path.length >= 2;
+      const agent = store.getDbItem(path[0]) || store.getDbItem('expert-maker');
+      const module = atModule ? store.getDbItem(path[path.length - 1]) : null;
+
+      // ===== DATA OPS =====
+      const updateData = useCallback((key, value) => {
+        store.set(key, value); setStoreVersion(store.getVersion());
+      }, [store]);
+
+      const resetAll = useCallback(() => {
+        if (confirm('Reset everything to defaults? This will clear all your customizations.')) {
+          store.reset();
+          setPath(['expert-maker']);
+          setIdx(2);
+          setNavHistory({});
+          setReorderState(null);
+          setTextOpen({});
+          setAddingState({ isAdding: false, type: null, query: '' });
+          window.location.hash = '';
+          setStoreVersion(store.getVersion());
+        }
+      }, [store]);
+
+      // ===== NAV =====
+      const navigateToPath = useCallback((newPath, autoSelect = true) => {
+        setPath(newPath);
+        setTextOpen({});
+        setReorderState(null);
+        setAddingState({ isAdding: false, type: null, query: '' });
+        setIdx(autoSelect ? (newPath.length === 1 ? 2 : 3) : 0);
+      }, []);
+
+      // ===== ADD/REMOVE/DUPLICATE =====
+      const addModuleToAgent = useCallback((moduleResult) => {
+        if (!agent) return;
+        const key = `mods-${agent.name}`;
+        const arr = store.get(key, agent.modules || []);
+        updateData(key, [...arr, moduleResult.id]);
+      }, [agent, store, updateData]);
+
+      const addInstructionToModule = useCallback((instructionResult) => {
+        if (!module) return;
+        const arr = store.get(`items-${module.name}`, module.items || []);
+        if (instructionResult.isNew) {
+          const newId = 'custom-' + Date.now();
+          store.addCustomDbItem(newId, { name: instructionResult.name, type: 'instr', text: '' });
+          updateData(`items-${module.name}`, [...arr, newId]);
+          setStoreVersion(store.getVersion());
+        } else {
+          updateData(`items-${module.name}`, [...arr, instructionResult.id]);
+        }
+      }, [module, store, updateData]);
+
+      const removeItem = useCallback((pos) => {
+        if (!atModule || !module || pos === undefined || pos === null) return;
+        const arr = store.get(`items-${module.name}`, module.items || []);
+        updateData(`items-${module.name}`, arr.filter((_, i) => i !== pos));
+      }, [atModule, module, store, updateData]);
+
+      const removeModule = useCallback((pos) => {
+        if (!agent || pos === undefined || pos === null) return;
+        const arr = store.get(`mods-${agent.name}`, agent.modules || []);
+        updateData(`mods-${agent.name}`, arr.filter((_, i) => i !== pos));
+      }, [agent, store, updateData]);
+
+      const duplicateItem = useCallback((dbId, isModule, insertAtPos = null) => {
+        const item = store.getDbItem(dbId); if (!item) return;
+        if (isModule) {
+          if (!agent) return;
+          const arr = store.get(`mods-${agent.name}`, agent.modules || []);
+          if (insertAtPos !== null && insertAtPos >= 0 && insertAtPos <= arr.length) {
+            const newArr = [...arr]; newArr.splice(insertAtPos, 0, dbId);
+            updateData(`mods-${agent.name}`, newArr);
+          } else {
+            updateData(`mods-${agent.name}`, [...arr, dbId]);
+          }
+        } else {
+          if (!module) return;
+          const arr = store.get(`items-${module.name}`, module.items || []);
+          const newId = 'custom-' + Date.now();
+          const baseName = store.get(`n-${item.name}`, item.name);
+          const baseText = store.get(`t-${item.name}`, item.text || '');
+          store.addCustomDbItem(newId, { name: baseName + ' (copy)', type: 'instr', text: baseText });
+          if (insertAtPos !== null && insertAtPos >= 0 && insertAtPos <= arr.length) {
+            const newArr = [...arr]; newArr.splice(insertAtPos, 0, newId);
+            updateData(`items-${module.name}`, newArr);
+          } else {
+            updateData(`items-${module.name}`, [...arr, newId]);
+          }
+          updateData(`n-${newId}`, baseName + ' (copy)');
+          updateData(`t-${newId}`, baseText);
+          setStoreVersion(store.getVersion());
+        }
+      }, [agent, module, store, updateData]);
+
+      // ===== REORDER (keyboard) =====
+      const blockedFooter = new Set(['adder','trash','cancel-reorder']);
+      const canLandOn = (row, type) => (type === 'instr' ? row.type === 'instr' : row.type === 'module-item');
+
+      const moveItemInReorderMode = useCallback((direction) => {
+        if (!reorderState) return;
+        const delta = direction === 'up' ? -1 : 1;
+        const newCurrentPos = reorderState.currentPos + delta;
+
+        let arr = [];
+        if (reorderState.type === 'instr' && atModule && module) {
+          arr = store.get(`items-${module.name}`, module.items || []);
+        } else if (reorderState.type === 'module-item' && agent) {
+          arr = store.get(`mods-${agent.name}`, agent.modules || []);
+        }
+
+        if (newCurrentPos >= 0 && newCurrentPos < arr.length) {
+          // advance UI index, skipping footer/non-landable rows
+          let candidateIdx = idx + delta;
+          const within = i => i >= 0 && i < rows.length;
+          while (within(candidateIdx)) {
+            const targetRow = rows[candidateIdx];
+            if (!blockedFooter.has(targetRow.type) && canLandOn(targetRow, reorderState.type)) break;
+            candidateIdx += delta;
+          }
+          if (!within(candidateIdx)) return;
+          setReorderState(prev => ({ ...prev, currentPos: newCurrentPos }));
+          setIdx(candidateIdx);
+          return;
+        }
+        // clamp at edges: no movement beyond first/last item
+        return;
+      }, [reorderState, idx, rows, atModule, module, agent, store]);
+
+      const commitReorder = useCallback(() => {
+        if (!reorderState) return;
+        const originalIdx = reorderState.originalIdx;
+        const originalPos = reorderState.originalPos;
+        const currentPos = (reorderState.currentPos !== undefined) ? reorderState.currentPos : originalPos;
+
+        if (currentPos !== originalPos && currentPos >= 0) {
+          if (reorderState.type === 'instr' && atModule && module) {
+            const arr = store.get(`items-${module.name}`, module.items || []);
+            updateData(`items-${module.name}`, moveInList(arr, originalPos, currentPos));
+          } else if (reorderState.type === 'module-item' && agent) {
+            const arr = store.get(`mods-${agent.name}`, agent.modules || []);
+            updateData(`mods-${agent.name}`, moveInList(arr, originalPos, currentPos));
+          }
+        }
+        setIdx(originalIdx);
+        setReorderState(null);
+      }, [reorderState, atModule, module, agent, store, updateData]);
+
+      // unified deletion helpers
+      const deleteMovingIfAny = useCallback(() => {
+        if (!reorderState) return false;
+        if (reorderState.type === 'instr') {
+          removeItem(reorderState.originalPos);
+          setReorderState(null);
+          // keep focus sane after removal
+          setIdx(prev => Math.max(0, Math.min(prev, rows.length - 2)));
+          return true;
+        }
+        if (reorderState.type === 'module-item') {
+          removeModule(reorderState.originalPos);
+          setReorderState(null);
+          setIdx(prev => Math.max(0, Math.min(prev, rows.length - 2)));
+          return true;
+        }
+        return false;
+      }, [reorderState, removeItem, removeModule, rows.length]);
+
+      const deleteSelectedIfAny = useCallback((sel) => {
+        if (!sel) return false;
+        if (sel.type === 'instr' && atModule) {
+          removeItem(sel.pos);
+          setTextOpen(p => { const nx = { ...p }; delete nx[sel.key]; return nx; });
+          setIdx(prev => Math.max(0, Math.min(prev, rows.length - 2)));
+          return true;
+        } else if (sel.type === 'module-item') {
+          removeModule(sel.pos);
+          setIdx(prev => Math.max(0, Math.min(prev, rows.length - 2)));
+          return true;
+        }
+        return false;
+      }, [atModule, removeItem, removeModule, rows.length]);
+
+      // ===== DND (instruction-level add/delete blocked) =====
+      const handleDragStart = useCallback((e, row) => { e.dataTransfer.effectAllowed = 'move'; setDragItem(row); }, []);
+      const handleDragOver = useCallback((e, row) => {
+        e.preventDefault(); if (!dragItem) return;
+        const blocked = (row.type === 'adder' || row.type === 'trash') && row.depth === 3;
+        if (blocked) { e.dataTransfer.dropEffect = 'none'; setDragOver(null); return; }
+        e.dataTransfer.dropEffect = 'move'; setDragOver(row.key);
+      }, [dragItem]);
+      const handleDragLeave = useCallback(() => { setDragOver(null); }, []);
+      const handleDrop = useCallback((e, row) => {
+        e.preventDefault(); if (!dragItem) return;
+        const isInstrAddOrDelete = (row.type === 'adder' || row.type === 'trash') && row.depth === 3;
+        if (isInstrAddOrDelete) { setDragItem(null); setDragOver(null); return; }
+
+        if (dragItem.type === 'instr' && row.type === 'instr' && atModule && module) {
+          const arr = store.get(`items-${module.name}`, module.items || []);
+          updateData(`items-${module.name}`, moveInList(arr, dragItem.pos, row.pos));
+        } else if (dragItem.type === 'module-item' && row.type === 'module-item' && agent) {
+          const arr = store.get(`mods-${agent.name}`, agent.modules || []);
+          updateData(`mods-${agent.name}`, moveInList(arr, dragItem.pos, row.pos));
+        }
+        setDragItem(null); setDragOver(null); setReorderState(null);
+      }, [dragItem, atModule, module, agent, store, updateData]);
+      const handleDragEnd = useCallback(() => { setDragItem(null); setDragOver(null); }, []);
+
+      // ===== KEYS =====
+      const handleKeyDown = useCallback((e) => {
+        if (addingState.isAdding) return;
+
+        const sel = rows[idx]; if (!sel) return;
+        const activeEl = document.activeElement;
+        const inTextarea = activeEl && activeEl.tagName === 'TEXTAREA';
+        if (inTextarea) {
+          if ((e.key === 'ArrowLeft' || e.key === 'ArrowUp') && activeEl.selectionStart === 0 && activeEl.selectionEnd === 0) {
+            e.preventDefault(); activeEl.blur();
+          }
+          return;
+        }
+
+        const inReorderMode = !!reorderState;
+
+        if (e.key === 'ArrowUp') {
+          e.preventDefault();
+          if (inReorderMode) moveItemInReorderMode('up');
+          else setIdx(i => Math.max(0, i - 1));
+        } else if (e.key === 'ArrowDown') {
+          e.preventDefault();
+          if (inReorderMode) moveItemInReorderMode('down');
+          else setIdx(i => Math.min(rows.length - 1, i + 1));
+        } else if (e.key === 'ArrowLeft') {
+          e.preventDefault();
+          if (inReorderMode) commitReorder();
+          else if (textOpen[sel.key]) {
+            setTextOpen(p => { const nx = { ...p }; delete nx[sel.key]; return nx; });
+          } else if (sel.canReorder) {
+            setReorderState({
+              rowKey: sel.key,
+              dbId: sel.dbId || sel.moduleId,
+              type: sel.type,
+              originalIdx: idx,
+              originalPos: sel.pos,
+              currentPos: sel.pos
+            });
+          } else if (path.length > 1) {
+            const newPath = path.slice(0, -1);
+            const pathKey = newPath.join('/');
+            const savedIdx = navHistory[pathKey];
+            navigateToPath(newPath, false);
+            setIdx(savedIdx !== undefined ? savedIdx : (newPath.length === 1 ? 2 : 3));
+          }
+        } else if (e.key === 'ArrowRight') {
+          e.preventDefault();
+          if (inReorderMode) commitReorder();
+          else if (sel.type === 'module-item') {
+            const pathKey = path.join('/');
+            setNavHistory(h => ({ ...h, [pathKey]: idx }));
+            navigateToPath([...path, sel.moduleId], true);
+          } else if (sel.type === 'instr') {
+            setTextOpen(p => ({ ...p, [sel.key]: !p[sel.key] }));
+          } else if (sel.type === 'adder') {
+            setAddingState({ isAdding: true, type: 'instruction', query: '' });
+          } else if (sel.type === 'adder-mod') {
+            setAddingState({ isAdding: true, type: 'module', query: '' });
+          }
+        } else if ((e.key === 'Delete') || (e.key === '-')) {
+          // NEW: delete works in both modes for instruction or module
+          e.preventDefault();
+          if (inReorderMode) {
+            if (deleteMovingIfAny()) return;
+          } else {
+            if (deleteSelectedIfAny(sel)) return;
+          }
+        } else if ((e.key === 'Backspace') && !inReorderMode) {
+          // Keep backspace for normal-mode deletion only
+          e.preventDefault();
+          deleteSelectedIfAny(sel);
+        } else if (e.key === 'Enter') {
+          e.preventDefault();
+          if (inReorderMode) {
+            commitReorder();
+          } else if (sel.type === 'module-item') {
+            const pathKey = path.join('/');
+            setNavHistory(h => ({ ...h, [pathKey]: idx }));
+            navigateToPath([...path, sel.moduleId], true);
+          } else if (sel.type === 'instr') {
+            setTextOpen(p => ({ ...p, [sel.key]: !p[sel.key] }));
+          } else if (sel.type === 'adder') {
+            setAddingState({ isAdding: true, type: 'instruction', query: '' });
+          } else if (sel.type === 'adder-mod') {
+            setAddingState({ isAdding: true, type: 'module', query: '' });
+          }
+        } else if (e.key === 'Escape') {
+          e.preventDefault();
+          if (inReorderMode) { setIdx(reorderState.originalIdx); setReorderState(null); }
+          else if (textOpen[sel.key]) {
+            setTextOpen(p => { const nx = { ...p }; delete nx[sel.key]; return nx; });
+          }
+        }
+      }, [
+        addingState.isAdding, rows, idx, reorderState, textOpen, path, navHistory,
+        moveItemInReorderMode, commitReorder, navigateToPath, deleteMovingIfAny, deleteSelectedIfAny
+      ]);
+
+      useEffect(() => { window.addEventListener('keydown', handleKeyDown); return () => window.removeEventListener('keydown', handleKeyDown); }, [handleKeyDown]);
+
+      // ===== CLICK =====
+      const handleLineClick = useCallback((row) => {
+        const rowIdx = rows.findIndex(r => r.key === row.key);
+        if (rowIdx !== -1) setIdx(rowIdx);
+        if (reorderState) return;
+
+        if (row.type === 'module-item') {
+          const pathKey = path.join('/');
+          setNavHistory(h => ({ ...h, [pathKey]: rowIdx }));
+          navigateToPath([...path, row.moduleId], true);
+        } else if (row.type === 'instr') {
+          setTextOpen(p => ({ ...p, [row.key]: !p[row.key] }));
+        } else if (row.type === 'breadcrumb') {
+          const newPath = path.slice(0, row.pathIndex + 1);
+          navigateToPath(newPath, true);
+        } else if (row.type === 'agent') {
+          navigateToPath([path[0]], true);
+        } else if (row.type === 'adder') {
+          setAddingState({ isAdding: true, type: 'instruction', query: '' });
+        } else if (row.type === 'adder-mod') {
+          setAddingState({ isAdding: true, type: 'module', query: '' });
+        }
+      }, [rows, reorderState, path, navigateToPath]);
+
+      // ===== HASH =====
+      useEffect(() => {
+        if (initialNavRef.current) {
+          initialNavRef.current = false;
+          setIdx(path.length === 1 ? 2 : 3);
+          return;
+        }
+        const hash = '#' + path.join('/');
+        if (window.location.hash !== hash) {
+          window.history.pushState(null, '', hash);
+        }
+      }, [path]);
+
+      useEffect(() => {
+        const handlePopState = () => {
+          const hash = window.location.hash.slice(1);
+          if (hash) {
+            const parts = hash.split('/').filter(Boolean);
+            if (parts.length > 0) {
+              navigateToPath(parts, true);
+            }
+          } else {
+            navigateToPath(['expert-maker'], true);
+          }
+        };
+        window.addEventListener('popstate', handlePopState);
+        return () => window.removeEventListener('popstate', handlePopState);
+      }, [navigateToPath]);
+
+      // ===== ADDING =====
+      const handleAddingComplete = useCallback((result) => {
+        if (addingState.type === 'module') addModuleToAgent(result);
+        else if (addingState.type === 'instruction') addInstructionToModule(result);
+        setAddingState({ isAdding: false, type: null, query: '' });
+      }, [addingState.type, addModuleToAgent, addInstructionToModule]);
+      const handleAddingCancel = useCallback(() => { setAddingState({ isAdding: false, type: null, query: '' }); }, []);
+
+      // ===== RENDER =====
+      const promptText = useMemo(() => {
+        let text = '(: Smile Composer\n    ' + store.get(`n-${agent.name}`, agent.name);
+        if (atModule) {
+          text += path.slice(1).map(mid => {
+            const m = store.getDbItem(mid);
+            return m ? '\n        ' + store.get(`n-${m.name}`, m.name || '') : '';
+          }).join('');
+        }
+        return text;
+      }, [path, agent, atModule, store, storeVersion]);
+
+      const outputKey = atModule && module ? `output-${module.name}` : `output-${agent.name}`;
+      const outputDefault = atModule ? '' : agent.output;
+
+      return (
+        <div className="container">
+          <div className="left">
+            {rows.map((row, i) => {
+              const isSelected = i === idx;
+              const inReorderMode = reorderState && row.key === reorderState.rowKey;
+              const isDragging = dragItem && dragItem.key === row.key;
+              const isDropTarget = dragOver === row.key;
+
+              return (
+                <LineRenderer
+                  key={row.key}
+                  row={row}
+                  isSelected={isSelected}
+                  inReorderMode={inReorderMode}
+                  isDragging={isDragging}
+                  isDropTarget={isDropTarget}
+                  textOpen={textOpen[row.key]}
+                  store={store}
+                  onLineClick={handleLineClick}
+                  onTextChange={updateData}
+                  onDragStart={handleDragStart}
+                  onDragOver={handleDragOver}
+                  onDragLeave={handleDragLeave}
+                  onDrop={handleDrop}
+                  onDragEnd={handleDragEnd}
+                  addingState={{ ...addingState, setQuery: (q) => setAddingState(s => ({ ...s, query: q })) }}
+                  onAddingComplete={handleAddingComplete}
+                  onAddingCancel={handleAddingCancel}
+                />
+              );
+            })}
+          </div>
+
+          <div className="right">
+            <div className="panel">
+              <div className="panel-title"><span>Structure</span></div>
+              <TreeView store={store} path={path} onNavigate={navigateToPath} storeVersion={storeVersion} />
+            </div>
+
+            <div className="panel">
+              <div className="panel-title"><span>Prompt</span></div>
+              <textarea readOnly value={promptText}
+                style={{ minHeight: '120px', width: '100%', border: '1px solid #ccc', padding: '8px', borderRadius: '4px' }} />
+            </div>
+
+            <div className="panel">
+              <div className="panel-title">
+                <span>Output</span>
+                <button className="btn" onClick={resetAll}>Reset All</button>
+              </div>
+              <textarea
+                value={store.get(outputKey, outputDefault)}
+                onChange={e => updateData(outputKey, e.target.value)}
+                style={{ minHeight: '150px', width: '100%', border: '1px solid #ccc', padding: '8px', borderRadius: '4px' }}
+              />
+            </div>
+          </div>
+        </div>
+      );
+    }
+
+    // ===== MOUNT =====
+    try {
+      ReactDOM.createRoot(document.getElementById('root')).render(<App />);
+    } catch (e) {
+      console.error('Mount error:', e);
+      document.getElementById('root').innerHTML = '<div class="error">Failed to mount: ' + e.message + '</div>';
+    }
+  })();
+  </script>
+</body>
+</html>
