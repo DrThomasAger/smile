@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Smile Composer — Preview + Settings Flow</title>
+  <title>Smile Composer — View Inside, Action Mode, Refactor</title>
   <script crossorigin src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
   <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
   <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
@@ -14,11 +14,11 @@
     .container { display: block; width: 100%; }
 
     .panel { background: #fff; border-radius: var(--panel-radius); padding: 16px; border: none; box-shadow: 0 1px 0 0 var(--rule); margin-top: 20px; }
-    .panel-title { font-weight: 600; margin-bottom: 10px; display: flex; align-items: center; justify-content: space-between; gap: 8px; flex-wrap: wrap; cursor: default; }
-    .panel-title .clickable { cursor: pointer; }
+    .panel-title { font-weight: 600; margin-bottom: 10px; display: flex; align-items: center; justify-content: space-between; gap: 8px; flex-wrap: wrap; }
     .panel-title-right { display: inline-flex; align-items: center; gap: 8px; }
     .panel-subtle { font-size: 12px; color: #666; }
 
+    /* Omnisearch */
     .omni { position: sticky; top: 0; z-index: 10; background: #fff; padding: 8px 0 0 0; margin-bottom: 8px; }
     .omni-bar { display: grid; grid-template-columns: 1fr auto auto; gap: 8px; align-items: center; padding: 10px 12px; border-radius: 999px; background: var(--soft-bg); box-shadow: 0 1px 0 0 var(--rule); }
     .omni-input { border: none; outline: none; background: transparent; font: inherit; padding: 6px 2px; }
@@ -34,6 +34,7 @@
     .badge { font-size: 11px; padding: 2px 8px; border-radius: 999px; background: #eee; }
     .subtle { font-size: 12px; color: #666; }
 
+    /* Composer lines */
     .line { user-select: none; padding: 8px 10px; border-radius: 10px; display: flex; align-items: center; justify-content: space-between; gap: 10px; cursor: pointer; transition: background-color 0.12s ease, opacity 0.12s ease; touch-action: none; position: relative; }
     .line:hover { background-color: var(--hover-bg); }
     .line.sel { font-weight: 600; background-color: var(--select-bg); }
@@ -43,11 +44,12 @@
     .left-span { flex: 1 1 auto; min-width: 0; }
     .right-actions { flex: 0 0 auto; display: inline-flex; gap: 6px; }
     .action-cluster { opacity: 0; pointer-events: none; transition: opacity 0.12s ease; }
-    .line:hover .action-cluster, .line.sel .action-cluster { opacity: 1; pointer-events: auto; }
+    .line:hover .action-cluster, .line.action-mode .action-cluster { opacity: 1; pointer-events: auto; }
 
     .indent-block { margin-top: 8px; }
     .indent-grid { display: grid; gap: 10px; }
 
+    /* Inputs with bottom rule only */
     .underline-input, .underline-textarea { width: 100%; background: transparent; border: none; border-bottom: 1px solid #ccc; border-radius: 0; padding: 6px 2px 6px 0; font: inherit; outline: none; resize: vertical; min-height: 34px; }
     .underline-textarea { min-height: 80px; }
 
@@ -61,7 +63,6 @@
     .tree-item.active { font-weight: 700; background: var(--select-bg); }
 
     .error { color: red; padding: 20px; border: 1px solid red; margin: 20px; border-radius: 8px; }
-
     .seg { display: inline-flex; align-items: center; gap: 8px; padding: 6px 8px; border-radius: 999px; background: var(--soft-bg); }
     .seg .label { font-size: 12px; margin-right: 4px; }
     .seg input[type="radio"] { position: absolute; opacity: 0; pointer-events: none; }
@@ -70,12 +71,6 @@
     .seg input[type="radio"]:checked + .opt .dot { background: #111; }
 
     .alltext { width: 100%; min-height: 220px; padding: 10px; border: none; border-bottom: 1px solid #ccc; border-radius: 0; resize: vertical; background: #fff; }
-
-    /* Preview colors */
-    .c-red { color: #c62828; font-weight: 600; }
-    .c-green { color: #2e7d32; }
-    .c-blue { color: #1565c0; }
-    .preview-block { padding-left: var(--tab); }
   </style>
 </head>
 <body>
@@ -135,6 +130,20 @@
       return newArr;
     };
 
+    const searchDatabase = (db, query, types = null) => {
+      const lower = (query || '').toLowerCase().trim();
+      if (!lower) return [];
+      const out = [];
+      Object.keys(db).forEach(k => {
+        const item = db[k];
+        if (types && !types.includes(item.type)) return;
+        const nameMatch = (item.name || '').toLowerCase().includes(lower);
+        const textMatch = item.text ? (item.text || '').toLowerCase().includes(lower) : false;
+        if (nameMatch || textMatch) out.push({ id: k, name: item.name, type: item.type });
+      });
+      return out;
+    };
+
     const displayNameFor = (store, dbItem, id) =>
       store.get(`nn-${id}`, store.get(`n-${dbItem.name}`, dbItem.name));
 
@@ -142,7 +151,7 @@
       if (!row) return null;
       if (row.type === 'module-item') return `mod:${row.moduleId}`;
       if (row.type === 'instr') return `instr:${row.dbId}`;
-      if (row.type === 'settings-panel') {
+      if (row.type === 'settings-button' || row.type === 'settings-panel' || row.type === 'prompt') {
         return (row.ownerType === 'module') ? `mod:${row.ownerId}` : `instr:${row.ownerId}`;
       }
       return null;
@@ -150,12 +159,13 @@
 
     /* ---------- Row Builder ---------- */
     class RowBuilder {
-      constructor(store, path, reorderState, revealedOwnerKey, settingsOpen) {
+      constructor(store, path, reorderState, revealedOwnerKey, settingsOpen, deleteMode) {
         this.store = store;
         this.path = path;
         this.reorderState = reorderState;
         this.revealedOwnerKey = revealedOwnerKey || null;
         this.settingsOpen = settingsOpen || {};
+        this.deleteMode = deleteMode || { active: false };
         this.rows = [];
       }
       build() {
@@ -186,15 +196,40 @@
 
         visualItems.forEach(({ item: id, originalPos }, i) => {
           const ins = this.store.getDbItem(id); if (!ins) return;
+          const ownerKey = `instr:${id}`;
+          const allowEphemeral = !this.reorderState && !this.deleteMode.active;
+          const revealed = allowEphemeral && (this.revealedOwnerKey === ownerKey);
+          const baseLabel = displayNameFor(this.store, ins, id);
           const isLast = i === visualItems.length - 1;
+
           this.rows.push({
             key: `ins:${id}:${originalPos}`, type: 'instr', depth: 3,
-            label: displayNameFor(this.store, ins, id), isOutput: isLast,
+            label: baseLabel, isOutput: isLast,
             nameKey: `n-${ins.name}`, nameOverrideKey: `nn-${id}`,
             textKey: `t-${ins.name}`, defaultText: ins.text || '',
             metaKey: `meta-${id}`, structKey: `struct-${id}`,
-            promptKey: `t-${ins.name}`, dbId: id, pos: originalPos, canReorder: true
+            promptKey: `t-${ins.name}`,
+            dbId: id, pos: originalPos, canReorder: true, revealed
           });
+
+          if (revealed) {
+            this.rows.push({
+              key: `sbtn:instr:${id}`, type: 'settings-button', depth: 4,
+              ownerType: 'instr', ownerId: id,
+              nameOverrideKey: `nn-${id}`, metaKey: `meta-${id}`,
+              structKey: `struct-${id}`, promptKey: `t-${ins.name}`,
+              label: 'Settings'
+            });
+            const pKey = `spanel:instr:${id}`;
+            if (this.settingsOpen[pKey]) {
+              this.rows.push({
+                key: pKey, type: 'settings-panel', depth: 5,
+                ownerType: 'instr', ownerId: id,
+                nameOverrideKey: `nn-${id}`, metaKey: `meta-${id}`,
+                structKey: `struct-${id}`, promptKey: `t-${ins.name}`
+              });
+            }
+          }
         });
       }
       addAgentModules() {
@@ -204,13 +239,36 @@
 
         visualModules.forEach(({ item: mid, originalPos }, i) => {
           const mod = this.store.getDbItem(mid); if (!mod) return;
+          const ownerKey = `mod:${mid}`;
+          const allowEphemeral = !this.reorderState && !this.deleteMode.active;
+          const revealed = allowEphemeral && (this.revealedOwnerKey === ownerKey);
           const isLast = i === visualModules.length - 1;
+
           this.rows.push({
             key: `mod:${mid}:${originalPos}`, type: 'module-item', depth: 2,
             label: displayNameFor(this.store, mod, mid), isOutput: isLast,
             nameKey: `n-${mod.name}`, nameOverrideKey: `nn-${mid}`,
-            moduleId: mid, pos: originalPos, canReorder: true
+            moduleId: mid, pos: originalPos, canReorder: true, revealed
           });
+
+          if (revealed) {
+            this.rows.push({
+              key: `sbtn:mod:${mid}`, type: 'settings-button', depth: 3,
+              ownerType: 'module', ownerId: mid,
+              nameOverrideKey: `nn-${mid}`, metaKey: `meta-${mid}`,
+              structKey: `struct-${mid}`, promptKey: `prompt-mod-${mid}`,
+              label: 'Settings'
+            });
+            const pKey = `spanel:mod:${mid}`;
+            if (this.settingsOpen[pKey]) {
+              this.rows.push({
+                key: pKey, type: 'settings-panel', depth: 4,
+                ownerType: 'module', ownerId: mid,
+                nameOverrideKey: `nn-${mid}`, metaKey: `meta-${mid}`,
+                structKey: `struct-${mid}`, promptKey: `prompt-mod-${mid}`
+              });
+            }
+          }
         });
 
         this.rows.push({ key: `adder-mod-${agent.name}`, type: 'adder-mod', depth: 2, label: '+ Add Module' });
@@ -281,21 +339,24 @@
       );
     }
 
+    /* Action Label & Cluster */
     const LABELS = {
       view: () => <strong>View Inside [Enter] [v]</strong>,
-      move: () => 'Move',
       settings: () => 'Settings',
       duplicate: () => 'Duplicate',
+      move: () => 'Move',
       delete: () => 'Delete'
     };
 
-    function ActionCluster({ row, actions, onActionExecute }) {
+    function ActionCluster({ row, actions, actionModeRowKey, actionIndex, onActionExecute, onActionEnter }) {
+      const isActiveRow = actionModeRowKey === row.key;
       return (
         <span className="right-actions action-cluster" onClick={(e) => e.stopPropagation()}>
-          {actions.map((a) => (
+          {actions.map((a, i) => (
             <button
               key={a}
-              className="btn"
+              className={`btn${isActiveRow && actionIndex === i ? ' sel' : ''}`}
+              onMouseEnter={() => onActionEnter && onActionEnter(row, i)}
               onClick={() => onActionExecute(row, a)}
               title={a === 'view' ? 'View Inside' : a.charAt(0).toUpperCase() + a.slice(1)}
             >
@@ -306,91 +367,52 @@
       );
     }
 
-    function PreviewModuleContents({ store, moduleId }) {
-      const mod = store.getDbItem(moduleId);
-      if (!mod) return null;
-      const items = store.get(`items-${mod.name}`, mod.items || []);
-      return (
-        <div className="indent-block preview-block" style={{ paddingLeft: TAB }}>
-          {items.length === 0 ? <div className="subtle">Empty module</div> : items.map((iid) => {
-            const ins = store.getDbItem(iid); if (!ins) return null;
-            const nm = displayNameFor(store, ins, iid);
-            const txt = store.get(`t-${ins.name}`, ins.text || '');
-            return (
-              <div key={iid} className="line" style={{ paddingLeft: 0 }}>
-                <span className="left-span">{nm}</span>
-                <span className="subtle" style={{ maxWidth: '50%', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
-                  {txt}
-                </span>
-              </div>
-            );
-          })}
-        </div>
-      );
-    }
-
-    function PreviewInstructionColored({ store, row }) {
-      const dbItem = store.getDbItem(row.dbId);
-      if (!dbItem) return null;
-      const name = store.get(`nn-${row.dbId}`, displayNameFor(store, dbItem, row.dbId));
-      const meta = store.get(`meta-${row.dbId}`, '');
-      const body = store.get(row.promptKey, dbItem.text || '');
-      return (
-        <div className="indent-block preview-block" style={{ paddingLeft: TAB }}>
-          <div className="line" style={{ paddingLeft: 0 }}>
-            <span className="left-span">
-              <span className="c-red">{name}</span>
-            </span>
-          </div>
-          {meta ? (
-            <div className="line" style={{ paddingLeft: 0 }}>
-              <span className="left-span">
-                <span className="c-green">{meta}</span>
-              </span>
-            </div>
-          ) : null}
-          <div className="line" style={{ paddingLeft: 0 }}>
-            <span className="left-span">
-              <span className="c-blue">{body}</span>
-            </span>
-          </div>
-        </div>
-      );
-    }
-
     function LineRenderer({
       row, isSelected, inReorderMode, isDragging, isDropTarget,
       store, onLineClick, onTextChange,
       onDragStart, onDragOver, onDrop, onDragEnd,
       onTouchStartRow, onTouchMoveRow, onTouchEndRow,
-      onActionExecute,
+      onSettingsDuplicate, onSettingsMove, onSettingsDelete,
+      onActionExecute, onActionEnter,
       getStruct, setStruct, setNameOverride, getNameOverride, getMeta, setMeta,
       setRowRef,
-      isSettingsOpenFor
+      actionModeRowKey, actionIndex
     }) {
       const classes = ['line'];
       if (isSelected && !inReorderMode) classes.push('sel');
       if (inReorderMode) classes.push('reorder-mode');
       if (isDragging) classes.push('held');
       if (isDropTarget) classes.push('drop-target');
+      if (actionModeRowKey === row.key) classes.push('action-mode');
 
       const style = { paddingLeft: (row.depth || 0) * TAB };
+      const promptRef = useRef(null);
+      useEffect(() => {
+        if (row.type === 'prompt' && isSelected && promptRef.current) {
+          promptRef.current.focus();
+          try {
+            const el = promptRef.current;
+            el.selectionStart = el.value.length;
+            el.selectionEnd = el.value.length;
+          } catch {}
+        }
+      }, [row.type, isSelected]);
+
       const headingRef = useRef(null);
       useEffect(() => {
-        if (row.type === 'settings-panel' && headingRef.current) {
+        if (row.type === 'settings-panel' && isSelected && headingRef.current) {
           headingRef.current.focus();
           headingRef.current.select();
         }
-      }, [row.type]);
+      }, [row.type, isSelected]);
 
       const canDragAnytime = (row.type === 'instr' || row.type === 'module-item');
+      const mainRowHasActions = (row.type === 'instr' || row.type === 'module-item');
       const actionsForRow = useMemo(() => {
-        if (row.type === 'module-item') return ['view','move','settings','duplicate','delete'];
-        if (row.type === 'instr') return ['move','settings','duplicate','delete'];
+        if (row.type === 'module-item') return ['view','settings','duplicate','move','delete'];
+        if (row.type === 'instr') return ['settings','duplicate','move','delete'];
         return [];
       }, [row.type]);
-
-      const settingsPanelForRow = (row.type === 'module-item' || row.type === 'instr') && isSettingsOpenFor(row);
 
       return (
         <div key={row.key}>
@@ -412,25 +434,52 @@
             <span className="left-span">
               {row.isOutput ? <strong>OUTPUT:&nbsp;</strong> : null}{row.label}
             </span>
-            {(row.type === 'module-item' || row.type === 'instr') && (
+
+            {mainRowHasActions && (
               <ActionCluster
                 row={row}
                 actions={actionsForRow}
+                actionModeRowKey={actionModeRowKey}
+                actionIndex={actionIndex}
                 onActionExecute={onActionExecute}
+                onActionEnter={onActionEnter}
               />
+            )}
+
+            {row.type === 'settings-button' && (
+              <span className="right-actions" onClick={(e)=>e.stopPropagation()}>
+                <button className="btn" onClick={()=>onLineClick(row)} title="Open settings">Settings</button>
+                {row.ownerType === 'instr' && (
+                  <>
+                    <button className="btn" onClick={()=>onSettingsDuplicate(row)} title="Duplicate instruction">Duplicate</button>
+                    <button className="btn" onClick={()=>onSettingsMove(row)} title="Move instruction">Move</button>
+                    <button className="btn" onClick={()=>onSettingsDelete(row)} title="Delete instruction">Delete</button>
+                  </>
+                )}
+                {row.ownerType === 'module' && (
+                  <>
+                    <button className="btn" onClick={()=>onSettingsDuplicate(row)} title="Duplicate module">Duplicate</button>
+                    <button className="btn" onClick={()=>onSettingsMove(row)} title="Move module">Move</button>
+                    <button className="btn" onClick={()=>onSettingsDelete(row)} title="Delete module">Delete</button>
+                  </>
+                )}
+              </span>
             )}
           </div>
 
-          {/* Default PREVIEW when selected and settings closed */}
-          {isSelected && !settingsPanelForRow && (row.type === 'module-item') && (
-            <PreviewModuleContents store={store} moduleId={row.moduleId} />
-          )}
-          {isSelected && !settingsPanelForRow && (row.type === 'instr') && (
-            <PreviewInstructionColored store={store} row={row} />
+          {row.type === 'prompt' && (
+            <div className="indent-block indent-grid" style={{ paddingLeft: (row.depth || 0) * TAB }}>
+              <textarea
+                ref={promptRef}
+                className="underline-textarea"
+                value={store.get(row.promptKey, '')}
+                onChange={e => onTextChange(row.promptKey, e.target.value)}
+                placeholder={row.ownerType === 'module' ? 'Module prompt…' : 'Instruction prompt…'}
+              />
+            </div>
           )}
 
-          {/* SETTINGS PANEL */}
-          {settingsPanelForRow && (
+          {row.type === 'settings-panel' && (
             <div className="indent-block indent-grid" style={{ paddingLeft: (row.depth || 0) * TAB }}>
               <input
                 ref={headingRef}
@@ -450,10 +499,10 @@
                 className="underline-textarea"
                 value={store.get(row.promptKey, '')}
                 onChange={(e) => onTextChange(row.promptKey, e.target.value)}
-                placeholder={row.type === 'module-item' ? 'Module instruction…' : 'Instruction…'}
+                placeholder={row.ownerType === 'module' ? 'Module instruction…' : 'Instruction…'}
               />
               <StructureDots5
-                id={row.type === 'module-item' ? row.moduleId : row.dbId}
+                id={row.ownerId}
                 value={getStruct(row.structKey) || 'heavy'}
                 onChange={(v) => setStruct(row.structKey, v)}
               />
@@ -484,12 +533,25 @@
       const rowsDomRef = useRef(new Map());
       const [touchDrag, setTouchDrag] = useState(null);
 
-      const [settingsOpen, setSettingsOpen] = useState({}); // map of spanel:mod|instr:ID => true
+      const [revealedOwnerKey, setRevealedOwnerKey] = useState(null);
+      const [settingsOpen, setSettingsOpen] = useState({});
+      const [deleteMode] = useState({ active: false });
+
+      // Omnisearch
+      const [omniActive, setOmniActive] = useState(false);
+      const [omniMode, setOmniMode] = useState('search');
+      const [omniQuery, setOmniQuery] = useState('');
+      const [omniIndex, setOmniIndex] = useState(0);
+      const [omniFilterType, setOmniFilterType] = useState(null);
+      const [omniIntent, setOmniIntent] = useState(null);
+
+      // Action Mode (per-row action bar keyboard)
+      const [actionMode, setActionMode] = useState(null); // { rowKey, index }
 
       const rows = useMemo(() => {
-        const builder = new RowBuilder(store, path, reorderState, null, settingsOpen);
+        const builder = new RowBuilder(store, path, reorderState, revealedOwnerKey, settingsOpen, deleteMode);
         return builder.build();
-      }, [store, path, reorderState, settingsOpen, storeVersion]);
+      }, [store, path, reorderState, revealedOwnerKey, settingsOpen, deleteMode, storeVersion]);
 
       const rowsRef = useRef(rows);
       useEffect(() => { rowsRef.current = rows; }, [rows]);
@@ -510,15 +572,17 @@
         if (confirm('Reset everything to defaults? This will clear all your customizations.')) {
           store.reset();
           setPath(['expert-maker']); setIdx(2); setNavHistory({}); setReorderState(null);
-          setSettingsOpen({});
+          setRevealedOwnerKey(null); setSettingsOpen({});
           setOmniActive(false); setOmniQuery(''); setOmniIndex(0); setOmniMode('search'); setOmniFilterType(null); setOmniIntent(null);
+          setActionMode(null);
           window.location.hash = ''; setStoreVersion(store.getVersion());
         }
       }, [store]);
 
       const navigateToPath = useCallback((newPath, autoSelect = true) => {
         setPath(newPath); setReorderState(null);
-        setSettingsOpen({});
+        setRevealedOwnerKey(null); setSettingsOpen({});
+        setActionMode(null);
         setIdx(autoSelect ? (newPath.length === 1 ? 2 : 3) : 0);
       }, []);
 
@@ -533,13 +597,13 @@
       const attachModuleToAgent = useCallback((mid) => { addModuleToAgent({ id: mid }); }, [addModuleToAgent]);
 
       const openAndFocusSettings = useCallback((ownerType, ownerId) => {
+        const key = ownerType === 'module' ? `mod:${ownerId}` : `instr:${ownerId}`;
         const panelKey = ownerType === 'module' ? `spanel:mod:${ownerId}` : `spanel:instr:${ownerId}`;
+        setRevealedOwnerKey(key);
         setSettingsOpen(prev => ({ ...prev, [panelKey]: true }));
+        setActionMode(null);
         setTimeout(() => {
-          const i = rowsRef.current.findIndex(r =>
-            (r.type === (ownerType === 'module' ? 'module-item' : 'instr')) &&
-            ((ownerType === 'module' ? r.moduleId : r.dbId) === ownerId)
-          );
+          const i = rowsRef.current.findIndex(r => r.type === 'settings-panel' && r.ownerType === ownerType && r.ownerId === ownerId);
           if (i >= 0) setIdx(i);
         }, 0);
       }, []);
@@ -645,13 +709,7 @@
         if (el) rowsDomRef.current.set(key, el); else rowsDomRef.current.delete(key);
       }, []);
 
-      const isSettingsOpenFor = useCallback((row) => {
-        if (row.type === 'module-item') return !!settingsOpen[`spanel:mod:${row.moduleId}`];
-        if (row.type === 'instr') return !!settingsOpen[`spanel:instr:${row.dbId}`];
-        return false;
-      }, [settingsOpen]);
-
-      /* Reorder (via Move button only) */
+      /* Reorder */
       const moveItemInReorderMode = useCallback((direction) => {
         if (!reorderState) return;
         const delta = direction === 'up' ? -1 : 1;
@@ -764,53 +822,65 @@
         setTouchDrag(null); setDragItem(null); setDragOver(null);
       }, [touchDrag, dragOver, atModule, module, store, updateData, path]);
 
-      /* Execute actions */
+      /* Action execution */
+      const actionsForRow = useCallback((row) => {
+        if (row.type === 'module-item') return ['view','settings','duplicate','move','delete'];
+        if (row.type === 'instr') return ['settings','duplicate','move','delete'];
+        return [];
+      }, []);
+
       const executeRowAction = useCallback((row, action) => {
         if (!row) return;
         if (row.type === 'module-item') {
           if (action === 'view') {
             const pathKey = path.join('/'); setNavHistory(h => ({ ...h, [pathKey]: rows.findIndex(r => r.key === row.key) }));
+            setRevealedOwnerKey(null); setSettingsOpen({});
+            setActionMode(null);
             setPath([...path, row.moduleId]);
             setIdx(3);
             return;
           }
+          if (action === 'settings') {
+            const pKey = `spanel:mod:${row.moduleId}`;
+            setRevealedOwnerKey(`mod:${row.moduleId}`);
+            setSettingsOpen(s => ({ ...s, [pKey]: !s[pKey] }));
+            setActionMode(null);
+            return;
+          }
+          if (action === 'duplicate') { duplicateItem(row.moduleId, true); setActionMode(null); return; }
           if (action === 'move') {
             const i = rows.findIndex(r => r.key === row.key);
             setIdx(i);
             setReorderState({ rowKey: row.key, dbId: row.moduleId, type: row.type, originalIdx: i, originalPos: row.pos, currentPos: row.pos });
+            setActionMode(null);
             return;
           }
-          if (action === 'settings') {
-            setSettingsOpen(s => ({ ...s, [`spanel:mod:${row.moduleId}`]: !s[`spanel:mod:${row.moduleId}`] }));
-            return;
-          }
-          if (action === 'duplicate') { duplicateItem(row.moduleId, true); return; }
-          if (action === 'delete') { removeModuleById(row.moduleId); return; }
+          if (action === 'delete') { removeModuleById(row.moduleId); setActionMode(null); return; }
         }
         if (row.type === 'instr') {
+          if (action === 'settings') {
+            const pKey = `spanel:instr:${row.dbId}`;
+            setRevealedOwnerKey(`instr:${row.dbId}`);
+            setSettingsOpen(s => ({ ...s, [pKey]: !s[pKey] }));
+            setActionMode(null);
+            return;
+          }
+          if (action === 'duplicate') { duplicateItem(row.dbId, false); setActionMode(null); return; }
           if (action === 'move') {
             const i = rows.findIndex(r => r.key === row.key);
             setIdx(i);
             setReorderState({ rowKey: row.key, dbId: row.dbId, type: row.type, originalIdx: i, originalPos: row.pos, currentPos: row.pos });
+            setActionMode(null);
             return;
           }
-          if (action === 'settings') {
-            setSettingsOpen(s => ({ ...s, [`spanel:instr:${row.dbId}`]: !s[`spanel:instr:${row.dbId}`] }));
-            return;
-          }
-          if (action === 'duplicate') { duplicateItem(row.dbId, false); return; }
-          if (action === 'delete') { removeItemById(row.dbId); return; }
+          if (action === 'delete') { removeItemById(row.dbId); setActionMode(null); return; }
         }
       }, [duplicateItem, removeItemById, removeModuleById, rows, path]);
 
-      /* Keyboard: Left = Back; Right = open Settings */
-      const [omniActive, setOmniActive] = useState(false);
-      const [omniMode, setOmniMode] = useState('search');
-      const [omniQuery, setOmniQuery] = useState('');
-      const [omniIndex, setOmniIndex] = useState(0);
-      const [omniFilterType, setOmniFilterType] = useState(null);
-      const [omniIntent, setOmniIntent] = useState(null);
+      const onActionExecute = useCallback((row, action) => { executeRowAction(row, action); }, [executeRowAction]);
+      const onActionEnter = useCallback((row, i) => { if (row && actionMode && actionMode.rowKey === row.key) setActionMode({ rowKey: row.key, index: i }); }, [actionMode]);
 
+      /* Keyboard */
       const handleKeyDown = useCallback((e) => {
         if (e.key === '/' && !omniActive) {
           const activeEl = document.activeElement;
@@ -821,9 +891,21 @@
 
         const sel = rows[idx]; if (!sel) return;
 
+        // Action mode
+        if (actionMode && actionMode.rowKey) {
+          const row = rows.find(r => r.key === actionMode.rowKey);
+          const actions = row ? actionsForRow(row) : [];
+          if (e.key === 'ArrowLeft') { e.preventDefault(); if (actions.length) setActionMode(m => ({ rowKey: m.rowKey, index: Math.max(0, m.index - 1) })); return; }
+          if (e.key === 'ArrowRight') { e.preventDefault(); if (actions.length) setActionMode(m => ({ rowKey: m.rowKey, index: Math.min(actions.length - 1, m.index + 1) })); return; }
+          if (e.key === 'Enter' || e.key === 'ArrowDown') { e.preventDefault(); if (row && actions.length) executeRowAction(row, actions[Math.max(0, Math.min(actions.length - 1, actionMode.index))]); return; }
+          if (e.key === 'Escape') { e.preventDefault(); setActionMode(null); return; }
+          if (e.key === 'ArrowUp') { e.preventDefault(); return; }
+          return;
+        }
+
         const activeEl = document.activeElement;
-        const inField = activeEl && (activeEl.tagName === 'TEXTAREA' || (activeEl.tagName === 'INPUT' && activeEl.type === 'text'));
-        if (inField) {
+        const inTextarea = activeEl && (activeEl.tagName === 'TEXTAREA' || (activeEl.tagName === 'INPUT' && activeEl.type === 'text'));
+        if (inTextarea) {
           const valueLength = activeEl.value.length;
           const start = activeEl.selectionStart ?? 0;
           const end = activeEl.selectionEnd ?? 0;
@@ -832,63 +914,80 @@
           return;
         }
 
-        const gotoIndex = (nextIdx) => { setIdx(nextIdx); };
+        const inReorderMode = !!reorderState;
+        const gotoIndex = (nextIdx) => {
+          const nextRow = rows[nextIdx];
+          const currentOwner = revealedOwnerKey;
+          if (currentOwner) {
+            const ok = ownerKeyOfRow(nextRow);
+            if (ok !== currentOwner) {
+              const pKey = `spanel:${currentOwner}`;
+              setSettingsOpen(prev => { if (!prev[pKey]) return prev; const copy = { ...prev }; delete copy[pKey]; return copy; });
+              setRevealedOwnerKey(null);
+            }
+          }
+          setIdx(nextIdx);
+        };
 
         if (e.key === 'ArrowUp') {
           e.preventDefault();
-          if (reorderState) { moveItemInReorderMode('up'); }
+          if (inReorderMode) { moveItemInReorderMode('up'); }
           else { gotoIndex(Math.max(0, idx - 1)); }
         } else if (e.key === 'ArrowDown') {
           e.preventDefault();
-          if (reorderState) { moveItemInReorderMode('down'); }
+          if (inReorderMode) { moveItemInReorderMode('down'); }
           else { gotoIndex(Math.min(rows.length - 1, idx + 1)); }
         } else if (e.key === 'ArrowLeft') {
           e.preventDefault();
-          if (reorderState) { setReorderState(null); return; }
-          // Close settings if open for this row
-          if (sel.type === 'module-item' && isSettingsOpenFor(sel)) { setSettingsOpen(s => { const k = `spanel:mod:${sel.moduleId}`; const cp = { ...s }; delete cp[k]; return cp; }); return; }
-          if (sel.type === 'instr' && isSettingsOpenFor(sel)) { setSettingsOpen(s => { const k = `spanel:instr:${sel.dbId}`; const cp = { ...s }; delete cp[k]; return cp; }); return; }
-          // Navigate back to agent if in module
+          if (inReorderMode) { commitReorder(); return; }
+          if (sel.type === 'settings-panel') { setSettingsOpen(s => ({ ...s, [sel.key]: false })); return; }
+          if (sel.type === 'settings-button' || sel.type === 'prompt') {
+            const ownerIdx = Math.max(0, idx - 1);
+            const currentOwner = revealedOwnerKey;
+            if (currentOwner) {
+              const pKey = `spanel:${currentOwner}`; setSettingsOpen(prev => { if (!prev[pKey]) return prev; const copy = { ...prev }; delete copy[pKey]; return copy; });
+            }
+            setRevealedOwnerKey(null);
+            setIdx(ownerIdx);
+            return;
+          }
+          if (sel.canReorder) {
+            setReorderState({ rowKey: sel.key, dbId: sel.dbId || sel.moduleId, type: sel.type, originalIdx: idx, originalPos: sel.pos, currentPos: sel.pos });
+            return;
+          }
           if (path.length > 1) {
             const newPath = path.slice(0, -1);
             const pathKey = newPath.join('/'); const savedIdx = navHistory[pathKey];
+            setRevealedOwnerKey(null); setSettingsOpen({});
             setPath(newPath);
             setIdx(savedIdx !== undefined ? savedIdx : (newPath.length === 1 ? 2 : 3));
-            return;
           }
         } else if (e.key === 'ArrowRight') {
           e.preventDefault();
-          // Open settings by default
-          if (sel.type === 'module-item') { openAndFocusSettings('module', sel.moduleId); return; }
-          if (sel.type === 'instr') { openAndFocusSettings('instr', sel.dbId); return; }
-          if (sel.type === 'adder-mod') { openOmniAddModule(); return; }
+          if (sel.type === 'module-item' || sel.type === 'instr') {
+            const defaultIndex = 0; // view for module, settings for instr (both index 0 in their lists)
+            setActionMode({ rowKey: sel.key, index: defaultIndex });
+            return;
+          }
+          if (inReorderMode) { commitReorder(); return; }
+          if (sel.type === 'adder-mod') { openOmniAddModule(); }
         } else if (e.key === 'Enter') {
           e.preventDefault();
-          // Default Enter: navigate into module; for instr, open settings
-          if (sel.type === 'module-item') {
-            const pathKey = path.join('/'); setNavHistory(h => ({ ...h, [pathKey]: rows.findIndex(r => r.key === sel.key) }));
-            setPath([...path, sel.moduleId]); setIdx(3); return;
-          }
-          if (sel.type === 'instr') { openAndFocusSettings('instr', sel.dbId); return; }
-          if (sel.type === 'adder-mod') { openOmniAddModule(); return; }
+          if (inReorderMode) { commitReorder(); return; }
+          if (sel.type === 'adder-mod') { openOmniAddModule(); }
         } else if (e.key === 'Escape') {
           e.preventDefault();
-          if (reorderState) { setReorderState(null); return; }
-          // Close settings if open for current row, else back to agent if possible
-          if (sel.type === 'module-item' && isSettingsOpenFor(sel)) { setSettingsOpen(s => { const k = `spanel:mod:${sel.moduleId}`; const cp = { ...s }; delete cp[k]; return cp; }); return; }
-          if (sel.type === 'instr' && isSettingsOpenFor(sel)) { setSettingsOpen(s => { const k = `spanel:instr:${sel.dbId}`; const cp = { ...s }; delete cp[k]; return cp; }); return; }
-          if (path.length > 1) {
-            const newPath = path.slice(0, -1);
-            const pathKey = newPath.join('/'); const savedIdx = navHistory[pathKey];
-            setPath(newPath);
-            setIdx(savedIdx !== undefined ? savedIdx : (newPath.length === 1 ? 2 : 3));
-            return;
+          if (inReorderMode) { setReorderState(null); return; }
+          if (revealedOwnerKey) {
+            const pKey = `spanel:${revealedOwnerKey}`;
+            setSettingsOpen(prev => { if (!prev[pKey]) return prev; const copy = { ...prev }; delete copy[pKey]; return copy; });
+            setRevealedOwnerKey(null);
           }
         }
       }, [
-        rows, idx, reorderState, path, navHistory,
-        moveItemInReorderMode, isSettingsOpenFor,
-        omniActive, openOmniAddModule, openAndFocusSettings
+        rows, idx, reorderState, path, navHistory, revealedOwnerKey,
+        moveItemInReorderMode, commitReorder, settingsOpen, atModule, module,
+        omniActive, actionMode, actionsForRow, executeRowAction, openOmniAddModule
       ]);
 
       useEffect(() => { window.addEventListener('keydown', handleKeyDown); return () => window.removeEventListener('keydown', handleKeyDown); }, [handleKeyDown]);
@@ -897,23 +996,34 @@
         const rowIdx = rows.findIndex(r => r.key === row.key);
         if (rowIdx !== -1) setIdx(rowIdx);
 
-        if (row.type === 'root') { navigateToPath([path[0]], true); return; }
         if (row.type === 'adder-mod') { openOmniAddModule(); return; }
 
         if (row.type === 'module-item') {
-          // Toggle settings on click when already selected; otherwise just select
-          const key = `spanel:mod:${row.moduleId}`;
-          setSettingsOpen(s => ({ ...s, [key]: s[key] ? false : true }));
+          const key = `mod:${row.moduleId}`;
+          if (revealedOwnerKey !== key) {
+            setRevealedOwnerKey(key);
+          } else {
+            const pathKey = path.join('/'); setNavHistory(h => ({ ...h, [pathKey]: rowIdx }));
+            setRevealedOwnerKey(null); setSettingsOpen({});
+            setPath([...path, row.moduleId]); setIdx(3);
+          }
         } else if (row.type === 'instr') {
-          const key = `spanel:instr:${row.dbId}`;
-          setSettingsOpen(s => ({ ...s, [key]: s[key] ? false : true }));
+          const key = `instr:${row.dbId}`;
+          if (revealedOwnerKey !== key) {
+            setRevealedOwnerKey(key);
+          }
+        } else if (row.type === 'settings-button') {
+          const pKey = row.ownerType === 'module' ? `spanel:mod:${row.ownerId}` : `spanel:instr:${row.ownerId}`;
+          setSettingsOpen(s => ({ ...s, [pKey]: !s[pKey] }));
+        } else {
+          if (revealedOwnerKey) {
+            const ok = ownerKeyOfRow(row);
+            if (ok !== revealedOwnerKey) { setRevealedOwnerKey(null); setSettingsOpen({}); }
+          }
         }
-      }, [rows, path, navigateToPath, openOmniAddModule]);
+      }, [rows, path, revealedOwnerKey, openOmniAddModule]);
 
-      /* Omnisearch */
-      const [omniModeStateInit] = useState(true); // sink to keep hooks order stable
-      const [omniActiveStateInit] = useState(true); // ditto
-
+      /* Omnisearch state & helpers passed down */
       const promptText = useMemo(() => {
         let text = '(: Smile Composer\n    ' + store.get(`n-${agent.name}`, agent.name);
         if (atModule) {
@@ -998,9 +1108,9 @@
           {/* Main Composer */}
           <div className="panel">
             <div className="panel-title">
-              <span className="clickable" onClick={() => navigateToPath([path[0]], true)}>Smile Composer</span>
+              <span>Smile Composer</span>
               <div className="panel-title-right">
-                <span className="panel-subtle">Left = Back • Right = Settings • Enter on module = Inside • Drag to reorder • / = Omnisearch</span>
+                <span className="panel-subtle">Right → shows actions • Left/Right choose • Enter/Down runs • Esc closes</span>
                 <button className="btn" onClick={openOmniAddModule}>Add Module</button>
               </div>
             </div>
@@ -1028,7 +1138,23 @@
                   onTouchStartRow={onTouchStartRow}
                   onTouchMoveRow={onTouchMoveRow}
                   onTouchEndRow={onTouchEndRow}
-                  onActionExecute={executeRowAction}
+                  onSettingsDuplicate={(row) => {
+                    if (row.ownerType === 'instr') duplicateItem(row.ownerId, false);
+                    else duplicateItem(row.ownerId, true);
+                  }}
+                  onSettingsMove={(row) => {
+                    const ownerRow = rows.find(r =>
+                      (row.ownerType === 'instr' && r.type === 'instr' && r.dbId === row.ownerId) ||
+                      (row.ownerType === 'module' && r.type === 'module-item' && r.moduleId === row.ownerId)
+                    );
+                    if (!ownerRow) return;
+                    const i = rows.findIndex(r => r.key === ownerRow.key);
+                    setIdx(i);
+                    setReorderState({ rowKey: ownerRow.key, dbId: ownerRow.dbId || ownerRow.moduleId, type: ownerRow.type, originalIdx: i, originalPos: ownerRow.pos, currentPos: ownerRow.pos });
+                  }}
+                  onSettingsDelete={(row) => { if (row.ownerType === 'instr') removeItemById(row.ownerId); else removeModuleById(row.ownerId); }}
+                  onActionExecute={onActionExecute}
+                  onActionEnter={onActionEnter}
                   getStruct={(k) => store.get(k, 'heavy')}
                   setStruct={(k,v) => updateData(k, v)}
                   getNameOverride={(k, f) => store.get(k, f || '')}
@@ -1036,7 +1162,8 @@
                   getMeta={(k) => store.get(k, '')}
                   setMeta={(k, v) => updateData(k, v)}
                   setRowRef={setRowRef}
-                  isSettingsOpenFor={isSettingsOpenFor}
+                  actionModeRowKey={actionMode ? actionMode.rowKey : null}
+                  actionIndex={actionMode ? actionMode.index : -1}
                 />
               );
             })}
