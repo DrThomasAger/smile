@@ -2,30 +2,63 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Smile Composer — Stable Navigation & Settings</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Smile Composer — Indented UI, Stacked Panels, No Vertical Lines</title>
   <script crossorigin src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
   <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
   <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
   <style>
+    :root { --tab: 32px; --panel-radius: 10px; --soft-bg: #fafafa; --hover-bg: #f6f6f6; --select-bg: #f2f2f2; --rule: rgba(0,0,0,0.08); }
+
     * { box-sizing: border-box; }
-    body { font-family: -apple-system, system-ui, Segoe UI, Helvetica, Arial, sans-serif; background: white; color: black; padding: 40px; margin: 0; }
-    .container { display: flex; gap: 24px; align-items: flex-start; }
-    .left { flex: 1; min-width: 0; }
-    .right { flex: 0 0 480px; display: flex; flex-direction: column; gap: 24px; }
-    .panel { border: 1px solid #eee; padding: 16px; border-radius: 8px; }
-    .panel-title { font-weight: 600; margin-bottom: 12px; display: flex; justify-content: space-between; align-items: center; }
+    body {
+      font-family: -apple-system, system-ui, Segoe UI, Helvetica, Arial, sans-serif;
+      background: #fff;
+      color: #111;
+      padding: 32px;
+      margin: 0;
+    }
 
-    /* List rows */
-    .line { user-select: none; padding: 6px 8px; border-radius: 8px; display: block; cursor: pointer; transition: background-color 0.15s ease; }
-    .line:hover { background-color: #f7f7f7; }
-    .line.sel { font-weight: 600; background-color: #f5f5f5; }
-    .line.reorder-mode { font-weight: 700; background-color: #f0f0f0; }
-    .line.held { opacity: 0.3; }
-    .line.drop-target { border-top: 3px solid #000; }
+    /* Single stacked flow with unlimited width preference */
+    .container { display: block; width: 100%; }
 
-    /* Tabbed editors: underline-only fields starting deeper to the right */
-    .tab-indent { margin-left: 64px; margin-top: 8px; display: grid; gap: 10px; }
+    .panel {
+      background: #fff;
+      border-radius: var(--panel-radius);
+      padding: 16px;
+      border: none;
+      box-shadow: 0 1px 0 0 var(--rule); /* single bottom line effect only */
+      margin-top: 20px;
+    }
+    .panel-title {
+      font-weight: 600;
+      margin-bottom: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .panel-subtle { font-size: 12px; color: #666; }
+
+    /* Composer lines */
+    .line {
+      user-select: none;
+      padding: 8px 10px;
+      border-radius: 10px;
+      display: block;
+      cursor: pointer;
+      transition: background-color 0.12s ease;
+    }
+    .line:hover { background-color: var(--hover-bg); }
+    .line.sel { font-weight: 600; background-color: var(--select-bg); }
+    .line.reorder-mode { font-weight: 700; background-color: #eee; }
+    .line.held { opacity: 0.35; }
+    .line.drop-target { outline: 3px solid #111; outline-offset: -3px; border-radius: 12px; }
+
+    /* Indented blocks for prompts/settings/adders by depth */
+    .indent-block { margin-top: 8px; }
+    .indent-grid { display: grid; gap: 10px; }
+
+    /* Inputs: no vertical lines, minimal bottom rule only */
     .underline-input,
     .underline-textarea {
       width: 100%;
@@ -39,51 +72,111 @@
       resize: vertical;
       min-height: 34px;
     }
-    .underline-textarea { min-height: 60px; }
+    .underline-textarea { min-height: 80px; }
 
-    .btn { font: inherit; border: 1px solid #000; background: #fff; padding: 6px 10px; border-radius: 6px; cursor: pointer; font-size: 12px; }
+    /* Buttons without enclosing borders (avoid vertical lines) */
+    .btn {
+      font: inherit;
+      border: none;
+      background: #fff;
+      padding: 6px 12px;
+      border-radius: 999px;
+      cursor: pointer;
+      font-size: 12px;
+      box-shadow: 0 1px 0 0 var(--rule); /* single bottom line feel */
+    }
     .btn + .btn { margin-left: 8px; }
 
-    .search-wrap { padding-left: 24px; margin-top: 8px; }
-    .search-list { max-height: 220px; overflow: auto; border: 1px solid #ddd; border-radius: 6px; margin-top: 6px; background: white; }
-    .search-item { padding: 6px 8px; cursor: pointer; }
-    .search-item:hover { background-color: #f5f5f5; }
-    .search-item.selected { background-color: #e8e8e8; font-weight: 600; }
-    .search-badge { font-size: 11px; border: 1px solid #bbb; border-radius: 10px; padding: 0 6px; margin-left: 6px; }
+    /* Search visuals: remove all visible lines */
+    .search-wrap { margin-top: 8px; }
+    .search-list {
+      max-height: 240px;
+      overflow: auto;
+      margin-top: 8px;
+      padding: 6px;
+      border: none;
+      background: #fff;
+      border-radius: 12px;
+    }
+    .search-item {
+      padding: 8px 10px;
+      border-radius: 10px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin: 4px 0;                /* spacing instead of borders */
+      background: var(--soft-bg);
+    }
+    .search-item:hover { background: var(--hover-bg); }
+    .search-item.selected { background: var(--select-bg); font-weight: 600; }
+    .search-badge {
+      font-size: 11px;
+      padding: 2px 8px;
+      border-radius: 999px;
+      background: #eee;
+    }
 
+    /* Tree view without line dividers */
     .tree-view { max-height: 500px; overflow: auto; font-size: 13px; line-height: 1.8; }
-    .tree-item { padding: 3px 8px; cursor: pointer; user-select: none; border-radius: 4px; }
-    .tree-item:hover { background-color: #f5f5f5; }
-    .tree-item.active { font-weight: 700; background-color: #e8e8e8; }
+    .tree-item {
+      padding: 6px 8px;
+      cursor: pointer;
+      user-select: none;
+      border-radius: 8px;
+    }
+    .tree-item:hover { background: var(--hover-bg); }
+    .tree-item.active { font-weight: 700; background: var(--select-bg); }
 
-    .error { color: red; padding: 20px; border: 1px solid red; margin: 20px; }
+    .error { color: red; padding: 20px; border: 1px solid red; margin: 20px; border-radius: 8px; }
 
-    /* 5-stop structure control */
-    .seg { display: inline-flex; align-items: center; gap: 8px; padding: 6px 8px; border: 1px solid #ddd; border-radius: 999px; background: #fafafa; }
+    /* Segmented control with soft look */
+    .seg {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 6px 8px;
+      border-radius: 999px;
+      background: var(--soft-bg);
+    }
     .seg .label { font-size: 12px; margin-right: 4px; }
     .seg input[type="radio"] { position: absolute; opacity: 0; pointer-events: none; }
-    .seg .opt { display: inline-flex; align-items: center; gap: 6px; padding: 4px 8px; border-radius: 999px; cursor: pointer; border: 1px solid transparent; }
+    .seg .opt {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 4px 8px;
+      border-radius: 999px;
+    }
     .seg .dot { width: 8px; height: 8px; border-radius: 50%; background: #bbb; display: inline-block; }
     .seg input[type="radio"]:checked + .opt .dot { background: #111; }
-    .seg input[type="radio"]:checked + .opt { border-color: #111; }
 
-    .settings-panel { margin-left: 64px; margin-top: 8px; margin-bottom: 6px; display: grid; gap: 10px; }
-    .alltext { width: 100%; min-height: 200px; border: 1px solid #ccc; padding: 8px; border-radius: 6px; resize: vertical; background: #fff; }
+    /* All text area with single bottom line */
+    .alltext {
+      width: 100%;
+      min-height: 220px;
+      padding: 10px;
+      border: none;
+      border-bottom: 1px solid #ccc;
+      border-radius: 0;
+      resize: vertical;
+      background: #fff;
+    }
   </style>
 </head>
 <body>
   <div id="root"></div>
 
   <script type="text/babel" data-presets="env,react">
-  (function() {
+  (function () {
     if (!(window.React && window.ReactDOM)) {
       document.getElementById('root').innerHTML = '<div class="error">Failed to load React</div>';
       return;
     }
 
     const { useState, useEffect, useRef, useCallback, useMemo } = React;
+    const TAB = 32; // unified tab size (px) for all hierarchy indents
 
-    // ===== INITIAL DATABASE =====
     const INITIAL_DB = {
       'expert-maker': { name: 'Expert Maker', type: 'agent', input: 'Question', output: 'Answer', modules: ['meta-info', 'jargon-cot', 'identify-mistakes'] },
       'input-mod': { name: 'INPUT: Question', type: 'mod', items: ['input-enter', 'input-understand', 'input-result'] },
@@ -106,7 +199,6 @@
       'output-result': { name: 'Final Output', type: 'instr', text: 'Deliver the polished final output after reasoning and checks.' }
     };
 
-    // ===== DATA STORE =====
     class DataStore {
       constructor() { this.data = this.loadFromStorage(); this.db = { ...INITIAL_DB }; this.version = 0; }
       loadFromStorage() { try { const stored = localStorage.getItem('smileData'); return stored ? JSON.parse(stored) : {}; } catch(e){ return {}; } }
@@ -120,7 +212,6 @@
       getVersion() { return this.version; }
     }
 
-    // ===== UTIL =====
     const moveInList = (arr, fromPos, toPos) => {
       if (fromPos === toPos || fromPos < 0 || toPos < 0 || fromPos >= arr.length) return arr;
       const newArr = [...arr];
@@ -167,14 +258,14 @@
       return null;
     };
 
-    // ===== ROW BUILDER =====
     class RowBuilder {
-      constructor(store, path, reorderState, revealedOwnerKey, settingsOpen) {
+      constructor(store, path, reorderState, revealedOwnerKey, settingsOpen, deleteMode) {
         this.store = store;
         this.path = path;
         this.reorderState = reorderState;
         this.revealedOwnerKey = revealedOwnerKey || null;
         this.settingsOpen = settingsOpen || {};
+        this.deleteMode = deleteMode || { active: false };
         this.rows = [];
       }
       build() {
@@ -207,12 +298,15 @@
           visualItems.forEach(({ item: id, originalPos }) => {
             const ins = this.store.getDbItem(id); if (!ins) return;
             const ownerKey = `instr:${id}`;
-            const allowEphemeral = !this.reorderState;
+            const allowEphemeral = !this.reorderState && !this.deleteMode.active;
             const revealed = allowEphemeral && (this.revealedOwnerKey === ownerKey);
+
+            const baseLabel = displayNameFor(this.store, ins, id);
+            const decorated = this.deleteMode.active ? `- ${baseLabel}` : baseLabel;
 
             this.rows.push({
               key: `ins:${id}:${originalPos}`, type: 'instr', depth: 3,
-              label: displayNameFor(this.store, ins, id),
+              label: decorated,
               nameKey: `n-${ins.name}`, nameOverrideKey: `nn-${id}`,
               textKey: `t-${ins.name}`, defaultText: ins.text || '',
               metaKey: `meta-${id}`, structKey: `struct-${id}`,
@@ -246,8 +340,14 @@
         }
 
         this.rows.push({ key: `adder-${module.name}`, type: 'adder', depth: 3, label: '+ Add Instruction' });
+        this.rows.push({
+          key: 'trash',
+          type: 'trash',
+          depth: 3,
+          label: this.deleteMode.active ? 'Select which instruction to delete' : '- Delete Instruction'
+        });
+
         if (this.reorderState) {
-          this.rows.push({ key: 'trash', type: 'trash', depth: 3, label: '- Delete Instruction' });
           this.rows.push({ key: 'cancel-reorder', type: 'cancel-reorder', depth: 3, label: '[Esc] Cancel Movement' });
         }
       }
@@ -260,7 +360,7 @@
           visualModules.forEach(({ item: mid, originalPos }) => {
             const mod = this.store.getDbItem(mid); if (!mod) return;
             const ownerKey = `mod:${mid}`;
-            const allowEphemeral = !this.reorderState;
+            const allowEphemeral = !this.reorderState && !this.deleteMode.active;
             const revealed = allowEphemeral && (this.revealedOwnerKey === ownerKey);
 
             this.rows.push({
@@ -296,7 +396,7 @@
         }
 
         this.rows.push({ key: `adder-mod-${agent.name}`, type: 'adder-mod', depth: 2, label: '+ Add Module' });
-        this.rows.push({ key: 'trash', type: 'trash', depth: 2, label: '- Delete Module' });
+        this.rows.push({ key: 'trash-mod', type: 'trash-mod', depth: 2, label: '- Delete Module' });
         if (this.reorderState) {
           this.rows.push({ key: 'cancel-reorder', type: 'cancel-reorder', depth: 2, label: '[Esc] Cancel Movement' });
         }
@@ -306,7 +406,6 @@
       getCurrentModule() { return this.isAtModule() ? this.store.getDbItem(this.path[this.path.length - 1]) : null; }
     }
 
-    // ===== TREE VIEW =====
     function TreeView({ store, path, onNavigate, storeVersion }) {
       const renderModule = useCallback((modId, parentPath, depth) => {
         const mod = store.getDbItem(modId); if (!mod) return null;
@@ -344,8 +443,7 @@
       );
     }
 
-    // ===== SEARCH ADDER =====
-    function SearchAdder({ type, query, setQuery, onAdd, onCancel, store }) {
+    function SearchAdder({ type, query, setQuery, onAdd, onCancel, store, indentPx }) {
       const inputRef = useRef(null);
       const [selectedIndex, setSelectedIndex] = useState(0);
       useEffect(() => { inputRef.current && inputRef.current.focus(); }, []);
@@ -354,7 +452,10 @@
         const types = isInstructionSearch ? ['instr'] : null;
         return searchDatabase(store.getAllDb(), query, types);
       }, [query, isInstructionSearch, store]);
-      const sortedResults = useMemo(() => isInstructionSearch ? results : [...results].sort((a,b)=>a.type==='mod'?-1:1), [results, isInstructionSearch]);
+      const sortedResults = useMemo(
+        () => isInstructionSearch ? results : [...results].sort((a,b)=>a.type==='mod'?-1:1),
+        [results, isInstructionSearch]
+      );
       useEffect(() => { setSelectedIndex(0); }, [query]);
 
       const handleKeyDown = (e) => {
@@ -374,7 +475,7 @@
       const handleItemClick = (item, index) => { setSelectedIndex(index); onAdd(item); };
 
       return (
-        <div className="search-wrap">
+        <div className="search-wrap indent-block" style={{ paddingLeft: indentPx }}>
           <input
             ref={inputRef}
             className="underline-input"
@@ -385,13 +486,22 @@
           />
           <div className="search-list">
             {sortedResults.map((res, index) => (
-              <div key={res.id} className={`search-item${index === selectedIndex ? ' selected' : ''}`} onClick={() => handleItemClick(res, index)}>
-                {res.name}<span className="search-badge">{res.type}</span>
+              <div
+                key={res.id}
+                className={`search-item${index === selectedIndex ? ' selected' : ''}`}
+                onClick={() => handleItemClick(res, index)}
+              >
+                <span>{res.name}</span>
+                <span className="search-badge">{res.type}</span>
               </div>
             ))}
             {!results.length && query && isInstructionSearch && (
-              <div className={`search-item${selectedIndex === 0 ? ' selected' : ''}`} onClick={() => onAdd({ id: null, name: query.trim(), isNew: true })}>
-                Create "{query.trim()}"
+              <div
+                className={`search-item${selectedIndex === 0 ? ' selected' : ''}`}
+                onClick={() => onAdd({ id: null, name: query.trim(), isNew: true })}
+              >
+                <span>Create "{query.trim()}"</span>
+                <span className="search-badge">instr</span>
               </div>
             )}
           </div>
@@ -399,7 +509,6 @@
       );
     }
 
-    // ===== 5-STOP STRUCTURE =====
     function StructureDots5({ id, value, onChange }) {
       const opts = [
         { v: 'heavy', label: 'Heavy', aria: 'Heavy' },
@@ -423,7 +532,6 @@
       );
     }
 
-    // ===== LINE RENDERER =====
     function LineRenderer({
       row, isSelected, inReorderMode, isDragging, isDropTarget,
       store, onLineClick, onTextChange,
@@ -437,7 +545,9 @@
       if (isDragging) classes.push('held');
       if (isDropTarget) classes.push('drop-target');
 
-      const style = { paddingLeft: (row.depth || 0) * 24 };
+      const lineIndentPx = (row.depth || 0) * TAB;
+      const style = { paddingLeft: lineIndentPx };
+
       const showAdder = (addingState.isAdding &&
         ((row.type === 'adder' && addingState.type === 'instruction') ||
          (row.type === 'adder-mod' && addingState.type === 'module')));
@@ -478,7 +588,7 @@
           </div>
 
           {row.type === 'prompt' && (
-            <div className="tab-indent">
+            <div className="indent-block indent-grid" style={{ paddingLeft: (row.depth || 0) * TAB }}>
               <textarea
                 ref={promptRef}
                 className="underline-textarea"
@@ -490,7 +600,7 @@
           )}
 
           {row.type === 'settings-panel' && (
-            <div className="settings-panel">
+            <div className="indent-block indent-grid" style={{ paddingLeft: (row.depth || 0) * TAB }}>
               <input
                 ref={headingRef}
                 type="text"
@@ -520,22 +630,20 @@
           )}
 
           {showAdder && (
-            <div className="search-wrap">
-              <SearchAdder
-                type={addingState.type}
-                query={addingState.query}
-                setQuery={addingState.setQuery}
-                onAdd={onAddingComplete}
-                onCancel={onAddingCancel}
-                store={store}
-              />
-            </div>
+            <SearchAdder
+              type={addingState.type}
+              query={addingState.query}
+              setQuery={addingState.setQuery}
+              onAdd={onAddingComplete}
+              onCancel={onAddingCancel}
+              store={store}
+              indentPx={(row.depth + 1) * TAB}
+            />
           )}
         </div>
       );
     }
 
-    // ===== APP =====
     function App() {
       const storeRef = useRef(new DataStore());
       const store = storeRef.current;
@@ -554,15 +662,23 @@
       const [dragOver, setDragOver] = useState(null);
       const [addingState, setAddingState] = useState({ isAdding: false, type: null, query: '' });
 
-      // Ephemeral reveal owner key: "mod:<id>" or "instr:<id>"
       const [revealedOwnerKey, setRevealedOwnerKey] = useState(null);
-      // Open settings panels: { 'spanel:mod:<id>': true, ... }
       const [settingsOpen, setSettingsOpen] = useState({});
+      const [deleteMode, setDeleteMode] = useState({ active: false });
+
+      // Global search state (keyboard '/')
+      const [globalSearchOpen, setGlobalSearchOpen] = useState(false);
+      const [globalSearchQuery, setGlobalSearchQuery] = useState('');
+      const [globalSearchIndex, setGlobalSearchIndex] = useState(0);
+      const globalSearchInputRef = useRef(null);
 
       const rows = useMemo(() => {
-        const builder = new RowBuilder(store, path, reorderState, revealedOwnerKey, settingsOpen);
+        const builder = new RowBuilder(store, path, reorderState, revealedOwnerKey, settingsOpen, deleteMode);
         return builder.build();
-      }, [store, path, reorderState, revealedOwnerKey, settingsOpen, storeVersion]);
+      }, [store, path, reorderState, revealedOwnerKey, settingsOpen, deleteMode, storeVersion]);
+
+      const rowsRef = useRef(rows);
+      useEffect(() => { rowsRef.current = rows; }, [rows]);
 
       const atAgent = path.length === 1;
       const atModule = path.length >= 2;
@@ -576,7 +692,8 @@
           store.reset();
           setPath(['expert-maker']); setIdx(2); setNavHistory({}); setReorderState(null);
           setAddingState({ isAdding: false, type: null, query: '' });
-          setRevealedOwnerKey(null); setSettingsOpen({});
+          setRevealedOwnerKey(null); setSettingsOpen({}); setDeleteMode({ active: false });
+          setGlobalSearchOpen(false); setGlobalSearchQuery(''); setGlobalSearchIndex(0);
           window.location.hash = ''; setStoreVersion(store.getVersion());
         }
       }, [store]);
@@ -584,51 +701,64 @@
       const navigateToPath = useCallback((newPath, autoSelect = true) => {
         setPath(newPath); setReorderState(null);
         setAddingState({ isAdding: false, type: null, query: '' });
-        setRevealedOwnerKey(null); setSettingsOpen({});
+        setRevealedOwnerKey(null); setSettingsOpen({}); setDeleteMode({ active: false });
         setIdx(autoSelect ? (newPath.length === 1 ? 2 : 3) : 0);
       }, []);
 
       const addModuleToAgent = useCallback((moduleResult) => {
-        if (!agent) return; const key = `mods-${agent.name}`; const arr = store.get(key, agent.modules || []); updateData(key, [...arr, moduleResult.id]);
+        if (!agent) return;
+        const key = `mods-${agent.name}`;
+        const arr = store.get(key, agent.modules || []);
+        updateData(key, [...arr, moduleResult.id]);
       }, [agent, store, updateData]);
 
       const addInstructionToModule = useCallback((instructionResult) => {
-        if (!module) return; const arr = store.get(`items-${module.name}`, module.items || []);
+        if (!module) return;
+        const arr = store.get(`items-${module.name}`, module.items || []);
         if (instructionResult.isNew) {
           const newId = 'custom-' + Date.now();
           store.addCustomDbItem(newId, { name: instructionResult.name, type: 'instr', text: '' });
           updateData(`items-${module.name}`, [...arr, newId]); setStoreVersion(store.getVersion());
-        } else { updateData(`items-${module.name}`, [...arr, instructionResult.id]); }
+        } else {
+          updateData(`items-${module.name}`, [...arr, instructionResult.id]);
+        }
       }, [module, store, updateData]);
 
       const removeItem = useCallback((pos) => {
         if (!atModule || !module || pos === undefined || pos === null) return;
-        const arr = store.get(`items-${module.name}`, module.items || []); updateData(`items-${module.name}`, arr.filter((_, i) => i !== pos));
+        const arr = store.get(`items-${module.name}`, module.items || []);
+        updateData(`items-${module.name}`, arr.filter((_, i) => i !== pos));
       }, [atModule, module, store, updateData]);
 
       const removeModule = useCallback((pos) => {
         if (!agent || pos === undefined || pos === null) return;
-        const arr = store.get(`mods-${agent.name}`, agent.modules || []); updateData(`mods-${agent.name}`, arr.filter((_, i) => i !== pos));
+        const arr = store.get(`mods-${agent.name}`, agent.modules || []);
+        updateData(`mods-${agent.name}`, arr.filter((_, i) => i !== pos));
       }, [agent, store, updateData]);
 
       const duplicateItem = useCallback((dbId, isModule, insertAtPos = null) => {
         const item = store.getDbItem(dbId); if (!item) return;
         if (isModule) {
-          if (!agent) return; const arr = store.get(`mods-${agent.name}`, agent.modules || []); const newArr = [...arr];
+          if (!agent) return;
+          const arr = store.get(`mods-${agent.name}`, agent.modules || []);
+          const newArr = [...arr];
           const at = (insertAtPos !== null && insertAtPos >= 0 && insertAtPos <= arr.length) ? insertAtPos : arr.length;
           newArr.splice(at, 0, dbId); updateData(`mods-${agent.name}`, newArr);
         } else {
-          if (!module) return; const arr = store.get(`items-${module.name}`, module.items || []);
-          const newId = 'custom-' + Date.now(); const baseName = displayNameFor(store, item, dbId); const baseText = store.get(`t-${item.name}`, item.text || '');
+          if (!module) return;
+          const arr = store.get(`items-${module.name}`, module.items || []);
+          const newId = 'custom-' + Date.now();
+          const baseName = displayNameFor(store, item, dbId);
+          const baseText = store.get(`t-${item.name}`, item.text || '');
           store.addCustomDbItem(newId, { name: baseName + ' (copy)', type: 'instr', text: baseText });
-          const newArr = [...arr]; const at = (insertAtPos !== null && insertAtPos >= 0 && insertAtPos <= arr.length) ? insertAtPos : arr.length;
+          const newArr = [...arr];
+          const at = (insertAtPos !== null && insertAtPos >= 0 && insertAtPos <= arr.length) ? insertAtPos : arr.length;
           newArr.splice(at, 0, newId); updateData(`items-${module.name}`, newArr);
           updateData(`nn-${newId}`, baseName + ' (copy)'); updateData(`t-${newId}`, baseText); setStoreVersion(store.getVersion());
         }
       }, [agent, module, store, updateData]);
 
-      // Reorder landing restrictions
-      const blockedFooter = new Set(['adder','trash','cancel-reorder','settings-button','settings-panel','prompt']);
+      const blockedFooter = new Set(['adder','trash','trash-mod','cancel-reorder','settings-button','settings-panel','prompt']);
       const canLandOn = (row, type) => (type === 'instr' ? row.type === 'instr' : row.type === 'module-item');
 
       const moveItemInReorderMode = useCallback((direction) => {
@@ -694,7 +824,6 @@
         return false;
       }, [atModule, removeItem, removeModule, rows.length]);
 
-      // Drag & Drop (stable, no hover-based reveals)
       const handleDragStart = useCallback((e, row) => { e.dataTransfer.effectAllowed = 'move'; setDragItem(row); }, []);
       const handleDragOver = useCallback((e, row) => { e.preventDefault(); if (!dragItem) return; e.dataTransfer.dropEffect = 'move'; setDragOver(row.key); }, [dragItem]);
       const handleDrop = useCallback((e, row) => {
@@ -725,12 +854,74 @@
 
       const handleDragEnd = useCallback(() => { setDragItem(null); setDragOver(null); }, []);
 
-      // Keyboard navigation
+      // find module for instruction
+      const findModuleForInstruction = useCallback((instrId) => {
+        if (!agent) return null;
+        const mods = store.get(`mods-${agent.name}`, agent.modules || []);
+        for (const mid of mods) {
+          const mod = store.getDbItem(mid); if (!mod) continue;
+          const items = store.get(`items-${mod.name}`, mod.items || []);
+          if (items.includes(instrId)) return mid;
+        }
+        return null;
+      }, [agent, store, storeVersion]);
+
+      // global search selection
+      const selectGlobalSearchItem = useCallback((item) => {
+        if (!item) return;
+        if (item.type === 'agent') {
+          navigateToPath([item.id], true);
+          setTimeout(() => { setIdx(2); }, 0);
+        } else if (item.type === 'mod') {
+          const aid = 'expert-maker';
+          navigateToPath([aid, item.id], true);
+          setTimeout(() => {
+            const rIdx = rowsRef.current.findIndex(r => r.type === 'module' && r.moduleId === item.id);
+            if (rIdx >= 0) setIdx(rIdx);
+          }, 0);
+        } else if (item.type === 'instr') {
+          const mid = findModuleForInstruction(item.id);
+          const aid = 'expert-maker';
+          if (mid) {
+            navigateToPath([aid, mid], true);
+            setRevealedOwnerKey(`instr:${item.id}`);
+            setTimeout(() => {
+              const rIdx = rowsRef.current.findIndex(r => r.type === 'instr' && r.dbId === item.id);
+              if (rIdx >= 0) setIdx(rIdx);
+            }, 0);
+          } else {
+            navigateToPath([aid], true);
+            setTimeout(() => { setIdx(2); }, 0);
+          }
+        }
+        setGlobalSearchOpen(false);
+      }, [navigateToPath, findModuleForInstruction]);
+
+      const globalSearchResults = useMemo(() => {
+        return searchDatabase(store.getAllDb(), globalSearchQuery, null);
+      }, [globalSearchQuery, store]);
+      useEffect(() => { setGlobalSearchIndex(0); }, [globalSearchQuery]);
+      useEffect(() => {
+        if (globalSearchOpen) {
+          setTimeout(() => { if (globalSearchInputRef.current) globalSearchInputRef.current.focus(); }, 0);
+        }
+      }, [globalSearchOpen]);
+
       const handleKeyDown = useCallback((e) => {
         const sel = rows[idx]; if (!sel) return;
 
         const activeEl = document.activeElement;
         const inTextarea = activeEl && (activeEl.tagName === 'TEXTAREA' || (activeEl.tagName === 'INPUT' && activeEl.type === 'text'));
+
+        // '/' opens global search when not typing
+        if (!inTextarea && e.key === '/') {
+          e.preventDefault();
+          setGlobalSearchOpen(true);
+          setGlobalSearchQuery('');
+          setGlobalSearchIndex(0);
+          return;
+        }
+
         if (inTextarea) {
           const valueLength = activeEl.value.length;
           const start = activeEl.selectionStart ?? 0;
@@ -745,10 +936,10 @@
           if ((e.key === 'ArrowRight' || e.key === 'ArrowDown') && start === valueLength && end === valueLength) {
             e.preventDefault();
             activeEl.blur();
-            setIdx(prev => Math.min(rows.length - 1, prev + 1)); // Prompt → Settings
+            setIdx(prev => Math.min(rows.length - 1, prev + 1));
             return;
           }
-          return; // allow typing
+          return;
         }
 
         const inReorderMode = !!reorderState;
@@ -777,6 +968,7 @@
         } else if (e.key === 'ArrowLeft') {
           e.preventDefault();
           if (inReorderMode) { commitReorder(); return; }
+          if (deleteMode.active) { return; }
           if (sel.type === 'settings-panel') {
             setSettingsOpen(s => ({ ...s, [sel.key]: false }));
             return;
@@ -791,14 +983,14 @@
             setIdx(ownerIdx);
             return;
           }
-          if (sel.canReorder) {
+          if (sel.canReorder && !deleteMode.active) {
             setReorderState({ rowKey: sel.key, dbId: sel.dbId || sel.moduleId, type: sel.type, originalIdx: idx, originalPos: sel.pos, currentPos: sel.pos });
             return;
           }
           if (path.length > 1) {
             const newPath = path.slice(0, -1);
             const pathKey = newPath.join('/'); const savedIdx = navHistory[pathKey];
-            setRevealedOwnerKey(null); setSettingsOpen({});
+            setRevealedOwnerKey(null); setSettingsOpen({}); setDeleteMode({ active: false });
             setPath(newPath);
             setIdx(savedIdx !== undefined ? savedIdx : (newPath.length === 1 ? 2 : 3));
           }
@@ -806,13 +998,29 @@
           e.preventDefault();
           if (inReorderMode) { commitReorder(); return; }
 
+          if (sel.type === 'trash') {
+            setDeleteMode(m => ({ active: !m.active }));
+            return;
+          }
+          if (deleteMode.active) {
+            if (sel.type === 'instr' && atModule) {
+              removeItem(sel.pos);
+              setTimeout(() => {
+                setDeleteMode({ active: false });
+                const t = rowsRef.current.findIndex(r => r.type === 'trash');
+                if (t >= 0) setIdx(t);
+              }, 0);
+            }
+            return;
+          }
+
           if (sel.type === 'module-item') {
             const key = `mod:${sel.moduleId}`;
             if (revealedOwnerKey !== key) {
               setRevealedOwnerKey(key);
             } else {
               const pathKey = path.join('/'); setNavHistory(h => ({ ...h, [pathKey]: idx }));
-              setRevealedOwnerKey(null); setSettingsOpen({});
+              setRevealedOwnerKey(null); setSettingsOpen({}); setDeleteMode({ active: false });
               setPath([...path, sel.moduleId]);
               setIdx(3);
             }
@@ -832,10 +1040,24 @@
         } else if ((e.key === 'Delete') || (e.key === '-')) {
           e.preventDefault();
           if (inReorderMode) { if (deleteMovingIfAny()) return; }
-          else { if (deleteSelectedIfAny(sel)) return; }
+          else {
+            if (deleteMode.active) {
+              if (sel.type === 'instr' && atModule) {
+                removeItem(sel.pos);
+                setTimeout(() => {
+                  setDeleteMode({ active: false });
+                  const t = rowsRef.current.findIndex(r => r.type === 'trash');
+                  if (t >= 0) setIdx(t);
+                }, 0);
+              }
+            } else {
+              if (deleteSelectedIfAny(sel)) return;
+            }
+          }
         } else if (e.key === 'Escape') {
           e.preventDefault();
           if (inReorderMode) { setReorderState(null); return; }
+          if (deleteMode.active) { setDeleteMode({ active: false }); return; }
           if (revealedOwnerKey) {
             const pKey = `spanel:${revealedOwnerKey}`;
             setSettingsOpen(prev => { if (!prev[pKey]) return prev; const copy = { ...prev }; delete copy[pKey]; return copy; });
@@ -845,15 +1067,32 @@
       }, [
         rows, idx, reorderState, path, navHistory,
         revealedOwnerKey, moveItemInReorderMode, commitReorder,
-        deleteMovingIfAny, deleteSelectedIfAny, settingsOpen
+        deleteMovingIfAny, deleteSelectedIfAny, settingsOpen,
+        deleteMode, atModule, removeItem, module, rowsRef
       ]);
 
       useEffect(() => { window.addEventListener('keydown', handleKeyDown); return () => window.removeEventListener('keydown', handleKeyDown); }, [handleKeyDown]);
 
-      // Click mirrors keyboard reveal/hide. (No hover-based reveal)
       const handleLineClick = useCallback((row) => {
         const rowIdx = rows.findIndex(r => r.key === row.key);
         if (rowIdx !== -1) setIdx(rowIdx);
+
+        if (row.type === 'trash') {
+          setDeleteMode(m => ({ active: !m.active }));
+          return;
+        }
+
+        if (deleteMode.active) {
+          if (row.type === 'instr' && atModule) {
+            removeItem(row.pos);
+            setTimeout(() => {
+              setDeleteMode({ active: false });
+              const t = rowsRef.current.findIndex(r => r.type === 'trash');
+              if (t >= 0) setIdx(t);
+            }, 0);
+          }
+          return;
+        }
 
         if (row.type === 'module-item') {
           const key = `mod:${row.moduleId}`;
@@ -861,7 +1100,7 @@
             setRevealedOwnerKey(key);
           } else {
             const pathKey = path.join('/'); setNavHistory(h => ({ ...h, [pathKey]: rowIdx }));
-            setRevealedOwnerKey(null); setSettingsOpen({});
+            setRevealedOwnerKey(null); setSettingsOpen({}); setDeleteMode({ active: false });
             setPath([...path, row.moduleId]); setIdx(3);
           }
         } else if (row.type === 'instr') {
@@ -878,9 +1117,8 @@
             if (ok !== revealedOwnerKey) { setRevealedOwnerKey(null); setSettingsOpen({}); }
           }
         }
-      }, [rows, path, revealedOwnerKey]);
+      }, [rows, path, revealedOwnerKey, deleteMode, atModule, removeItem]);
 
-      // HASH
       useEffect(() => {
         const hash = '#' + path.join('/'); if (window.location.hash !== hash) window.history.pushState(null, '', hash);
         if (!window.location.hash) setIdx(path.length === 1 ? 2 : 3);
@@ -898,7 +1136,6 @@
         return () => window.removeEventListener('popstate', handlePopState);
       }, [navigateToPath]);
 
-      // ADDING
       const handleAddingComplete = useCallback((result) => {
         if (addingState.type === 'module') addModuleToAgent(result);
         else if (addingState.type === 'instruction') addInstructionToModule(result);
@@ -906,7 +1143,6 @@
       }, [addingState.type, addModuleToAgent, addInstructionToModule]);
       const handleAddingCancel = useCallback(() => { setAddingState({ isAdding: false, type: null, query: '' }); }, []);
 
-      // Prompt summary and All Text
       const promptText = useMemo(() => {
         let text = '(: Smile Composer\n    ' + store.get(`n-${agent.name}`, agent.name);
         if (atModule) {
@@ -952,9 +1188,33 @@
       const outputKey = atModule && module ? `output-${module.name}` : `output-${agent.name}`;
       const outputDefault = atModule ? '' : agent.output;
 
+      const onGlobalSearchKeyDown = (e) => {
+        const has = globalSearchResults.length > 0;
+        if (e.key === 'Enter') {
+          e.preventDefault();
+          if (has) {
+            const gi = Math.max(0, Math.min(globalSearchIndex, globalSearchResults.length - 1));
+            selectGlobalSearchItem(globalSearchResults[gi]);
+          }
+        } else if (e.key === 'Escape') {
+          e.preventDefault();
+          setGlobalSearchOpen(false);
+        } else if (e.key === 'ArrowDown') {
+          e.preventDefault();
+          if (has) setGlobalSearchIndex(prev => Math.min(globalSearchResults.length - 1, prev + 1));
+        } else if (e.key === 'ArrowUp') {
+          e.preventDefault();
+          if (has) setGlobalSearchIndex(prev => Math.max(0, prev - 1));
+        }
+      };
+
       return (
         <div className="container">
-          <div className="left">
+          <div className="panel">
+            <div className="panel-title">
+              <span>Smile Composer</span>
+              <span className="panel-subtle">Use ↑ ↓ ← →, Enter, Esc, /</span>
+            </div>
             {rows.map((row, i) => {
               const isSelected = i === idx;
               const inReorderMode = reorderState && row.key === reorderState.rowKey;
@@ -966,9 +1226,9 @@
                   key={row.key}
                   row={row}
                   isSelected={isSelected}
-                  inReorderMode={inReorderMode}
-                  isDragging={isDragging}
-                  isDropTarget={isDropTarget}
+                  inReorderMode={!!inReorderMode}
+                  isDragging={!!isDragging}
+                  isDropTarget={!!isDropTarget}
                   store={store}
                   onLineClick={handleLineClick}
                   onTextChange={updateData}
@@ -990,42 +1250,80 @@
             })}
           </div>
 
-          <div className="right">
-            <div className="panel">
-              <div className="panel-title"><span>Structure</span></div>
-              <TreeView store={store} path={path} onNavigate={navigateToPath} storeVersion={storeVersion} />
+          <div className="panel">
+            <div className="panel-title">
+              <span>Search</span>
+              <span className="panel-subtle">Hotkey: /</span>
             </div>
-
-            <div className="panel">
-              <div className="panel-title"><span>Prompt</span></div>
-              <textarea
-                readOnly
-                value={promptText}
-                className="underline-textarea"
-                style={{ minHeight: '120px' }}
-              />
-              <div style={{ height: 8 }}></div>
-              <button className="btn" data-hotkey-scope="ui" onClick={() => {
-                const wrap = document.getElementById('alltext-wrapper');
-                if (wrap) wrap.style.display = (wrap.style.display === 'none' ? '' : 'none');
-              }}>Show / Hide All Text</button>
-              <div id="alltext-wrapper" style={{ marginTop: 8 }}>
-                <textarea className="alltext" readOnly value={allTextContent}></textarea>
+            {!globalSearchOpen && (
+              <button className="btn" onClick={() => { setGlobalSearchOpen(true); setTimeout(() => globalSearchInputRef.current && globalSearchInputRef.current.focus(), 0); }}>
+                Open Search [/]
+              </button>
+            )}
+            {globalSearchOpen && (
+              <div className="search-wrap">
+                <input
+                  ref={globalSearchInputRef}
+                  className="underline-input"
+                  placeholder="Search agents, modules, instructions…"
+                  value={globalSearchQuery}
+                  onChange={(e) => setGlobalSearchQuery(e.target.value)}
+                  onKeyDown={onGlobalSearchKeyDown}
+                />
+                <div className="search-list">
+                  {globalSearchResults.length === 0 && (
+                    <div className="search-item"><span>No matches</span></div>
+                  )}
+                  {globalSearchResults.map((res, i) => (
+                    <div
+                      key={res.id + ':' + res.type}
+                      className={`search-item${i === globalSearchIndex ? ' selected' : ''}`}
+                      onMouseEnter={() => setGlobalSearchIndex(i)}
+                      onClick={() => selectGlobalSearchItem(res)}
+                    >
+                      <span>{res.name}</span>
+                      <span className="search-badge">{res.type}</span>
+                    </div>
+                  ))}
+                </div>
               </div>
-            </div>
+            )}
+          </div>
 
-            <div className="panel">
-              <div className="panel-title">
-                <span>Output</span>
-                <button className="btn" data-hotkey-scope="ui" onClick={resetAll}>Reset All</button>
-              </div>
-              <textarea
-                className="underline-textarea"
-                value={store.get(outputKey, outputDefault)}
-                onChange={e => updateData(outputKey, e.target.value)}
-                style={{ minHeight: '150px' }}
-              ></textarea>
+          <div className="panel">
+            <div className="panel-title"><span>Structure</span></div>
+            <TreeView store={store} path={path} onNavigate={navigateToPath} storeVersion={storeVersion} />
+          </div>
+
+          <div className="panel">
+            <div className="panel-title"><span>Prompt</span></div>
+            <textarea
+              readOnly
+              value={promptText}
+              className="underline-textarea"
+              style={{ minHeight: '120px' }}
+            />
+            <div style={{ height: 8 }}></div>
+            <button className="btn" data-hotkey-scope="ui" onClick={() => {
+              const wrap = document.getElementById('alltext-wrapper');
+              if (wrap) wrap.style.display = (wrap.style.display === 'none' ? '' : 'none');
+            }}>Show / Hide All Text</button>
+            <div id="alltext-wrapper" style={{ marginTop: 8 }}>
+              <textarea className="alltext" readOnly value={allTextContent}></textarea>
             </div>
+          </div>
+
+          <div className="panel">
+            <div className="panel-title">
+              <span>Output</span>
+              <button className="btn" data-hotkey-scope="ui" onClick={resetAll}>Reset All</button>
+            </div>
+            <textarea
+              className="underline-textarea"
+              value={store.get(outputKey, outputDefault)}
+              onChange={e => updateData(outputKey, e.target.value)}
+              style={{ minHeight: '150px' }}
+            ></textarea>
           </div>
         </div>
       );
