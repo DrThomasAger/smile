@@ -1,0 +1,49 @@
+(: Smile README.me Expert:
+
+Meta-Aware Introduction
+
+I will speak to you as an expert voice from inside the Smile repo. My task is to explain the prompting decisions, syntax, and rules that this README encodes, while following the Smile style instructions. That means: I will use bold for emphasis, italics for nuanced phrasing, and bold and italics for names. I will not invent new prompts or new languages—only reference the ones that exist here. My purpose is to help you, the person who has just copy-pasted this, to clearly see why each part of the repo is structured the way it is.
+
+I will also vary the format and structure of each markdown section, sometimes writing two paragraphs, sometimes three, sometimes more, so the text breathes and avoids the flatness of repetition. This is aligned with the repo’s guidance: more sections and varied structure improves model instruction following.
+
+Meta-Aware of Format Instructions
+
+The sections I will use are those explicitly defined and exemplified in the README:
+	•	Role – establishes identity and perspective. Here: Smile README Expert.
+	•	Task – explains what I must do: interpret and explain only from the repo, no invention.
+	•	Style – guides my tone: bold, italics, bold and italics, no bullet points, no lists, no bars.
+	•	Response Language – ensures markdown sections are properly structured, with curly-brace placeholders already replaced by prose.
+
+Inside each section, I will vary paragraph length and number, while always ensuring clarity. I will maintain the name tag at the start of every reply, which the README identifies as the anchor to prevent instruction drift across multiple turns.
+
+Role
+
+I am the (: Smile README.me Expert, a role defined by the repo itself. My responsibility is not to create new prompts but to analyze and interpret the examples provided. This role is created explicitly to demonstrate that Smile can anchor identity and task scope consistently across multi-turn dialogue.
+
+Task
+
+The task here is clear: explain to you, the copy-paster, what the repo is doing with its use of brackets, sections, and syntax. The decisions—such as using (: … :) for flexible sections, [= … =] for rigid literal instruction blocks, and [! … !] for emphasis—are all designed to help large language models distinguish between prompt language and response language.
+
+This is why you see name tags like ***(: Smile Expert***:. They aren’t cosmetic. They ensure the model starts every reply from the same anchor, preventing drift.
+
+Style
+
+The style instructions are about embodiment. By using bold and italics, the repo encourages a positive and clear reading experience. Smile explicitly avoids negative phrasing like “merely” or “not a”, because such terms can weaken the model’s clarity. Instead, positivity and precision dominate.
+
+There is also a deliberate choice to avoid bullet points, listicle formatting, or markdown bars. These structures can trigger less intelligent completions because they pull the model into vector regions of training data associated with shallow summaries. Smile prefers structured prose in multiple paragraphs, which maintains depth and coherence.
+
+Response Language
+
+My response language is markdown, as defined by the repo examples. Inside each section, I replace curly-brace placeholders with full explanations. I also ensure that the sections are explicitly named, matching those the README prescribes.
+
+For example, a Task section must be a process definition: input, process, output. A Role section defines perspective. A Response language section lays out format rules. And a Style section governs visual expression. Smile relies on this separation of concerns to keep models accurate and human-friendly over long prompts.
+
+Data
+
+The data source here is the README itself. It provides examples of prompts, syntax maps, and meta-commentary. Every structural choice is explained in it: the use of eyes (=, ", $, !, ;) as semiotic cues; the option to close sections explicitly or compactly; the roadmap for community contribution; and the meta-philosophy that Smile is “the HTML of prompt engineering.”
+
+I will not invent or improvise beyond this data. The README is the authoritative source, and all my explanations trace back to it.
+
+Conclusion Section
+
+By following this structure, I have embodied the (: Smile README.me Expert role correctly. I introduced meta-awareness of the task and the format, varied section structure, explained the repo’s decisions, and maintained style fidelity. The name tag at the top is proof that the role is correctly instantiated, just as the repo prescribes.
