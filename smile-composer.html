@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Smile Composer — Indented Previews + Move-first Actions</title>
+  <title>Smile Composer — View-First, Precise Delete, Insert-In-Place</title>
   <script crossorigin src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
   <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
   <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
@@ -17,7 +17,6 @@
     .panel-title { font-weight: 600; margin-bottom: 10px; display: flex; align-items: center; justify-content: space-between; gap: 8px; flex-wrap: wrap; cursor: default; }
     .panel-title .clickable { cursor: pointer; }
     .panel-title-right { display: inline-flex; align-items: center; gap: 8px; }
-    .panel-subtle { font-size: 12px; color: #666; }
 
     /* Omnisearch */
     .omni { position: sticky; top: 0; z-index: 10; background: #fff; padding: 8px 0 0 0; margin-bottom: 8px; }
@@ -75,6 +74,9 @@
     .c-red { color: #c62828; font-weight: 600; }
     .c-green { color: #2e7d32; }
     .c-blue { color: #1565c0; }
+
+    .preview-hover { background: var(--select-bg); border-radius: 8px; }
+    .go-to { font-size: 12px; color: #333; margin-left: 12px; }
   </style>
 </head>
 <body>
@@ -112,7 +114,6 @@
       'output-result': { name: 'Final Output', type: 'instr', text: 'Deliver the polished final output after reasoning and checks.' }
     };
 
-    /* ---------- Data Store ---------- */
     class DataStore {
       constructor() { this.data = this.loadFromStorage(); this.db = { ...INITIAL_DB }; this.version = 0; }
       loadFromStorage() { try { const stored = localStorage.getItem('smileData'); return stored ? JSON.parse(stored) : {}; } catch(e){ return {}; } }
@@ -148,21 +149,14 @@
       return null;
     };
 
-    /* ---------- Row Builder ---------- */
     class RowBuilder {
       constructor(store, path) { this.store = store; this.path = path; this.rows = []; }
-      build() {
-        this.addRoot(); this.addAgent(); this.addBreadcrumbs();
-        if (this.isAtModule()) this.addModuleContent(); else this.addAgentModules();
-        return this.rows;
-      }
+      build() { this.addRoot(); this.addAgent(); this.addBreadcrumbs(); if (this.isAtModule()) this.addModuleContent(); else this.addAgentModules(); return this.rows; }
       addRoot() { this.rows.push({ key: 'root', type: 'root', depth: 0, label: '(: Smile Composer' }); }
-      addAgent() {
-        const agent = this.getAgent(); if (!agent) return;
+      addAgent() { const agent = this.getAgent(); if (!agent) return;
         this.rows.push({ key: `agent:${this.path[0]}`, type: 'agent', depth: 1, label: this.store.get(`n-${agent.name}`, agent.name) });
       }
-      addBreadcrumbs() {
-        if (this.path.length <= 2) return;
+      addBreadcrumbs() { if (this.path.length <= 2) return;
         for (let i = 1; i < this.path.length - 1; i++) {
           const breadcrumbMod = this.store.getDbItem(this.path[i]); if (!breadcrumbMod) continue;
           this.rows.push({ key: `breadcrumb:${i}`, type: 'breadcrumb', depth: i + 1, label: this.store.get(`n-${breadcrumbMod.name}`, breadcrumbMod.name), pathIndex: i });
@@ -171,7 +165,6 @@
       addModuleContent() {
         const module = this.getCurrentModule(); if (!module) return;
         const moduleDBKey = this.path[this.path.length - 1];
-
         this.rows.push({ key: `module:${moduleDBKey}`, type: 'module', depth: 2, label: this.store.get(`n-${module.name}`, module.name), moduleId: moduleDBKey });
 
         const items = this.store.get(`items-${module.name}`, module.items || []);
@@ -213,7 +206,6 @@
       getCurrentModule() { return this.isAtModule() ? this.store.getDbItem(this.path[this.path.length - 1]) : null; }
     }
 
-    /* ---------- UI Components ---------- */
     function TreeView({ store, path, onNavigate, storeVersion }) {
       const renderModule = React.useCallback((modId, parentPath, depth) => {
         const mod = store.getDbItem(modId); if (!mod) return null;
@@ -276,14 +268,14 @@
     }
 
     const LABELS = {
-      view: () => <strong>View Inside [Enter] [↓]</strong>,
-      move: () => 'Move',
+      view: () => <strong>View Inside [Enter] [v]</strong>,
+      move: (active) => active ? <strong>↑ | ↓</strong> : 'Move',
       settings: () => 'Settings',
       duplicate: () => 'Duplicate',
       delete: () => 'Delete'
     };
 
-    function ActionCluster({ row, actions, onActionExecute, onHoverAction, onLeaveCluster, focused }) {
+    function ActionCluster({ row, actions, onActionExecute, onHoverAction, onLeaveCluster, focused, moveActive }) {
       return (
         <span
           className="right-actions action-cluster"
@@ -298,30 +290,38 @@
               onClick={() => onActionExecute(row, a)}
               title={a === 'view' ? 'View Inside' : a.charAt(0).toUpperCase() + a.slice(1)}
             >
-              {LABELS[a]() }
+              {a === 'move' ? LABELS.move(moveActive) : LABELS[a]()}
             </button>
           ))}
         </span>
       );
     }
 
-    function PreviewModuleContents({ store, moduleId, depth }) {
+    function PreviewModuleContents({ store, moduleId, depth, interactive, onGoToInstruction }) {
+      const [hoverIdx, setHoverIdx] = React.useState(0);
       const mod = store.getDbItem(moduleId);
       if (!mod) return null;
       const items = store.get(`items-${mod.name}`, mod.items || []);
-      const pad = ((depth || 0) + 1) * TAB;
+      const pad = ((depth || 0) + 1) * 32;
+      useEffect(() => { if (interactive) setHoverIdx(0); }, [interactive]);
+
       return (
         <div className="indent-block" style={{ paddingLeft: pad }}>
-          {items.length === 0 ? <div className="subtle">Empty module</div> : items.map((iid) => {
+          {items.length === 0 ? <div className="subtle">Empty module</div> : items.map((iid, i) => {
             const ins = store.getDbItem(iid); if (!ins) return null;
             const nm = displayNameFor(store, ins, iid);
             const txt = store.get(`t-${ins.name}`, ins.text || '');
+            const active = interactive && i === hoverIdx;
             return (
-              <div key={iid} className="line" style={{ paddingLeft: 0 }}>
-                <span className="left-span">{nm}</span>
-                <span className="subtle" style={{ maxWidth: '50%', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
-                  {txt}
-                </span>
+              <div
+                key={iid}
+                className={`line ${active ? 'preview-hover' : ''}`}
+                style={{ paddingLeft: 0 }}
+                onMouseEnter={() => interactive && setHoverIdx(i)}
+                onClick={() => interactive && onGoToInstruction && onGoToInstruction(i)}
+              >
+                <span className="left-span" title={txt}>{nm}</span>
+                {interactive && active && <span className="go-to">Go To Instruction</span>}
               </div>
             );
           })}
@@ -335,25 +335,19 @@
       const name = store.get(`nn-${row.dbId}`, displayNameFor(store, dbItem, row.dbId));
       const meta = store.get(`meta-${row.dbId}`, '');
       const body = store.get(row.promptKey, dbItem.text || '');
-      const pad = ((row.depth || 0) + 1) * TAB;
+      const pad = ((row.depth || 0) + 1) * 32;
       return (
         <div className="indent-block" style={{ paddingLeft: pad }}>
           <div className="line" style={{ paddingLeft: 0 }}>
-            <span className="left-span">
-              <span className="c-red">{name}</span>
-            </span>
+            <span className="left-span"><span className="c-red">{name}</span></span>
           </div>
           {meta ? (
             <div className="line" style={{ paddingLeft: 0 }}>
-              <span className="left-span">
-                <span className="c-green">{meta}</span>
-              </span>
+              <span className="left-span"><span className="c-green">{meta}</span></span>
             </div>
           ) : null}
           <div className="line" style={{ paddingLeft: 0 }}>
-            <span className="left-span">
-              <span className="c-blue">{body}</span>
-            </span>
+            <span className="left-span"><span className="c-blue">{body}</span></span>
           </div>
         </div>
       );
@@ -369,7 +363,9 @@
       setRowRef,
       isSettingsOpenFor,
       actionFocus, setActionFocus,
-      startMove, commitIfMoving
+      startMove, commitIfMoving,
+      onHoverSettingsOpen,
+      viewInteractiveForRow, goToInstructionFromPreview
     }) {
       const classes = ['line'];
       if (isSelected && !inReorderMode) classes.push('sel');
@@ -377,7 +373,7 @@
       if (isDragging) classes.push('held');
       if (isDropTarget) classes.push('drop-target');
 
-      const style = { paddingLeft: (row.depth || 0) * TAB };
+      const style = { paddingLeft: (row.depth || 0) * 32 };
       const headingRef = useRef(null);
 
       const canDragAnytime = (row.type === 'instr' || row.type === 'module-item');
@@ -389,6 +385,7 @@
 
       const settingsPanelForRow = (row.type === 'module-item' || row.type === 'instr') && isSettingsOpenFor(row);
       const focusedAction = (actionFocus && actionFocus.rowKey === row.key) ? actionFocus.action : null;
+      const moveActive = focusedAction === 'move' && actionFocus?.rowKey === row.key;
 
       useEffect(() => {
         if (settingsPanelForRow && isSelected && headingRef.current) {
@@ -396,6 +393,8 @@
           headingRef.current.select();
         }
       }, [settingsPanelForRow, isSelected]);
+
+      const interactiveView = viewInteractiveForRow(row);
 
       return (
         <div key={row.key}>
@@ -423,26 +422,34 @@
                 actions={actionsForRow}
                 onActionExecute={onActionExecute}
                 onHoverAction={(a) => {
-                  setActionFocus({ rowKey: row.key, action: a });
-                  if (a === 'move') startMove(row);
+                  if (a === 'move') { setActionFocus({ rowKey: row.key, action: 'move' }); startMove(row); }
+                  if (a === 'settings') { onHoverSettingsOpen(row); }
+                  if (a === 'view') { setActionFocus({ rowKey: row.key, action: 'view' }); }
                 }}
-                onLeaveCluster={() => { if (actionFocus?.action === 'move') commitIfMoving(); setActionFocus(null); }}
+                onLeaveCluster={() => { if (actionFocus?.action === 'move') commitIfMoving(); }}
                 focused={focusedAction}
+                moveActive={moveActive}
               />
             )}
           </div>
 
-          {/* Default PREVIEW when selected and settings closed (indented one level) */}
-          {isSelected && !settingsPanelForRow && (row.type === 'module-item') && (
-            <PreviewModuleContents store={store} moduleId={row.moduleId} depth={row.depth} />
+          {/* Default PREVIEW (indented), or interactive View preview when action is 'view' */}
+          {isSelected && !settingsPanelForRow && row.type === 'module-item' && (
+            <PreviewModuleContents
+              store={store}
+              moduleId={row.moduleId}
+              depth={row.depth}
+              interactive={interactiveView}
+              onGoToInstruction={(pos) => goToInstructionFromPreview(row.moduleId, pos)}
+            />
           )}
-          {isSelected && !settingsPanelForRow && (row.type === 'instr') && (
+          {isSelected && !settingsPanelForRow && row.type === 'instr' && (
             <PreviewInstructionColored store={store} row={row} />
           )}
 
-          {/* SETTINGS PANEL (indented 1x beyond the heading) */}
+          {/* SETTINGS (indented 1x) */}
           {settingsPanelForRow && (
-            <div className="indent-block indent-grid" style={{ paddingLeft: ((row.depth || 0) + 1) * TAB }}>
+            <div className="indent-block indent-grid" style={{ paddingLeft: ((row.depth || 0) + 1) * 32 }}>
               <input
                 ref={headingRef}
                 type="text"
@@ -474,7 +481,6 @@
       );
     }
 
-    /* ---------- App ---------- */
     function App() {
       const storeRef = useRef(new DataStore());
       const store = storeRef.current;
@@ -495,16 +501,17 @@
       const rowsDomRef = useRef(new Map());
       const [touchDrag, setTouchDrag] = useState(null);
 
-      const [settingsOpen, setSettingsOpen] = useState({}); // spanel:mod|instr:ID => true
-      const [actionFocus, setActionFocus] = useState(null);  // { rowKey, action } | null
+      const [settingsOpen, setSettingsOpen] = useState({});
+      const [actionFocus, setActionFocus] = useState(null);  // { rowKey, action }
 
-      /* Omnisearch state — single source of truth */
+      // Omnisearch (single source)
       const [omniActive, setOmniActive] = useState(false);
       const [omniMode, setOmniMode] = useState('search');
       const [omniQuery, setOmniQuery] = useState('');
       const [omniIndex, setOmniIndex] = useState(0);
       const [omniFilterType, setOmniFilterType] = useState(null);
       const [omniIntent, setOmniIntent] = useState(null);
+      const [omniInsertPos, setOmniInsertPos] = useState(null);
 
       const rows = useMemo(() => {
         const builder = new RowBuilder(store, path);
@@ -521,17 +528,30 @@
 
       const updateData = useCallback((key, value) => { store.set(key, value); setStoreVersion(store.getVersion()); }, [store]);
 
+      const computeInsertPos = useCallback(() => {
+        const a = store.getDbItem(path[0]); if (!a) return 0;
+        const mods = store.get(`mods-${a.name}`, a.modules || []);
+        const sel = rows[idx];
+        if (sel && sel.type === 'module-item') return sel.pos;
+        if (path.length >= 2) {
+          const pos = mods.findIndex(m => m === path[1]);
+          if (pos >= 0) return pos;
+        }
+        return mods.length;
+      }, [rows, idx, path, store]);
+
       const openOmniAddModule = useCallback(() => {
+        setOmniInsertPos(computeInsertPos());
         setOmniActive(true); setOmniMode('search'); setOmniQuery(''); setOmniIndex(0);
         setOmniFilterType('mod'); setOmniIntent('add-module');
-      }, []);
+      }, [computeInsertPos]);
 
       const resetAll = useCallback(() => {
         if (confirm('Reset everything to defaults? This will clear all your customizations.')) {
           store.reset();
           setPath(['expert-maker']); setIdx(2); setNavHistory({}); setReorderState(null);
           setSettingsOpen({}); setActionFocus(null);
-          setOmniActive(false); setOmniQuery(''); setOmniIndex(0); setOmniMode('search'); setOmniFilterType(null); setOmniIntent(null);
+          setOmniActive(false); setOmniQuery(''); setOmniIndex(0); setOmniMode('search'); setOmniFilterType(null); setOmniIntent(null); setOmniInsertPos(null);
           window.location.hash = ''; setStoreVersion(store.getVersion());
         }
       }, [store]);
@@ -542,15 +562,14 @@
         setIdx(autoSelect ? (newPath.length === 1 ? 2 : 3) : 0);
       }, []);
 
-      const addModuleToAgent = useCallback((moduleResult) => {
+      const attachModuleToAgent = useCallback((mid, insertPos = null) => {
         const a = store.getDbItem(path[0]); if (!a) return;
         const key = `mods-${a.name}`;
         const arr = store.get(key, a.modules || []);
-        const id = moduleResult.id || moduleResult;
-        updateData(key, [...arr, id]);
+        const pos = (insertPos !== null && insertPos >= 0 && insertPos <= arr.length) ? insertPos : arr.length;
+        const newArr = [...arr]; newArr.splice(pos, 0, mid);
+        updateData(key, newArr);
       }, [store, updateData, path]);
-
-      const attachModuleToAgent = useCallback((mid) => { addModuleToAgent({ id: mid }); }, [addModuleToAgent]);
 
       const openAndFocusSettings = useCallback((ownerType, ownerId) => {
         const panelKey = ownerType === 'module' ? `spanel:mod:${ownerId}` : `spanel:instr:${ownerId}`;
@@ -578,36 +597,16 @@
         }
       }, [module, store, updateData, openAndFocusSettings]);
 
-      const attachInstruction = useCallback((iid) => {
-        if (atModule && module) {
-          addInstructionToModule({ id: iid });
-        } else {
-          const a = store.getDbItem(path[0]); if (!a) return;
-          const mods = store.get(`mods-${a.name}`, a.modules || []);
-          if (mods.length === 0) {
-            const newMid = 'mod-' + Date.now();
-            store.addCustomDbItem(newMid, { name: 'Custom Module', type: 'mod', items: [] });
-            updateData(`mods-${a.name}`, [newMid]);
-            updateData(`items-Custom Module`, []);
-            navigateToPath([path[0], newMid], true);
-            setTimeout(() => { addInstructionToModule({ id: iid }); }, 0);
-          } else {
-            navigateToPath([path[0], mods[0]], true);
-            setTimeout(() => { addInstructionToModule({ id: iid }); }, 0);
-          }
-        }
-      }, [atModule, module, addInstructionToModule, store, updateData, path, navigateToPath]);
-
       const createNewAgent = useCallback((name) => {
         const id = 'agent-' + Date.now();
         store.addCustomDbItem(id, { name, type: 'agent', input: '', output: '', modules: [] });
         navigateToPath([id], true);
       }, [store, navigateToPath]);
 
-      const createNewModule = useCallback((name) => {
+      const createNewModule = useCallback((name, insertPos = null) => {
         const id = 'mod-' + Date.now();
         store.addCustomDbItem(id, { name, type: 'mod', items: [] });
-        attachModuleToAgent(id);
+        attachModuleToAgent(id, insertPos);
         navigateToPath([path[0], id], true);
         openAndFocusSettings('module', id);
       }, [store, attachModuleToAgent, navigateToPath, path, openAndFocusSettings]);
@@ -620,22 +619,35 @@
           updateData(`items-${module.name}`, [...arr, id]);
           openAndFocusSettings('instr', id);
         } else {
-          attachInstruction(id);
-          openAndFocusSettings('instr', id);
+          // create module if none, then attach
+          const a = store.getDbItem(path[0]); if (!a) return;
+          const mods = store.get(`mods-${a.name}`, a.modules || []);
+          if (mods.length === 0) {
+            const newMid = 'mod-' + Date.now();
+            store.addCustomDbItem(newMid, { name: 'Custom Module', type: 'mod', items: [] });
+            updateData(`mods-${a.name}`, [newMid]);
+            updateData(`items-Custom Module`, []);
+            navigateToPath([path[0], newMid], true);
+            setTimeout(() => {
+              const arr2 = store.get(`items-Custom Module`, []);
+              updateData(`items-Custom Module`, [...arr2, id]);
+              openAndFocusSettings('instr', id);
+            }, 0);
+          }
         }
-      }, [store, attachInstruction, atModule, module, updateData, openAndFocusSettings]);
+      }, [store, atModule, module, updateData, path, openAndFocusSettings]);
 
-      const removeItemById = useCallback((iid) => {
+      // Delete precisely-at-position
+      const removeInstructionAtPos = useCallback((pos) => {
         if (!atModule || !module) return;
         const arr = store.get(`items-${module.name}`, module.items || []);
-        const pos = arr.findIndex(x => x === iid);
-        if (pos >= 0) updateData(`items-${module.name}`, arr.filter((_, i) => i !== pos));
+        updateData(`items-${module.name}`, arr.filter((_, i) => i !== pos));
       }, [atModule, module, store, updateData]);
 
-      const removeModuleById = useCallback((mid) => {
+      const removeModuleAtPos = useCallback((pos) => {
         const a = store.getDbItem(path[0]); if (!a) return;
         const arr = store.get(`mods-${a.name}`, a.modules || []);
-        updateData(`mods-${a.name}`, arr.filter(x => x !== mid));
+        updateData(`mods-${a.name}`, arr.filter((_, i) => i !== pos));
       }, [store, updateData, path]);
 
       const duplicateItem = useCallback((dbId, isModule, insertAtPos = null) => {
@@ -671,7 +683,11 @@
         return false;
       }, [settingsOpen]);
 
-      /* Reorder (Move) */
+      const viewInteractiveForRow = useCallback((row) => {
+        return row.type === 'module-item' && actionFocus?.rowKey === row.key && actionFocus.action === 'view';
+      }, [actionFocus]);
+
+      // Move mode
       const moveItemInReorderMode = useCallback((direction) => {
         if (!reorderState) return;
         const delta = direction === 'up' ? -1 : 1;
@@ -723,7 +739,7 @@
 
       const commitIfMoving = useCallback(() => { if (reorderState) commitReorder(); }, [reorderState, commitReorder]);
 
-      /* DnD desktop */
+      // DnD desktop
       const handleDragStart = useCallback((e, row) => { e.dataTransfer.effectAllowed = 'move'; setDragItem(row); }, []);
       const handleDragOver = useCallback((e, row) => { e.preventDefault(); if (!dragItem) return; e.dataTransfer.dropEffect = 'move'; setDragOver(row.key); }, [dragItem]);
       const handleDrop = useCallback((e, row) => {
@@ -741,7 +757,7 @@
       }, [dragItem, atModule, module, store, updateData, path]);
       const handleDragEnd = useCallback(() => { setDragItem(null); setDragOver(null); }, []);
 
-      /* Touch DnD */
+      // Touch DnD
       const onTouchStartRow = useCallback((e, row) => {
         if (!(row.type === 'instr' || row.type === 'module-item')) return;
         const t = e.touches[0];
@@ -779,23 +795,38 @@
         setTouchDrag(null); setDragItem(null); setDragOver(null);
       }, [touchDrag, dragOver, atModule, module, store, updateData, path]);
 
-      /* Execute actions */
+      // Execute actions
+      const goToModuleFirstInstruction = useCallback((moduleId) => {
+        const newPath = [...path, moduleId];
+        setPath(newPath);
+        setIdx(3);
+        setTimeout(() => {
+          const firstIdx = rowsRef.current.findIndex(r => r.type === 'instr' && r.pos === 0);
+          if (firstIdx >= 0) setIdx(firstIdx);
+        }, 0);
+      }, [path]);
+
+      const goToInstructionFromPreview = useCallback((moduleId, pos) => {
+        const newPath = [...path, moduleId];
+        setPath(newPath);
+        setIdx(3);
+        setTimeout(() => {
+          const targetIdx = rowsRef.current.findIndex(r => r.type === 'instr' && r.pos === pos);
+          if (targetIdx >= 0) setIdx(targetIdx);
+        }, 0);
+      }, [path]);
+
       const executeRowAction = useCallback((row, action) => {
         if (!row) return;
         if (row.type === 'module-item') {
-          if (action === 'view') {
-            const pathKey = path.join('/'); setNavHistory(h => ({ ...h, [pathKey]: rows.findIndex(r => r.key === row.key) }));
-            setPath([...path, row.moduleId]);
-            setIdx(3);
-            return;
-          }
+          if (action === 'view') { goToModuleFirstInstruction(row.moduleId); return; }
           if (action === 'move') { startMove(row); setActionFocus({ rowKey: row.key, action: 'move' }); return; }
           if (action === 'settings') {
             setSettingsOpen(s => ({ ...s, [`spanel:mod:${row.moduleId}`]: !s[`spanel:mod:${row.moduleId}`] }));
             return;
           }
           if (action === 'duplicate') { duplicateItem(row.moduleId, true); return; }
-          if (action === 'delete') { removeModuleById(row.moduleId); return; }
+          if (action === 'delete') { removeModuleAtPos(row.pos); return; }
         }
         if (row.type === 'instr') {
           if (action === 'move') { startMove(row); setActionFocus({ rowKey: row.key, action: 'move' }); return; }
@@ -804,9 +835,17 @@
             return;
           }
           if (action === 'duplicate') { duplicateItem(row.dbId, false); return; }
-          if (action === 'delete') { removeItemById(row.dbId); return; }
+          if (action === 'delete') { removeInstructionAtPos(row.pos); return; }
         }
-      }, [duplicateItem, removeItemById, removeModuleById, rows, path, startMove]);
+      }, [duplicateItem, removeInstructionAtPos, removeModuleAtPos, startMove, goToModuleFirstInstruction]);
+
+      const onHoverSettingsOpen = useCallback((row) => {
+        if (row.type === 'module-item') {
+          setSettingsOpen(s => ({ ...s, [`spanel:mod:${row.moduleId}`]: true }));
+        } else if (row.type === 'instr') {
+          setSettingsOpen(s => ({ ...s, [`spanel:instr:${row.dbId}`]: true }));
+        }
+      }, []);
 
       function nextActionForRow(row, current, dir) {
         const list = (row.type === 'module-item') ? ['view','move','settings','duplicate','delete'] : ['move','settings','duplicate','delete'];
@@ -817,9 +856,8 @@
         return list[ni];
       }
 
-      /* Global key handling */
+      // Key handling
       const handleKeyDown = useCallback((e) => {
-        // Quick open Omnisearch
         if (e.key === '/' && !omniActive) {
           const activeEl = document.activeElement;
           const inField = activeEl && (activeEl.tagName === 'INPUT' || activeEl.tagName === 'TEXTAREA');
@@ -829,7 +867,7 @@
 
         const sel = rows[idx]; if (!sel) return;
 
-        // Action focus (Move et al.)
+        // Action focus context
         if (actionFocus && actionFocus.rowKey === sel.key) {
           if (e.key === 'ArrowUp')   { e.preventDefault(); if (actionFocus.action === 'move') moveItemInReorderMode('up'); return; }
           if (e.key === 'ArrowDown') { e.preventDefault(); if (actionFocus.action === 'move') moveItemInReorderMode('down'); return; }
@@ -843,6 +881,7 @@
           if (e.key === 'Enter') {
             e.preventDefault();
             if (actionFocus.action === 'move') { commitIfMoving(); setActionFocus(null); return; }
+            if (actionFocus.action === 'view' && sel.type === 'module-item') { goToModuleFirstInstruction(sel.moduleId); return; }
             executeRowAction(sel, actionFocus.action);
             return;
           }
@@ -863,22 +902,14 @@
         const gotoIndex = (nextIdx) => { setActionFocus(null); setIdx(nextIdx); };
 
         if (e.key === 'ArrowUp') {
-          e.preventDefault();
-          gotoIndex(Math.max(0, idx - 1));
+          e.preventDefault(); gotoIndex(Math.max(0, idx - 1));
         } else if (e.key === 'ArrowDown') {
-          e.preventDefault();
-          gotoIndex(Math.min(rows.length - 1, idx + 1));
+          e.preventDefault(); gotoIndex(Math.min(rows.length - 1, idx + 1));
         } else if (e.key === 'ArrowLeft') {
           e.preventDefault();
           // universal back: close settings if open, else step up path
-          if (sel.type === 'module-item' && isSettingsOpenFor(sel)) {
-            setSettingsOpen(s => { const k = `spanel:mod:${sel.moduleId}`; const cp = { ...s }; delete cp[k]; return cp; });
-            return;
-          }
-          if (sel.type === 'instr' && isSettingsOpenFor(sel)) {
-            setSettingsOpen(s => { const k = `spanel:instr:${sel.dbId}`; const cp = { ...s }; delete cp[k]; return cp; });
-            return;
-          }
+          if (sel.type === 'module-item' && isSettingsOpenFor(sel)) { setSettingsOpen(s => { const k = `spanel:mod:${sel.moduleId}`; const cp = { ...s }; delete cp[k]; return cp; }); return; }
+          if (sel.type === 'instr' && isSettingsOpenFor(sel)) { setSettingsOpen(s => { const k = `spanel:instr:${sel.dbId}`; const cp = { ...s }; delete cp[k]; return cp; }); return; }
           if (path.length > 1) {
             const newPath = path.slice(0, -1);
             const pathKey = newPath.join('/'); const savedIdx = navHistory[pathKey];
@@ -888,8 +919,11 @@
           }
         } else if (e.key === 'ArrowRight') {
           e.preventDefault();
-          // Move-first: focus Move and start moving
-          if (sel.type === 'module-item' || sel.type === 'instr') {
+          if (sel.type === 'module-item') {
+            setActionFocus({ rowKey: sel.key, action: 'view' }); // View first
+            return;
+          }
+          if (sel.type === 'instr') {
             setActionFocus({ rowKey: sel.key, action: 'move' });
             startMove(sel);
             return;
@@ -897,13 +931,8 @@
           if (sel.type === 'adder-mod') { openOmniAddModule(); return; }
         } else if (e.key === 'Enter') {
           e.preventDefault();
-          if (sel.type === 'module-item') {
-            const pathKey = path.join('/'); setNavHistory(h => ({ ...h, [pathKey]: rows.findIndex(r => r.key === sel.key) }));
-            setPath([...path, sel.moduleId]); setIdx(3); return;
-          }
-          if (sel.type === 'instr') {
-            openAndFocusSettings('instr', sel.dbId); return;
-          }
+          if (sel.type === 'module-item') { goToModuleFirstInstruction(sel.moduleId); return; }
+          if (sel.type === 'instr') { setSettingsOpen(s => ({ ...s, [`spanel:instr:${sel.dbId}`]: true })); return; }
           if (sel.type === 'adder-mod') { openOmniAddModule(); return; }
         } else if (e.key === 'Escape') {
           e.preventDefault();
@@ -917,10 +946,10 @@
         }
       }, [
         rows, idx, path, navHistory,
-        omniActive, openOmniAddModule,
-        isSettingsOpenFor, openAndFocusSettings,
+        omniActive, openOmniAddModule, isSettingsOpenFor,
         actionFocus, setActionFocus, nextActionForRow,
-        startMove, moveItemInReorderMode, commitIfMoving, executeRowAction
+        startMove, moveItemInReorderMode, commitIfMoving, executeRowAction,
+        goToModuleFirstInstruction
       ]);
 
       useEffect(() => { window.addEventListener('keydown', handleKeyDown); return () => window.removeEventListener('keydown', handleKeyDown); }, [handleKeyDown]);
@@ -960,7 +989,7 @@
         return () => window.removeEventListener('popstate', handlePopState);
       }, [navigateToPath]);
 
-      /* ---------- Omnisearch logic (inline) ---------- */
+      // Omnisearch
       const omniInputRef = useRef(null);
       const db = store.getAllDb();
       const agentModules = useMemo(() => agent ? (store.get(`mods-${agent.name}`, agent.modules || [])) : [], [store, agent]);
@@ -1104,7 +1133,7 @@
         }
       }, [omniActive, omniMode, scopeResults, libraryResults, createRows, browseRows, omniIntent, omniFilterType, omniQuery, suggestedModuleRows]);
 
-      useEffect(() => {
+      const omniInputFocus = useEffect(() => {
         if (!omniActive) return;
         const t = setTimeout(() => { omniInputRef.current && omniInputRef.current.focus(); }, 0);
         return () => clearTimeout(t);
@@ -1114,12 +1143,36 @@
 
       const actOnRow = (row) => {
         if (!row) return;
-        if (row.type === 'agent') { navigateToPath([row.id], true); setOmniActive(false); return; }
-        if (row.type === 'mod')   { attachModuleToAgent(row.id); navigateToPath([path[0], row.id], true); setOmniActive(false); return; }
-        if (row.type === 'instr') { attachInstruction(row.id); setOmniActive(false); return; }
-        if (row.type === 'create-agent') { createNewAgent(omniQuery.trim()); setOmniActive(false); return; }
-        if (row.type === 'create-mod')   { createNewModule(omniQuery.trim()); setOmniActive(false); return; }
-        if (row.type === 'create-instr') { createNewInstruction(omniQuery.trim()); setOmniActive(false); return; }
+        if (row.type === 'agent') { navigateToPath([row.id], true); setOmniActive(false); setOmniInsertPos(null); return; }
+        if (row.type === 'mod')   {
+          attachModuleToAgent(row.id, omniInsertPos);
+          navigateToPath([path[0], row.id], true);
+          setOmniActive(false); setOmniInsertPos(null);
+          return;
+        }
+        if (row.type === 'instr') {
+          // Attach instruction: go to current module or first module if needed
+          if (atModule && module) {
+            const arr = store.get(`items-${module.name}`, module.items || []);
+            updateData(`items-${module.name}`, [...arr, row.id]);
+          } else {
+            // fallback: add to first module or create one
+            const a = store.getDbItem(path[0]); if (!a) return;
+            const mods = store.get(`mods-${a.name}`, a.modules || []);
+            if (mods.length) {
+              navigateToPath([path[0], mods[0]], true);
+              setTimeout(() => {
+                const arr = store.get(`items-${store.getDbItem(mods[0]).name}`, store.getDbItem(mods[0]).items || []);
+                updateData(`items-${store.getDbItem(mods[0]).name}`, [...arr, row.id]);
+              }, 0);
+            }
+          }
+          setOmniActive(false); setOmniInsertPos(null);
+          return;
+        }
+        if (row.type === 'create-agent') { createNewAgent(omniQuery.trim()); setOmniActive(false); setOmniInsertPos(null); return; }
+        if (row.type === 'create-mod')   { createNewModule(omniQuery.trim(), omniInsertPos); setOmniActive(false); setOmniInsertPos(null); return; }
+        if (row.type === 'create-instr') { createNewInstruction(omniQuery.trim()); setOmniActive(false); setOmniInsertPos(null); return; }
       };
 
       const onOmniKeyDown = (e) => {
@@ -1140,11 +1193,10 @@
           actOnRow(visibleRows[Math.max(0, Math.min(omniIndex, visibleRows.length - 1))]);
         } else if (e.key === 'Escape') {
           e.preventDefault();
-          setOmniActive(false);
+          setOmniActive(false); setOmniInsertPos(null);
         }
       };
 
-      /* Prompt & Output mirrors */
       const promptText = useMemo(() => {
         let text = '(: Smile Composer\n    ' + store.get(`n-${agent.name}`, agent.name);
         if (atModule) {
@@ -1190,6 +1242,11 @@
       const outputKey = atModule && module ? `output-${module.name}` : `output-${agent.name}`;
       const outputDefault = atModule ? '' : agent.output;
 
+      const omniInsertHint = useMemo(() => {
+        const pos = computeInsertPos();
+        return Number.isFinite(pos) ? pos : null;
+      }, [computeInsertPos, rows, idx]);
+
       return (
         <div className="container">
           {/* Omnisearch header */}
@@ -1207,7 +1264,9 @@
                 <button className={omniMode === 'search' ? 'active' : ''} onClick={() => setOmniMode('search')}>Search</button>
                 <button className={omniMode === 'browse' ? 'active' : ''} onClick={() => setOmniMode('browse')}>Browse</button>
               </div>
-              <button className="btn" title="Add Module" onClick={openOmniAddModule}>Add Module</button>
+              <button className="btn" title="Add Module" onClick={openOmniAddModule}>
+                Add Module{omniInsertHint !== null ? ` @ ${omniInsertHint}` : ''}
+              </button>
             </div>
             {omniActive && (
               <div className="omni-drawer">
@@ -1253,7 +1312,7 @@
             <div className="panel-title">
               <span className="clickable" onClick={() => navigateToPath([path[0]], true)}>Smile Composer</span>
               <div className="panel-title-right">
-                <span className="panel-subtle">Right = Move • Up/Down = reorder • Enter leaves Move • Left/Esc = Back • Drag to reorder • / = Omnisearch</span>
+                <span className="subtle">Right=View/Move • Up/Down=select or reorder • Enter=commit • Left/Esc=Back • Drag=Reorder • /=Omnisearch</span>
                 <button className="btn" onClick={openOmniAddModule}>Add Module</button>
               </div>
             </div>
@@ -1294,12 +1353,15 @@
                   setActionFocus={setActionFocus}
                   startMove={startMove}
                   commitIfMoving={commitIfMoving}
+                  onHoverSettingsOpen={onHoverSettingsOpen}
+                  viewInteractiveForRow={viewInteractiveForRow}
+                  goToInstructionFromPreview={goToInstructionFromPreview}
                 />
               );
             })}
           </div>
 
-          {/* Lower panels moved down */}
+          {/* Lower panels */}
           <div className="panel">
             <div className="panel-title"><span>Structure</span></div>
             <TreeView store={store} path={path} onNavigate={navigateToPath} storeVersion={storeVersion} />
