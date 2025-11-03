@@ -3,54 +3,49 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Smile Composer - Fixed</title>
+  <title>Smile Composer — Stable Navigation & Settings</title>
   <script crossorigin src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
   <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
   <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
   <style>
     * { box-sizing: border-box; }
-    body {
-      font-family: -apple-system, system-ui, Segoe UI, Helvetica, Arial, sans-serif;
-      background: white;
-      color: black;
-      padding: 40px;
-      margin: 0;
-    }
+    body { font-family: -apple-system, system-ui, Segoe UI, Helvetica, Arial, sans-serif; background: white; color: black; padding: 40px; margin: 0; }
     .container { display: flex; gap: 24px; align-items: flex-start; }
     .left { flex: 1; min-width: 0; }
-    .right { flex: 0 0 450px; display: flex; flex-direction: column; gap: 24px; }
+    .right { flex: 0 0 480px; display: flex; flex-direction: column; gap: 24px; }
     .panel { border: 1px solid #eee; padding: 16px; border-radius: 8px; }
-    .panel-title {
-      font-weight: 600; margin-bottom: 12px;
-      display: flex; justify-content: space-between; align-items: center;
-    }
+    .panel-title { font-weight: 600; margin-bottom: 12px; display: flex; justify-content: space-between; align-items: center; }
 
-    .line {
-      user-select: none; padding: 6px 8px; border-radius: 8px;
-      display: block; cursor: pointer; transition: background-color 0.15s ease;
-    }
+    /* List rows */
+    .line { user-select: none; padding: 6px 8px; border-radius: 8px; display: block; cursor: pointer; transition: background-color 0.15s ease; }
+    .line:hover { background-color: #f7f7f7; }
     .line.sel { font-weight: 600; background-color: #f5f5f5; }
     .line.reorder-mode { font-weight: 700; background-color: #f0f0f0; }
     .line.held { opacity: 0.3; }
     .line.drop-target { border-top: 3px solid #000; }
 
-    .text-edit { margin-left: 24px; margin-top: 8px; }
-    .text-edit textarea {
-      width: 100%; border: none; border-bottom: 1px solid #ccc; padding: 4px 0;
-      font: inherit; resize: vertical; min-height: 60px; background: transparent; outline: none;
+    /* Tabbed editors: underline-only fields starting deeper to the right */
+    .tab-indent { margin-left: 64px; margin-top: 8px; display: grid; gap: 10px; }
+    .underline-input,
+    .underline-textarea {
+      width: 100%;
+      background: transparent;
+      border: none;
+      border-bottom: 1px solid #ccc;
+      border-radius: 0;
+      padding: 6px 2px 6px 0;
+      font: inherit;
+      outline: none;
+      resize: vertical;
+      min-height: 34px;
     }
-    .name-input {
-      border: none; border-bottom: 1px solid #000; font: inherit; padding: 0 2px;
-      background: transparent; min-width: 160px;
-    }
-    textarea, input[type="text"] { font: inherit; }
-    .btn { font: inherit; border: 1px solid #000; background: #fff; padding: 4px 8px; border-radius: 6px; cursor: pointer; font-size: 12px; }
+    .underline-textarea { min-height: 60px; }
+
+    .btn { font: inherit; border: 1px solid #000; background: #fff; padding: 6px 10px; border-radius: 6px; cursor: pointer; font-size: 12px; }
+    .btn + .btn { margin-left: 8px; }
 
     .search-wrap { padding-left: 24px; margin-top: 8px; }
-    .search-list {
-      max-height: 220px; overflow: auto; border: 1px solid #ddd; border-radius: 6px;
-      margin-top: 6px; background: white;
-    }
+    .search-list { max-height: 220px; overflow: auto; border: 1px solid #ddd; border-radius: 6px; margin-top: 6px; background: white; }
     .search-item { padding: 6px 8px; cursor: pointer; }
     .search-item:hover { background-color: #f5f5f5; }
     .search-item.selected { background-color: #e8e8e8; font-weight: 600; }
@@ -62,6 +57,18 @@
     .tree-item.active { font-weight: 700; background-color: #e8e8e8; }
 
     .error { color: red; padding: 20px; border: 1px solid red; margin: 20px; }
+
+    /* 5-stop structure control */
+    .seg { display: inline-flex; align-items: center; gap: 8px; padding: 6px 8px; border: 1px solid #ddd; border-radius: 999px; background: #fafafa; }
+    .seg .label { font-size: 12px; margin-right: 4px; }
+    .seg input[type="radio"] { position: absolute; opacity: 0; pointer-events: none; }
+    .seg .opt { display: inline-flex; align-items: center; gap: 6px; padding: 4px 8px; border-radius: 999px; cursor: pointer; border: 1px solid transparent; }
+    .seg .dot { width: 8px; height: 8px; border-radius: 50%; background: #bbb; display: inline-block; }
+    .seg input[type="radio"]:checked + .opt .dot { background: #111; }
+    .seg input[type="radio"]:checked + .opt { border-color: #111; }
+
+    .settings-panel { margin-left: 64px; margin-top: 8px; margin-bottom: 6px; display: grid; gap: 10px; }
+    .alltext { width: 100%; min-height: 200px; border: 1px solid #ccc; padding: 8px; border-radius: 6px; resize: vertical; background: #fff; }
   </style>
 </head>
 <body>
@@ -78,38 +85,12 @@
 
     // ===== INITIAL DATABASE =====
     const INITIAL_DB = {
-      'expert-maker': {
-        name: 'Expert Maker',
-        type: 'agent',
-        input: 'Question',
-        output: 'Answer',
-        modules: ['meta-info', 'jargon-cot', 'identify-mistakes']
-      },
-      'input-mod': {
-        name: 'INPUT: Question',
-        type: 'mod',
-        items: ['input-enter', 'input-understand', 'input-result']
-      },
-      'output-mod': {
-        name: 'OUTPUT: Answer',
-        type: 'mod',
-        items: ['output-enter', 'output-understand', 'output-result']
-      },
-      'meta-info': {
-        name: 'Meta-Information MegaBrick',
-        type: 'mod',
-        items: ['smile-info', 'llm-info', 'user-info']
-      },
-      'jargon-cot': {
-        name: 'Jargon CoT',
-        type: 'mod',
-        items: ['emoji-section', 'bold-words', 'top-bottom']
-      },
-      'identify-mistakes': {
-        name: 'Identify Mistakes and Rewrite',
-        type: 'mod',
-        items: ['emoji-section', 'bold-words', 'negative-rewrite']
-      },
+      'expert-maker': { name: 'Expert Maker', type: 'agent', input: 'Question', output: 'Answer', modules: ['meta-info', 'jargon-cot', 'identify-mistakes'] },
+      'input-mod': { name: 'INPUT: Question', type: 'mod', items: ['input-enter', 'input-understand', 'input-result'] },
+      'output-mod': { name: 'OUTPUT: Answer', type: 'mod', items: ['output-enter', 'output-understand', 'output-result'] },
+      'meta-info': { name: 'Meta-Information MegaBrick', type: 'mod', items: ['smile-info', 'llm-info', 'user-info'] },
+      'jargon-cot': { name: 'Jargon CoT', type: 'mod', items: ['emoji-section', 'bold-words', 'top-bottom'] },
+      'identify-mistakes': { name: 'Identify Mistakes and Rewrite', type: 'mod', items: ['emoji-section', 'bold-words', 'negative-rewrite'] },
       'smile-info': { name: 'Information About (: Smile', type: 'instr', text: 'Explain Smile syntax: (: flexible, [: rigid, [= literal.' },
       'llm-info': { name: 'Information About LLMs', type: 'instr', text: 'Meta-knowledge about how LLMs process instructions.' },
       'user-info': { name: 'Information About User', type: 'instr', text: 'Contextualize user needs and goals.' },
@@ -127,20 +108,9 @@
 
     // ===== DATA STORE =====
     class DataStore {
-      constructor() {
-        this.data = this.loadFromStorage();
-        this.db = { ...INITIAL_DB };
-        this.version = 0;
-      }
-      loadFromStorage() {
-        try {
-          const stored = localStorage.getItem('smileData');
-          return stored ? JSON.parse(stored) : {};
-        } catch (e) { return {}; }
-      }
-      saveToStorage(data) {
-        try { localStorage.setItem('smileData', JSON.stringify(data)); } catch (e) {}
-      }
+      constructor() { this.data = this.loadFromStorage(); this.db = { ...INITIAL_DB }; this.version = 0; }
+      loadFromStorage() { try { const stored = localStorage.getItem('smileData'); return stored ? JSON.parse(stored) : {}; } catch(e){ return {}; } }
+      saveToStorage(data) { try { localStorage.setItem('smileData', JSON.stringify(data)); } catch(e){} }
       get(key, def) { return key in this.data ? this.data[key] : def; }
       set(key, value) { this.data = { ...this.data, [key]: value }; this.version++; this.saveToStorage(this.data); return this.data; }
       reset() { this.data = {}; localStorage.removeItem('smileData'); this.db = { ...INITIAL_DB }; this.version++; return this.data; }
@@ -160,19 +130,12 @@
       return newArr;
     };
 
-    // Visual array for movement mode (we no longer allow landing on footer rows)
     const getVisualArrayOrder = (arr, reorderState) => {
-      if (!reorderState || reorderState.originalPos === undefined) {
-        return arr.map((item, idx) => ({ item, originalPos: idx }));
-      }
+      if (!reorderState || reorderState.originalPos === undefined) return arr.map((item, idx) => ({ item, originalPos: idx }));
       if (reorderState.moveToDelete || reorderState.moveToCancel) {
-        return arr
-          .map((item, idx) => ({ item, originalPos: idx }))
-          .filter((_, idx) => idx !== reorderState.originalPos);
+        return arr.map((item, idx) => ({ item, originalPos: idx })).filter((_, idx) => idx !== reorderState.originalPos);
       }
-      if (reorderState.currentPos === undefined) {
-        return arr.map((item, idx) => ({ item, originalPos: idx }));
-      }
+      if (reorderState.currentPos === undefined) return arr.map((item, idx) => ({ item, originalPos: idx }));
       const enriched = arr.map((item, idx) => ({ item, originalPos: idx }));
       return moveInList(enriched, reorderState.originalPos, reorderState.currentPos);
     };
@@ -191,162 +154,159 @@
       return out;
     };
 
+    const displayNameFor = (store, dbItem, id) =>
+      store.get(`nn-${id}`, store.get(`n-${dbItem.name}`, dbItem.name));
+
+    const ownerKeyOfRow = (row) => {
+      if (!row) return null;
+      if (row.type === 'module-item') return `mod:${row.moduleId}`;
+      if (row.type === 'instr') return `instr:${row.dbId}`;
+      if (row.type === 'settings-button' || row.type === 'settings-panel' || row.type === 'prompt') {
+        return (row.ownerType === 'module') ? `mod:${row.ownerId}` : `instr:${row.ownerId}`;
+      }
+      return null;
+    };
+
     // ===== ROW BUILDER =====
     class RowBuilder {
-      constructor(store, path, reorderState, currentIdx) {
+      constructor(store, path, reorderState, revealedOwnerKey, settingsOpen) {
         this.store = store;
         this.path = path;
         this.reorderState = reorderState;
-        this.currentIdx = currentIdx;
+        this.revealedOwnerKey = revealedOwnerKey || null;
+        this.settingsOpen = settingsOpen || {};
         this.rows = [];
       }
       build() {
-        this.addRoot();
-        this.addAgent();
-        this.addBreadcrumbs();
-        if (this.isAtModule()) this.addModuleContent();
-        else this.addAgentModules();
+        this.addRoot(); this.addAgent(); this.addBreadcrumbs();
+        if (this.isAtModule()) this.addModuleContent(); else this.addAgentModules();
         return this.rows;
       }
       addRoot() { this.rows.push({ key: 'root', type: 'root', depth: 0, label: '(: Smile Composer' }); }
       addAgent() {
         const agent = this.getAgent(); if (!agent) return;
-        this.rows.push({
-          key: `agent:${this.path[0]}`,
-          type: 'agent',
-          depth: 1,
-          label: this.store.get(`n-${agent.name}`, agent.name)
-        });
+        this.rows.push({ key: `agent:${this.path[0]}`, type: 'agent', depth: 1, label: this.store.get(`n-${agent.name}`, agent.name) });
       }
       addBreadcrumbs() {
         if (this.path.length <= 2) return;
         for (let i = 1; i < this.path.length - 1; i++) {
           const breadcrumbMod = this.store.getDbItem(this.path[i]); if (!breadcrumbMod) continue;
-          this.rows.push({
-            key: `breadcrumb:${i}`,
-            type: 'breadcrumb',
-            depth: i + 1,
-            label: this.store.get(`n-${breadcrumbMod.name}`, breadcrumbMod.name),
-            pathIndex: i
-          });
+          this.rows.push({ key: `breadcrumb:${i}`, type: 'breadcrumb', depth: i + 1, label: this.store.get(`n-${breadcrumbMod.name}`, breadcrumbMod.name), pathIndex: i });
         }
       }
       addModuleContent() {
         const module = this.getCurrentModule(); if (!module) return;
         const moduleDBKey = this.path[this.path.length - 1];
-        this.rows.push({
-          key: `module:${moduleDBKey}`,
-          type: 'module',
-          depth: 2,
-          label: this.store.get(`n-${module.name}`, module.name),
-          moduleId: moduleDBKey
-        });
+
+        this.rows.push({ key: `module:${moduleDBKey}`, type: 'module', depth: 2, label: this.store.get(`n-${module.name}`, module.name), moduleId: moduleDBKey });
 
         const items = this.store.get(`items-${module.name}`, module.items || []);
-        const visualItems = (this.reorderState && this.reorderState.type === 'instr')
-          ? getVisualArrayOrder(items, this.reorderState)
-          : getVisualArrayOrder(items, null);
+        const visualItems = (this.reorderState && this.reorderState.type === 'instr') ? getVisualArrayOrder(items, this.reorderState) : getVisualArrayOrder(items, null);
 
         if (Array.isArray(visualItems)) {
-          visualItems.forEach(({ item: id, originalPos }, visualPos) => {
+          visualItems.forEach(({ item: id, originalPos }) => {
             const ins = this.store.getDbItem(id); if (!ins) return;
+            const ownerKey = `instr:${id}`;
+            const allowEphemeral = !this.reorderState;
+            const revealed = allowEphemeral && (this.revealedOwnerKey === ownerKey);
+
             this.rows.push({
-              key: `ins:${id}:${originalPos}`,
-              type: 'instr',
-              depth: 3,
-              label: this.store.get(`n-${ins.name}`, ins.name),
-              nameKey: `n-${ins.name}`,
-              textKey: `t-${ins.name}`,
-              defaultText: ins.text || '',
-              dbId: id,
-              pos: originalPos,
-              visualPos,
-              canReorder: true
+              key: `ins:${id}:${originalPos}`, type: 'instr', depth: 3,
+              label: displayNameFor(this.store, ins, id),
+              nameKey: `n-${ins.name}`, nameOverrideKey: `nn-${id}`,
+              textKey: `t-${ins.name}`, defaultText: ins.text || '',
+              metaKey: `meta-${id}`, structKey: `struct-${id}`,
+              promptKey: `t-${ins.name}`,
+              dbId: id, pos: originalPos, canReorder: true, revealed
             });
+
+            if (revealed) {
+              this.rows.push({
+                key: `prompt:instr:${id}`, type: 'prompt', depth: 4,
+                ownerType: 'instr', ownerId: id, promptKey: `t-${ins.name}`, label: ''
+              });
+              this.rows.push({
+                key: `sbtn:instr:${id}`, type: 'settings-button', depth: 4,
+                ownerType: 'instr', ownerId: id,
+                nameOverrideKey: `nn-${id}`, metaKey: `meta-${id}`,
+                structKey: `struct-${id}`, promptKey: `t-${ins.name}`,
+                label: 'Settings'
+              });
+              const pKey = `spanel:instr:${id}`;
+              if (this.settingsOpen[pKey]) {
+                this.rows.push({
+                  key: pKey, type: 'settings-panel', depth: 5,
+                  ownerType: 'instr', ownerId: id,
+                  nameOverrideKey: `nn-${id}`, metaKey: `meta-${id}`,
+                  structKey: `struct-${id}`, promptKey: `t-${ins.name}`
+                });
+              }
+            }
           });
         }
 
-        const reorderingItem = this.findReorderingItem();
-        const addIndex = this.rows.length;
-        const addSuffix = (this.reorderState && this.currentIdx === addIndex && reorderingItem)
-          ? ' - ' + this.store.get(reorderingItem.nameKey || reorderingItem.textKey, reorderingItem.label)
-          : '';
-        this.rows.push({ key: `adder-${module.name}`, type: 'adder', depth: 3, label: '+ Add Instruction' + addSuffix });
-
+        this.rows.push({ key: `adder-${module.name}`, type: 'adder', depth: 3, label: '+ Add Instruction' });
         if (this.reorderState) {
-          const delIndex = this.rows.length;
-          const delSuffix = (this.currentIdx === delIndex && reorderingItem)
-            ? ' - ' + this.store.get(reorderingItem.nameKey || reorderingItem.textKey, reorderingItem.label)
-            : '';
-          this.rows.push({ key: 'trash', type: 'trash', depth: 3, label: '- Delete Instruction' + delSuffix });
-
-          const cancelIndex = this.rows.length;
-          const cancelSuffix = (this.currentIdx === cancelIndex && reorderingItem)
-            ? ' - ' + this.store.get(reorderingItem.nameKey || reorderingItem.textKey, reorderingItem.label)
-            : '';
-          this.rows.push({ key: 'cancel-reorder', type: 'cancel-reorder', depth: 3, label: '[Esc] Cancel Movement' + cancelSuffix });
+          this.rows.push({ key: 'trash', type: 'trash', depth: 3, label: '- Delete Instruction' });
+          this.rows.push({ key: 'cancel-reorder', type: 'cancel-reorder', depth: 3, label: '[Esc] Cancel Movement' });
         }
       }
       addAgentModules() {
         const agent = this.getAgent(); if (!agent) return;
         const modules = this.store.get(`mods-${agent.name}`, agent.modules || []);
-        const visualModules = (this.reorderState && this.reorderState.type === 'module-item')
-          ? getVisualArrayOrder(modules, this.reorderState)
-          : getVisualArrayOrder(modules, null);
+        const visualModules = (this.reorderState && this.reorderState.type === 'module-item') ? getVisualArrayOrder(modules, this.reorderState) : getVisualArrayOrder(modules, null);
 
         if (Array.isArray(visualModules)) {
-          visualModules.forEach(({ item: mid, originalPos }, visualPos) => {
+          visualModules.forEach(({ item: mid, originalPos }) => {
             const mod = this.store.getDbItem(mid); if (!mod) return;
+            const ownerKey = `mod:${mid}`;
+            const allowEphemeral = !this.reorderState;
+            const revealed = allowEphemeral && (this.revealedOwnerKey === ownerKey);
+
             this.rows.push({
-              key: `mod:${mid}:${originalPos}`,
-              type: 'module-item',
-              depth: 2,
-              label: this.store.get(`n-${mod.name}`, mod.name),
-              nameKey: `n-${mod.name}`,
-              moduleId: mid,
-              pos: originalPos,
-              visualPos,
-              canReorder: true
+              key: `mod:${mid}:${originalPos}`, type: 'module-item', depth: 2,
+              label: displayNameFor(this.store, mod, mid),
+              nameKey: `n-${mod.name}`, nameOverrideKey: `nn-${mid}`,
+              moduleId: mid, pos: originalPos, canReorder: true, revealed
             });
+
+            if (revealed) {
+              this.rows.push({
+                key: `prompt:mod:${mid}`, type: 'prompt', depth: 3,
+                ownerType: 'module', ownerId: mid, promptKey: `prompt-mod-${mid}`, label: ''
+              });
+              this.rows.push({
+                key: `sbtn:mod:${mid}`, type: 'settings-button', depth: 3,
+                ownerType: 'module', ownerId: mid,
+                nameOverrideKey: `nn-${mid}`, metaKey: `meta-${mid}`,
+                structKey: `struct-${mid}`, promptKey: `prompt-mod-${mid}`,
+                label: 'Settings'
+              });
+              const pKey = `spanel:mod:${mid}`;
+              if (this.settingsOpen[pKey]) {
+                this.rows.push({
+                  key: pKey, type: 'settings-panel', depth: 4,
+                  ownerType: 'module', ownerId: mid,
+                  nameOverrideKey: `nn-${mid}`, metaKey: `meta-${mid}`,
+                  structKey: `struct-${mid}`, promptKey: `prompt-mod-${mid}`
+                });
+              }
+            }
           });
         }
 
-        const reorderingItem = this.findReorderingItem();
-        const addIndex = this.rows.length;
-        const addSuffix = (this.reorderState && this.currentIdx === addIndex && reorderingItem)
-          ? ' - ' + this.store.get(reorderingItem.nameKey, reorderingItem.label) : '';
-        this.rows.push({ key: `adder-mod-${agent.name}`, type: 'adder-mod', depth: 2, label: '+ Add Module' + addSuffix });
-
-        const deleteIndex = this.rows.length;
-        const deleteSuffix = (this.reorderState && this.currentIdx === deleteIndex && reorderingItem)
-          ? ' - ' + this.store.get(reorderingItem.nameKey, reorderingItem.label) : '';
-        this.rows.push({ key: 'trash', type: 'trash', depth: 2, label: '- Delete Module' + deleteSuffix });
-
+        this.rows.push({ key: `adder-mod-${agent.name}`, type: 'adder-mod', depth: 2, label: '+ Add Module' });
+        this.rows.push({ key: 'trash', type: 'trash', depth: 2, label: '- Delete Module' });
         if (this.reorderState) {
-          const cancelIndex = this.rows.length;
-          const cancelSuffix = (this.currentIdx === cancelIndex && reorderingItem)
-            ? ' - ' + this.store.get(reorderingItem.nameKey, reorderingItem.label) : '';
-          this.rows.push({ key: 'cancel-reorder', type: 'cancel-reorder', depth: 2, label: '[Esc] Cancel Movement' + cancelSuffix });
+          this.rows.push({ key: 'cancel-reorder', type: 'cancel-reorder', depth: 2, label: '[Esc] Cancel Movement' });
         }
-      }
-      findReorderingItem() {
-        if (!this.reorderState) return null;
-        const row = this.rows.find(r => r.key === this.reorderState.rowKey);
-        if (row) return row;
-        const dbItem = this.store.getDbItem(this.reorderState.dbId); if (!dbItem) return null;
-        const nameKey = `n-${dbItem.name}`;
-        const textKey = dbItem.text !== undefined ? `t-${dbItem.name}` : undefined;
-        const label = this.store.get(nameKey, dbItem.name);
-        return { key: `fallback:${this.reorderState.dbId}`, type: this.reorderState.type, label, nameKey, textKey };
       }
       isAtModule() { return this.path.length >= 2; }
       getAgent() { return this.store.getDbItem(this.path[0]); }
-      getCurrentModule() { return this.isAtModule() ? this.store.getDbItem(this.path[this.length - 1]) : null; }
-      // fix: correct accessor
       getCurrentModule() { return this.isAtModule() ? this.store.getDbItem(this.path[this.path.length - 1]) : null; }
     }
 
-    // ===== TREE =====
+    // ===== TREE VIEW =====
     function TreeView({ store, path, onNavigate, storeVersion }) {
       const renderModule = useCallback((modId, parentPath, depth) => {
         const mod = store.getDbItem(modId); if (!mod) return null;
@@ -355,18 +315,14 @@
         const items = store.get(`items-${mod.name}`, mod.items || []);
         return (
           <div key={modId}>
-            <div
-              className={`tree-item${isActive ? ' active' : ''}`}
-              style={{ paddingLeft: depth * 12 }}
-              onClick={() => onNavigate(modulePath, true)}
-            >
-              {store.get(`n-${mod.name}`, mod.name)}
+            <div className={`tree-item${isActive ? ' active' : ''}`} style={{ paddingLeft: depth * 12 }} onClick={() => onNavigate(modulePath, true)}>
+              {displayNameFor(store, mod, modId)}
             </div>
             {items.map(iid => {
               const ins = store.getDbItem(iid); if (!ins) return null;
               return (
                 <div key={iid} className="tree-item" style={{ paddingLeft: (depth + 1) * 12 }}>
-                  {store.get(`n-${ins.name}`, ins.name)}
+                  {displayNameFor(store, ins, iid)}
                 </div>
               );
             })}
@@ -404,17 +360,12 @@
       const handleKeyDown = (e) => {
         if (e.key === 'Enter') {
           e.preventDefault();
-          if (sortedResults.length > 0 && selectedIndex >= 0 && selectedIndex < sortedResults.length) {
-            onAdd(sortedResults[selectedIndex]);
-          } else if (query.trim() && isInstructionSearch && sortedResults.length === 0) {
-            onAdd({ id: null, name: query.trim(), isNew: true });
-          }
+          if (sortedResults.length > 0 && selectedIndex >= 0 && selectedIndex < sortedResults.length) onAdd(sortedResults[selectedIndex]);
+          else if (query.trim() && isInstructionSearch && sortedResults.length === 0) onAdd({ id: null, name: query.trim(), isNew: true });
         } else if (e.key === 'Escape') {
           e.preventDefault(); onCancel();
         } else if (e.key === 'ArrowDown') {
-          e.preventDefault();
-          const maxIndex = sortedResults.length > 0 ? sortedResults.length - 1 : 0;
-          setSelectedIndex(prev => Math.min(maxIndex, prev + 1));
+          e.preventDefault(); const maxIndex = sortedResults.length > 0 ? sortedResults.length - 1 : 0; setSelectedIndex(prev => Math.min(maxIndex, prev + 1));
         } else if (e.key === 'ArrowUp') {
           e.preventDefault(); setSelectedIndex(prev => Math.max(0, prev - 1));
         }
@@ -426,7 +377,7 @@
         <div className="search-wrap">
           <input
             ref={inputRef}
-            className="name-input"
+            className="underline-input"
             placeholder={isInstructionSearch ? "Search instructions..." : "Search modules & instructions..."}
             value={query}
             onChange={e => setQuery(e.target.value)}
@@ -448,12 +399,37 @@
       );
     }
 
+    // ===== 5-STOP STRUCTURE =====
+    function StructureDots5({ id, value, onChange }) {
+      const opts = [
+        { v: 'heavy', label: 'Heavy', aria: 'Heavy' },
+        { v: 'heavy-mid', label: '●', aria: 'Between heavy and medium' },
+        { v: 'medium', label: 'Medium', aria: 'Medium' },
+        { v: 'medium-light', label: '●', aria: 'Between medium and light' },
+        { v: 'light', label: 'Light', aria: 'Light' }
+      ];
+      return (
+        <div className="seg" role="radiogroup" aria-label="Structure">
+          <span className="label">Structure</span>
+          {opts.map((o) => (
+            <label key={o.v} title={o.aria}>
+              <input type="radio" name={`struct-${id}`} value={o.v} checked={value === o.v} onChange={(e) => onChange(e.target.value)} />
+              <span className="opt">
+                {o.label === '●' ? <span className="dot" aria-hidden="true"></span> : <span style={{ fontSize: 12 }}>{o.label}</span>}
+              </span>
+            </label>
+          ))}
+        </div>
+      );
+    }
+
     // ===== LINE RENDERER =====
     function LineRenderer({
       row, isSelected, inReorderMode, isDragging, isDropTarget,
-      textOpen, store, onLineClick, onTextChange,
-      onDragStart, onDragOver, onDragLeave, onDrop, onDragEnd,
-      addingState, onAddingComplete, onAddingCancel
+      store, onLineClick, onTextChange,
+      onDragStart, onDragOver, onDrop, onDragEnd,
+      addingState, onAddingComplete, onAddingCancel,
+      getStruct, setStruct, setNameOverride, getNameOverride, getMeta, setMeta
     }) {
       const classes = ['line'];
       if (isSelected && !inReorderMode) classes.push('sel');
@@ -466,34 +442,92 @@
         ((row.type === 'adder' && addingState.type === 'instruction') ||
          (row.type === 'adder-mod' && addingState.type === 'module')));
 
+      const promptRef = useRef(null);
+      useEffect(() => {
+        if (row.type === 'prompt' && isSelected && promptRef.current) {
+          promptRef.current.focus();
+          try {
+            const el = promptRef.current;
+            el.selectionStart = el.value.length;
+            el.selectionEnd = el.value.length;
+          } catch {}
+        }
+      }, [row.type, isSelected]);
+
+      const headingRef = useRef(null);
+      useEffect(() => {
+        if (row.type === 'settings-panel' && isSelected && headingRef.current) {
+          headingRef.current.focus();
+          headingRef.current.select();
+        }
+      }, [row.type, isSelected]);
+
       return (
         <div key={row.key}>
           <div
-            className={classes.join(' ')} style={style} onClick={() => onLineClick(row)}
-            draggable={inReorderMode} onDragStart={e => onDragStart(e, row)}
-            onDragOver={e => onDragOver(e, row)} onDragLeave={onDragLeave}
-            onDrop={e => onDrop(e, row)} onDragEnd={onDragEnd}
+            className={classes.join(' ')}
+            style={style}
+            onClick={() => onLineClick(row)}
+            draggable={inReorderMode && (row.type==='instr' || row.type==='module-item')}
+            onDragStart={e => onDragStart(e, row)}
+            onDragOver={e => onDragOver(e, row)}
+            onDrop={e => onDrop(e, row)}
+            onDragEnd={onDragEnd}
           >
             <span>{row.label}</span>
           </div>
 
-          {showAdder && (
-            <SearchAdder
-              type={addingState.type}
-              query={addingState.query}
-              setQuery={addingState.setQuery}
-              onAdd={onAddingComplete}
-              onCancel={onAddingCancel}
-              store={store}
-            />
+          {row.type === 'prompt' && (
+            <div className="tab-indent">
+              <textarea
+                ref={promptRef}
+                className="underline-textarea"
+                value={store.get(row.promptKey, '')}
+                onChange={e => onTextChange(row.promptKey, e.target.value)}
+                placeholder={row.ownerType === 'module' ? 'Module prompt…' : 'Instruction prompt…'}
+              />
+            </div>
           )}
 
-          {textOpen && row.type === 'instr' && (
-            <div className="text-edit">
+          {row.type === 'settings-panel' && (
+            <div className="settings-panel">
+              <input
+                ref={headingRef}
+                type="text"
+                className="underline-input"
+                value={getNameOverride(row.nameOverrideKey, '')}
+                onChange={(e) => setNameOverride(row.nameOverrideKey, e.target.value)}
+                placeholder="Heading…"
+              />
               <textarea
-                value={store.get(row.textKey, row.defaultText || '')}
-                onChange={e => onTextChange(row.textKey, e.target.value)}
-                placeholder="Enter instruction text..."
+                className="underline-textarea"
+                value={getMeta(row.metaKey) || ''}
+                onChange={(e) => setMeta(row.metaKey, e.target.value)}
+                placeholder="Meta information…"
+              />
+              <textarea
+                className="underline-textarea"
+                value={store.get(row.promptKey, '')}
+                onChange={(e) => onTextChange(row.promptKey, e.target.value)}
+                placeholder={row.ownerType === 'module' ? 'Module prompt…' : 'Instruction prompt…'}
+              />
+              <StructureDots5
+                id={row.ownerId}
+                value={getStruct(row.structKey) || 'medium'}
+                onChange={(v) => setStruct(row.structKey, v)}
+              />
+            </div>
+          )}
+
+          {showAdder && (
+            <div className="search-wrap">
+              <SearchAdder
+                type={addingState.type}
+                query={addingState.query}
+                setQuery={addingState.setQuery}
+                onAdd={onAddingComplete}
+                onCancel={onAddingCancel}
+                store={store}
               />
             </div>
           )}
@@ -505,6 +539,7 @@
     function App() {
       const storeRef = useRef(new DataStore());
       const store = storeRef.current;
+
       const [storeVersion, setStoreVersion] = useState(store.getVersion());
       const [path, setPath] = useState(() => {
         const hash = window.location.hash.slice(1);
@@ -514,116 +549,86 @@
 
       const [idx, setIdx] = useState(0);
       const [navHistory, setNavHistory] = useState({});
-      const [reorderState, setReorderState] = useState(null); // { rowKey, dbId, type, originalIdx, originalPos, currentPos }
-      const [textOpen, setTextOpen] = useState({});
+      const [reorderState, setReorderState] = useState(null);
       const [dragItem, setDragItem] = useState(null);
       const [dragOver, setDragOver] = useState(null);
       const [addingState, setAddingState] = useState({ isAdding: false, type: null, query: '' });
-      const initialNavRef = useRef(true);
+
+      // Ephemeral reveal owner key: "mod:<id>" or "instr:<id>"
+      const [revealedOwnerKey, setRevealedOwnerKey] = useState(null);
+      // Open settings panels: { 'spanel:mod:<id>': true, ... }
+      const [settingsOpen, setSettingsOpen] = useState({});
 
       const rows = useMemo(() => {
-        const builder = new RowBuilder(store, path, reorderState, idx);
+        const builder = new RowBuilder(store, path, reorderState, revealedOwnerKey, settingsOpen);
         return builder.build();
-      }, [store, path, reorderState, storeVersion, idx]);
+      }, [store, path, reorderState, revealedOwnerKey, settingsOpen, storeVersion]);
 
       const atAgent = path.length === 1;
       const atModule = path.length >= 2;
       const agent = store.getDbItem(path[0]) || store.getDbItem('expert-maker');
       const module = atModule ? store.getDbItem(path[path.length - 1]) : null;
 
-      // ===== DATA OPS =====
-      const updateData = useCallback((key, value) => {
-        store.set(key, value); setStoreVersion(store.getVersion());
-      }, [store]);
+      const updateData = useCallback((key, value) => { store.set(key, value); setStoreVersion(store.getVersion()); }, [store]);
 
       const resetAll = useCallback(() => {
         if (confirm('Reset everything to defaults? This will clear all your customizations.')) {
           store.reset();
-          setPath(['expert-maker']);
-          setIdx(2);
-          setNavHistory({});
-          setReorderState(null);
-          setTextOpen({});
+          setPath(['expert-maker']); setIdx(2); setNavHistory({}); setReorderState(null);
           setAddingState({ isAdding: false, type: null, query: '' });
-          window.location.hash = '';
-          setStoreVersion(store.getVersion());
+          setRevealedOwnerKey(null); setSettingsOpen({});
+          window.location.hash = ''; setStoreVersion(store.getVersion());
         }
       }, [store]);
 
-      // ===== NAV =====
       const navigateToPath = useCallback((newPath, autoSelect = true) => {
-        setPath(newPath);
-        setTextOpen({});
-        setReorderState(null);
+        setPath(newPath); setReorderState(null);
         setAddingState({ isAdding: false, type: null, query: '' });
+        setRevealedOwnerKey(null); setSettingsOpen({});
         setIdx(autoSelect ? (newPath.length === 1 ? 2 : 3) : 0);
       }, []);
 
-      // ===== ADD/REMOVE/DUPLICATE =====
       const addModuleToAgent = useCallback((moduleResult) => {
-        if (!agent) return;
-        const key = `mods-${agent.name}`;
-        const arr = store.get(key, agent.modules || []);
-        updateData(key, [...arr, moduleResult.id]);
+        if (!agent) return; const key = `mods-${agent.name}`; const arr = store.get(key, agent.modules || []); updateData(key, [...arr, moduleResult.id]);
       }, [agent, store, updateData]);
 
       const addInstructionToModule = useCallback((instructionResult) => {
-        if (!module) return;
-        const arr = store.get(`items-${module.name}`, module.items || []);
+        if (!module) return; const arr = store.get(`items-${module.name}`, module.items || []);
         if (instructionResult.isNew) {
           const newId = 'custom-' + Date.now();
           store.addCustomDbItem(newId, { name: instructionResult.name, type: 'instr', text: '' });
-          updateData(`items-${module.name}`, [...arr, newId]);
-          setStoreVersion(store.getVersion());
-        } else {
-          updateData(`items-${module.name}`, [...arr, instructionResult.id]);
-        }
+          updateData(`items-${module.name}`, [...arr, newId]); setStoreVersion(store.getVersion());
+        } else { updateData(`items-${module.name}`, [...arr, instructionResult.id]); }
       }, [module, store, updateData]);
 
       const removeItem = useCallback((pos) => {
         if (!atModule || !module || pos === undefined || pos === null) return;
-        const arr = store.get(`items-${module.name}`, module.items || []);
-        updateData(`items-${module.name}`, arr.filter((_, i) => i !== pos));
+        const arr = store.get(`items-${module.name}`, module.items || []); updateData(`items-${module.name}`, arr.filter((_, i) => i !== pos));
       }, [atModule, module, store, updateData]);
 
       const removeModule = useCallback((pos) => {
         if (!agent || pos === undefined || pos === null) return;
-        const arr = store.get(`mods-${agent.name}`, agent.modules || []);
-        updateData(`mods-${agent.name}`, arr.filter((_, i) => i !== pos));
+        const arr = store.get(`mods-${agent.name}`, agent.modules || []); updateData(`mods-${agent.name}`, arr.filter((_, i) => i !== pos));
       }, [agent, store, updateData]);
 
       const duplicateItem = useCallback((dbId, isModule, insertAtPos = null) => {
         const item = store.getDbItem(dbId); if (!item) return;
         if (isModule) {
-          if (!agent) return;
-          const arr = store.get(`mods-${agent.name}`, agent.modules || []);
-          if (insertAtPos !== null && insertAtPos >= 0 && insertAtPos <= arr.length) {
-            const newArr = [...arr]; newArr.splice(insertAtPos, 0, dbId);
-            updateData(`mods-${agent.name}`, newArr);
-          } else {
-            updateData(`mods-${agent.name}`, [...arr, dbId]);
-          }
+          if (!agent) return; const arr = store.get(`mods-${agent.name}`, agent.modules || []); const newArr = [...arr];
+          const at = (insertAtPos !== null && insertAtPos >= 0 && insertAtPos <= arr.length) ? insertAtPos : arr.length;
+          newArr.splice(at, 0, dbId); updateData(`mods-${agent.name}`, newArr);
         } else {
-          if (!module) return;
-          const arr = store.get(`items-${module.name}`, module.items || []);
-          const newId = 'custom-' + Date.now();
-          const baseName = store.get(`n-${item.name}`, item.name);
-          const baseText = store.get(`t-${item.name}`, item.text || '');
+          if (!module) return; const arr = store.get(`items-${module.name}`, module.items || []);
+          const newId = 'custom-' + Date.now(); const baseName = displayNameFor(store, item, dbId); const baseText = store.get(`t-${item.name}`, item.text || '');
           store.addCustomDbItem(newId, { name: baseName + ' (copy)', type: 'instr', text: baseText });
-          if (insertAtPos !== null && insertAtPos >= 0 && insertAtPos <= arr.length) {
-            const newArr = [...arr]; newArr.splice(insertAtPos, 0, newId);
-            updateData(`items-${module.name}`, newArr);
-          } else {
-            updateData(`items-${module.name}`, [...arr, newId]);
-          }
-          updateData(`n-${newId}`, baseName + ' (copy)');
-          updateData(`t-${newId}`, baseText);
-          setStoreVersion(store.getVersion());
+          const newArr = [...arr]; const at = (insertAtPos !== null && insertAtPos >= 0 && insertAtPos <= arr.length) ? insertAtPos : arr.length;
+          newArr.splice(at, 0, newId); updateData(`items-${module.name}`, newArr);
+          updateData(`nn-${newId}`, baseName + ' (copy)'); updateData(`t-${newId}`, baseText); setStoreVersion(store.getVersion());
         }
       }, [agent, module, store, updateData]);
 
-      // ===== REORDER (keyboard) =====
-      const blockedFooter = new Set(['adder','trash','cancel-reorder']);
+      // Reorder landing restrictions
+      const blockedFooter = new Set(['adder','trash','cancel-reorder','settings-button','settings-panel','prompt']);
       const canLandOn = (row, type) => (type === 'instr' ? row.type === 'instr' : row.type === 'module-item');
 
       const moveItemInReorderMode = useCallback((direction) => {
@@ -632,14 +637,10 @@
         const newCurrentPos = reorderState.currentPos + delta;
 
         let arr = [];
-        if (reorderState.type === 'instr' && atModule && module) {
-          arr = store.get(`items-${module.name}`, module.items || []);
-        } else if (reorderState.type === 'module-item' && agent) {
-          arr = store.get(`mods-${agent.name}`, agent.modules || []);
-        }
+        if (reorderState.type === 'instr' && atModule && module) arr = store.get(`items-${module.name}`, module.items || []);
+        else if (reorderState.type === 'module-item' && agent) arr = store.get(`mods-${agent.name}`, agent.modules || []);
 
         if (newCurrentPos >= 0 && newCurrentPos < arr.length) {
-          // advance UI index, skipping footer/non-landable rows
           let candidateIdx = idx + delta;
           const within = i => i >= 0 && i < rows.length;
           while (within(candidateIdx)) {
@@ -648,227 +649,241 @@
             candidateIdx += delta;
           }
           if (!within(candidateIdx)) return;
-          setReorderState(prev => ({ ...prev, currentPos: newCurrentPos }));
-          setIdx(candidateIdx);
-          return;
+          setReorderState(prev => ({ ...prev, currentPos: newCurrentPos })); setIdx(candidateIdx);
         }
-        // clamp at edges: no movement beyond first/last item
-        return;
       }, [reorderState, idx, rows, atModule, module, agent, store]);
+
+      const findPlacedIndex = useCallback((type, pos, ownerId) => {
+        return rows.findIndex(r =>
+          (type === 'instr' ? r.type === 'instr' : r.type === 'module-item') &&
+          (type === 'instr' ? r.dbId === ownerId : r.moduleId === ownerId) &&
+          r.pos === pos
+        );
+      }, [rows]);
 
       const commitReorder = useCallback(() => {
         if (!reorderState) return;
-        const originalIdx = reorderState.originalIdx;
         const originalPos = reorderState.originalPos;
         const currentPos = (reorderState.currentPos !== undefined) ? reorderState.currentPos : originalPos;
 
         if (currentPos !== originalPos && currentPos >= 0) {
           if (reorderState.type === 'instr' && atModule && module) {
-            const arr = store.get(`items-${module.name}`, module.items || []);
-            updateData(`items-${module.name}`, moveInList(arr, originalPos, currentPos));
+            const arr = store.get(`items-${module.name}`, module.items || []); updateData(`items-${module.name}`, moveInList(arr, originalPos, currentPos));
           } else if (reorderState.type === 'module-item' && agent) {
-            const arr = store.get(`mods-${agent.name}`, agent.modules || []);
-            updateData(`mods-${agent.name}`, moveInList(arr, originalPos, currentPos));
+            const arr = store.get(`mods-${agent.name}`, agent.modules || []); updateData(`mods-${agent.name}`, moveInList(arr, originalPos, currentPos));
           }
         }
-        setIdx(originalIdx);
-        setReorderState(null);
-      }, [reorderState, atModule, module, agent, store, updateData]);
 
-      // unified deletion helpers
+        const ownerId = reorderState.dbId || reorderState.moduleId;
+        const targetIdx = findPlacedIndex(reorderState.type, currentPos, ownerId);
+        setReorderState(null);
+        if (targetIdx >= 0) setIdx(targetIdx);
+      }, [reorderState, atModule, module, agent, store, updateData, findPlacedIndex]);
+
       const deleteMovingIfAny = useCallback(() => {
         if (!reorderState) return false;
-        if (reorderState.type === 'instr') {
-          removeItem(reorderState.originalPos);
-          setReorderState(null);
-          // keep focus sane after removal
-          setIdx(prev => Math.max(0, Math.min(prev, rows.length - 2)));
-          return true;
-        }
-        if (reorderState.type === 'module-item') {
-          removeModule(reorderState.originalPos);
-          setReorderState(null);
-          setIdx(prev => Math.max(0, Math.min(prev, rows.length - 2)));
-          return true;
-        }
+        if (reorderState.type === 'instr') { removeItem(reorderState.originalPos); setReorderState(null); setIdx(prev => Math.max(0, Math.min(prev, rows.length - 2))); return true; }
+        if (reorderState.type === 'module-item') { removeModule(reorderState.originalPos); setReorderState(null); setIdx(prev => Math.max(0, Math.min(prev, rows.length - 2))); return true; }
         return false;
       }, [reorderState, removeItem, removeModule, rows.length]);
 
       const deleteSelectedIfAny = useCallback((sel) => {
         if (!sel) return false;
-        if (sel.type === 'instr' && atModule) {
-          removeItem(sel.pos);
-          setTextOpen(p => { const nx = { ...p }; delete nx[sel.key]; return nx; });
-          setIdx(prev => Math.max(0, Math.min(prev, rows.length - 2)));
-          return true;
-        } else if (sel.type === 'module-item') {
-          removeModule(sel.pos);
-          setIdx(prev => Math.max(0, Math.min(prev, rows.length - 2)));
-          return true;
-        }
+        if (sel.type === 'instr' && atModule) { removeItem(sel.pos); setIdx(prev => Math.max(0, Math.min(prev, rows.length - 2))); return true; }
+        if (sel.type === 'module-item') { removeModule(sel.pos); setIdx(prev => Math.max(0, Math.min(prev, rows.length - 2))); return true; }
         return false;
       }, [atModule, removeItem, removeModule, rows.length]);
 
-      // ===== DND (instruction-level add/delete blocked) =====
+      // Drag & Drop (stable, no hover-based reveals)
       const handleDragStart = useCallback((e, row) => { e.dataTransfer.effectAllowed = 'move'; setDragItem(row); }, []);
-      const handleDragOver = useCallback((e, row) => {
-        e.preventDefault(); if (!dragItem) return;
-        const blocked = (row.type === 'adder' || row.type === 'trash') && row.depth === 3;
-        if (blocked) { e.dataTransfer.dropEffect = 'none'; setDragOver(null); return; }
-        e.dataTransfer.dropEffect = 'move'; setDragOver(row.key);
-      }, [dragItem]);
-      const handleDragLeave = useCallback(() => { setDragOver(null); }, []);
+      const handleDragOver = useCallback((e, row) => { e.preventDefault(); if (!dragItem) return; e.dataTransfer.dropEffect = 'move'; setDragOver(row.key); }, [dragItem]);
       const handleDrop = useCallback((e, row) => {
         e.preventDefault(); if (!dragItem) return;
-        const isInstrAddOrDelete = (row.type === 'adder' || row.type === 'trash') && row.depth === 3;
-        if (isInstrAddOrDelete) { setDragItem(null); setDragOver(null); return; }
+
+        if (row.type === 'trash') {
+          if (dragItem.type === 'instr') removeItem(dragItem.pos);
+          else if (dragItem.type === 'module-item') removeModule(dragItem.pos);
+          setDragItem(null); setDragOver(null); setRevealedOwnerKey(null); setSettingsOpen({}); return;
+        }
+        if (row.type === 'adder' && dragItem.type === 'instr' && atModule && module) {
+          duplicateItem(dragItem.dbId, false, dragItem.pos); setDragItem(null); setDragOver(null); return;
+        }
+        if (row.type === 'adder-mod' && dragItem.type === 'module-item' && agent) {
+          duplicateItem(dragItem.moduleId, true, dragItem.pos); setDragItem(null); setDragOver(null); return;
+        }
 
         if (dragItem.type === 'instr' && row.type === 'instr' && atModule && module) {
-          const arr = store.get(`items-${module.name}`, module.items || []);
-          updateData(`items-${module.name}`, moveInList(arr, dragItem.pos, row.pos));
+          const arr = store.get(`items-${module.name}`, module.items || []); updateData(`items-${module.name}`, moveInList(arr, dragItem.pos, row.pos));
+          const newIdx = findPlacedIndex('instr', row.pos, row.dbId); if (newIdx >= 0) setIdx(newIdx);
         } else if (dragItem.type === 'module-item' && row.type === 'module-item' && agent) {
-          const arr = store.get(`mods-${agent.name}`, agent.modules || []);
-          updateData(`mods-${agent.name}`, moveInList(arr, dragItem.pos, row.pos));
+          const arr = store.get(`mods-${agent.name}`, agent.modules || []); updateData(`mods-${agent.name}`, moveInList(arr, dragItem.pos, row.pos));
+          const newIdx = findPlacedIndex('module-item', row.pos, row.moduleId); if (newIdx >= 0) setIdx(newIdx);
         }
-        setDragItem(null); setDragOver(null); setReorderState(null);
-      }, [dragItem, atModule, module, agent, store, updateData]);
+
+        setDragItem(null); setDragOver(null);
+      }, [dragItem, atModule, module, agent, store, updateData, findPlacedIndex, removeItem, removeModule, duplicateItem]);
+
       const handleDragEnd = useCallback(() => { setDragItem(null); setDragOver(null); }, []);
 
-      // ===== KEYS =====
+      // Keyboard navigation
       const handleKeyDown = useCallback((e) => {
-        if (addingState.isAdding) return;
-
         const sel = rows[idx]; if (!sel) return;
+
         const activeEl = document.activeElement;
-        const inTextarea = activeEl && activeEl.tagName === 'TEXTAREA';
+        const inTextarea = activeEl && (activeEl.tagName === 'TEXTAREA' || (activeEl.tagName === 'INPUT' && activeEl.type === 'text'));
         if (inTextarea) {
-          if ((e.key === 'ArrowLeft' || e.key === 'ArrowUp') && activeEl.selectionStart === 0 && activeEl.selectionEnd === 0) {
-            e.preventDefault(); activeEl.blur();
+          const valueLength = activeEl.value.length;
+          const start = activeEl.selectionStart ?? 0;
+          const end = activeEl.selectionEnd ?? 0;
+
+          if ((e.key === 'ArrowLeft' || e.key === 'ArrowUp') && start === 0 && end === 0) {
+            e.preventDefault();
+            activeEl.blur();
+            setIdx(prev => Math.max(0, prev - 1));
+            return;
           }
-          return;
+          if ((e.key === 'ArrowRight' || e.key === 'ArrowDown') && start === valueLength && end === valueLength) {
+            e.preventDefault();
+            activeEl.blur();
+            setIdx(prev => Math.min(rows.length - 1, prev + 1)); // Prompt → Settings
+            return;
+          }
+          return; // allow typing
         }
 
         const inReorderMode = !!reorderState;
+        const gotoIndex = (nextIdx) => {
+          const nextRow = rows[nextIdx];
+          const currentOwner = revealedOwnerKey;
+          if (currentOwner) {
+            const ok = ownerKeyOfRow(nextRow);
+            if (ok !== currentOwner) {
+              const pKey = `spanel:${currentOwner}`;
+              setSettingsOpen(prev => { if (!prev[pKey]) return prev; const copy = { ...prev }; delete copy[pKey]; return copy; });
+              setRevealedOwnerKey(null);
+            }
+          }
+          setIdx(nextIdx);
+        };
 
         if (e.key === 'ArrowUp') {
           e.preventDefault();
-          if (inReorderMode) moveItemInReorderMode('up');
-          else setIdx(i => Math.max(0, i - 1));
+          if (inReorderMode) { moveItemInReorderMode('up'); }
+          else { gotoIndex(Math.max(0, idx - 1)); }
         } else if (e.key === 'ArrowDown') {
           e.preventDefault();
-          if (inReorderMode) moveItemInReorderMode('down');
-          else setIdx(i => Math.min(rows.length - 1, i + 1));
+          if (inReorderMode) { moveItemInReorderMode('down'); }
+          else { gotoIndex(Math.min(rows.length - 1, idx + 1)); }
         } else if (e.key === 'ArrowLeft') {
           e.preventDefault();
-          if (inReorderMode) commitReorder();
-          else if (textOpen[sel.key]) {
-            setTextOpen(p => { const nx = { ...p }; delete nx[sel.key]; return nx; });
-          } else if (sel.canReorder) {
-            setReorderState({
-              rowKey: sel.key,
-              dbId: sel.dbId || sel.moduleId,
-              type: sel.type,
-              originalIdx: idx,
-              originalPos: sel.pos,
-              currentPos: sel.pos
-            });
-          } else if (path.length > 1) {
+          if (inReorderMode) { commitReorder(); return; }
+          if (sel.type === 'settings-panel') {
+            setSettingsOpen(s => ({ ...s, [sel.key]: false }));
+            return;
+          }
+          if (sel.type === 'settings-button' || sel.type === 'prompt') {
+            const ownerIdx = Math.max(0, idx - 1);
+            const currentOwner = revealedOwnerKey;
+            if (currentOwner) {
+              const pKey = `spanel:${currentOwner}`; setSettingsOpen(prev => { if (!prev[pKey]) return prev; const copy = { ...prev }; delete copy[pKey]; return copy; });
+            }
+            setRevealedOwnerKey(null);
+            setIdx(ownerIdx);
+            return;
+          }
+          if (sel.canReorder) {
+            setReorderState({ rowKey: sel.key, dbId: sel.dbId || sel.moduleId, type: sel.type, originalIdx: idx, originalPos: sel.pos, currentPos: sel.pos });
+            return;
+          }
+          if (path.length > 1) {
             const newPath = path.slice(0, -1);
-            const pathKey = newPath.join('/');
-            const savedIdx = navHistory[pathKey];
-            navigateToPath(newPath, false);
+            const pathKey = newPath.join('/'); const savedIdx = navHistory[pathKey];
+            setRevealedOwnerKey(null); setSettingsOpen({});
+            setPath(newPath);
             setIdx(savedIdx !== undefined ? savedIdx : (newPath.length === 1 ? 2 : 3));
           }
-        } else if (e.key === 'ArrowRight') {
+        } else if (e.key === 'ArrowRight' || e.key === 'Enter') {
           e.preventDefault();
-          if (inReorderMode) commitReorder();
-          else if (sel.type === 'module-item') {
-            const pathKey = path.join('/');
-            setNavHistory(h => ({ ...h, [pathKey]: idx }));
-            navigateToPath([...path, sel.moduleId], true);
+          if (inReorderMode) { commitReorder(); return; }
+
+          if (sel.type === 'module-item') {
+            const key = `mod:${sel.moduleId}`;
+            if (revealedOwnerKey !== key) {
+              setRevealedOwnerKey(key);
+            } else {
+              const pathKey = path.join('/'); setNavHistory(h => ({ ...h, [pathKey]: idx }));
+              setRevealedOwnerKey(null); setSettingsOpen({});
+              setPath([...path, sel.moduleId]);
+              setIdx(3);
+            }
           } else if (sel.type === 'instr') {
-            setTextOpen(p => ({ ...p, [sel.key]: !p[sel.key] }));
+            const key = `instr:${sel.dbId}`;
+            if (revealedOwnerKey !== key) {
+              setRevealedOwnerKey(key);
+            }
+          } else if (sel.type === 'settings-button') {
+            const pKey = sel.ownerType === 'module' ? `spanel:mod:${sel.ownerId}` : `spanel:instr:${sel.ownerId}`;
+            setSettingsOpen(s => ({ ...s, [pKey]: !s[pKey] }));
           } else if (sel.type === 'adder') {
             setAddingState({ isAdding: true, type: 'instruction', query: '' });
           } else if (sel.type === 'adder-mod') {
             setAddingState({ isAdding: true, type: 'module', query: '' });
           }
         } else if ((e.key === 'Delete') || (e.key === '-')) {
-          // NEW: delete works in both modes for instruction or module
           e.preventDefault();
-          if (inReorderMode) {
-            if (deleteMovingIfAny()) return;
-          } else {
-            if (deleteSelectedIfAny(sel)) return;
-          }
-        } else if ((e.key === 'Backspace') && !inReorderMode) {
-          // Keep backspace for normal-mode deletion only
-          e.preventDefault();
-          deleteSelectedIfAny(sel);
-        } else if (e.key === 'Enter') {
-          e.preventDefault();
-          if (inReorderMode) {
-            commitReorder();
-          } else if (sel.type === 'module-item') {
-            const pathKey = path.join('/');
-            setNavHistory(h => ({ ...h, [pathKey]: idx }));
-            navigateToPath([...path, sel.moduleId], true);
-          } else if (sel.type === 'instr') {
-            setTextOpen(p => ({ ...p, [sel.key]: !p[sel.key] }));
-          } else if (sel.type === 'adder') {
-            setAddingState({ isAdding: true, type: 'instruction', query: '' });
-          } else if (sel.type === 'adder-mod') {
-            setAddingState({ isAdding: true, type: 'module', query: '' });
-          }
+          if (inReorderMode) { if (deleteMovingIfAny()) return; }
+          else { if (deleteSelectedIfAny(sel)) return; }
         } else if (e.key === 'Escape') {
           e.preventDefault();
-          if (inReorderMode) { setIdx(reorderState.originalIdx); setReorderState(null); }
-          else if (textOpen[sel.key]) {
-            setTextOpen(p => { const nx = { ...p }; delete nx[sel.key]; return nx; });
+          if (inReorderMode) { setReorderState(null); return; }
+          if (revealedOwnerKey) {
+            const pKey = `spanel:${revealedOwnerKey}`;
+            setSettingsOpen(prev => { if (!prev[pKey]) return prev; const copy = { ...prev }; delete copy[pKey]; return copy; });
+            setRevealedOwnerKey(null);
           }
         }
       }, [
-        addingState.isAdding, rows, idx, reorderState, textOpen, path, navHistory,
-        moveItemInReorderMode, commitReorder, navigateToPath, deleteMovingIfAny, deleteSelectedIfAny
+        rows, idx, reorderState, path, navHistory,
+        revealedOwnerKey, moveItemInReorderMode, commitReorder,
+        deleteMovingIfAny, deleteSelectedIfAny, settingsOpen
       ]);
 
       useEffect(() => { window.addEventListener('keydown', handleKeyDown); return () => window.removeEventListener('keydown', handleKeyDown); }, [handleKeyDown]);
 
-      // ===== CLICK =====
+      // Click mirrors keyboard reveal/hide. (No hover-based reveal)
       const handleLineClick = useCallback((row) => {
         const rowIdx = rows.findIndex(r => r.key === row.key);
         if (rowIdx !== -1) setIdx(rowIdx);
-        if (reorderState) return;
 
         if (row.type === 'module-item') {
-          const pathKey = path.join('/');
-          setNavHistory(h => ({ ...h, [pathKey]: rowIdx }));
-          navigateToPath([...path, row.moduleId], true);
+          const key = `mod:${row.moduleId}`;
+          if (revealedOwnerKey !== key) {
+            setRevealedOwnerKey(key);
+          } else {
+            const pathKey = path.join('/'); setNavHistory(h => ({ ...h, [pathKey]: rowIdx }));
+            setRevealedOwnerKey(null); setSettingsOpen({});
+            setPath([...path, row.moduleId]); setIdx(3);
+          }
         } else if (row.type === 'instr') {
-          setTextOpen(p => ({ ...p, [row.key]: !p[row.key] }));
-        } else if (row.type === 'breadcrumb') {
-          const newPath = path.slice(0, row.pathIndex + 1);
-          navigateToPath(newPath, true);
-        } else if (row.type === 'agent') {
-          navigateToPath([path[0]], true);
-        } else if (row.type === 'adder') {
-          setAddingState({ isAdding: true, type: 'instruction', query: '' });
-        } else if (row.type === 'adder-mod') {
-          setAddingState({ isAdding: true, type: 'module', query: '' });
+          const key = `instr:${row.dbId}`;
+          if (revealedOwnerKey !== key) {
+            setRevealedOwnerKey(key);
+          }
+        } else if (row.type === 'settings-button') {
+          const pKey = row.ownerType === 'module' ? `spanel:mod:${row.ownerId}` : `spanel:instr:${row.ownerId}`;
+          setSettingsOpen(s => ({ ...s, [pKey]: !s[pKey] }));
+        } else {
+          if (revealedOwnerKey) {
+            const ok = ownerKeyOfRow(row);
+            if (ok !== revealedOwnerKey) { setRevealedOwnerKey(null); setSettingsOpen({}); }
+          }
         }
-      }, [rows, reorderState, path, navigateToPath]);
+      }, [rows, path, revealedOwnerKey]);
 
-      // ===== HASH =====
+      // HASH
       useEffect(() => {
-        if (initialNavRef.current) {
-          initialNavRef.current = false;
-          setIdx(path.length === 1 ? 2 : 3);
-          return;
-        }
-        const hash = '#' + path.join('/');
-        if (window.location.hash !== hash) {
-          window.history.pushState(null, '', hash);
-        }
+        const hash = '#' + path.join('/'); if (window.location.hash !== hash) window.history.pushState(null, '', hash);
+        if (!window.location.hash) setIdx(path.length === 1 ? 2 : 3);
       }, [path]);
 
       useEffect(() => {
@@ -876,18 +891,14 @@
           const hash = window.location.hash.slice(1);
           if (hash) {
             const parts = hash.split('/').filter(Boolean);
-            if (parts.length > 0) {
-              navigateToPath(parts, true);
-            }
-          } else {
-            navigateToPath(['expert-maker'], true);
-          }
+            if (parts.length > 0) navigateToPath(parts, true);
+          } else navigateToPath(['expert-maker'], true);
         };
         window.addEventListener('popstate', handlePopState);
         return () => window.removeEventListener('popstate', handlePopState);
       }, [navigateToPath]);
 
-      // ===== ADDING =====
+      // ADDING
       const handleAddingComplete = useCallback((result) => {
         if (addingState.type === 'module') addModuleToAgent(result);
         else if (addingState.type === 'instruction') addInstructionToModule(result);
@@ -895,17 +906,48 @@
       }, [addingState.type, addModuleToAgent, addInstructionToModule]);
       const handleAddingCancel = useCallback(() => { setAddingState({ isAdding: false, type: null, query: '' }); }, []);
 
-      // ===== RENDER =====
+      // Prompt summary and All Text
       const promptText = useMemo(() => {
         let text = '(: Smile Composer\n    ' + store.get(`n-${agent.name}`, agent.name);
         if (atModule) {
           text += path.slice(1).map(mid => {
             const m = store.getDbItem(mid);
-            return m ? '\n        ' + store.get(`n-${m.name}`, m.name || '') : '';
+            const name = m ? displayNameFor(store, m, mid) : '';
+            return m ? '\n        ' + name : '';
           }).join('');
         }
         return text;
       }, [path, agent, atModule, store, storeVersion]);
+
+      const allTextContent = useMemo(() => {
+        let parts = [];
+        if (atModule && module) {
+          const ids = store.get(`items-${module.name}`, module.items || []);
+          ids.forEach(id => {
+            const it = store.getDbItem(id); if (!it) return;
+            const name = store.get(`nn-${id}`, displayNameFor(store, it, id));
+            const text = store.get(`t-${it.name}`, it.text || '');
+            const meta = store.get(`meta-${id}`, '');
+            parts.push(`${name}\n${text}${meta ? `\n(meta) ${meta}` : ''}`);
+          });
+        } else if (agent) {
+          const mods = store.get(`mods-${agent.name}`, agent.modules || []);
+          mods.forEach(mid => {
+            const m = store.getDbItem(mid); if (!m) return;
+            const mname = displayNameFor(store, m, mid);
+            parts.push(`== ${mname} ==`);
+            const ids = store.get(`items-${m.name}`, m.items || []);
+            ids.forEach(id => {
+              const it = store.getDbItem(id); if (!it) return;
+              const name = store.get(`nn-${id}`, displayNameFor(store, it, id));
+              const text = store.get(`t-${it.name}`, it.text || '');
+              const meta = store.get(`meta-${id}`, '');
+              parts.push(`${name}\n${text}${meta ? `\n(meta) ${meta}` : ''}`);
+            });
+          });
+        }
+        return parts.join('\n\n');
+      }, [storeVersion, path, atModule, module, agent, store]);
 
       const outputKey = atModule && module ? `output-${module.name}` : `output-${agent.name}`;
       const outputDefault = atModule ? '' : agent.output;
@@ -927,18 +969,22 @@
                   inReorderMode={inReorderMode}
                   isDragging={isDragging}
                   isDropTarget={isDropTarget}
-                  textOpen={textOpen[row.key]}
                   store={store}
                   onLineClick={handleLineClick}
                   onTextChange={updateData}
                   onDragStart={handleDragStart}
                   onDragOver={handleDragOver}
-                  onDragLeave={handleDragLeave}
                   onDrop={handleDrop}
                   onDragEnd={handleDragEnd}
                   addingState={{ ...addingState, setQuery: (q) => setAddingState(s => ({ ...s, query: q })) }}
                   onAddingComplete={handleAddingComplete}
                   onAddingCancel={handleAddingCancel}
+                  getStruct={(k) => store.get(k, 'medium')}
+                  setStruct={(k,v) => updateData(k, v)}
+                  getNameOverride={(k, f) => store.get(k, f || '')}
+                  setNameOverride={(k, v) => updateData(k, v)}
+                  getMeta={(k) => store.get(k, '')}
+                  setMeta={(k, v) => updateData(k, v)}
                 />
               );
             })}
@@ -952,27 +998,39 @@
 
             <div className="panel">
               <div className="panel-title"><span>Prompt</span></div>
-              <textarea readOnly value={promptText}
-                style={{ minHeight: '120px', width: '100%', border: '1px solid #ccc', padding: '8px', borderRadius: '4px' }} />
+              <textarea
+                readOnly
+                value={promptText}
+                className="underline-textarea"
+                style={{ minHeight: '120px' }}
+              />
+              <div style={{ height: 8 }}></div>
+              <button className="btn" data-hotkey-scope="ui" onClick={() => {
+                const wrap = document.getElementById('alltext-wrapper');
+                if (wrap) wrap.style.display = (wrap.style.display === 'none' ? '' : 'none');
+              }}>Show / Hide All Text</button>
+              <div id="alltext-wrapper" style={{ marginTop: 8 }}>
+                <textarea className="alltext" readOnly value={allTextContent}></textarea>
+              </div>
             </div>
 
             <div className="panel">
               <div className="panel-title">
                 <span>Output</span>
-                <button className="btn" onClick={resetAll}>Reset All</button>
+                <button className="btn" data-hotkey-scope="ui" onClick={resetAll}>Reset All</button>
               </div>
               <textarea
+                className="underline-textarea"
                 value={store.get(outputKey, outputDefault)}
                 onChange={e => updateData(outputKey, e.target.value)}
-                style={{ minHeight: '150px', width: '100%', border: '1px solid #ccc', padding: '8px', borderRadius: '4px' }}
-              />
+                style={{ minHeight: '150px' }}
+              ></textarea>
             </div>
           </div>
         </div>
       );
     }
 
-    // ===== MOUNT =====
     try {
       ReactDOM.createRoot(document.getElementById('root')).render(<App />);
     } catch (e) {
