@@ -3,62 +3,39 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Smile Composer — Inline Actions, Hierarchy Left, Insert-at-Cursor Modules</title>
+  <title>Smile Composer — Inline Actions, Right-Flow Settings, Bottom Add</title>
   <script crossorigin src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
   <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
   <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
   <style>
-    :root { --tab: 32px; --soft-bg: #fafafa; --hover-bg: #f6f6f6; --select-bg: #f2f2f2; --rule: rgba(0,0,0,0.08); }
+    :root { --tab: 32px; --soft-bg: #fafafa; --hover-bg: #f6f6f6; --select-bg: #f2f2f2; --rule: rgba(0,0,0,0.08); --sidebar-w: 360px; }
     * { box-sizing: border-box; }
     body { font-family: -apple-system, system-ui, Segoe UI, Helvetica, Arial, sans-serif; background: #fff; color: #111; padding: 24px; margin: 0; }
+    .layout { display: grid; grid-template-columns: 1fr var(--sidebar-w); gap: 16px; align-items: start; }
     .container { display: block; width: 100%; }
-
-    .panel { background: #fff; padding: 16px; box-shadow: 0 1px 0 0 var(--rule); margin-top: 20px; border-radius: 10px; }
-    .panel-title { font-weight: 600; margin-bottom: 10px; display: flex; align-items: center; justify-content: space-between; gap: 8px; flex-wrap: wrap; }
-    .panel-title .clickable { cursor: pointer; }
-    .panel-title-right { display: inline-flex; align-items: center; gap: 8px; }
-
-    /* Omnisearch */
-    .omni { position: sticky; top: 0; z-index: 10; background: #fff; padding: 8px 0 0 0; margin-bottom: 8px; }
-    .omni-bar { display: grid; grid-template-columns: 1fr auto auto; gap: 8px; align-items: center; padding: 10px 12px; border-radius: 999px; background: var(--soft-bg); box-shadow: 0 1px 0 0 var(--rule); }
-    .omni-input { border: none; outline: none; background: transparent; font: inherit; padding: 6px 2px; }
-    .omni-mode { display: inline-flex; align-items: center; gap: 8px; padding: 6px 8px; border-radius: 999px; background: #fff; visibility: hidden; }
-    .omni-mode.show { visibility: visible; }
-    .omni-mode button { font: inherit; background: transparent; border: none; padding: 6px 10px; border-radius: 999px; cursor: pointer; }
-    .omni-drawer { margin-top: 8px; border-radius: 12px; padding: 8px; background: #fff; }
-    .omni-list { max-height: 320px; overflow: auto; display: grid; gap: 6px; }
-    .omni-item { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 10px 12px; background: var(--soft-bg); border-radius: 12px; cursor: pointer; }
-    .omni-item:hover { background-color: var(--hover-bg); }
-    .omni-item.sel { background-color: var(--select-bg); font-weight: 600; }
-    .badge { font-size: 11px; padding: 2px 8px; border-radius: 999px; background: #eee; }
-    .subtle { font-size: 12px; color: #666; }
+    .panel { background: #fff; padding: 16px; box-shadow: 0 1px 0 0 var(--rule); border-radius: 10px; }
 
     .line { user-select: none; padding: 8px 10px; border-radius: 10px; display: flex; align-items: center; justify-content: space-between; gap: 10px; cursor: pointer; transition: background-color 0.12s ease, opacity 0.12s ease; touch-action: none; position: relative; }
     .line:hover { background-color: var(--hover-bg); }
     .line.sel { font-weight: 600; background-color: var(--select-bg); }
-    .line.reorder-mode { font-weight: 700; background-color: #eee; }
     .line.held { opacity: 0.35; }
     .line.drop-target { outline: 3px solid #111; outline-offset: -3px; border-radius: 12px; }
-    .left-span { flex: 1 1 auto; min-width: 0; }
+    .left-span { flex: 1 1 auto; min-width: 0; display: inline-flex; align-items: center; gap: 10px; }
 
     .actions-text { font-size: inherit; color: #222; display: inline-flex; gap: 6px; flex-wrap: wrap; align-items: center; }
-    .action-chip { padding: 2px 6px; border-radius: 6px; display: inline-block; }
+    .action-chip { padding: 4px 8px; border-radius: 8px; display: inline-flex; align-items: center; border: 1px solid var(--rule); background: #fff; cursor: pointer; }
     .action-chip:hover { background: var(--hover-bg); }
     .action-chip.focus { font-weight: 800; background: var(--select-bg); }
-    .action-prefix { margin-right: 6px; }
 
-    .action-bar { display: flex; align-items: center; gap: 10px; margin-top: 6px; }
+    .action-bar-inline { display: inline-flex; align-items: center; gap: 10px; width: 100%; }
+    .action-spacer { flex: 1 1 auto; }
     .action-back { font-size: 12px; color: #444; cursor: pointer; user-select: none; }
     .action-back:hover { text-decoration: underline; }
+    .action-hint { font-size: 12px; color: #666; }
 
     .indent-block { margin-top: 8px; }
     .underline-input, .underline-textarea { width: 100%; background: transparent; border: none; border-bottom: 1px solid #ccc; border-radius: 0; padding: 6px 2px 6px 0; font: inherit; outline: none; resize: vertical; min-height: 34px; }
     .underline-textarea { min-height: 80px; }
-
-    .tree-view { max-height: 500px; overflow: auto; font-size: 13px; line-height: 1.8; }
-    .tree-item { padding: 6px 8px; cursor: pointer; user-select: none; border-radius: 8px; }
-    .tree-item:hover { background: var(--hover-bg); }
-    .tree-item.active { font-weight: 700; background: var(--select-bg); }
 
     .error { color: red; padding: 20px; border: 1px solid red; margin: 20px; border-radius: 8px; }
 
@@ -69,10 +46,39 @@
     .seg .dot { width: 8px; height: 8px; border-radius: 50%; background: #bbb; display: inline-block; }
     .seg input[type="radio"]:checked + .opt .dot { background: #111; }
 
-    .alltext { width: 100%; min-height: 220px; padding: 10px; border: none; border-bottom: 1px solid #ccc; border-radius: 0; resize: vertical; background: #fff; }
-
     .prompt-preview { white-space: pre-wrap; font-size: 13px; color: #222; }
-    .instructional { font-size: 13px; color: #333; }
+
+    /* Hover-only left pin for quick settings */
+    .hover-settings {
+      position: absolute;
+      left: 6px;
+      top: 50%;
+      transform: translateY(-50%);
+      font-size: 12px;
+      padding: 2px 6px;
+      background: #fff;
+      border: 1px solid var(--rule);
+      border-radius: 8px;
+      opacity: 0;
+      pointer-events: none;
+    }
+    .line:hover .hover-settings { opacity: 1; pointer-events: auto; }
+    .hover-settings:hover { background: var(--hover-bg); }
+
+    /* Bottom Add Dock */
+    .bottom-dock { margin-top: 16px; }
+    .dock-toggle { display: inline-flex; align-items: center; gap: 6px; padding: 8px 12px; border-radius: 999px; background: var(--soft-bg); border: 1px solid var(--rule); cursor: pointer; }
+    .dock { margin-top: 8px; border-radius: 12px; padding: 8px; background: #fff; box-shadow: 0 1px 0 0 var(--rule); }
+    .omni-list { max-height: 300px; overflow: auto; display: grid; gap: 6px; }
+    .omni-item { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 10px 12px; background: var(--soft-bg); border-radius: 12px; cursor: pointer; }
+    .omni-item:hover { background-color: var(--hover-bg); }
+    .omni-item.sel { background-color: var(--select-bg); font-weight: 600; }
+    .badge { font-size: 11px; padding: 2px 8px; border-radius: 999px; background: #eee; }
+    .omni-input { border: none; outline: none; background: transparent; font: inherit; padding: 8px 2px; width: 100%; }
+
+    /* Right Sidebar */
+    .rightbar { position: sticky; top: 16px; height: calc(100vh - 32px); overflow: auto; background: #fff; box-shadow: 0 1px 0 0 var(--rule); border-radius: 10px; padding: 12px; }
+    .rightbar textarea { width: 100%; height: calc(100vh - 56px); border: none; outline: none; resize: none; background: transparent; font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace; font-size: 12px; line-height: 1.5; }
   </style>
 </head>
 <body>
@@ -90,24 +96,19 @@
 
     const INITIAL_DB = {
       'expert-maker': { name: 'Expert Maker', type: 'agent', input: 'Question', output: 'Answer', modules: ['meta-info', 'jargon-cot', 'identify-mistakes'] },
-      'input-mod': { name: 'INPUT: Question', type: 'mod', items: ['input-enter', 'input-understand', 'input-result'] },
-      'output-mod': { name: 'OUTPUT: Answer', type: 'mod', items: ['output-enter', 'output-understand', 'output-result'] },
       'meta-info': { name: 'Meta-Information MegaBrick', type: 'mod', items: ['smile-info', 'llm-info', 'user-info'] },
       'jargon-cot': { name: 'Jargon CoT', type: 'mod', items: ['emoji-section', 'bold-words', 'top-bottom'] },
       'identify-mistakes': { name: 'Identify Mistakes and Rewrite', type: 'mod', items: ['emoji-section', 'bold-words', 'negative-rewrite'] },
+
       'smile-info': { name: 'Information About (: Smile', type: 'instr', text: 'Explain Smile syntax: (: flexible, [: rigid, [= literal.' },
       'llm-info': { name: 'Information About LLMs', type: 'instr', text: 'Meta-knowledge about how LLMs process instructions.' },
       'user-info': { name: 'Information About User', type: 'instr', text: 'Contextualize user needs and goals.' },
+
       'emoji-section': { name: 'Emoji section name', type: 'instr', text: 'Use two emoticons for section names.' },
       'bold-words': { name: 'Bold for important words', type: 'instr', text: 'Use **bold** for attention retention over long contexts.' },
       'top-bottom': { name: 'Maximize adherence through top+bottom replication', type: 'instr', text: 'Replicate critical instructions at beginning and end.' },
-      'negative-rewrite': { name: 'Identify negatives and rewrite to positive', type: 'instr', text: 'Find negatives like “not” and rewrite as positive articulations.' },
-      'input-enter': { name: 'Provide Input', type: 'instr', text: 'Enter or paste the incoming question or payload in full fidelity.' },
-      'input-understand': { name: 'Reasoning / Understanding', type: 'instr', text: 'Interpret the input; list goals, constraints, and ambiguities.' },
-      'input-result': { name: 'Synthesis (Input + Understanding)', type: 'instr', text: 'Combine the raw input with the understanding into a structured representation.' },
-      'output-enter': { name: 'Draft Output', type: 'instr', text: 'Produce an initial answer or output shape based on the current state.' },
-      'output-understand': { name: 'Quality / Checks', type: 'instr', text: 'Reason about correctness, coverage, and criteria; refine the output.' },
-      'output-result': { name: 'Final Output', type: 'instr', text: 'Deliver the polished final output after reasoning and checks.' }
+
+      'negative-rewrite': { name: 'Identify negatives and rewrite to positive', type: 'instr', text: 'Find negatives like “not” and rewrite as positive articulations.' }
     };
 
     class DataStore {
@@ -137,12 +138,18 @@
 
     class RowBuilder {
       constructor(store, path) { this.store = store; this.path = path; this.rows = []; }
-      build() { this.addRoot(); this.addAgent(); this.addBreadcrumbs(); if (this.isAtModule()) this.addModuleContent(); else this.addAgentModules(); return this.rows; }
-      addRoot() { this.rows.push({ key: 'root', type: 'root', depth: 0, label: '(: Smile Composer' }); }
-      addAgent() { const agent = this.getAgent(); if (!agent) return;
+      build() {
+        this.addAgent();
+        this.addBreadcrumbs();
+        if (this.isAtModule()) this.addModuleContent(); else this.addAgentModules();
+        return this.rows;
+      }
+      addAgent() {
+        const agent = this.getAgent(); if (!agent) return;
         this.rows.push({ key: `agent:${this.path[0]}`, type: 'agent', depth: 1, label: this.store.get(`n-${agent.name}`, agent.name) });
       }
-      addBreadcrumbs() { if (this.path.length <= 2) return;
+      addBreadcrumbs() {
+        if (this.path.length <= 2) return;
         for (let i = 1; i < this.path.length - 1; i++) {
           const breadcrumbMod = this.store.getDbItem(this.path[i]); if (!breadcrumbMod) continue;
           this.rows.push({ key: `breadcrumb:${i}`, type: 'breadcrumb', depth: i + 1, label: this.store.get(`n-${breadcrumbMod.name}`, breadcrumbMod.name), pathIndex: i });
@@ -154,84 +161,40 @@
         this.rows.push({ key: `module:${moduleDBKey}`, type: 'module', depth: 2, label: this.store.get(`n-${module.name}`, module.name), moduleId: moduleDBKey });
 
         const items = this.store.get(`items-${module.name}`, module.items || []);
-        const visualItems = items.map((item, idx) => ({ item, originalPos: idx }));
-
-        visualItems.forEach(({ item: id, originalPos }, i) => {
+        items.forEach((id, i) => {
           const ins = this.store.getDbItem(id); if (!ins) return;
-          const isLast = i === visualItems.length - 1;
           this.rows.push({
-            key: `ins:${id}:${originalPos}`, type: 'instr', depth: 3,
-            label: displayNameFor(this.store, ins, id), isOutput: isLast,
+            key: `ins:${id}`, type: 'instr', depth: 3,
+            label: displayNameFor(this.store, ins, id),
+            isOutput: i === items.length - 1,
             nameKey: `n-${ins.name}`, nameOverrideKey: `nn-${id}`,
             textKey: `t-${ins.name}`, defaultText: ins.text || '',
             metaKey: `meta-${id}`, structKey: `struct-${id}`,
-            promptKey: `t-${ins.name}`, dbId: id, pos: originalPos, canReorder: true
+            promptKey: `t-${ins.name}`, dbId: id, pos: i, canReorder: true
           });
         });
+
+        this.rows.push({ key: `adder-instr:${module.name}`, type: 'adder-instr', depth: 3, moduleId: moduleDBKey, label: '[+] Add Instruction' });
       }
       addAgentModules() {
         const agent = this.getAgent(); if (!agent) return;
         const modules = this.store.get(`mods-${agent.name}`, agent.modules || []);
-        const visualModules = modules.map((item, idx) => ({ item, originalPos: idx }));
-
-        visualModules.forEach(({ item: mid, originalPos }, i) => {
+        modules.forEach((mid, i) => {
           const mod = this.store.getDbItem(mid); if (!mod) return;
-          const isLast = i === visualModules.length - 1;
           this.rows.push({
-            key: `mod:${mid}:${originalPos}`, type: 'module-item', depth: 2,
-            label: displayNameFor(this.store, mod, mid), isOutput: isLast,
+            key: `mod:${mid}:${i}`, type: 'module-item', depth: 2,
+            label: displayNameFor(this.store, mod, mid),
+            isOutput: i === modules.length - 1,
             nameKey: `n-${mod.name}`, nameOverrideKey: `nn-${mid}`,
             metaKey: `meta-${mid}`, structKey: `struct-${mid}`,
-            moduleId: mid, pos: originalPos, canReorder: true
+            moduleId: mid, pos: i, canReorder: true
           });
         });
-
         this.rows.push({ key: `adder-mod-${agent.name}`, type: 'adder-mod', depth: 2, label: '+ Add Module' });
       }
       isAtModule() { return this.path.length >= 2; }
       getAgent() { return this.store.getDbItem(this.path[0]); }
-      getCurrentModule() {
-        const last = this.path[this.path.length - 1];
-        return this.store.getDbItem(last);
-      }
-    }
-
-    function TreeView({ store, path, onNavigate, storeVersion }) {
-      const renderModule = React.useCallback((modId, parentPath, depth) => {
-        const mod = store.getDbItem(modId); if (!mod) return null;
-        const modulePath = [...parentPath, modId];
-        const isActive = path.join('/') === modulePath.join('/');
-        const items = store.get(`items-${mod.name}`, mod.items || []);
-        return (
-          <div key={modId}>
-            <div className={`tree-item${isActive ? ' active' : ''}`} style={{ paddingLeft: depth * 12 }} onClick={() => onNavigate(modulePath, true)}>
-              {displayNameFor(store, mod, modId)}
-            </div>
-            {items.map(iid => {
-              const ins = store.getDbItem(iid); if (!ins) return null;
-              return (
-                <div key={iid} className="tree-item" style={{ paddingLeft: (depth + 1) * 12 }}>
-                  {displayNameFor(store, ins, iid)}
-                </div>
-              );
-            })}
-          </div>
-        );
-      }, [store, path, onNavigate, storeVersion]);
-
-      const agentId = 'expert-maker';
-      const agent = store.getDbItem(agentId);
-      if (!agent) return null;
-      const isAgentActive = path.length === 1 && path[0] === agentId;
-      const modules = store.get(`mods-${agent.name}`, agent.modules || []);
-      return (
-        <div className="tree-view">
-          <div className={`tree-item${isAgentActive ? ' active' : ''}`} onClick={() => onNavigate([agentId], true)}>
-            {store.get(`n-${agent.name}`, agent.name)}
-          </div>
-          {modules.map(mid => renderModule(mid, [agentId], 1))}
-        </div>
-      );
+      getCurrentModule() { const last = this.path[this.path.length - 1]; return this.store.getDbItem(last); }
     }
 
     function StructureDots5({ id, value, onChange }) {
@@ -257,38 +220,29 @@
       );
     }
 
-    function InlineActions({
-      actions,
-      focus,
-      onFocus,
-      onExecute,
-      fullSize=false,
-      actionMode=false,
-      onBack
-    }) {
+    function InlineActionsInline({ actions, focus, onFocus, onExecute, onBack, labelForSettings="→ Settings" }) {
       return (
-        <div className="action-bar">
-          {actionMode && (
-            <span className="action-back" onClick={onBack} title="Exit settings mode">← Back</span>
-          )}
-          <span className="actions-text" onClick={(e)=>e.stopPropagation()}>
+        <div className="action-bar-inline" onClick={(e)=>e.stopPropagation()}>
+          <span className="action-back" onClick={(e)=>{ e.stopPropagation(); onBack && onBack(); }} title="Commit and exit">← Back</span>
+          <span className="actions-text">
             {actions.map((a) => {
-              const isMove = a === 'move';
-              const label = isMove && actionMode ? '[↑] [↓] To Move' : (a[0].toUpperCase()+a.slice(1));
+              const label = a === 'settings' ? labelForSettings : (a[0].toUpperCase()+a.slice(1));
               return (
-                <span
+                <button
+                  type="button"
                   key={a}
                   className={`action-chip ${focus === a ? 'focus' : ''}`}
-                  onMouseEnter={() => onFocus && onFocus(a)}
-                  onClick={() => onExecute && onExecute(a)}
-                  style={{ fontSize: fullSize ? 'inherit' : '12px' }}
-                  title={label}
+                  onMouseEnter={(e) => { e.stopPropagation(); onFocus && onFocus(a); }}
+                  onClick={(e) => { e.stopPropagation(); onExecute && onExecute(a); }}
+                  title={a === 'move' ? '[↑] [↓] To Move' : label}
                 >
-                  {label}
-                </span>
+                  {a === 'move' ? '[↑] [↓] To Move' : label}
+                </button>
               );
             })}
           </span>
+          <span className="action-spacer"></span>
+          <span className="action-hint">[Esc] Cancel</span>
         </div>
       );
     }
@@ -300,10 +254,15 @@
       const pad = ((depth || 0) + 1) * TAB;
       return (
         <div className="indent-block" style={{ paddingLeft: pad }}>
-          {items.length === 0 ? <div className="subtle">Empty module</div> :
-            items.map((iid) => {
+          {items.length === 0 ? <div className="prompt-preview">Empty module</div> :
+            items.map((iid, idx) => {
               const ins = store.getDbItem(iid); if (!ins) return null;
-              return <div key={iid} className="prompt-preview">{displayNameFor(store, ins, iid)}</div>;
+              const isLast = idx === items.length - 1;
+              return (
+                <div key={iid} className="prompt-preview">
+                  {isLast ? <strong>OUTPUT:&nbsp;</strong> : null}{displayNameFor(store, ins, iid)}
+                </div>
+              );
             })}
         </div>
       );
@@ -316,44 +275,58 @@
       const pad = ((row.depth || 0) + 1) * TAB;
       return (
         <div className="indent-block" style={{ paddingLeft: pad }}>
-          <div className="prompt-preview">{body}</div>
+          <div className="prompt-preview">{row.isOutput ? <strong>OUTPUT:&nbsp;</strong> : null}{body}</div>
         </div>
       );
     }
 
-    function InstructionEdit({ store, row, onTextChange, getNameOverride, setNameOverride, getMeta, setMeta, getStruct, setStruct }) {
-      const dbItem = store.getDbItem(row.dbId);
-      if (!dbItem) return null;
+    function InstructionEdit({ store, row, onTextChange, getNameOverride, setNameOverride, getMeta, setMeta, getStruct, setStruct, stage=2, settingsKey }) {
       const pad = ((row.depth || 0) + 1) * TAB;
-      const body = store.get(row.promptKey, dbItem.text || '');
       return (
-        <div className="indent-block" style={{ paddingLeft: pad }}>
-          <input
-            autoFocus
-            type="text"
-            className="underline-input"
-            value={getNameOverride(row.nameOverrideKey, '')}
-            onChange={(e) => setNameOverride(row.nameOverrideKey, e.target.value)}
-            placeholder="Name…"
-          />
-          <textarea
-            className="underline-textarea"
-            value={getMeta(row.metaKey) || ''}
-            onChange={(e) => setMeta(row.metaKey, e.target.value)}
-            placeholder="Meta information…"
-          />
-          <textarea
-            className="underline-textarea"
-            value={store.get(row.promptKey, '')}
-            onChange={(e) => onTextChange(row.promptKey, e.target.value)}
-            placeholder="Instruction…"
-          />
-          <StructureDots5
-            id={row.dbId}
-            value={getStruct(row.structKey) || 'heavy'}
-            onChange={(v) => setStruct(row.structKey, v)}
-          />
-          <div className="prompt-preview" style={{ marginTop: 8 }}>{body}</div>
+        <div className="indent-block" style={{ paddingLeft: pad }} data-settings-for={settingsKey}>
+          {stage === 1 ? (
+            <textarea
+              className="underline-textarea"
+              value={store.get(row.promptKey, '')}
+              onChange={(e) => onTextChange(row.promptKey, e.target.value)}
+              placeholder="Instruction…"
+            />
+          ) : (
+            <>
+              <input
+                type="text"
+                className="underline-input"
+                value={getNameOverride(row.nameOverrideKey, '')}
+                onChange={(e) => setNameOverride(row.nameOverrideKey, e.target.value)}
+                placeholder="Name…"
+              />
+              <textarea
+                className="underline-textarea"
+                value={getMeta(row.metaKey) || ''}
+                onChange={(e) => setMeta(row.metaKey, e.target.value)}
+                placeholder="Meta information…"
+              />
+              <textarea
+                className="underline-textarea"
+                value={store.get(row.promptKey, '')}
+                onChange={(e) => onTextChange(row.promptKey, e.target.value)}
+                placeholder="Instruction…"
+              />
+              <StructureDots5
+                id={row.dbId}
+                value={getStruct(row.structKey) || 'heavy'}
+                onChange={(v) => setStruct(row.structKey, v)}
+              />
+            </>
+          )}
+        </div>
+      );
+    }
+
+    function RightSidebar({ text }) {
+      return (
+        <div className="rightbar">
+          <textarea readOnly value={text}></textarea>
         </div>
       );
     }
@@ -375,30 +348,27 @@
       const [dragItem, setDragItem] = useState(null);
       const [dragOver, setDragOver] = useState(null);
 
-      const rowsDomRef = useRef(new Map());
-      const [touchDrag, setTouchDrag] = useState(null);
-
-      const [settingsOpen, setSettingsOpen] = useState({});
+      const rowsRef = useRef([]);
       const [actionFocus, setActionFocus] = useState(null); // {rowKey, action}
-      const [editRowKey, setEditRowKey] = useState(null);
+      const [rightPhase, setRightPhase] = useState({ rowKey: null, phase: 0 });
+      const [instrSettingsStage, setInstrSettingsStage] = useState(1);
 
-      // Omnisearch
+      // Settings container refs by rowKey for ArrowDown focus routing
+      const settingsRefs = useRef(new Map());
+
+      // Omnisearch bottom dock
       const [omniActive, setOmniActive] = useState(false);
-      const [omniMode, setOmniMode] = useState('search');
       const [omniQuery, setOmniQuery] = useState('');
       const [omniIndex, setOmniIndex] = useState(0);
-      const [omniFilterType, setOmniFilterType] = useState(null);
-      const [omniIntent, setOmniIntent] = useState(null);
-      const [omniInsertPos, setOmniInsertPos] = useState(null);
+      const [omniTarget, setOmniTarget] = useState(null); // { kind: 'mod'|'instr', agentId/moduleId, insertPos }
       const omniInputRef = useRef(null);
 
       const rows = useMemo(() => {
         const builder = new RowBuilder(store, path);
-        return builder.build();
+        const built = builder.build();
+        rowsRef.current = built;
+        return built;
       }, [store, path, storeVersion]);
-
-      const rowsRef = useRef(rows);
-      useEffect(() => { rowsRef.current = rows; }, [rows]);
 
       const atAgent = path.length === 1;
       const atModule = path.length >= 2;
@@ -407,59 +377,57 @@
 
       const updateData = useCallback((key, value) => { store.set(key, value); setStoreVersion(store.getVersion()); }, [store]);
 
-      const computeInsertPos = useCallback(() => {
+      const computeInsertPosModules = useCallback(() => {
         const a = store.getDbItem(path[0]); if (!a) return 0;
         const mods = store.get(`mods-${a.name}`, a.modules || []);
         const sel = rows[idx];
-        if (sel && sel.type === 'module-item') return sel.pos;
+        if (sel && sel.type === 'module-item') return sel.pos + 1;
         if (path.length >= 2) {
           const pos = mods.findIndex(m => m === path[1]);
-          if (pos >= 0) return pos;
+          if (pos >= 0) return pos + 1;
         }
         return mods.length;
       }, [rows, idx, path, store]);
 
-      const openOmniAddModule = useCallback(() => {
-        setOmniInsertPos(computeInsertPos());
-        setOmniActive(true); setOmniMode('search'); setOmniQuery(''); setOmniIndex(0);
-        setOmniFilterType('mod'); setOmniIntent('add-module');
-      }, [computeInsertPos]);
+      const computeInsertPosInstr = useCallback(() => {
+        if (!(atModule && module)) return null;
+        const arr = store.get(`items-${module.name}`, module.items || []);
+        const sel = rows[idx];
+        if (sel && sel.type === 'instr') return sel.pos + 1;
+        if (sel && sel.type === 'adder-instr') return arr.length;
+        return arr.length;
+      }, [rows, idx, atModule, module, store]);
 
-      const resetAll = useCallback(() => {
-        if (confirm('Reset everything to defaults? This will clear all your customizations.')) {
-          store.reset();
-          setPath(['expert-maker']); setIdx(2); setNavHistory({}); setReorderState(null);
-          setSettingsOpen({}); setActionFocus(null); setEditRowKey(null);
-          setOmniActive(false); setOmniQuery(''); setOmniIndex(0); setOmniMode('search'); setOmniFilterType(null); setOmniIntent(null); setOmniInsertPos(null);
-          window.location.hash = ''; setStoreVersion(store.getVersion());
-        }
-      }, [store]);
-
-      const navigateToPath = useCallback((newPath, autoSelect = true) => {
-        setPath(newPath); setReorderState(null);
-        setSettingsOpen({}); setActionFocus(null); setEditRowKey(null);
-        setIdx(autoSelect ? (newPath.length === 1 ? 2 : 3) : 0);
+      const openOmniAddAt = useCallback((target) => {
+        setOmniActive(true); setOmniQuery(''); setOmniIndex(0); setOmniTarget(target);
+        setTimeout(()=>{ omniInputRef.current && omniInputRef.current.focus(); }, 0);
       }, []);
 
-      const attachModuleToAgent = useCallback((mid, insertPos = null) => {
-        const a = store.getDbItem(path[0]); if (!a) return;
+      const attachModuleToAgent = useCallback((agentId, mid, insertPos = null) => {
+        const a = store.getDbItem(agentId); if (!a) return;
         const key = `mods-${a.name}`;
         const arr = store.get(key, a.modules || []);
         const pos = (insertPos !== null && insertPos >= 0 && insertPos <= arr.length) ? insertPos : arr.length;
         const newArr = [...arr]; newArr.splice(pos, 0, mid);
         updateData(key, newArr);
-      }, [store, updateData, path]);
+      }, [store, updateData]);
 
-      const openAndFocusSettings = useCallback((ownerType, ownerId) => {
-        const panelKey = ownerType === 'module' ? `spanel:mod:${ownerId}` : `spanel:instr:${ownerId}`;
-        setSettingsOpen(prev => ({ ...prev, [panelKey]: true }));
-        setTimeout(() => {
-          const i = rowsRef.current.findIndex(r =>
-            (r.type === (ownerType === 'module' ? 'module-item' : 'instr')) &&
-            ((ownerType === 'module' ? r.moduleId : r.dbId) === ownerId)
-          );
-          if (i >= 0) setIdx(i);
-        }, 0);
+      const addInstructionToModule = useCallback((moduleId, instrId, insertPos = null) => {
+        const m = store.getDbItem(moduleId); if (!m) return;
+        const key = `items-${m.name}`;
+        const arr = store.get(key, m.items || []);
+        const pos = (insertPos !== null && insertPos >= 0 && insertPos <= arr.length) ? insertPos : arr.length;
+        const newArr = [...arr]; newArr.splice(pos, 0, instrId);
+        updateData(key, newArr);
+      }, [store, updateData]);
+
+      const navigateToPath = useCallback((newPath, autoSelect = true) => {
+        setPath(newPath);
+        setReorderState(null);
+        setActionFocus(null);
+        setRightPhase({ rowKey: null, phase: 0 });
+        setInstrSettingsStage(1);
+        setIdx(autoSelect ? (newPath.length === 1 ? 0 : 1) : 0);
       }, []);
 
       const createNewAgent = useCallback((name) => {
@@ -468,41 +436,17 @@
         navigateToPath([id], true);
       }, [store, navigateToPath]);
 
-      const createNewModule = useCallback((name, insertPos = null) => {
+      const createNewModule = useCallback((name, attachToAgentId, insertPos = null) => {
         const id = 'mod-' + Date.now();
         store.addCustomDbItem(id, { name, type: 'mod', items: [] });
-        attachModuleToAgent(id, insertPos);
-        const agentId = path[0];
-        navigateToPath([agentId], true);
-        setTimeout(() => {
-          const r = rowsRef.current;
-          const i = r.findIndex(x => x.type==='module-item' && x.moduleId===id && x.pos=== (insertPos ?? 0));
-          if (i >= 0) setIdx(i);
-        }, 0);
-        openAndFocusSettings('module', id);
-      }, [store, attachModuleToAgent, navigateToPath, path, openAndFocusSettings]);
+        attachModuleToAgent(attachToAgentId, id, insertPos);
+      }, [store, attachModuleToAgent]);
 
-      const createNewInstruction = useCallback((name) => {
+      const createNewInstruction = useCallback((name, toModuleId, insertPos = null) => {
         const id = 'custom-' + Date.now();
         store.addCustomDbItem(id, { name, type: 'instr', text: '' });
-        if (atModule && module) {
-          const arr = store.get(`items-${module.name}`, module.items || []);
-          updateData(`items-${module.name}`, [...arr, id]);
-          openAndFocusSettings('instr', id);
-        } else {
-          const a = store.getDbItem(path[0]); if (!a) return;
-          const mods = store.get(`mods-${a.name}`, a.modules || []);
-          if (mods.length) {
-            navigateToPath([path[0], mods[0]], true);
-            setTimeout(() => {
-              const m = store.getDbItem(mods[0]);
-              const arr = store.get(`items-${m.name}`, m.items || []);
-              updateData(`items-${m.name}`, [...arr, id]);
-              openAndFocusSettings('instr', id);
-            }, 0);
-          }
-        }
-      }, [store, atModule, module, updateData, path, openAndFocusSettings]);
+        addInstructionToModule(toModuleId, id, insertPos);
+      }, [store, addInstructionToModule]);
 
       const removeInstructionAtPos = useCallback((pos) => {
         if (!atModule || !module) return;
@@ -538,292 +482,334 @@
         }
       }, [store, updateData, path, module]);
 
-      const autoOpenSettings = useCallback((row) => {
-        if (row.type === 'module-item') {
-          setSettingsOpen(s => ({ ...s, [`spanel:mod:${row.moduleId}`]: true }));
-        } else if (row.type === 'instr') {
-          setSettingsOpen(s => ({ ...s, [`spanel:instr:${row.dbId}`]: true }));
-        }
-      }, []);
-
       const getActionList = (row) => {
         if (row.type === 'module-item') return ['move','settings','duplicate','delete'];
-        if (row.type === 'instr') return ['move','settings','duplicate','delete'];
+        if (row.type === 'instr') return ['settings','move','duplicate','delete'];
         return [];
       };
 
+      // MOVE MODE — snapshot-based and persistent
       const startMove = useCallback((row) => {
-        const i = rowsRef.current.findIndex(r => r.key === row.key);
-        setIdx(i >= 0 ? i : 0);
+        const itemId = row.dbId || row.moduleId;
+        let arrKey = null;
+        let arr = [];
+        if (row.type === 'instr') {
+          if (!module) return;
+          arrKey = `items-${module.name}`;
+          arr = store.get(arrKey, module.items || []);
+        } else if (row.type === 'module-item') {
+          const a = store.getDbItem(path[0]); if (!a) return;
+          arrKey = `mods-${a.name}`;
+          arr = store.get(arrKey, a.modules || []);
+        } else { return; }
         setReorderState({
           rowKey: row.key,
-          dbId: row.dbId || row.moduleId,
+          itemId,
           type: row.type,
-          originalIdx: i,
+          arrKey,
+          originalOrder: [...arr],
           originalPos: row.pos,
           currentPos: row.pos
         });
-      }, []);
+      }, [store, path, module]);
 
       const moveItemInReorderMode = useCallback((direction) => {
         if (!reorderState) return;
+        const arr = store.get(reorderState.arrKey, []);
         const delta = direction === 'up' ? -1 : 1;
-        const newCurrentPos = reorderState.currentPos + delta;
-
-        let arr = [];
-        if (reorderState.type === 'instr' && atModule && module) arr = store.get(`items-${module.name}`, module.items || []);
-        else if (reorderState.type === 'module-item') {
-          const a = store.getDbItem(path[0]); if (a) arr = store.get(`mods-${a.name}`, a.modules || []);
+        const from = reorderState.currentPos;
+        const to = from + delta;
+        if (to < 0 || to >= arr.length) return;
+        const newArr = moveInList(arr, from, to);
+        updateData(reorderState.arrKey, newArr);
+        setReorderState(prev => ({ ...prev, currentPos: to }));
+        // keep action focus pinned
+        if (reorderState.type === 'instr') {
+          setActionFocus(prev => prev ? { ...prev, rowKey: `ins:${reorderState.itemId}`, action: 'move' } : prev);
+        } else {
+          setActionFocus(prev => prev ? { ...prev, rowKey: `mod:${reorderState.itemId}:${to}`, action: 'move' } : prev);
         }
-
-        if (newCurrentPos >= 0 && newCurrentPos < arr.length) {
-          setReorderState(prev => ({ ...prev, currentPos: newCurrentPos }));
-          if (reorderState.type === 'instr' && atModule && module) {
-            updateData(`items-${module.name}`, moveInList(arr, reorderState.originalPos, newCurrentPos));
-          } else if (reorderState.type === 'module-item') {
-            const a = store.getDbItem(path[0]); if (a) {
-              updateData(`mods-${a.name}`, moveInList(arr, reorderState.originalPos, newCurrentPos));
-            }
-          }
-        }
-      }, [reorderState, atModule, module, store, updateData, path]);
+      }, [reorderState, store, updateData]);
 
       const commitReorder = useCallback(() => {
         if (!reorderState) return;
-        const theCurrentPos = (reorderState.currentPos !== undefined) ? reorderState.currentPos : reorderState.originalPos;
-        const ownerId = reorderState.dbId || reorderState.moduleId;
-        const targetIdx = rowsRef.current.findIndex(r =>
-          (reorderState.type === 'instr' ? r.type === 'instr' : r.type === 'module-item') &&
-          (reorderState.type === 'instr' ? r.dbId === ownerId : r.moduleId === ownerId) &&
-          r.pos === theCurrentPos
-        );
+        const { type, itemId, currentPos } = reorderState;
         setReorderState(null);
-        if (targetIdx >= 0) setIdx(targetIdx);
+        setTimeout(() => {
+          const targetIdx = rowsRef.current.findIndex(r =>
+            (type === 'instr' ? r.type === 'instr' : r.type === 'module-item') &&
+            ((type === 'instr' ? r.dbId : r.moduleId) === itemId) &&
+            r.pos === currentPos
+          );
+          if (targetIdx >= 0) setIdx(targetIdx);
+        }, 0);
       }, [reorderState]);
 
-      const commitIfMoving = useCallback(() => { if (reorderState) commitReorder(); }, [reorderState, commitReorder]);
-
-      // DnD desktop
-      const handleDragStart = useCallback((e, row) => { e.dataTransfer.effectAllowed = 'move'; setDragItem(row); }, []);
-      const handleDragOver = useCallback((e, row) => { e.preventDefault(); if (!dragItem) return; e.dataTransfer.dropEffect = 'move'; setDragOver(row.key); }, [dragItem]);
-      const handleDrop = useCallback((e, row) => {
-        e.preventDefault(); if (!dragItem) return;
-
-        if (dragItem.type === 'instr' && row.type === 'instr' && atModule && module) {
-          const arr = store.get(`items-${module.name}`, module.items || []); updateData(`items-${module.name}`, moveInList(arr, dragItem.pos, row.pos));
-        } else if (dragItem.type === 'module-item' && row.type === 'module-item') {
-          const a = store.getDbItem(path[0]); if (a) {
-            const arr = store.get(`mods-${a.name}`, a.modules || []); updateData(`mods-${a.name}`, moveInList(arr, dragItem.pos, row.pos));
-          }
-        }
-
-        setDragItem(null); setDragOver(null);
-      }, [dragItem, atModule, module, store, updateData, path]);
-      const handleDragEnd = useCallback(() => { setDragItem(null); setDragOver(null); }, []);
-
-      // Touch DnD
-      const onTouchStartRow = useCallback((e, row) => {
-        if (!(row.type === 'instr' || row.type === 'module-item')) return;
-        const t = e.touches[0];
-        setTouchDrag({ row, startY: t.clientY });
-        setDragItem(row);
-      }, []);
-      const onTouchMoveRow = useCallback((e) => {
-        if (!touchDrag) return;
-        const t = e.touches[0];
-        const el = document.elementFromPoint(t.clientX, t.clientY);
-        if (!el) return;
-        const targetLine = el.closest && el.closest('.line');
-        if (!targetLine) return;
-        const key = targetLine.getAttribute('data-key');
-        setDragOver(key);
-      }, [touchDrag]);
-      const onTouchEndRow = useCallback(() => {
-        if (!touchDrag) return;
-        const row = touchDrag.row;
-        const overKey = dragOver;
-        if (overKey) {
-          const targetRow = rowsRef.current.find(r => r.key === overKey);
-          if (targetRow) {
-            if (row.type === 'instr' && targetRow.type === 'instr' && atModule && module) {
-              const arr = store.get(`items-${module.name}`, module.items || []);
-              updateData(`items-${module.name}`, moveInList(arr, row.pos, targetRow.pos));
-            } else if (row.type === 'module-item' && targetRow.type === 'module-item') {
-              const a = store.getDbItem(path[0]); if (a) {
-                const arr = store.get(`mods-${a.name}`, a.modules || []);
-                updateData(`mods-${a.name}`, moveInList(arr, row.pos, targetRow.pos));
-              }
-            }
-          }
-        }
-        setTouchDrag(null); setDragItem(null); setDragOver(null);
-      }, [touchDrag, dragOver, atModule, module, store, updateData, path]);
+      const cancelReorder = useCallback(() => {
+        if (!reorderState) return;
+        const { arrKey, originalOrder, type, itemId, originalPos } = reorderState;
+        updateData(arrKey, originalOrder);
+        setReorderState(null);
+        setTimeout(() => {
+          const targetIdx = rowsRef.current.findIndex(r =>
+            (type === 'instr' ? r.type === 'instr' : r.type === 'module-item') &&
+            ((type === 'instr' ? r.dbId : r.moduleId) === itemId) &&
+            r.pos === originalPos
+          );
+          if (targetIdx >= 0) setIdx(targetIdx);
+        }, 0);
+      }, [reorderState, updateData]);
 
       const executeRowAction = useCallback((row, action) => {
         if (!row) return;
+        if (action === 'move') return;
         if (row.type === 'module-item') {
-          if (action === 'move') { /* already started on entry */ return; }
-          if (action === 'settings') { autoOpenSettings(row); return; }
-          if (action === 'duplicate') { duplicateItem(row.moduleId, true); return; }
-          if (action === 'delete') { removeModuleAtPos(row.pos); return; }
+          if (action === 'settings') { /* show settings panel */ return; }
+          if (action === 'duplicate') { commitReorder(); duplicateItem(row.moduleId, true, row.pos + 1); return; }
+          if (action === 'delete') { commitReorder(); removeModuleAtPos(row.pos); setActionFocus(null); return; }
         }
         if (row.type === 'instr') {
-          if (action === 'move') { /* already started on entry */ return; }
-          if (action === 'settings') { autoOpenSettings(row); return; }
-          if (action === 'duplicate') { duplicateItem(row.dbId, false); return; }
-          if (action === 'delete') { removeInstructionAtPos(row.pos); return; }
+          if (action === 'settings') { /* handled by panel render */ return; }
+          if (action === 'duplicate') { commitReorder(); duplicateItem(row.dbId, false, row.pos + 1); return; }
+          if (action === 'delete') { commitReorder(); removeInstructionAtPos(row.pos); setActionFocus(null); return; }
         }
-      }, [duplicateItem, removeInstructionAtPos, removeModuleAtPos, autoOpenSettings]);
+      }, [duplicateItem, removeInstructionAtPos, removeModuleAtPos, commitReorder]);
 
-      // Global key handling
-      const handleKeyDown = useCallback((e) => {
-        // Omnisearch open with '/'
-        if (e.key === '/' && !omniActive) {
-          const activeEl = document.activeElement;
-          const inField = activeEl && (activeEl.tagName === 'INPUT' || activeEl.tagName === 'TEXTAREA');
-          if (!inField) { e.preventDefault(); openOmniAddModule(); return; }
+      // Visible text for right sidebar (modules => one-line per instruction)
+      const rightSidebarText = useMemo(() => {
+        if (!agent) return '';
+        const mods = store.get(`mods-${agent.name}`, agent.modules || []);
+        const lines = [];
+        mods.forEach(mid => {
+          const m = store.getDbItem(mid); if (!m) return;
+          lines.push(`Module: ${displayNameFor(store, m, mid)}`);
+          const ids = store.get(`items-${m.name}`, m.items || []);
+          ids.forEach((iid, idx) => {
+            const it = store.getDbItem(iid); if (!it) return;
+            const one = store.get(`t-${it.name}`, it.text || '').split(/\r?\n/)[0];
+            const prefix = (idx === ids.length - 1) ? 'OUTPUT:' : '-';
+            lines.push(`  ${prefix} ${displayNameFor(store, it, iid)} — ${one}`);
+          });
+          lines.push('');
+        });
+        return lines.join('\n');
+      }, [storeVersion, agent, store]);
+
+      // Omnisearch source data
+      const db = store.getAllDb();
+      const agentModules = useMemo(() => agent ? (store.get(`mods-${agent.name}`, agent.modules || [])) : [], [store, agent]);
+
+      const omniResults = useMemo(() => {
+        const q = (omniQuery || '').toLowerCase().trim();
+        const out = [];
+        const push = (r) => out.push(r);
+        // Current project modules/instructions
+        agentModules.forEach(mid => {
+          const m = db[mid]; if (!m) return;
+          if (!q || (m.name || '').toLowerCase().includes(q)) push({ type: 'mod', id: mid, name: m.name, scope: 'current' });
+          const items = store.get(`items-${m.name}`, m.items || []);
+          items.forEach(iid => {
+            const ins = db[iid]; if (!ins) return;
+            const iname = displayNameFor(store, ins, iid);
+            const text = store.get(`t-${ins.name}`, ins.text || '');
+            const hay = (iname + ' ' + text).toLowerCase();
+            if (!q || hay.includes(q)) push({ type: 'instr', id: iid, name: iname, scope: 'current' });
+          });
+        });
+        // Library
+        Object.keys(db).forEach(id => {
+          const it = db[id];
+          if (it.type === 'mod' || it.type === 'instr') {
+            const hay = ((it.name||'') + ' ' + (it.text||'')).toLowerCase();
+            if (!q || hay.includes(q)) {
+              const dup = out.find(r => r.type===it.type && r.id===id);
+              if (!dup) push({ type: it.type, id, name: it.name, scope: 'library' });
+            }
+          }
+        });
+        return out;
+      }, [omniQuery, db, agentModules, store, storeVersion]);
+
+      const actOnOmniRow = useCallback((r) => {
+        if (!omniTarget) { setOmniActive(false); return; }
+        if (r.type === 'mod' && omniTarget.kind === 'mod') {
+          attachModuleToAgent(omniTarget.agentId, r.id, omniTarget.insertPos ?? null);
+        } else if (r.type === 'instr' && omniTarget.kind === 'instr') {
+          addInstructionToModule(omniTarget.moduleId, r.id, omniTarget.insertPos ?? null);
+        } else if (r.type === 'create-mod' && omniTarget.kind === 'mod') {
+          createNewModule(omniQuery.trim(), omniTarget.agentId, omniTarget.insertPos ?? null);
+        } else if (r.type === 'create-instr' && omniTarget.kind === 'instr') {
+          createNewInstruction(omniQuery.trim(), omniTarget.moduleId, omniTarget.insertPos ?? null);
         }
+        setOmniActive(false);
+      }, [omniTarget, attachModuleToAgent, addInstructionToModule, createNewModule, createNewInstruction, omniQuery]);
+
+      // Keyboard handling
+      const handleKeyDown = useCallback((e) => {
+        // Universal add dock with '+'
+        if (e.key === '+') {
+          e.preventDefault();
+          const sel = rowsRef.current[idx];
+          if (!sel) return;
+          if (sel.type === 'module-item' || atAgent) {
+            const pos = computeInsertPosModules();
+            setOmniTarget({ kind: 'mod', agentId: path[0], insertPos: pos });
+            setOmniActive(true); setOmniQuery(''); setOmniIndex(0);
+            setTimeout(()=>{ omniInputRef.current && omniInputRef.current.focus(); }, 0);
+          } else if (sel.type === 'instr' || sel.type === 'adder-instr' || atModule) {
+            const pos = computeInsertPosInstr();
+            setOmniTarget({ kind: 'instr', moduleId: path[path.length - 1], insertPos: pos });
+            setOmniActive(true); setOmniQuery(''); setOmniIndex(0);
+            setTimeout(()=>{ omniInputRef.current && omniInputRef.current.focus(); }, 0);
+          }
+          return;
+        }
+
         if (omniActive) return;
 
+        const rows = rowsRef.current;
         const sel = rows[idx]; if (!sel) return;
 
-        const activeEl = document.activeElement;
-        const inField = activeEl && (activeEl.tagName === 'TEXTAREA' || (activeEl.tagName === 'INPUT' && activeEl.type === 'text'));
-        if (inField) {
-          const valueLength = activeEl.value.length;
-          const start = activeEl.selectionStart ?? 0;
-          const end = activeEl.selectionEnd ?? 0;
-          if ((e.key === 'ArrowLeft' || e.key === 'ArrowUp') && start === 0 && end === 0) { e.preventDefault(); activeEl.blur(); setIdx(prev => Math.max(0, prev - 1)); return; }
-          if ((e.key === 'ArrowRight' || e.key === 'ArrowDown') && start === valueLength && end === valueLength) { e.preventDefault(); activeEl.blur(); setIdx(prev => Math.min(rows.length - 1, prev + 1)); return; }
+        // If settings are open and user presses Down, focus first editable field
+        if (actionFocus && actionFocus.rowKey === sel.key && actionFocus.action === 'settings' && e.key === 'ArrowDown') {
+          e.preventDefault();
+          const host = document.querySelector(`[data-settings-for="${sel.key}"]`);
+          if (host) {
+            const el = host.querySelector('textarea, input');
+            if (el) el.focus();
+          }
           return;
         }
 
         // In action mode
-        if (actionFocus && actionFocus.rowKey === sel.key) {
+        const inActionForSel = actionFocus && actionFocus.rowKey === sel.key;
+        if (inActionForSel) {
           const list = getActionList(sel);
           const ci = Math.max(0, list.indexOf(actionFocus.action));
-          if (e.key === 'ArrowUp')   { e.preventDefault(); if (actionFocus.action === 'move') moveItemInReorderMode('up'); return; }
+
+          if (e.key === 'ArrowUp') { e.preventDefault(); if (actionFocus.action === 'move') moveItemInReorderMode('up'); return; }
           if (e.key === 'ArrowDown') { e.preventDefault(); if (actionFocus.action === 'move') moveItemInReorderMode('down'); return; }
+
           if (e.key === 'ArrowRight') {
             e.preventDefault();
-            const ni = (ci + 1) % list.length;
-            const next = list[ni];
+            if (actionFocus.action === 'settings' && sel.type === 'instr') {
+              if (instrSettingsStage === 1) { setInstrSettingsStage(2); return; }
+            }
+            const next = list[(ci + 1) % list.length];
+            if (actionFocus.action === 'move' && next !== 'move') commitReorder();
+            if (actionFocus.action !== 'move' && next === 'move') startMove(sel);
             setActionFocus({ rowKey: sel.key, action: next });
-            if (next === 'settings') autoOpenSettings(sel);
+            if (next === 'settings' && sel.type === 'instr') setInstrSettingsStage(1);
             return;
           }
+
           if (e.key === 'ArrowLeft') {
             e.preventDefault();
-            if (ci === 0) { // exit on left of leftmost (Back)
-              commitIfMoving();
+            if (actionFocus.action === 'settings' && sel.type === 'instr') {
               setActionFocus(null);
+              setRightPhase({ rowKey: sel.key, phase: 1 });
+              setInstrSettingsStage(1);
               return;
             }
-            const next = list[ci - 1];
-            setActionFocus({ rowKey: sel.key, action: next });
-            if (next === 'settings') autoOpenSettings(sel);
+            if (ci === 0) {
+              if (reorderState) commitReorder();
+              setActionFocus(null);
+              setRightPhase({ rowKey: null, phase: 0 });
+              return;
+            }
+            const prev = list[ci - 1];
+            if (prev === 'move' && actionFocus.action !== 'move') startMove(sel);
+            setActionFocus({ rowKey: sel.key, action: prev });
+            if (prev === 'settings' && sel.type === 'instr') setInstrSettingsStage(1);
             return;
           }
-          if (e.key === 'Enter') {
-            e.preventDefault();
-            executeRowAction(sel, actionFocus.action);
-            return;
-          }
-          if (e.key === 'Escape') { e.preventDefault(); commitIfMoving(); setActionFocus(null); return; }
+
+          if (e.key === 'Enter') { e.preventDefault(); executeRowAction(sel, actionFocus.action); return; }
+          if (e.key === 'Escape') { e.preventDefault(); if (actionFocus.action === 'move' && reorderState) cancelReorder(); setActionFocus(null); setRightPhase({ rowKey: null, phase: 0 }); setInstrSettingsStage(1); return; }
         }
 
-        // Hierarchical Left inside a module view
-        if (e.key === 'ArrowLeft' && path.length >= 2) {
+        // Right-driven for instructions
+        if (e.key === 'ArrowRight' && sel.type === 'instr') {
           e.preventDefault();
-          if (sel.type === 'instr') {
-            const headerIdx = rows.findIndex(r => r.type === 'module');
-            if (headerIdx >= 0) setIdx(headerIdx);
+          if (!(rightPhase.rowKey === sel.key && rightPhase.phase === 1) && !actionFocus) { setRightPhase({ rowKey: sel.key, phase: 1 }); return; }
+          if (!actionFocus) { setActionFocus({ rowKey: sel.key, action: 'settings' }); setInstrSettingsStage(1); return; }
+        }
+
+        // Left-driven for modules to enter action mode (Move first)
+        if (e.key === 'ArrowLeft' && sel.type === 'module-item') {
+          e.preventDefault();
+          startMove(sel);
+          setActionFocus({ rowKey: sel.key, action: 'move' });
+          setRightPhase({ rowKey: null, phase: 0 });
+          return;
+        }
+
+        // Default navigation and drill
+        const gotoIndex = (n) => { setActionFocus(null); setRightPhase({ rowKey: null, phase: 0 }); setIdx(n); };
+
+        if (e.key === 'ArrowUp') { e.preventDefault(); gotoIndex(Math.max(0, idx - 1)); return; }
+        if (e.key === 'ArrowDown') { e.preventDefault(); gotoIndex(Math.min(rows.length - 1, idx + 1)); return; }
+
+        if (e.key === 'ArrowRight' && sel.type === 'module-item') {
+          e.preventDefault();
+          setNavHistory(h => ({ ...h, [path[0]]: idx }));
+          setPath([...path, sel.moduleId]);
+          setIdx(1);
+          return;
+        }
+
+        if (e.key === 'Enter') {
+          e.preventDefault();
+          if (sel.type === 'adder-instr') {
+            const pos = computeInsertPosInstr();
+            openOmniAddAt({ kind: 'instr', moduleId: path[path.length - 1], insertPos: pos });
             return;
           }
-          if (sel.type === 'module') {
-            const agentId = path[0];
-            const lastModId = path[path.length - 1];
-            const saved = navHistory[agentId];
-            setPath([agentId]);
-            setTimeout(() => {
-              const r = rowsRef.current;
-              let i = r.findIndex(x => x.type==='module-item' && x.moduleId===lastModId);
-              if (i < 0 && Number.isFinite(saved)) i = saved;
-              if (i >= 0) setIdx(i);
-            }, 0);
+          if (sel.type === 'adder-mod') {
+            const pos = computeInsertPosModules();
+            openOmniAddAt({ kind: 'mod', agentId: path[0], insertPos: pos });
             return;
           }
         }
 
-        // Default navigation and entering action mode
-        const gotoIndex = (nextIdx) => { setActionFocus(null); setEditRowKey(null); setIdx(nextIdx); };
-
-        if (e.key === 'ArrowUp') {
-          e.preventDefault(); gotoIndex(Math.max(0, idx - 1));
-        } else if (e.key === 'ArrowDown') {
-          e.preventDefault(); gotoIndex(Math.min(rows.length - 1, idx + 1));
-        } else if (e.key === 'ArrowLeft') {
+        if (e.key === 'Escape') {
           e.preventDefault();
-          // Enter action mode with Move preselected and active
-          if (sel.type === 'module-item' || sel.type === 'instr') {
-            startMove(sel);
-            setActionFocus({ rowKey: sel.key, action: 'move' });
-            setEditRowKey(null);
-            return;
-          }
-          // fallback exits
-          if (editRowKey) { setEditRowKey(null); return; }
-        } else if (e.key === 'ArrowRight') {
-          e.preventDefault();
-          if (sel.type === 'module-item') {
-            // save current agent selection index, then dive into module
-            setNavHistory(h => ({ ...h, [path[0]]: idx }));
-            setPath([...path, sel.moduleId]);
-            setIdx(3);
-            return;
-          }
-          if (sel.type === 'instr') {
-            setEditRowKey(sel.key);
-            return;
-          }
-          if (sel.type === 'adder-mod') { openOmniAddModule(); return; }
-        } else if (e.key === 'Enter') {
-          e.preventDefault();
-          if (sel.type === 'adder-mod') { openOmniAddModule(); return; }
-        } else if (e.key === 'Escape') {
-          e.preventDefault();
-          if (actionFocus) { commitIfMoving(); setActionFocus(null); return; }
-          if (editRowKey) { setEditRowKey(null); return; }
+          if (actionFocus && actionFocus.action === 'move' && reorderState) { cancelReorder(); setActionFocus(null); return; }
+          if (actionFocus) { setActionFocus(null); return; }
           if (path.length > 1) {
-            const newPath = path.slice(0, - 1);
-            const agentId = newPath[0];
-            const savedIdx = navHistory[agentId];
+            const newPath = path.slice(0, -1);
+            const savedIdx = navHistory[newPath[0]];
             setPath(newPath);
-            setIdx(Number.isFinite(savedIdx) ? savedIdx : (newPath.length === 1 ? 2 : 3));
+            setIdx(Number.isFinite(savedIdx) ? savedIdx : 0);
             return;
           }
         }
       }, [
-        rows, idx, path, navHistory,
-        omniActive, openOmniAddModule,
-        actionFocus, setActionFocus,
-        startMove, moveItemInReorderMode, commitIfMoving, executeRowAction,
-        reorderState, autoOpenSettings,
-        editRowKey, atModule, module
+        idx, path, atAgent, atModule,
+        omniActive, computeInsertPosModules, computeInsertPosInstr, openOmniAddAt,
+        actionFocus, rightPhase, instrSettingsStage,
+        startMove, moveItemInReorderMode, commitReorder, cancelReorder, executeRowAction,
+        reorderState
       ]);
 
       useEffect(() => { window.addEventListener('keydown', handleKeyDown); return () => window.removeEventListener('keydown', handleKeyDown); }, [handleKeyDown]);
 
-      const handleLineClick = useCallback((row) => {
-        const rowIdx = rows.findIndex(r => r.key === row.key);
-        if (rowIdx !== -1) setIdx(rowIdx);
-        if (row.type === 'root') { navigateToPath([path[0]], true); return; }
-        if (row.type === 'adder-mod') { openOmniAddModule(); return; }
-      }, [rows, path, navigateToPath, openOmniAddModule]);
+      // Click selection handlers
+      const handleLineClick = useCallback((row, i) => {
+        setIdx(i);
+        if (row.type === 'adder-mod') {
+          const pos = computeInsertPosModules();
+          openOmniAddAt({ kind: 'mod', agentId: path[0], insertPos: pos });
+        }
+        if (row.type === 'adder-instr') {
+          const pos = computeInsertPosInstr();
+          openOmniAddAt({ kind: 'instr', moduleId: path[path.length - 1], insertPos: pos });
+        }
+      }, [computeInsertPosModules, computeInsertPosInstr, openOmniAddAt, path]);
 
       useEffect(() => {
         const hash = '#' + path.join('/'); if (window.location.hash !== hash) window.history.pushState(null, '', hash);
-        if (!window.location.hash) setIdx(path.length === 1 ? 2 : 3);
+        if (!window.location.hash) setIdx(path.length === 1 ? 0 : 1);
       }, [path]);
 
       useEffect(() => {
@@ -838,501 +824,211 @@
         return () => window.removeEventListener('popstate', handlePopState);
       }, [navigateToPath]);
 
-      // Omnisearch data
-      const db = store.getAllDb();
-      const agentModules = useMemo(() => agent ? (store.get(`mods-${agent.name}`, agent.modules || [])) : [], [store, agent]);
-
-      const moduleFrequency = useMemo(() => {
-        const freq = {};
-        Object.keys(db).forEach(id => {
-          const it = db[id];
-          if (it.type === 'agent') {
-            const mods = store.get(`mods-${it.name}`, it.modules || []);
-            mods.forEach(mid => { freq[mid] = (freq[mid] || 0) + 1; });
-          }
-        });
-        return freq;
-      }, [db, store]);
-
-      const topModules = useMemo(() => {
-        const mods = Object.keys(db).filter(id => db[id].type === 'mod');
-        return mods.sort((a, b) => {
-          const fa = moduleFrequency[a] || 0;
-          const fb = moduleFrequency[b] || 0;
-          if (fb !== fa) return fb - fa;
-          const na = (db[a].name || '').toLowerCase();
-          const nb = (db[b].name || '').toLowerCase();
-          return na.localeCompare(nb);
-        });
-      }, [db, moduleFrequency]);
-
-      const scopeResults = useMemo(() => {
-        if (!agent) return [];
-        const q = (omniQuery || '').toLowerCase().trim();
-        const out = [];
-        const pushIf = (cond, row) => { if (cond) out.push(row); };
-
-        pushIf(!omniFilterType || omniFilterType === 'agent',
-          (!q || agent.name.toLowerCase().includes(q)) && { type: 'agent', id: path[0], name: store.get(`n-${agent.name}`, agent.name), scope: 'current' });
-
-        for (const mid of agentModules) {
-          const m = db[mid]; if (!m) continue;
-          const mname = store.get(`n-${m.name}`, m.name);
-          pushIf(!omniFilterType || omniFilterType === 'mod',
-            (!q || mname.toLowerCase().includes(q)) && { type: 'mod', id: mid, name: mname, scope: 'current' });
-
-          const items = store.get(`items-${m.name}`, m.items || []);
-          for (const iid of items) {
-            const ins = db[iid]; if (!ins) continue;
-            const iname = store.get(`nn-${iid}`, displayNameFor(store, ins, iid));
-            if (!omniFilterType || omniFilterType === 'instr') {
-              if (!q) { out.push({ type: 'instr', id: iid, name: iname, scope: 'current' }); }
-              else {
-                const text = store.get(`t-${ins.name}`, ins.text || '');
-                const meta = store.get(`meta-${iid}`, '');
-                const hay = (iname + ' ' + text + ' ' + meta).toLowerCase();
-                if (hay.includes(q)) out.push({ type: 'instr', id: iid, name: iname, scope: 'current' });
-              }
-            }
-          }
-        }
-        return out.filter(Boolean);
-      }, [agent, agentModules, store, db, omniQuery, path, omniFilterType]);
-
-      const libraryResults = useMemo(() => {
-        const q = (omniQuery || '').toLowerCase().trim();
-        const out = [];
-        Object.keys(db).forEach(id => {
-          const it = db[id];
-          if (omniFilterType && it.type !== omniFilterType) return;
-          const name = it.name || '';
-          const text = it.text || '';
-          const hay = (name + ' ' + text).toLowerCase();
-          if (q && !hay.includes(q)) return;
-          const dup = scopeResults.find(s => s.type === it.type && s.id === id);
-          if (!dup) out.push({ type: it.type, id, name, scope: 'library' });
-        });
-        out.sort((a,b)=>a.name.toLowerCase().localeCompare(b.name.toLowerCase()));
-        return out;
-      }, [db, omniQuery, scopeResults, omniFilterType]);
-
-      const suggestedModuleRows = useMemo(() => {
-        if (!(omniIntent === 'add-module' && omniFilterType === 'mod' && (omniQuery || '').trim() === '')) return [];
-        const rows = [];
-        topModules.forEach(mid => { const m = db[mid]; if (!m) return; rows.push({ type: 'mod', id: mid, name: m.name, scope: 'library', suggested: true }); });
-        return rows;
-      }, [omniIntent, omniFilterType, omniQuery, topModules, db]);
-
-      const createRows = useMemo(() => {
-        const q = (omniQuery || '').trim();
-        if (!q) return [];
-        const rows = [];
-        if (!omniFilterType || omniFilterType === 'agent') rows.push({ type: 'create-agent', id: 'new-agent', name: `Create Agent "${q}"` });
-        if (!omniFilterType || omniFilterType === 'mod') rows.push({ type: 'create-mod', id: 'new-mod', name: `Create Module "${q}"` });
-        if (!omniFilterType || omniFilterType === 'instr') rows.push({ type: 'create-instr', id: 'new-instr', name: `Create Instruction "${q}"` });
-        return rows;
-      }, [omniQuery, omniFilterType]);
-
-      const browseRows = useMemo(() => {
-        const rows = [];
-        rows.push({ type: 'label', id: 'label-in', name: 'In this project' });
-        for (const mid of agentModules) {
-          const m = db[mid]; if (!m) continue;
-          const mname = store.get(`n-${m.name}`, m.name);
-          rows.push({ type: 'mod', id: mid, name: mname, scope: 'current' });
-          const items = store.get(`items-${m.name}`, m.items || []);
-          for (const iid of items) {
-            const ins = db[iid]; if (!ins) continue;
-            const iname = store.get(`nn-${iid}`, displayNameFor(store, ins, iid));
-            rows.push({ type: 'instr', id: iid, name: '• ' + iname, scope: 'current' });
-          }
-        }
-        rows.push({ type: 'label', id: 'label-lib', name: 'From library' });
-        Object.keys(db).forEach(id => {
-          const it = db[id];
-          if (it.type === 'mod' && !agentModules.includes(id)) rows.push({ type: 'mod', id, name: it.name, scope: 'library' });
-          if (it.type === 'instr') rows.push({ type: 'instr', id, name: it.name, scope: 'library' });
-        });
-        rows.push({ type: 'label', id: 'label-create', name: 'Quick create' });
-        rows.push({ type: 'create-mod', id: 'quick-mod', name: 'Create Module…' });
-        rows.push({ type: 'create-instr', id: 'quick-instr', name: 'Create Instruction…' });
-        rows.push({ type: 'create-agent', id: 'quick-agent', name: 'Create Agent…' });
-        return rows;
-      }, [agentModules, db, store]);
-
-      const visibleRows = useMemo(() => {
-        if (!omniActive) return [];
-        if (omniMode === 'search') {
-          if (omniIntent === 'add-module' && omniFilterType === 'mod' && (omniQuery || '').trim()==='') {
-            const seen = new Set();
-            const list = [];
-            suggestedModuleRows.forEach(r => { const k = r.type+':'+r.id; if (!seen.has(k)) { seen.add(k); list.push(r); } });
-            scopeResults.forEach(r => { if (r.type !== 'mod') return; const k = r.type+':'+r.id; if (!seen.has(k)) { seen.add(k); list.push(r); } });
-            libraryResults.forEach(r => { if (r.type !== 'mod') return; const k = r.type+':'+r.id; if (!seen.has(k)) { seen.add(k); list.push(r); } });
-            createRows.forEach(r => list.push(r));
-            return list;
-          }
-          return [...scopeResults, ...libraryResults, ...createRows];
-        } else {
-          return browseRows;
-        }
-      }, [omniActive, omniMode, scopeResults, libraryResults, createRows, browseRows, omniIntent, omniFilterType, omniQuery, suggestedModuleRows]);
-
-      useEffect(() => {
-        if (!omniActive) return;
-        const t = setTimeout(() => { if (omniInputRef.current) omniInputRef.current.focus(); }, 0);
-        return () => clearTimeout(t);
-      }, [omniActive]);
-
-      useEffect(() => { setOmniIndex(0); }, [omniMode, omniQuery, omniFilterType, omniIntent]);
-
-      const actOnRow = (row) => {
-        if (!row) return;
-        if (row.type === 'agent') { navigateToPath([row.id], true); setOmniActive(false); setOmniInsertPos(null); return; }
-        if (row.type === 'mod')   {
-          const insertPos = omniInsertPos;
-          attachModuleToAgent(row.id, insertPos);
-          const agentId = path[0];
-          setOmniActive(false); setOmniInsertPos(null);
-          navigateToPath([agentId], true);
-          setTimeout(() => {
-            const r = rowsRef.current;
-            const i = r.findIndex(x => x.type==='module-item' && x.moduleId===row.id && x.pos===(insertPos ?? 0));
-            if (i >= 0) setIdx(i);
-          }, 0);
-          return;
-        }
-        if (row.type === 'instr') {
-          if (atModule && module) {
-            const arr = store.get(`items-${module.name}`, module.items || []); updateData(`items-${module.name}`, [...arr, row.id]);
-          } else {
-            const a = store.getDbItem(path[0]); if (!a) return;
-            const mods = store.get(`mods-${a.name}`, a.modules || []);
-            if (mods.length) {
-              navigateToPath([path[0], mods[0]], true);
-              setTimeout(() => {
-                const m = store.getDbItem(mods[0]);
-                const arr = store.get(`items-${m.name}`, m.items || []);
-                updateData(`items-${m.name}`, [...arr, row.id]);
-              }, 0);
-            }
-          }
-          setOmniActive(false); setOmniInsertPos(null);
-          return;
-        }
-        if (row.type === 'create-agent') { createNewAgent(omniQuery.trim()); setOmniActive(false); setOmniInsertPos(null); return; }
-        if (row.type === 'create-mod')   { createNewModule(omniQuery.trim(), omniInsertPos); setOmniActive(false); setOmniInsertPos(null); return; }
-        if (row.type === 'create-instr') { createNewInstruction(omniQuery.trim()); setOmniActive(false); setOmniInsertPos(null); return; }
-      };
-
-      const onOmniKeyDown = (e) => {
-        if (!omniActive) return;
-        const has = visibleRows.length > 0;
-        if (e.key === 'Tab') {
-          e.preventDefault();
-          setOmniMode(prev => prev === 'search' ? 'browse' : 'search');
-        } else if (e.key === 'ArrowDown') {
-          e.preventDefault();
-          if (has) setOmniIndex(prev => Math.min(visibleRows.length - 1, prev + 1));
-        } else if (e.key === 'ArrowUp') {
-          e.preventDefault();
-          if (has) setOmniIndex(prev => Math.max(0, prev - 1));
-        } else if (e.key === 'Enter') {
-          e.preventDefault();
-          if (!has) return;
-          actOnRow(visibleRows[Math.max(0, Math.min(omniIndex, visibleRows.length - 1))]);
-        } else if (e.key === 'Escape') {
-          e.preventDefault();
-          setOmniActive(false); setOmniInsertPos(null);
-        }
-      };
-
-      const promptText = useMemo(() => {
-        let text = '(: Smile Composer\n    ' + store.get(`n-${agent.name}`, agent.name);
-        if (atModule) {
-          text += path.slice(1).map(mid => {
-            const m = store.getDbItem(mid);
-            const name = m ? displayNameFor(store, m, mid) : '';
-            return m ? '\n        ' + name : '';
-          }).join('');
-        }
-        return text;
-      }, [path, agent, atModule, store, storeVersion]);
-
-      const allTextContent = useMemo(() => {
-        let parts = [];
-        if (atModule && module) {
-          const ids = store.get(`items-${module.name}`, module.items || []);
-          ids.forEach(id => {
-            const it = store.getDbItem(id); if (!it) return;
-            const name = store.get(`nn-${id}`, displayNameFor(store, it, id));
-            const text = store.get(`t-${it.name}`, it.text || '');
-            const meta = store.get(`meta-${id}`, '');
-            parts.push(`${name}\n${text}${meta ? `\n(meta) ${meta}` : ''}`);
-          });
-        } else if (agent) {
-          const mods = store.get(`mods-${agent.name}`, agent.modules || []);
-          mods.forEach(mid => {
-            const m = store.getDbItem(mid); if (!m) return;
-            const mname = displayNameFor(store, m, mid);
-            parts.push(`== ${mname} ==`);
-            const ids = store.get(`items-${m.name}`, m.items || []);
-            ids.forEach(id => {
-              const it = store.getDbItem(id); if (!it) return;
-              const name = store.get(`nn-${id}`, displayNameFor(store, it, id));
-              const text = store.get(`t-${it.name}`, it.text || '');
-              const meta = store.get(`meta-${id}`, '');
-              parts.push(`${name}\n${text}${meta ? `\n(meta) ${meta}` : ''}`);
-            });
-          });
-        }
-        return parts.join('\n\n');
-      }, [storeVersion, path, atModule, module, agent, store]);
-
-      const outputKey = atModule && module ? `output-${module.name}` : `output-${agent.name}`;
-      const outputDefault = atModule ? '' : agent.output;
-
-      const omniInsertHint = useMemo(() => {
-        const pos = computeInsertPos();
-        return Number.isFinite(pos) ? pos : null;
-      }, [computeInsertPos, rows, idx]);
+      // Combined prompt (multi-line, one per instruction) already computed for sidebar
 
       return (
-        <div className="container">
-          {/* Omnisearch header */}
-          <div className="omni">
-            <div className="omni-bar">
-              <input
-                className="omni-input"
-                placeholder="Omnisearch — press / to open, Tab switches modes"
-                value={omniActive ? omniQuery : ''}
-                readOnly={!omniActive}
-                onFocus={() => omniActive ? null : openOmniAddModule()}
-                onChange={e => setOmniQuery(e.target.value)}
-              />
-              <div className={`omni-mode ${omniActive ? 'show' : ''}`}>
-                <button className={omniMode === 'search' ? 'active' : ''} onClick={() => setOmniMode('search')}>Search</button>
-                <button className={omniMode === 'browse' ? 'active' : ''} onClick={() => setOmniMode('browse')}>Browse</button>
-              </div>
-              <button
-                className="omni-input"
-                title="Add Module"
-                onClick={openOmniAddModule}
-                style={{ cursor: 'pointer', border: 'none', background: 'transparent', textAlign: 'right' }}
-              >
-                Add Module{omniInsertHint !== null ? ` @ ${omniInsertHint}` : ''}
-              </button>
+        <div className="layout">
+          <div className="container">
+            <div className="panel">
+              {rows.map((row, i) => {
+                const isSelected = i === idx;
+                const isDragging = dragItem && dragItem.key === row.key;
+                const isDropTarget = dragOver === row.key;
+                const inActionMode = actionFocus && actionFocus.rowKey === row.key;
+                const showRightBar = rightPhase.rowKey === row.key && rightPhase.phase === 1 && row.type === 'instr' && isSelected;
+
+                const actions = getActionList(row);
+                const focused = inActionMode ? actionFocus.action : null;
+
+                return (
+                  <React.Fragment key={row.key}>
+                    <div
+                      className={[
+                        'line',
+                        isSelected ? 'sel' : '',
+                        isDragging ? 'held' : '',
+                        isDropTarget ? 'drop-target' : ''
+                      ].join(' ').trim()}
+                      style={{ paddingLeft: (row.depth || 0) * TAB }}
+                      data-key={row.key}
+                      onClick={() => handleLineClick(row, i)}
+                      draggable={row.type==='instr' || row.type==='module-item'}
+                      onDragStart={e => { if (row.type==='instr' || row.type==='module-item') setDragItem(row); }}
+                      onDragOver={e => {
+                        if (row.type==='instr' || row.type==='module-item') {
+                          e.preventDefault(); if (!dragItem) return; setDragOver(row.key);
+                        }
+                      }}
+                      onDrop={e => {
+                        if (!(row.type==='instr' || row.type==='module-item')) return;
+                        e.preventDefault();
+                        if (!dragItem) return;
+                        if (dragItem.type === 'instr' && row.type === 'instr' && module) {
+                          const arr = store.get(`items-${module.name}`, module.items || []); updateData(`items-${module.name}`, moveInList(arr, dragItem.pos, row.pos));
+                        } else if (dragItem.type === 'module-item' && row.type === 'module-item') {
+                          const a = store.getDbItem(path[0]); if (a) {
+                            const arr = store.get(`mods-${a.name}`, a.modules || []); updateData(`mods-${a.name}`, moveInList(arr, dragItem.pos, row.pos));
+                          }
+                        }
+                        setDragItem(null); setDragOver(null);
+                      }}
+                      onDragEnd={() => { setDragItem(null); setDragOver(null); }}
+                    >
+                      {(row.type === 'instr' || row.type === 'module-item') && (
+                        <span
+                          className="hover-settings"
+                          onClick={(e) => {
+                            e.stopPropagation();
+                            setIdx(i);
+                            if (row.type === 'instr') {
+                              setRightPhase({ rowKey: row.key, phase: 1 });
+                              setActionFocus({ rowKey: row.key, action: 'settings' });
+                              setInstrSettingsStage(1);
+                            } else {
+                              setActionFocus({ rowKey: row.key, action: 'settings' });
+                            }
+                          }}
+                          title="Open Settings"
+                        >[→] Settings</span>
+                      )}
+
+                      <span className="left-span">
+                        {isSelected && (inActionMode || showRightBar)
+                          ? (
+                            <InlineActionsInline
+                              actions={actions}
+                              focus={focused || null}
+                              onFocus={(a) => {
+                                if (focused === 'move' && a !== 'move') commitReorder();
+                                if (focused !== 'move' && a === 'move') startMove(row);
+                                setActionFocus({ rowKey: row.key, action: a });
+                                if (a === 'settings' && row.type === 'instr') setInstrSettingsStage(1);
+                              }}
+                              onExecute={(a) => executeRowAction(row, a)}
+                              onBack={() => { if (reorderState) commitReorder(); setActionFocus(null); setRightPhase({ rowKey: null, phase: 0 }); }}
+                            />
+                          ) : (
+                            <>
+                              {row.isOutput ? <strong>OUTPUT:&nbsp;</strong> : null}{row.label}
+                            </>
+                          )
+                        }
+                      </span>
+                    </div>
+
+                    {/* Instruction settings panel (Stage 1/2) */}
+                    {isSelected && inActionMode && actionFocus.action === 'settings' && row.type === 'instr' && (
+                      <InstructionEdit
+                        store={store}
+                        row={row}
+                        onTextChange={updateData}
+                        getNameOverride={(k, f) => store.get(k, f || '')}
+                        setNameOverride={(k, v) => updateData(k, v)}
+                        getMeta={(k) => store.get(k, '')}
+                        setMeta={(k, v) => updateData(k, v)}
+                        getStruct={(k) => store.get(k, 'heavy')}
+                        setStruct={(k, v) => updateData(k, v)}
+                        stage={instrSettingsStage}
+                        settingsKey={row.key}
+                        refEl={(el)=>{ if (el) settingsRefs.current.set(row.key, el); else settingsRefs.current.delete(row.key); }}
+                      />
+                    )}
+
+                    {/* Module settings panel */}
+                    {isSelected && inActionMode && actionFocus.action === 'settings' && row.type === 'module-item' && (
+                      <div className="indent-block" style={{ paddingLeft: ((row.depth || 0) + 1) * TAB }} data-settings-for={row.key}>
+                        <input
+                          type="text"
+                          className="underline-input"
+                          value={store.get(row.nameOverrideKey, '')}
+                          onChange={(e) => updateData(row.nameOverrideKey, e.target.value)}
+                          placeholder="Name…"
+                        />
+                        <textarea
+                          className="underline-textarea"
+                          value={store.get(row.metaKey, '')}
+                          onChange={(e) => updateData(row.metaKey, e.target.value)}
+                          placeholder="Meta information…"
+                        />
+                        <textarea
+                          className="underline-textarea"
+                          value={store.get(`prompt-mod-${row.moduleId}`, '')}
+                          onChange={(e) => updateData(`prompt-mod-${row.moduleId}`, e.target.value)}
+                          placeholder="Module instruction…"
+                        />
+                        <StructureDots5
+                          id={row.moduleId}
+                          value={store.get(row.structKey, 'heavy')}
+                          onChange={(v) => updateData(row.structKey, v)}
+                        />
+                      </div>
+                    )}
+
+                    {/* Previews when not in action mode */}
+                    {isSelected && !inActionMode && row.type === 'module-item' && (
+                      <ModulePreview store={store} moduleId={row.moduleId} depth={row.depth} />
+                    )}
+                    {isSelected && !inActionMode && row.type === 'instr' && (
+                      <InstructionPreview store={store} row={row} />
+                    )}
+                  </React.Fragment>
+                );
+              })}
             </div>
-            {omniActive && (
-              <div className="omni-drawer">
-                <div className="subtle" style={{ margin: '4px 6px 8px 6px' }}>
-                  {omniMode === 'search'
-                    ? (omniIntent === 'add-module' && omniFilterType === 'mod' && (omniQuery || '').trim()===''
-                        ? 'Suggested modules (most used) • Enter to add • Tab to switch modes'
-                        : 'Search names, text, meta in this project and library • Enter to open/add • Tab to switch modes')
-                    : 'Browse current project and library • Enter to open or attach'}
-                </div>
-                <div className="omni-list">
-                  {visibleRows.length === 0 && (<div className="omni-item"><span>No matches</span></div>)}
-                  {visibleRows.map((r, i) => (
-                    r.type === 'label' ? (
-                      <div key={r.id} className="subtle" style={{ padding: '6px 2px 2px 2px' }}>{r.name}</div>
-                    ) : (
+
+            {/* Bottom Add Dock (Omnisearch) */}
+            <div className="bottom-dock">
+              <button className="dock-toggle" title="Add" onClick={() => {
+                // open in context of current selection
+                const rows = rowsRef.current; const sel = rows[idx];
+                if (!sel) return;
+                if (sel.type === 'module-item' || atAgent) {
+                  const pos = computeInsertPosModules();
+                  openOmniAddAt({ kind: 'mod', agentId: path[0], insertPos: pos });
+                } else {
+                  const pos = computeInsertPosInstr();
+                  openOmniAddAt({ kind: 'instr', moduleId: path[path.length - 1], insertPos: pos });
+                }
+              }}>[+] Add</button>
+
+              {omniActive && (
+                <div className="dock">
+                  <div style={{ margin: '4px 6px 8px 6px', fontSize: 12 }}>Add mode • Items will be inserted at the current position</div>
+                  <div className="omni-list">
+                    {omniResults.length === 0 && (<div className="omni-item"><span>No matches</span></div>)}
+                    {omniResults.map((r, i) => (
                       <div
                         key={r.type + ':' + r.id + ':' + i}
                         className={`omni-item${i === omniIndex ? ' sel' : ''}`}
                         onMouseEnter={() => setOmniIndex(i)}
-                        onClick={() => actOnRow(r)}
+                        onClick={() => actOnOmniRow(r)}
                       >
                         <span>{r.name}</span>
-                        <span className="badge">{r.type}{r.scope ? ` • ${r.scope}` : ''}{r.suggested ? ' • suggested' : ''}</span>
+                        <span className="badge">{r.type}{r.scope ? ` • ${r.scope}` : ''}</span>
                       </div>
-                    )
-                  ))}
-                </div>
-                <input
-                  ref={omniInputRef}
-                  className="omni-input"
-                  style={{ width: '1px', height: '1px', opacity: 0, pointerEvents: 'none', position: 'absolute' }}
-                  value={omniQuery}
-                  onChange={()=>{}}
-                  onKeyDown={onOmniKeyDown}
-                />
-              </div>
-            )}
-          </div>
-
-          {/* Main Composer */}
-          <div className="panel">
-            <div className="panel-title">
-              <span className="clickable" onClick={() => navigateToPath([path[0]], true)}>Smile Composer</span>
-              <div className="panel-title-right">
-                <span className="subtle">Press Left to enter settings mode • Right to drill in • Up/Down to navigate • In Move: Up/Down reorders • Esc exits</span>
-              </div>
-            </div>
-
-            {rows.map((row, i) => {
-              const isSelected = i === idx;
-              const inReorderMode = reorderState && row.key === reorderState.rowKey;
-              const isDragging = dragItem && dragItem.key === row.key;
-              const isDropTarget = dragOver === row.key;
-
-              const focused = (actionFocus && actionFocus.rowKey === row.key) ? actionFocus.action : null;
-              const inActionMode = !!focused;
-
-              return (
-                <React.Fragment key={row.key}>
-                  <div
-                    className={[
-                      'line',
-                      isSelected && !inReorderMode ? 'sel' : '',
-                      inReorderMode ? 'reorder-mode' : '',
-                      isDragging ? 'held' : '',
-                      isDropTarget ? 'drop-target' : ''
-                    ].join(' ').trim()}
-                    style={{ paddingLeft: (row.depth || 0) * TAB }}
-                    data-key={row.key}
-                    onClick={() => handleLineClick(row)}
-                    draggable={row.type==='instr' || row.type==='module-item'}
-                    onDragStart={e => (row.type==='instr' || row.type==='module-item') ? handleDragStart(e, row) : null}
-                    onDragOver={e => (row.type==='instr' || row.type==='module-item') ? handleDragOver(e, row) : null}
-                    onDrop={e => (row.type==='instr' || row.type==='module-item') ? handleDrop(e, row) : null}
-                    onDragEnd={handleDragEnd}
-                  >
-                    <span className="left-span">
-                      {row.isOutput ? <strong>OUTPUT:&nbsp;</strong> : null}{row.label}
-                    </span>
+                    ))}
                   </div>
-
-                  {/* Action bar appears ONLY in action mode, directly underneath the selected row */}
-                  {isSelected && inActionMode && (row.type === 'module-item' || row.type === 'instr') && (
-                    <div className="indent-block" style={{ paddingLeft: (row.depth || 0) * TAB }}>
-                      <InlineActions
-                        actions={getActionList(row)}
-                        focus={focused || 'move'}
-                        onFocus={(a) => {
-                          setActionFocus({ rowKey: row.key, action: a });
-                          if (a === 'settings') autoOpenSettings(row);
-                        }}
-                        onExecute={(a) => executeRowAction(row, a)}
-                        actionMode
-                        onBack={() => { commitIfMoving(); setActionFocus(null); }}
-                      />
-                    </div>
-                  )}
-
-                  {/* Settings panel only when focused action is 'settings' */}
-                  {isSelected && focused === 'settings' && (
-                    <div className="indent-block" style={{ paddingLeft: ((row.depth || 0) + 1) * TAB }}>
-                      {row.type === 'module-item' ? (
-                        <>
-                          <input
-                            autoFocus
-                            type="text"
-                            className="underline-input"
-                            value={store.get(row.nameOverrideKey, '')}
-                            onChange={(e) => updateData(row.nameOverrideKey, e.target.value)}
-                            placeholder="Name…"
-                          />
-                          <textarea
-                            className="underline-textarea"
-                            value={store.get(row.metaKey, '')}
-                            onChange={(e) => updateData(row.metaKey, e.target.value)}
-                            placeholder="Meta information…"
-                          />
-                          <textarea
-                            className="underline-textarea"
-                            value={store.get(`prompt-mod-${row.moduleId}`, '')}
-                            onChange={(e) => updateData(`prompt-mod-${row.moduleId}`, e.target.value)}
-                            placeholder="Module instruction…"
-                          />
-                          <StructureDots5
-                            id={row.moduleId}
-                            value={store.get(row.structKey, 'heavy')}
-                            onChange={(v) => updateData(row.structKey, v)}
-                          />
-                        </>
-                      ) : row.type === 'instr' ? (
-                        <InstructionEdit
-                          store={store}
-                          row={row}
-                          onTextChange={updateData}
-                          getNameOverride={(k, f) => store.get(k, f || '')}
-                          setNameOverride={(k, v) => updateData(k, v)}
-                          getMeta={(k) => store.get(k, '')}
-                          setMeta={(k, v) => updateData(k, v)}
-                          getStruct={(k) => store.get(k, 'heavy')}
-                          setStruct={(k, v) => updateData(k, v)}
-                        />
-                      ) : null}
-                    </div>
-                  )}
-
-                  {/* Preview under the selected row, only when NOT in action mode and not editing */}
-                  {isSelected && !inActionMode && row.type === 'module-item' && (
-                    <ModulePreview store={store} moduleId={row.moduleId} depth={row.depth} />
-                  )}
-                  {isSelected && !inActionMode && row.type === 'instr' && (!editRowKey || editRowKey !== row.key) && (
-                    <InstructionPreview store={store} row={row} />
-                  )}
-                  {isSelected && !inActionMode && row.type === 'instr' && editRowKey === row.key && (
-                    <InstructionEdit
-                      store={store}
-                      row={row}
-                      onTextChange={updateData}
-                      getNameOverride={(k, f) => store.get(k, f || '')}
-                      setNameOverride={(k, v) => updateData(k, v)}
-                      getMeta={(k) => store.get(k, '')}
-                      setMeta={(k, v) => updateData(k, v)}
-                      getStruct={(k) => store.get(k, 'heavy')}
-                      setStruct={(k, v) => updateData(k, v)}
-                    />
-                  )}
-                </React.Fragment>
-              );
-            })}
-          </div>
-
-          {/* Lower panels */}
-          <div className="panel">
-            <div className="panel-title"><span>Structure</span></div>
-            <TreeView store={store} path={path} onNavigate={navigateToPath} storeVersion={storeVersion} />
-          </div>
-
-          <div className="panel">
-            <div className="panel-title"><span>Prompt</span></div>
-            <textarea readOnly value={promptText} className="underline-textarea" style={{ minHeight: '120px' }} />
-            <div style={{ height: 8 }}></div>
-            <button
-              className="omni-input"
-              data-hotkey-scope="ui"
-              style={{ cursor: 'pointer', border: 'none', background: 'transparent', textAlign: 'left' }}
-              onClick={() => {
-                const wrap = document.getElementById('alltext-wrapper');
-                if (wrap) wrap.style.display = (wrap.style.display === 'none' ? '' : 'none');
-              }}
-            >
-              Show / Hide All Text
-            </button>
-            <div id="alltext-wrapper" style={{ marginTop: 8 }}>
-              <textarea className="alltext" readOnly value={allTextContent}></textarea>
+                  <input
+                    ref={omniInputRef}
+                    className="omni-input"
+                    placeholder="Type to filter…  ↑/↓ select • Enter add • Esc close"
+                    value={omniQuery}
+                    onChange={e => setOmniQuery(e.target.value)}
+                    onKeyDown={(e) => {
+                      const has = omniResults.length > 0;
+                      if (e.key === 'ArrowDown') { e.preventDefault(); if (has) setOmniIndex(prev => Math.min(omniResults.length - 1, prev + 1)); }
+                      else if (e.key === 'ArrowUp') { e.preventDefault(); if (has) setOmniIndex(prev => Math.max(0, prev - 1)); }
+                      else if (e.key === 'Enter') { e.preventDefault(); if (has) actOnOmniRow(omniResults[Math.max(0, Math.min(omniIndex, omniResults.length - 1))]); }
+                      else if (e.key === 'Escape') { e.preventDefault(); setOmniActive(false); }
+                    }}
+                  />
+                </div>
+              )}
             </div>
           </div>
 
-          <div className="panel">
-            <div className="panel-title">
-              <span>Output</span>
-              <button
-                className="omni-input"
-                data-hotkey-scope="ui"
-                onClick={resetAll}
-                style={{ cursor: 'pointer', border: 'none', background: 'transparent' }}
-              >
-                Reset All
-              </button>
-            </div>
-            <textarea className="underline-textarea" value={store.get(outputKey, outputDefault)} onChange={e => updateData(outputKey, e.target.value)} style={{ minHeight: '150px' }}></textarea>
-          </div>
+          {/* Right Sidebar */}
+          <RightSidebar text={rightSidebarText} />
         </div>
       );
     }
