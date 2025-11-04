@@ -15,8 +15,9 @@
     .left-column { display: grid; grid-template-rows: auto auto; gap: 12px; }
     .panel { background: #fff; padding: 16px; box-shadow: 0 1px 0 0 var(--rule); border-radius: 10px; }
 
-    .sc-title { font-size: inherit; font-weight: 400; margin-bottom: 8px; }
+    .sc-title { font-size: inherit; font-weight: 400; margin-bottom: 8px; display: flex; align-items: center; justify-content: space-between; gap: 8px; }
     .sc-title strong em { font-style: italic; }
+    .reset-btn { font-size: 12px; border: 1px solid var(--rule); background: #fff; border-radius: 8px; padding: 4px 10px; cursor: pointer; }
 
     .line { user-select: none; padding: 8px 10px; border-radius: 10px; display: flex; align-items: center; justify-content: space-between; gap: 10px; cursor: pointer; transition: background-color 0.12s ease, opacity 0.12s ease; touch-action: none; position: relative; }
     .line.sel { font-weight: 600; background-color: var(--select-bg); }
@@ -31,14 +32,14 @@
     }
     .underline-textarea { min-height: 80px; }
 
-    .actions-text { font-size: inherit; color: #222; display: inline-flex; gap: 6px; flex-wrap: wrap; align-items: center; }
-    .action-chip { padding: 4px 8px; border-radius: 8px; display: inline-flex; align-items: center; border: 1px solid var(--rule); background: #fff; cursor: pointer; }
-
     .action-bar-inline { display: block; margin-top: 8px; }
     .action-row { display: inline-flex; align-items: center; gap: 10px; width: 100%; }
     .action-spacer { flex: 1 1 auto; }
     .action-hint-left { font-size: 12px; color: #444; user-select: none; }
     .action-hint-right { font-size: 12px; color: #444; user-select: none; }
+
+    .settings-buttons { display: flex; justify-content: flex-end; gap: 8px; margin-top: 6px; }
+    .settings-btn { font-size: 12px; border: 1px solid var(--rule); background: #fff; border-radius: 8px; padding: 4px 10px; cursor: default; }
 
     .rightbar { position: sticky; top: 16px; height: calc(100vh - 32px); overflow: auto; background: #fff; box-shadow: 0 1px 0 0 var(--rule); border-radius: 10px; padding: 12px; }
     .rightbar textarea { width: 100%; height: calc(100vh - 56px); border: none; outline: none; resize: none; background: transparent; font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace; font-size: 12px; line-height: 1.5; }
@@ -192,7 +193,6 @@
       );
     }
 
-    // Minimal hint-only ActionBar per specs
     function ActionBar({ pad }) {
       return (
         <div className="action-bar-inline" style={{ paddingLeft: pad }}>
@@ -205,9 +205,43 @@
       );
     }
 
+    // New: right-aligned settings buttons
+    function SettingsButtons({
+      pad, isHovering, hoverAction, onEnterMove, onLeaveMove, onEnterDuplicate, onLeaveDuplicate, onEnterDelete, onLeaveDelete
+    }) {
+      return (
+        <div className="settings-buttons" style={{ paddingLeft: pad }}>
+          <span
+            className="settings-btn"
+            onMouseEnter={onEnterMove}
+            onMouseLeave={onLeaveMove}
+            title="Use ↑ ↓ to move while hovering"
+          >
+            -&gt; Movement
+          </span>
+          <span
+            className="settings-btn"
+            onMouseEnter={onEnterDuplicate}
+            onMouseLeave={onLeaveDuplicate}
+            title="Press Enter to Duplicate"
+          >
+            {hoverAction === 'duplicate' ? 'Press Enter to Duplicate' : '-&gt; + Duplicate'}
+          </span>
+          <span
+            className="settings-btn"
+            onMouseEnter={onEnterDelete}
+            onMouseLeave={onLeaveDelete}
+            title="Press Enter To Confirm Delete"
+          >
+            {hoverAction === 'delete' ? 'Press Enter To Confirm Delete' : '-&gt; Delete'}
+          </span>
+        </div>
+      );
+    }
+
     function InstructionInlineEditor({
       store, row, onTextChange, getNameOverride, setNameOverride,
-      getMeta, setMeta, getStruct, setStruct, stage=2
+      getMeta, setMeta, getStruct, setStruct, stage=2, onDownFromMainToMeta
     }) {
       const pad = ((row.depth || 0) + 1) * TAB;
       return (
@@ -217,6 +251,17 @@
             data-tarea={row.key}
             value={store.get(row.promptKey, row.defaultText || '')}
             onChange={(e) => onTextChange(row.promptKey, e.target.value)}
+            onKeyDown={(e) => {
+              if (stage === 2 && e.key === 'ArrowDown') {
+                const v = e.currentTarget.value || '';
+                const selStart = e.currentTarget.selectionStart;
+                const selEnd = e.currentTarget.selectionEnd;
+                if (selStart === selEnd && selEnd === v.length) {
+                  e.preventDefault();
+                  if (onDownFromMainToMeta) onDownFromMainToMeta();
+                }
+              }
+            }}
             placeholder="Instruction…"
           />
           {stage === 2 && (
@@ -230,6 +275,7 @@
               />
               <textarea
                 className="underline-textarea"
+                data-meta={row.key}
                 value={getMeta(row.metaKey) || ''}
                 onChange={(e) => setMeta(row.metaKey, e.target.value)}
                 placeholder="Meta information…"
@@ -301,6 +347,9 @@
       const [idx, setIdx] = useState(0);
       const [navHistory, setNavHistory] = useState({});
       const [reorderState, setReorderState] = useState(null);
+      const [hoverAction, setHoverAction] = useState(null); // 'move' | 'duplicate' | 'delete' | null
+      const [hoverRowKey, setHoverRowKey] = useState(null);
+
       const rowsRef = useRef([]);
       const instrUi = useInstrUi();
 
@@ -381,7 +430,9 @@
         const pos = (insertPos !== null && insertPos >= 0 && insertPos <= base.length) ? insertPos : base.length;
         const next = [...base]; next.splice(pos, 0, modId);
         updateData(key, next);
-        
+
+        // Always remain in agent view and select the new module item
+        setPath([agentId]);
         setTimeout(() => {
           const r = rowsRef.current;
           let targetIdx = r.findIndex(x => x.type === 'module-item' && x.moduleId === modId && x.pos === pos);
@@ -394,35 +445,44 @@
       }, [store, updateData]);
 
       const duplicateInstruction = useCallback((dbId, insertAtPos = null) => {
-        if (!module) return;
+        if (!module) return null;
         const m = module;
-        const item = store.getDbItem(dbId); if (!item) return;
+        const item = store.getDbItem(dbId); if (!item) return null;
         const arr = store.get(`items-${m.name}`, m.items || []);
         const newId = 'custom-' + Date.now();
         const baseName = displayNameFor(store, item, dbId);
-        const baseText = store.get(`t-${item.name}`, item.text || '');
+        const baseTextKey = `t-${item.name}`;
+        const baseText = store.get(baseTextKey, item.text || '');
         store.addCustomDbItem(newId, { name: baseName + ' (copy)', type: 'instr', text: baseText });
         const newArr = [...arr];
         const at = (insertAtPos !== null && insertAtPos >= 0 && insertAtPos <= arr.length) ? insertAtPos : arr.length;
         newArr.splice(at, 0, newId); updateData(`items-${m.name}`, newArr);
-        updateData(`nn-${newId}`, baseName + ' (copy)'); updateData(`t-${newId}`, baseText);
+        updateData(`nn-${newId}`, baseName + ' (copy)');
+        updateData(`t-${newId}`, baseText);
+        setTimeout(() => {
+          const r = rowsRef.current;
+          const i = r.findIndex(x => x.type === 'instr' && x.dbId === newId);
+          if (i >= 0) setIdx(i);
+        }, 0);
+        return newId;
       }, [store, updateData, module]);
 
       const removeInstructionAtPos = useCallback((pos) => {
         if (!module) return;
         const arr = store.get(`items-${module.name}`, module.items || []);
-        updateData(`items-${module.name}`, arr.filter((_, i) => i !== pos));
+        const next = arr.filter((_, i) => i !== pos);
+        updateData(`items-${module.name}`, next);
+        setTimeout(() => {
+          const r = rowsRef.current;
+          // Try to select the item now at this position, else previous
+          let target = r.findIndex(x => x.type === 'instr' && x.pos === pos);
+          if (target < 0) target = r.findIndex(x => x.type === 'instr' && x.pos === pos - 1);
+          if (target >= 0) setIdx(target);
+        }, 0);
       }, [module, store, updateData]);
 
-      // Action list no longer used for chips; kept for logical completeness
-      const getActionList = (row) => {
-        if (row.type === 'instr') return [];
-        if (row.type === 'module-item') return [];
-        return [];
-      };
-
       const startMove = useCallback((row) => {
-        if (!module) return;
+        if (!module || row.type !== 'instr') return;
         const arrKey = `items-${module.name}`;
         const arr = store.get(arrKey, module.items || []);
         setReorderState({
@@ -445,6 +505,17 @@
         updateData(reorderState.arrKey, newArr);
         setReorderState(prev => ({ ...prev, currentPos: keepTo }));
       }, [reorderState, store, updateData]);
+
+      const endReorder = useCallback(() => {
+        if (!reorderState) return;
+        const { itemId, currentPos } = reorderState;
+        setReorderState(null);
+        setTimeout(() => {
+          const r = rowsRef.current;
+          const i = r.findIndex(x => x.type === 'instr' && x.dbId === itemId && x.pos === currentPos);
+          if (i >= 0) setIdx(i);
+        }, 0);
+      }, [reorderState]);
 
       const cancelReorder = useCallback(() => {
         if (!reorderState) return;
@@ -533,6 +604,17 @@
         }, 0);
       };
 
+      const focusMetaTextarea = (rowKey) => {
+        setTimeout(() => {
+          const meta = document.querySelector(`[data-meta="${rowKey}"]`);
+          if (meta) {
+            meta.focus();
+            const len = meta.value.length;
+            try { meta.setSelectionRange(len, len); } catch(_) {}
+          }
+        }, 0);
+      };
+
       const addByIdAtContext = useCallback((id) => {
         const item = db[id]; if (!item) return;
         if (item.type !== allowedType) return;
@@ -577,7 +659,6 @@
         }
       }, [db, path, idx, ensureModuleForAgent, addInstructionToModule, addModuleToAgent, store, bumpFreq, allowedType]);
 
-      // Create brand-new item according to context when Enter is pressed with nothing selected
       const createAndAddNewItem = useCallback(() => {
         if (allowedType === 'instr' && path.length >= 2) {
           const newId = 'custom-' + Date.now();
@@ -596,7 +677,44 @@
         }
       }, [allowedType, path, store, addInstructionToModule, addModuleToAgent, updateData]);
 
+      const navigateIntoModule = useCallback((moduleId, agentIdForHistoryIdx) => {
+        // Save where we were at agent level
+        if (agentIdForHistoryIdx) setNavHistory(h => ({ ...h, [agentIdForHistoryIdx]: idx }));
+        setPath(prev => {
+          const baseAgent = prev[0];
+          return [baseAgent, moduleId];
+        });
+        // Optimistic selection; fix after rows rebuild
+        setIdx(2);
+        setTimeout(() => {
+          const r = rowsRef.current;
+          const firstInstrIdx = r.findIndex(x => x.type === 'instr');
+          if (firstInstrIdx >= 0) setIdx(firstInstrIdx);
+          else {
+            const headerIdx = r.findIndex(x => x.type === 'module' && x.moduleId === moduleId);
+            if (headerIdx >= 0) setIdx(headerIdx);
+          }
+        }, 0);
+      }, [idx]);
+
+      const handleReset = useCallback(() => {
+        store.reset();
+        setStoreVersion(store.getVersion());
+        setPath(['expert-maker']);
+        setIdx(0);
+        setNavHistory({});
+        setReorderState(null);
+        setHoverAction(null);
+        setHoverRowKey(null);
+        setOmniActive(false);
+        setOmniQuery('');
+        setOmniSelectedIdx(0);
+        instrUi.closeAll();
+        try { window.history.pushState(null, '', '#expert-maker'); } catch(_) {}
+      }, [store, instrUi]);
+
       const handleKeyDown = useCallback((e) => {
+        // If omni focused, ignore
         if ((e.key === '+' || e.key === '=') && document.activeElement !== omniInputRef.current) {
           e.preventDefault();
           setOmniActive(true);
@@ -605,6 +723,30 @@
         }
 
         if (document.activeElement === omniInputRef.current) return;
+
+        // Handle reordering when Movement hovered
+        if (reorderState) {
+          if (e.key === 'ArrowUp') { e.preventDefault(); moveItemInReorderMode('up'); return; }
+          if (e.key === 'ArrowDown') { e.preventDefault(); moveItemInReorderMode('down'); return; }
+          if (e.key === 'Escape') { e.preventDefault(); endReorder(); return; }
+        }
+
+        // Handle Enter on Duplicate/Delete hover
+        if (hoverAction && e.key === 'Enter') {
+          e.preventDefault();
+          const rws = rowsRef.current;
+          const sel = rws[idx];
+          if (sel && sel.type === 'instr') {
+            if (hoverAction === 'duplicate') {
+              duplicateInstruction(sel.dbId, sel.pos + 1);
+            } else if (hoverAction === 'delete') {
+              removeInstructionAtPos(sel.pos);
+            }
+          }
+          setHoverAction(null);
+          setHoverRowKey(null);
+          return;
+        }
 
         const rws = rowsRef.current;
         const sel = rws[idx]; if (!sel) return;
@@ -616,13 +758,13 @@
         }
 
         if (e.key === 'ArrowDown' && sel.type === 'instr' && instrUi.isFor(sel.key)) {
-          e.preventDefault(); focusInlineTextarea(sel.key); return;
+          // Default handled inside textarea via onKeyDown when at end to jump to meta
+          return;
         }
 
         if (e.key === 'ArrowLeft' && sel.type === 'instr') {
           e.preventDefault();
           if (instrUi.isFor(sel.key)) {
-            // Single Left exits all inline/settings per spec
             instrUi.closeAll();
             return;
           } else {
@@ -635,9 +777,8 @@
 
         if (e.key === 'ArrowRight' && sel.type === 'module-item') {
           e.preventDefault();
-          setNavHistory(h => ({ ...h, [path[0]]: idx }));
-          setPath([...path, sel.moduleId]);
-          setIdx(1);
+          const agentId = path[0];
+          navigateIntoModule(sel.moduleId, agentId);
           return;
         }
 
@@ -681,7 +822,7 @@
             return;
           }
         }
-      }, [idx, path, instrUi, navHistory]);
+      }, [idx, path, instrUi, navHistory, reorderState, hoverAction, navigateIntoModule, moveItemInReorderMode, endReorder, duplicateInstruction, removeInstructionAtPos]);
 
       useEffect(() => { window.addEventListener('keydown', handleKeyDown); return () => window.removeEventListener('keydown', handleKeyDown); }, [handleKeyDown]);
 
@@ -716,11 +857,13 @@
         <div className="layout">
           <div className="left-column">
             <div className="panel">
-              <div className="sc-title"><strong><em>(: Smile Composer)</em></strong></div>
+              <div className="sc-title">
+                <span><strong><em>(: Smile Composer)</em></strong></span>
+                <button className="reset-btn" type="button" onClick={handleReset}>Reset to default</button>
+              </div>
               {rows.map((row, i) => {
                 const isSelected = (i === idx) && !suppressSel;
                 const showInline = row.type === 'instr' && instrUi.isFor(row.key) && (i === idx);
-                const actions = getActionList(row);
 
                 return (
                   <React.Fragment key={row.key}>
@@ -734,9 +877,8 @@
                           if (!instrUi.isFor(row.key)) { instrUi.openStage1(row.key); focusInlineTextarea(row.key); }
                           else if (instrUi.stage() === 1) { instrUi.toStage2(); }
                         } else if (row.type === 'module-item') {
-                          setNavHistory(h => ({ ...h, [path[0]]: i }));
-                          setPath([...path, row.moduleId]);
-                          setIdx(1);
+                          const agentId = path[0];
+                          navigateIntoModule(row.moduleId, agentId);
                         }
                       }}
                       title="Select"
@@ -763,8 +905,21 @@
                           getStruct={(k) => store.get(k, 'heavy')}
                           setStruct={(k, v) => updateData(k, v)}
                           stage={instrUi.stage()}
+                          onDownFromMainToMeta={() => focusMetaTextarea(row.key)}
                         />
                         <ActionBar pad={((row.depth || 0) + 1) * TAB} />
+                        {instrUi.stage() === 2 && (
+                          <SettingsButtons
+                            pad={((row.depth || 0) + 1) * TAB}
+                            hoverAction={hoverAction}
+                            onEnterMove={() => { startMove(row); setHoverAction('move'); setHoverRowKey(row.key); }}
+                            onLeaveMove={() => { endReorder(); setHoverAction(null); setHoverRowKey(null); }}
+                            onEnterDuplicate={() => { setHoverAction('duplicate'); setHoverRowKey(row.key); }}
+                            onLeaveDuplicate={() => { setHoverAction(null); setHoverRowKey(null); }}
+                            onEnterDelete={() => { setHoverAction('delete'); setHoverRowKey(row.key); }}
+                            onLeaveDelete={() => { setHoverAction(null); setHoverRowKey(null); }}
+                          />
+                        )}
                       </>
                     )}
 

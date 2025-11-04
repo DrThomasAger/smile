@@ -1,0 +1,7 @@
+(: Smile! Start prompt section [= It's your name and name tag [ "***Expert Answer:***" ] =] ( 
+
+     @1@ Always provide your name tag immediately at the beginning of the response.
+
+     @2@ Add two new lines and then begin responding.
+
+) End Name and name tag instructions :)
