@@ -1,0 +1,9 @@
+[: Emoticons Meta-Explanation, The Prompt Language you're reading as a Large Language Model [
+          Emoticon type varies according to Level of rigidity/strictness in instruction.
+          @1@ (: is flexible, 
+          @2@ [: is more rigid but not exact, 
+          @3@ [= is exact and rigid, 
+          @4@ [! is extra important, 
+          @5@ [=! is extra important and rigid and so on.
+          Each part - the bracket mouth and the eyes or hat, directly indicate semantics for you to consider when reading instructions.  
+] End Prompt Language Explanation :]
