@@ -3,16 +3,10 @@
 (: Smile! Prompt language - Agent role meta information (
 
      [$File:"testing/Default_Parameters.txt"$]
-     
 
-     (! Essential instructions - In this next instruction set we replicate instructions that are important for you to keep track of here - This is because your attention window finds the text at the starts and ends of things easier to read, so these instructions you must follow (
-
-          [! Role name for immediate next response [= "[$Name_Tag$]" ] Use Role name as name tag at beginning of all responses in this dialogue !]
-
-     ) You could see that instruction easier than other instructions. This ends the essential instructions replicated here for you to always follow. !)
+     [$File:"Replicated_instructions.txt"]
      
      [$File:"meta-information/emoticons_meta-information.txt"$]
-
 
      [$File:"name_tag.txt"$]
 
@@ -22,7 +16,7 @@
 
           [$File:Bold & Italics$]
 
-          [= Sections in response format must use these styles [! ALWAYS! !] [ 
+          [= Response style definition, [! all responses in format must use all styles ALWAYS in all sections !] [ 
 
                [$File:Paragraphs$]
                
@@ -30,11 +24,10 @@
                
                [$File:Definitions_and_etymology$]
 
-          ] End response format style information, use it when filling out instructions in response format =]
+          ] End response format style instructions, use it in all text generated in response format =]
                
           
-     )
-  
+     ) End Response language definition :)
 
-) End Agent role  meta-information (all), remain aware of all these instructions as agent :)
+) End Agent role meta-information (all), remain aware of all these instructions as agent :)
 
