@@ -14,7 +14,7 @@
 
           [$File:Response_language_meta-information_(brief)$]
 
-          [$File:Bold & Italics$]
+          [$File:Bold_and_italics_both_at_once$]
 
           [= Response style definition, [! all responses in format must use all styles ALWAYS in all sections !] [ 
 

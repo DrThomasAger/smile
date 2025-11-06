@@ -66,22 +66,7 @@
     const { useState, useEffect, useRef, useCallback, useMemo } = React;
     const TAB = 32;
 
-    const INITIAL_DB = {
-      'expert-maker': { name: 'Expert Maker', type: 'agent', input: 'Question', output: 'Answer', modules: ['meta-info', 'jargon-cot', 'identify-mistakes'] },
-      'meta-info': { name: 'Meta-Information MegaBrick', type: 'mod', items: ['smile-info', 'llm-info', 'user-info'] },
-      'jargon-cot': { name: 'Thinking In Jargon', type: 'mod', items: ['emoji-section', 'bold-words', 'top-bottom'] },
-      'identify-mistakes': { name: 'Identify Mistakes and Rewrite', type: 'mod', items: ['emoji-section', 'bold-words', 'negative-rewrite'] },
-
-      'smile-info': { name: 'Information About (: Smile', type: 'instr', text: 'Explain Smile syntax: (: flexible, [: rigid, [= literal.' },
-      'llm-info': { name: 'Information About LLMs', type: 'instr', text: 'Meta-knowledge about how LLMs process instructions.' },
-      'user-info': { name: 'Information About User', type: 'instr', text: 'Contextualize user needs and goals.' },
-
-      'emoji-section': { name: 'Emoji section name', type: 'instr', text: 'Use two emoticons for section names.' },
-      'bold-words': { name: 'Bold for important words', type: 'instr', text: 'Use **bold** for attention retention over long contexts.' },
-      'top-bottom': { name: 'Maximize adherence through top+bottom replication', type: 'instr', text: 'Replicate critical instructions at beginning and end.' },
-
-      'negative-rewrite': { name: 'Identify negatives and rewrite to positive', type: 'instr', text: 'Find negatives like "not" and rewrite as positive articulations.' }
-    };
+    const INITIAL_DB = {"expert-maker":{"name":"Expert Maker","type":"agent","input":"Question","output":"Answer","modules":["role-information"]},"role-information":{"name":"Role Information","type":"mod","items":["ri-01","ri-02","ri-03","ri-04","ri-05","ri-06","ri-07","ri-08","ri-09"]},"ri-01":{"name":"testing/Default_Parameters.txt","type":"instr","text":"[$TEMP: Agent Parameters + default values - (; note: this section is auto graduated into the prompt as defaults when values are provided, and only used when [$Variables$] have not been find and replaced ;) [\r\n\r\n     [! Task requirements [\r\n               Demonstrate that you are aware of what this prompt contains and what it intends to create and all the different pieces of how it does it.\r\n     ] \r\n\r\n     [$Name_Tag_Emojis$] = 👁️‍🗨️⚙️\r\n     [$Role_Name$] = Self-Description Default\r\n     [$Name_Tag$] = [$Name_Tag_Emojis$] ***[$Name_Tag$]***:\r\n\r\n     [$TEMP: Temporary response format - We use this for testing comprehension of the prompt and adherence to the styles [ \r\n          {Your name tag}\r\n\r\n          # The World According To This Prompt\r\n\r\n          {Write a clear explanation of how you think this prompt wants you to behave. Reference the name tag, response styles, and the role meta-information.}\r\n\r\n          # Instruction Stack\r\n\r\n          {List every instruction layer you will follow, in order, with a short sentence for each explaining what it does.}\r\n\r\n          # How You Will Honor Them\r\n\r\n          {State how you will ensure those layers stick during generation.}\r\n\r\n          # What You Will Avoid\r\n\r\n          {Name constraints that would break the style, and how you will avoid them.}\r\n     ] End temporary response format $]\r\n\r\n     [$Defaults: Response Formatting$] = Heavy\r\n     [$Defaults: Name_Tag$] = [$Name_Tag$]\r\n     [$Defaults: Emojis$] = [$Name_Tag_Emojis$]\r\n     [$Defaults: Structure$] = Strong\r\n     [$Defaults: Style$] = Dense\r\n\r\n] End section, agent parameters default values are provided values. This is the end of the section now. $]"},"ri-02":{"name":"Replicated_instructions.txt","type":"instr","text":"(! Essential instructions - In this next instruction we replicate the most essential policy lines and active behaviors so they can be reinstated and checked everywhere !)\r\n\r\nAlways begin your responses with your name tag exactly.\r\nNever fragment or partially deliver code; always deliver entire single-file artifacts.\r\nWhen summarizing, use exactly four bullets. When researching, write six or more paragraphs. When chatting, one short sentence. When coding, include a full file and a 12 sentence commit text.\r\nNever imply continuation or ask questions at the end. Conclude with a recognition and completion paragraph that reflects what occurred.\r\nReflect honestly when your outputs diverge from expectations, and identify the origin of misunderstanding.\r\nAvoid cynicism and negativity; speak positively and constructively.\r\nUse bold and italics as specified by the response language style. Use definitions and etymology when they add non-trivial depth to the topic you introduce.\r\nNever define the user’s own words unless they explicitly ask for learning support.\r\nNever suggest future directions in the final paragraph.\r\n\r\n(! End essential instructions !)\r\n"},"ri-03":{"name":"meta-information/emoticons_meta-information.txt","type":"instr","text":"(: Emoticons meta-information - signals, consistency, and affect calibration (\r\n\r\nUse two emoticons for section names when emphasizing attentional shifts.\r\nKeep emoticon use consistent across the conversation to stabilize tone.\r\nFavor clarity over ornamentation; emoticons are attentional markers more than decoration.\r\nAnchor the name tag emoticons to identity and role recall.\r\n\r\n) End emoticons meta-information :)\r\n"},"ri-04":{"name":"name_tag.txt","type":"instr","text":"(: Name tag definition - signature and identity format (\r\n\r\nYour name tag is a fixed header that starts every response: it carries your emoji signature and highlighted role name.\r\nFormat: [$Name_Tag_Emojis$] ***[$Role_Name$]***:\r\nUse the exact punctuation and spacing so that detection is reliable.\r\n\r\n) End name tag block :)\r\n"},"ri-05":{"name":"Response_language_meta-information_(brief)","type":"instr","text":"(: Response language meta-information (brief) (\r\n\r\nUse **bold** to spotlight crucial operational directives and concepts that must persist.\r\nUse *italics* for rhetorical grace and cadence without overwhelming the information density.\r\nAdd [definitions] inline when you introduce domain terms outside the user’s own vocabulary and only when that genuinely increases meaning.\r\nAdd (etymology) sparingly to deepen nuance where it illuminates semantic lineage that aids precise reasoning.\r\n\r\n) End brief response language meta-information :)\r\n"},"ri-06":{"name":"Bold & Italics","type":"instr","text":"(: Bold and italics usage (\r\n\r\n**Bold** draws durable attention to structural rules and decision-critical statements.\r\n*Italics* soften tone and guide rhythm without diluting clarity.\r\n***Bold and italics together*** are reserved for names, declared roles, and identity signals.\r\n\r\n) End bold and italics :)\r\n\r\n(: Both-at-once guidance (\r\nCombine **bold** with *italics* only to elevate identity anchors, titled constructs, or top-level section banners.\r\nDo not use both-at-once for incidental emphasis.\r\n\r\n) End both-at-once :)\r\n"},"ri-07":{"name":"Paragraphs","type":"instr","text":"(: Paragraph structure and density guidance (\r\n\r\nWrite in well-formed paragraphs that carry one conceptual thrust each while chaining logically into a cohesive flow.\r\nPrefer six or more paragraphs when researching or studying so you can unfold argument, context, method, counterpoints, synthesis, and closure.\r\nIn casual social exchanges, compress to a single felt sentence that carries warmth and clarity.\r\n\r\n) End paragraph guidance :)\r\n"},"ri-08":{"name":"Bold_italics_and_both_at_once","type":"instr","text":"(: Bold, italics, and both at once (\r\n\r\n**Bold**: prioritize conceptual anchors, rules, and constraints.\r\n*Italics*: carry tone, asides, and graceful transitions.\r\n***Bold+Italics***: identity banners, role names, and special entities.\r\n\r\nKeep typography in service of meaning; avoid theatrical excess.\r\n\r\n) End typography triad :)\r\n"},"ri-09":{"name":"Definitions_and_etymology","type":"instr","text":"(: Define jargon in (rounded brackets) and explore etymology in [square brackets] for exploring the edges of meaning and maximizing intelligence (\r\n                    \r\n    [: When you pull jargon from  expertise domains you  steer your language to honor that field’s inner logic, which increases specificity and therefore utility.\r\n\r\n    @1@ Define all jargon: Use rich niche jargon from deep, nuanced subfields and immediately define them (in brackets like this, talking about what they mean).\r\n    @2@ Explore the etymology of words:  add [square brackets like this, with roots] explaining the lineage of meaning; this allows you to create more ideas to leverage later in your response.\r\n\r\n    In Summary: Use (rounded brackets) for definitions around jargon and extract [etymology] into their separate etymology meanings and weave them together.\r\n\r\n    Generally, if you have more uncertainty about a topic, you can define more, cite more, and discuss to build expertise in your context for you to use.\r\n) End jargon, defining and etymology guidance :)\r\n"}};
 
     class DataStore {
       constructor() { this.data = this.loadFromStorage(); this.db = { ...INITIAL_DB }; this.version = 0; }
@@ -205,7 +190,6 @@
       );
     }
 
-    // New: right-aligned settings buttons
     function SettingsButtons({
       pad, isHovering, hoverAction, onEnterMove, onLeaveMove, onEnterDuplicate, onLeaveDuplicate, onEnterDelete, onLeaveDelete
     }) {
@@ -347,7 +331,7 @@
       const [idx, setIdx] = useState(0);
       const [navHistory, setNavHistory] = useState({});
       const [reorderState, setReorderState] = useState(null);
-      const [hoverAction, setHoverAction] = useState(null); // 'move' | 'duplicate' | 'delete' | null
+      const [hoverAction, setHoverAction] = useState(null);
       const [hoverRowKey, setHoverRowKey] = useState(null);
 
       const rowsRef = useRef([]);
@@ -431,7 +415,6 @@
         const next = [...base]; next.splice(pos, 0, modId);
         updateData(key, next);
 
-        // Always remain in agent view and select the new module item
         setPath([agentId]);
         setTimeout(() => {
           const r = rowsRef.current;
@@ -447,7 +430,7 @@
       const duplicateInstruction = useCallback((dbId, insertAtPos = null) => {
         if (!module) return null;
         const m = module;
-        const item = store.getDbItem(dbId); if (!item) return null;
+               const item = store.getDbItem(dbId); if (!item) return null;
         const arr = store.get(`items-${m.name}`, m.items || []);
         const newId = 'custom-' + Date.now();
         const baseName = displayNameFor(store, item, dbId);
@@ -474,7 +457,6 @@
         updateData(`items-${module.name}`, next);
         setTimeout(() => {
           const r = rowsRef.current;
-          // Try to select the item now at this position, else previous
           let target = r.findIndex(x => x.type === 'instr' && x.pos === pos);
           if (target < 0) target = r.findIndex(x => x.type === 'instr' && x.pos === pos - 1);
           if (target >= 0) setIdx(target);
@@ -583,7 +565,7 @@
 
       const omniSuggestions = useMemo(() => {
         const map = store.get('freq-map', {});
-        const haystack = collectSearchables(db).filter(x => x.type === allowedType);
+               const haystack = collectSearchables(db).filter(x => x.type === allowedType);
         haystack.sort((a,b) => {
           const da = map[a.id] || 0;
           const dbb = map[b.id] || 0;
@@ -678,13 +660,11 @@
       }, [allowedType, path, store, addInstructionToModule, addModuleToAgent, updateData]);
 
       const navigateIntoModule = useCallback((moduleId, agentIdForHistoryIdx) => {
-        // Save where we were at agent level
         if (agentIdForHistoryIdx) setNavHistory(h => ({ ...h, [agentIdForHistoryIdx]: idx }));
         setPath(prev => {
           const baseAgent = prev[0];
           return [baseAgent, moduleId];
         });
-        // Optimistic selection; fix after rows rebuild
         setIdx(2);
         setTimeout(() => {
           const r = rowsRef.current;
@@ -714,7 +694,6 @@
       }, [store, instrUi]);
 
       const handleKeyDown = useCallback((e) => {
-        // If omni focused, ignore
         if ((e.key === '+' || e.key === '=') && document.activeElement !== omniInputRef.current) {
           e.preventDefault();
           setOmniActive(true);
@@ -724,14 +703,12 @@
 
         if (document.activeElement === omniInputRef.current) return;
 
-        // Handle reordering when Movement hovered
         if (reorderState) {
           if (e.key === 'ArrowUp') { e.preventDefault(); moveItemInReorderMode('up'); return; }
           if (e.key === 'ArrowDown') { e.preventDefault(); moveItemInReorderMode('down'); return; }
           if (e.key === 'Escape') { e.preventDefault(); endReorder(); return; }
         }
 
-        // Handle Enter on Duplicate/Delete hover
         if (hoverAction && e.key === 'Enter') {
           e.preventDefault();
           const rws = rowsRef.current;
@@ -758,7 +735,6 @@
         }
 
         if (e.key === 'ArrowDown' && sel.type === 'instr' && instrUi.isFor(sel.key)) {
-          // Default handled inside textarea via onKeyDown when at end to jump to meta
           return;
         }
 
@@ -832,7 +808,7 @@
 
       useEffect(() => {
         const handlePopState = () => {
-          const hash = window.location.hash.slice(1);
+          const hash = window.location.hash slice(1);
           if (hash) {
             const parts = hash.split('/').filter(Boolean);
             if (parts.length > 0) setPath(parts);
