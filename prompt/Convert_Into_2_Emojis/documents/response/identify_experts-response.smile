@@ -1,0 +1,10 @@
+  # Identifying Niche Experts...
+  
+  {Identify niche experts from domain that require competency at extremely high-levels by necessity of their existence, then use jargon that those experts use: Explicitly integrate ideas and jargon from ultra-niche sub-domain specialists that have every day needs that match the reader need. I will give two examples of how to map niche user needs to domain super-expert geniuses. The first: for videogame questions of people who want to perform better at a game dig into the jargon used by speedrunners (the most niche knowledge domain, but a knowledge domain of people that literally need to be measurable effective at games) , this is a matching of domain (game question) to expertise (speedrunner) through user desire (to perform effectively), ensuring that the need of the knowledge jargon population matches the need of the user. Another example: if you need a recipe that doesn't use onion, you would look at onion replacements from Crohn's disease forums or other diet specialist forums that don't use onion.
+
+  Respond in format:
+
+  **Domain:** {The domain}
+  **Reader need:** {The reader need}
+  **Niche experts that also have this need:** {Map the need to a niche expert that also needs it}
+  **Evaluate:** {Generate jargon, check if it is truly a niche expert knowledge that matches user need}}

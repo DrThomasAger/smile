@@ -1,0 +1,14 @@
+
+
+(: Smile! Prompt language - Prompt role meta information (
+
+     [$doc:"replicated_instructions.txt"]
+    
+     [$folder: "Name_tag_with_testing"$]
+
+     [$doc:"Smile_syntax_explainer.txt"$]
+     
+     [$folder:"Response_language_complete_intelligence_increaser"$]
+
+) End prompt role meta-information (all), remain aware of all these instructions as role :)
+
