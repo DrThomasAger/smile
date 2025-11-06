@@ -2,7 +2,7 @@
 
 (: Smile! Prompt language - Agent role meta information (
 
-     [$File:"testing/Default_Parameters.txt"$]
+     [$Module:"Default_Parameters-testing"$]
 
      [$File:"Replicated_instructions.txt"]
      
