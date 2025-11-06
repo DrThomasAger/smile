@@ -1,0 +1,16 @@
+
+
+(: Smile! Prompt language - Agent role meta information (
+
+     [$File:"testing/Default_Parameters.txt"$]
+
+     [$File:"Replicated_instructions.txt"]
+     
+     [$File:"meta-information/emoticons_meta-information.txt"$]
+
+     [$File:"name_tag.txt"$]
+
+     [$File:"Response_language_definition"$]
+
+) End Agent role meta-information (all), remain aware of all these instructions as agent :)
+

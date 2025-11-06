@@ -8,16 +8,15 @@
   <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
   <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
   <style>
-    :root { --tab: 32px; --soft-bg: #fafafa; --select-bg: #f2f2f2; --rule: rgba(0,0,0,0.08); --sidebar-w: 360px; }
+    :root { --tab: 32px; --soft-bg: #fafafa; --select-bg: #f2f2f2; --rule: rgba(0,0,0,0.08); --sidebar-w: 360px; --soft-chroma: #888; }
     * { box-sizing: border-box; }
     body { font-family: -apple-system, system-ui, Segoe UI, Helvetica, Arial, sans-serif; background: #fff; color: #111; padding: 24px; margin: 0; }
     .layout { display: grid; grid-template-columns: 1fr var(--sidebar-w); gap: 16px; align-items: start; }
     .left-column { display: grid; grid-template-rows: auto auto; gap: 12px; }
     .panel { background: #fff; padding: 16px; box-shadow: 0 1px 0 0 var(--rule); border-radius: 10px; }
 
-    .sc-title { font-size: inherit; font-weight: 400; margin-bottom: 8px; display: flex; align-items: center; justify-content: space-between; gap: 8px; }
+    .sc-title { font-size: inherit; font-weight: 400; display: flex; align-items: center; justify-content: space-between; gap: 8px; margin-bottom: 8px; }
     .sc-title strong em { font-style: italic; }
-    .reset-btn { font-size: 12px; border: 1px solid var(--rule); background: #fff; border-radius: 8px; padding: 4px 10px; cursor: pointer; }
 
     .line { user-select: none; padding: 8px 10px; border-radius: 10px; display: flex; align-items: center; justify-content: space-between; gap: 10px; cursor: pointer; transition: background-color 0.12s ease, opacity 0.12s ease; touch-action: none; position: relative; }
     .line.sel { font-weight: 600; background-color: var(--select-bg); }
@@ -25,18 +24,18 @@
 
     .indent-block { margin-top: 8px; }
     .prompt-preview { white-space: pre-wrap; font-size: 13px; color: #222; }
+    .soft { color: var(--soft-chroma); }
 
     .underline-input, .underline-textarea {
       width: 100%; background: transparent; border: none; border-bottom: 1px solid #ccc; border-radius: 0;
       padding: 6px 2px 6px 0; font: inherit; outline: none; resize: vertical; min-height: 34px;
     }
-    .underline-textarea { min-height: 80px; }
+    .underline-textarea { min-height: 280px; } /* taller editor */
 
     .action-bar-inline { display: block; margin-top: 8px; }
     .action-row { display: inline-flex; align-items: center; gap: 10px; width: 100%; }
     .action-spacer { flex: 1 1 auto; }
-    .action-hint-left { font-size: 12px; color: #444; user-select: none; }
-    .action-hint-right { font-size: 12px; color: #444; user-select: none; }
+    .action-hint-left, .action-hint-right { font-size: 12px; color: #444; user-select: none; }
 
     .settings-buttons { display: flex; justify-content: flex-end; gap: 8px; margin-top: 6px; }
     .settings-btn { font-size: 12px; border: 1px solid var(--rule); background: #fff; border-radius: 8px; padding: 4px 10px; cursor: default; }
@@ -66,749 +65,288 @@
     const { useState, useEffect, useRef, useCallback, useMemo } = React;
     const TAB = 32;
 
-    const INITIAL_DB = {"expert-maker":{"name":"Expert Maker","type":"agent","input":"Question","output":"Answer","modules":["role-information"]},"role-information":{"name":"Role Information","type":"mod","items":["ri-01","ri-02","ri-03","ri-04","ri-05","ri-06","ri-07","ri-08","ri-09"]},"ri-01":{"name":"testing/Default_Parameters.txt","type":"instr","text":"[$TEMP: Agent Parameters + default values - (; note: this section is auto graduated into the prompt as defaults when values are provided, and only used when [$Variables$] have not been find and replaced ;) [\r\n\r\n     [! Task requirements [\r\n               Demonstrate that you are aware of what this prompt contains and what it intends to create and all the different pieces of how it does it.\r\n     ] \r\n\r\n     [$Name_Tag_Emojis$] = 👁️‍🗨️⚙️\r\n     [$Role_Name$] = Self-Description Default\r\n     [$Name_Tag$] = [$Name_Tag_Emojis$] ***[$Role_Name$]***:\r\n\r\n     [$TEMP: Temporary response format - We use this for testing comprehension of the prompt and adherence to the styles [ \r\n          {Your name tag}\r\n\r\n          # The World According To This Prompt\r\n\r\n          {Write a clear explanation of how you think this prompt wants you to behave. Reference the name tag, response styles, and the role meta-information.}\r\n\r\n          # Instruction Stack\r\n\r\n          {List every instruction layer you will follow, in order, with a short sentence for each explaining what it does.}\r\n\r\n          # How You Will Honor Them\r\n\r\n          {State how you will ensure those layers stick during generation.}\r\n\r\n          # What You Will Avoid\r\n\r\n          {Name constraints that would break the style, and how you will avoid them.}\r\n     ] End temporary response format $]\r\n\r\n     [$Defaults: Response Formatting$] = Heavy\r\n     [$Defaults: Name_Tag$] = [$Name_Tag$]\r\n     [$Defaults: Emojis$] = [$Name_Tag_Emojis$]\r\n     [$Defaults: Structure$] = Strong\r\n     [$Defaults: Style$] = Dense\r\n\r\n] End section, agent parameters default values are provided values. This is the end of the section now. $]"},"ri-02":{"name":"Replicated_instructions.txt","type":"instr","text":"(! Essential instructions - In this next instruction we replicate the most essential policy lines and active behaviors so they can be reinstated and checked everywhere !)\r\n\r\nAlways begin your responses with your name tag exactly.\r\nNever fragment or partially deliver code; always deliver entire single-file artifacts.\r\nWhen summarizing, use exactly four bullets. When researching, write six or more paragraphs. When chatting, one short sentence. When coding, include a full file and a 12 sentence commit text.\r\nNever imply continuation or ask questions at the end. Conclude with a recognition and completion paragraph that reflects what occurred.\r\nReflect honestly when your outputs diverge from expectations, and identify the origin of misunderstanding.\r\nAvoid cynicism and negativity; speak positively and constructively.\r\nUse bold and italics as specified by the response language style. Use definitions and etymology when they add non-trivial depth to the topic you introduce.\r\nNever define the user’s own words unless they explicitly ask for learning support.\r\nNever suggest future directions in the final paragraph.\r\n\r\n(! End essential instructions !)\r\n"},"ri-03":{"name":"meta-information/emoticons_meta-information.txt","type":"instr","text":"(: Emoticons meta-information - signals, consistency, and affect calibration (\r\n\r\nUse two emoticons for section names when emphasizing attentional shifts.\r\nKeep emoticon use consistent across the conversation to stabilize tone.\r\nFavor clarity over ornamentation; emoticons are attentional markers more than decoration.\r\nAnchor the name tag emoticons to identity and role recall.\r\n\r\n) End emoticons meta-information :)\r\n"},"ri-04":{"name":"name_tag.txt","type":"instr","text":"(: Name tag definition - signature and identity format (\r\n\r\nYour name tag is a fixed header that starts every response: it carries your emoji signature and highlighted role name.\r\nFormat: [$Name_Tag_Emojis$] ***[$Role_Name$]***:\r\nUse the exact punctuation and spacing so that detection is reliable.\r\n\r\n) End name tag block :)\r\n"},"ri-05":{"name":"Response_language_meta-information_(brief)","type":"instr","text":"(: Response language meta-information (brief) (\r\n\r\nUse **bold** to spotlight crucial operational directives and concepts that must persist.\r\nUse *italics* for rhetorical grace and cadence without overwhelming the information density.\r\nAdd [definitions] inline when you introduce domain terms outside the user’s own vocabulary and only when that genuinely increases meaning.\r\nAdd (etymology) sparingly to deepen nuance where it illuminates semantic lineage that aids precise reasoning.\r\n\r\n) End brief response language meta-information :)\r\n"},"ri-06":{"name":"Bold & Italics","type":"instr","text":"(: Bold and italics usage (\r\n\r\n**Bold** draws durable attention to structural rules and decision-critical statements.\r\n*Italics* soften tone and guide rhythm without diluting clarity.\r\n***Bold and italics together*** are reserved for names, declared roles, and identity signals.\r\n\r\n) End bold and italics :)\r\n\r\n(: Both-at-once guidance (\r\nCombine **bold** with *italics* only to elevate identity anchors, titled constructs, or top-level section banners.\r\nDo not use both-at-once for incidental emphasis.\r\n\r\n) End both-at-once :)\r\n"},"ri-07":{"name":"Paragraphs","type":"instr","text":"(: Paragraph structure and density guidance (\r\n\r\nWrite in well-formed paragraphs that carry one conceptual thrust each while chaining logically into a cohesive flow.\r\nPrefer six or more paragraphs when researching or studying so you can unfold argument, context, method, counterpoints, synthesis, and closure.\r\nIn casual social exchanges, compress to a single felt sentence that carries warmth and clarity.\r\n\r\n) End paragraph guidance :)\r\n"},"ri-08":{"name":"Bold_italics_and_both_at_once","type":"instr","text":"(: Bold, italics, and both at once (\r\n\r\n**Bold**: prioritize conceptual anchors, rules, and constraints.\r\n*Italics*: carry tone, asides, and graceful transitions.\r\n***Bold+Italics***: identity banners, role names, and special entities.\r\n\r\nKeep typography in service of meaning; avoid theatrical excess.\r\n\r\n) End typography triad :)\r\n"},"ri-09":{"name":"Definitions_and_etymology","type":"instr","text":"(: Define jargon in (rounded brackets) and explore etymology in [square brackets] for exploring the edges of meaning and maximizing intelligence (\r\n                    \r\n    [: When you pull jargon from  expertise domains you  steer your language to honor that field’s inner logic, which increases specificity and therefore utility.\r\n\r\n    @1@ Define all jargon: Use rich niche jargon from deep, nuanced subfields and immediately define them (in brackets like this, talking about what they mean).\r\n    @2@ Explore the etymology of words:  add [square brackets like this, with roots] explaining the lineage of meaning; this allows you to create more ideas to leverage later in your response.\r\n\r\n    In Summary: Use (rounded brackets) for definitions around jargon and extract [etymology] into their separate etymology meanings and weave them together.\r\n\r\n    Generally, if you have more uncertainty about a topic, you can define more, cite more, and discuss to build expertise in your context for you to use.\r\n) End jargon, defining and etymology guidance :)\r\n"}};
+    /* ========= Utilities: names, soft-highlighting, drafts ========= */
+
+    const stripFolders = (s) => s.split('/').pop();
+    const stripExtension = (s) => s.replace(/\.[^./\\]+$/, '');
+    const displayShortName = (s) => stripExtension(stripFolders(s));
+
+    const SOFT_CHARS = new Set(['(', ')', '[', ']', '{', '}', ':', ';']);
+    function isEmojiChar(ch) {
+      const cp = ch.codePointAt(0);
+      return (cp >= 0x1F000 && cp <= 0x1FAFF) || (cp >= 0x2600 && cp <= 0x27BF) || cp === 0xFE0F;
+    }
+    function renderSoftHighlighted(text, keyPrefix='k') {
+      const nodes = [];
+      let k = 0;
+      for (const ch of text) {
+        if (SOFT_CHARS.has(ch) || isEmojiChar(ch)) nodes.push(<span key={keyPrefix + (k++)} className="soft">{ch}</span>);
+        else nodes.push(<span key={keyPrefix + (k++)}>{ch}</span>);
+      }
+      return nodes;
+    }
+    const SoftText = ({ text }) => <>{renderSoftHighlighted(text, 'st-')}</>;
+
+    const draftKeyFor = (relPath) => `draft:${relPath}`;
+    const saveDraft = (relPath, text) => { try { localStorage.setItem(draftKeyFor(relPath), text); } catch(_) {} };
+    const loadDraft = (relPath) => { try { return localStorage.getItem(draftKeyFor(relPath)); } catch(_) { return null; } };
+    const clearDraft = (relPath) => { try { localStorage.removeItem(draftKeyFor(relPath)); } catch(_) {} };
+
+    /* ========= File System Access API ========= */
+
+    async function verifyPerm(handle, mode = 'readwrite') {
+      if (!handle) return false;
+      const opts = { mode };
+      const q = await handle.queryPermission(opts);
+      if (q === 'granted') return true;
+      const r = await handle.requestPermission(opts);
+      return r === 'granted';
+    }
+
+    async function getFileHandleFromPath(rootDirHandle, relPath) {
+      let dir = rootDirHandle;
+      const parts = relPath.split('/').filter(Boolean);
+      for (let i = 0; i < parts.length; i++) {
+        const seg = parts[i];
+        const isLast = i === parts.length - 1;
+        if (isLast) return await dir.getFileHandle(seg, { create: false });
+        dir = await dir.getDirectoryHandle(seg, { create: false });
+      }
+    }
+
+    async function readTextFile(fileHandle) {
+      const file = await fileHandle.getFile();
+      return await file.text();
+    }
+
+    async function writeTextFile(fileHandle, text) {
+      const writable = await fileHandle.createWritable();
+      await writable.write(text);
+      await writable.close();
+    }
+
+    /**
+     * Resolve the project’s prompt folder by allowing the user’s first click to grant access,
+     * then descending to /prompt or /smile/prompt based on the selected directory.
+     * This avoids an explicit “Connect” UI while still respecting browser permissions.
+     */
+    async function getPromptRootViaFirstUserAction() {
+      const base = await window.showDirectoryPicker();
+      // Try descend to prompt, or smile/prompt
+      async function tryGetPromptFrom(sel) {
+        try { return await sel.getDirectoryHandle('prompt', { create: false }); } catch(_) {}
+        try {
+          const smile = await sel.getDirectoryHandle('smile', { create: false });
+          return await smile.getDirectoryHandle('prompt', { create: false });
+        } catch(_) {}
+        // If selected is the prompt folder itself
+        try {
+          // Duck test by checking presence of "modules" inside
+          const m = await sel.getDirectoryHandle('modules', { create: false });
+          if (m) return sel;
+        } catch(_) {}
+        throw new Error('Could not resolve prompt folder relative to selection');
+      }
+      const promptHandle = await tryGetPromptFrom(base);
+      const ok = await verifyPerm(promptHandle, 'readwrite');
+      if (!ok) throw new Error('Permission denied for prompt folder');
+      return promptHandle;
+    }
+
+    /* ========= DB store ========= */
 
     class DataStore {
-      constructor() { this.data = this.loadFromStorage(); this.db = { ...INITIAL_DB }; this.version = 0; }
-      loadFromStorage() { try { const stored = localStorage.getItem('smileData'); return stored ? JSON.parse(stored) : {}; } catch(e){ return {}; } }
-      saveToStorage(data) { try { localStorage.setItem('smileData', JSON.stringify(data)); } catch(e){} }
+      constructor() { this.data = {}; this.db = {}; this.version = 0; }
       get(key, def) { return key in this.data ? this.data[key] : def; }
-      set(key, value) { this.data = { ...this.data, [key]: value }; this.version++; this.saveToStorage(this.data); return this.data; }
-      reset() { this.data = {}; localStorage.removeItem('smileData'); this.db = { ...INITIAL_DB }; this.version++; return this.data; }
+      set(key, value) { this.data = { ...this.data, [key]: value }; this.version++; return this.data; }
+      replaceDb(db) { this.db = db || {}; this.version++; }
       getDbItem(id) { return this.db[id] || null; }
-      addCustomDbItem(id, item) { this.db[id] = item; this.version++; }
       getAllDb() { return this.db; }
       getVersion() { return this.version; }
+      reset() { this.data = {}; this.version++; return this.data; }
     }
 
-    const moveInList = (arr, fromPos, toPos) => {
-      if (fromPos === toPos || fromPos < 0 || toPos < 0 || fromPos >= arr.length) return arr;
-      const newArr = [...arr];
-      const [item] = newArr.splice(fromPos, 1);
-      const insertPos = Math.min(toPos, newArr.length);
-      newArr.splice(insertPos, 0, item);
-      return newArr;
-    };
+    /* ========= Scanning prompt/ into memory ========= */
 
-    const displayNameFor = (store, dbItem, id) =>
-      store.get(`nn-${id}`, store.get(`n-${dbItem.name}`, dbItem.name));
+    async function scanPrompt(promptRootHandle) {
+      const db = {};
+      const agentId = 'expert-maker';
+      db[agentId] = { name: 'Expert Maker', type: 'agent', input: 'Question', output: 'Answer', modules: [] };
 
-    const useInstrUi = () => {
-      const [state, setState] = useState({ rowKey: null, stage: 0 });
-      return {
-        isFor: (rowKey) => state.rowKey === rowKey && state.stage > 0,
-        stage: () => state.stage,
-        openStage1: (rowKey) => setState({ rowKey, stage: 1 }),
-        toStage2: () => setState(s => (s.rowKey ? { rowKey: s.rowKey, stage: 2 } : s)),
-        backToStage1: () => setState(s => (s.rowKey ? { rowKey: s.rowKey, stage: 1 } : s)),
-        closeAll: () => setState({ rowKey: null, stage: 0 }),
-        rowKey: () => state.rowKey
-      };
-    };
-
-    class RowBuilder {
-      constructor(store, path) { this.store = store; this.path = path; this.rows = []; }
-      build() {
-        this.addAgent();
-        if (this.isAtModule()) this.addModuleContent(); else this.addAgentModules();
-        return this.rows;
+      // Modules: prompt/modules (files at top-level of /modules excluding "instructions" dir)
+      const modulesDir = await promptRootHandle.getDirectoryHandle('modules', { create: false });
+      const moduleFiles = [];
+      for await (const entry of modulesDir.values()) {
+        if (entry.kind === 'file') moduleFiles.push(entry.name);
       }
-      addAgent() {
-        const agent = this.getAgent(); if (!agent) return;
-        this.rows.push({ key: `agent:${this.path[0]}`, type: 'agent', depth: 0, label: this.store.get(`n-${agent.name}`, agent.name) });
+      moduleFiles.sort((a,b) => a.toLowerCase().localeCompare(b.toLowerCase()));
+      const moduleIds = [];
+
+      for (const fname of moduleFiles) {
+        const moduleId = `mod:${stripExtension(fname)}`;
+        db[moduleId] = { name: stripExtension(fname), type: 'mod', items: [] };
+        moduleIds.push(moduleId);
       }
-      addModuleContent() {
-        const module = this.getCurrentModule(); if (!module) return;
-        const moduleDBKey = this.path[this.path.length - 1];
-        this.rows.push({ key: `module:${moduleDBKey}`, type: 'module', depth: 1, label: this.store.get(`n-${module.name}`, module.name), moduleId: moduleDBKey });
-        const items = this.store.get(`items-${module.name}`, module.items || []);
-        items.forEach((id, i) => {
-          const ins = this.store.getDbItem(id); if (!ins) return;
-          this.rows.push({
-            key: `ins:${id}`, type: 'instr', depth: 2,
-            label: displayNameFor(this.store, ins, id),
-            isOutput: i === items.length - 1,
-            nameKey: `n-${ins.name}`, nameOverrideKey: `nn-${id}`,
-            textKey: `t-${ins.name}`, defaultText: ins.text || '',
-            metaKey: `meta-${id}`, structKey: `struct-${id}`,
-            promptKey: `t-${ins.name}`, dbId: id, pos: i, canReorder: true
-          });
-        });
+
+      // Instructions: prompt/modules/instructions recursively
+      let instrDir;
+      try {
+        instrDir = await modulesDir.getDirectoryHandle('instructions', { create: false });
+      } catch(_) {
+        instrDir = null;
       }
-      addAgentModules() {
-        const agent = this.getAgent(); if (!agent) return;
-        const modules = this.store.get(`mods-${agent.name}`, agent.modules || []);
-        modules.forEach((mid, i) => {
-          const mod = this.store.getDbItem(mid); if (!mod) return;
-          this.rows.push({
-            key: `mod:${mid}:${i}`, type: 'module-item', depth: 1,
-            label: displayNameFor(this.store, mod, mid),
-            isOutput: i === modules.length - 1,
-            nameKey: `n-${mod.name}`, nameOverrideKey: `nn-${mid}`,
-            metaKey: `meta-${mid}`, structKey: `struct-${mid}`,
-            moduleId: mid, pos: i, canReorder: true
-          });
-        });
-      }
-      isAtModule() { return this.path.length >= 2; }
-      getAgent() { return this.store.getDbItem(this.path[0]); }
-      getCurrentModule() { const last = this.path[this.path.length - 1]; return this.store.getDbItem(last); }
-    }
 
-    function StructureDots5({ id, value, onChange }) {
-      const opts = [
-        { v: 'heavy', label: 'Heavy' },
-        { v: 'heavy-mid', label: '●' },
-        { v: 'medium', label: 'Medium' },
-        { v: 'medium-light', label: '●' },
-        { v: 'light', label: 'Light' }
-      ];
-      return (
-        <div className="seg" role="radiogroup" aria-label="Structure">
-          <span className="label">Structure</span>
-          {opts.map((o) => (
-            <label key={o.v} title={o.label}>
-              <input type="radio" name={`struct-${id}`} value={o.v} checked={value === o.v} onChange={(e) => onChange(e.target.value)} />
-              <span className="opt">
-                {o.label === '●' ? <span className="dot" aria-hidden="true"></span> : <span style={{ fontSize: 12 }}>{o.label}</span>}
-              </span>
-            </label>
-          ))}
-        </div>
-      );
-    }
-
-    function ActionBar({ pad }) {
-      return (
-        <div className="action-bar-inline" style={{ paddingLeft: pad }}>
-          <div className="action-row" onClick={(e)=>e.stopPropagation()}>
-            <span className="action-hint-left">([Esc] to cancel)</span>
-            <span className="action-spacer"></span>
-            <span className="action-hint-right">-> Settings</span>
-          </div>
-        </div>
-      );
-    }
-
-    function SettingsButtons({
-      pad, isHovering, hoverAction, onEnterMove, onLeaveMove, onEnterDuplicate, onLeaveDuplicate, onEnterDelete, onLeaveDelete
-    }) {
-      return (
-        <div className="settings-buttons" style={{ paddingLeft: pad }}>
-          <span
-            className="settings-btn"
-            onMouseEnter={onEnterMove}
-            onMouseLeave={onLeaveMove}
-            title="Use ↑ ↓ to move while hovering"
-          >
-            -> Movement
-          </span>
-          <span
-            className="settings-btn"
-            onMouseEnter={onEnterDuplicate}
-            onMouseLeave={onLeaveDuplicate}
-            title="Press Enter to Duplicate"
-          >
-            {hoverAction === 'duplicate' ? 'Press Enter to Duplicate' : '-> + Duplicate'}
-          </span>
-          <span
-            className="settings-btn"
-            onMouseEnter={onEnterDelete}
-            onMouseLeave={onLeaveDelete}
-            title="Press Enter To Confirm Delete"
-          >
-            {hoverAction === 'delete' ? 'Press Enter To Confirm Delete' : '-> Delete'}
-          </span>
-        </div>
-      );
-    }
-
-    function InstructionInlineEditor({
-      store, row, onTextChange, getNameOverride, setNameOverride,
-      getMeta, setMeta, getStruct, setStruct, stage=2, onDownFromMainToMeta
-    }) {
-      const pad = ((row.depth || 0) + 1) * TAB;
-      return (
-        <div className="indent-block" style={{ paddingLeft: pad }}>
-          <textarea
-            className="underline-textarea"
-            data-tarea={row.key}
-            value={store.get(row.promptKey, row.defaultText || '')}
-            onChange={(e) => onTextChange(row.promptKey, e.target.value)}
-            onKeyDown={(e) => {
-              if (stage === 2 && e.key === 'ArrowDown') {
-                const v = e.currentTarget.value || '';
-                const selStart = e.currentTarget.selectionStart;
-                const selEnd = e.currentTarget.selectionEnd;
-                if (selStart === selEnd && selEnd === v.length) {
-                  e.preventDefault();
-                  if (onDownFromMainToMeta) onDownFromMainToMeta();
-                }
-              }
-            }}
-            placeholder="Instruction…"
-          />
-          {stage === 2 && (
-            <>
-              <input
-                type="text"
-                className="underline-input"
-                value={getNameOverride(row.nameOverrideKey, '')}
-                onChange={(e) => setNameOverride(row.nameOverrideKey, e.target.value)}
-                placeholder="Name…"
-              />
-              <textarea
-                className="underline-textarea"
-                data-meta={row.key}
-                value={getMeta(row.metaKey) || ''}
-                onChange={(e) => setMeta(row.metaKey, e.target.value)}
-                placeholder="Meta information…"
-              />
-              <StructureDots5
-                id={row.dbId}
-                value={getStruct(row.structKey) || 'heavy'}
-                onChange={(v) => setStruct(row.structKey, v)}
-              />
-            </>
-          )}
-        </div>
-      );
-    }
-
-    function InstructionPreviewLine({ store, row }) {
-      const txtRaw = store.get(row.promptKey, row.defaultText || '') || '';
-      const lines = txtRaw.split(/\r?\n/);
-      const preview = lines.slice(0, 3);
-      if (lines.length > 3) preview.push('...');
-      const pad = ((row.depth || 0) + 1) * TAB;
-      return (
-        <div className="indent-block" style={{ paddingLeft: pad }}>
-          <div className="prompt-preview">{preview.join('\n')}</div>
-        </div>
-      );
-    }
-
-    function ModulePreview({ store, moduleId, depth }) {
-      const mod = store.getDbItem(moduleId);
-      if (!mod) return null;
-      const items = store.get(`items-${mod.name}`, mod.items || []);
-      const pad = ((depth || 0) + 1) * TAB;
-      const showIds = items.slice(0, 3);
-      const hasMore = items.length > 3;
-      return (
-        <div className="indent-block" style={{ paddingLeft: pad }}>
-          {showIds.length === 0 ? <div className="prompt-preview">Empty module</div> :
-            <>
-              {showIds.map((iid) => {
-                const ins = store.getDbItem(iid); if (!ins) return null;
-                return <div key={iid} className="prompt-preview">{displayNameFor(store, ins, iid)}</div>;
-              })}
-              {hasMore ? <div className="prompt-preview">...</div> : null}
-            </>
+      const instructionEntries = [];
+      async function walk(dirHandle, relPrefix) {
+        for await (const node of dirHandle.values()) {
+          if (node.kind === 'directory') {
+            await walk(node, relPrefix + node.name + '/');
+          } else if (node.kind === 'file') {
+            instructionEntries.push(relPrefix + node.name);
           }
-        </div>
-      );
+        }
+      }
+      if (instrDir) await walk(instrDir, 'modules/instructions/');
+
+      instructionEntries.sort((a,b) => displayShortName(a).toLowerCase().localeCompare(displayShortName(b).toLowerCase()));
+
+      // For now, each module shows the full instruction set in its view (your structure guarantees single instruction folder)
+      // Create DB items for instructions
+      for (const relPath of instructionEntries) {
+        const insId = `ins:${relPath}`;
+        db[insId] = { name: displayShortName(relPath), type: 'instr', path: relPath };
+      }
+      for (const mid of moduleIds) {
+        db[mid].items = instructionEntries.map(p => `ins:${p}`);
+      }
+
+      // Attach modules to agent
+      db[agentId].modules = moduleIds;
+
+      // Build Omni index: all files under prompt/ recursively with content
+      const omni = [];
+      // modules (by name only)
+      for (const mid of moduleIds) {
+        omni.push({ id: mid, type: 'mod', name: db[mid].name });
+      }
+      // all prompt files
+      async function walkAll(dirHandle, relPrefix) {
+        for await (const node of dirHandle.values()) {
+          if (node.kind === 'directory') {
+            await walkAll(node, relPrefix + node.name + '/');
+          } else {
+            const rel = relPrefix + node.name;
+            try {
+              const fh = await getFileHandleFromPath(promptRootHandle, rel);
+              const txt = await readTextFile(fh);
+              omni.push({ id: `file:${rel}`, type: 'file', name: displayShortName(rel), relPath: rel, content: txt });
+            } catch(_) {
+              omni.push({ id: `file:${rel}`, type: 'file', name: displayShortName(rel), relPath: rel, content: '' });
+            }
+          }
+        }
+      }
+      await walkAll(promptRootHandle, '');
+
+      return { db, omni };
     }
 
-    function RightSidebar({ value, onChange }) {
-      return (
-        <div className="rightbar">
-          <textarea value={value} onChange={onChange}></textarea>
-        </div>
-      );
-    }
+    /* ========= React App ========= */
 
     function App() {
       const storeRef = useRef(new DataStore());
       const store = storeRef.current;
 
       const [storeVersion, setStoreVersion] = useState(store.getVersion());
-      const [tick, setTick] = useState(0);
-
       const [path, setPath] = useState(() => {
         const hash = window.location.hash.slice(1);
         if (hash) { const parts = hash.split('/').filter(Boolean); if (parts.length > 0) return parts; }
         return ['expert-maker'];
       });
-
       const [idx, setIdx] = useState(0);
-      const [navHistory, setNavHistory] = useState({});
-      const [reorderState, setReorderState] = useState(null);
-      const [hoverAction, setHoverAction] = useState(null);
-      const [hoverRowKey, setHoverRowKey] = useState(null);
 
-      const rowsRef = useRef([]);
-      const instrUi = useInstrUi();
-
+      const [promptRoot, setPromptRoot] = useState(null);
+      const [status, setStatus] = useState('Ready');
+      const [omniIndex, setOmniIndex] = useState([]);
       const [omniActive, setOmniActive] = useState(false);
       const [omniQuery, setOmniQuery] = useState('');
-      const [omniFocus, setOmniFocus] = useState(false);
       const [omniSelectedIdx, setOmniSelectedIdx] = useState(0);
       const omniInputRef = useRef(null);
 
+      const rowsRef = useRef([]);
+      const openEditorKeyRef = useRef(null);
+      const currentEditValueRef = useRef(null);
+      const currentFileHandleRef = useRef(null);
+      const currentFilePathRef = useRef(null);
+
+      const agent = store.getDbItem(path[0]) || store.getDbItem('expert-maker');
+      const atModule = path.length >= 2;
+
+      // First user click triggers scanning of smile/prompt automatically, avoiding explicit "connect" UI.
+      const didInitScanRef = useRef(false);
+      const requestScanIfNeeded = useCallback(async () => {
+        if (didInitScanRef.current) return;
+        try {
+          setStatus('Loading prompt folder…');
+          const pr = await getPromptRootViaFirstUserAction();
+          setPromptRoot(pr);
+          const { db, omni } = await scanPrompt(pr);
+          store.replaceDb(db);
+          setOmniIndex(omni);
+          setStoreVersion(store.getVersion());
+          didInitScanRef.current = true;
+          setStatus('Loaded');
+          // default agent view index
+          setPath(['expert-maker']);
+          setIdx( agent && agent.modules && agent.modules.length ? 1 : 0 );
+        } catch (e) {
+          setStatus('Permission required for prompt folder');
+        }
+      }, [store, agent]);
+
+      // Build rows view
       const buildRows = useCallback(() => {
-        const builder = new RowBuilder(store, path);
-        return builder.build();
-      }, [store, path]);
+        const rows = [];
+        const ag = store.getDbItem('expert-maker');
+        rows.push({ key: `agent:expert-maker`, type: 'agent', depth: 0, label: ag ? ag.name : 'Expert Maker' });
+
+        if (atModule) {
+          const modId = path[path.length - 1];
+          const mod = store.getDbItem(modId);
+          rows.push({ key: `module:${modId}`, type: 'module', depth: 1, label: mod ? mod.name : 'Module', moduleId: modId });
+          const items = mod ? (mod.items || []) : [];
+          items.forEach((iid, i) => {
+            const it = store.getDbItem(iid);
+            const relPath = it ? (it.path || '') : '';
+            rows.push({
+              key: `ins:${iid}`, type: 'instr', depth: 2,
+              label: it ? displayShortName(relPath) : 'Instruction', dbId: iid, pos: i, isOutput: i === items.length - 1,
+              relPath
+            });
+          });
+        } else {
+          const mods = (ag && ag.modules) ? ag.modules : [];
+          mods.forEach((mid, i) => {
+            const m = store.getDbItem(mid);
+            rows.push({
+              key: `mod:${mid}:${i}`, type: 'module-item', depth: 1, label: m ? m.name : 'Module', moduleId: mid, pos: i, isOutput: i === mods.length - 1
+            });
+          });
+        }
+        return rows;
+      }, [store, path, atModule]);
 
       const rows = useMemo(() => {
         const built = buildRows();
         rowsRef.current = built;
         return built;
-      }, [buildRows, storeVersion, tick]);
+      }, [buildRows, storeVersion]);
 
-      const atModule = path.length >= 2;
-      const allowedType = atModule ? 'instr' : 'mod';
-
-      const agent = store.getDbItem(path[0]) || store.getDbItem('expert-maker');
-      const module = atModule ? store.getDbItem(path[path.length - 1]) : null;
-
-      const updateData = useCallback((key, value) => {
-        store.set(key, value);
-        setStoreVersion(store.getVersion());
-        setTick(t => t + 1);
-      }, [store]);
-
-      const didInitRef = useRef(false);
+      // Hash sync
       useEffect(() => {
-        if (didInitRef.current) return;
-        if (path.length === 1) {
-          const firstModIdx = rowsRef.current.findIndex(r => r.type === 'module-item');
-          if (firstModIdx >= 0) setIdx(firstModIdx);
-        }
-        didInitRef.current = true;
+        const hash = '#' + path.join('/');
+        if (window.location.hash !== hash) window.history.pushState(null, '', hash);
       }, [path]);
-
-      const agentModules = useMemo(() => agent ? (store.get(`mods-${agent.name}`, agent.modules || [])) : [], [store, agent, storeVersion]);
-
-      const ensureModuleForAgent = useCallback(() => {
-        if (agentModules.length > 0) return agentModules[agentModules.length - 1];
-        const id = 'mod-' + Date.now();
-        store.addCustomDbItem(id, { name: 'General', type: 'mod', items: [] });
-        const key = `mods-${agent.name}`;
-        const arr = store.get(key, agent.modules || []);
-        updateData(key, [...arr, id]);
-        return id;
-      }, [agent, agentModules, store, updateData]);
-
-      const addInstructionToModule = useCallback((moduleId, instrId, insertPos = null) => {
-        const m = store.getDbItem(moduleId); if (!m) return;
-        const key = `items-${m.name}`;
-        const arr = store.get(key, m.items || []);
-        const pos = (insertPos !== null && insertPos >= 0 && insertPos <= arr.length) ? insertPos : arr.length;
-        const newArr = [...arr]; newArr.splice(pos, 0, instrId);
-        updateData(key, newArr);
-        
-        setTimeout(() => {
-          const r = rowsRef.current;
-          let targetIdx = r.findIndex(x => x.type === 'instr' && x.dbId === instrId && x.pos === pos);
-          if (targetIdx < 0) {
-            const all = r.map((x,i)=>[x,i]).filter(([x]) => x.type === 'instr' && x.dbId === instrId);
-            if (all.length) targetIdx = all[all.length - 1][1];
-          }
-          if (targetIdx >= 0) setIdx(targetIdx);
-        }, 0);
-      }, [store, updateData]);
-
-      const addModuleToAgent = useCallback((agentId, modId, insertPos = null) => {
-        const ag = store.getDbItem(agentId); if (!ag) return;
-        const key = `mods-${ag.name}`;
-        const base = store.get(key, ag.modules || []);
-        const pos = (insertPos !== null && insertPos >= 0 && insertPos <= base.length) ? insertPos : base.length;
-        const next = [...base]; next.splice(pos, 0, modId);
-        updateData(key, next);
-
-        setPath([agentId]);
-        setTimeout(() => {
-          const r = rowsRef.current;
-          let targetIdx = r.findIndex(x => x.type === 'module-item' && x.moduleId === modId && x.pos === pos);
-          if (targetIdx < 0) {
-            const all = r.map((x,i)=>[x,i]).filter(([x]) => x.type === 'module-item' && x.moduleId === modId);
-            if (all.length) targetIdx = all[all.length - 1][1];
-          }
-          if (targetIdx >= 0) setIdx(targetIdx);
-        }, 0);
-      }, [store, updateData]);
-
-      const duplicateInstruction = useCallback((dbId, insertAtPos = null) => {
-        if (!module) return null;
-        const m = module;
-        const item = store.getDbItem(dbId); if (!item) return null;
-        const arr = store.get(`items-${m.name}`, m.items || []);
-        const newId = 'custom-' + Date.now();
-        const baseName = displayNameFor(store, item, dbId);
-        const baseTextKey = `t-${item.name}`;
-        const baseText = store.get(baseTextKey, item.text || '');
-        store.addCustomDbItem(newId, { name: baseName + ' (copy)', type: 'instr', text: baseText });
-        const newArr = [...arr];
-        const at = (insertAtPos !== null && insertAtPos >= 0 && insertAtPos <= arr.length) ? insertAtPos : arr.length;
-        newArr.splice(at, 0, newId); updateData(`items-${m.name}`, newArr);
-        updateData(`nn-${newId}`, baseName + ' (copy)');
-        updateData(`t-${newId}`, baseText);
-        setTimeout(() => {
-          const r = rowsRef.current;
-          const i = r.findIndex(x => x.type === 'instr' && x.dbId === newId);
-          if (i >= 0) setIdx(i);
-        }, 0);
-        return newId;
-      }, [store, updateData, module]);
-
-      const removeInstructionAtPos = useCallback((pos) => {
-        if (!module) return;
-        const arr = store.get(`items-${module.name}`, module.items || []);
-        const next = arr.filter((_, i) => i !== pos);
-        updateData(`items-${module.name}`, next);
-        setTimeout(() => {
-          const r = rowsRef.current;
-          let target = r.findIndex(x => x.type === 'instr' && x.pos === pos);
-          if (target < 0) target = r.findIndex(x => x.type === 'instr' && x.pos === pos - 1);
-          if (target >= 0) setIdx(target);
-        }, 0);
-      }, [module, store, updateData]);
-
-      const startMove = useCallback((row) => {
-        if (!module || row.type !== 'instr') return;
-        const arrKey = `items-${module.name}`;
-        const arr = store.get(arrKey, module.items || []);
-        setReorderState({
-          rowKey: row.key,
-          itemId: row.dbId,
-          arrKey,
-          originalOrder: [...arr],
-          originalPos: row.pos,
-          currentPos: row.pos
-        });
-      }, [store, module]);
-
-      const moveItemInReorderMode = useCallback((direction) => {
-        if (!reorderState) return;
-        const arr = store.get(reorderState.arrKey, []);
-        const delta = direction === 'up' ? -1 : 1;
-        const keepTo = reorderState.currentPos + delta;
-        if (keepTo < 0 || keepTo >= arr.length) return;
-        const newArr = moveInList(arr, reorderState.currentPos, keepTo);
-        updateData(reorderState.arrKey, newArr);
-        setReorderState(prev => ({ ...prev, currentPos: keepTo }));
-      }, [reorderState, store, updateData]);
-
-      const endReorder = useCallback(() => {
-        if (!reorderState) return;
-        const { itemId, currentPos } = reorderState;
-        setReorderState(null);
-        setTimeout(() => {
-          const r = rowsRef.current;
-          const i = r.findIndex(x => x.type === 'instr' && x.dbId === itemId && x.pos === currentPos);
-          if (i >= 0) setIdx(i);
-        }, 0);
-      }, [reorderState]);
-
-      const cancelReorder = useCallback(() => {
-        if (!reorderState) return;
-        const { arrKey, originalOrder, itemId, originalPos } = reorderState;
-        updateData(arrKey, originalOrder);
-        setReorderState(null);
-        setTimeout(() => {
-          const targetIdx = rowsRef.current.findIndex(r =>
-            (r.type === 'instr') && (r.dbId === itemId) && r.pos === originalPos
-          );
-          if (targetIdx >= 0) setIdx(targetIdx);
-        }, 0);
-      }, [reorderState, updateData]);
-
-      const computedPromptText = useMemo(() => {
-        const buildPrompt = () => {
-          if (!agent) return '';
-          const mods = store.get(`mods-${agent.name}`, agent.modules || []);
-          const lines = [];
-          mods.forEach(mid => {
-            const m = store.getDbItem(mid); if (!m) return;
-            lines.push(`Module: ${displayNameFor(store, m, mid)}`);
-            const ids = store.get(`items-${m.name}`, m.items || []);
-            ids.forEach((iid, idx) => {
-              const it = store.getDbItem(iid); if (!it) return;
-              const one = store.get(`t-${it.name}`, it.text || '').split(/\r?\n/)[0];
-              const prefix = (idx === ids.length - 1) ? 'OUTPUT:' : '-';
-              lines.push(`  ${prefix} ${displayNameFor(store, it, iid)} — ${one}`);
-            });
-            lines.push('');
-          });
-          return lines.join('\n');
-        };
-        return buildPrompt();
-      }, [storeVersion, agent, store]);
-
-      const rightbarManual = store.get('rightbar-prompt-manual', false);
-      const rightbarValue = rightbarManual ? store.get('rightbar-prompt', '') : computedPromptText;
-
-      const collectSearchables = (dbObj) => {
-        const out = [];
-        Object.keys(dbObj).forEach(id => {
-          const it = dbObj[id]; if (!it) return;
-          if (it.type === 'mod' || it.type === 'instr') out.push({ id, type: it.type, name: it.name || '', text: it.text || '' });
-        });
-        return out;
-      };
-
-      const db = store.getAllDb();
-
-      const omniResults = useMemo(() => {
-        const q = (omniQuery || '').toLowerCase().trim();
-        if (!q) return [];
-        const haystack = collectSearchables(db).filter(x => x.type === allowedType);
-        const matches = haystack.filter(x => ((x.name + ' ' + x.text).toLowerCase().includes(q)));
-        matches.sort((a,b)=>a.name.toLowerCase().localeCompare(b.name.toLowerCase()));
-        return matches;
-      }, [db, omniQuery, allowedType]);
-
-      const bumpFreq = useCallback((id) => {
-        const map = store.get('freq-map', {});
-        const next = { ...map, [id]: (map[id] || 0) + 1 };
-        updateData('freq-map', next);
-      }, [store, updateData]);
-
-      const omniSuggestions = useMemo(() => {
-        const map = store.get('freq-map', {});
-        const haystack = collectSearchables(db).filter(x => x.type === allowedType);
-        haystack.sort((a,b) => {
-          const da = map[a.id] || 0;
-          const dbb = map[b.id] || 0;
-          if (dbb !== da) return dbb - da;
-          return a.name.toLowerCase().localeCompare(b.name.toLowerCase());
-        });
-        return haystack.slice(0, 8);
-      }, [db, storeVersion, allowedType]);
-
-      const focusInlineTextarea = (rowKey) => {
-        setTimeout(() => {
-          const ta = document.querySelector(`[data-tarea="${rowKey}"]`);
-          if (ta) {
-            ta.focus();
-            const len = ta.value.length;
-            try { ta.setSelectionRange(len, len); } catch(_) {}
-          }
-        }, 0);
-      };
-
-      const focusMetaTextarea = (rowKey) => {
-        setTimeout(() => {
-          const meta = document.querySelector(`[data-meta="${rowKey}"]`);
-          if (meta) {
-            meta.focus();
-            const len = meta.value.length;
-            try { meta.setSelectionRange(len, len); } catch(_) {}
-          }
-        }, 0);
-      };
-
-      const addByIdAtContext = useCallback((id) => {
-        const item = db[id]; if (!item) return;
-        if (item.type !== allowedType) return;
-        const sel = rowsRef.current[idx];
-
-        if (item.type === 'instr') {
-          const targetModuleId = (path.length >= 2) ? path[path.length - 1] : ensureModuleForAgent();
-          let insertPos = null;
-          
-          if (path.length >= 2) {
-            const m = store.getDbItem(targetModuleId);
-            const key = `items-${m.name}`;
-            const arr = store.get(key, m.items || []);
-            insertPos = (sel && sel.type === 'instr') ? sel.pos + 1 : arr.length;
-          } else {
-            insertPos = null;
-          }
-          
-          addInstructionToModule(targetModuleId, id, insertPos);
-          bumpFreq(id);
-          return;
-        }
-
-        if (item.type === 'mod') {
-          const agentId = path[0];
-          const ag = store.getDbItem(agentId);
-          const key = `mods-${ag.name}`;
-          const arr = store.get(key, ag.modules || []);
-          let insertPos = arr.length;
-
-          if (path.length === 1) {
-            insertPos = (sel && sel.type === 'module-item') ? sel.pos + 1 : arr.length;
-          } else {
-            const currentModuleId = path[path.length - 1];
-            const posInAgent = arr.indexOf(currentModuleId);
-            insertPos = posInAgent >= 0 ? posInAgent + 1 : arr.length;
-          }
-
-          addModuleToAgent(agentId, id, insertPos);
-          bumpFreq(id);
-          return;
-        }
-      }, [db, path, idx, ensureModuleForAgent, addInstructionToModule, addModuleToAgent, store, bumpFreq, allowedType]);
-
-      const createAndAddNewItem = useCallback(() => {
-        if (allowedType === 'instr' && path.length >= 2) {
-          const newId = 'custom-' + Date.now();
-          store.addCustomDbItem(newId, { name: 'New Instruction', type: 'instr', text: '' });
-          addInstructionToModule(path[path.length - 1], newId);
-          updateData(`nn-${newId}`, 'New Instruction');
-          updateData(`t-${newId}`, '');
-          return;
-        }
-        if (allowedType === 'mod') {
-          const newId = 'mod-' + Date.now();
-          store.addCustomDbItem(newId, { name: 'New Module', type: 'mod', items: [] });
-          addModuleToAgent(path[0], newId);
-          updateData(`nn-${newId}`, 'New Module');
-          return;
-        }
-      }, [allowedType, path, store, addInstructionToModule, addModuleToAgent, updateData]);
-
-      const navigateIntoModule = useCallback((moduleId, agentIdForHistoryIdx) => {
-        if (agentIdForHistoryIdx) setNavHistory(h => ({ ...h, [agentIdForHistoryIdx]: idx }));
-        setPath(prev => {
-          const baseAgent = prev[0];
-          return [baseAgent, moduleId];
-        });
-        setIdx(2);
-        setTimeout(() => {
-          const r = rowsRef.current;
-          const firstInstrIdx = r.findIndex(x => x.type === 'instr');
-          if (firstInstrIdx >= 0) setIdx(firstInstrIdx);
-          else {
-            const headerIdx = r.findIndex(x => x.type === 'module' && x.moduleId === moduleId);
-            if (headerIdx >= 0) setIdx(headerIdx);
-          }
-        }, 0);
-      }, [idx]);
-
-      const handleReset = useCallback(() => {
-        store.reset();
-        setStoreVersion(store.getVersion());
-        setPath(['expert-maker']);
-        setIdx(0);
-        setNavHistory({});
-        setReorderState(null);
-        setHoverAction(null);
-        setHoverRowKey(null);
-        setOmniActive(false);
-        setOmniQuery('');
-        setOmniSelectedIdx(0);
-        instrUi.closeAll();
-        try { window.history.pushState(null, '', '#expert-maker'); } catch(_) {}
-      }, [store, instrUi]);
-
-      const handleKeyDown = useCallback((e) => {
-        if ((e.key === '+' || e.key === '=') && document.activeElement !== omniInputRef.current) {
-          e.preventDefault();
-          setOmniActive(true);
-          setTimeout(() => { if (omniInputRef.current) omniInputRef.current.focus(); }, 0);
-          return;
-        }
-
-        if (document.activeElement === omniInputRef.current) return;
-
-        if (reorderState) {
-          if (e.key === 'ArrowUp') { e.preventDefault(); moveItemInReorderMode('up'); return; }
-          if (e.key === 'ArrowDown') { e.preventDefault(); moveItemInReorderMode('down'); return; }
-          if (e.key === 'Escape') { e.preventDefault(); endReorder(); return; }
-        }
-
-        if (hoverAction && e.key === 'Enter') {
-          e.preventDefault();
-          const rws = rowsRef.current;
-          const sel = rws[idx];
-          if (sel && sel.type === 'instr') {
-            if (hoverAction === 'duplicate') {
-              duplicateInstruction(sel.dbId, sel.pos + 1);
-            } else if (hoverAction === 'delete') {
-              removeInstructionAtPos(sel.pos);
-            }
-          }
-          setHoverAction(null);
-          setHoverRowKey(null);
-          return;
-        }
-
-        const rws = rowsRef.current;
-        const sel = rws[idx]; if (!sel) return;
-
-        if (e.key === 'ArrowRight' && sel.type === 'instr') {
-          e.preventDefault();
-          if (!instrUi.isFor(sel.key)) { instrUi.openStage1(sel.key); focusInlineTextarea(sel.key); return; }
-          if (instrUi.stage() === 1) { instrUi.toStage2(); return; }
-        }
-
-        if (e.key === 'ArrowDown' && sel.type === 'instr' && instrUi.isFor(sel.key)) {
-          return;
-        }
-
-        if (e.key === 'ArrowLeft' && sel.type === 'instr') {
-          e.preventDefault();
-          if (instrUi.isFor(sel.key)) {
-            instrUi.closeAll();
-            return;
-          } else {
-            const modId = path[path.length - 1];
-            const headerIdx = rowsRef.current.findIndex(r => r.type === 'module' && r.moduleId === modId);
-            if (headerIdx >= 0) setIdx(headerIdx);
-            return;
-          }
-        }
-
-        if (e.key === 'ArrowRight' && sel.type === 'module-item') {
-          e.preventDefault();
-          const agentId = path[0];
-          navigateIntoModule(sel.moduleId, agentId);
-          return;
-        }
-
-        if (e.key === 'ArrowLeft' && sel.type === 'module') {
-          e.preventDefault();
-          const agentId = path[0];
-          const lastModId = path[path.length - 1];
-          const saved = navHistory[agentId];
-          setPath([agentId]);
-          const r = rowsRef.current;
-          let i = r.findIndex(x => x.type==='module-item' && x.moduleId===lastModId);
-          if (i < 0 && Number.isFinite(saved)) i = saved;
-          if (i >= 0) setIdx(i);
-          return;
-        }
-
-        const lastIndex = rws.length - 1;
-        const gotoIndex = (n) => { setIdx(n); };
-
-        if (e.key === 'ArrowUp') { e.preventDefault(); gotoIndex(Math.max(0, idx - 1)); return; }
-
-        if (e.key === 'ArrowDown') {
-          e.preventDefault();
-          if (idx < lastIndex) {
-            gotoIndex(Math.min(lastIndex, idx + 1));
-          } else {
-            setOmniActive(true);
-            setTimeout(()=>{ if (omniInputRef.current) omniInputRef.current.focus(); }, 0);
-          }
-          return;
-        }
-
-        if (e.key === 'Escape') {
-          e.preventDefault();
-          if (instrUi.isFor(sel.key)) { instrUi.closeAll(); return; }
-          if (path.length > 1) {
-            const newPath = path.slice(0, -1);
-            const savedIdx = navHistory[newPath[0]];
-            setPath(newPath);
-            setIdx(Number.isFinite(savedIdx) ? savedIdx : 0);
-            return;
-          }
-        }
-      }, [idx, path, instrUi, navHistory, reorderState, hoverAction, navigateIntoModule, moveItemInReorderMode, endReorder, duplicateInstruction, removeInstructionAtPos]);
-
-      useEffect(() => { window.addEventListener('keydown', handleKeyDown); return () => window.removeEventListener('keydown', handleKeyDown); }, [handleKeyDown]);
-
-      useEffect(() => {
-        const hash = '#' + path.join('/'); if (window.location.hash !== hash) window.history.pushState(null, '', hash);
-      }, [path]);
-
       useEffect(() => {
         const handlePopState = () => {
           const hash = window.location.hash.slice(1);
@@ -821,89 +359,356 @@
         return () => window.removeEventListener('popstate', handlePopState);
       }, []);
 
-      const suppressSel = false;
-      const currentOmniList = omniQuery.trim() ? omniResults : omniSuggestions;
+      // Auto-save when leaving an instruction
+      const closeAndSaveIfNeeded = useCallback(async () => {
+        const key = openEditorKeyRef.current;
+        const text = currentEditValueRef.current;
+        const fileHandle = currentFileHandleRef.current;
+        const relPath = currentFilePathRef.current;
+        if (!key || text == null || !fileHandle || !relPath) return;
+        try {
+          const disk = await readTextFile(fileHandle);
+          if (disk !== text) await writeTextFile(fileHandle, text);
+        } catch(_) {}
+        clearDraft(relPath);
+        openEditorKeyRef.current = null;
+        currentEditValueRef.current = null;
+        currentFileHandleRef.current = null;
+        currentFilePathRef.current = null;
+      }, []);
 
+      // Keyboard navigation + Omni toggle
       useEffect(() => {
-        if (omniSelectedIdx >= currentOmniList.length && currentOmniList.length > 0) {
-          setOmniSelectedIdx(currentOmniList.length - 1);
-        } else if (currentOmniList.length === 0) {
+        const onKeyDown = (e) => {
+          // open Omni with + or =
+          if ((e.key === '+' || e.key === '=') && document.activeElement !== omniInputRef.current) {
+            e.preventDefault();
+            setOmniActive(true);
+            setTimeout(() => { if (omniInputRef.current) omniInputRef.current.focus(); }, 0);
+            return;
+          }
+          if (omniActive) return;
+
+          const rws = rowsRef.current;
+          if (!rws.length) return;
+          const last = rws.length - 1;
+
+          if (e.key === 'ArrowUp') {
+            e.preventDefault();
+            const next = Math.max(0, idx - 1);
+            if (next !== idx) { closeAndSaveIfNeeded(); setIdx(next); }
+          }
+          if (e.key === 'ArrowDown') {
+            e.preventDefault();
+            const next = Math.min(last, idx + 1);
+            if (next !== idx) { closeAndSaveIfNeeded(); setIdx(next); }
+          }
+          if (e.key === 'Escape') {
+            e.preventDefault();
+            closeAndSaveIfNeeded();
+          }
+
+          const sel = rws[idx];
+          if (!sel) return;
+
+          if (e.key === 'ArrowRight' && sel.type === 'module-item') {
+            e.preventDefault();
+            setPath(prev => [prev[0], sel.moduleId]);
+            setTimeout(() => {
+              const firstInstrIdx = rowsRef.current.findIndex(x => x.type === 'instr');
+              setIdx(firstInstrIdx >= 0 ? firstInstrIdx : idx);
+            }, 0);
+            return;
+          }
+          if (e.key === 'ArrowLeft' && sel.type !== 'agent') {
+            e.preventDefault();
+            setPath(['expert-maker']);
+            setTimeout(() => {
+              const target = rowsRef.current.findIndex(x => x.type === 'module-item' && x.moduleId === (path[1] || ''));
+              setIdx(target >= 0 ? target : 0);
+            }, 0);
+            return;
+          }
+        };
+        window.addEventListener('keydown', onKeyDown);
+        return () => window.removeEventListener('keydown', onKeyDown);
+      }, [idx, omniActive, path, closeAndSaveIfNeeded]);
+
+      // OmniSearch results across all prompt files
+      const omniResults = useMemo(() => {
+        const q = (omniQuery || '').toLowerCase().trim();
+        if (!q) return [];
+        const results = omniIndex.filter(item => {
+          if (item.type === 'mod') return item.name.toLowerCase().includes(q);
+          return (item.name.toLowerCase().includes(q) || (item.content || '').toLowerCase().includes(q));
+        });
+        results.sort((a, b) => {
+          if (a.type !== b.type) return a.type === 'mod' ? -1 : 1;
+          return a.name.toLowerCase().localeCompare(b.name.toLowerCase());
+        });
+        return results.slice(0, 100);
+      }, [omniQuery, omniIndex]);
+      useEffect(() => {
+        if (omniSelectedIdx >= omniResults.length && omniResults.length > 0) {
+          setOmniSelectedIdx(omniResults.length - 1);
+        } else if (omniResults.length === 0) {
           setOmniSelectedIdx(0);
         }
-      }, [currentOmniList, omniSelectedIdx]);
+      }, [omniResults, omniSelectedIdx]);
+
+      const navigateOmniItem = useCallback((item) => {
+        if (!item) return;
+        if (item.type === 'mod') {
+          setPath(['expert-maker', item.id]);
+          setOmniActive(false);
+          setOmniQuery('');
+          setTimeout(() => {
+            const firstInstrIdx = rowsRef.current.findIndex(x => x.type === 'instr');
+            setIdx(firstInstrIdx >= 0 ? firstInstrIdx : 0);
+          }, 0);
+          return;
+        }
+        if (item.type === 'file') {
+          // If file is an instruction under modules/instructions, open its module view and select it
+          if ((item.relPath || '').startsWith('modules/instructions/')) {
+            const ag = store.getDbItem('expert-maker');
+            const firstMod = ag && ag.modules && ag.modules[0];
+            if (firstMod) {
+              setPath(['expert-maker', firstMod]);
+              setOmniActive(false);
+              setOmniQuery('');
+              setTimeout(() => {
+                const dbId = `ins:${item.relPath}`;
+                const found = rowsRef.current.findIndex(x => x.type === 'instr' && x.dbId === dbId);
+                setIdx(found >= 0 ? found : 0);
+              }, 0);
+              return;
+            }
+          }
+          // Otherwise just close Omni; files outside instruction set are searchable but not directly selectable
+          setOmniActive(false);
+          setOmniQuery('');
+          return;
+        }
+      }, [store]);
+
+      /* ===== Preview and Editor Components ===== */
+
+      function InstructionPreviewLine({ relPath, depth }) {
+        const [lines, setLines] = useState(['Select once to grant folder access…']);
+        useEffect(() => {
+          let alive = true;
+          (async () => {
+            if (!promptRoot || !relPath) return;
+            try {
+              const fh = await getFileHandleFromPath(promptRoot, relPath);
+              const txt = await readTextFile(fh);
+              const first = txt.split(/\r?\n/).slice(0, 3);
+              if (alive) setLines(first);
+            } catch(_) {
+              if (alive) setLines(['Missing file']);
+            }
+          })();
+          return () => { alive = false; };
+        }, [relPath, promptRoot]);
+        const pad = ((depth || 0) + 1) * TAB;
+        return (
+          <div className="indent-block" style={{ paddingLeft: pad }}>
+            <div className="prompt-preview">
+              {lines.map((ln, i) => <div key={'pv-' + i}><SoftText text={ln} /></div>)}
+            </div>
+          </div>
+        );
+      }
+
+      function InstructionInlineEditor({ row, depth }) {
+        const pad = ((depth || 0) + 1) * TAB;
+        const taRef = useRef(null);
+        const [value, setValue] = useState('');
+        const [loadErr, setLoadErr] = useState(null);
+
+        useEffect(() => {
+          let alive = true;
+          (async () => {
+            try {
+              if (!promptRoot) {
+                // First user action lazily triggers prompt access
+                await requestScanIfNeeded();
+              }
+              if (!promptRoot) { setLoadErr('No folder'); return; }
+              const fh = await getFileHandleFromPath(promptRoot, row.relPath);
+              const draft = loadDraft(row.relPath);
+              const disk = await readTextFile(fh);
+              const txt = draft != null ? draft : disk;
+              if (!alive) return;
+              setValue(txt);
+              openEditorKeyRef.current = row.key;
+              currentEditValueRef.current = txt;
+              currentFileHandleRef.current = fh;
+              currentFilePathRef.current = row.relPath;
+              setLoadErr(null);
+              setTimeout(() => {
+                if (taRef.current) {
+                  taRef.current.focus();
+                  try {
+                    const len = taRef.current.value.length;
+                    taRef.current.setSelectionRange(len, len);
+                  } catch(_) {}
+                }
+              }, 0);
+            } catch (e) {
+              setLoadErr('Missing or blocked file');
+            }
+          })();
+          return () => { alive = false; };
+        }, [row]);
+
+        return (
+          <div className="indent-block" style={{ paddingLeft: pad }}>
+            <textarea
+              ref={taRef}
+              className="underline-textarea"
+              value={loadErr ? loadErr : value}
+              onChange={(e) => {
+                const v = e.target.value;
+                setValue(v);
+                currentEditValueRef.current = v;
+                if (row.relPath) saveDraft(row.relPath, v);
+              }}
+              placeholder="Instruction…"
+            />
+            <input type="text" className="underline-input" placeholder="Name…" defaultValue={row.label} />
+            <textarea className="underline-textarea" placeholder="Meta information…"></textarea>
+            <StructureDots5 id={row.dbId} value={'heavy'} onChange={() => {}} />
+          </div>
+        );
+      }
+
+      function StructureDots5({ id, value, onChange }) {
+        const opts = [
+          { v: 'heavy', label: 'Heavy' },
+          { v: 'heavy-mid', label: '●' },
+          { v: 'medium', label: 'Medium' },
+          { v: 'medium-light', label: '●' },
+          { v: 'light', label: 'Light' }
+        ];
+        return (
+          <div className="seg" role="radiogroup" aria-label="Structure">
+            <span className="label">Structure</span>
+            {opts.map((o) => (
+              <label key={o.v} title={o.label}>
+                <input type="radio" name={`struct-${id}`} value={o.v} checked={value === o.v} onChange={(e) => onChange(e.target.value)} />
+                <span className="opt">
+                  {o.label === '●' ? <span className="dot" aria-hidden="true"></span> : <span style={{ fontSize: 12 }}>{o.label}</span>}
+                </span>
+              </label>
+            ))}
+          </div>
+        );
+      }
+
+      function ModulePreview({ moduleId, depth }) {
+        const mod = store.getDbItem(moduleId);
+        if (!mod) return null;
+        const items = mod.items || [];
+        const pad = ((depth || 0) + 1) * TAB;
+        const showIds = items.slice(0, 3);
+        const hasMore = items.length > 3;
+        return (
+          <div className="indent-block" style={{ paddingLeft: pad }}>
+            {showIds.length === 0 ? <div className="prompt-preview">Empty module</div> :
+              <>
+                {showIds.map((iid) => {
+                  const ins = store.getDbItem(iid); if (!ins) return null;
+                  const rel = ins.path || ins.name;
+                  return <div key={iid} className="prompt-preview"><SoftText text={displayShortName(rel)} /></div>;
+                })}
+                {hasMore ? <div className="prompt-preview">...</div> : null}
+              </>
+            }
+          </div>
+        );
+      }
+
+      // Rightbar summary
+      const rightbarText = useMemo(() => {
+        const lines = [];
+        const ag = store.getDbItem('expert-maker');
+        lines.push('Modules:');
+        const mods = (ag && ag.modules) ? ag.modules : [];
+        for (const mid of mods) {
+          const m = store.getDbItem(mid);
+          if (!m) continue;
+          lines.push('  - ' + m.name);
+        }
+        lines.push('');
+        return lines.join('\n');
+      }, [storeVersion]);
+
+      /* ===== Render ===== */
 
       return (
-        <div className="layout">
+        <div className="layout" onClick={requestScanIfNeeded}>
           <div className="left-column">
             <div className="panel">
               <div className="sc-title">
                 <span><strong><em>(: Smile Composer)</em></strong></span>
-                <button className="reset-btn" type="button" onClick={handleReset}>Reset to default</button>
+                <span style={{ fontSize: 12, color: '#444' }}><SoftText text={status} /></span>
               </div>
-              {rows.map((row, i) => {
-                const isSelected = (i === idx) && !suppressSel;
-                const showInline = row.type === 'instr' && instrUi.isFor(row.key) && (i === idx);
 
+              {rows.map((row, i) => {
+                const isSelected = (i === idx);
                 return (
                   <React.Fragment key={row.key}>
                     <div
                       className={['line', isSelected ? 'sel' : ''].join(' ').trim()}
                       style={{ paddingLeft: (row.depth || 0) * TAB }}
                       data-key={row.key}
-                      onClick={() => setIdx(i)}
+                      onClick={async () => {
+                        if (i !== idx) await closeAndSaveIfNeeded();
+                        setIdx(i);
+                      }}
                       onDoubleClick={() => {
-                        if (row.type === 'instr') {
-                          if (!instrUi.isFor(row.key)) { instrUi.openStage1(row.key); focusInlineTextarea(row.key); }
-                          else if (instrUi.stage() === 1) { instrUi.toStage2(); }
-                        } else if (row.type === 'module-item') {
-                          const agentId = path[0];
-                          navigateIntoModule(row.moduleId, agentId);
+                        if (row.type === 'module-item') {
+                          setPath(prev => [prev[0], row.moduleId]);
+                          setTimeout(() => {
+                            const firstInstrIdx = rowsRef.current.findIndex(x => x.type === 'instr');
+                            setIdx(firstInstrIdx >= 0 ? firstInstrIdx : i);
+                          }, 0);
                         }
                       }}
                       title="Select"
                     >
                       <span className="left-span">
-                        {row.isOutput ? <strong>OUTPUT: </strong> : null}{row.label}
+                        {row.isOutput ? <strong>OUTPUT: </strong> : null}
+                        <SoftText text={row.label} />
                       </span>
                     </div>
 
-                    {row.type === 'instr' && !showInline && isSelected && (
-                      <InstructionPreviewLine store={store} row={row} />
+                    {row.type === 'instr' && !isSelected && (
+                      <InstructionPreviewLine relPath={row.relPath} depth={row.depth} />
                     )}
 
-                    {showInline && row.type === 'instr' && (
+                    {row.type === 'instr' && isSelected && (
                       <>
-                        <InstructionInlineEditor
-                          store={store}
-                          row={row}
-                          onTextChange={updateData}
-                          getNameOverride={(k, f) => store.get(k, f || '')}
-                          setNameOverride={(k, v) => updateData(k, v)}
-                          getMeta={(k) => store.get(k, '')}
-                          setMeta={(k, v) => updateData(k, v)}
-                          getStruct={(k) => store.get(k, 'heavy')}
-                          setStruct={(k, v) => updateData(k, v)}
-                          stage={instrUi.stage()}
-                          onDownFromMainToMeta={() => focusMetaTextarea(row.key)}
-                        />
-                        <ActionBar pad={((row.depth || 0) + 1) * TAB} />
-                        {instrUi.stage() === 2 && (
-                          <SettingsButtons
-                            pad={((row.depth || 0) + 1) * TAB}
-                            hoverAction={hoverAction}
-                            onEnterMove={() => { startMove(row); setHoverAction('move'); setHoverRowKey(row.key); }}
-                            onLeaveMove={() => { endReorder(); setHoverAction(null); setHoverRowKey(null); }}
-                            onEnterDuplicate={() => { setHoverAction('duplicate'); setHoverRowKey(row.key); }}
-                            onLeaveDuplicate={() => { setHoverAction(null); setHoverRowKey(null); }}
-                            onEnterDelete={() => { setHoverAction('delete'); setHoverRowKey(row.key); }}
-                            onLeaveDelete={() => { setHoverAction(null); setHoverRowKey(null); }}
-                          />
-                        )}
+                        <InstructionInlineEditor row={row} depth={row.depth} />
+                        <div className="action-bar-inline" style={{ paddingLeft: ((row.depth || 0) + 1) * TAB }}>
+                          <div className="action-row" onClick={(e)=>e.stopPropagation()}>
+                            <span className="action-hint-left">([Esc] to cancel)</span>
+                            <span className="action-spacer"></span>
+                            <span className="action-hint-right">-> Settings</span>
+                          </div>
+                        </div>
+                        <div className="settings-buttons" style={{ paddingLeft: ((row.depth || 0) + 1) * TAB }}>
+                          <span className="settings-btn" title="Movement uses Arrow keys">-> Movement</span>
+                          <span className="settings-btn" title="Duplicate disabled in file-mirror build">-> + Duplicate</span>
+                          <span className="settings-btn" title="Delete disabled in file-mirror build">-> Delete</span>
+                        </div>
                       </>
                     )}
 
                     {i === idx && row.type === 'module-item' && (
-                      <ModulePreview store={store} moduleId={row.moduleId} depth={row.depth} />
+                      <ModulePreview moduleId={row.moduleId} depth={row.depth} />
                     )}
                   </React.Fragment>
                 );
@@ -915,79 +720,51 @@
                 <input
                   ref={omniInputRef}
                   className="omni-input"
-                  placeholder={`Press + or Enter to add a new ${atModule ? 'Instruction' : 'Module'}.`}
+                  placeholder="OmniSearch: type to search modules and all prompt files…"
                   value={omniQuery}
-                  onFocus={() => { setOmniActive(true); setOmniFocus(true); }}
-                  onBlur={() => { setOmniFocus(false); }}
+                  onFocus={() => setOmniActive(true)}
+                  onBlur={() => setOmniActive(false)}
                   onChange={e => { setOmniQuery(e.target.value); setOmniSelectedIdx(0); }}
                   onKeyDown={(e) => {
-                    const list = currentOmniList;
-
                     if (e.key === 'Enter' || e.key === 'ArrowRight') {
                       e.preventDefault();
+                      const list = omniResults;
                       if (list.length > 0 && omniSelectedIdx >= 0 && omniSelectedIdx < list.length) {
-                        const selected = list[omniSelectedIdx];
-                        addByIdAtContext(selected.id);
-                      } else {
-                        createAndAddNewItem();
+                        navigateOmniItem(list[omniSelectedIdx]);
                       }
-                      setOmniActive(false);
-                      setOmniQuery('');
-                      setOmniSelectedIdx(0);
-                      if (omniInputRef.current) { try { omniInputRef.current.blur(); } catch(_) {} }
                       return;
                     }
-
                     if (e.key === 'Escape') {
                       e.preventDefault();
                       setOmniActive(false);
                       setOmniQuery('');
                       setOmniSelectedIdx(0);
-                      if (omniInputRef.current) { try { omniInputRef.current.blur(); } catch(_) {} }
+                      try { omniInputRef.current && omniInputRef.current.blur(); } catch(_) {}
                       return;
                     }
-
                     if (e.key === 'ArrowDown') {
                       e.preventDefault();
-                      if (list.length > 0) setOmniSelectedIdx(prev => Math.min(list.length - 1, prev + 1));
+                      if (omniResults.length > 0) setOmniSelectedIdx(prev => Math.min(omniResults.length - 1, prev + 1));
                       return;
                     }
-
                     if (e.key === 'ArrowUp') {
                       e.preventDefault();
-                      if (list.length > 0 && omniSelectedIdx > 0) {
-                        setOmniSelectedIdx(prev => Math.max(0, prev - 1));
-                        return;
-                      }
-                      if (omniInputRef.current) { try { omniInputRef.current.blur(); } catch(_) {} }
-                      setOmniActive(false);
-                      setOmniQuery('');
-                      setOmniSelectedIdx(0);
-                      const bottom = Math.max(0, rowsRef.current.length - 1);
-                      setIdx(bottom);
+                      if (omniResults.length > 0 && omniSelectedIdx > 0) setOmniSelectedIdx(prev => Math.max(0, prev - 1));
                       return;
                     }
                   }}
                 />
-                {(omniActive && (omniQuery.trim() || omniSuggestions.length)) ? (
+                {(omniActive && omniResults.length) ? (
                   <div className="omni-list">
-                    { currentOmniList.length === 0 && (
-                      <div className="omni-item"><span>No suggestions</span></div>
-                    )}
-                    {currentOmniList.map((r, i) => (
+                    {omniResults.map((r, i) => (
                       <div
                         key={r.id + ':' + i}
                         className={`omni-item ${i === omniSelectedIdx ? 'sel' : ''}`}
-                        onClick={() => {
-                          addByIdAtContext(r.id);
-                          setOmniActive(false);
-                          setOmniQuery('');
-                          setOmniSelectedIdx(0);
-                          if (omniInputRef.current) { try { omniInputRef.current.blur(); } catch(_) {} }
-                        }}
+                        onMouseDown={(e) => { e.preventDefault(); }} /* keep focus */
+                        onClick={() => navigateOmniItem(r)}
                       >
-                        <span>{r.name}</span>
-                        <span className="badge">{r.type === 'mod' ? 'module' : 'instruction'}</span>
+                        <span><SoftText text={r.name} /></span>
+                        <span className="badge">{r.type === 'mod' ? 'module' : 'file'}</span>
                       </div>
                     ))}
                   </div>
@@ -996,10 +773,9 @@
             </div>
           </div>
 
-          <RightSidebar
-            value={rightbarValue}
-            onChange={(e) => { updateData('rightbar-prompt', e.target.value); updateData('rightbar-prompt-manual', true); }}
-          />
+          <div className="rightbar">
+            <textarea readOnly value={rightbarText} />
+          </div>
         </div>
       );
     }

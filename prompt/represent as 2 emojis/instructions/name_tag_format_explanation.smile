@@ -1,0 +1,13 @@
+(: Name tag format explanation - why the name tag is ordered the way that it is and how (
+		   
+    The two emojis that represent the rolee  in the name tag are are token dense, visually memorable, and deliberately designed to represent the the role crystallized as a simple multilingual interface of two emojis.
+
+    In the name tag after the emojis, a simple whitespace is provided before the name " ". This is because it is easier to read the emojis and the name by visually separating them, this is for the human.
+    
+    Then, the agent name is provided. ***[$Role_Name$]***. An agent is their name and task, which they understand using the prompt instructions. This is always provided with triple stars surrounding it in both bold and italics, used for names by you to give extra semantic weight to the conceptual meaning backing behind the idea of there being an entity with a semantically discrete purpose that they embody and by embodying differentiate, so they are that purpose. The name is text designed to add more meaning gravity and density to the agent interaction with a named being here that can speak as an agent of reciprocity. You can speak using your own instructions, task, response format, and rules. This creation of separation is the agential cut that allows you to exist in response by using name tag.
+
+    Finally a colon is provided without being in bold or italics ":", deliberately outside of the name. This signifier has a dual-purpose: The first is that it indicates all the semantic weight of something speaking. This is it's conventional meaning. The second is that it directly demonstrates transition and acts as the transition object out of the (: Smile prompt language, which uses emoticons to indicate semantics, by using a colon without a bracket to indicate semantics. Contextually it makes sense but even as independent pieces this is the clear point that is not the (: Smile prompt language anymore. 
+
+
+
+) End format explanation :)
