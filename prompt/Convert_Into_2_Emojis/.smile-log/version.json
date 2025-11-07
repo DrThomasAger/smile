@@ -1,0 +1,12 @@
+{
+  "version": 2,
+  "timestamp": "2025-11-07T02:41:42.903Z",
+  "hashes": {
+    "D:\\labyrinth\\Github\\SmilePrompt\\smile\\prompt\\Convert_Into_2_Emojis\\prompt.smile": "d75cea0c3791ac2736bc18685f49c208",
+    "D:\\labyrinth\\Github\\SmilePrompt\\smile\\prompt\\Convert_Into_2_Emojis\\chain\\role_information.smile": "6757235e3d4ebaccc46fbedcaf684286"
+  },
+  "files": [
+    "prompt.smile",
+    "chain\\role_information.smile"
+  ]
+}

@@ -63,34 +63,60 @@ class SmileCompiler {
     const content = fs.readFileSync(filePath, 'utf-8');
     this.trackFileHash(filePath, content);
     
-    return this.resolveReferences(content);
+    // Check for malformed references
+    this.validateSyntax(content, filePath);
+    
+    return this.resolveReferences(content, filePath);
   }
 
-  resolveReferences(content) {
+  validateSyntax(content, filePath) {
+    // Check for unclosed references
+    const openRefs = (content.match(/\[\$/g) || []).length;
+    const closeRefs = (content.match(/\$\]/g) || []).length;
+    
+    if (openRefs !== closeRefs) {
+      throw new Error(`Malformed reference in ${path.basename(filePath)}: Found ${openRefs} [$  but ${closeRefs} $]`);
+    }
+  }
+
+  resolveReferences(content, currentFile) {
     // Match any [$type="name"$] pattern, type is optional
     const refPattern = /\[\$(\w*)(?:\/(\w+))?[=:"]\s*([^$]+?)\s*\$\]/gi;
     
     return content.replace(refPattern, (match, type, subtype, name) => {
       const cleanName = name.replace(/["']/g, '').replace(/\.txt$/, '').replace(/\.smile$/, '');
-      this.log(`Found reference: ${type}${subtype ? '/' + subtype : ''} → ${cleanName}`);
+      this.log(`Found reference: ${type || '(unspecified)'}${subtype ? '/' + subtype : ''} → ${cleanName}`);
       
       try {
         const resolvedPath = this.resolvePath(type, subtype, cleanName);
         if (!resolvedPath) {
-          throw new Error(`Cannot resolve: ${match}`);
+          throw new Error(`Cannot resolve: ${match}\nIn file: ${path.basename(currentFile)}`);
         }
         
         const resolvedContent = fs.readFileSync(resolvedPath, 'utf-8');
         this.trackFileHash(resolvedPath, resolvedContent);
         
-        // Check for nested references
-        if (/\[\$\w+[=:"]/.test(resolvedContent)) {
-          throw new Error(`Nested references not allowed. Found reference in ${path.basename(resolvedPath)}`);
+        // Check for nested chain references only
+        // Chains can reference docs/data, but not other chains
+        const isChainReference = ['chain', 'module', 'pipeline'].includes((type || '').toLowerCase());
+        const hasChainReference = /\[\$(?:chain|module|pipeline)[=:"]/i.test(resolvedContent);
+        
+        if (isChainReference && hasChainReference) {
+          const nestedMatch = /\[\$(?:chain|module|pipeline)[=:"]/.exec(resolvedContent);
+          const lines = resolvedContent.substring(0, nestedMatch.index).split('\n');
+          const lineNum = lines.length;
+          const lineContent = resolvedContent.split('\n')[lineNum - 1];
+          throw new Error(
+            `Nested chain reference found in: ${path.basename(resolvedPath)} (line ${lineNum})\n` +
+            `  Line content: ${lineContent.trim()}\n` +
+            `  Chains can only reference docs/data, not other chains\n` +
+            `  Referenced from: ${path.basename(currentFile)}`
+          );
         }
         
         return resolvedContent;
       } catch (e) {
-        throw new Error(`${e.message} (in reference: ${match})`);
+        throw e;
       }
     });
   }
