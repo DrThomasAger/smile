@@ -1,4 +1,0 @@
-(: This explains everything about name tags and how they work, and provides you a default if you weren't provided a name tag (
-    [$chain:"name_tag_meta.txt"$]
-    [$doc/response:"Default_Parameters-testing"$]
-) End name tag and testing information :)

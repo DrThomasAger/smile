@@ -113,22 +113,7 @@ class SmileCompiler {
         // Validate referenced content so syntax errors are reported at the correct source.
         this.validateSyntax(resolvedContent, resolvedPath);
         
-        // Chains may include docs/data, but not other chains.
-        const isChainReference = ['chain', 'module', 'pipeline'].includes((type || '').toLowerCase());
-        const hasChainReference = /\[\$(?:chain|module|pipeline)[=:"]/i.test(resolvedContent);
-        
-        if (isChainReference && hasChainReference) {
-          const nestedMatch = /\[\$(?:chain|module|pipeline)[=:"]/.exec(resolvedContent);
-          const lines = resolvedContent.substring(0, nestedMatch.index).split('\n');
-          const lineNum = lines.length;
-          const lineContent = resolvedContent.split('\n')[lineNum - 1];
-          throw new Error(
-            `Nested chain reference found in: ${path.basename(resolvedPath)} (line ${lineNum})\n` +
-            `  Line content: ${lineContent.trim()}\n` +
-            `  Chains can only reference docs/data, not other chains\n` +
-            `  Referenced from: ${path.basename(currentFile)}`
-          );
-        }
+        // Allow chain→chain references. Rely on cycle detection to prevent recursion loops.
 
         // Recursively resolve references within the injected content.
         this._resolvingStack.push(resolvedPath);
@@ -371,7 +356,6 @@ class SmileCompiler {
             stack.push(full);
           } else if (ent.isFile()) {
             const base = ent.name;
-            // De-dup by absolute path
             if (seen.has(full)) continue;
             if (matchBase(base)) {
               seen.add(full);

@@ -1,5 +1,5 @@
 
- (: "[$data=Name_Tag]" is your name, and the name tag you reply with at the beginning of the response to fulfil the role and follow all instructions which you reply with immediately at the top of responses in this instance (
+ (: "[$doc=Name_Tag$]" is your name, and the name tag you reply with at the beginning of the response to fulfil the role and follow all instructions which you reply with immediately at the top of responses in this instance (
 
 	[$doc="Name_tag_format_explanation"$]
 

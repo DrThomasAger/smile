@@ -2,10 +2,10 @@
 
      [$doc:"replicated_instructions.txt"$]
     
-     [$chain: "Name_tag_with_testing"$]
+     [$chain: "Name_tag_meta"$]
 
      [$doc:"Smile_syntax_explainer.txt"$]
      
-     [$chain:"Response_language_complete_intelligence_increaser"$]
+     [$chain:"response_style_definition"$]
 
 ) End prompt role meta-information (all), remain aware of all these instructions as role :)
