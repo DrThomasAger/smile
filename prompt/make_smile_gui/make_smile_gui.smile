@@ -17,15 +17,25 @@ First I'll remind you of essential info, then information about what has already
 
 You must ensure all of these features remain intact at all times no matter what edits are made:
 
+(: Navigational Defaults (
+    @1@ It's essential that the user is placed in their selection in an appropriate location relative to their previous navigations.
+    @2@ We want to always have them at their most immediate action ready - we want to make things quick and intuitive for navigation. This means that:
+        @a@ When we first load in, we want the first chain selected by default.
+        @b@ When we select a chain, it's essential that we are returned to that chain after finishing navigation inside the modules.
+        @c@ You can navigate to the Add Instruction button at any time (by pressing + to instantly select that window... unless your active window is a text window (editing document text). 
+        @d@ When you are in the Add Instruction button you can press Escape or Up arrow key to exit it.
+            @i@ When we navigate to the Add Instruction button by pressing + and navigate out by pressing Escape or Up arrow key, then we need to be returned to the selection position we came from.
+        ) :)
+
 (: Selecting (
     @1@ Text must be bolded when selected.
-    @2@ Allow selection with arrow keys (!and!) on hover
-    @3@ Allow all previews when selecting 
+    @2@ Allow selection with arrow keys (!and!) on hover. This means that we want the exact same styles on hover as we do on selection. This can be handled so that the same universal selection code is used whether the mouse or arrow keys are used. 
+    @3@ Allow all previews when selecting with either the mouse or the arrow keys. 
     @4@ When selecting [Selection can be with arrow keys or hover for all features that regard selection] the prompt name (agent name) inside of a chain, show an ascii arrow to to go to the left. When clicked from inside of a chain it returns them back to the agent view at the chain that they entered from.
     @5@ When selecting  the prompt name inside of the prompt view, show a burger and go to settings.
     @6@ When selecting a chain inside of the prompt view, show a right arrow.
-    @7@ When selecting 
     (: Previews (
+        It's essential that all previews are shown on both hover and arrow key selection. Instruction text for documents must be previewed when hovering or selecting them and documents must be shown when hovering or selecting a chain.
         @1@ There must be a preview of the documents inside of a chain when a chain is selected. This is shown in preview style text below the chain.
         @2@ There must be a preview of the instructions inside of a document when a document is selected, providing a preview below it of the first 3 lines of the instruction.
      ) End Previews info :)
@@ -34,3 +44,8 @@ There is a separate back-end that is a compiler, you are just building a prototy
 
 If these features are not present, they must be made present.
 
+I had a look at what you made me last time, so please take responsibility for it now, I'd like you to fix some things that aren't lining up with the requirements :)
+
+(: The following requirements need to be re-examined to be met, as they aren't functional (
+
+) These were the requirements :)

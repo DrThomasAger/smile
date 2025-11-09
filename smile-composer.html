@@ -33,11 +33,7 @@
     .container { max-width: 900px; margin: 0 auto; }
     .panel { background: #fff; padding: 16px; border-radius: 10px; }
 
-    .list-container {
-      display: flex;
-      flex-direction: column;
-      gap: 0;
-    }
+    .list-container { display: flex; flex-direction: column; gap: 0; }
 
     .line {
       position: relative;
@@ -57,7 +53,10 @@
     .line:hover { background: var(--hover-row); }
     .line.selected { background: var(--select-row); }
 
-    /* Left “filled” indent boxes that light up per level on hover */
+    /* Text must be bolded when selected (hover and keyboard share the same style) */
+    .line.selected .line-label,
+    .line:hover .line-label { font-weight: 700; }
+
     .indent-fills {
       pointer-events: none;
       position: absolute;
@@ -79,38 +78,19 @@
     .line:hover .indent-fill-box { background: var(--indent-fill); }
     .line.selected .indent-fill-box { background: var(--indent-fill-strong); }
 
-    .line-inner {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      flex: 1;
-      min-width: 0;
-      position: relative;
-      z-index: 1; /* above indent-fills */
-    }
-    /* Slim neutral rails showing structural depth (always on) */
-    .indent-guides {
-      display: flex;
-      align-items: stretch;
-      gap: var(--indent-gap);
-      margin-right: 8px;
-    }
-    .indent-bar {
-      width: var(--rail-width);
-      border-radius: 8px;
-      background: var(--rail-color);
-      align-self: stretch;
-    }
+    .line-inner { display: flex; align-items: center; gap: 8px; flex: 1; min-width: 0; position: relative; z-index: 1; }
+    .indent-guides { display: flex; align-items: stretch; gap: var(--indent-gap); margin-right: 8px; }
+    .indent-bar { width: var(--rail-width); border-radius: 8px; background: var(--rail-color); align-self: stretch; }
 
     .line-label { flex: 1; min-width: 0; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
     .line-indicator { font-size: 14px; color: #666; flex-shrink: 0; display: inline-flex; align-items: center; gap: 10px; }
 
-    /* Arrow only for chains, only on hover */
+    /* Right arrow only for chains, visible on hover or keyboard-selection */
     .arrow { opacity: 0; transition: opacity 0.12s ease; }
-    .line.chain:hover .arrow { opacity: 1; }
+    .line.chain:hover .arrow, .line.chain.selected .arrow { opacity: 1; }
     .line.menu .arrow, .line.prompt .arrow, .line.doc .arrow, .line.search .arrow { display: none; }
 
-    /* Burger: hover-only for everything except search; thin, uniform */
+    /* Burger visible on hover and when keyboard-selected; not on chains/search */
     .burger {
       display: inline-flex;
       flex-direction: column;
@@ -124,10 +104,13 @@
     .burger div { width: 12px; height: 1px; background: #666; border-radius: 1px; }
     .line.menu:hover .burger,
     .line.prompt:hover .burger,
-    .line.doc:hover .burger { opacity: 1; }
+    .line.doc:hover .burger,
+    .line.selected .burger { opacity: 1; }
     .line.chain .burger, .line.search .burger { display: none; }
 
-    /* Preview rows (chain preview in prompt view), indented to doc level */
+    .left-arrow { opacity: 1; cursor: pointer; user-select: none; }
+
+    /* Previews */
     .preview-line {
       position: relative;
       padding: 2px var(--pad-x);
@@ -137,15 +120,7 @@
       min-height: 24px;
       user-select: none;
     }
-    .preview-inner {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      flex: 1;
-      min-width: 0;
-      position: relative;
-      z-index: 1;
-    }
+    .preview-inner { display: flex; align-items: center; gap: 8px; flex: 1; min-width: 0; position: relative; z-index: 1; }
     .preview-label { flex: 1; min-width: 0; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; color: #666; font-size: 12px; }
     .preview-fills {
       pointer-events: none;
@@ -158,21 +133,10 @@
       gap: var(--indent-gap);
       width: calc(var(--indent-count, 0) * (var(--rail-width) + var(--indent-gap)));
     }
-    .preview-fill-box {
-      width: var(--rail-width);
-      border-radius: 8px;
-      background: var(--indent-fill);
-      align-self: stretch;
-    }
+    .preview-fill-box { width: var(--rail-width); border-radius: 8px; background: var(--indent-fill); align-self: stretch; }
 
-    /* Editor: backgroundless, uniform control height */
-    .editor-container { 
-      margin-top: 6px;
-      margin-bottom: 6px;
-      padding: 0;
-      border-radius: 8px;
-      background: transparent;
-    }
+    /* Editor */
+    .editor-container { margin-top: 6px; margin-bottom: 6px; padding: 0; border-radius: 8px; background: transparent; }
     .editor-textarea {
       width: 100%;
       min-height: 120px;
@@ -203,17 +167,12 @@
     .editor-btn:hover { background: var(--hover-row); }
     .kbd-hints { color: #999; font-size: 12px; margin-top: 6px; }
 
-    /* Search row duplicates row behavior; rename and keep hover */
     .search-row { cursor: text; }
-    .search-input {
-      border: none; outline: none; background: transparent; font: inherit; width: 100%; padding: 6px 2px; color: #111; text-decoration: none;
-    }
-    .search-input::placeholder { color: #111; } /* black placeholder */
+    .search-input { border: none; outline: none; background: transparent; font: inherit; width: 100%; padding: 6px 2px; color: #111; text-decoration: none; }
+    .search-input::placeholder { color: #111; }
 
     .omni-list { display: flex; flex-direction: column; gap: 2px; margin-top: 4px; }
-    .omni-item {
-      display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 6px 0px; background: transparent; border-radius: 8px; cursor: pointer; font-size: var(--text-size);
-    }
+    .omni-item { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 6px 0px; background: transparent; border-radius: 8px; cursor: pointer; font-size: var(--text-size); }
     .omni-item:hover { background: transparent; }
     .badge { font-size: 11px; padding: 2px 8px; border-radius: 12px; background: #e0e0e0; color: #555; }
 
@@ -233,7 +192,6 @@
 
     const { useState, useEffect, useRef, useMemo } = React;
 
-    // Top menu is a "menu" row (no emojis). Replace "agent" with "prompt".
     const INITIAL_DB = {
       'expert-maker': { 
         name: 'Expert Maker',
@@ -242,7 +200,7 @@
         modules: ['smile-menu', 'meta-info', 'jargon-cot', 'identify-mistakes']
       },
       'smile-menu': {
-        name: '(: Smile Prompt Editor', // rendered with <em><strong>(: Smile</strong></em> + " Prompt Editor"
+        name: '(: Smile Prompt Editor',
         type: 'menu',
         emojis: '',
         items: []
@@ -328,6 +286,9 @@
       const [promptId] = useState('expert-maker');
       const [path, setPath] = useState([promptId]); // [prompt] or [prompt, chainId]
       const [selectedIdx, setSelectedIdx] = useState(0);
+      const initializedRef = useRef(false);
+
+      const [hoveredIdx, setHoveredIdx] = useState(null); // hover ≡ selection
       const [editorOpen, setEditorOpen] = useState(false);
       const [editorItemId, setEditorItemId] = useState(null);
       const [editorItemType, setEditorItemType] = useState(null);
@@ -344,6 +305,8 @@
       const [addActive, setAddActive] = useState(false);
       const [addSelectedIdx, setAddSelectedIdx] = useState(0);
       const addInputRef = useRef(null);
+      const prevIdxBeforeAddRef = useRef(null);
+      const cameFromPlusRef = useRef(false);
 
       const [lastChainId, setLastChainId] = useState(null); // remember which chain we drilled into
 
@@ -353,7 +316,6 @@
 
       const showToast = (msg) => { setToast(msg); setTimeout(() => setToast(null), 1600); };
 
-      // Build outline
       const currentItems = useMemo(() => {
         const items = [];
         items.push({ id: 'smile-menu', ...db['smile-menu'], _depth: 0, _class: 'menu' });
@@ -379,7 +341,18 @@
         return items;
       }, [db, promptId, isChainView, currentChainId]);
 
-      // Suggestions only after typing
+      // First-load: select the first chain by default
+      useEffect(() => {
+        if (initializedRef.current) return;
+        const idx = currentItems.findIndex(i => i.type === 'chain');
+        if (idx !== -1) {
+          setSelectedIdx(idx);
+        } else {
+          setSelectedIdx(0);
+        }
+        initializedRef.current = true;
+      }, [currentItems]);
+
       const addSuggestions = useMemo(() => {
         if (!addQuery.trim()) return [];
         const q = addQuery.toLowerCase();
@@ -403,6 +376,10 @@
         setSettingsMeta('');
         setSettingsStructure(1);
       };
+      const openEditorAndFocusSettings = (itemId, itemType) => {
+        openEditor(itemId, itemType);
+        setTimeout(() => setEditorMode('settings'), 0);
+      };
       const closeEditor = () => {
         setEditorOpen(false);
         setEditorItemId(null);
@@ -412,31 +389,54 @@
       };
       const saveEditor = () => { showToast('Saved'); closeEditor(); };
 
-      // Compute the index of a chain in prompt view list
       const getPromptViewChainIndex = (chainId) => {
         const prompt = db[promptId];
         const chainIds = (prompt.modules || []).filter(id => db[id]?.type === 'chain');
         const idxInChains = chainIds.indexOf(chainId);
-        if (idxInChains === -1) return 2; // default first chain position
-        return 2 + idxInChains; // 0: menu, 1: prompt, then chains...
+        if (idxInChains === -1) return currentItems.findIndex(i => i.type === 'chain');
+        // 0: menu, 1: prompt, then chains...
+        return 2 + idxInChains;
       };
 
-      // Keyboard interactions
       useEffect(() => {
         const onKey = (e) => {
-          if (editorOpen) {
+          // Fast path: global '+' to open Add unless a text window (textarea) is focused
+          if (e.key === '+') {
+            const active = document.activeElement;
+            const isTextWindow = active && active.tagName === 'TEXTAREA';
+            if (!(editorOpen && editorMode === 'text') && !isTextWindow) {
+              e.preventDefault();
+              if (addInputRef.current) {
+                cameFromPlusRef.current = true;
+                prevIdxBeforeAddRef.current = selectedIdx;
+                addInputRef.current.focus();
+                setAddActive(true);
+                setSelectedIdx(-1);
+              }
+              return;
+            }
+          }
+
+          // If editor text is open, only handle its dedicated keys
+          if (editorOpen && editorMode === 'text') {
             if (e.key === 'Enter' && e.shiftKey) { e.preventDefault(); saveEditor(); return; }
             if (e.key === 'Escape') { e.preventDefault(); closeEditor(); return; }
-            if (e.key === 'ArrowRight') { e.preventDefault(); setEditorMode(m => m === 'text' ? 'settings' : 'text'); return; }
+            if (e.key === 'ArrowRight') { e.preventDefault(); setEditorMode('settings'); return; }
             return;
           }
-          if (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA') return;
+
+          // Let normal typing in inputs proceed, except we still allowed '+' above
+          const isInput = e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA';
+          const isAddInput = e.target === addInputRef.current;
+          if (isInput && !isAddInput) return;
 
           if (e.key === 'ArrowDown') {
             e.preventDefault();
             if (selectedIdx < currentItems.length - 1) {
               setSelectedIdx(prev => prev + 1);
             } else if (addInputRef.current) {
+              // end-of-list jumps into Add
+              cameFromPlusRef.current = false; // entered add via list end, not '+'
               addInputRef.current.focus();
               setAddActive(true);
               setSelectedIdx(-1);
@@ -446,6 +446,7 @@
             if (selectedIdx > 0) {
               setSelectedIdx(prev => prev - 1);
             } else if (addInputRef.current) {
+              cameFromPlusRef.current = false;
               addInputRef.current.focus();
               setAddActive(true);
               setSelectedIdx(-1);
@@ -462,12 +463,15 @@
             const item = currentItems[selectedIdx];
             if (!item) return;
             if (item.type === 'chain') {
-              // Drill into chain view to see documents
               setLastChainId(item.id);
               setPath([promptId, item.id]);
               return;
             }
-            if (item.type === 'menu' || item.type === 'prompt' || item.type === 'doc') {
+            if (item.type === 'prompt' && !isChainView) {
+              openEditorAndFocusSettings(item.id, 'prompt');
+              return;
+            }
+            if (item.type === 'menu' || item.type === 'doc' || (item.type === 'prompt' && isChainView)) {
               openEditor(item.id, item.type);
               return;
             }
@@ -476,22 +480,17 @@
             const item = currentItems[selectedIdx];
             if (!item) return;
             if (item.type === 'chain') {
-              openEditor(item.id, 'chain'); // Enter opens editor
+              openEditor(item.id, 'chain');
+            } else if (item.type === 'prompt' && !isChainView) {
+              openEditorAndFocusSettings(item.id, 'prompt');
             } else {
               openEditor(item.id, item.type);
-            }
-          } else if (e.key === '+') {
-            e.preventDefault();
-            if (addInputRef.current) {
-              addInputRef.current.focus();
-              setAddActive(true);
-              setSelectedIdx(-1);
             }
           }
         };
         window.addEventListener('keydown', onKey);
         return () => window.removeEventListener('keydown', onKey);
-      }, [editorOpen, selectedIdx, currentItems, isChainView, promptId, db, lastChainId, currentChainId]);
+      }, [editorOpen, editorMode, selectedIdx, currentItems, isChainView, promptId, db, lastChainId, currentChainId]);
 
       const IndentGuides = ({ depth }) => {
         const bars = [];
@@ -508,8 +507,6 @@
 
       const isSearching = addActive;
       const panelClass = `panel ${isSearching ? 'searching' : ''}`;
-
-      // Search row indentation: prompt view => chains depth (2); chain view => docs depth (3)
       const searchDepth = isChainView ? 3 : 2;
 
       return (
@@ -517,19 +514,36 @@
           <div className={panelClass}>
             <div className="list-container">
               {currentItems.map((item, idx) => {
-                const isSelected = selectedIdx === idx && !editorOpen && !addActive;
                 const depth = item._depth ?? 0;
-                const rowClass = `line ${item._class || ''}`;
+
+                const isActive = (!editorOpen && !addActive) && (selectedIdx === idx || hoveredIdx === idx);
+                const rowClass = `line ${item._class || ''}${isActive ? ' selected' : ''}`;
+
+                const getDocPreview = (text) => {
+                  const lines = String(text || '').split('\n').slice(0, 3).map(s => s.trim()).filter(Boolean);
+                  return lines.join(' ');
+                };
+
+                const goBackToPromptAtChain = () => {
+                  const backIdx = getPromptViewChainIndex(currentChainId || lastChainId);
+                  setPath([promptId]);
+                  setSelectedIdx(backIdx);
+                };
 
                 return (
                   <React.Fragment key={item.id}>
                     <div
-                      className={rowClass + (isSelected ? ' selected' : '')}
+                      className={rowClass}
                       style={{ '--indent-count': depth }}
-                      onClick={() => {
-                        if (item.type === 'chain') {
+                      onMouseEnter={() => setHoveredIdx(idx)}
+                      onMouseLeave={() => setHoveredIdx(null)}
+                      onClick={(e) => {
+                        const role = e.target?.getAttribute?.('data-role');
+                        if (role === 'burger' || role === 'left-arrow') return;
+
+                        if (item.type === 'chain' && !editorOpen) {
                           setLastChainId(item.id);
-                          setPath([promptId, item.id]); // click drills to chain view
+                          setPath([promptId, item.id]);
                         } else {
                           setSelectedIdx(idx);
                         }
@@ -546,18 +560,39 @@
                         </span>
                       </div>
                       <div className="line-indicator">
+                        {isChainView && item.type === 'prompt' && isActive && (
+                          <span
+                            className="left-arrow"
+                            title="Return to prompt view"
+                            data-role="left-arrow"
+                            onClick={(e) => { e.stopPropagation(); goBackToPromptAtChain(); }}
+                          >←</span>
+                        )}
                         <span className="arrow">→</span>
-                        <span className="burger" title="Open editor"><div></div><div></div><div></div></span>
+                        {(item.type === 'menu' || item.type === 'prompt' || item.type === 'doc') && (
+                          <span
+                            className="burger"
+                            title={item.type === 'prompt' && !isChainView ? 'Open settings' : 'Open editor'}
+                            data-role="burger"
+                            onClick={(e) => {
+                              e.stopPropagation();
+                              if (item.type === 'prompt' && !isChainView) {
+                                openEditorAndFocusSettings(item.id, 'prompt');
+                              } else {
+                                openEditor(item.id, item.type);
+                              }
+                            }}
+                          ><div></div><div></div><div></div></span>
+                        )}
                       </div>
                     </div>
 
-                    {/* Chain preview of documents when a chain is selected in prompt view, indented to doc level */}
-                    {isPromptView && isSelected && item.type === 'chain' && item.items && (
+                    {isPromptView && isActive && item.type === 'chain' && item.items && (
                       <div className="module-contents">
                         {(item.items || []).map(docId => {
                           const d = db[docId];
                           if (!d) return null;
-                          const previewDepth = depth + 1; // doc depth
+                          const previewDepth = depth + 1;
                           return (
                             <div key={docId} className="preview-line" style={{ '--indent-count': previewDepth }}>
                               <div className="preview-fills">
@@ -573,7 +608,18 @@
                       </div>
                     )}
 
-                    {/* Inline editor below the selected item */}
+                    {isActive && item.type === 'doc' && (
+                      <div className="preview-line" style={{ '--indent-count': (depth + 1) }}>
+                        <div className="preview-fills">
+                          {Array.from({length: depth + 1}).map((_,i)=><div key={i} className="preview-fill-box"></div>)}
+                        </div>
+                        <div className="preview-inner">
+                          <IndentGuides depth={depth + 1} />
+                          <span className="preview-label">{getDocPreview(item.text)}</span>
+                        </div>
+                      </div>
+                    )}
+
                     {editorOpen && editorItemId === item.id && (
                       <div className="editor-container">
                         {editorMode === 'text' ? (
@@ -626,11 +672,14 @@
                 );
               })}
 
-              {/* Inline Add Instructions row; hovers like others; indents to docs in chain view */}
-              <div className={`line search-row`} style={{ '--indent-count': searchDepth }}>
-                <IndentFills depth={searchDepth} className="indent-fill-box" />
+              <div className="line search-row" style={{ '--indent-count': searchDepth }}>
+                <div className="indent-fills">
+                  {Array.from({length: searchDepth}).map((_,i)=><div key={i} className="indent-fill-box"></div>)}
+                </div>
                 <div className="line-inner" onClick={() => { if (addInputRef.current) addInputRef.current.focus(); }}>
-                  <IndentGuides depth={searchDepth} />
+                  <div className="indent-guides">
+                    {Array.from({length: searchDepth}).map((_,i)=><div key={i} className="indent-bar"></div>)}
+                  </div>
                   <input
                     ref={addInputRef}
                     className="search-input"
@@ -657,12 +706,17 @@
                             setDb(prev => ({ ...prev, [promptId]: { ...prev[promptId], modules: newMods } }));
                           }
                           setAddQuery(''); setAddActive(false);
+                          cameFromPlusRef.current = false;
                           if (addInputRef.current) addInputRef.current.blur();
                         }
                       } else if (e.key === 'Escape') {
                         e.preventDefault();
                         setAddQuery(''); setAddActive(false);
                         if (addInputRef.current) addInputRef.current.blur();
+                        if (cameFromPlusRef.current && prevIdxBeforeAddRef.current !== null) {
+                          setSelectedIdx(prevIdxBeforeAddRef.current);
+                        }
+                        cameFromPlusRef.current = false;
                       } else if (e.key === 'ArrowDown') {
                         e.preventDefault();
                         setAddSelectedIdx(prev => Math.min(addSuggestions.length - 1, prev + 1));
@@ -671,7 +725,10 @@
                         if (addSelectedIdx <= 0) {
                           setAddActive(false);
                           if (addInputRef.current) addInputRef.current.blur();
-                          setSelectedIdx(Math.max(0, currentItems.length - 1));
+                          if (cameFromPlusRef.current && prevIdxBeforeAddRef.current !== null) {
+                            setSelectedIdx(prevIdxBeforeAddRef.current);
+                          }
+                          cameFromPlusRef.current = false;
                         } else {
                           setAddSelectedIdx(prev => prev - 1);
                         }
@@ -706,6 +763,7 @@
                             setDb(prev => ({ ...prev, [promptId]: { ...prev[promptId], modules: newMods } }));
                           }
                           setAddQuery(''); setAddActive(false);
+                          cameFromPlusRef.current = false;
                           if (addInputRef.current) addInputRef.current.blur();
                         }}
                         title={allowed ? 'Add' : 'Not addable in this context'}
