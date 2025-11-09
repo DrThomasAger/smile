@@ -1,468 +1,511 @@
 #!/usr/bin/env node
-
 /**
- * SMILE Agent Compiler (COPY.js)
- * Compiles .smile agent files by resolving chain/doc/data references
- * 
- * Created by: Dr. Thomas Ager
- * Co-created by: Claude (Anthropic) - v1.0 November 2025
- * 
- * Usage: node COPY.js [agent-folder-path]
+ * COPY.js — v3.3
+ *
+ * Objectives upheld:
+ * - Always write a .txt for every .smile that has at least one token, even if some tokens fail.
+ * - Resolve through wrong type or wrong subpath by falling back across the index; log the fallback and record a fix suggestion.
+ * - If a token is truly unresolvable, inline a readable error stub into the compiled output, keep going, and record the error.
+ * - Broaden token parsing so unquoted names may include parentheses and other marks used in author content.
+ * - Zero deps, Node >= 14.
  */
 
-const fs = require('fs');
-const path = require('path');
-const crypto = require('crypto');
+const fs = require("fs");
+const path = require("path");
+const crypto = require("crypto");
 
-class SmileCompiler {
-  constructor(agentPath) {
-    this.agentPath = path.resolve(agentPath);
-    this.logPath = path.join(this.agentPath, '.smile-log');
-    this.warnings = [];
-    this.fileHashes = {};
-    this.debug = process.env.DEBUG === 'true';
+// ------------------------------ Config ------------------------------ //
+const TYPES = new Set(["chain", "document", "data", "doc"]); // 'doc' is accepted shorthand for 'document'
+const IGNORE_DIRS = new Set([".git", "node_modules", ".idea", ".vscode", ".smile-log"]);
+const PRUNE_DIRS  = new Set(["build","dist","coverage",".next",".turbo","out",".cache","tmp","temp","__pycache__","venv",".venv","env",".env","target","bazel-bin","bazel-out",".gradle",".m2",".DS_Store"]);
+const LOG_DIR = ".smile-log";
+const WARNINGS_FILE = path.join(LOG_DIR, "warnings.json"); // includes errors and suggestions
+const VERSION_FILE  = path.join(LOG_DIR, "version.json");
 
-    // Track resolution stack to detect cycles across recursive transclusion.
-    this._resolvingStack = [];
+// Fresh token regex source for per-call instances (prevents recursion from corrupting parent state).
+const TOKEN_RE_SOURCE = String.raw`\[\$(?<inner>[^\]]*?)\$\]`;
+
+// Inner grammar: [$ <type>? <subpaths>? <op>? <name>? $]
+// Broaden unquoted <name> to allow almost anything except '$' (token delimiter); quotes still supported.
+// Accept ':' or '=' as operator.
+const INNER_RE =
+  /^(?<lead>\s*)(?<type>[A-Za-z]+)?(?<paths>(?:\/[A-Za-z0-9._\-]+)*)(?<mid>\s*)(?<op>=|:)?(?<mid2>\s*)(?:"(?<qname>[^"]+)"|(?<name>[^$][^$]*?))?(?<trail>\s*)$/;
+
+// ------------------------------ Helpers ------------------------------ //
+const hash  = (buf) => crypto.createHash("md5").update(buf).digest("hex");
+const read  = (p) => fs.readFileSync(p, "utf8");
+const write = (p, s) => { fs.mkdirSync(path.dirname(p), { recursive: true }); fs.writeFileSync(p, s, "utf8"); };
+
+// Canonicalize a name for lookup: lower, strip spaces, hyphens, underscores, and trailing .smile/.txt
+const canon = (s) =>
+  String(s || "")
+    .toLowerCase()
+    .replace(/\s+/g, "")
+    .replace(/[\-_]+/g, "")
+    .replace(/\.(smile|txt)$/i, "");
+
+// For data files we compare both with and without extension keys.
+const canonNoExt = (filename) => canon(path.parse(filename).name);
+
+function real(p) { try { return fs.realpathSync.native ? fs.realpathSync.native(p) : fs.realpathSync(p); } catch { return p; } }
+function safeLstat(p){ try { return fs.lstatSync(p); } catch { return null; } }
+
+function posToLineCol(text, index){
+  let line=1, col=1;
+  for(let i=0;i<index;i++){ if(text.charCodeAt(i)===10){ line++; col=1; } else { col++; } }
+  return { line, col };
+}
+
+function findPromptRoot(root){
+  const p = path.join(root, "prompt");
+  if (fs.existsSync(p) && fs.statSync(p).isDirectory()) return p;
+  return root;
+}
+
+function walkFiles(dir, filterFn){
+  const out=[]; const visited=new Set();
+  (function walk(d){
+    const st=safeLstat(d); if(!st) return; if(st.isSymbolicLink()) return;
+    const rp=real(d); if(visited.has(rp)) return; visited.add(rp);
+    let ents; try { ents=fs.readdirSync(d, { withFileTypes:true }); } catch { return; }
+    for(const e of ents){
+      if(IGNORE_DIRS.has(e.name) || PRUNE_DIRS.has(e.name)) continue;
+      const full=path.join(d,e.name); const est=safeLstat(full); if(!est) continue; if(est.isSymbolicLink()) continue;
+      if(est.isDirectory()) walk(full); else if(est.isFile() && filterFn(full)) out.push(full);
+    }
+  })(dir);
+  return out;
+}
+
+function scanSmileFiles(promptRoot){
+  const startDirs = ["chain","document","data"].map(d=>path.join(promptRoot,d)).filter(p=>fs.existsSync(p));
+  if (!startDirs.length) startDirs.push(promptRoot);
+  const smiles=[];
+  for (const d of startDirs){ smiles.push(...walkFiles(d, f=>f.toLowerCase().endsWith('.smile'))); }
+  return smiles;
+}
+
+// Build an index of available targets under chain/ and document/ (nested allowed). Data allows any extension.
+function buildIndex(promptRoot){
+  const idx={ chain:new Map(), document:new Map(), data:new Map(), all:new Map() };
+
+  function addKey(map, key, rec){
+    if(!map.has(key)) map.set(key, []);
+    const arr = map.get(key);
+    if (!arr.some(r => r.full === rec.full)) arr.push(rec);
   }
 
-  log(...args) {
-    if (this.debug) console.log('[SMILE]', ...args);
-  }
+  function add(type, full){
+    const base = path.basename(full);
+    const rec={ full, type };
+    const keyWithExt = canon(base);
 
-  warn(message) {
-    this.warnings.push(message);
-    this.log('Warning:', message);
-  }
+    addKey(idx[type], keyWithExt, rec);
+    addKey(idx.all,  keyWithExt, rec);
 
-  compile() {
-    this.log('Starting compilation from:', this.agentPath);
-    
-    const agentFiles = fs.readdirSync(this.agentPath)
-      .filter(f => f.endsWith('.smile') && !f.startsWith('Name'));
-    
-    if (agentFiles.length === 0) {
-      throw new Error('No agent entry point found');
-    }
-
-    const entryPoint = agentFiles.includes('prompt.smile') ? 'prompt.smile' : agentFiles[0];
-    this.log('Entry point:', entryPoint);
-    
-    const entryPath = path.join(this.agentPath, entryPoint);
-    const compiled = this.resolveFile(entryPath);
-    
-    this.updateVersionLog();
-    
-    return this.cleanOutput(compiled);
-  }
-
-  resolveFile(filePath) {
-    this.log(`Resolving: ${path.relative(this.agentPath, filePath)}`);
-
-    if (!fs.existsSync(filePath)) {
-      throw new Error(`File not found: ${filePath}`);
-    }
-
-    const content = fs.readFileSync(filePath, 'utf-8');
-    this.trackFileHash(filePath, content);
-    
-    // Check for malformed references
-    this.validateSyntax(content, filePath);
-    
-    // Recursively resolve within this file
-    return this.resolveReferences(content, filePath);
-  }
-
-  validateSyntax(content, filePath) {
-    // Check for unclosed references
-    const openRefs = (content.match(/\[\$/g) || []).length;
-    const closeRefs = (content.match(/\$\]/g) || []).length;
-    
-    if (openRefs !== closeRefs) {
-      throw new Error(`Malformed reference in ${path.basename(filePath)}: Found ${openRefs} [$  but ${closeRefs} $]`);
+    if (type === 'data'){
+      const keyNoExt = canonNoExt(base);
+      addKey(idx[type], keyNoExt, rec);
+      addKey(idx.all,  keyNoExt, rec);
     }
   }
 
-  resolveReferences(content, currentFile) {
-    // Match any [$type="name"$] pattern, type is optional, subtype allowed with slash.
-    const refPattern = /\[\$(\w*)(?:\/(\w+))?[=:"]\s*([^$]+?)\s*\$\]/gi;
-    
-    return content.replace(refPattern, (match, type, subtype, name) => {
-      const cleanName = name.replace(/["']/g, '').replace(/\.txt$/i, '').replace(/\.smile$/i, '');
-      const typeShown = type || '(unspecified)';
-      this.log(`Found reference: ${typeShown}${subtype ? '/' + subtype : ''} → ${cleanName}`);
-      
-      try {
-        const resolvedPath = this.resolvePathWithFallback(type, subtype, cleanName);
-        if (!resolvedPath) {
-          throw new Error(`Cannot resolve: ${match}\nIn file: ${path.basename(currentFile)}`);
-        }
+  const chainDir = path.join(promptRoot, 'chain');
+  const docDir   = path.join(promptRoot, 'document');
+  const dataDir  = path.join(promptRoot, 'data');
+  if (fs.existsSync(chainDir))  walkFiles(chainDir,  f=>/\.smile$/i.test(f)).forEach(f=>add('chain', f));
+  if (fs.existsSync(docDir))    walkFiles(docDir,    f=>/\.smile$/i.test(f)).forEach(f=>add('document', f));
+  if (fs.existsSync(dataDir))   walkFiles(dataDir,   _=>true).forEach(f=>add('data', f));
 
-        // Cycle detection across transclusion stack
-        if (this._resolvingStack.includes(resolvedPath)) {
-          const cycleChain = [...this._resolvingStack.map(p => path.basename(p)), path.basename(resolvedPath)].join(' → ');
-          throw new Error(
-            `Cyclic reference detected: ${cycleChain}\n` +
-            `  While resolving from: ${path.basename(currentFile)}`
-          );
-        }
-        
-        const resolvedContent = fs.readFileSync(resolvedPath, 'utf-8');
-        this.trackFileHash(resolvedPath, resolvedContent);
+  // Legacy discovery fallbacks.
+  const legacyDocRoots = [ 'documents', 'sections', 'section', 'prompt', 'response' ].map(n=>path.join(promptRoot, n)).filter(p=>fs.existsSync(p));
+  for (const r of legacyDocRoots) walkFiles(r, f=>/\.smile$/i.test(f)).forEach(f=>add('document', f));
+  const legacyChainRoots = [ 'pipeline', 'module', 'modules' ].map(n=>path.join(promptRoot, n)).filter(p=>fs.existsSync(p));
+  for (const r of legacyChainRoots) walkFiles(r, f=>/\.smile$/i.test(f)).forEach(f=>add('chain', f));
+  return idx;
+}
 
-        // Validate referenced content so syntax errors are reported at the correct source.
-        this.validateSyntax(resolvedContent, resolvedPath);
-        
-        // Allow chain→chain references. Rely on cycle detection to prevent recursion loops.
+function splitInner(inner){
+  const m = INNER_RE.exec(inner);
+  if(!m) return null;
+  const g = m.groups;
+  const typeRaw = g.type ? g.type.trim() : null;
+  const pathRaw = (g.paths || '').trim();
+  const subpaths = pathRaw ? pathRaw.split('/').filter(Boolean) : [];
+  const name = (g.qname || g.name || '').trim();
+  const op = g.op || '='; // default to '=' if omitted
+  return { typeRaw, subpaths, name, op, quoted: Boolean(g.qname), lead:g.lead||'', trail:g.trail||'' };
+}
 
-        // Recursively resolve references within the injected content.
-        this._resolvingStack.push(resolvedPath);
-        try {
-          const fullyResolved = this.resolveReferences(resolvedContent, resolvedPath);
-          return fullyResolved;
-        } finally {
-          this._resolvingStack.pop();
-        }
-      } catch (e) {
-        throw e;
-      }
-    });
+function normalizeType(t){
+  if(!t) return null;
+  t=t.toLowerCase();
+  if(t==='doc') return 'doc';
+  if(t==='document') return 'document';
+  if(t==='chain'||t==='data') return t;
+  return null;
+}
+
+function typeToFolder(t){ return t==='doc' ? 'document' : t; }
+
+function findByNameAcross(idx, name){
+  const key = canon(name);
+  const hits = idx.all.get(key) || [];
+  return hits.map(h => ({
+    full:h.full,
+    type: h.type==='document' ? 'document' : h.type,
+    basename: path.basename(h.full).replace(/\.(smile|txt)$/i,'')
+  }));
+}
+
+function bestCandidateByName(idx, name){
+  const key = canon(name);
+  const hits = (idx.all.get(key) || []).slice();
+
+  if (!hits.length) return null;
+
+  // Deterministic tie-break: prefer document, then chain, then data; then shorter full path; then lexical path.
+  const pri = (t)=> (t==='document'?0 : t==='chain'?1 : 2);
+  hits.sort((a,b)=>{
+    const pa = pri(a.type), pb = pri(b.type);
+    if (pa !== pb) return pa - pb;
+    if (a.full.length !== b.full.length) return a.full.length - b.full.length;
+    return a.full.localeCompare(b.full);
+  });
+  return hits[0];
+}
+
+// ------------------------------ Resolve ------------------------------ //
+// Strict resolver for a declared type/path. Throws when type is unknown or nothing is found.
+function resolveDeclared(idx, promptRoot, tokenObj){
+  const { typeRaw, subpaths, name } = tokenObj;
+  const t = normalizeType(typeRaw);
+  if (!t) {
+    const suggestions = findByNameAcross(idx, name);
+    const sugText = suggestions.map(s=>`  - [$${s.type}="${s.basename}"$]  ->  ${s.full}`).join("\n");
+    const err = new Error(`Unrecognized type "${typeRaw ?? ''}"\nToken: [$${typeRaw ?? ''}${subpaths.length?('/'+subpaths.join('/')):''}="${name}"$]\nSuggestions:\n${sugText || '  (none found)'}\n`);
+    err._code = 'UNKNOWN_TYPE';
+    throw err;
   }
 
-  resolvePathWithFallback(type, subtype, name) {
-    // Try typed lookup first (or untyped curated search), then deep global search across any folder.
-    const p = this.resolvePath(type, subtype, name);
-    if (p) return p;
+  const folder = typeToFolder(t);
+  const typeRoot = path.join(promptRoot, folder);
+  const searchRoots = [];
 
-    // Deep search anywhere in agentPath and its parent
-    const searchName = name.toLowerCase();
-    const deepRoots = [
-      this.agentPath,
-      path.dirname(this.agentPath)
-    ];
-
-    const matches = this.findMatchesDeep(deepRoots, searchName);
-
-    if (matches.length === 0) {
-      return null;
+  if (subpaths.length){
+    searchRoots.push(path.join(typeRoot, ...subpaths));
+    if (folder==='document' && (subpaths[0].toLowerCase()==='prompt' || subpaths[0].toLowerCase()==='response')){
+      searchRoots.push(typeRoot);
     }
-    if (matches.length > 1) {
-      const locations = matches.map(m => m.location).join(', ');
-      throw new Error(`Multiple files found for "${name}" during deep search in: ${locations}. Specify type or more specific name to disambiguate.`);
+  } else {
+    if (folder==='document'){
+      const pr = path.join(typeRoot,'prompt'); const rr = path.join(typeRoot,'response');
+      if (fs.existsSync(pr)) searchRoots.push(pr);
+      if (fs.existsSync(rr)) searchRoots.push(rr);
     }
-
-    const only = matches[0];
-    // If caller specified a type but the discovered location suggests a different category, warn and proceed.
-    const declared = (type || '').toLowerCase();
-    const inferred = this.inferCategoryFromLocation(only.location); // 'chain' | 'doc' | 'data' | 'default' | 'root' | 'unknown'
-    if (declared && inferred !== 'unknown' && declared !== inferred) {
-      this.warn(`Declared type "${declared}" for "${name}" but found in "${only.location}" (inferred "${inferred}"). Resolved by deep search.`);
-    } else {
-      this.warn(`Resolved "${name}" by deep search at "${only.location}". Consider organizing or specifying type.`);
-    }
-
-    this.log(`  Deep-resolved ${type ? type + ':' : ''}${name} → ${path.relative(this.agentPath, only.path)}`);
-    return only.path;
+    searchRoots.push(typeRoot);
   }
 
-  resolvePath(type, subtype, name) {
-    const lowerType = type ? type.toLowerCase() : '';
-    const searchName = name.toLowerCase();
-
-    // Normalize type names
-    const typeMap = {
-      'module': 'chain',
-      'pipeline': 'chain',
-      'chain': 'chain',
-      'section': 'doc',
-      'document': 'doc',
-      'doc': 'doc',
-      'data': 'data',
-      'var': 'data',
-      'variable': 'data',
-      'segment': 'data'
-    };
-
-    const normalizedType = typeMap[lowerType];
-    if (!normalizedType || lowerType === '') {
-      // Type not specified or not recognized - curated search then deep
-      return this.searchAllLocations(name);
-    }
-
-    let searchPaths = [];
-
-    if (normalizedType === 'chain') {
-      searchPaths = [
-        path.join(this.agentPath, 'chain'),
-        path.join(this.agentPath, 'pipeline'),
-        path.join(this.agentPath, '..', 'chain'),
-        path.join(this.agentPath, '..', 'pipeline')
-      ];
-    } else if (normalizedType === 'doc') {
-      if (subtype) {
-        searchPaths = [
-          path.join(this.agentPath, 'documents', subtype),
-          path.join(this.agentPath, 'section', subtype),
-          path.join(this.agentPath, '..', 'documents', subtype),
-          path.join(this.agentPath, '..', 'section', subtype)
-        ];
-      } else {
-        // Include unsorted documents under documents/ and section/ roots
-        searchPaths = [
-          path.join(this.agentPath, 'documents'),
-          path.join(this.agentPath, 'documents', 'prompt'),
-          path.join(this.agentPath, 'documents', 'response'),
-          path.join(this.agentPath, 'section'),
-          path.join(this.agentPath, 'section', 'prompt'),
-          path.join(this.agentPath, 'section', 'response'),
-          path.join(this.agentPath, '..', 'documents'),
-          path.join(this.agentPath, '..', 'documents', 'prompt'),
-          path.join(this.agentPath, '..', 'documents', 'response'),
-          path.join(this.agentPath, '..', 'section'),
-          path.join(this.agentPath, '..', 'section', 'prompt'),
-          path.join(this.agentPath, '..', 'section', 'response')
-        ];
-      }
-    } else if (normalizedType === 'data') {
-      searchPaths = [
-        path.join(this.agentPath, 'data'),
-        path.join(this.agentPath, 'data', 'input'),
-        path.join(this.agentPath, 'data', 'output'),
-        path.join(this.agentPath, 'default'),
-        this.agentPath
-      ];
-    }
-
-    const matches = this.findMatches(searchPaths, searchName);
-
-    if (matches.length === 0) {
-      // Let caller trigger deep fallback
-      return null;
-    }
-
-    if (matches.length > 1) {
-      const locations = matches.map(m => m.location).join(', ');
-      throw new Error(`Multiple files found for "${name}" in: ${locations}. Specify type to disambiguate.`);
-    }
-
-    if (matches.length === 1 && normalizedType === 'doc' && !subtype) {
-      this.warn(`Unspecified doc reference "${name}" resolved to ${matches[0].location}. Consider using doc/prompt or doc/response.`);
-    }
-
-    this.log(`  Resolved ${type}:${name} → ${path.relative(this.agentPath, matches[0].path)}`);
-    return matches[0].path;
-  }
-
-  searchAllLocations(name) {
-    const searchName = name.toLowerCase();
-    
-    // Curated, common locations first (including unsorted doc roots)
-    const allPaths = [
-      path.join(this.agentPath, 'chain'),
-      path.join(this.agentPath, 'pipeline'),
-      path.join(this.agentPath, 'documents'),
-      path.join(this.agentPath, 'documents', 'prompt'),
-      path.join(this.agentPath, 'documents', 'response'),
-      path.join(this.agentPath, 'section'),
-      path.join(this.agentPath, 'section', 'prompt'),
-      path.join(this.agentPath, 'section', 'response'),
-      path.join(this.agentPath, 'data'),
-      path.join(this.agentPath, 'data', 'input'),
-      path.join(this.agentPath, 'data', 'output'),
-      path.join(this.agentPath, 'default'),
-      this.agentPath,
-      path.join(this.agentPath, '..', 'chain'),
-      path.join(this.agentPath, '..', 'pipeline'),
-      path.join(this.agentPath, '..', 'documents'),
-      path.join(this.agentPath, '..', 'section')
-    ];
-
-    let matches = this.findMatches(allPaths, searchName);
-
-    if (matches.length === 0) {
-      // Deep fallback across any folder if curated search fails
-      const deepRoots = [
-        this.agentPath,
-        path.dirname(this.agentPath)
-      ];
-      matches = this.findMatchesDeep(deepRoots, searchName);
-      if (matches.length === 0) return null;
-    }
-
-    if (matches.length > 1) {
-      const locations = matches.map(m => m.location).join(', ');
-      throw new Error(`Multiple files found for "${name}" in: ${locations}. Specify type (chain/doc/data) to disambiguate.`);
-    }
-
-    this.warn(`Unspecified type for "${name}". Found in ${matches[0].location}. Consider specifying chain/doc/data.`);
-    this.log(`  Resolved ${name} → ${path.relative(this.agentPath, matches[0].path)}`);
-    return matches[0].path;
-  }
-
-  findMatches(searchPaths, searchName) {
-    const matches = [];
-
-    for (const searchPath of searchPaths) {
-      if (!fs.existsSync(searchPath) || !fs.statSync(searchPath).isDirectory()) continue;
-
-      const files = fs.readdirSync(searchPath);
-
-      for (const file of files) {
-        const fullPath = path.join(searchPath, file);
-        if (fs.statSync(fullPath).isDirectory()) continue;
-
-        const fileBase = file.replace(/\.smile$/i, '').replace(/\.txt$/i, '');
-        const fileBaseLower = fileBase.toLowerCase();
-
-        if (fileBaseLower === searchName || 
-            fileBaseLower.replace(/[-_]/g, '') === searchName.replace(/[-_]/g, '')) {
-          matches.push({
-            path: fullPath,
-            location: path.relative(this.agentPath, searchPath) || '.'
-          });
-        }
-      }
-    }
-
-    return matches;
-  }
-
-  findMatchesDeep(rootDirs, searchName) {
-    const seen = new Set();
-    const results = [];
-
-    const matchBase = (base) => {
-      const baseLower = base.toLowerCase();
-      return baseLower === searchName ||
-             baseLower.replace(/\.smile$/i, '').replace(/\.txt$/i, '').replace(/[-_]/g, '') === searchName.replace(/[-_]/g, '');
-    };
-
-    const walk = (root) => {
-      if (!fs.existsSync(root)) return;
-      const stack = [root];
-      while (stack.length) {
-        const dir = stack.pop();
-        let entries = [];
-        try {
-          entries = fs.readdirSync(dir, { withFileTypes: true });
-        } catch {
-          continue;
-        }
-        for (const ent of entries) {
-          const full = path.join(dir, ent.name);
-          if (ent.isDirectory()) {
-            // Skip version log directory noise
-            if (ent.name === '.smile-log' || ent.name === 'node_modules' || ent.name.startsWith('.git')) continue;
-            stack.push(full);
-          } else if (ent.isFile()) {
-            const base = ent.name;
-            if (seen.has(full)) continue;
-            if (matchBase(base)) {
-              seen.add(full);
-              results.push({
-                path: full,
-                location: path.relative(this.agentPath, path.dirname(full)) || '.'
-              });
-            }
-          }
-        }
-      }
-    };
-
-    for (const r of rootDirs) walk(r);
-    return results;
-  }
-
-  inferCategoryFromLocation(location) {
-    const segs = location.split(path.sep).map(s => s.toLowerCase());
-    if (segs.includes('chain') || segs.includes('pipeline')) return 'chain';
-    if (segs.includes('documents') || segs.includes('section')) return 'doc';
-    if (segs.includes('data') || segs.includes('default')) return 'data';
-    if (location === '.' || location === '') return 'root';
-    return 'unknown';
-  }
-
-  trackFileHash(filePath, content) {
-    const hash = crypto.createHash('md5').update(content).digest('hex');
-    this.fileHashes[filePath] = hash;
-  }
-
-  updateVersionLog() {
-    if (!fs.existsSync(this.logPath)) {
-      fs.mkdirSync(this.logPath, { recursive: true });
-    }
-
-    const versionFile = path.join(this.logPath, 'version.json');
-    let previousHashes = {};
-    let currentVersion = 1;
-
-    if (fs.existsSync(versionFile)) {
-      const log = JSON.parse(fs.readFileSync(versionFile, 'utf-8'));
-      previousHashes = log.hashes || {};
-      currentVersion = log.version || 1;
-    }
-
-    let hasChanges = false;
-
-    for (const [filePath, hash] of Object.entries(this.fileHashes)) {
-      if (previousHashes[filePath] !== hash) {
-        hasChanges = true;
-        break;
-      }
-    }
-
-    if (hasChanges) {
-      currentVersion++;
-      const logData = {
-        version: currentVersion,
-        timestamp: new Date().toISOString(),
-        hashes: this.fileHashes,
-        files: Object.keys(this.fileHashes).map(f => path.relative(this.agentPath, f))
+  const wanted = canon(name);
+  const isData = folder==='data';
+  for (const r of searchRoots){
+    if (!fs.existsSync(r)) continue;
+    const files = walkFiles(r, f=>/.+/i.test(f));
+    for (const f of files){
+      const base = path.basename(f);
+      const baseCanon = canon(base);
+      const baseCanonNoExt = canonNoExt(base);
+      const okName = isData ? (baseCanon === wanted || baseCanonNoExt === wanted) : (baseCanon === wanted);
+      if (!okName) continue;
+      if (!isData && !/\.smile$/i.test(f)) continue;
+      const relFromType = path.relative(typeRoot, f).replace(/\\/g,'/');
+      const relDir = path.dirname(relFromType).replace(/^(\.)$/, '');
+      return {
+        full:f,
+        type: t==='doc' ? 'doc' : folder,
+        folderPath: relDir==='.'?'' : relDir,
+        basename: path.basename(f).replace(/\.(smile|txt)$/i, '')
       };
-
-      fs.writeFileSync(versionFile, JSON.stringify(logData, null, 2), 'utf-8');
-      this.log(`Version updated: v${currentVersion}`);
-    } else {
-      this.log(`No changes detected, version remains: v${currentVersion}`);
     }
   }
 
-  cleanOutput(content) {
-    content = content.replace(/\r\n/g, '\n');
-    content = content.replace(/\n{4,}/g, '\n\n\n');
-    return content.trim();
+  const err = new Error(`Cannot resolve [$${typeRaw}${subpaths.length?('/'+subpaths.join('/')):''}="${name}"$]`);
+  err._code = 'NOT_FOUND';
+  throw err;
+}
+
+// ------------------------------ Compile engine ------------------------------ //
+function compileContent(idx, promptRoot, filePath, text, stack, suggestions, errors, log, verbose){
+  const tokenRe = new RegExp(TOKEN_RE_SOURCE, "g");
+  let out = ""; let last = 0; let m;
+
+  while ((m = tokenRe.exec(text))) {
+    if (m[0].length === 0) { tokenRe.lastIndex++; continue; }
+    out += text.slice(last, m.index);
+
+    const tokenStr = m[0];
+    const { line, col } = posToLineCol(text, m.index);
+    const inner = m.groups.inner;
+    const parsed = splitInner(inner);
+
+    if (verbose) log(`[TOKEN] ${path.relative(promptRoot, filePath)}:${line}:${col}  ${tokenStr}`);
+
+    if (!parsed || !parsed.name){
+      const msg = `Malformed or empty reference token\nToken: ${tokenStr}`;
+      errors.push({ file:filePath, line, col, error: msg });
+      out += `\n[UNRESOLVED ${path.relative(promptRoot, filePath)}:${line}:${col} :: ${tokenStr} :: Malformed token]\n`;
+      last = m.index + m[0].length;
+      continue;
+    }
+
+    let target=null;
+    let reason=null;
+
+    try {
+      target = resolveDeclared(idx, promptRoot, parsed);
+      reason = 'declared';
+    } catch (e){
+      // Attempt cross-type fallback on unknown type or not found.
+      const fallback = bestCandidateByName(idx, parsed.name);
+      if (fallback){
+        // Build canonical replacement token from fallback.
+        const fallbackType = fallback.type === 'document' ? (parsed.typeRaw==='doc' ? 'doc' : 'document') : fallback.type;
+        const typeRoot = path.join(promptRoot, typeToFolder(fallbackType));
+        const relDir = path.relative(typeRoot, path.dirname(fallback.full)).replace(/\\/g,'/');
+        const folderPath = relDir === '' ? '' : relDir;
+        const fixedType = fallbackType;
+        const pathPart = folderPath ? `/${folderPath}` : '';
+        const namePart = parsed.quoted ? `"${path.basename(fallback.full).replace(/\.(smile|txt)$/i, '')}"` : path.basename(fallback.full).replace(/\.(smile|txt)$/i, '');
+        const fixedToken = `[$${fixedType}${pathPart}${parsed.op || '='}${namePart}$]`;
+
+        // Log and record suggestion.
+        const note = e && e._code === 'UNKNOWN_TYPE' ? 'unknown type' : 'unresolved';
+        if (verbose) log(`[FALLBACK] ${path.relative(promptRoot, filePath)}:${line}:${col}  ${note} -> compiled via ${fixedToken} -> ${path.relative(promptRoot, fallback.full)}`);
+        suggestions.push({
+          file:filePath,
+          index:m.index,
+          length:m[0].length,
+          original:m[0],
+          replacement: fixedToken,
+          reason: e && e._code === 'UNKNOWN_TYPE' ? 'unknown type mapped by name' : 'cross-type name match',
+          resolvedPath: fallback.full
+        });
+
+        // Adopt fallback as target; we will inline it.
+        const typeRoot2 = path.join(promptRoot, typeToFolder(fallbackType));
+        target = {
+          full: fallback.full,
+          type: fixedType,
+          folderPath: folderPath,
+          basename: path.basename(fallback.full).replace(/\.(smile|txt)$/i, '')
+        };
+        reason = 'fallback';
+      } else {
+        // Truly unresolvable: record error and inline stub.
+        const msg = (e && e.message) ? e.message : String(e);
+        errors.push({ file:filePath, line, col, error: msg, token: tokenStr });
+        if (verbose) log(`[UNRESOLVED] ${path.relative(promptRoot, filePath)}:${line}:${col}  ${msg.split('\n')[0]}`);
+        out += `\n[UNRESOLVED ${path.relative(promptRoot, filePath)}:${line}:${col} :: ${tokenStr} :: ${msg.replace(/\n/g,' | ')}]\n`;
+        last = m.index + m[0].length;
+        continue;
+      }
+    }
+
+    // Detect circular inclusion to avoid infinite recursion.
+    if (stack.includes(target.full)){
+      const cycle = [...stack, target.full].map(p => path.relative(promptRoot, p)).join(" -> ");
+      const msg = `Circular reference detected\nCycle: ${cycle}`;
+      errors.push({ file:filePath, line, col, error: msg, token: tokenStr });
+      if (verbose) log(`[CIRCULAR] ${path.relative(promptRoot, filePath)}:${line}:${col}  ${cycle}`);
+      out += `\n[UNRESOLVED ${path.relative(promptRoot, filePath)}:${line}:${col} :: ${tokenStr} :: Circular -> ${cycle}]\n`;
+      last = m.index + m[0].length;
+      continue;
+    }
+
+    // If the declared mapping doesn't match actual location, record a fix suggestion even when declared resolve worked.
+    if (reason === 'declared'){
+      const declaredType = normalizeType(parsed.typeRaw) || parsed.typeRaw;
+      const actualType   = target.type;
+      const typeRoot = path.join(promptRoot, typeToFolder(actualType));
+      const relDir = path.relative(typeRoot, path.dirname(target.full)).replace(/\\/g,'/');
+      const declaredPath = (parsed.subpaths||[]).join('/');
+      const declaredTypeCanonical = declaredType === 'document' && parsed.typeRaw === 'doc' ? 'doc' : declaredType;
+      const normDeclared = (declaredTypeCanonical==='doc') ? 'document' : declaredTypeCanonical;
+      const normActual   = (actualType==='doc') ? 'document' : actualType;
+
+      const needsTypeFix = Boolean(declaredTypeCanonical) && normDeclared !== normActual;
+      const needsPathFix = (relDir || '') !== (declaredPath || '');
+
+      if (needsTypeFix || needsPathFix){
+        const fixedType = (declaredTypeCanonical==='doc' && actualType==='document') ? 'doc' : actualType;
+        const pathPart = relDir ? `/${relDir}` : '';
+        const namePart = parsed.quoted ? `"${target.basename}"` : target.basename;
+        const fixedToken = `[$${fixedType}${pathPart}${parsed.op || '='}${namePart}$]`;
+        suggestions.push({
+          file:filePath,
+          index:m.index,
+          length:m[0].length,
+          original:m[0],
+          replacement: fixedToken,
+          reason: needsTypeFix && needsPathFix ? 'type and path mismatch' : (needsTypeFix ? 'type mismatch' : 'path mismatch'),
+          resolvedPath: target.full
+        });
+        if (verbose){
+          const reasonText = needsTypeFix && needsPathFix ? 'type and path mismatch' : (needsTypeFix ? 'type mismatch' : 'path mismatch');
+          log(`[FALLBACK] ${path.relative(promptRoot, filePath)}:${line}:${col}  compiled via ${fixedToken} -> ${path.relative(promptRoot, target.full)}  (${reasonText})`);
+        }
+      } else if (verbose){
+        log(`[RESOLVE] ${path.relative(promptRoot, filePath)}:${line}:${col}  -> ${path.relative(promptRoot, target.full)}`);
+      }
+    }
+
+    // Inline content (chain/document require .smile; data may be any ext).
+    let content;
+    try {
+      content = read(target.full);
+    } catch (ioe){
+      const msg = `Read error for "${target.full}": ${ioe && ioe.message ? ioe.message : String(ioe)}`;
+      errors.push({ file:filePath, line, col, error: msg, token: tokenStr });
+      out += `\n[UNRESOLVED ${path.relative(promptRoot, filePath)}:${line}:${col} :: ${tokenStr} :: ${msg.replace(/\n/g,' | ')}]\n`;
+      last = m.index + m[0].length;
+      continue;
+    }
+
+    const inlined = /\.smile$/i.test(target.full)
+      ? compileContent(idx, promptRoot, target.full, content, [...stack, target.full], suggestions, errors, log, verbose)
+      : content;
+
+    out += inlined;
+    last = m.index + m[0].length;
+  }
+
+  out += text.slice(last);
+  return out;
+}
+
+// ------------------------------ Fix application ------------------------------ //
+function applyFixes(suggestions){
+  const byFile = new Map();
+  for (const s of suggestions){ if(!byFile.has(s.file)) byFile.set(s.file, []); byFile.get(s.file).push(s); }
+  for (const [file, items] of byFile){
+    let text = read(file);
+    items.sort((a,b)=> (b.index - a.index));
+    for (const s of items){ text = text.slice(0, s.index) + s.replacement + text.slice(s.index + s.length); }
+    write(file, text);
   }
 }
 
-function main() {
-  const args = process.argv.slice(2);
-  const agentPath = args[0] || process.cwd();
+// ------------------------------ Versioning & logging ------------------------------ //
+function saveJson(p, obj){ fs.mkdirSync(path.dirname(p), { recursive: true }); fs.writeFileSync(p, JSON.stringify(obj, null, 2), 'utf8'); }
+function loadJson(p){ try { return JSON.parse(read(p)); } catch { return null; } }
+function updateVersion(allFiles){
+  const prev = loadJson(VERSION_FILE) || { version:0, files:{}, history:[] };
+  const nextFiles = {}; for (const f of allFiles){ try { nextFiles[f] = hash(read(f)); } catch {} }
+  const changed = Object.keys(nextFiles).filter(k => prev.files[k] !== nextFiles[k]);
+  const next = changed.length ? { version: prev.version+1, files: nextFiles, history:[...(prev.history||[]), { version: prev.version+1, timestamp:new Date().toISOString(), changed }] } : prev;
+  saveJson(VERSION_FILE, next);
+}
 
-  try {
-    const compiler = new SmileCompiler(agentPath);
-    const result = compiler.compile();
-    
-    console.log(result);
-    
-    if (compiler.warnings.length > 0) {
-      console.error('\nWarnings:');
-      compiler.warnings.forEach(w => console.error(`  - ${w}`));
-    }
-
-    const outFile = path.join(agentPath, 'COMPILED_OUTPUT.txt');
-    fs.writeFileSync(outFile, result, 'utf-8');
-
-  } catch (error) {
-    console.error('\n❌ Compilation failed:', error.message);
-    if (process.env.DEBUG === 'true') {
-      console.error(error.stack);
-    }
-    process.exit(1);
+// ------------------------------ Main ------------------------------ //
+async function main(){
+  const argv = process.argv.slice(2);
+  const opts = { root:null, fix:false, quiet:false };
+  for (const a of argv){
+    if (a === '--fix') opts.fix = true;
+    else if (a === '--quiet') opts.quiet = true;
+    else if (!a.startsWith('-')) opts.root = path.resolve(a);
   }
+  const root = opts.root || process.cwd();
+  const promptRoot = findPromptRoot(root);
+  const verbose = !opts.quiet;
+  const log = (msg)=>{ try { console.log(msg); } catch {} };
+
+  console.log(`[INFO] Prompt root: ${promptRoot}`);
+
+  const idx = buildIndex(promptRoot);
+  const smiles = scanSmileFiles(promptRoot);
+  console.log(`[INFO] Found ${smiles.length} .smile file(s).`);
+
+  const suggestions = [];
+  const errors = [];
+  const compiledOut = [];
+
+  for (const f of smiles){
+    const rel = path.relative(promptRoot, f);
+    try {
+      const src = read(f);
+      const hasToken = new RegExp(TOKEN_RE_SOURCE, "g").test(src);
+      if (!hasToken) { console.log(`[SKIP] ${rel} - no references`); continue; }
+
+      console.log(`[WORK] Compiling ${rel} ...`);
+      const compiled = compileContent(idx, promptRoot, f, src, [f], suggestions, errors, log, verbose);
+      const out = f.replace(/\.smile$/i, '.txt');
+      write(out, compiled);
+      compiledOut.push(out);
+      console.log(`[OK] ${rel} -> ${path.relative(promptRoot, out)}`);
+    } catch (e){
+      const msg = (e && e.message) ? e.message : String(e);
+      console.error(`[FATAL] ${rel}\n  ${msg.replace(/\n/g,'\n  ')}`);
+      // Even on fatal file-level errors (rare), try to emit a minimal .txt so the invariant holds.
+      try {
+        const out = f.replace(/\.smile$/i, '.txt');
+        write(out, `[[FATAL ERROR compiling ${rel}]]\n${msg}\n`);
+        compiledOut.push(out);
+      } catch {}
+    }
+  }
+
+  saveJson(WARNINGS_FILE, { generatedAt:new Date().toISOString(), errors, suggestions });
+  updateVersion([ ...smiles, ...compiledOut ]);
+
+  if (errors.length){
+    console.log(`\nERRORS (${errors.length}) — non-fatal; outputs were still written:`);
+    // Print the first N for readability.
+    const maxShow = 200;
+    for (let i=0; i<Math.min(errors.length, maxShow); i++){
+      const e = errors[i];
+      const loc = e.line && e.col ? `:${e.line}:${e.col}` : '';
+      console.log(`- ${path.relative(promptRoot, e.file)}${loc}\n  ${String(e.error).replace(/\n/g,'\n  ')}`);
+    }
+    if (errors.length > maxShow) console.log(`...and ${errors.length - maxShow} more`);
+  }
+
+  if (suggestions.length){
+    console.log(`\nSuggestions (${suggestions.length}) — canonical mappings you can apply:`);
+    for (const s of suggestions.slice(0, 400)){
+      console.log(`- ${path.relative(promptRoot, s.file)} @${s.index}: ${s.reason}\n  original: ${s.original}\n  replace : ${s.replacement}\n  path    : ${s.resolvedPath}`);
+    }
+    if (suggestions.length > 400) console.log(`...and ${suggestions.length - 400} more`);
+  }
+
+  if (suggestions.length){
+    if (opts.fix){
+      applyFixes(suggestions);
+      console.log(`\nApplied ${suggestions.length} fix(es).`);
+    } else {
+      console.log(`\nType "fix" and press Enter to apply all ${suggestions.length} fix(es) now, or just press Enter to skip.`);
+      await new Promise((resolve)=>{
+        const stdin = process.stdin; stdin.setEncoding('utf8');
+        const timer = setTimeout(()=>{ try { stdin.pause(); } catch {} resolve(); }, 80);
+        stdin.once('data', (d)=>{ clearTimeout(timer); const v=(d||'').toString().trim().toLowerCase(); if (v==='fix'){ applyFixes(suggestions); console.log(`Applied ${suggestions.length} fix(es).`); } try { stdin.pause(); } catch {} resolve(); });
+        try { stdin.resume(); } catch {}
+      });
+    }
+  }
+
+  console.log(`\nDone. Compiled ${compiledOut.length} file(s). Errors recorded: ${errors.length}. Suggestions: ${suggestions.length}.`);
 }
 
 if (require.main === module) {
-  main();
+  main().catch(err => {
+    console.error(err && err.stack ? err.stack : err);
+    process.exitCode = 1;
+  });
 }
 
-module.exports = { SmileCompiler };
+module.exports = {
+  buildIndex,
+  compileContent,
+  findPromptRoot,
+  scanSmileFiles
+};

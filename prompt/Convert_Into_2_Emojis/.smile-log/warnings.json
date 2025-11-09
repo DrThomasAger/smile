@@ -1,0 +1,137 @@
+{
+  "generatedAt": "2025-11-09T06:22:09.452Z",
+  "errors": [
+    {
+      "file": "D:\\labyrinth\\Github\\SmilePrompt\\smile\\prompt\\Convert_Into_2_Emojis\\chain\\response_language_definition.smile",
+      "line": 5,
+      "col": 5,
+      "error": "Cannot resolve [$doc=\"Bold_and_italics_both_at_once\"$]",
+      "token": "[$doc:Bold_and_italics_both_at_once$]"
+    },
+    {
+      "file": "D:\\labyrinth\\Github\\SmilePrompt\\smile\\prompt\\Convert_Into_2_Emojis\\chain\\response_style_definition.smile",
+      "line": 5,
+      "col": 5,
+      "error": "Cannot resolve [$doc/response=\"Bold_italics_and_both\"$]",
+      "token": "[$doc/response:Bold_italics_and_both$]"
+    },
+    {
+      "file": "D:\\labyrinth\\Github\\SmilePrompt\\smile\\prompt\\Convert_Into_2_Emojis\\chain\\response_style_definition.smile",
+      "line": 7,
+      "col": 5,
+      "error": "Cannot resolve [$doc/response=\"Definitions_and_etymology\"$]",
+      "token": "[$doc/response:Definitions_and_etymology$]"
+    },
+    {
+      "file": "D:\\labyrinth\\Github\\SmilePrompt\\smile\\prompt\\Convert_Into_2_Emojis\\chain\\response_style_definition.smile",
+      "line": 5,
+      "col": 5,
+      "error": "Cannot resolve [$doc/response=\"Bold_italics_and_both\"$]",
+      "token": "[$doc/response:Bold_italics_and_both$]"
+    },
+    {
+      "file": "D:\\labyrinth\\Github\\SmilePrompt\\smile\\prompt\\Convert_Into_2_Emojis\\chain\\response_style_definition.smile",
+      "line": 7,
+      "col": 5,
+      "error": "Cannot resolve [$doc/response=\"Definitions_and_etymology\"$]",
+      "token": "[$doc/response:Definitions_and_etymology$]"
+    },
+    {
+      "file": "D:\\labyrinth\\Github\\SmilePrompt\\smile\\prompt\\Convert_Into_2_Emojis\\chain\\response_style_definition.smile",
+      "line": 5,
+      "col": 5,
+      "error": "Cannot resolve [$doc/response=\"Bold_italics_and_both\"$]",
+      "token": "[$doc/response:Bold_italics_and_both$]"
+    },
+    {
+      "file": "D:\\labyrinth\\Github\\SmilePrompt\\smile\\prompt\\Convert_Into_2_Emojis\\chain\\response_style_definition.smile",
+      "line": 7,
+      "col": 5,
+      "error": "Cannot resolve [$doc/response=\"Definitions_and_etymology\"$]",
+      "token": "[$doc/response:Definitions_and_etymology$]"
+    }
+  ],
+  "suggestions": [
+    {
+      "file": "D:\\labyrinth\\Github\\SmilePrompt\\smile\\prompt\\Convert_Into_2_Emojis\\document\\name_tag_format_explanation.smile",
+      "index": 570,
+      "length": 13,
+      "original": "[$Role_Name$]",
+      "replacement": "[$document=Name$]",
+      "reason": "unknown type mapped by name",
+      "resolvedPath": "D:\\labyrinth\\Github\\SmilePrompt\\smile\\prompt\\Convert_Into_2_Emojis\\document\\Name.smile"
+    },
+    {
+      "file": "D:\\labyrinth\\Github\\SmilePrompt\\smile\\prompt\\Convert_Into_2_Emojis\\chain\\response_language_definition.smile",
+      "index": 144,
+      "length": 35,
+      "original": "[$doc:\"Response style definition\"$]",
+      "replacement": "[$chain:\"response_style_definition\"$]",
+      "reason": "cross-type name match",
+      "resolvedPath": "D:\\labyrinth\\Github\\SmilePrompt\\smile\\prompt\\Convert_Into_2_Emojis\\chain\\response_style_definition.smile"
+    },
+    {
+      "file": "D:\\labyrinth\\Github\\SmilePrompt\\smile\\prompt\\Convert_Into_2_Emojis\\chain\\response_style_definition.smile",
+      "index": 113,
+      "length": 27,
+      "original": "[$doc/response:paragraphs$]",
+      "replacement": "[$doc:paragraphs$]",
+      "reason": "path mismatch",
+      "resolvedPath": "D:\\labyrinth\\Github\\SmilePrompt\\smile\\prompt\\Convert_Into_2_Emojis\\document\\paragraphs.smile"
+    },
+    {
+      "file": "D:\\labyrinth\\Github\\SmilePrompt\\smile\\prompt\\Convert_Into_2_Emojis\\chain\\response_style_definition.smile",
+      "index": 113,
+      "length": 27,
+      "original": "[$doc/response:paragraphs$]",
+      "replacement": "[$doc:paragraphs$]",
+      "reason": "path mismatch",
+      "resolvedPath": "D:\\labyrinth\\Github\\SmilePrompt\\smile\\prompt\\Convert_Into_2_Emojis\\document\\paragraphs.smile"
+    },
+    {
+      "file": "D:\\labyrinth\\Github\\SmilePrompt\\smile\\prompt\\Convert_Into_2_Emojis\\document\\replicated_instructions.smile",
+      "index": 328,
+      "length": 18,
+      "original": "[$doc=\"Name_Tag\"$]",
+      "replacement": "[$chain=\"Name_tag\"$]",
+      "reason": "cross-type name match",
+      "resolvedPath": "D:\\labyrinth\\Github\\SmilePrompt\\smile\\prompt\\Convert_Into_2_Emojis\\chain\\Name_tag.smile"
+    },
+    {
+      "file": "D:\\labyrinth\\Github\\SmilePrompt\\smile\\prompt\\Convert_Into_2_Emojis\\document\\name_tag_format_explanation.smile",
+      "index": 570,
+      "length": 13,
+      "original": "[$Role_Name$]",
+      "replacement": "[$document=Name$]",
+      "reason": "unknown type mapped by name",
+      "resolvedPath": "D:\\labyrinth\\Github\\SmilePrompt\\smile\\prompt\\Convert_Into_2_Emojis\\document\\Name.smile"
+    },
+    {
+      "file": "D:\\labyrinth\\Github\\SmilePrompt\\smile\\prompt\\Convert_Into_2_Emojis\\chain\\response_style_definition.smile",
+      "index": 113,
+      "length": 27,
+      "original": "[$doc/response:paragraphs$]",
+      "replacement": "[$doc:paragraphs$]",
+      "reason": "path mismatch",
+      "resolvedPath": "D:\\labyrinth\\Github\\SmilePrompt\\smile\\prompt\\Convert_Into_2_Emojis\\document\\paragraphs.smile"
+    },
+    {
+      "file": "D:\\labyrinth\\Github\\SmilePrompt\\smile\\prompt\\Convert_Into_2_Emojis\\document\\name_tag_format_explanation.smile",
+      "index": 570,
+      "length": 13,
+      "original": "[$Role_Name$]",
+      "replacement": "[$document=Name$]",
+      "reason": "unknown type mapped by name",
+      "resolvedPath": "D:\\labyrinth\\Github\\SmilePrompt\\smile\\prompt\\Convert_Into_2_Emojis\\document\\Name.smile"
+    },
+    {
+      "file": "D:\\labyrinth\\Github\\SmilePrompt\\smile\\prompt\\Convert_Into_2_Emojis\\document\\replicated_instructions.smile",
+      "index": 328,
+      "length": 18,
+      "original": "[$doc=\"Name_Tag\"$]",
+      "replacement": "[$chain=\"Name_tag\"$]",
+      "reason": "cross-type name match",
+      "resolvedPath": "D:\\labyrinth\\Github\\SmilePrompt\\smile\\prompt\\Convert_Into_2_Emojis\\chain\\Name_tag.smile"
+    }
+  ]
+}

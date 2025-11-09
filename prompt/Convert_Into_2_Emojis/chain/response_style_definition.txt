@@ -1,0 +1,16 @@
+[= Response style definition, [! all responses in format must use all styles ALWAYS in all sections !] [ 
+
+    (: Instructions for length of text and format ( 
+    @1@ Multiple comprehensive, extensive paragraphs with lengthy sentences that apply all other text rules in every paragraph.
+) End text length and format in sections :)
+    
+    
+[UNRESOLVED chain\response_style_definition.smile:5:5 :: [$doc/response:Bold_italics_and_both$] :: Cannot resolve [$doc/response="Bold_italics_and_both"$]]
+
+    
+    
+[UNRESOLVED chain\response_style_definition.smile:7:5 :: [$doc/response:Definitions_and_etymology$] :: Cannot resolve [$doc/response="Definitions_and_etymology"$]]
+
+
+] End response format style instructions, use it in all text generated in response format =]
+    
