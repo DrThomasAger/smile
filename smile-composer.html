@@ -11,9 +11,11 @@
     :root { 
       --indent-gap: 4px;
       --rail-width: 4px;
-      --rail-color: rgba(0,0,0,0.08);
-      --hover-bg: #f6f6f6;
-      --select-bg: #ededed;
+      --rail-color: rgba(0,0,0,0.10);
+      --hover-row: #f6f6f6;
+      --select-row: #ededed;
+      --indent-fill: rgba(0,0,0,0.05);
+      --indent-fill-strong: rgba(0,0,0,0.08);
       --text-size: 13px;
       --pad-x: 10px;
       --row-min-h: 34px;
@@ -50,20 +52,32 @@
       touch-action: none;
       min-height: var(--row-min-h);
       background: transparent;
+      transition: background-color 0.12s ease;
     }
-    .indent-bg {
+    .line:hover { background: var(--hover-row); }
+    .line.selected { background: var(--select-row); }
+
+    /* Left “filled” indent boxes that light up per level on hover */
+    .indent-fills {
       pointer-events: none;
       position: absolute;
       left: var(--pad-x);
       top: 0;
       bottom: 0;
+      display: flex;
+      align-items: stretch;
+      gap: var(--indent-gap);
       width: calc(var(--indent-count, 0) * (var(--rail-width) + var(--indent-gap)));
-      border-radius: 6px;
+    }
+    .indent-fill-box {
+      width: var(--rail-width);
+      border-radius: 8px;
       background: transparent;
+      align-self: stretch;
       transition: background-color 0.12s ease;
     }
-    .line:hover .indent-bg { background: var(--hover-bg); }
-    .line.selected .indent-bg { background: var(--select-bg); }
+    .line:hover .indent-fill-box { background: var(--indent-fill); }
+    .line.selected .indent-fill-box { background: var(--indent-fill-strong); }
 
     .line-inner {
       display: flex;
@@ -71,7 +85,10 @@
       gap: 8px;
       flex: 1;
       min-width: 0;
+      position: relative;
+      z-index: 1; /* above indent-fills */
     }
+    /* Slim neutral rails showing structural depth (always on) */
     .indent-guides {
       display: flex;
       align-items: stretch;
@@ -88,7 +105,12 @@
     .line-label { flex: 1; min-width: 0; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
     .line-indicator { font-size: 14px; color: #666; flex-shrink: 0; display: inline-flex; align-items: center; gap: 10px; }
 
-    /* Burger: hover-only, thin, uniform size */
+    /* Arrow only for chains, only on hover */
+    .arrow { opacity: 0; transition: opacity 0.12s ease; }
+    .line.chain:hover .arrow { opacity: 1; }
+    .line.menu .arrow, .line.prompt .arrow, .line.doc .arrow, .line.search .arrow { display: none; }
+
+    /* Burger: hover-only for everything except search; thin, uniform */
     .burger {
       display: inline-flex;
       flex-direction: column;
@@ -99,15 +121,13 @@
       opacity: 0;
       transition: opacity 0.12s ease;
     }
-    .line:hover .burger { opacity: 1; }
-    .burger div {
-      width: 12px;
-      height: 1px;
-      background: #666;
-      border-radius: 1px;
-    }
+    .burger div { width: 12px; height: 1px; background: #666; border-radius: 1px; }
+    .line.menu:hover .burger,
+    .line.prompt:hover .burger,
+    .line.doc:hover .burger { opacity: 1; }
+    .line.chain .burger, .line.search .burger { display: none; }
 
-    /* Preview rows: same indentation and spacing as normal rows */
+    /* Preview rows (chain preview in prompt view), indented to doc level */
     .preview-line {
       position: relative;
       padding: 2px var(--pad-x);
@@ -123,8 +143,27 @@
       gap: 8px;
       flex: 1;
       min-width: 0;
+      position: relative;
+      z-index: 1;
     }
     .preview-label { flex: 1; min-width: 0; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; color: #666; font-size: 12px; }
+    .preview-fills {
+      pointer-events: none;
+      position: absolute;
+      left: var(--pad-x);
+      top: 0;
+      bottom: 0;
+      display: flex;
+      align-items: stretch;
+      gap: var(--indent-gap);
+      width: calc(var(--indent-count, 0) * (var(--rail-width) + var(--indent-gap)));
+    }
+    .preview-fill-box {
+      width: var(--rail-width);
+      border-radius: 8px;
+      background: var(--indent-fill);
+      align-self: stretch;
+    }
 
     /* Editor: backgroundless, uniform control height */
     .editor-container { 
@@ -148,117 +187,38 @@
     }
     .editor-textarea:focus { outline: 2px solid #0066ff; outline-offset: 1px; }
 
-    .settings-container {
-      display: flex;
-      flex-direction: column;
-      gap: 12px;
-      padding: 0;
-      background: transparent;
-      border-radius: 6px;
-      font-size: var(--text-size);
-    }
+    .settings-container { display: flex; flex-direction: column; gap: 12px; padding: 0; background: transparent; border-radius: 6px; font-size: var(--text-size); }
     .settings-field { display: flex; flex-direction: column; gap: 6px; }
     .settings-label { font-size: var(--text-size); font-weight: 500; color: #444; }
     .settings-input, .settings-textarea {
-      padding: 8px 10px;
-      border: none;
-      border-radius: 4px;
-      font: inherit;
-      background: transparent;
-      height: var(--row-min-h);
-      display: flex;
-      align-items: center;
-      color: #111;
+      padding: 8px 10px; border: none; border-radius: 4px; font: inherit; background: transparent; height: var(--row-min-h); display: flex; align-items: center; color: #111;
     }
     .settings-textarea { min-height: 80px; height: auto; resize: vertical; }
     .settings-slider-container { display: flex; align-items: center; gap: 12px; }
     .settings-slider { flex: 1; }
     .settings-slider-label { font-size: 12px; color: #666; min-width: 80px; }
 
-    .editor-buttons {
-      display: flex;
-      gap: 12px;
-      margin-top: 8px;
-      flex-wrap: wrap;
-      font-size: var(--text-size);
-    }
-    .editor-btn {
-      padding: 6px 10px;
-      border: none;
-      border-radius: 6px;
-      background: transparent;
-      cursor: pointer;
-      font-size: var(--text-size);
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      height: var(--row-min-h);
-    }
-    .editor-btn:hover { background: var(--hover-bg); }
-    .kbd-hints {
-      color: #999;
-      font-size: 12px;
-      margin-top: 6px;
-    }
+    .editor-buttons { display: flex; gap: 12px; margin-top: 8px; flex-wrap: wrap; font-size: var(--text-size); }
+    .editor-btn { padding: 6px 10px; border: none; border-radius: 6px; background: transparent; cursor: pointer; font-size: var(--text-size); display: inline-flex; align-items: center; gap: 6px; height: var(--row-min-h); }
+    .editor-btn:hover { background: var(--hover-row); }
+    .kbd-hints { color: #999; font-size: 12px; margin-top: 6px; }
 
-    /* Search row looks like a row; black text, no underline */
+    /* Search row duplicates row behavior; rename and keep hover */
     .search-row { cursor: text; }
     .search-input {
-      border: none;
-      outline: none;
-      background: transparent;
-      font: inherit;
-      width: 100%;
-      padding: 6px 2px;
-      color: #111;
-      text-decoration: none;
+      border: none; outline: none; background: transparent; font: inherit; width: 100%; padding: 6px 2px; color: #111; text-decoration: none;
     }
-    .search-input::placeholder { color: #111; } /* black as requested */
+    .search-input::placeholder { color: #111; } /* black placeholder */
 
-    .omni-list {
-      display: flex;
-      flex-direction: column;
-      gap: 2px;
-      margin-top: 4px;
-    }
+    .omni-list { display: flex; flex-direction: column; gap: 2px; margin-top: 4px; }
     .omni-item {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 12px;
-      padding: 6px 0px;
-      background: transparent;
-      border-radius: 8px;
-      cursor: pointer;
-      font-size: var(--text-size);
+      display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 6px 0px; background: transparent; border-radius: 8px; cursor: pointer; font-size: var(--text-size);
     }
     .omni-item:hover { background: transparent; }
-    .badge {
-      font-size: 11px;
-      padding: 2px 8px;
-      border-radius: 12px;
-      background: #e0e0e0;
-      color: #555;
-    }
+    .badge { font-size: 11px; padding: 2px 8px; border-radius: 12px; background: #e0e0e0; color: #555; }
 
-    .searching .line .indent-bg { background: transparent !important; }
-
-    .toast {
-      position: fixed;
-      bottom: 24px;
-      right: 24px;
-      padding: 12px 20px;
-      background: #333;
-      color: #fff;
-      border-radius: 8px;
-      font-size: 14px;
-      animation: slideIn 0.3s ease;
-      z-index: 2000;
-    }
-    @keyframes slideIn {
-      from { transform: translateY(20px); opacity: 0; }
-      to { transform: translateY(0); opacity: 1; }
-    }
+    .toast { position: fixed; bottom: 24px; right: 24px; padding: 12px 20px; background: #333; color: #fff; border-radius: 8px; font-size: 14px; animation: slideIn 0.3s ease; z-index: 2000; }
+    @keyframes slideIn { from { transform: translateY(20px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
   </style>
 </head>
 <body>
@@ -273,18 +233,18 @@
 
     const { useState, useEffect, useRef, useMemo } = React;
 
-    // Top menu has no emojis; it is a "menu" row navigated like others.
+    // Top menu is a "menu" row (no emojis). Replace "agent" with "prompt".
     const INITIAL_DB = {
       'expert-maker': { 
         name: 'Expert Maker',
-        type: 'agent',
+        type: 'prompt',
         emojis: '🎯🧠',
         modules: ['smile-menu', 'meta-info', 'jargon-cot', 'identify-mistakes']
       },
       'smile-menu': {
-        name: '***(: Smile*** Prompt Editor',
+        name: '(: Smile Prompt Editor', // rendered with <em><strong>(: Smile</strong></em> + " Prompt Editor"
         type: 'menu',
-        emojis: '',   // no emojis on this row
+        emojis: '',
         items: []
       },
       'meta-info': {
@@ -311,42 +271,12 @@
         emojis: '😊📘',
         text: 'Explain Smile syntax: (: flexible, [: rigid, [= literal.'
       },
-      'llm-info': {
-        name: 'Information About LLMs',
-        type: 'doc',
-        emojis: '🤖📚',
-        text: 'Meta-knowledge about how LLMs process instructions.'
-      },
-      'user-info': {
-        name: 'Information About User',
-        type: 'doc',
-        emojis: '👤💡',
-        text: 'Contextualize user needs and goals.'
-      },
-      'emoji-section': {
-        name: 'Emoji section name',
-        type: 'doc',
-        emojis: '😀🏷️',
-        text: 'Use two emoticons for section names.'
-      },
-      'bold-words': {
-        name: 'Bold for important words',
-        type: 'doc',
-        emojis: '💪📝',
-        text: 'Use **bold** for attention retention over long contexts.'
-      },
-      'top-bottom': {
-        name: 'Maximize adherence through top+bottom replication',
-        type: 'doc',
-        emojis: '⬆️⬇️',
-        text: 'Replicate critical instructions at beginning and end.'
-      },
-      'negative-rewrite': {
-        name: 'Identify negatives and rewrite to positive',
-        type: 'doc',
-        emojis: '❌✅',
-        text: 'Find negatives like "not" and rewrite as positive articulations.'
-      }
+      'llm-info': { name: 'Information About LLMs', type: 'doc', emojis: '🤖📚', text: 'Meta-knowledge about how LLMs process instructions.' },
+      'user-info': { name: 'Information About User', type: 'doc', emojis: '👤💡', text: 'Contextualize user needs and goals.' },
+      'emoji-section': { name: 'Emoji section name', type: 'doc', emojis: '😀🏷️', text: 'Use two emoticons for section names.' },
+      'bold-words': { name: 'Bold for important words', type: 'doc', emojis: '💪📝', text: 'Use **bold** for attention retention over long contexts.' },
+      'top-bottom': { name: 'Maximize adherence through top+bottom replication', type: 'doc', emojis: '⬆️⬇️', text: 'Replicate critical instructions at beginning and end.' },
+      'negative-rewrite': { name: 'Identify negatives and rewrite to positive', type: 'doc', emojis: '❌✅', text: 'Find negatives like "not" and rewrite as positive articulations.' }
     };
 
     const getMockPrompt = (type, id, db) => {
@@ -361,8 +291,8 @@
 
 ) End menu :)`;
       }
-      if (type === 'agent') {
-        return `(: Agent - ${item.name} (
+      if (type === 'prompt') {
+        return `(: Prompt - ${item.name} (
 
   [: Task Definition [
     Create intelligent responses using modular components
@@ -374,7 +304,7 @@
     {Your expert response here}
   ] End format :]
 
-) End agent :)`;
+) End prompt :)`;
       }
       if (type === 'chain') {
         return `(: Chain - ${item.name} (
@@ -395,21 +325,19 @@
 
     function App() {
       const [db, setDb] = useState(INITIAL_DB);
-      const [agentId] = useState('expert-maker');
-      const [path, setPath] = useState([agentId]); // [agent] or [agent, chainId]
+      const [promptId] = useState('expert-maker');
+      const [path, setPath] = useState([promptId]); // [prompt] or [prompt, chainId]
       const [selectedIdx, setSelectedIdx] = useState(0);
       const [editorOpen, setEditorOpen] = useState(false);
       const [editorItemId, setEditorItemId] = useState(null);
       const [editorItemType, setEditorItemType] = useState(null);
       const [editorMode, setEditorMode] = useState('text');
       const [editorText, setEditorText] = useState('');
-
       const [settingsName, setSettingsName] = useState('');
       const [settingsEmojis, setSettingsEmojis] = useState('');
       const [settingsText, setSettingsText] = useState('');
       const [settingsMeta, setSettingsMeta] = useState('');
       const [settingsStructure, setSettingsStructure] = useState(1);
-
       const [toast, setToast] = useState(null);
 
       const [addQuery, setAddQuery] = useState('');
@@ -417,37 +345,39 @@
       const [addSelectedIdx, setAddSelectedIdx] = useState(0);
       const addInputRef = useRef(null);
 
-      const isAgentView = path.length === 1;
+      const [lastChainId, setLastChainId] = useState(null); // remember which chain we drilled into
+
+      const isPromptView = path.length === 1;
       const isChainView = path.length === 2;
       const currentChainId = isChainView ? path[1] : null;
 
       const showToast = (msg) => { setToast(msg); setTimeout(() => setToast(null), 1600); };
 
-      // Unified outline with compact rails
+      // Build outline
       const currentItems = useMemo(() => {
         const items = [];
-        items.push({ id: 'smile-menu', ...db['smile-menu'], _depth: 0 });
-        items.push({ id: agentId, ...db[agentId], _depth: 1 });
+        items.push({ id: 'smile-menu', ...db['smile-menu'], _depth: 0, _class: 'menu' });
+        items.push({ id: promptId, ...db[promptId], _depth: 1, _class: 'prompt' });
         if (isChainView) {
           const ch = db[currentChainId];
           if (ch) {
-            items.push({ id: currentChainId, ...ch, _depth: 2 });
+            items.push({ id: currentChainId, ...ch, _depth: 2, _class: 'chain' });
             (ch.items || []).forEach(docId => {
               const d = db[docId];
-              if (d) items.push({ id: docId, ...d, _depth: 3 });
+              if (d) items.push({ id: docId, ...d, _depth: 3, _class: 'doc' });
             });
           }
         } else {
-          const agent = db[agentId];
-          (agent.modules || []).forEach(mid => {
+          const prompt = db[promptId];
+          (prompt.modules || []).forEach(mid => {
             const m = db[mid];
             if (m && m.type === 'chain') {
-              items.push({ id: mid, ...m, _depth: 2 });
+              items.push({ id: mid, ...m, _depth: 2, _class: 'chain' });
             }
           });
         }
         return items;
-      }, [db, agentId, isChainView, currentChainId]);
+      }, [db, promptId, isChainView, currentChainId]);
 
       // Suggestions only after typing
       const addSuggestions = useMemo(() => {
@@ -460,13 +390,12 @@
       }, [db, addQuery]);
 
       const openEditor = (itemId, itemType) => {
-        const prompt = getMockPrompt(itemType, itemId, db);
+        const promptText = getMockPrompt(itemType, itemId, db);
         setEditorItemId(itemId);
         setEditorItemType(itemType);
-        setEditorText(prompt);
+        setEditorText(promptText);
         setEditorMode('text');
         setEditorOpen(true);
-
         const it = db[itemId];
         setSettingsName(it?.name || '');
         setSettingsEmojis(it?.emojis || '');
@@ -483,14 +412,22 @@
       };
       const saveEditor = () => { showToast('Saved'); closeEditor(); };
 
-      // ArrowRight on chains drills into chain view; Enter still opens editor.
+      // Compute the index of a chain in prompt view list
+      const getPromptViewChainIndex = (chainId) => {
+        const prompt = db[promptId];
+        const chainIds = (prompt.modules || []).filter(id => db[id]?.type === 'chain');
+        const idxInChains = chainIds.indexOf(chainId);
+        if (idxInChains === -1) return 2; // default first chain position
+        return 2 + idxInChains; // 0: menu, 1: prompt, then chains...
+      };
+
+      // Keyboard interactions
       useEffect(() => {
         const onKey = (e) => {
           if (editorOpen) {
             if (e.key === 'Enter' && e.shiftKey) { e.preventDefault(); saveEditor(); return; }
             if (e.key === 'Escape') { e.preventDefault(); closeEditor(); return; }
             if (e.key === 'ArrowRight') { e.preventDefault(); setEditorMode(m => m === 'text' ? 'settings' : 'text'); return; }
-            if (e.key === 'Delete') { e.preventDefault(); return; }
             return;
           }
           if (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA') return;
@@ -516,8 +453,9 @@
           } else if (e.key === 'ArrowLeft') {
             e.preventDefault();
             if (isChainView) {
-              setPath([agentId]);
-              setSelectedIdx(2);
+              const backIdx = getPromptViewChainIndex(currentChainId || lastChainId);
+              setPath([promptId]);
+              setSelectedIdx(backIdx);
             }
           } else if (e.key === 'ArrowRight') {
             e.preventDefault();
@@ -525,10 +463,11 @@
             if (!item) return;
             if (item.type === 'chain') {
               // Drill into chain view to see documents
-              setPath([agentId, item.id]);
+              setLastChainId(item.id);
+              setPath([promptId, item.id]);
               return;
             }
-            if (item.type === 'menu' || item.type === 'agent' || item.type === 'doc') {
+            if (item.type === 'menu' || item.type === 'prompt' || item.type === 'doc') {
               openEditor(item.id, item.type);
               return;
             }
@@ -537,8 +476,7 @@
             const item = currentItems[selectedIdx];
             if (!item) return;
             if (item.type === 'chain') {
-              // Enter opens editor for chains
-              openEditor(item.id, 'chain');
+              openEditor(item.id, 'chain'); // Enter opens editor
             } else {
               openEditor(item.id, item.type);
             }
@@ -553,16 +491,26 @@
         };
         window.addEventListener('keydown', onKey);
         return () => window.removeEventListener('keydown', onKey);
-      }, [editorOpen, selectedIdx, currentItems, isChainView, agentId, db]);
+      }, [editorOpen, selectedIdx, currentItems, isChainView, promptId, db, lastChainId, currentChainId]);
 
       const IndentGuides = ({ depth }) => {
         const bars = [];
         for (let i = 0; i < depth; i++) bars.push(<div key={i} className="indent-bar"></div>);
         return <div className="indent-guides">{bars}</div>;
       };
+      const IndentFills = ({ depth, className }) => {
+        const boxes = [];
+        for (let i = 0; i < depth; i++) boxes.push(<div key={i} className={className}></div>);
+        return <div className={className === 'indent-fill-box' ? 'indent-fills' : 'preview-fills'}>
+          {boxes}
+        </div>;
+      };
 
       const isSearching = addActive;
       const panelClass = `panel ${isSearching ? 'searching' : ''}`;
+
+      // Search row indentation: prompt view => chains depth (2); chain view => docs depth (3)
+      const searchDepth = isChainView ? 3 : 2;
 
       return (
         <div className="container">
@@ -571,49 +519,50 @@
               {currentItems.map((item, idx) => {
                 const isSelected = selectedIdx === idx && !editorOpen && !addActive;
                 const depth = item._depth ?? 0;
-                const isMenuRow = item.type === 'menu';
-                const isAgentRow = item.type === 'agent';
-                const showArrow = item.type === 'chain';
-                const showBurger = isMenuRow || isAgentRow;
+                const rowClass = `line ${item._class || ''}`;
 
                 return (
                   <React.Fragment key={item.id}>
                     <div
-                      className={`line ${isSelected ? 'selected' : ''}`}
+                      className={rowClass + (isSelected ? ' selected' : '')}
                       style={{ '--indent-count': depth }}
                       onClick={() => {
                         if (item.type === 'chain') {
-                          setPath([agentId, item.id]); // click drills to chain view
+                          setLastChainId(item.id);
+                          setPath([promptId, item.id]); // click drills to chain view
                         } else {
                           setSelectedIdx(idx);
                         }
                       }}
                     >
-                      <div className="indent-bg"></div>
+                      <IndentFills depth={depth} className="indent-fill-box" />
                       <div className="line-inner">
                         <IndentGuides depth={depth} />
-                        <span className="line-label">{item.emojis ? `${item.emojis} ` : ''}{item.name}</span>
+                        <span className="line-label">
+                          {item.type === 'menu'
+                            ? (<><em><strong>(: Smile</strong></em> {" "}Prompt Editor</>)
+                            : (<>{item.emojis ? `${item.emojis} ` : ''}{item.name}</>)
+                          }
+                        </span>
                       </div>
                       <div className="line-indicator">
-                        {showArrow ? '→' : null}
-                        {showBurger ? (
-                          <span className="burger" title="Open editor">
-                            <div></div><div></div><div></div>
-                          </span>
-                        ) : null}
+                        <span className="arrow">→</span>
+                        <span className="burger" title="Open editor"><div></div><div></div><div></div></span>
                       </div>
                     </div>
 
-                    {/* Chain preview of documents when a chain is selected in agent view, indented to document level */}
-                    {isAgentView && isSelected && item.type === 'chain' && item.items && (
+                    {/* Chain preview of documents when a chain is selected in prompt view, indented to doc level */}
+                    {isPromptView && isSelected && item.type === 'chain' && item.items && (
                       <div className="module-contents">
                         {(item.items || []).map(docId => {
                           const d = db[docId];
                           if (!d) return null;
-                          const previewDepth = depth + 1; // same as doc depth in chain view
+                          const previewDepth = depth + 1; // doc depth
                           return (
                             <div key={docId} className="preview-line" style={{ '--indent-count': previewDepth }}>
-                              <div className="indent-bg"></div>
+                              <div className="preview-fills">
+                                {Array.from({length: previewDepth}).map((_,i)=><div key={i} className="preview-fill-box"></div>)}
+                              </div>
                               <div className="preview-inner">
                                 <IndentGuides depth={previewDepth} />
                                 <span className="preview-label">{d.emojis} {d.name}</span>
@@ -667,7 +616,7 @@
                           <button className="editor-btn" onClick={() => { showToast('Saved'); closeEditor(); }}>Save</button>
                           <button className="editor-btn" onClick={() => setEditorMode(m => m === 'text' ? 'settings' : 'text')}>Settings</button>
                           <button className="editor-btn" onClick={() => navigator.clipboard.writeText(editorText).then(() => showToast('Copied to clipboard'))}>Copy</button>
-                          <button className="editor-btn" onClick={() => { /* soft delete in demo */ showToast('Deleted'); closeEditor(); }}>Delete</button>
+                          <button className="editor-btn" onClick={() => { showToast('Deleted'); closeEditor(); }}>Delete</button>
                           <button className="editor-btn" onClick={closeEditor}>Cancel</button>
                         </div>
                         <div className="kbd-hints">(shift+enter) save • (esc) cancel</div>
@@ -677,18 +626,15 @@
                 );
               })}
 
-              {/* Inline search row; black text, no underline; identical styling; results only after typing */}
-              <div className="line search-row" style={{ '--indent-count': 2 }} onClick={() => { if (addInputRef.current) addInputRef.current.focus(); }}>
-                <div className="indent-bg"></div>
-                <div className="line-inner">
-                  <div className="indent-guides">
-                    <div className="indent-bar"></div>
-                    <div className="indent-bar"></div>
-                  </div>
+              {/* Inline Add Instructions row; hovers like others; indents to docs in chain view */}
+              <div className={`line search-row`} style={{ '--indent-count': searchDepth }}>
+                <IndentFills depth={searchDepth} className="indent-fill-box" />
+                <div className="line-inner" onClick={() => { if (addInputRef.current) addInputRef.current.focus(); }}>
+                  <IndentGuides depth={searchDepth} />
                   <input
                     ref={addInputRef}
                     className="search-input"
-                    placeholder="Add or search chains and documents"
+                    placeholder="🧩➕ Add Instructions"
                     value={addQuery}
                     onFocus={() => { setAddActive(true); setSelectedIdx(-1); }}
                     onBlur={() => setTimeout(() => setAddActive(false), 150)}
@@ -706,9 +652,9 @@
                             const newItems = [...(chain?.items || []), chosen.id];
                             setDb(prev => ({ ...prev, [currentChainId]: { ...prev[currentChainId], items: newItems } }));
                           } else {
-                            const agent = db[agentId];
-                            const newMods = [...(agent?.modules || []), chosen.id];
-                            setDb(prev => ({ ...prev, [agentId]: { ...prev[agentId], modules: newMods } }));
+                            const prompt = db[promptId];
+                            const newMods = [...(prompt?.modules || []), chosen.id];
+                            setDb(prev => ({ ...prev, [promptId]: { ...prev[promptId], modules: newMods } }));
                           }
                           setAddQuery(''); setAddActive(false);
                           if (addInputRef.current) addInputRef.current.blur();
@@ -725,7 +671,6 @@
                         if (addSelectedIdx <= 0) {
                           setAddActive(false);
                           if (addInputRef.current) addInputRef.current.blur();
-                          // Return focus to last visible row
                           setSelectedIdx(Math.max(0, currentItems.length - 1));
                         } else {
                           setAddSelectedIdx(prev => prev - 1);
@@ -733,6 +678,10 @@
                       }
                     }}
                   />
+                </div>
+                <div className="line-indicator">
+                  <span className="arrow"></span>
+                  <span className="burger"><div></div><div></div><div></div></span>
                 </div>
               </div>
 
@@ -752,9 +701,9 @@
                             const newItems = [...(chain?.items || []), item.id];
                             setDb(prev => ({ ...prev, [currentChainId]: { ...prev[currentChainId], items: newItems } }));
                           } else {
-                            const agent = db[agentId];
-                            const newMods = [...(agent?.modules || []), item.id];
-                            setDb(prev => ({ ...prev, [agentId]: { ...prev[agentId], modules: newMods } }));
+                            const prompt = db[promptId];
+                            const newMods = [...(prompt?.modules || []), item.id];
+                            setDb(prev => ({ ...prev, [promptId]: { ...prev[promptId], modules: newMods } }));
                           }
                           setAddQuery(''); setAddActive(false);
                           if (addInputRef.current) addInputRef.current.blur();
