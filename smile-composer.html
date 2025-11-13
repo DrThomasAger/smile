@@ -218,7 +218,7 @@
         items: ['emoji-section', 'bold-words', 'top-bottom']
       },
       'identify-mistakes': {
-        name: 'Identify Mistakes and Rewrite',
+        name: 'Output Answer',
         type: 'chain',
         emojis: '🔍✏️',
         items: ['emoji-section', 'bold-words', 'negative-rewrite']
@@ -530,11 +530,19 @@
                   setSelectedIdx(backIdx);
                 };
 
+                // Burger visibility: hide on prompt row while in chain view (spec wants left-arrow there)
+                const showBurger = (
+                  item.type === 'menu' ||
+                  item.type === 'doc' ||
+                  (item.type === 'prompt' && !isChainView)
+                );
+
                 return (
                   <React.Fragment key={item.id}>
                     <div
                       className={rowClass}
                       style={{ '--indent-count': depth }}
+                      aria-selected={isActive}
                       onMouseEnter={() => setHoveredIdx(idx)}
                       onMouseLeave={() => setHoveredIdx(null)}
                       onClick={(e) => {
@@ -569,7 +577,7 @@
                           >←</span>
                         )}
                         <span className="arrow">→</span>
-                        {(item.type === 'menu' || item.type === 'prompt' || item.type === 'doc') && (
+                        {showBurger && (
                           <span
                             className="burger"
                             title={item.type === 'prompt' && !isChainView ? 'Open settings' : 'Open editor'}
@@ -721,17 +729,14 @@
                         e.preventDefault();
                         setAddSelectedIdx(prev => Math.min(addSuggestions.length - 1, prev + 1));
                       } else if (e.key === 'ArrowUp') {
+                        // Spec: Up arrow exits Add Instruction (regardless of suggestion index)
                         e.preventDefault();
-                        if (addSelectedIdx <= 0) {
-                          setAddActive(false);
-                          if (addInputRef.current) addInputRef.current.blur();
-                          if (cameFromPlusRef.current && prevIdxBeforeAddRef.current !== null) {
-                            setSelectedIdx(prevIdxBeforeAddRef.current);
-                          }
-                          cameFromPlusRef.current = false;
-                        } else {
-                          setAddSelectedIdx(prev => prev - 1);
+                        setAddQuery(''); setAddActive(false);
+                        if (addInputRef.current) addInputRef.current.blur();
+                        if (cameFromPlusRef.current && prevIdxBeforeAddRef.current !== null) {
+                          setSelectedIdx(prevIdxBeforeAddRef.current);
                         }
+                        cameFromPlusRef.current = false;
                       }
                     }}
                   />
