@@ -81,6 +81,9 @@
     .line-inner { display: flex; align-items: center; gap: 8px; flex: 1; min-width: 0; position: relative; z-index: 1; }
     .indent-guides { display: flex; align-items: stretch; gap: var(--indent-gap); margin-right: 8px; }
     .indent-bar { width: var(--rail-width); border-radius: 8px; background: var(--rail-color); align-self: stretch; }
+    /* Agent highlight amplifies bars across structure */
+    .agent-highlight .indent-bar { background: rgba(0,0,0,0.35); }
+    .agent-highlight .indent-fill-box { background: var(--indent-fill-strong); }
 
     .line-label { flex: 1; min-width: 0; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
     .line-indicator { font-size: 14px; color: #666; flex-shrink: 0; display: inline-flex; align-items: center; gap: 10px; }
@@ -119,7 +122,9 @@
       gap: 8px;
       min-height: 24px;
       user-select: none;
+      cursor: pointer;
     }
+    .preview-line:hover { background: var(--hover-row); }
     .preview-inner { display: flex; align-items: center; gap: 8px; flex: 1; min-width: 0; position: relative; z-index: 1; }
     .preview-label { flex: 1; min-width: 0; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; color: #666; font-size: 12px; }
     .preview-fills {
@@ -170,14 +175,34 @@
     .search-row { cursor: text; }
     .search-input { border: none; outline: none; background: transparent; font: inherit; width: 100%; padding: 6px 2px; color: #111; text-decoration: none; }
     .search-input::placeholder { color: #111; }
+    .search-input.active::placeholder { color: #666; }
 
     .omni-list { display: flex; flex-direction: column; gap: 2px; margin-top: 4px; }
-    .omni-item { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 6px 0px; background: transparent; border-radius: 8px; cursor: pointer; font-size: var(--text-size); }
-    .omni-item:hover { background: transparent; }
+    .omni-item { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 6px 10px; background: transparent; border-radius: 8px; cursor: pointer; font-size: var(--text-size); }
+    .omni-item:hover { background: var(--hover-row); }
+    .omni-item.selected { background: var(--select-row); }
+    .omni-item.create-new { color: #666; }
     .badge { font-size: 11px; padding: 2px 8px; border-radius: 12px; background: #e0e0e0; color: #555; }
 
     .toast { position: fixed; bottom: 24px; right: 24px; padding: 12px 20px; background: #333; color: #fff; border-radius: 8px; font-size: 14px; animation: slideIn 0.3s ease; z-index: 2000; }
     @keyframes slideIn { from { transform: translateY(20px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
+
+    /* Drag and drop */
+    .dragging { opacity: 0.4; }
+    .drag-preview { position: fixed; pointer-events: none; z-index: 1000; padding: 8px 12px; background: #fff; border: 1px solid #ccc; border-radius: 6px; box-shadow: 0 2px 8px rgba(0,0,0,0.15); }
+    .drop-placeholder { height: var(--row-min-h); background: #e0e0e0; opacity: 0.5; border-radius: 6px; margin: 2px 0; }
+
+    /* Response Format section - only shows when there are items */
+    .response-format-section { margin-top: 12px; }
+    .response-format-header { display: flex; align-items: center; gap: 8px; margin-bottom: 8px; }
+    .response-format-title { font-size: 13px; color: #666; }
+    .response-format-add-btn { padding: 4px 8px; background: transparent; border: 1px solid #ccc; border-radius: 4px; cursor: pointer; font-size: 12px; }
+    .response-format-add-btn:hover { background: var(--hover-row); }
+    .response-format-items { display: flex; flex-direction: column; gap: 4px; padding: 8px; background: #f9f9f9; border-radius: 6px; border: 1px dashed #ddd; }
+    .response-format-item { padding: 6px 10px; background: #fff; border-radius: 4px; font-size: 12px; display: flex; justify-content: space-between; align-items: center; }
+    .response-format-remove { background: none; border: none; cursor: pointer; color: #999; font-size: 16px; padding: 0 4px; }
+    .response-format-remove:hover { color: #333; }
+
   </style>
 </head>
 <body>
@@ -310,6 +335,14 @@
 
       const [lastCompositionId, setLastCompositionId] = useState(null); // remember which composition we drilled into
 
+      // Drag and drop state
+      const [draggedItem, setDraggedItem] = useState(null);
+      const [dragOverIdx, setDragOverIdx] = useState(null);
+      const [dragPreview, setDragPreview] = useState(null);
+
+      // Response Format state
+      const [responseFormatItems, setResponseFormatItems] = useState([]);
+
       const isPromptView = path.length === 1;
       const isCompositionView = path.length === 2;
       const currentCompositionId = isCompositionView ? path[1] : null;
@@ -354,12 +387,17 @@
       }, [currentItems]);
 
       const addSuggestions = useMemo(() => {
-        if (!addQuery.trim()) return [];
         const q = addQuery.toLowerCase();
-        return Object.entries(db)
+        const allItems = Object.entries(db)
           .map(([id, it]) => ({ id, ...it }))
-          .filter(x => x.type === 'composition' || x.type === 'module')
-          .filter(x => x.name.toLowerCase().includes(q));
+          .filter(x => x.type === 'composition' || x.type === 'module');
+        
+        if (!addQuery.trim()) {
+          // Show all items, most frequently used first (for now, just show all)
+          return allItems;
+        }
+        
+        return allItems.filter(x => x.name.toLowerCase().includes(q));
       }, [db, addQuery]);
 
       const openEditor = (itemId, itemType) => {
@@ -400,8 +438,8 @@
 
       useEffect(() => {
         const onKey = (e) => {
-          // Fast path: global '+' to open Add unless a text window (textarea) is focused
-          if (e.key === '+') {
+          // Fast path: global '+' or '/' to open Add unless a text window (textarea) is focused
+          if (e.key === '+' || e.key === '/') {
             const active = document.activeElement;
             const isTextWindow = active && active.tagName === 'TEXTAREA';
             if (!(editorOpen && editorMode === 'text') && !isTextWindow) {
@@ -425,10 +463,21 @@
             return;
           }
 
-          // Let normal typing in inputs proceed, except we still allowed '+' above
+          // Let normal typing in inputs proceed, except we still allowed '+' and '/' above
           const isInput = e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA';
           const isAddInput = e.target === addInputRef.current;
           if (isInput && !isAddInput) return;
+
+          // Escape functions as left arrow when not in textbox
+          if (e.key === 'Escape' && !isInput) {
+            e.preventDefault();
+            if (isCompositionView) {
+              const backIdx = getPromptViewCompositionIndex(currentCompositionId || lastCompositionId);
+              setPath([promptId]);
+              setSelectedIdx(backIdx);
+            }
+            return;
+          }
 
           if (e.key === 'ArrowDown') {
             e.preventDefault();
@@ -506,7 +555,8 @@
       };
 
       const isSearching = addActive;
-      const panelClass = `panel ${isSearching ? 'searching' : ''}`;
+      const agentHighlightActive = (!editorOpen && !addActive) && (selectedIdx === 1 || hoveredIdx === 1);
+      const panelClass = `panel ${isSearching ? 'searching' : ''} ${agentHighlightActive ? 'agent-highlight' : ''}`;
       const searchDepth = isCompositionView ? 3 : 2;
 
       return (
@@ -543,12 +593,78 @@
                       className={rowClass}
                       style={{ '--indent-count': depth }}
                       aria-selected={isActive}
-                      onMouseEnter={() => setHoveredIdx(idx)}
+                      onMouseEnter={() => { setHoveredIdx(idx); if (item._class !== 'prompt') setSelectedIdx(-1); }}
                       onMouseLeave={() => setHoveredIdx(null)}
+                      draggable={item.type === 'composition' || item.type === 'module'}
+                      onDragStart={(e) => {
+                        if (item.type !== 'composition' && item.type !== 'module') {
+                          e.preventDefault();
+                          return;
+                        }
+                        setDraggedItem(item);
+                        e.dataTransfer.effectAllowed = 'move';
+                        e.dataTransfer.setData('text/plain', item.id);
+                        // Create drag preview
+                        const preview = document.createElement('div');
+                        preview.textContent = `${item.emojis || ''} ${item.name}`.trim();
+                        preview.style.cssText = 'padding: 8px 12px; background: #fff; border: 1px solid #ccc; border-radius: 6px; position: absolute; top: -1000px;';
+                        document.body.appendChild(preview);
+                        e.dataTransfer.setDragImage(preview, 0, 0);
+                        setTimeout(() => document.body.removeChild(preview), 0);
+                      }}
+                      onDragEnd={() => { setDraggedItem(null); setDragOverIdx(null); }}
+                      onDragOver={(e) => {
+                        if (!draggedItem) return;
+                        e.preventDefault();
+                        e.dataTransfer.dropEffect = 'move';
+                        setDragOverIdx(idx);
+                      }}
+                      onDragLeave={() => setDragOverIdx(null)}
+                      onDrop={(e) => {
+                        e.preventDefault();
+                        if (!draggedItem || draggedItem.id === item.id) {
+                          setDraggedItem(null);
+                          setDragOverIdx(null);
+                          return;
+                        }
+                        // Handle reordering logic
+                        if (isCompositionView && draggedItem.type === 'module' && item.type === 'module') {
+                          const comp = db[currentCompositionId];
+                          const items = [...(comp?.items || [])];
+                          const fromIdx = items.indexOf(draggedItem.id);
+                          const toIdx = items.indexOf(item.id);
+                          if (fromIdx !== -1 && toIdx !== -1) {
+                            items.splice(fromIdx, 1);
+                            items.splice(toIdx, 0, draggedItem.id);
+                            setDb(prev => ({ ...prev, [currentCompositionId]: { ...prev[currentCompositionId], items } }));
+                          }
+                        } else if (!isCompositionView && draggedItem.type === 'composition' && item.type === 'composition') {
+                          const prompt = db[promptId];
+                          const comps = [...(prompt?.compositions || [])];
+                          const fromIdx = comps.indexOf(draggedItem.id);
+                          const toIdx = comps.indexOf(item.id);
+                          if (fromIdx !== -1 && toIdx !== -1) {
+                            comps.splice(fromIdx, 1);
+                            comps.splice(toIdx, 0, draggedItem.id);
+                            setDb(prev => ({ ...prev, [promptId]: { ...prev[promptId], compositions: comps } }));
+                          }
+                        }
+                        setDraggedItem(null);
+                        setDragOverIdx(null);
+                      }}
                       onClick={(e) => {
                         const role = e.target?.getAttribute?.('data-role');
                         if (role === 'burger' || role === 'left-arrow') return;
 
+                        // Clicking prompt in composition view returns to prompt view
+                        if (item.type === 'prompt' && isCompositionView) {
+                          const backIdx = getPromptViewCompositionIndex(currentCompositionId || lastCompositionId);
+                          setPath([promptId]);
+                          setSelectedIdx(backIdx);
+                          return;
+                        }
+
+                        // Clicking composition drills in (acts as right arrow)
                         if (item.type === 'composition' && !editorOpen) {
                           setLastCompositionId(item.id);
                           setPath([promptId, item.id]);
@@ -602,7 +718,27 @@
                           if (!d) return null;
                           const previewDepth = depth + 1;
                           return (
-                            <div key={moduleId} className="preview-line" style={{ '--indent-count': previewDepth }}>
+                            <div 
+                              key={moduleId} 
+                              className="preview-line" 
+                              style={{ '--indent-count': previewDepth }}
+                              onClick={() => {
+                                // Preview is clickable - navigate to composition and select this module
+                                setLastCompositionId(item.id);
+                                setPath([promptId, item.id]);
+                                // Find index of this module in the composition view
+                                setTimeout(() => {
+                                  const moduleIdx = currentItems.findIndex(it => it.id === moduleId);
+                                  if (moduleIdx !== -1) setSelectedIdx(moduleIdx);
+                                }, 0);
+                              }}
+                              draggable={true}
+                              onDragStart={(e) => {
+                                setDraggedItem({ ...d, id: moduleId });
+                                e.dataTransfer.effectAllowed = 'move';
+                                e.dataTransfer.setData('text/plain', moduleId);
+                              }}
+                            >
                               <div className="preview-fills">
                                 {Array.from({length: previewDepth}).map((_,i)=><div key={i} className="preview-fill-box"></div>)}
                               </div>
@@ -635,6 +771,12 @@
                             className="editor-textarea"
                             value={editorText}
                             onChange={(e) => setEditorText(e.target.value)}
+                            onKeyDown={(e) => {
+                              if (e.key === 'Enter' && e.shiftKey) {
+                                e.preventDefault();
+                                saveEditor();
+                              }
+                            }}
                             autoFocus
                           />
                         ) : (
@@ -690,28 +832,80 @@
                   </div>
                   <input
                     ref={addInputRef}
-                    className="search-input"
-                    placeholder="🧩➕ Add Instructions"
+                    className={`search-input ${addActive ? 'active' : ''}`}
+                    placeholder={addActive ? "Start writing an existing name... Or create one!" : "➕🧊 Add New Block"}
                     value={addQuery}
                     onFocus={() => { setAddActive(true); setSelectedIdx(-1); }}
                     onBlur={() => setTimeout(() => setAddActive(false), 150)}
                     onChange={(e) => { setAddQuery(e.target.value); setAddSelectedIdx(0); }}
                     onKeyDown={(e) => {
-                      if (e.key === 'Enter') {
+                      if (e.key === 'Enter' && e.shiftKey) {
+                        // Shift+Enter creates new instruction
+                        e.preventDefault();
+                        const itemName = addQuery.trim() || 'New Instruction';
+                        const newId = 'new-' + Date.now();
+                        const newType = isCompositionView ? 'module' : 'composition';
+                        const newItem = {
+                          name: itemName,
+                          type: newType,
+                          emojis: '',
+                          text: newType === 'module' ? '' : undefined,
+                          items: newType === 'composition' ? [] : undefined
+                        };
+                        setDb(prev => ({ ...prev, [newId]: newItem }));
+                        
+                        // Add to appropriate location
+                        if (isCompositionView) {
+                          const composition = db[currentCompositionId];
+                          const insertIdx = prevIdxBeforeAddRef.current !== null ? 
+                            Math.max(0, prevIdxBeforeAddRef.current - 3) : // -3 accounts for menu, prompt, composition
+                            (composition?.items || []).length;
+                          const newItems = [...(composition?.items || [])];
+                          newItems.splice(insertIdx, 0, newId);
+                          setDb(prev => ({ ...prev, [currentCompositionId]: { ...prev[currentCompositionId], items: newItems } }));
+                        } else {
+                          const prompt = db[promptId];
+                          const insertIdx = prevIdxBeforeAddRef.current !== null ? 
+                            Math.max(0, prevIdxBeforeAddRef.current - 2) :
+                            (prompt?.compositions || []).length;
+                          const newComps = [...(prompt?.compositions || [])];
+                          newComps.splice(insertIdx, 0, newId);
+                          setDb(prev => ({ ...prev, [promptId]: { ...prev[promptId], compositions: newComps } }));
+                        }
+                        
+                        setAddQuery(''); 
+                        setAddActive(false);
+                        if (addInputRef.current) addInputRef.current.blur();
+                        
+                        // Open editor for new item
+                        setTimeout(() => {
+                          openEditor(newId, newType);
+                        }, 100);
+                      } else if (e.key === 'Enter') {
                         e.preventDefault();
                         const list = addSuggestions;
                         if (list.length > 0 && addSelectedIdx < list.length) {
                           const chosen = list[addSelectedIdx];
                           const allow = (isCompositionView && chosen.type === 'module') || (!isCompositionView && chosen.type === 'composition');
                           if (!allow) return;
+                          
+                          // Add below where user came from
                           if (isCompositionView) {
                             const composition = db[currentCompositionId];
-                            const newItems = [...(composition?.items || []), chosen.id];
+                            const insertIdx = prevIdxBeforeAddRef.current !== null ? 
+                              Math.max(0, prevIdxBeforeAddRef.current - 2) :
+                              (composition?.items || []).length;
+                            const newItems = [...(composition?.items || [])];
+                            newItems.splice(insertIdx, 0, chosen.id);
                             setDb(prev => ({ ...prev, [currentCompositionId]: { ...prev[currentCompositionId], items: newItems } }));
                           } else {
                             const prompt = db[promptId];
-                            const newMods = [...(prompt?.compositions || []), chosen.id];
-                            setDb(prev => ({ ...prev, [promptId]: { ...prev[promptId], compositions: newMods } }));
+                            const insertIdx = prevIdxBeforeAddRef.current !== null ? 
+                              Math.max(0, prevIdxBeforeAddRef.current - 2) :
+                              (prompt?.compositions || []).length;
+                            const newComps = [...(prompt?.compositions || [])];
+                            newComps.splice(insertIdx, 0, chosen.id);
+                            setDb(prev => ({ ...prev, [promptId]: { ...prev[promptId], compositions: newComps } }));
                           }
                           setAddQuery(''); setAddActive(false);
                           cameFromPlusRef.current = false;
@@ -747,7 +941,7 @@
                 </div>
               </div>
 
-              {addQuery.trim() && (
+              {addActive && (
                 <div className="omni-list">
                   {addSuggestions.map((item, idx) => {
                     const allowed = (isCompositionView && item.type === 'module') || (!isCompositionView && item.type === 'composition');
@@ -755,16 +949,25 @@
                     return (
                       <div
                         key={item.id}
-                        className="omni-item"
+                        className={`omni-item ${isSel ? 'selected' : ''}`}
+                        onMouseEnter={() => setAddSelectedIdx(idx)}
                         onMouseDown={() => {
                           if (!allowed) return;
                           if (isCompositionView) {
                             const composition = db[currentCompositionId];
-                            const newItems = [...(composition?.items || []), item.id];
+                            const insertIdx = prevIdxBeforeAddRef.current !== null ? 
+                              Math.max(0, prevIdxBeforeAddRef.current - 3) :
+                              (composition?.items || []).length;
+                            const newItems = [...(composition?.items || [])];
+                            newItems.splice(insertIdx, 0, item.id);
                             setDb(prev => ({ ...prev, [currentCompositionId]: { ...prev[currentCompositionId], items: newItems } }));
                           } else {
                             const prompt = db[promptId];
+                            const insertIdx = prevIdxBeforeAddRef.current !== null ? 
+                              Math.max(0, prevIdxBeforeAddRef.current - 2) :
+                              (prompt?.compositions || []).length;
                             const newMods = [...(prompt?.compositions || []), item.id];
+                            newMods.splice(insertIdx, 0, item.id);
                             setDb(prev => ({ ...prev, [promptId]: { ...prev[promptId], compositions: newMods } }));
                           }
                           setAddQuery(''); setAddActive(false);
@@ -772,16 +975,102 @@
                           if (addInputRef.current) addInputRef.current.blur();
                         }}
                         title={allowed ? 'Add' : 'Not addable in this context'}
-                        style={{ fontWeight: isSel ? 600 : 400 }}
                       >
                         <span>{item.emojis} {item.name}</span>
                         <span className="badge">{item.type}</span>
                       </div>
                     );
                   })}
+                  {/* Create New Instruction as a list item */}
+                  <div
+                    className={`omni-item create-new ${addSelectedIdx === addSuggestions.length ? 'selected' : ''}`}
+                    onMouseEnter={() => setAddSelectedIdx(addSuggestions.length)}
+                    onMouseDown={(e) => {
+                      e.preventDefault();
+                      const itemName = addQuery.trim() || 'New Instruction';
+                      const newId = 'new-' + Date.now();
+                      const newType = isCompositionView ? 'module' : 'composition';
+                      const newItem = {
+                        name: itemName,
+                        type: newType,
+                        emojis: '',
+                        text: newType === 'module' ? '' : undefined,
+                        items: newType === 'composition' ? [] : undefined
+                      };
+                      setDb(prev => ({ ...prev, [newId]: newItem }));
+                      
+                      if (isCompositionView) {
+                        const composition = db[currentCompositionId];
+                        const insertIdx = prevIdxBeforeAddRef.current !== null ? 
+                          Math.max(0, prevIdxBeforeAddRef.current - 3) :
+                          (composition?.items || []).length;
+                        const newItems = [...(composition?.items || [])];
+                        newItems.splice(insertIdx, 0, newId);
+                        setDb(prev => ({ ...prev, [currentCompositionId]: { ...prev[currentCompositionId], items: newItems } }));
+                      } else {
+                        const prompt = db[promptId];
+                        const insertIdx = prevIdxBeforeAddRef.current !== null ? 
+                          Math.max(0, prevIdxBeforeAddRef.current - 2) :
+                          (prompt?.compositions || []).length;
+                        const newComps = [...(prompt?.compositions || [])];
+                        newComps.splice(insertIdx, 0, newId);
+                        setDb(prev => ({ ...prev, [promptId]: { ...prev[promptId], compositions: newComps } }));
+                      }
+                      
+                      setAddQuery(''); 
+                      setAddActive(false);
+                      if (addInputRef.current) addInputRef.current.blur();
+                      
+                      setTimeout(() => openEditor(newId, newType), 100);
+                    }}
+                  >
+                    <span>➕ Create New Instruction{addQuery.trim() ? ` "${addQuery.trim()}"` : ''}</span>
+                    <span className="badge">new</span>
+                  </div>
                 </div>
               )}
             </div>
+
+            {/* Response Format Section - only shows when there are items */}
+            {responseFormatItems.length > 0 && (
+              <div className="response-format-section">
+                <div className="response-format-header">
+                  <span className="response-format-title">Response Format</span>
+                  <button 
+                    className="response-format-add-btn"
+                    onClick={() => {
+                      const item = currentItems[selectedIdx];
+                      if (item && (item.type === 'composition' || item.type === 'module')) {
+                        setResponseFormatItems(prev => [...prev, { id: item.id, name: item.name, emojis: item.emojis, type: item.type }]);
+                        showToast('Added to Response Format');
+                      }
+                    }}
+                  >+</button>
+                </div>
+                <div 
+                  className="response-format-items"
+                  onDragOver={(e) => { e.preventDefault(); e.dataTransfer.dropEffect = 'copy'; }}
+                  onDrop={(e) => {
+                    e.preventDefault();
+                    if (draggedItem && (draggedItem.type === 'composition' || draggedItem.type === 'module')) {
+                      setResponseFormatItems(prev => [...prev, { id: draggedItem.id, name: draggedItem.name, emojis: draggedItem.emojis, type: draggedItem.type }]);
+                      showToast('Added to Response Format');
+                    }
+                  }}
+                >
+                  {responseFormatItems.map((item, idx) => (
+                    <div key={idx} className="response-format-item">
+                      <span>{item.emojis} {item.name}</span>
+                      <button 
+                        className="response-format-remove"
+                        onClick={() => setResponseFormatItems(prev => prev.filter((_, i) => i !== idx))}
+                        title="Remove"
+                      >×</button>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            )}
 
             {toast && <div className="toast">{toast}</div>}
           </div>

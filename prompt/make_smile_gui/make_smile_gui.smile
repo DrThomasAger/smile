@@ -71,7 +71,7 @@ You must ensure all of these features remain intact at all times no matter what 
 
 (: GUI infoflags (
     @0@ Add a flag to every composition and module which is a binary response format/not response format
-    @1@ Add a small bit of text which says "Response Format" at the bottom of the window. 
+    @1@ Add a small bit of text which says "Response Format" when there is a response format item present.
     @2@ It has a space where an instruction can be drag and dropped into.
     @3@ It also has a plus button next to it. if you click this then the position the composition, module or data is added to is the response section once it is confirmed.
 ) End :)
@@ -101,58 +101,14 @@ I had a look at what you made me last time, so please take responsibility for it
 
 (: The following requirements need to be re-examined to be met, as they aren't functional (
 
- @3@ Every preview must be clickable to navigate to that module inside of the composition.
-        @d@ When you are in the Add Instruction button you can press Escape or Up arrow key to exit it.
-            @i@ When we navigate to the Add Instruction button by pressing "+" or "/" and navigate out by pressing Escape or Up arrow key, then we need to be returned to the selection position we came from.
-    @3@ Navigation must be able to naturally use arrow keys to go up and down, even inside of textboxes, e.g:
-        @a@ It's essential that the arrow keys go up to return back to the composition or module you came from after pressing "+" or "/".
-        @7@ When hovering with the mouse, remove the selection with the keyboard.
-        
-(: Keyboard shortcuts (
-    @1@ It's essential that you can press shift+enter to save your progress at any time inside of a text box.
-    @2@ This means that you can use shift+enter to save the instruction you're working on.
-    @3@ You can also use shift+enter to add the new item that you've written the new name of.
-    @4@ If a text box opens, escape must be able to close it.
-    @5@ Escape also functions the same as left arrow.
-    @6@ Note that left arrow does not close a text box, but escape does.
-) End keyboard shortcuts :)
+    @1@ The placeholder text that is on the "{One plus emoji folowed by a cube emoji} Add Instruction" button only changes to "{Two big plus emojis} Start writing an existing name... Or create one!"  when they select the "Add Instruction" button with the keyboard or mouse. It changes placeholder text on selection. Before it says + Add New Block.
+    @2@ The create new instruction button only appears at the top, not the bottom.
+    @3@ The list of modules/compositions/data (all items appear) needs to populate once they select on the add instruction section also. 
+    @4@ "Response format" is not a section, is just text. It only appears when there is a response format item added to the prompt. 
+    @5@ If any composition contains a response format module, then it is a response format composition.
+    @6@ When selecting items inside of the list of items in the search, they must also have the gray background that the other navigations have when selecting.
+    @7@ Hover must apply also to all items that are populated inside of the Add Instruction list
+    @8@ The create new instruction button when clicked or selected and enter pressed without writing any text will add an instruction with a placeholder name for now.
+    @9@ Whenever we add a new item or block, make it the same as adding a module (unless we are selecting an existing composition to add) on the composition view, and make it so we are adding a composition 
 
-(: )
-
-(: Clicking (
-    @1@ All clicks must be functional the same as right arrow
-    @2@ Clicking the agent must return to the agent view, and leave the composition view.
-) End :)
-
-(: Drag and drop ( [! All modules can be drag and dropped inside of all compositions.  All compositions and modules can be drag and dropped in the prompt view. All previews of modules inside of compositions can be drag and dropped up and down from the agent view. !]
-    @1@ It's essential that items can be picked up to drag.
-    @2@ After being picked up,  their original item that was picked up from is grayed out.
-    @3@ The item that is picked up is aligned to the left, not hovering on top of the mouse.
-    @4@ When you drag it down to move it, there is gray text of the instruction name appearing where it would be placed before dropping it.
-    @5@ All preview text inside of compositions can be drag and dropped also, so you do not need to enter the composition view to do so.
-)
-
-(: GUI infoflags (
-    @0@ Add a flag to every composition and module which is a binary response format/not response format
-    @1@ Add a small bit of text which says "Response Format" at the bottom of the window. 
-    @2@ It has a space where an instruction can be drag and dropped into.
-    @3@ It also has a plus button next to it. if you click this then the position the composition, module or data is added to is the response section once it is confirmed.
-) End :)
-
-(: Populating data (
-    @1@ Note that we are not using real data right now.
-    @2@ This will hook-up to a back-end inside of a folder. It will be reading files.
-    @3@ Don't write any code for making this connect to our local file data source yet. We are just getting the UX flow working first.
-) End :)
-
-(: Adding new instructions (
-    @1@ Always populate in the "Add New Module, Data Or Composition" area (the bottom selection) a button at the bottom which says "+ Create New Instruction".
-    @2@ Change the placeholder when they switch to the add module/composition area to say "Start writing an existing name... Or create one!"
-    @3@ After adding an instruction, place it below where the user came from (If they used the shortcut to navigate to the adding area) 
-    @4@ After adding an instruction, open its plain text box and select it ready for editing.
-) End :)
-
-(: Visual Details (
-    @1@ When hovering or selecting the prompt name/agent name, ensure that the bars are visible on the left side margin across the entire structure of that agent. So, all compositions/modules are shown to be included.
-) End :)
 ) These were the requirements :)
