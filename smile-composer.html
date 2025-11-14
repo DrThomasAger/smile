@@ -85,12 +85,12 @@
     .line-label { flex: 1; min-width: 0; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
     .line-indicator { font-size: 14px; color: #666; flex-shrink: 0; display: inline-flex; align-items: center; gap: 10px; }
 
-    /* Right arrow only for chains, visible on hover or keyboard-selection */
+    /* Right arrow only for compositions, visible on hover or keyboard-selection */
     .arrow { opacity: 0; transition: opacity 0.12s ease; }
-    .line.chain:hover .arrow, .line.chain.selected .arrow { opacity: 1; }
-    .line.menu .arrow, .line.prompt .arrow, .line.doc .arrow, .line.search .arrow { display: none; }
+    .line.composition:hover .arrow, .line.composition.selected .arrow { opacity: 1; }
+    .line.menu .arrow, .line.prompt .arrow, .line.module .arrow, .line.search .arrow { display: none; }
 
-    /* Burger visible on hover and when keyboard-selected; not on chains/search */
+    /* Burger visible on hover and when keyboard-selected; not on compositions/search */
     .burger {
       display: inline-flex;
       flex-direction: column;
@@ -104,9 +104,9 @@
     .burger div { width: 12px; height: 1px; background: #666; border-radius: 1px; }
     .line.menu:hover .burger,
     .line.prompt:hover .burger,
-    .line.doc:hover .burger,
+    .line.module:hover .burger,
     .line.selected .burger { opacity: 1; }
-    .line.chain .burger, .line.search .burger { display: none; }
+    .line.composition .burger, .line.search .burger { display: none; }
 
     .left-arrow { opacity: 1; cursor: pointer; user-select: none; }
 
@@ -197,7 +197,7 @@
         name: 'Expert Maker',
         type: 'prompt',
         emojis: '🎯🧠',
-        modules: ['smile-menu', 'meta-info', 'jargon-cot', 'identify-mistakes']
+        compositions: ['smile-menu', 'meta-info', 'jargon-cot', 'identify-mistakes']
       },
       'smile-menu': {
         name: '(: Smile Prompt Editor',
@@ -207,34 +207,34 @@
       },
       'meta-info': {
         name: 'Meta-Information MegaBrick',
-        type: 'chain',
+        type: 'composition',
         emojis: '📊🔗',
         items: ['smile-info', 'llm-info', 'user-info']
       },
       'jargon-cot': {
         name: 'Thinking In Jargon',
-        type: 'chain',
+        type: 'composition',
         emojis: '🧪💭',
         items: ['emoji-section', 'bold-words', 'top-bottom']
       },
       'identify-mistakes': {
         name: 'Output Answer',
-        type: 'chain',
+        type: 'composition',
         emojis: '🔍✏️',
-        items: ['emoji-section', 'bold-words', 'negative-rewrite']
+        items: ['emoji-section', 'bold-words']
       },
       'smile-info': {
         name: 'Information About (: Smile',
-        type: 'doc',
+        type: 'module',
         emojis: '😊📘',
         text: 'Explain Smile syntax: (: flexible, [: rigid, [= literal.'
       },
-      'llm-info': { name: 'Information About LLMs', type: 'doc', emojis: '🤖📚', text: 'Meta-knowledge about how LLMs process instructions.' },
-      'user-info': { name: 'Information About User', type: 'doc', emojis: '👤💡', text: 'Contextualize user needs and goals.' },
-      'emoji-section': { name: 'Emoji section name', type: 'doc', emojis: '😀🏷️', text: 'Use two emoticons for section names.' },
-      'bold-words': { name: 'Bold for important words', type: 'doc', emojis: '💪📝', text: 'Use **bold** for attention retention over long contexts.' },
-      'top-bottom': { name: 'Maximize adherence through top+bottom replication', type: 'doc', emojis: '⬆️⬇️', text: 'Replicate critical instructions at beginning and end.' },
-      'negative-rewrite': { name: 'Identify negatives and rewrite to positive', type: 'doc', emojis: '❌✅', text: 'Find negatives like "not" and rewrite as positive articulations.' }
+      'llm-info': { name: 'Information About LLMs', type: 'module', emojis: '🤖📚', text: 'Meta-knowledge about how LLMs process instructions.' },
+      'user-info': { name: 'Information About User', type: 'module', emojis: '👤💡', text: 'Contextualize user needs and goals.' },
+      'emoji-section': { name: 'Emoji section name', type: 'module', emojis: '😀🏷️', text: 'Use two emoticons for section names.' },
+      'bold-words': { name: 'Bold for important words', type: 'module', emojis: '💪📝', text: 'Use **bold** for attention retention over long contexts.' },
+      'top-bottom': { name: 'Maximize adherence through top+bottom replication', type: 'module', emojis: '⬆️⬇️', text: 'Replicate critical instructions at beginning and end.' },
+      'negative-rewrite': { name: 'Identify negatives and rewrite to positive', type: 'module', emojis: '❌✅', text: 'Find negatives like "not" and rewrite as positive articulations.' }
     };
 
     const getMockPrompt = (type, id, db) => {
@@ -264,17 +264,17 @@
 
 ) End prompt :)`;
       }
-      if (type === 'chain') {
-        return `(: Chain - ${item.name} (
+      if (type === 'composition') {
+        return `(: Composition - ${item.name} (
 
   [= Documents [
     ${(item.items || []).map(i => `- ${db[i]?.name || i}`).join('\n    ')}
   ] End documents =]
 
-) End chain :)`;
+) End composition :)`;
       }
-      if (type === 'doc') {
-        return `[: Document - ${item.name} [
+      if (type === 'module') {
+        return `[: Module - ${item.name} [
   ${item.text || ''}
 ] End document :]`;
       }
@@ -284,7 +284,7 @@
     function App() {
       const [db, setDb] = useState(INITIAL_DB);
       const [promptId] = useState('expert-maker');
-      const [path, setPath] = useState([promptId]); // [prompt] or [prompt, chainId]
+      const [path, setPath] = useState([promptId]); // [prompt] or [prompt, compositionId]
       const [selectedIdx, setSelectedIdx] = useState(0);
       const initializedRef = useRef(false);
 
@@ -308,11 +308,11 @@
       const prevIdxBeforeAddRef = useRef(null);
       const cameFromPlusRef = useRef(false);
 
-      const [lastChainId, setLastChainId] = useState(null); // remember which chain we drilled into
+      const [lastCompositionId, setLastCompositionId] = useState(null); // remember which composition we drilled into
 
       const isPromptView = path.length === 1;
-      const isChainView = path.length === 2;
-      const currentChainId = isChainView ? path[1] : null;
+      const isCompositionView = path.length === 2;
+      const currentCompositionId = isCompositionView ? path[1] : null;
 
       const showToast = (msg) => { setToast(msg); setTimeout(() => setToast(null), 1600); };
 
@@ -320,31 +320,31 @@
         const items = [];
         items.push({ id: 'smile-menu', ...db['smile-menu'], _depth: 0, _class: 'menu' });
         items.push({ id: promptId, ...db[promptId], _depth: 1, _class: 'prompt' });
-        if (isChainView) {
-          const ch = db[currentChainId];
+        if (isCompositionView) {
+          const ch = db[currentCompositionId];
           if (ch) {
-            items.push({ id: currentChainId, ...ch, _depth: 2, _class: 'chain' });
-            (ch.items || []).forEach(docId => {
-              const d = db[docId];
-              if (d) items.push({ id: docId, ...d, _depth: 3, _class: 'doc' });
+            items.push({ id: currentCompositionId, ...ch, _depth: 2, _class: 'composition' });
+            (ch.items || []).forEach(moduleId => {
+              const d = db[moduleId];
+              if (d) items.push({ id: moduleId, ...d, _depth: 3, _class: 'module' });
             });
           }
         } else {
           const prompt = db[promptId];
-          (prompt.modules || []).forEach(mid => {
+          (prompt.compositions || []).forEach(mid => {
             const m = db[mid];
-            if (m && m.type === 'chain') {
-              items.push({ id: mid, ...m, _depth: 2, _class: 'chain' });
+            if (m && m.type === 'composition') {
+              items.push({ id: mid, ...m, _depth: 2, _class: 'composition' });
             }
           });
         }
         return items;
-      }, [db, promptId, isChainView, currentChainId]);
+      }, [db, promptId, isCompositionView, currentCompositionId]);
 
-      // First-load: select the first chain by default
+      // First-load: select the first composition by default
       useEffect(() => {
         if (initializedRef.current) return;
-        const idx = currentItems.findIndex(i => i.type === 'chain');
+        const idx = currentItems.findIndex(i => i.type === 'composition');
         if (idx !== -1) {
           setSelectedIdx(idx);
         } else {
@@ -358,7 +358,7 @@
         const q = addQuery.toLowerCase();
         return Object.entries(db)
           .map(([id, it]) => ({ id, ...it }))
-          .filter(x => x.type === 'chain' || x.type === 'doc')
+          .filter(x => x.type === 'composition' || x.type === 'module')
           .filter(x => x.name.toLowerCase().includes(q));
       }, [db, addQuery]);
 
@@ -389,13 +389,13 @@
       };
       const saveEditor = () => { showToast('Saved'); closeEditor(); };
 
-      const getPromptViewChainIndex = (chainId) => {
+      const getPromptViewCompositionIndex = (compositionId) => {
         const prompt = db[promptId];
-        const chainIds = (prompt.modules || []).filter(id => db[id]?.type === 'chain');
-        const idxInChains = chainIds.indexOf(chainId);
-        if (idxInChains === -1) return currentItems.findIndex(i => i.type === 'chain');
-        // 0: menu, 1: prompt, then chains...
-        return 2 + idxInChains;
+        const compositionIds = (prompt.compositions || []).filter(id => db[id]?.type === 'composition');
+        const idxInCompositions = compositionIds.indexOf(compositionId);
+        if (idxInCompositions === -1) return currentItems.findIndex(i => i.type === 'composition');
+        // 0: menu, 1: prompt, then compositions...
+        return 2 + idxInCompositions;
       };
 
       useEffect(() => {
@@ -453,8 +453,8 @@
             }
           } else if (e.key === 'ArrowLeft') {
             e.preventDefault();
-            if (isChainView) {
-              const backIdx = getPromptViewChainIndex(currentChainId || lastChainId);
+            if (isCompositionView) {
+              const backIdx = getPromptViewCompositionIndex(currentCompositionId || lastCompositionId);
               setPath([promptId]);
               setSelectedIdx(backIdx);
             }
@@ -462,16 +462,16 @@
             e.preventDefault();
             const item = currentItems[selectedIdx];
             if (!item) return;
-            if (item.type === 'chain') {
-              setLastChainId(item.id);
+            if (item.type === 'composition') {
+              setLastCompositionId(item.id);
               setPath([promptId, item.id]);
               return;
             }
-            if (item.type === 'prompt' && !isChainView) {
+            if (item.type === 'prompt' && !isCompositionView) {
               openEditorAndFocusSettings(item.id, 'prompt');
               return;
             }
-            if (item.type === 'menu' || item.type === 'doc' || (item.type === 'prompt' && isChainView)) {
+            if (item.type === 'menu' || item.type === 'module' || (item.type === 'prompt' && isCompositionView)) {
               openEditor(item.id, item.type);
               return;
             }
@@ -479,9 +479,9 @@
             e.preventDefault();
             const item = currentItems[selectedIdx];
             if (!item) return;
-            if (item.type === 'chain') {
-              openEditor(item.id, 'chain');
-            } else if (item.type === 'prompt' && !isChainView) {
+            if (item.type === 'composition') {
+              openEditor(item.id, 'composition');
+            } else if (item.type === 'prompt' && !isCompositionView) {
               openEditorAndFocusSettings(item.id, 'prompt');
             } else {
               openEditor(item.id, item.type);
@@ -490,7 +490,7 @@
         };
         window.addEventListener('keydown', onKey);
         return () => window.removeEventListener('keydown', onKey);
-      }, [editorOpen, editorMode, selectedIdx, currentItems, isChainView, promptId, db, lastChainId, currentChainId]);
+      }, [editorOpen, editorMode, selectedIdx, currentItems, isCompositionView, promptId, db, lastCompositionId, currentCompositionId]);
 
       const IndentGuides = ({ depth }) => {
         const bars = [];
@@ -507,7 +507,7 @@
 
       const isSearching = addActive;
       const panelClass = `panel ${isSearching ? 'searching' : ''}`;
-      const searchDepth = isChainView ? 3 : 2;
+      const searchDepth = isCompositionView ? 3 : 2;
 
       return (
         <div className="container">
@@ -519,22 +519,22 @@
                 const isActive = (!editorOpen && !addActive) && (selectedIdx === idx || hoveredIdx === idx);
                 const rowClass = `line ${item._class || ''}${isActive ? ' selected' : ''}`;
 
-                const getDocPreview = (text) => {
+                const getModulePreview = (text) => {
                   const lines = String(text || '').split('\n').slice(0, 3).map(s => s.trim()).filter(Boolean);
                   return lines.join(' ');
                 };
 
-                const goBackToPromptAtChain = () => {
-                  const backIdx = getPromptViewChainIndex(currentChainId || lastChainId);
+                const goBackToPromptAtComposition = () => {
+                  const backIdx = getPromptViewCompositionIndex(currentCompositionId || lastCompositionId);
                   setPath([promptId]);
                   setSelectedIdx(backIdx);
                 };
 
-                // Burger visibility: hide on prompt row while in chain view (spec wants left-arrow there)
+                // Burger visibility: hide on prompt row while in composition view (spec wants left-arrow there)
                 const showBurger = (
                   item.type === 'menu' ||
-                  item.type === 'doc' ||
-                  (item.type === 'prompt' && !isChainView)
+                  item.type === 'module' ||
+                  (item.type === 'prompt' && !isCompositionView)
                 );
 
                 return (
@@ -549,8 +549,8 @@
                         const role = e.target?.getAttribute?.('data-role');
                         if (role === 'burger' || role === 'left-arrow') return;
 
-                        if (item.type === 'chain' && !editorOpen) {
-                          setLastChainId(item.id);
+                        if (item.type === 'composition' && !editorOpen) {
+                          setLastCompositionId(item.id);
                           setPath([promptId, item.id]);
                         } else {
                           setSelectedIdx(idx);
@@ -568,23 +568,23 @@
                         </span>
                       </div>
                       <div className="line-indicator">
-                        {isChainView && item.type === 'prompt' && isActive && (
+                        {isCompositionView && item.type === 'prompt' && isActive && (
                           <span
                             className="left-arrow"
                             title="Return to prompt view"
                             data-role="left-arrow"
-                            onClick={(e) => { e.stopPropagation(); goBackToPromptAtChain(); }}
+                            onClick={(e) => { e.stopPropagation(); goBackToPromptAtComposition(); }}
                           >←</span>
                         )}
                         <span className="arrow">→</span>
                         {showBurger && (
                           <span
                             className="burger"
-                            title={item.type === 'prompt' && !isChainView ? 'Open settings' : 'Open editor'}
+                            title={item.type === 'prompt' && !isCompositionView ? 'Open settings' : 'Open editor'}
                             data-role="burger"
                             onClick={(e) => {
                               e.stopPropagation();
-                              if (item.type === 'prompt' && !isChainView) {
+                              if (item.type === 'prompt' && !isCompositionView) {
                                 openEditorAndFocusSettings(item.id, 'prompt');
                               } else {
                                 openEditor(item.id, item.type);
@@ -595,14 +595,14 @@
                       </div>
                     </div>
 
-                    {isPromptView && isActive && item.type === 'chain' && item.items && (
+                    {isPromptView && isActive && item.type === 'composition' && item.items && (
                       <div className="module-contents">
-                        {(item.items || []).map(docId => {
-                          const d = db[docId];
+                        {(item.items || []).map(moduleId => {
+                          const d = db[moduleId];
                           if (!d) return null;
                           const previewDepth = depth + 1;
                           return (
-                            <div key={docId} className="preview-line" style={{ '--indent-count': previewDepth }}>
+                            <div key={moduleId} className="preview-line" style={{ '--indent-count': previewDepth }}>
                               <div className="preview-fills">
                                 {Array.from({length: previewDepth}).map((_,i)=><div key={i} className="preview-fill-box"></div>)}
                               </div>
@@ -616,14 +616,14 @@
                       </div>
                     )}
 
-                    {isActive && item.type === 'doc' && (
+                    {isActive && item.type === 'module' && (
                       <div className="preview-line" style={{ '--indent-count': (depth + 1) }}>
                         <div className="preview-fills">
                           {Array.from({length: depth + 1}).map((_,i)=><div key={i} className="preview-fill-box"></div>)}
                         </div>
                         <div className="preview-inner">
                           <IndentGuides depth={depth + 1} />
-                          <span className="preview-label">{getDocPreview(item.text)}</span>
+                          <span className="preview-label">{getModulePreview(item.text)}</span>
                         </div>
                       </div>
                     )}
@@ -647,9 +647,9 @@
                               <label className="settings-label">Emojis (2)</label>
                               <input className="settings-input" value={settingsEmojis} onChange={(e) => setSettingsEmojis(e.target.value)} maxLength={4} />
                             </div>
-                            {item.type === 'doc' && (
+                            {item.type === 'module' && (
                               <div className="settings-field">
-                                <label className="settings-label">Document Text</label>
+                                <label className="settings-label">Module Text</label>
                                 <textarea className="settings-textarea" value={settingsText} onChange={(e) => setSettingsText(e.target.value)} />
                               </div>
                             )}
@@ -702,16 +702,16 @@
                         const list = addSuggestions;
                         if (list.length > 0 && addSelectedIdx < list.length) {
                           const chosen = list[addSelectedIdx];
-                          const allow = (isChainView && chosen.type === 'doc') || (!isChainView && chosen.type === 'chain');
+                          const allow = (isCompositionView && chosen.type === 'module') || (!isCompositionView && chosen.type === 'composition');
                           if (!allow) return;
-                          if (isChainView) {
-                            const chain = db[currentChainId];
-                            const newItems = [...(chain?.items || []), chosen.id];
-                            setDb(prev => ({ ...prev, [currentChainId]: { ...prev[currentChainId], items: newItems } }));
+                          if (isCompositionView) {
+                            const composition = db[currentCompositionId];
+                            const newItems = [...(composition?.items || []), chosen.id];
+                            setDb(prev => ({ ...prev, [currentCompositionId]: { ...prev[currentCompositionId], items: newItems } }));
                           } else {
                             const prompt = db[promptId];
-                            const newMods = [...(prompt?.modules || []), chosen.id];
-                            setDb(prev => ({ ...prev, [promptId]: { ...prev[promptId], modules: newMods } }));
+                            const newMods = [...(prompt?.compositions || []), chosen.id];
+                            setDb(prev => ({ ...prev, [promptId]: { ...prev[promptId], compositions: newMods } }));
                           }
                           setAddQuery(''); setAddActive(false);
                           cameFromPlusRef.current = false;
@@ -750,7 +750,7 @@
               {addQuery.trim() && (
                 <div className="omni-list">
                   {addSuggestions.map((item, idx) => {
-                    const allowed = (isChainView && item.type === 'doc') || (!isChainView && item.type === 'chain');
+                    const allowed = (isCompositionView && item.type === 'module') || (!isCompositionView && item.type === 'composition');
                     const isSel = idx === addSelectedIdx && addActive;
                     return (
                       <div
@@ -758,14 +758,14 @@
                         className="omni-item"
                         onMouseDown={() => {
                           if (!allowed) return;
-                          if (isChainView) {
-                            const chain = db[currentChainId];
-                            const newItems = [...(chain?.items || []), item.id];
-                            setDb(prev => ({ ...prev, [currentChainId]: { ...prev[currentChainId], items: newItems } }));
+                          if (isCompositionView) {
+                            const composition = db[currentCompositionId];
+                            const newItems = [...(composition?.items || []), item.id];
+                            setDb(prev => ({ ...prev, [currentCompositionId]: { ...prev[currentCompositionId], items: newItems } }));
                           } else {
                             const prompt = db[promptId];
-                            const newMods = [...(prompt?.modules || []), item.id];
-                            setDb(prev => ({ ...prev, [promptId]: { ...prev[promptId], modules: newMods } }));
+                            const newMods = [...(prompt?.compositions || []), item.id];
+                            setDb(prev => ({ ...prev, [promptId]: { ...prev[promptId], compositions: newMods } }));
                           }
                           setAddQuery(''); setAddActive(false);
                           cameFromPlusRef.current = false;
@@ -799,3 +799,4 @@
   </script>
 </body>
 </html>
+

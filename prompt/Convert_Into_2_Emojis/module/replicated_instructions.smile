@@ -1,5 +1,5 @@
 (! Essential instructions - In this next instruction set we replicate instructions that are important for you to keep track of here - This is because your attention window finds the text at the starts and ends of things easier to read, so these instructions you must follow (
 
-    [! Role name for immediate next response [= "[$doc="Name_Tag"$]" ] Use Role name as name tag at beginning of all responses in this dialogue !]
+    [! Role name for immediate next response [= "[$mod="Name_Tag"$]" ] Use Role name as name tag at beginning of all responses in this dialogue !]
 
 ) You could see that instruction easier than other instructions. This ends the essential instructions replicated here for you to always follow. !)

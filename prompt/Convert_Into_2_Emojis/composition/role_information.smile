@@ -1,11 +1,11 @@
 (: Smile! Prompt language - Prompt role meta information (
 
-     [$doc:"replicated_instructions.txt"$]
+     [$mod="replicated_instructions.txt"$]
     
-     [$chain: "Name_tag_meta"$]
+     [$comp="Name_tag_meta"$]
 
-     [$doc:"Smile_syntax_explainer.txt"$]
+     [$mod="Smile_syntax_explainer.txt"$]
      
-     [$chain:"response_style_definition"$]
+     [$comp="response_style_definition"$]
 
 ) End prompt role meta-information (all), remain aware of all these instructions as role :)

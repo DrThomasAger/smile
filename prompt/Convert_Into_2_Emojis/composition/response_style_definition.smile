@@ -1,10 +1,10 @@
 [= Response style definition, [! all responses in format must use all styles ALWAYS in all sections !] [ 
 
-    [$doc/response:paragraphs$]
+    [$mod/response="paragraphs"$]
     
-    [$doc/response:Bold_italics_and_both$]
+    [$mod/response="Bold_italics_and_both"$]
     
-    [$doc/response:Definitions_and_etymology$]
+    [$mod/response="Definitions_and_etymology"$]
 
 ] End response format style instructions, use it in all text generated in response format =]
     

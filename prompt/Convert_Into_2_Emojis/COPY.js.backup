@@ -15,7 +15,7 @@ const path = require("path");
 const crypto = require("crypto");
 
 // ------------------------------ Config ------------------------------ //
-const TYPES = new Set(["composition", "comp", "module", "mod", "data"]); // 'comp' is shorthand for 'composition', 'mod' is shorthand for 'module'
+const TYPES = new Set(["chain", "document", "data", "doc"]); // 'doc' is accepted shorthand for 'document'
 const IGNORE_DIRS = new Set([".git", "node_modules", ".idea", ".vscode", ".smile-log"]);
 const PRUNE_DIRS  = new Set(["build","dist","coverage",".next",".turbo","out",".cache","tmp","temp","__pycache__","venv",".venv","env",".env","target","bazel-bin","bazel-out",".gradle",".m2",".DS_Store"]);
 const LOG_DIR = ".smile-log";
@@ -78,16 +78,16 @@ function walkFiles(dir, filterFn){
 }
 
 function scanSmileFiles(promptRoot){
-  const startDirs = ["composition","module","data"].map(d=>path.join(promptRoot,d)).filter(p=>fs.existsSync(p));
+  const startDirs = ["chain","document","data"].map(d=>path.join(promptRoot,d)).filter(p=>fs.existsSync(p));
   if (!startDirs.length) startDirs.push(promptRoot);
   const smiles=[];
   for (const d of startDirs){ smiles.push(...walkFiles(d, f=>f.toLowerCase().endsWith('.smile'))); }
   return smiles;
 }
 
-// Build an index of available targets under composition/ and module/ (nested allowed). Data allows any extension.
+// Build an index of available targets under chain/ and document/ (nested allowed). Data allows any extension.
 function buildIndex(promptRoot){
-  const idx={ composition:new Map(), module:new Map(), data:new Map(), all:new Map() };
+  const idx={ chain:new Map(), document:new Map(), data:new Map(), all:new Map() };
 
   function addKey(map, key, rec){
     if(!map.has(key)) map.set(key, []);
@@ -110,18 +110,18 @@ function buildIndex(promptRoot){
     }
   }
 
-  const compositionDir = path.join(promptRoot, 'composition');
-  const moduleDir   = path.join(promptRoot, 'module');
+  const chainDir = path.join(promptRoot, 'chain');
+  const docDir   = path.join(promptRoot, 'document');
   const dataDir  = path.join(promptRoot, 'data');
-  if (fs.existsSync(compositionDir))  walkFiles(compositionDir,  f=>/\.smile$/i.test(f)).forEach(f=>add('composition', f));
-  if (fs.existsSync(moduleDir))    walkFiles(moduleDir,    f=>/\.smile$/i.test(f)).forEach(f=>add('module', f));
+  if (fs.existsSync(chainDir))  walkFiles(chainDir,  f=>/\.smile$/i.test(f)).forEach(f=>add('chain', f));
+  if (fs.existsSync(docDir))    walkFiles(docDir,    f=>/\.smile$/i.test(f)).forEach(f=>add('document', f));
   if (fs.existsSync(dataDir))   walkFiles(dataDir,   _=>true).forEach(f=>add('data', f));
 
   // Legacy discovery fallbacks.
-  const legacyModuleRoots = [ 'document', 'documents', 'sections', 'section', 'prompt', 'response' ].map(n=>path.join(promptRoot, n)).filter(p=>fs.existsSync(p));
-  for (const r of legacyModuleRoots) walkFiles(r, f=>/\.smile$/i.test(f)).forEach(f=>add('module', f));
-  const legacyCompositionRoots = [ 'chain', 'pipeline', 'modules' ].map(n=>path.join(promptRoot, n)).filter(p=>fs.existsSync(p));
-  for (const r of legacyCompositionRoots) walkFiles(r, f=>/\.smile$/i.test(f)).forEach(f=>add('composition', f));
+  const legacyDocRoots = [ 'documents', 'sections', 'section', 'prompt', 'response' ].map(n=>path.join(promptRoot, n)).filter(p=>fs.existsSync(p));
+  for (const r of legacyDocRoots) walkFiles(r, f=>/\.smile$/i.test(f)).forEach(f=>add('document', f));
+  const legacyChainRoots = [ 'pipeline', 'module', 'modules' ].map(n=>path.join(promptRoot, n)).filter(p=>fs.existsSync(p));
+  for (const r of legacyChainRoots) walkFiles(r, f=>/\.smile$/i.test(f)).forEach(f=>add('chain', f));
   return idx;
 }
 
@@ -140,26 +140,20 @@ function splitInner(inner){
 function normalizeType(t){
   if(!t) return null;
   t=t.toLowerCase();
-  if(t==='comp') return 'comp';
-  if(t==='composition') return 'composition';
-  if(t==='mod') return 'mod';
-  if(t==='module') return 'module';
-  if(t==='data') return t;
+  if(t==='doc') return 'doc';
+  if(t==='document') return 'document';
+  if(t==='chain'||t==='data') return t;
   return null;
 }
 
-function typeToFolder(t){ 
-  if(t==='mod') return 'module';
-  if(t==='comp') return 'composition';
-  return t;
-}
+function typeToFolder(t){ return t==='doc' ? 'document' : t; }
 
 function findByNameAcross(idx, name){
   const key = canon(name);
   const hits = idx.all.get(key) || [];
   return hits.map(h => ({
     full:h.full,
-    type: h.type==='module' ? 'module' : h.type,
+    type: h.type==='document' ? 'document' : h.type,
     basename: path.basename(h.full).replace(/\.(smile|txt)$/i,'')
   }));
 }
@@ -170,8 +164,8 @@ function bestCandidateByName(idx, name){
 
   if (!hits.length) return null;
 
-  // Deterministic tie-break: prefer module, then composition, then data; then shorter full path; then lexical path.
-  const pri = (t)=> (t==='module'?0 : t==='composition'?1 : 2);
+  // Deterministic tie-break: prefer document, then chain, then data; then shorter full path; then lexical path.
+  const pri = (t)=> (t==='document'?0 : t==='chain'?1 : 2);
   hits.sort((a,b)=>{
     const pa = pri(a.type), pb = pri(b.type);
     if (pa !== pb) return pa - pb;
@@ -200,11 +194,11 @@ function resolveDeclared(idx, promptRoot, tokenObj){
 
   if (subpaths.length){
     searchRoots.push(path.join(typeRoot, ...subpaths));
-    if (folder==='module' && (subpaths[0].toLowerCase()==='prompt' || subpaths[0].toLowerCase()==='response')){
+    if (folder==='document' && (subpaths[0].toLowerCase()==='prompt' || subpaths[0].toLowerCase()==='response')){
       searchRoots.push(typeRoot);
     }
   } else {
-    if (folder==='module'){
+    if (folder==='document'){
       const pr = path.join(typeRoot,'prompt'); const rr = path.join(typeRoot,'response');
       if (fs.existsSync(pr)) searchRoots.push(pr);
       if (fs.existsSync(rr)) searchRoots.push(rr);
@@ -228,7 +222,7 @@ function resolveDeclared(idx, promptRoot, tokenObj){
       const relDir = path.dirname(relFromType).replace(/^(\.)$/, '');
       return {
         full:f,
-        type: (t==='mod' || t==='comp') ? t : folder,
+        type: t==='doc' ? 'doc' : folder,
         folderPath: relDir==='.'?'' : relDir,
         basename: path.basename(f).replace(/\.(smile|txt)$/i, '')
       };
@@ -275,9 +269,7 @@ function compileContent(idx, promptRoot, filePath, text, stack, suggestions, err
       const fallback = bestCandidateByName(idx, parsed.name);
       if (fallback){
         // Build canonical replacement token from fallback.
-        const fallbackType = fallback.type === 'module' ? (parsed.typeRaw==='mod' ? 'mod' : 'module') : 
-                             fallback.type === 'composition' ? (parsed.typeRaw==='comp' ? 'comp' : 'composition') : 
-                             fallback.type;
+        const fallbackType = fallback.type === 'document' ? (parsed.typeRaw==='doc' ? 'doc' : 'document') : fallback.type;
         const typeRoot = path.join(promptRoot, typeToFolder(fallbackType));
         const relDir = path.relative(typeRoot, path.dirname(fallback.full)).replace(/\\/g,'/');
         const folderPath = relDir === '' ? '' : relDir;
@@ -337,23 +329,15 @@ function compileContent(idx, promptRoot, filePath, text, stack, suggestions, err
       const typeRoot = path.join(promptRoot, typeToFolder(actualType));
       const relDir = path.relative(typeRoot, path.dirname(target.full)).replace(/\\/g,'/');
       const declaredPath = (parsed.subpaths||[]).join('/');
-      const declaredTypeCanonical = (declaredType === 'module' && parsed.typeRaw === 'mod') ? 'mod' : 
-                                    (declaredType === 'composition' && parsed.typeRaw === 'comp') ? 'comp' : 
-                                    declaredType;
-      const normDeclared = (declaredTypeCanonical==='mod') ? 'module' : 
-                           (declaredTypeCanonical==='comp') ? 'composition' : 
-                           declaredTypeCanonical;
-      const normActual   = (actualType==='mod') ? 'module' : 
-                           (actualType==='comp') ? 'composition' : 
-                           actualType;
+      const declaredTypeCanonical = declaredType === 'document' && parsed.typeRaw === 'doc' ? 'doc' : declaredType;
+      const normDeclared = (declaredTypeCanonical==='doc') ? 'document' : declaredTypeCanonical;
+      const normActual   = (actualType==='doc') ? 'document' : actualType;
 
       const needsTypeFix = Boolean(declaredTypeCanonical) && normDeclared !== normActual;
       const needsPathFix = (relDir || '') !== (declaredPath || '');
 
       if (needsTypeFix || needsPathFix){
-        const fixedType = (declaredTypeCanonical==='mod' && actualType==='module') ? 'mod' : 
-                          (declaredTypeCanonical==='comp' && actualType==='composition') ? 'comp' : 
-                          actualType;
+        const fixedType = (declaredTypeCanonical==='doc' && actualType==='document') ? 'doc' : actualType;
         const pathPart = relDir ? `/${relDir}` : '';
         const namePart = parsed.quoted ? `"${target.basename}"` : target.basename;
         const fixedToken = `[$${fixedType}${pathPart}${parsed.op || '='}${namePart}$]`;
@@ -375,7 +359,7 @@ function compileContent(idx, promptRoot, filePath, text, stack, suggestions, err
       }
     }
 
-    // Inline content (composition/module require .smile; data may be any ext).
+    // Inline content (chain/document require .smile; data may be any ext).
     let content;
     try {
       content = read(target.full);

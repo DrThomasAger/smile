@@ -1,9 +1,9 @@
 (: Response language definition (
 
-    [$doc:Response_language_meta-information_(brief)$]
+    [$mod="Response_language_meta-information_(brief)"$]
 
-    [$doc:Bold_and_italics_both_at_once$]
+    [$mod="Bold_and_italics_both_at_once"$]
 
-    [$doc:"Response style definition"$]
+    [$mod="Response style definition"$]
     
 ) End Response language definition :)

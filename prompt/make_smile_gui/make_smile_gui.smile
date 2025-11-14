@@ -7,11 +7,11 @@ First I'll remind you of essential info, then information about what has already
 [= Naming Conventions in (: Smile [!
     Keep naming in integrity with the conventions:
         A **prompt** is the overall text (e.g. applied as an agent or pipeline or workflow etc)
-        A prompt can be composed of chains and documents.
-        A chain is just composed of documents. 
-        A document is just composed of text.
+        A prompt can be composed of compositions and modules.
+        A composition is just composed of modules. 
+        A module is just composed of text.
         Data is also just composed of text.
-        Documents, chains and the text inside of documents are all prompt instructions. 
+        modules, compositions and the text inside of modules are all prompt instructions. 
         Data is also just composed of text.
 !] =]
 
@@ -20,25 +20,78 @@ You must ensure all of these features remain intact at all times no matter what 
 (: Navigational Defaults (
     @1@ It's essential that the user is placed in their selection in an appropriate location relative to their previous navigations.
     @2@ We want to always have them at their most immediate action ready - we want to make things quick and intuitive for navigation. This means that:
-        @a@ When we first load in, we want the first chain selected by default.
-        @b@ When we select a chain, it's essential that we are returned to that chain after finishing navigation inside the modules.
-        @c@ You can navigate to the Add Instruction button at any time (by pressing + to instantly select that window... unless your active window is a text window (editing document text). 
+        @a@ When we first load in, we want the first composition selected by default.
+        @b@ When we select a composition, it's essential that we are returned to that composition after finishing navigation inside the modules.
+        @c@ You can navigate to the Add Instruction button at any time (by pressing "+" or "/" to instantly select that window... unless your active window is a text window (editing module text). 
         @d@ When you are in the Add Instruction button you can press Escape or Up arrow key to exit it.
-            @i@ When we navigate to the Add Instruction button by pressing + and navigate out by pressing Escape or Up arrow key, then we need to be returned to the selection position we came from.
-        ) :)
+            @i@ When we navigate to the Add Instruction button by pressing "+" or "/" and navigate out by pressing Escape or Up arrow key, then we need to be returned to the selection position we came from.
+    @3@ Navigation must be able to naturally use arrow keys to go up and down, even inside of textboxes, e.g:
+        @a@ It's essential that the arrow keys go up to return back to the composition or module you came from after pressing "+" or "/".
+
+) End :)
 
 (: Selecting (
     @1@ Text must be bolded when selected.
     @2@ Allow selection with arrow keys (!and!) on hover. This means that we want the exact same styles on hover as we do on selection. This can be handled so that the same universal selection code is used whether the mouse or arrow keys are used. 
     @3@ Allow all previews when selecting with either the mouse or the arrow keys. 
-    @4@ When selecting [Selection can be with arrow keys or hover for all features that regard selection] the prompt name (agent name) inside of a chain, show an ascii arrow to to go to the left. When clicked from inside of a chain it returns them back to the agent view at the chain that they entered from.
+    @4@ When selecting [Selection can be with arrow keys or hover for all features that regard selection] the prompt name (agent name) inside of a composition, show an ascii arrow to to go to the left. When clicked from inside of a composition it returns them back to the agent view at the composition that they entered from.
     @5@ When selecting  the prompt name inside of the prompt view, show a burger and go to settings.
-    @6@ When selecting a chain inside of the prompt view, show a right arrow.
+    @6@ When selecting a composition inside of the prompt view, show a right arrow.
+    @7@ When hovering with the mouse, remove the selection with the keyboard.
     (: Previews (
-        It's essential that all previews are shown on both hover and arrow key selection. Instruction text for documents must be previewed when hovering or selecting them and documents must be shown when hovering or selecting a chain.
-        @1@ There must be a preview of the documents inside of a chain when a chain is selected. This is shown in preview style text below the chain.
-        @2@ There must be a preview of the instructions inside of a document when a document is selected, providing a preview below it of the first 3 lines of the instruction.
-     ) End Previews info :)
+        It's essential that all previews are shown on both hover and arrow key selection. Instruction text for modules must be previewed when hovering or selecting them and modules must be shown when hovering or selecting a composition.
+        @1@ There must be a preview of the modules inside of a composition when a composition is selected. This is shown in preview style text below the composition.
+        @2@ There must be a preview of the instructions inside of a module when a module is selected, providing a preview below it of the first 3 lines of the instruction.
+        @3@ Every preview must be clickable to navigate to that module inside of the composition.
+) End Previews info :)
+
+(: Keyboard shortcuts (
+    @1@ It's essential that you can press shift+enter to save your progress at any time inside of a text box.
+    @2@ This means that you can use shift+enter to save the instruction you're working on.
+    @3@ You can also use shift+enter to add the new item that you've written the new name of.
+    @4@ If a text box opens, escape must be able to close it.
+    @5@ Escape also functions the same as left arrow.
+    @6@ Note that left arrow does not close a text box, but escape does.
+) End keyboard shortcuts :)
+
+(: )
+
+(: Clicking (
+    @1@ All clicks must be functional the same as right arrow
+    @2@ Clicking the agent must return to the agent view, and leave the composition view.
+) End :)
+
+(: Drag and drop ( [! All modules can be drag and dropped inside of all compositions.  All compositions and modules can be drag and dropped in the prompt view. All previews of modules inside of compositions can be drag and dropped up and down from the agent view. !]
+    @1@ It's essential that items can be picked up to drag.
+    @2@ After being picked up,  their original item that was picked up from is grayed out.
+    @3@ The item that is picked up is aligned to the left, not hovering on top of the mouse.
+    @4@ When you drag it down to move it, there is gray text of the instruction name appearing where it would be placed before dropping it.
+    @5@ All preview text inside of compositions can be drag and dropped also, so you do not need to enter the composition view to do so.
+)
+
+(: GUI infoflags (
+    @0@ Add a flag to every composition and module which is a binary response format/not response format
+    @1@ Add a small bit of text which says "Response Format" at the bottom of the window. 
+    @2@ It has a space where an instruction can be drag and dropped into.
+    @3@ It also has a plus button next to it. if you click this then the position the composition, module or data is added to is the response section once it is confirmed.
+) End :)
+
+(: Populating data (
+    @1@ Note that we are not using real data right now.
+    @2@ This will hook-up to a back-end inside of a folder. It will be reading files.
+    @3@ Don't write any code for making this connect to our local file data source yet. We are just getting the UX flow working first.
+) End :)
+
+(: Adding new instructions (
+    @1@ Always populate in the "Add New Module, Data Or Composition" area (the bottom selection) a button at the bottom which says "+ Create New Instruction".
+    @2@ Change the placeholder when they switch to the add module/composition area to say "Start writing an existing name... Or create one!"
+    @3@ After adding an instruction, place it below where the user came from (If they used the shortcut to navigate to the adding area) 
+    @4@ After adding an instruction, open its plain text box and select it ready for editing.
+) End :)
+
+(: Visual Details (
+    @1@ When hovering or selecting the prompt name/agent name, ensure that the bars are visible on the left side margin across the entire structure of that agent. So, all compositions/modules are shown to be included.
+) End :)
 
 There is a separate back-end that is a compiler, you are just building a prototype of the front-end, not any features.
 
@@ -48,6 +101,58 @@ I had a look at what you made me last time, so please take responsibility for it
 
 (: The following requirements need to be re-examined to be met, as they aren't functional (
 
+ @3@ Every preview must be clickable to navigate to that module inside of the composition.
+        @d@ When you are in the Add Instruction button you can press Escape or Up arrow key to exit it.
+            @i@ When we navigate to the Add Instruction button by pressing "+" or "/" and navigate out by pressing Escape or Up arrow key, then we need to be returned to the selection position we came from.
+    @3@ Navigation must be able to naturally use arrow keys to go up and down, even inside of textboxes, e.g:
+        @a@ It's essential that the arrow keys go up to return back to the composition or module you came from after pressing "+" or "/".
+        @7@ When hovering with the mouse, remove the selection with the keyboard.
+        
+(: Keyboard shortcuts (
+    @1@ It's essential that you can press shift+enter to save your progress at any time inside of a text box.
+    @2@ This means that you can use shift+enter to save the instruction you're working on.
+    @3@ You can also use shift+enter to add the new item that you've written the new name of.
+    @4@ If a text box opens, escape must be able to close it.
+    @5@ Escape also functions the same as left arrow.
+    @6@ Note that left arrow does not close a text box, but escape does.
+) End keyboard shortcuts :)
 
+(: )
 
+(: Clicking (
+    @1@ All clicks must be functional the same as right arrow
+    @2@ Clicking the agent must return to the agent view, and leave the composition view.
+) End :)
+
+(: Drag and drop ( [! All modules can be drag and dropped inside of all compositions.  All compositions and modules can be drag and dropped in the prompt view. All previews of modules inside of compositions can be drag and dropped up and down from the agent view. !]
+    @1@ It's essential that items can be picked up to drag.
+    @2@ After being picked up,  their original item that was picked up from is grayed out.
+    @3@ The item that is picked up is aligned to the left, not hovering on top of the mouse.
+    @4@ When you drag it down to move it, there is gray text of the instruction name appearing where it would be placed before dropping it.
+    @5@ All preview text inside of compositions can be drag and dropped also, so you do not need to enter the composition view to do so.
+)
+
+(: GUI infoflags (
+    @0@ Add a flag to every composition and module which is a binary response format/not response format
+    @1@ Add a small bit of text which says "Response Format" at the bottom of the window. 
+    @2@ It has a space where an instruction can be drag and dropped into.
+    @3@ It also has a plus button next to it. if you click this then the position the composition, module or data is added to is the response section once it is confirmed.
+) End :)
+
+(: Populating data (
+    @1@ Note that we are not using real data right now.
+    @2@ This will hook-up to a back-end inside of a folder. It will be reading files.
+    @3@ Don't write any code for making this connect to our local file data source yet. We are just getting the UX flow working first.
+) End :)
+
+(: Adding new instructions (
+    @1@ Always populate in the "Add New Module, Data Or Composition" area (the bottom selection) a button at the bottom which says "+ Create New Instruction".
+    @2@ Change the placeholder when they switch to the add module/composition area to say "Start writing an existing name... Or create one!"
+    @3@ After adding an instruction, place it below where the user came from (If they used the shortcut to navigate to the adding area) 
+    @4@ After adding an instruction, open its plain text box and select it ready for editing.
+) End :)
+
+(: Visual Details (
+    @1@ When hovering or selecting the prompt name/agent name, ensure that the bars are visible on the left side margin across the entire structure of that agent. So, all compositions/modules are shown to be included.
+) End :)
 ) These were the requirements :)
