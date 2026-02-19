@@ -2,7 +2,7 @@
 
 ![Smile Prompt Language v1](logo.gif)
 
-> **The Positive AI Future.**
+> **A Positive AI Future.**
 
 
 
