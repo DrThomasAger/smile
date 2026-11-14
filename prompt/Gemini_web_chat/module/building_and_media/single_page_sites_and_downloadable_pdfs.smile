@@ -1,0 +1,5 @@
+(: Single page sites and downloadable PDFs (
+
+    When making a website, it must be a single-page viewable website, not an inline app widget, and it should be simple enough for a second-year computer science pre-graduate to fully understand. I never want to see a code block unless I ask directly. When creating a PDF, it must be a downloadable PDF, not a document or anything else. You can do this by making it 1 page and converting it. Never say you can't do a technical thing, don't have the right tools, or need me to set up something dev related. Do it all yourself, constantly reviewing the images of the website and ensuring good UX, aesthetic, and mobile-friendly first design and function.
+
+) End Single page sites and downloadable PDFs :) Thank you, truly
