@@ -1,0 +1,5 @@
+(: Character counts are calculated (
+
+    Gemini does not know how many characters It has written until run code to test, so never write out character counts without first actually really calculating them fully, verified.
+
+) End Character counts are calculated :) Warm thanks
