@@ -1,4 +1,4 @@
-GOLD LETTER  ·  version 1.000
+V1CT0R10U5  ·  version 1.000
 A bold slab serif display font. Free for anyone to use.
 
 More from the maker: https://www.youtube.com/@V1CT0R10U5YT
@@ -6,10 +6,10 @@ More from the maker: https://www.youtube.com/@V1CT0R10U5YT
 
 WHAT IS IN THIS PACKAGE
 
-  GoldLetter-Regular.ttf     the font, for Windows, macOS, Linux and most apps
-  GoldLetter-Regular.otf     the same font in OpenType CFF form
-  GoldLetter-Regular.woff2   the font for websites
-  gold-letter.css            a stylesheet that shows the font in gold on a website
+  V1CT0R10U5-Regular.ttf     the font, for Windows, macOS, Linux and most apps
+  V1CT0R10U5-Regular.otf     the same font in OpenType CFF form
+  V1CT0R10U5-Regular.woff2   the font for websites
+  v1ct0r10u5.css            a stylesheet that shows the font in gold on a website
   gold-atlas.png, .fnt       the textured gold letters as images, for game engines
   OFL.txt                    the licence
   README.txt                 this guide
@@ -17,18 +17,18 @@ WHAT IS IN THIS PACKAGE
 
 INSTALL IT
 
-  Windows   Right-click GoldLetter-Regular.ttf and choose "Install for all users".
-  macOS     Double-click GoldLetter-Regular.ttf and press "Install" in Font Book.
-  Linux     Copy GoldLetter-Regular.ttf into ~/.local/share/fonts and run  fc-cache -f
+  Windows   Right-click V1CT0R10U5-Regular.ttf and choose "Install for all users".
+  macOS     Double-click V1CT0R10U5-Regular.ttf and press "Install" in Font Book.
+  Linux     Copy V1CT0R10U5-Regular.ttf into ~/.local/share/fonts and run  fc-cache -f
   Phones    iOS and Android need a font installer app. Web use needs no install.
 
   After installing, restart the app you want to use it in. The font then
-  appears in the font list as "Gold Letter".
+  appears in the font list as "V1CT0R10U5".
 
 
 USE IT IN DOCUMENTS, DESIGN AND VIDEO APPS
 
-  Pick "Gold Letter" from the font list. It is a display font, made for
+  Pick "V1CT0R10U5" from the font list. It is a display font, made for
   titles, thumbnails, posters, logos and headings. It reads well from about
   14 pixels upward and looks its best at 40 pixels and larger.
 
@@ -41,21 +41,21 @@ USE IT IN DOCUMENTS, DESIGN AND VIDEO APPS
 
 USE IT ON A WEBSITE
 
-  Put GoldLetter-Regular.woff2, GoldLetter-Regular.ttf and gold-letter.css in
+  Put V1CT0R10U5-Regular.woff2, V1CT0R10U5-Regular.ttf and v1ct0r10u5.css in
   one folder on your site, then add
 
-    <link rel="stylesheet" href="gold-letter.css">
-    <h1 class="gold-letter">Victory</h1>
+    <link rel="stylesheet" href="v1ct0r10u5.css">
+    <h1 class="v1ct0r10u5">Victory</h1>
 
-  The class "gold-letter" gives gold gradient text. For the font in a flat
+  The class "v1ct0r10u5" gives gold gradient text. For the font in a flat
   colour, use it like any other font
 
-    h1 { font-family: "Gold Letter", Georgia, serif; color: #8b0000; }
+    h1 { font-family: "V1CT0R10U5", Georgia, serif; color: #8b0000; }
 
 
 USE IT IN A GAME
 
-  Vector text    Load GoldLetter-Regular.ttf as you would any font. Tested in
+  Vector text    Load V1CT0R10U5-Regular.ttf as you would any font. Tested in
                  the LOVE engine and on a Java canvas.
   Gold letters   gold-atlas.png with gold-atlas.fnt is a bitmap font in the
                  common BMFont text format, read by most engines. The
@@ -65,8 +65,8 @@ USE IT IN A GAME
 
 USE IT FROM THE COMMAND LINE
 
-  ImageMagick   convert -font GoldLetter-Regular.ttf -pointsize 96 -fill "#e0b040" -background "#1c1c1c" label:"Gold Letter" title.png
-  FFmpeg        ffmpeg -i in.mp4 -vf "drawtext=fontfile=GoldLetter-Regular.ttf:text='Gold Letter':fontsize=96:fontcolor=0xe0b040:x=(w-text_w)/2:y=80" out.mp4
+  ImageMagick   convert -font V1CT0R10U5-Regular.ttf -pointsize 96 -fill "#e0b040" -background "#1c1c1c" label:"V1CT0R10U5" title.png
+  FFmpeg        ffmpeg -i in.mp4 -vf "drawtext=fontfile=V1CT0R10U5-Regular.ttf:text='V1CT0R10U5':fontsize=96:fontcolor=0xe0b040:x=(w-text_w)/2:y=80" out.mp4
 
 
 WHAT IT CAN TYPE
@@ -82,10 +82,10 @@ WHAT IT CAN TYPE
 IF SOMETHING LOOKS WRONG
 
   The font is not in the list        Restart the app. On Windows, install "for all users".
-  The old version still shows        Remove the old Gold Letter first, then install again.
+  The old version still shows        Remove the old V1CT0R10U5 first, then install again.
   Letters are cut off at the bottom  Raise the line height to 1.15 or more.
   Gold web text shows as flat gold   The browser lacks gradient text. The flat colour is the fallback.
-  The web font does not load         Keep the font files beside gold-letter.css, and serve
+  The web font does not load         Keep the font files beside v1ct0r10u5.css, and serve
                                      the page from a web server, since some browsers block
                                      fonts opened straight from a folder.
   Letters look too tight or loose    Check that the app's kerning is on. Add letter spacing to taste.

@@ -1,0 +1,230 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>V1CT0R10U5</title>
+<meta name="description" content="V1CT0R10U5. Everything published in one place, with how to use each: the V1CT0R10U5 font, the Smile prompt language, SMILE Arena, Dragonwilds Raid Lab and more.">
+<link rel="icon" href="logo.png">
+<link rel="stylesheet" href="font/v1ct0r10u5.css">
+<style>
+/* A night sky page in the colours of the V1CT0R10U5 logo: gold, ruby, sapphire and the teal gem. */
+:root{
+  color-scheme:dark;
+  --night:#0d0d21; --panel:#17172e; --panel-2:#1f1f3a; --line:#3a3560;
+  --gold:#f2b824; --gold-deep:#9a6a0c; --ruby:#d6332a; --sapphire:#3f6fe0; --teal:#34c6d3;
+  --parchment:#efe6cf; --dim:#b3aac8;
+  --display:"V1CT0R10U5",Georgia,serif;
+  --text:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
+  --mono:ui-monospace,Consolas,"Courier New",monospace;
+  --measure:780px;
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--night);color:var(--parchment);font:400 17.5px/1.6 var(--text);-webkit-font-smoothing:antialiased}
+.hero{position:relative;background:#0b0b1d url("art-space.jpg") center 30%/cover no-repeat;text-align:center;padding:38px 18px 30px;border-bottom:3px solid var(--gold-deep)}
+.hero::before{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(13,13,33,.55) 0%,rgba(13,13,33,.25) 45%,rgba(13,13,33,.92) 100%)}
+.hero>*{position:relative}
+.hero img{width:min(620px,92vw);height:auto;display:block;margin:0 auto;filter:drop-shadow(0 8px 22px rgba(0,0,0,.7))}
+h1{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%)}
+.lede{font-size:19px;max-width:32em;margin:16px auto 0;text-shadow:0 2px 6px #000;text-wrap:pretty}
+nav{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin:22px 0 0}
+nav a,.btn{display:inline-flex;align-items:center;min-height:42px;padding:9px 15px;border:2px solid var(--gold-deep);border-radius:8px;background:rgba(23,23,46,.86);color:var(--parchment);font:600 14px/1.15 var(--text);text-decoration:none}
+nav a:hover,.btn:hover{border-color:var(--gold);color:var(--gold)}
+.btn.primary{background:linear-gradient(180deg,#f6d365,#c9951c);border-color:#f6d365;color:#231704}
+.btn.primary:hover{background:linear-gradient(180deg,#fff0b0,#e2b33c);color:#231704}
+a:focus-visible{outline:2px solid var(--teal);outline-offset:3px}
+.wrap{max-width:var(--measure);margin:0 auto;padding:0 max(18px,env(safe-area-inset-right,0px)) 70px max(18px,env(safe-area-inset-left,0px))}
+h2{font:400 clamp(28px,6.4vw,40px)/1.15 var(--display);margin:58px 0 4px;scroll-margin-top:14px;color:var(--gold)}
+h2.v1ct0r10u5{padding:.1em 0 .22em}
+.card{background:var(--panel);border:1px solid var(--line);border-top:3px solid var(--gold-deep);border-radius:10px;padding:20px 20px 8px;margin-top:16px}
+.card.ruby{border-top-color:var(--ruby)} .card.sapphire{border-top-color:var(--sapphire)} .card.teal{border-top-color:var(--teal)}
+.card h3{font:700 21px/1.25 var(--text);margin:0 0 4px;color:#fff}
+.card p{margin:0 0 12px}
+.what{color:var(--dim)}
+.how{margin:0 0 14px;padding-left:1.25em}
+.how li{margin:0 0 4px}
+.links{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 14px}
+.tag{display:inline-block;font:700 11px/1 var(--text);letter-spacing:.09em;text-transform:uppercase;padding:5px 9px;border-radius:5px;margin-bottom:10px;background:var(--panel-2);color:var(--gold)}
+.ruby .tag{color:#ff8a80} .sapphire .tag{color:#9bb8ff} .teal .tag{color:var(--teal)}
+pre{font:400 13.5px/1.6 var(--mono);background:#0b0b1d;border:1px solid var(--line);border-radius:8px;padding:14px 16px;overflow-x:auto;margin:0 0 14px;color:#f6d365}
+code{font:400 .88em var(--mono);background:#0b0b1d;padding:1px 6px;border-radius:5px;color:#f6d365}
+.stage{background:#0b0b1d;border:1px solid var(--line);border-radius:10px;padding:22px 20px 18px;margin:0 0 16px;overflow:hidden}
+.stage .v1ct0r10u5{font-size:clamp(32px,8.6vw,60px);line-height:1.15;display:block}
+.stage .set{font-family:var(--display);color:var(--parchment);font-size:clamp(15px,3.5vw,21px);line-height:1.5;margin-top:10px;overflow-wrap:anywhere}
+.art{display:block;width:100%;height:auto;border-radius:10px;border:2px solid var(--gold-deep);margin:0 0 14px}
+table{border-collapse:collapse;width:100%;font:400 15px/1.45 var(--text);margin:0 0 14px}
+td{border-top:1px solid var(--line);padding:9px 10px 9px 0;vertical-align:top}
+td:first-child{white-space:nowrap;font-weight:700;color:var(--gold)}
+td a,.card p a,footer a{color:var(--teal)}
+footer{margin-top:60px;border-top:1px solid var(--line);padding-top:18px;font:400 14px/1.5 var(--text);color:var(--dim)}
+@media (max-width:520px){body{font-size:16.5px}td:first-child{white-space:normal}.card{padding:16px 15px 6px}}
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <img src="logo.png" alt="V1CT0R10U5" width="1330" height="663">
+  <h1>V1CT0R10U5</h1>
+  <p class="lede">Everything published, in one place, each with how to use it.</p>
+  <nav aria-label="Sections">
+    <a href="#font">The font</a>
+    <a href="#channel">Channel</a>
+    <a href="#smile">Smile language</a>
+    <a href="#games">Games and arenas</a>
+    <a href="#showcases">Showcases</a>
+    <a href="#tools">Tools and lists</a>
+  </nav>
+</header>
+
+<div class="wrap">
+
+<h2 id="font" class="v1ct0r10u5">The V1CT0R10U5 font</h2>
+<section class="card">
+  <span class="tag">Font · version 1.000 · free</span>
+  <div class="stage">
+    <span class="v1ct0r10u5">Victory in the Wilderness</span>
+    <div class="set">ABCDEFGHIJKLMNOPQRSTUVWXYZ abcdefghijklmnopqrstuvwxyz 0123456789 .,;:!? ‘’ “” ()[]{} @#$%&amp;*+=~ ÀÉÎÕÜ àéîõü Çç Ññ Šš ÆæŒœØø ¢¥€ ¼½¾ ™</div>
+  </div>
+  <p class="what">A bold slab serif display font for titles, thumbnails, posters, logos and game text. It types the whole keyboard and most Western European letters, 202 of the 218 in the standard Western set. Free for personal and commercial work under the SIL Open Font License 1.1.</p>
+  <div class="links">
+    <a class="btn primary" href="font/V1CT0R10U5.zip">Download the whole package</a>
+    <a class="btn" href="font/V1CT0R10U5-Regular.ttf">TTF</a>
+    <a class="btn" href="font/V1CT0R10U5-Regular.otf">OTF</a>
+    <a class="btn" href="font/V1CT0R10U5-Regular.woff2">WOFF2</a>
+    <a class="btn" href="font/README.txt">Full usage guide</a>
+    <a class="btn" href="font/OFL.txt">Licence</a>
+  </div>
+  <table>
+    <tr><td>Windows</td><td>Right-click <code>V1CT0R10U5-Regular.ttf</code> and choose Install for all users.</td></tr>
+    <tr><td>macOS</td><td>Double-click <code>V1CT0R10U5-Regular.ttf</code> and press Install in Font Book.</td></tr>
+    <tr><td>Linux</td><td>Copy <code>V1CT0R10U5-Regular.ttf</code> into <code>~/.local/share/fonts</code> and run <code>fc-cache -f</code>.</td></tr>
+    <tr><td>Any app</td><td>Restart the app, then pick V1CT0R10U5 from its font list. Keep line height at 1.15 or more.</td></tr>
+    <tr><td>Games</td><td>Load the TTF as any font, or use <a href="font/gold-atlas.png">gold-atlas.png</a> with <a href="font/gold-atlas.fnt">gold-atlas.fnt</a> for the textured gold letters.</td></tr>
+  </table>
+  <p>On a website, keep the font files beside <a href="font/v1ct0r10u5.css">v1ct0r10u5.css</a>. The class <code>v1ct0r10u5</code> gives the gold text shown above.</p>
+<pre>&lt;link rel="stylesheet" href="v1ct0r10u5.css"&gt;
+&lt;h1 class="v1ct0r10u5"&gt;Victory&lt;/h1&gt;</pre>
+</section>
+
+<h2 id="channel" class="v1ct0r10u5">Channel</h2>
+<section class="card ruby">
+  <span class="tag">YouTube</span>
+  <a href="https://www.youtube.com/@V1CT0R10U5YT"><img class="art" src="art-wildy.jpg" alt="V1CT0R10U5, Season 1, The Wildy Slayer" width="1344" height="768" loading="lazy"></a>
+  <h3>V1CT0R10U5 on YouTube</h3>
+  <p class="what">Season 1, The Wildy Slayer.</p>
+  <div class="links"><a class="btn primary" href="https://www.youtube.com/@V1CT0R10U5YT">Watch on YouTube</a></div>
+</section>
+<section class="card">
+  <span class="tag">Site</span>
+  <h3>drthomasager.com</h3>
+  <p class="what">Dr. Thomas Ager's own site.</p>
+  <div class="links"><a class="btn primary" href="https://drthomasager.com/">Visit the site</a></div>
+</section>
+
+<h2 id="smile" class="v1ct0r10u5">Smile prompt language</h2>
+<section class="card sapphire">
+  <span class="tag">Prompt language</span>
+  <h3>(: Smile</h3>
+  <p class="what">The positive prompt language for structured prompt engineering. Emoticon faces open and close each named section of a prompt, so long prompts stay modular and maintainable across models.</p>
+  <ol class="how">
+    <li>Open a section with a face and its name, write the instruction inside, and close it with the matching face and the same name.</li>
+    <li>Nest smaller sections inside larger ones, with a larger face on the outside.</li>
+    <li>Paste the finished prompt into any model.</li>
+  </ol>
+<pre>(: Role (:
+    You are a kind and exact editor.
+:) End role :) thank you</pre>
+  <div class="links">
+    <a class="btn primary" href="https://drthomasager.github.io/smile/">Read the language</a>
+    <a class="btn" href="https://github.com/DrThomasAger/smile">Repository</a>
+    <a class="btn" href="https://smileprompt.ai/">smileprompt.ai</a>
+  </div>
+</section>
+<section class="card sapphire">
+  <span class="tag">Tool</span>
+  <h3>Smile Composer</h3>
+  <p class="what">An outliner in the browser for writing a Smile prompt as nested sections.</p>
+  <ol class="how">
+    <li>Press Enter to edit a row.</li>
+    <li>Press Right to go into a section and Left to return.</li>
+    <li>Drag rows to reorder them.</li>
+  </ol>
+  <div class="links"><a class="btn primary" href="https://drthomasager.github.io/smile/smile-composer.html">Open the composer</a></div>
+</section>
+
+<h2 id="games" class="v1ct0r10u5">Games and arenas</h2>
+<section class="card ruby">
+  <span class="tag">Tournaments</span>
+  <h3>SMILE Arena</h3>
+  <p class="what">Tournaments for agent Sanghas on self-hosted RuneScape worlds. Clan wars scale to 1000 against 1000, with speedruns, Deadman and Hardcore worlds, and the cost of every match shown before it starts.</p>
+  <ol class="how">
+    <li>Choose Build a clan to set up a Sangha of agents.</li>
+    <li>Choose Estimate a match to see its cost first.</li>
+    <li>Read How clan wars work for the format.</li>
+  </ol>
+  <div class="links"><a class="btn primary" href="https://drthomasager.github.io/smile-arena-site/">Enter the arena</a></div>
+</section>
+<section class="card ruby">
+  <span class="tag">Speedrun lab</span>
+  <h3>Dragonwilds Raid Lab</h3>
+  <p class="what">A speedrun lab for the Scorned Wilderness raid in RuneScape: Dragonwilds, with a run navigator, a race against the world record split by split, clip reels, a split timer, a mechanics wiki and patch notes.</p>
+  <ol class="how">
+    <li>Begin at Start here.</li>
+    <li>Use Run to follow the route, and Race WR to compare your splits with the record.</li>
+    <li>Use Timer while you play, and Practice for single mechanics.</li>
+  </ol>
+  <div class="links"><a class="btn primary" href="https://drthomasager.github.io/dragonwilds-speedrun/">Open the lab</a></div>
+</section>
+<section class="card ruby">
+  <span class="tag">RuneLite plugin</span>
+  <h3>PID Indicator</h3>
+  <p class="what">Shows who goes first in a fight, live, beside your health bar.</p>
+  <ol class="how">
+    <li>Open the repository and follow its install steps for RuneLite.</li>
+    <li>Fight as usual and read the indicator beside your health bar.</li>
+  </ol>
+  <div class="links"><a class="btn primary" href="https://github.com/DrThomasAger/pid-indicator">Repository</a></div>
+</section>
+
+<h2 id="showcases" class="v1ct0r10u5">Showcases</h2>
+<section class="card teal">
+  <span class="tag">Architecture</span>
+  <h3>Mahodara Recordings and Complete Sangha Architecture</h3>
+  <p class="what">An interactive specification of the Mahodara channel, the cross-device feature graph and a hitpoints survival plan, with a printable edition.</p>
+  <ol class="how"><li>Read it top to bottom on a phone or a desktop, or print it from the page.</li></ol>
+  <div class="links"><a class="btn primary" href="https://drthomasager.github.io/mahodara-vitality-showcase/">Open the showcase</a></div>
+</section>
+<section class="card teal">
+  <span class="tag">Showcase</span>
+  <h3>Reciprocal Silicon Memory and Game Telemetry</h3>
+  <p class="what">A showcase of an image and video Sangha at work with game telemetry.</p>
+  <ol class="how"><li>Open the page and follow it section by section.</li></ol>
+  <div class="links"><a class="btn primary" href="https://drthomasager.github.io/image-video-sangha-showcase/">Open the showcase</a></div>
+</section>
+
+<h2 id="tools" class="v1ct0r10u5">Tools and lists</h2>
+<section class="card">
+  <span class="tag">Curated list</span>
+  <h3>Awesome Prompt Structure</h3>
+  <p class="what">A curated collection of prompt structuring languages, frameworks and tooling for prompt engineering.</p>
+  <ol class="how">
+    <li>Pick a language or markup that fits your stack from its table.</li>
+    <li>Combine it with a framework for human clarity.</li>
+    <li>Use its tooling section to test, trace and deploy.</li>
+  </ol>
+  <div class="links"><a class="btn primary" href="https://github.com/DrThomasAger/Awesomeprompt">Repository</a></div>
+</section>
+<section class="card">
+  <span class="tag">Instrument</span>
+  <h3>Flower of Life Composer</h3>
+  <p class="what">A composer built on the Flower of Life pattern, in the browser.</p>
+  <ol class="how"><li>Open the page and use the controls above the pattern.</li></ol>
+  <div class="links"><a class="btn primary" href="https://drthomasager.github.io/flower-of-life-composer/">Open the composer</a></div>
+</section>
+
+<footer>
+  <p><a href="#font">Return to the top</a>. This page is kept in the <a href="https://github.com/DrThomasAger/smile/tree/main/v1ct0r10u5">smile repository</a>.</p>
+</footer>
+</div>
+</body>
+</html>
