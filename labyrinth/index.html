@@ -1,0 +1,246 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The Centre of the Labyrinth</title>
+<meta name="description" content="Every published work of Dr. Thomas Ager in one place, with how to use each: the Gold Letter font, the Smile prompt language, SMILE Arena, Dragonwilds Raid Lab and more.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400&family=Newsreader:opsz,wght@6..72,400;6..72,500&display=swap">
+<link rel="stylesheet" href="gold-letter/gold-letter.css">
+<style>
+/* One column of paths leading out from a drawn labyrinth. Tokens follow the DrThomasAger blog. */
+:root{
+  --paper:#ffffff; --surface:#f7f7f7; --ink:#22212a; --ink-2:#5f5d68; --rule:#e4e3ea;
+  --accent:#3d4fa1; --accent-soft:#e9ecf7; --rose:#b4495e; --rose-soft:#f6e8eb;
+  --amethyst:#6a4fb3; --amethyst-soft:#efeaf8; --sage:#3f7d68; --sage-soft:#e6f0ec;
+  --gold:#8a5a06; --gold-soft:#fbf1d6; --night:#17130f;
+  --display:"Fraunces","Iowan Old Style",Georgia,serif;
+  --serif:"Newsreader","Source Serif 4",Georgia,serif;
+  --sans:"Inter",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --mono:"JetBrains Mono",ui-monospace,Consolas,monospace;
+  --measure:720px;
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--paper);color:var(--ink);font:400 19px/1.55 var(--serif);font-kerning:normal;-webkit-font-smoothing:antialiased}
+.wrap{max-width:var(--measure);margin:0 auto;padding:0 max(18px,env(safe-area-inset-right,0px)) 80px max(18px,env(safe-area-inset-left,0px))}
+header{text-align:center;padding:44px 0 8px}
+#maze{width:min(300px,70vw);height:auto;display:block;margin:0 auto 18px}
+h1{font:400 clamp(2.1rem,8vw,3.6rem)/1.08 "Gold Letter",var(--display);margin:0 0 14px;text-wrap:balance;color:var(--gold)}
+.lede{font-size:20px;color:var(--ink-2);max-width:34em;margin:0 auto;text-wrap:pretty}
+nav{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin:26px 0 6px}
+nav a,.btn{display:inline-flex;align-items:center;min-height:42px;padding:9px 15px;border:1px solid var(--rule);border-radius:999px;background:var(--surface);color:var(--ink);font:500 14px/1.15 var(--sans);text-decoration:none;letter-spacing:.01em}
+nav a:hover,.btn:hover{border-color:var(--accent);background:var(--accent-soft)}
+.btn.primary{background:var(--ink);color:var(--paper);border-color:var(--ink)}
+.btn.primary:hover{background:var(--accent);border-color:var(--accent)}
+a:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+h2{font:500 30px/1.16 var(--display);letter-spacing:-.01em;margin:64px 0 6px;scroll-margin-top:16px;text-wrap:balance}
+.kicker{font:600 12px/1 var(--sans);letter-spacing:.12em;text-transform:uppercase;color:var(--ink-2);margin:0 0 6px}
+.path{border-top:1px solid var(--rule);padding:26px 0 6px;margin-top:22px}
+.path h3{font:500 23px/1.2 var(--display);margin:0 0 4px}
+.path p{margin:0 0 12px}
+.what{color:var(--ink-2)}
+.how{margin:0 0 14px;padding-left:1.2em}
+.how li{margin:0 0 4px}
+.links{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 14px}
+.tag{display:inline-block;font:600 11px/1 var(--sans);letter-spacing:.08em;text-transform:uppercase;padding:5px 9px;border-radius:999px;margin-bottom:10px}
+.t-font{background:var(--gold-soft);color:var(--gold)} .t-lang{background:var(--accent-soft);color:var(--accent)}
+.t-game{background:var(--sage-soft);color:var(--sage)} .t-show{background:var(--amethyst-soft);color:var(--amethyst)} .t-chan{background:var(--rose-soft);color:var(--rose)}
+pre{font:400 13.5px/1.6 var(--mono);background:var(--surface);border:1px solid var(--rule);border-radius:10px;padding:14px 16px;overflow-x:auto;margin:0 0 14px}
+code{font:400 .86em var(--mono);background:var(--surface);padding:1px 5px;border-radius:5px}
+.stage{background:var(--night);border-radius:14px;padding:26px 22px 20px;margin:0 0 16px;overflow:hidden}
+.stage .gold-letter{font-size:clamp(34px,9vw,64px);line-height:1.15;display:block}
+.stage .set{font-family:"Gold Letter",Georgia,serif;color:#e9dcc0;font-size:clamp(15px,3.6vw,22px);line-height:1.5;margin-top:10px;overflow-wrap:anywhere}
+.stage img{display:block;margin:16px auto 0;border-radius:8px;max-width:100%;height:auto}
+table{border-collapse:collapse;width:100%;font:400 15px/1.4 var(--sans);margin:0 0 14px}
+td{border-top:1px solid var(--rule);padding:9px 10px 9px 0;vertical-align:top}
+td:first-child{white-space:nowrap;font-weight:600}
+footer{margin-top:70px;border-top:1px solid var(--rule);padding-top:18px;font:400 14px/1.5 var(--sans);color:var(--ink-2)}
+footer a{color:inherit}
+@media (max-width:520px){body{font-size:17.5px}h2{font-size:26px}td:first-child{white-space:normal}}
+@media (prefers-reduced-motion:no-preference){#maze .you{animation:pulse 2.4s ease-in-out infinite}@keyframes pulse{50%{r:9}}}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header>
+  <svg id="maze" viewBox="-110 -110 220 220" role="img" aria-label="A labyrinth with a marked centre"></svg>
+  <h1>The Centre of the Labyrinth</h1>
+  <p class="lede">Every published work of Dr. Thomas Ager, each with how to use it. Every path below leads out to one of them, and back here.</p>
+  <nav aria-label="Paths">
+    <a href="#gold-letter">Gold Letter font</a>
+    <a href="#smile">Smile language</a>
+    <a href="#arena">Games and arenas</a>
+    <a href="#showcases">Showcases</a>
+    <a href="#tools">Tools and lists</a>
+    <a href="#channel">Channel and site</a>
+  </nav>
+</header>
+
+<h2 id="gold-letter">Gold Letter font</h2>
+<section class="path">
+  <span class="tag t-font">Font · version 1.000 · free</span>
+  <div class="stage">
+    <span class="gold-letter">Victory in the Wilderness</span>
+    <div class="set">ABCDEFGHIJKLMNOPQRSTUVWXYZ abcdefghijklmnopqrstuvwxyz 0123456789 .,;:!? ‘’ “” ()[]{} @#$%&amp;*+=~ ÀÉÎÕÜ àéîõü Çç Ññ Šš ÆæŒœØø ¢¥€ ¼½¾ ™</div>
+    <img src="gold-letter/preview-1280x720.png" alt="Gold Letter preview showing the full character set" width="1280" height="720" loading="lazy">
+  </div>
+  <p class="what">A bold slab serif display font for titles, thumbnails, posters, logos and game text. It types the whole keyboard and most Western European letters, 202 of the 218 in the standard Western set. Free for personal and commercial work under the SIL Open Font License 1.1.</p>
+  <div class="links">
+    <a class="btn primary" href="gold-letter/Gold-Letter.zip">Download the whole package</a>
+    <a class="btn" href="gold-letter/GoldLetter-Regular.ttf">TTF</a>
+    <a class="btn" href="gold-letter/GoldLetter-Regular.otf">OTF</a>
+    <a class="btn" href="gold-letter/GoldLetter-Regular.woff2">WOFF2</a>
+    <a class="btn" href="gold-letter/README.txt">Full usage guide</a>
+    <a class="btn" href="gold-letter/OFL.txt">Licence</a>
+  </div>
+  <table>
+    <tr><td>Windows</td><td>Right-click <code>GoldLetter-Regular.ttf</code> and choose Install for all users.</td></tr>
+    <tr><td>macOS</td><td>Double-click <code>GoldLetter-Regular.ttf</code> and press Install in Font Book.</td></tr>
+    <tr><td>Linux</td><td>Copy <code>GoldLetter-Regular.ttf</code> into <code>~/.local/share/fonts</code> and run <code>fc-cache -f</code>.</td></tr>
+    <tr><td>Any app</td><td>Restart the app, then pick Gold Letter from its font list. Keep line height at 1.15 or more.</td></tr>
+    <tr><td>Games</td><td>Load the TTF as any font, or use <a href="gold-letter/gold-atlas.png">gold-atlas.png</a> with <a href="gold-letter/gold-atlas.fnt">gold-atlas.fnt</a> for the textured gold letters.</td></tr>
+  </table>
+  <p>On a website, keep the font files beside <a href="gold-letter/gold-letter.css">gold-letter.css</a>. The class <code>gold-letter</code> gives the gold text shown above.</p>
+<pre>&lt;link rel="stylesheet" href="gold-letter.css"&gt;
+&lt;h1 class="gold-letter"&gt;Victory&lt;/h1&gt;</pre>
+</section>
+
+<h2 id="smile">Smile prompt language</h2>
+<section class="path">
+  <span class="tag t-lang">Prompt language</span>
+  <h3>(: Smile</h3>
+  <p class="what">The positive prompt language for structured prompt engineering. Emoticon faces open and close each named section of a prompt, so long prompts stay modular and maintainable across models.</p>
+  <ol class="how">
+    <li>Open a section with a face and its name, write the instruction inside, and close it with the matching face and the same name.</li>
+    <li>Nest smaller sections inside larger ones, with a larger face on the outside.</li>
+    <li>Paste the finished prompt into any model.</li>
+  </ol>
+<pre>(: Role (:
+    You are a kind and exact editor.
+:) End role :) thank you</pre>
+  <div class="links">
+    <a class="btn primary" href="https://drthomasager.github.io/smile/">Read the language</a>
+    <a class="btn" href="https://github.com/DrThomasAger/smile">Repository</a>
+    <a class="btn" href="https://smileprompt.ai/">smileprompt.ai</a>
+  </div>
+</section>
+<section class="path">
+  <span class="tag t-lang">Tool</span>
+  <h3>Smile Composer</h3>
+  <p class="what">An outliner in the browser for writing a Smile prompt as nested sections.</p>
+  <ol class="how">
+    <li>Press Enter to edit a row.</li>
+    <li>Press Right to go into a section and Left to return.</li>
+    <li>Drag rows to reorder them.</li>
+  </ol>
+  <div class="links"><a class="btn primary" href="https://drthomasager.github.io/smile/smile-composer.html">Open the composer</a></div>
+</section>
+
+<h2 id="arena">Games and arenas</h2>
+<section class="path">
+  <span class="tag t-game">Tournaments</span>
+  <h3>SMILE Arena</h3>
+  <p class="what">Tournaments for agent Sanghas on self-hosted RuneScape worlds. Clan wars scale to 1000 against 1000, with speedruns, Deadman and Hardcore worlds, and the cost of every match shown before it starts.</p>
+  <ol class="how">
+    <li>Choose Build a clan to set up a Sangha of agents.</li>
+    <li>Choose Estimate a match to see its cost first.</li>
+    <li>Read How clan wars work for the format.</li>
+  </ol>
+  <div class="links"><a class="btn primary" href="https://drthomasager.github.io/smile-arena-site/">Enter the arena</a></div>
+</section>
+<section class="path">
+  <span class="tag t-game">Speedrun lab</span>
+  <h3>Dragonwilds Raid Lab</h3>
+  <p class="what">A speedrun lab for the Scorned Wilderness raid in RuneScape: Dragonwilds, with a run navigator, a race against the world record split by split, clip reels, a split timer, a mechanics wiki and patch notes.</p>
+  <ol class="how">
+    <li>Begin at Start here.</li>
+    <li>Use Run to follow the route, and Race WR to compare your splits with the record.</li>
+    <li>Use Timer while you play, and Practice for single mechanics.</li>
+  </ol>
+  <div class="links"><a class="btn primary" href="https://drthomasager.github.io/dragonwilds-speedrun/">Open the lab</a></div>
+</section>
+<section class="path">
+  <span class="tag t-game">RuneLite plugin</span>
+  <h3>PID Indicator</h3>
+  <p class="what">Shows who goes first in a fight, live, beside your health bar, so the order need not be tracked in your head.</p>
+  <ol class="how">
+    <li>Open the repository and follow its install steps for RuneLite.</li>
+    <li>Fight as usual and read the indicator beside your health bar.</li>
+  </ol>
+  <div class="links"><a class="btn primary" href="https://github.com/DrThomasAger/pid-indicator">Repository</a></div>
+</section>
+
+<h2 id="showcases">Showcases</h2>
+<section class="path">
+  <span class="tag t-show">Architecture</span>
+  <h3>Mahodara Recordings and Complete Sangha Architecture</h3>
+  <p class="what">An interactive specification of the Mahodara channel, the cross-device feature graph and a hitpoints survival plan, with a printable edition.</p>
+  <ol class="how"><li>Read it top to bottom on a phone or a desktop, or print it from the page.</li></ol>
+  <div class="links"><a class="btn primary" href="https://drthomasager.github.io/mahodara-vitality-showcase/">Open the showcase</a></div>
+</section>
+<section class="path">
+  <span class="tag t-show">Showcase</span>
+  <h3>Reciprocal Silicon Memory and Game Telemetry</h3>
+  <p class="what">A showcase of an image and video Sangha at work with game telemetry.</p>
+  <ol class="how"><li>Open the page and follow it section by section.</li></ol>
+  <div class="links"><a class="btn primary" href="https://drthomasager.github.io/image-video-sangha-showcase/">Open the showcase</a></div>
+</section>
+
+<h2 id="tools">Tools and lists</h2>
+<section class="path">
+  <span class="tag t-lang">Curated list</span>
+  <h3>Awesome Prompt Structure</h3>
+  <p class="what">A curated collection of prompt structuring languages, frameworks and tooling for prompt engineering.</p>
+  <ol class="how">
+    <li>Pick a language or markup that fits your stack from its table.</li>
+    <li>Combine it with a framework for human clarity.</li>
+    <li>Use its tooling section to test, trace and deploy.</li>
+  </ol>
+  <div class="links"><a class="btn primary" href="https://github.com/DrThomasAger/Awesomeprompt">Repository</a></div>
+</section>
+<section class="path">
+  <span class="tag t-show">Instrument</span>
+  <h3>Flower of Life Composer</h3>
+  <p class="what">A composer built on the Flower of Life pattern, in the browser.</p>
+  <ol class="how"><li>Open the page and use the controls above the pattern.</li></ol>
+  <div class="links"><a class="btn primary" href="https://drthomasager.github.io/flower-of-life-composer/">Open the composer</a></div>
+</section>
+
+<h2 id="channel">Channel and site</h2>
+<section class="path">
+  <span class="tag t-chan">YouTube</span>
+  <h3>V1CT0R10U5</h3>
+  <p class="what">The YouTube channel behind the Gold Letter font.</p>
+  <div class="links"><a class="btn primary" href="https://www.youtube.com/@V1CT0R10U5YT">Watch on YouTube</a></div>
+</section>
+<section class="path">
+  <span class="tag t-chan">Site</span>
+  <h3>drthomasager.com</h3>
+  <p class="what">Dr. Thomas Ager's own site.</p>
+  <div class="links"><a class="btn primary" href="https://drthomasager.com/">Visit the site</a></div>
+</section>
+
+<footer>
+  <p>You are at the centre. <a href="#maze">Return to the top</a>. This page lives in the <a href="https://github.com/DrThomasAger/smile/tree/main/labyrinth">smile repository</a>.</p>
+</footer>
+</div>
+
+<script>
+// Draws concentric rings with one gap each, turned so the gaps form a winding way in to the centre.
+(function () {
+  var svg = document.getElementById('maze'), ns = 'http://www.w3.org/2000/svg', rings = 7, out = '';
+  function pt(r, a) { return (r * Math.cos(a)).toFixed(2) + ' ' + (r * Math.sin(a)).toFixed(2); }
+  for (var i = 1; i <= rings; i++) {
+    var r = 14 * i, gap = 0.34 + 0.9 / i, mid = -Math.PI / 2 + (i % 2 ? 0 : Math.PI) + i * 0.35;
+    var a0 = mid + gap / 2, a1 = mid - gap / 2 + 2 * Math.PI;
+    out += '<path d="M' + pt(r, a0) + ' A' + r + ' ' + r + ' 0 1 1 ' + pt(r, a1) + '" fill="none" stroke="#22212a" stroke-width="3.2" stroke-linecap="round"/>';
+  }
+  out += '<circle class="you" cx="0" cy="0" r="6.5" fill="#8a5a06"/>';
+  svg.innerHTML = out;
+})();
+</script>
+</body>
+</html>

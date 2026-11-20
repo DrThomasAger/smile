@@ -1,0 +1,23 @@
+/* Gold Letter on a website. Link this file, then give any element class="gold-letter". */
+@font-face {
+  font-family: "Gold Letter";
+  src: url("GoldLetter-Regular.woff2") format("woff2"), url("GoldLetter-Regular.ttf") format("truetype");
+  font-weight: 400 700;
+  font-display: swap;
+}
+.gold-letter {
+  font-family: "Gold Letter", Georgia, serif;
+  font-kerning: normal;
+  color: #e0b040; /* shown where gradient text is not supported */
+  padding: 0.1em 0.05em 0.25em; /* room for descenders and the shadow inside the gradient */
+}
+@supports ((-webkit-background-clip: text) or (background-clip: text)) {
+  .gold-letter {
+    background: linear-gradient(180deg, #fff3b0 0%, #f6d365 22%, #d9a021 48%, #9a6a0c 52%, #e2b33c 74%, #7a4f06 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    color: transparent;
+    filter: drop-shadow(0 0.02em 0 #5a3a04) drop-shadow(0.03em 0.05em 0.02em rgba(0, 0, 0, 0.7));
+  }
+}
