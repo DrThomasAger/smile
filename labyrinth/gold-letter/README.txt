@@ -19,7 +19,7 @@ INSTALL IT
 
   Windows   Right-click GoldLetter-Regular.ttf and choose "Install for all users".
   macOS     Double-click GoldLetter-Regular.ttf and press "Install" in Font Book.
-  Linux     Copy GoldLetter-Regular.ttf into ~/.local/share/fonts and run:  fc-cache -f
+  Linux     Copy GoldLetter-Regular.ttf into ~/.local/share/fonts and run  fc-cache -f
   Phones    iOS and Android need a font installer app. Web use needs no install.
 
   After installing, restart the app you want to use it in. The font then
@@ -42,13 +42,13 @@ USE IT IN DOCUMENTS, DESIGN AND VIDEO APPS
 USE IT ON A WEBSITE
 
   Put GoldLetter-Regular.woff2, GoldLetter-Regular.ttf and gold-letter.css in
-  one folder on your site, then:
+  one folder on your site, then add
 
     <link rel="stylesheet" href="gold-letter.css">
     <h1 class="gold-letter">Victory</h1>
 
   The class "gold-letter" gives gold gradient text. For the font in a flat
-  colour, use it like any other font:
+  colour, use it like any other font
 
     h1 { font-family: "Gold Letter", Georgia, serif; color: #8b0000; }
 
@@ -60,7 +60,7 @@ USE IT IN A GAME
   Gold letters   gold-atlas.png with gold-atlas.fnt is a bitmap font in the
                  common BMFont text format, read by most engines. The
                  letters are about 60 pixels tall and should be drawn at that
-                 size or smaller. It holds the keyboard characters only.
+                 size or smaller. It has the keyboard characters only.
 
 
 USE IT FROM THE COMMAND LINE
@@ -75,7 +75,7 @@ WHAT IT CAN TYPE
   dashes, most Western and Central European accented letters, fractions,
   superscript and subscript digits, and signs such as € ¥ ¢ ° ± ÷ × ™.
 
-  Not in the font:  £ ¤ ¦ § © ¬ ® µ ¶ Þ þ ß ð ƒ † ‡
+  Not in the font    £ ¤ ¦ § © ¬ ® µ ¶ Þ þ ß ð ƒ † ‡
   An app will show these in another font.
 
 
@@ -98,6 +98,6 @@ IF SOMETHING LOOKS WRONG
 
 LICENCE
 
-  SIL Open Font License 1.1, in OFL.txt. In short: anyone may use the font
+  SIL Open Font License 1.1, in OFL.txt. In short, anyone may use the font
   for personal and commercial work, embed it, change it and share it. It may
   not be sold by itself.
