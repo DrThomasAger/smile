@@ -1,18 +1,18 @@
-/* Gold Letter on a website. Link this file, then give any element class="gold-letter". */
+/* V1CT0R10U5 on a website. Link this file, then give any element class="v1ct0r10u5". */
 @font-face {
-  font-family: "Gold Letter";
-  src: url("GoldLetter-Regular.woff2") format("woff2"), url("GoldLetter-Regular.ttf") format("truetype");
+  font-family: "V1CT0R10U5";
+  src: url("V1CT0R10U5-Regular.woff2") format("woff2"), url("V1CT0R10U5-Regular.ttf") format("truetype");
   font-weight: 400 700;
   font-display: swap;
 }
-.gold-letter {
-  font-family: "Gold Letter", Georgia, serif;
+.v1ct0r10u5 {
+  font-family: "V1CT0R10U5", Georgia, serif;
   font-kerning: normal;
   color: #e0b040; /* shown where gradient text is not supported */
   padding: 0.1em 0.05em 0.25em; /* room for descenders and the shadow inside the gradient */
 }
 @supports ((-webkit-background-clip: text) or (background-clip: text)) {
-  .gold-letter {
+  .v1ct0r10u5 {
     background: linear-gradient(180deg, #fff3b0 0%, #f6d365 22%, #d9a021 48%, #9a6a0c 52%, #e2b33c 74%, #7a4f06 100%);
     -webkit-background-clip: text;
     background-clip: text;
