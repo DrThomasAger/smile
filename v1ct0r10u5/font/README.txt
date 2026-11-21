@@ -73,9 +73,9 @@ WHAT IT CAN TYPE
 
   A to Z, a to z, 0 to 9, all keyboard punctuation and symbols, curly quotes,
   dashes, most Western and Central European accented letters, fractions,
-  superscript and subscript digits, and signs such as € ¥ ¢ ° ± ÷ × ™.
+  superscript and subscript digits, and signs such as € £ ¥ ¢ © ® ° ± ÷ × ™ † ‡.
 
-  Not in the font    £ ¤ ¦ § © ¬ ® µ ¶ Þ þ ß ð ƒ † ‡
+  Not in the font    ¤ § ¶ Þ þ ß ð ƒ
   An app will show these in another font.
 
 
