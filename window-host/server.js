@@ -30,9 +30,12 @@ const plain = s => s.replace(/\x1b\[[0-9;?]*[ -\/]*[@-~]|\x1b\][^\x07]*\x07/g, '
 
 // prompt2swarm: send to each window, then check each window's output for the
 // acknowledgement token; any window without it gets the instruction again.
-function swarm({ ids, text, ack = 'SMILE-ACK', retries = 2, waitMs = 20000 }) {
+function swarm({ ids, text, retries = 2, waitMs = 20000 }) {
   const targets = (ids && ids.length ? ids : [...windows.keys()]).map(i => windows.get(i)).filter(w => w && w.alive);
-  const job = Date.now().toString(36);
+  const job = Date.now().toString(36) + Math.random().toString(36).slice(2, 5);
+  const ack = 'SMILE-ACK-' + job; // unique per job, so one job's reply never counts for another
+  text = text.includes('{ACK}') ? text.split('{ACK}').join(ack) : text + ` (: Begin your reply with ${ack} :)`;
+  const count = s => s.split(ack).length - 1;
   targets.forEach(w => {
     let tries = 0; const start = () => w.buf.length;
     const send = () => {
@@ -40,14 +43,15 @@ function swarm({ ids, text, ack = 'SMILE-ACK', retries = 2, waitMs = 20000 }) {
       w.term.write(text.replace(/\r?\n/g, ' ') + '\r');
       log({ kind: 'prompt', job, id: w.id, tries, text });
       setTimeout(() => {
-        const followed = plain(w.buf.slice(mark)).includes(ack);
+        // the terminal echoes the typed prompt, so the reply must add occurrences beyond that echo
+        const followed = count(plain(w.buf.slice(mark))) > count(text);
         log({ kind: followed ? 'followed' : 'not-followed', job, id: w.id, tries });
         if (!followed && tries <= retries) send();
       }, waitMs);
     };
     send();
   });
-  return { job, sent: targets.map(w => w.id) };
+  return { job, ack, sent: targets.map(w => w.id) };
 }
 
 const body = req => new Promise(r => { let b = ''; req.on('data', c => b += c); req.on('end', () => r(b ? JSON.parse(b) : {})); });

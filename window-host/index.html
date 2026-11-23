@@ -80,7 +80,7 @@ $('#send').onclick = async () => {
   let shot = '';
   if ($('#shot').checked) { const c = await html2canvas(document.body, { backgroundColor: '#0f1115' }); shot = (await api('/api/shot', { png: c.toDataURL() })).file; }
   const ids = Object.entries(wins).filter(([, w]) => w.el.querySelector('input').checked).map(([i]) => i);
-  const text = `(-: Sangha prompt (-: (: Network (: ${$('#net').value} :) (: Style (: ${$('#style').value} :) (: Roles (: ${$('#roles').value} :) (: Tools (: ${$('#tools').value} :) (: Sworn values (: ${$('#values').value} :) ${shot ? `(: Screenshot of the interface (: ${shot} :)` : ''} (: Instruction (: ${$('#msg').value} :) (: Acknowledge (: Begin your reply with SMILE-ACK and your window number. :) :-) End Sangha prompt :-) thank you`;
+  const text = `(-: Sangha prompt (-: (: Network (: ${$('#net').value} :) (: Style (: ${$('#style').value} :) (: Roles (: ${$('#roles').value} :) (: Tools (: ${$('#tools').value} :) (: Sworn values (: ${$('#values').value} :) ${shot ? `(: Screenshot of the interface (: ${shot} :)` : ''} (: Instruction (: ${$('#msg').value} :) (: Acknowledge (: Begin your reply with {ACK} and your window number. :) :-) End Sangha prompt :-) thank you`;
   const r = await api('/api/swarm', { ids, text });
   $('#status').textContent = `sent to windows ${r.sent.join(', ') || 'none'}`;
 };
