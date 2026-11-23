@@ -10,3 +10,14 @@
         npm install, then node server.js, then open http://localhost:4444
     :) thank you
 :-) End Smile Window Host :-) thank you
+
+(-: Test suite (-:
+    (: Run (: npm test, or HEADFUL=1 npm test to watch the browser :) thank you
+    (: Modules (:
+        A api.test.js, window lifecycle, spawn, ids, ended programs, close, working folder, ledger entries
+        B static.test.js, client page and libraries served, missing files, no reading outside the host folder, Smile tag on every file
+        C sangha.test.js, unique acknowledgement per job, followed on first try, resend count, typed echo never counts, jobs never count for each other, broadcast to live windows only, unknown windows skipped, multi-line prompts, several windows, typing before a program is ready
+        D shot.test.js, screenshots saved as distinct images, ledger reader limits
+        E ui.test.js, real browser, open from taskbar and custom command, typing and drawn output, ended marker, close, fill, drag, focus order, terminal resize, send button greyed until an instruction exists, every panel setting in the Smile prompt, ticked windows only, screenshot in the prompt, live ledger panel, windows restored after reload
+    :) thank you
+:-) End test suite :-) thank you

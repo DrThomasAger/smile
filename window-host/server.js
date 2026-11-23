@@ -19,9 +19,9 @@ function spawn(cmd, cwd) {
   const shell = process.platform === 'win32' ? 'powershell.exe' : 'bash';
   const args = process.platform === 'win32' ? ['-NoLogo', '-Command', cmd] : ['-lc', cmd];
   const term = pty.spawn(shell, args, { name: 'xterm-256color', cols: 100, rows: 30, cwd: cwd || process.cwd(), env: process.env });
-  const w = { id, cmd, term, buf: '', sockets: new Set(), alive: true };
-  term.onData(d => { w.buf = (w.buf + d).slice(-200000); w.sockets.forEach(s => s.send(d)); });
-  term.onExit(() => { w.alive = false; w.sockets.forEach(s => s.send('\r\n[process ended]\r\n')); });
+  const w = { id, cmd, term, last: 0, buf: '', sockets: new Set(), alive: true };
+  term.onData(d => { w.last = Date.now(); w.buf = (w.buf + d).slice(-200000); w.sockets.forEach(s => s.send(d)); });
+  term.onExit(() => { w.alive = false; const m = '\r\n[process ended]\r\n'; w.buf += m; w.sockets.forEach(s => s.send(m)); });
   windows.set(id, w);
   log({ kind: 'spawn', id, cmd });
   return w;
@@ -49,7 +49,9 @@ function swarm({ ids, text, retries = 2, waitMs = 20000 }) {
         if (!followed && tries <= retries) send();
       }, waitMs);
     };
-    send();
+    // type only once the program has drawn and gone quiet, so typed text is echoed once
+    const ready = () => (w.buf && Date.now() - w.last > 300) || !w.alive ? send() : setTimeout(ready, 50);
+    ready();
   });
   return { job, ack, sent: targets.map(w => w.id) };
 }
