@@ -1,0 +1,89 @@
+<!doctype html>
+<!-- (: SMILE (PROMPT SYSTEM) SYNTAX :) -->
+<html><head><meta charset="utf-8"><title>Smile Window Host</title>
+<link rel="stylesheet" href="/vendor/@xterm/xterm/css/xterm.css">
+<style>
+:root{--bg:#0f1115;--panel:#1a1d24;--line:#2c313c;--ink:#e8e6e1;--gold:#e0b84f}
+body{margin:0;background:var(--bg);color:var(--ink);font:13px system-ui;height:100vh;overflow:hidden}
+#bar{position:fixed;bottom:0;left:0;right:0;height:38px;background:var(--panel);border-top:1px solid var(--line);display:flex;gap:6px;align-items:center;padding:0 8px;z-index:9999}
+button,input,select,textarea{background:#242833;color:var(--ink);border:1px solid var(--line);border-radius:4px;padding:4px 8px;font:inherit}
+button:hover{border-color:var(--gold)} button:disabled{opacity:.35;cursor:not-allowed}
+.win{position:absolute;background:#000;border:1px solid var(--line);border-radius:6px;display:flex;flex-direction:column;min-width:300px;min-height:160px;resize:both;overflow:hidden;box-shadow:0 6px 24px #0008}
+.win.focus{border-color:var(--gold)}
+.tt{background:var(--panel);padding:4px 8px;cursor:move;display:flex;gap:6px;align-items:center;user-select:none}
+.tt span{flex:1;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.tt input{width:16px;height:14px}
+.body{flex:1;padding:2px}
+#swarm{position:absolute;right:10px;top:10px;width:340px;background:var(--panel);border:1px solid var(--line);border-radius:6px;padding:10px;display:flex;flex-direction:column;gap:6px;z-index:9000}
+#swarm label{font-size:11px;color:#aaa} #swarm textarea{min-height:44px;resize:vertical}
+#ledger{max-height:120px;overflow:auto;font:11px monospace;white-space:pre-wrap;color:#9aa}
+</style></head><body>
+<div id="desk"></div>
+<div id="swarm">
+  <b>Prompt to Sangha</b>
+  <label>Network communication structure</label>
+  <select id="net"><option>star, every window reports to the Ganapati window</option><option>ring, each window passes to the next</option><option>mesh, every window may message every window</option><option>chain of command, user then Cosmic Spider then Ganapati then Ganas</option></select>
+  <label>Writing style</label><textarea id="style">Precise, kind, no colons, no metaphors for technical processes, every prompt in Smile.</textarea>
+  <label>Roles (window number = role)</label><textarea id="roles">1 = Ganapati, coordinates
+2 = Gana, builder
+3 = Gana, tester</textarea>
+  <label>Tools available</label><textarea id="tools">shell, file edits, git, playwright</textarea>
+  <label>Sworn values</label><textarea id="values">Benefit all beings. Follow the user first. Report every failure directly.</textarea>
+  <label>Instruction</label><textarea id="msg" placeholder="What the Sangha does next"></textarea>
+  <label><input type="checkbox" id="shot" checked> attach a screenshot of the interface each prompt</label>
+  <button id="send">Send to selected windows (all if none ticked)</button>
+  <div id="ledger"></div>
+</div>
+<div id="bar">
+  <button data-cmd="claude">+ Claude Code</button>
+  <button data-cmd="bash">+ Shell</button>
+  <input id="custom" placeholder="any command line program" style="width:260px">
+  <button id="launch">Open as window</button>
+  <span id="status" style="margin-left:auto;color:#999"></span>
+</div>
+<script src="/vendor/@xterm/xterm/lib/xterm.js"></script>
+<script src="/vendor/@xterm/addon-fit/lib/addon-fit.js"></script>
+<script src="/vendor/html2canvas/dist/html2canvas.min.js"></script>
+<script>
+const $ = s => document.querySelector(s), wins = {};
+let z = 10, n = 0;
+async function api(p, b) { const r = await fetch(p, b ? { method: 'POST', body: JSON.stringify(b) } : {}); return p === '/api/ledger' ? r.text() : r.json(); }
+
+function openWindow(id, cmd) {
+  const el = document.createElement('div'); el.className = 'win';
+  el.style.cssText = `left:${30 + n * 40}px;top:${30 + n * 34}px;width:640px;height:380px;z-index:${++z}`; n = (n + 1) % 8;
+  el.innerHTML = `<div class="tt"><input type="checkbox" title="include in Sangha prompt"><span>#${id} ${cmd}</span><button class="max">Fill</button><button class="x">Close</button></div><div class="body"></div>`;
+  $('#desk').append(el);
+  const term = new Terminal({ fontSize: 13, convertEol: false, theme: { background: '#000' } });
+  const fit = new FitAddon.FitAddon(); term.loadAddon(fit); term.open(el.querySelector('.body'));
+  const ws = new WebSocket(`ws://${location.host}/?id=${id}`);
+  const resize = () => { try { fit.fit(); ws.readyState === 1 && ws.send(`\x00resize:${term.cols}x${term.rows}`); } catch {} };
+  ws.onmessage = e => term.write(e.data); ws.onopen = resize; term.onData(d => ws.send(d));
+  new ResizeObserver(resize).observe(el);
+  const focus = () => { document.querySelectorAll('.win').forEach(w => w.classList.remove('focus')); el.classList.add('focus'); el.style.zIndex = ++z; };
+  el.addEventListener('mousedown', focus);
+  const tt = el.querySelector('.tt');
+  tt.addEventListener('mousedown', e => { if (e.target.tagName !== 'SPAN' && e.target !== tt) return;
+    const dx = e.clientX - el.offsetLeft, dy = e.clientY - el.offsetTop;
+    const mv = m => { el.style.left = m.clientX - dx + 'px'; el.style.top = Math.max(0, m.clientY - dy) + 'px'; };
+    addEventListener('mousemove', mv); addEventListener('mouseup', () => removeEventListener('mousemove', mv), { once: true }); });
+  el.querySelector('.max').onclick = () => Object.assign(el.style, { left: '0', top: '0', width: innerWidth - 360 + 'px', height: innerHeight - 40 + 'px' });
+  el.querySelector('.x').onclick = async () => { ws.close(); await api('/api/kill', { id }); el.remove(); delete wins[id]; };
+  wins[id] = { el, term }; focus();
+}
+async function launch(cmd) { if (!cmd) return; const { id } = await api('/api/spawn', { cmd }); openWindow(id, cmd); }
+document.querySelectorAll('[data-cmd]').forEach(b => b.onclick = () => launch(b.dataset.cmd));
+$('#launch').onclick = () => launch($('#custom').value.trim());
+$('#msg').oninput = () => $('#send').disabled = !$('#msg').value.trim(); $('#send').disabled = true;
+
+$('#send').onclick = async () => {
+  let shot = '';
+  if ($('#shot').checked) { const c = await html2canvas(document.body, { backgroundColor: '#0f1115' }); shot = (await api('/api/shot', { png: c.toDataURL() })).file; }
+  const ids = Object.entries(wins).filter(([, w]) => w.el.querySelector('input').checked).map(([i]) => i);
+  const text = `(-: Sangha prompt (-: (: Network (: ${$('#net').value} :) (: Style (: ${$('#style').value} :) (: Roles (: ${$('#roles').value} :) (: Tools (: ${$('#tools').value} :) (: Sworn values (: ${$('#values').value} :) ${shot ? `(: Screenshot of the interface (: ${shot} :)` : ''} (: Instruction (: ${$('#msg').value} :) (: Acknowledge (: Begin your reply with SMILE-ACK and your window number. :) :-) End Sangha prompt :-) thank you`;
+  const r = await api('/api/swarm', { ids, text });
+  $('#status').textContent = `sent to windows ${r.sent.join(', ') || 'none'}`;
+};
+setInterval(async () => { $('#ledger').textContent = (await api('/api/ledger')).trim().split('\n').slice(-12).join('\n'); }, 3000);
+api('/api/windows').then(ws => ws.filter(w => w.alive).forEach(w => openWindow(w.id, w.cmd)));
+</script></body></html>

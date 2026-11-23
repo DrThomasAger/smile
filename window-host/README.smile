@@ -1,0 +1,12 @@
+(: SMILE (PROMPT SYSTEM) SYNTAX :)
+(-: Smile Window Host (-:
+    (: What it does (:
+        Any command line program, Claude Code included, opens as a draggable, resizable window in the Smile client, each with its own pseudo terminal.
+        The Prompt to Sangha panel sets the network communication structure, writing style, roles, tools and sworn values, and sends one Smile prompt to every ticked window.
+        Each prompt can carry a screenshot of the whole interface, saved under data/shots.
+        Each window must reply with SMILE-ACK. A window whose output lacks it within twenty seconds receives the instruction again, up to two more times. Every spawn, prompt, followed and not-followed result goes to data/swarm-ledger.jsonl.
+    :) thank you
+    (: Start (:
+        npm install, then node server.js, then open http://localhost:4444
+    :) thank you
+:-) End Smile Window Host :-) thank you
