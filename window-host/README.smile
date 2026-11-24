@@ -1,0 +1,28 @@
+(: SMILE (PROMPT SYSTEM) SYNTAX :)
+(-: Smile Window Host (-:
+    (: What it does (:
+        Any command line program, Claude Code included, opens as a draggable, resizable window in the Smile client, each with its own pseudo terminal.
+        The Prompt to Sangha panel sets the network communication structure, writing style, roles, tools and sworn values, and sends one Smile prompt to every ticked window.
+        Each prompt can carry a screenshot of the whole interface, saved under data/shots.
+        Each window must reply with SMILE-ACK. A window whose output lacks it within twenty seconds receives the instruction again, up to two more times. Every spawn, prompt, followed and not-followed result goes to data/swarm-ledger.jsonl.
+        You prompt the Prompter window, a Claude Code that talks like you, and it prompts the other windows itself through the host, so you are never prompting each agent one by one.
+        A window opened with restart when it ends is a worker loop, such as the same agility course run over and over. It needs no agent, and the host restarts it each time it ends. Agents only watch it and improve it.
+        Kept windows and the Prompter are written to data/windows.json and opened again whenever the host starts, so the layers keep going after the main process goes down.
+        On a phone the windows stack full width and the Sangha panel opens from the taskbar.
+    :) thank you
+    (: Start (:
+        npm install, then node server.js, then open http://localhost:4444
+    :) thank you
+:-) End Smile Window Host :-) thank you
+
+(-: Test suite (-:
+    (: Run (: npm test, or HEADFUL=1 npm test to watch the browser :) thank you
+    (: Modules (:
+        A api.test.js, window lifecycle, spawn, ids, ended programs, close, working folder, ledger entries
+        B static.test.js, client page and libraries served, missing files, no reading outside the host folder, Smile tag on every file
+        C sangha.test.js, unique acknowledgement per job, followed on first try, resend count, typed echo never counts, jobs never count for each other, broadcast to live windows only, unknown windows skipped, multi-line prompts, several windows, typing before a program is ready
+        D shot.test.js, screenshots saved as distinct images, ledger reader limits
+        F layers.test.js, worker loops restart alone, unkept windows stay ended, closing ends a loop for good, the Prompter gets the instruction and its worker list, the Prompter prompts a worker itself, kept windows and the Prompter return after the host restarts
+        E ui.test.js, real browser, open from taskbar and custom command, typing and drawn output, ended marker, close, fill, drag, focus order, terminal resize, send button greyed until an instruction exists, every panel setting in the Smile prompt, ticked windows only, screenshot in the prompt, live ledger panel, windows restored after reload, the Prompter button, the phone layout
+    :) thank you
+:-) End test suite :-) thank you
