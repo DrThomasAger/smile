@@ -50,7 +50,7 @@ test('E11 the send button is disabled until an instruction is written', async ()
 });
 test('E12 the Sangha prompt carries every panel setting in Smile', async () => {
   await open(); await p.fill('#style', 'gentle-style-44'); await p.fill('#roles', 'role-33'); await p.fill('#tools', 'tool-22'); await p.fill('#values', 'value-11');
-  await p.selectOption('#net', { index: 2 }); await p.uncheck('#shot'); await p.fill('#msg', 'instruction-1717'); await p.click('#send');
+  await p.selectOption('#net', { index: 2 }); await p.uncheck('#shot'); await p.uncheck('#judge'); await p.fill('#msg', 'instruction-1717'); await p.click('#send');
   await until(async () => (await h.ledger()).some(e => e.kind === 'prompt' && e.text.includes('instruction-1717')));
   const t = (await h.ledger()).reverse().find(e => e.kind === 'prompt').text;
   for (const s of ['gentle-style-44', 'role-33', 'tool-22', 'value-11', 'mesh', '(-: Sangha prompt (-:', 'SMILE-ACK-']) assert.ok(t.includes(s), s);

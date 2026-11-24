@@ -55,6 +55,7 @@ body{overflow:hidden;font:13px/1.45 var(--font-ui);color:var(--ink)}
   <label>Tools available</label><textarea id="tools">shell, file edits, git, playwright</textarea>
   <label>Sworn values</label><textarea id="values">Benefit all beings. Follow the user first. Report every failure directly.</textarea>
   <label>Instruction</label><textarea id="msg" placeholder="What the Sangha does next"></textarea>
+  <label><input type="checkbox" id="judge" checked> a model checks each reply against the sworn values</label>
   <label><input type="checkbox" id="shot" checked> attach a screenshot of the interface each prompt</label>
   <button class="aero-button" id="viaPrompter">Send to the Prompter, it prompts the ticked windows (all if none)</button>
   <button class="w98-button" id="send">Send directly to selected windows (all if none ticked)</button>
@@ -114,7 +115,7 @@ async function sendAll(viaPrompter) {
   if ($('#shot').checked) { const c = await html2canvas(document.body, { backgroundColor: '#160a3f' }); shot = (await api('/api/shot', { png: c.toDataURL() })).file; }
   const ids = Object.entries(wins).filter(([, w]) => w.el.querySelector('input').checked).map(([i]) => i);
   const text = `(-: Sangha prompt (-: (: Network (: ${$('#net').value} :) (: Style (: ${$('#style').value} :) (: Roles (: ${$('#roles').value} :) (: Tools (: ${$('#tools').value} :) (: Sworn values (: ${$('#values').value} :) ${shot ? `(: Screenshot of the interface (: ${shot} :)` : ''} (: Instruction (: ${$('#msg').value} :) (: Acknowledge (: Begin your reply with {ACK} and your window number. :) :-) End Sangha prompt :-) thank you`;
-  const r = await api(viaPrompter ? '/api/prompter' : '/api/swarm', { ids, text });
+  const r = await api(viaPrompter ? '/api/prompter' : '/api/swarm', { ids, text, values: $('#judge').checked ? $('#values').value : undefined, instruction: $('#msg').value });
   $('#status').textContent = r.error || (viaPrompter ? `sent to the Prompter, window ${r.sent[0]}` : `sent to windows ${r.sent.join(', ') || 'none'}`);
 }
 setInterval(async () => { $('#ledger').textContent = (await api('/api/ledger')).trim().split('\n').slice(-12).join('\n'); }, 3000);
