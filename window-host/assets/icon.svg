@@ -1,0 +1,95 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="256" height="256">
+  <title>Ganesha, cosmic spider mother goddess witch, in the eight-spoked dharma wheel before the sun</title>
+  <defs>
+    <radialGradient id="sun" cx="50%" cy="50%" r="50%">
+      <stop offset="0" stop-color="#fffbe0"/><stop offset=".45" stop-color="#ffd84a"/><stop offset="1" stop-color="#ff9a1f"/>
+    </radialGradient>
+    <radialGradient id="cosmos" cx="45%" cy="40%" r="60%">
+      <stop offset="0" stop-color="#5a6cff"/><stop offset=".55" stop-color="#3a1f8f"/><stop offset="1" stop-color="#150a3d"/>
+    </radialGradient>
+    <linearGradient id="gold" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#fff2a8"/><stop offset=".5" stop-color="#e8b021"/><stop offset="1" stop-color="#a86c00"/>
+    </linearGradient>
+    <radialGradient id="skin" cx="40%" cy="35%" r="70%">
+      <stop offset="0" stop-color="#f6e6ff"/><stop offset=".6" stop-color="#c9a7f0"/><stop offset="1" stop-color="#8e6bc4"/>
+    </radialGradient>
+    <radialGradient id="abdomen" cx="40%" cy="30%" r="70%">
+      <stop offset="0" stop-color="#b48cff"/><stop offset=".6" stop-color="#5b2bb5"/><stop offset="1" stop-color="#2a0f66"/>
+    </radialGradient>
+    <linearGradient id="gloss" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#fff" stop-opacity=".85"/><stop offset="1" stop-color="#fff" stop-opacity="0"/>
+    </linearGradient>
+  </defs>
+
+  <!-- the sun behind the wheel -->
+  <g transform="translate(128 128)">
+    <g fill="#ffb627">
+      <path id="ray" d="M0 -126 L9 -100 L-9 -100 Z"/>
+      <use href="#ray" transform="rotate(22.5)"/><use href="#ray" transform="rotate(45)"/><use href="#ray" transform="rotate(67.5)"/>
+      <use href="#ray" transform="rotate(90)"/><use href="#ray" transform="rotate(112.5)"/><use href="#ray" transform="rotate(135)"/>
+      <use href="#ray" transform="rotate(157.5)"/><use href="#ray" transform="rotate(180)"/><use href="#ray" transform="rotate(202.5)"/>
+      <use href="#ray" transform="rotate(225)"/><use href="#ray" transform="rotate(247.5)"/><use href="#ray" transform="rotate(270)"/>
+      <use href="#ray" transform="rotate(292.5)"/><use href="#ray" transform="rotate(315)"/><use href="#ray" transform="rotate(337.5)"/>
+    </g>
+    <circle r="104" fill="url(#sun)"/>
+
+    <!-- the cosmos inside the wheel -->
+    <circle r="88" fill="url(#cosmos)"/>
+    <g fill="#fff">
+      <circle cx="-52" cy="-50" r="1.6"/><circle cx="48" cy="-58" r="1.2"/><circle cx="62" cy="30" r="1.5"/>
+      <circle cx="-66" cy="22" r="1.1"/><circle cx="-30" cy="64" r="1.3"/><circle cx="30" cy="66" r="1"/>
+      <circle cx="70" cy="-14" r="1"/><circle cx="-74" cy="-10" r="1.3"/>
+    </g>
+
+    <!-- the eight spokes and the rim -->
+    <g stroke="url(#gold)" stroke-width="5" stroke-linecap="round">
+      <line x1="0" y1="-24" x2="0" y2="-86"/><line x1="0" y1="24" x2="0" y2="86"/>
+      <line x1="-24" y1="0" x2="-86" y2="0"/><line x1="24" y1="0" x2="86" y2="0"/>
+      <line x1="17" y1="-17" x2="61" y2="-61"/><line x1="-17" y1="17" x2="-61" y2="61"/>
+      <line x1="-17" y1="-17" x2="-61" y2="-61"/><line x1="17" y1="17" x2="61" y2="61"/>
+    </g>
+    <circle r="88" fill="none" stroke="url(#gold)" stroke-width="10"/>
+    <g fill="url(#gold)">
+      <circle cy="-99" r="6"/><circle cy="99" r="6"/><circle cx="-99" r="6"/><circle cx="99" r="6"/>
+      <circle cx="70" cy="-70" r="6"/><circle cx="-70" cy="70" r="6"/><circle cx="-70" cy="-70" r="6"/><circle cx="70" cy="70" r="6"/>
+    </g>
+
+    <!-- the eight legs of the spider mother -->
+    <g fill="none" stroke="#1d0b4f" stroke-width="5" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M-14 18 Q-48 -6 -76 -34"/><path d="M-16 26 Q-56 18 -82 4"/><path d="M-16 34 Q-54 44 -78 40"/><path d="M-12 42 Q-40 66 -56 76"/>
+      <path d="M14 18 Q48 -6 76 -34"/><path d="M16 26 Q56 18 82 4"/><path d="M16 34 Q54 44 78 40"/><path d="M12 42 Q40 66 56 76"/>
+    </g>
+    <g fill="none" stroke="#a98bff" stroke-width="1.6" stroke-linecap="round" opacity=".8">
+      <path d="M-14 18 Q-48 -6 -76 -34"/><path d="M14 18 Q48 -6 76 -34"/><path d="M-16 34 Q-54 44 -78 40"/><path d="M16 34 Q54 44 78 40"/>
+    </g>
+
+    <!-- her body -->
+    <ellipse cx="0" cy="46" rx="22" ry="28" fill="url(#abdomen)" stroke="#1d0b4f" stroke-width="2"/>
+    <path d="M0 30 L5 42 L0 54 L-5 42 Z" fill="#ffd84a"/>
+
+    <!-- Ganesha's ears and head -->
+    <ellipse cx="-30" cy="2" rx="22" ry="26" fill="url(#skin)" stroke="#5b3a8f" stroke-width="2"/>
+    <ellipse cx="30" cy="2" rx="22" ry="26" fill="url(#skin)" stroke="#5b3a8f" stroke-width="2"/>
+    <ellipse cx="-30" cy="4" rx="12" ry="15" fill="#e9b9e8" opacity=".7"/>
+    <ellipse cx="30" cy="4" rx="12" ry="15" fill="#e9b9e8" opacity=".7"/>
+    <circle cx="0" cy="-2" r="24" fill="url(#skin)" stroke="#5b3a8f" stroke-width="2"/>
+    <!-- trunk curling to her right, and the one tusk -->
+    <path d="M-6 10 C-8 30 4 40 14 34 C20 30 18 22 12 24" fill="none" stroke="#5b3a8f" stroke-width="12" stroke-linecap="round"/>
+    <path d="M-6 10 C-8 30 4 40 14 34 C20 30 18 22 12 24" fill="none" stroke="url(#skin)" stroke-width="9" stroke-linecap="round"/>
+    <path d="M-12 12 Q-18 22 -14 28" fill="none" stroke="#fffbe0" stroke-width="4" stroke-linecap="round"/>
+    <!-- eyes and the third eye -->
+    <ellipse cx="-9" cy="-4" rx="3.2" ry="4" fill="#150a3d"/><ellipse cx="9" cy="-4" rx="3.2" ry="4" fill="#150a3d"/>
+    <circle cx="-8" cy="-5.5" r="1.1" fill="#fff"/><circle cx="10" cy="-5.5" r="1.1" fill="#fff"/>
+    <path d="M0 -18 L3 -12 L0 -6 L-3 -12 Z" fill="#ff5a8a"/>
+
+    <!-- the witch's hat with its stars -->
+    <path d="M-30 -20 Q0 -30 30 -20 L22 -16 Q0 -24 -22 -16 Z" fill="#2a0f66" stroke="#1d0b4f" stroke-width="1.5"/>
+    <path d="M-20 -21 Q-4 -56 18 -78 Q10 -50 20 -22 Q0 -27 -20 -21 Z" fill="#3a1f8f" stroke="#1d0b4f" stroke-width="1.5"/>
+    <path d="M-19 -24 Q0 -30 19 -25" fill="none" stroke="url(#gold)" stroke-width="4"/>
+    <path d="M2 -48 l2.2 4.6 5 .6 -3.7 3.4 1 5 -4.5 -2.5 -4.5 2.5 1 -5 -3.7 -3.4 5 -.6 Z" fill="#ffd84a"/>
+    <circle cx="18" cy="-78" r="3.5" fill="#ffd84a"/>
+  </g>
+
+  <!-- the Frutiger Aero gloss across it all -->
+  <ellipse cx="128" cy="78" rx="78" ry="44" fill="url(#gloss)" opacity=".55"/>
+</svg>

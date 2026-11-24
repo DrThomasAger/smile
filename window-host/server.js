@@ -65,7 +65,7 @@ function swarm({ ids, text, retries = 2, waitMs = 20000 }) {
 }
 
 const body = req => new Promise(r => { let b = ''; req.on('data', c => b += c); req.on('end', () => r(b ? JSON.parse(b) : {})); });
-const mime = { '.html': 'text/html', '.js': 'text/javascript', '.css': 'text/css', '.png': 'image/png' };
+const mime = { '.html': 'text/html', '.js': 'text/javascript', '.css': 'text/css', '.png': 'image/png', '.svg': 'image/svg+xml', '.woff2': 'font/woff2', '.jpg': 'image/jpeg' };
 
 const server = http.createServer(async (req, res) => {
   const u = new URL(req.url, 'http://x');

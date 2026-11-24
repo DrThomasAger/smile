@@ -1,0 +1,12 @@
+/* Windows 48 tokens. Every other style module reads these, and a page may set them again to change the look. */
+:root {
+  --w98-face: #d4d0c8; --w98-hi: #ffffff; --w98-lo: #808080; --w98-dark: #404040; --w98-light: #dfdfdf;
+  --ink: #10102a; --ink-soft: #4a4a66; --ink-title: #0a246a;
+  --title-a: #0a246a; --title-b: #3a6ea5; --title-c: #a6caf0;
+  --glass: rgba(255,255,255,.62); --glass-edge: rgba(255,255,255,.85);
+  --aqua-a: #e9fbff; --aqua-b: #6fd3ff; --aqua-c: #1c8fd6;
+  --sun: #ffb627; --gold: #ffd84a; --rose: #e0457b; --violet: #6a3fd0; --leaf: #2ea44f;
+  --sky: linear-gradient(180deg, #160a3f 0%, #3a1f8f 30%, #8a2d8f 58%, #e0457b 78%, #ff9a3c 100%);
+  --font-ui: Tahoma, "Segoe UI", "MS Sans Serif", sans-serif;
+  --font-code: Consolas, "Courier New", monospace;
+}
