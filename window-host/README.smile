@@ -17,6 +17,13 @@
     :) thank you
 :-) End Smile Window Host :-) thank you
 
+(-: How it is put together (-:
+    (: Parts (:
+        logic.js holds every decision as a pure function of plain data, with every number and word named once in K. server.js reads the world and writes to it. A new rule is one new function in logic.js and one row of cases in test/logic.test.js.
+        The host answers this PC only (127.0.0.1) unless SMILE_HOST names another address, since it runs any command it is given. A browser is given only index.html, styles, assets and the two page libraries.
+    :) thank you
+:-) End how it is put together :-) thank you
+
 (-: Test suite (-:
     (: Run (: npm test, or HEADFUL=1 npm test to watch the browser :) thank you
     (: Modules (:
@@ -26,6 +33,9 @@
         D shot.test.js, screenshots saved as distinct images, ledger reader limits
         F layers.test.js, worker loops restart alone, unkept windows stay ended, closing ends a loop for good, the Prompter gets the instruction and its worker list, the Prompter prompts a worker itself, kept windows and the Prompter return after the host restarts
         G values.test.js, the sworn values judge with a stand-in command, adheres sent once, departs sent back up to the retries, what the judge is given, no judge with no values, no judge for a window that never followed
+        H logic.test.js, 107 hypotheses on the pure decisions with no host running, nil and empty inputs, caps reached, the largest crowd, and the worst inputs answering within 50 ms
+        I robust.test.js, what the running host refuses, not JSON, no command, no words, no png, unknown calls, files it gives to no browser, other addresses of the machine, keys after a kept loop starts again, refused resizes, forty four sends at once
+        real-agents.e2e.js, run by hand since it calls models, the real judge answering DEPARTS and a real Claude Code as the Prompter prompting a worker itself
         E ui.test.js, real browser, open from taskbar and custom command, typing and drawn output, ended marker, close, fill, drag, focus order, terminal resize, send button greyed until an instruction exists, every panel setting in the Smile prompt, ticked windows only, screenshot in the prompt, live ledger panel, windows restored after reload, the Prompter button, the phone layout
     :) thank you
 :-) End test suite :-) thank you

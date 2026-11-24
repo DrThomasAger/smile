@@ -1,132 +1,130 @@
 // (: SMILE (PROMPT SYSTEM) SYNTAX :)
-// Smile Window Host: any command line program (Claude Code, a shell, a REPL)
-// runs as a draggable window inside the Smile client, one pseudo terminal each.
+// Smile Window Host: any command line program (Claude Code, a shell, a REPL) runs as a draggable window inside
+// the Smile client, one pseudo terminal each. This file reads the world and writes to it. Every decision is a pure
+// function in logic.js, tested alone in test/logic.test.js.
 const http = require('http'), fs = require('fs'), path = require('path');
+const { spawn: run } = require('child_process');
 const { WebSocketServer } = require('ws');
 const pty = require('node-pty');
+const L = require('./logic'), K = L.K;
 
-const PORT = +process.env.PORT || 4444;
+const PORT = +process.env.PORT || K.PORT;
+const HOST = process.env.SMILE_HOST || K.HOST;
 const DATA = process.env.SMILE_DATA || path.join(__dirname, 'data');
+const JUDGE = process.env.SMILE_JUDGE || 'claude -p --model claude-haiku-5-5';   // reads the judge prompt on stdin
 fs.mkdirSync(path.join(DATA, 'shots'), { recursive: true });
-const ledger = path.join(DATA, 'swarm-ledger.jsonl');
+const ledger = path.join(DATA, 'swarm-ledger.jsonl'), saved = path.join(DATA, 'windows.json');
 const log = o => fs.appendFileSync(ledger, JSON.stringify({ t: Date.now(), ...o }) + '\n');
 
-const windows = new Map(); // id -> { term, cmd, buf, sockets:Set }
+const windows = new Map();   // id -> { id, cmd, cwd, keep, role, restarts, term, last, buf, sockets, alive }
 let nextId = 1;
+const all = () => [...windows.values()];
+const save = () => fs.writeFileSync(saved, JSON.stringify(L.toKeep(all())));
 
-const saved = path.join(DATA, 'windows.json');
-const save = () => fs.writeFileSync(saved, JSON.stringify([...windows.values()].filter(w => w.keep || w.role === 'prompter').map(({ id, cmd, cwd, keep, role }) => ({ id, cmd, cwd, keep, role }))));
-// spawn opens a program in its own pseudo terminal.
-// keep = a worker loop, restarted when it ends, needing no agent to run it.
-// role = 'prompter' marks the one window the user prompts, which then prompts the rest.
+// Opens a program in its own pseudo terminal. keep is a worker loop, started again each time it ends, with no
+// agent in it. role 'prompter' is the one window the person prompts, which then prompts the rest.
 function spawn(cmd, cwd, opts = {}) {
   const id = opts.id || String(nextId++); nextId = Math.max(nextId, +id + 1);
-  const shell = process.platform === 'win32' ? 'powershell.exe' : 'bash';
-  const args = process.platform === 'win32' ? ['-NoLogo', '-Command', cmd] : ['-lc', cmd];
-  const term = pty.spawn(shell, args, { name: 'xterm-256color', cols: 100, rows: 30, cwd: cwd || process.cwd(), env: process.env });
+  const win = process.platform === 'win32';
+  const term = pty.spawn(win ? 'powershell.exe' : 'bash', win ? ['-NoLogo', '-Command', cmd] : ['-lc', cmd],
+    { name: 'xterm-256color', cols: K.COLS, rows: K.ROWS, cwd: cwd && fs.existsSync(cwd) ? cwd : process.cwd(), env: process.env });
   const old = windows.get(id);
-  const w = { id, cmd, cwd, keep: !!opts.keep, role: opts.role || 'worker', restarts: old ? old.restarts + 1 : 0, term, last: 0, buf: old ? old.buf : '', sockets: old ? old.sockets : new Set(), alive: true };
-  term.onData(d => { w.last = Date.now(); w.buf = (w.buf + d).slice(-200000); w.sockets.forEach(s => s.send(d)); });
-  term.onExit(() => { w.alive = false; const m = '\r\n[process ended]\r\n'; w.buf += m; w.sockets.forEach(s => s.send(m));
-    if (w.keep && windows.get(id) === w) setTimeout(() => { if (windows.get(id) === w) { log({ kind: 'restart', id }); spawn(cmd, cwd, { id, keep: true, role: w.role }); } }, 500); });
+  const w = { id, cmd, cwd, keep: !!opts.keep, role: opts.role || K.WORKER, restarts: old ? old.restarts + 1 : 0, term, last: 0,
+    buf: old ? old.buf : '', sockets: old ? old.sockets : new Set(), alive: true };
+  const tell = d => w.sockets.forEach(s => { try { s.send(d); } catch (e) {} });
+  term.onData(d => { w.last = Date.now(); w.buf = L.keepTail(w.buf, d); tell(d); });
+  term.onExit(() => { w.alive = false; w.buf = L.keepTail(w.buf, K.ENDED); tell(K.ENDED);
+    if (L.restarts(w, windows.get(id))) setTimeout(() => { if (L.restarts(w, windows.get(id))) { log({ kind: 'restart', id }); spawn(cmd, cwd, { id, keep: true, role: w.role }); } }, K.RESTART_MS); });
   windows.set(id, w);
   log({ kind: 'spawn', id, cmd, keep: w.keep, role: w.role });
   save();
   return w;
 }
-const plain = s => s.replace(/\x1b\[[0-9;?]*[ -\/]*[@-~]|\x1b\][^\x07]*\x07/g, '');
 
-// prompt2swarm: send to each window, then check each window's output for the
-// acknowledgement token; any window without it gets the instruction again.
-// The sworn values judge. After a window follows an instruction, a model reads what the window wrote against the
-// sworn values, using the prompt in values-judge.smile, and answers ADHERES or DEPARTS with one sentence.
-// SMILE_JUDGE names the command that reads the prompt on stdin, by default Claude Code on its smallest model.
-const { spawn: run } = require('child_process');
-const JUDGE = process.env.SMILE_JUDGE || 'claude -p --model claude-haiku-5-5';
-const judge = ({ values, instruction, reply }) => new Promise(res => {
-  const prompt = fs.readFileSync(path.join(__dirname, 'values-judge.smile'), 'utf8')
-    .replace('{VALUES}', () => values).replace('{INSTRUCTION}', () => instruction).replace('{REPLY}', () => reply.slice(-6000));
+// The sworn values judge. A model reads what a window wrote against the sworn values with values-judge.smile.
+const judge = given => new Promise(res => {
   const c = run(JUDGE, { shell: true, stdio: ['pipe', 'pipe', 'pipe'] }); let out = '';
-  const t = setTimeout(() => { c.kill(); res({ error: 'the judge gave no answer within 120 s' }); }, 120000);
+  const t = setTimeout(() => { c.kill(); res({ error: `the judge gave no answer within ${K.JUDGE_MS / 1000} s` }); }, K.JUDGE_MS);
   c.stdout.on('data', d => out += d); c.on('error', e => { clearTimeout(t); res({ error: e.message }); });
-  c.on('close', () => { clearTimeout(t); const m = /\b(ADHERES|DEPARTS)\b/.exec(out); res(m ? { adheres: m[1] === 'ADHERES', said: out.trim().slice(0, 400) } : { error: 'the judge answered neither word, ' + out.trim().slice(0, 200) }); });
-  c.stdin.on('error', () => {}); c.stdin.end(prompt);
+  c.on('close', () => { clearTimeout(t); res(L.parseJudge(out)); });
+  c.stdin.on('error', () => {}); c.stdin.end(L.judgePrompt(fs.readFileSync(path.join(__dirname, 'values-judge.smile'), 'utf8'), given));
 });
 
-function swarm({ ids, text, retries = 2, waitMs = 20000, values, instruction }) {
-  const targets = (ids && ids.length ? ids : [...windows.keys()]).map(i => windows.get(i)).filter(w => w && w.alive);
-  const job = Date.now().toString(36) + Math.random().toString(36).slice(2, 5);
-  const ack = 'SMILE-ACK-' + job; // unique per job, so one job's reply never counts for another
-  text = text.includes('{ACK}') ? text.split('{ACK}').join(ack) : text + ` (: Begin your reply with ${ack} :)`;
-  const count = s => s.split(ack).length - 1;
-  targets.forEach(w => {
-    let tries = 0; const start = () => w.buf.length;
+// Prompt to Sangha. Each window is typed the instruction, given waitMs to follow, sent it again when it has not,
+// and, when sworn values are given, read by the judge once it has followed.
+function swarm({ ids, text, retries = K.RETRIES, waitMs = K.WAIT_MS, values, instruction } = {}) {
+  const to = L.targets(all(), ids);
+  const job = Date.now().toString(36) + Math.random().toString(36).slice(2, 5), ack = L.ackFor(job);
+  const typed = L.withAck(text, ack);
+  for (const w of to) {
+    let tries = 0;
     const send = note => {
-      const mark = start(); tries++;
+      const mark = w.buf.length; tries++;
       // The words and the Enter are written apart. Written together, Claude Code took them as one paste and kept the
       // Enter as a line inside its box, so nothing was submitted. Found with a real Claude Code window.
-      w.term.write((text + (note || '')).replace(/\r?\n/g, ' '));
-      setTimeout(() => w.alive && w.term.write('\r'), 200);
-      log({ kind: 'prompt', job, id: w.id, tries, text });
-      setTimeout(() => {
-        // the terminal echoes the typed prompt, so the reply must add occurrences beyond that echo
-        const followed = count(plain(w.buf.slice(mark))) > count(text);
-        log({ kind: followed ? 'followed' : 'not-followed', job, id: w.id, tries });
-        if (!followed) { if (tries <= retries) send(); return; }
-        if (!values) return;
-        // the window followed, so what it wrote is read against the sworn values, and a departure is sent back with the judge's sentence
-        judge({ values, instruction: instruction || text, reply: plain(w.buf.slice(mark)) }).then(v => {
-          log({ kind: v.error ? 'judge-error' : v.adheres ? 'adheres' : 'departs', job, id: w.id, tries, said: v.said || v.error });
-          if (v.adheres === false && tries <= retries) send(` (: The sworn values judge wrote (: ${v.said.replace(/[\r\n]+/g, ' ')} :) Do the instruction again keeping every sworn value. :)`);
-        });
+      w.term.write(L.oneLine(typed + (note || '')));
+      setTimeout(() => { if (w.alive) w.term.write('\r'); }, K.ENTER_AFTER_MS);
+      log({ kind: 'prompt', job, id: w.id, tries, text: typed });
+      setTimeout(async () => {
+        const since = w.buf.slice(mark), f = L.followed(since, typed, ack);
+        log({ kind: f ? 'followed' : 'not-followed', job, id: w.id, tries });
+        const next = L.afterWait({ followed: f, tries, retries, hasValues: !!values });
+        if (next === 'resend') return send();
+        if (next !== 'judge') return;
+        const verdict = await judge({ values, instruction: instruction || typed, reply: L.plain(since) });
+        log({ kind: L.ledgerKind(verdict), job, id: w.id, tries, said: verdict.said || verdict.error });
+        if (L.afterJudge({ verdict, tries, retries }) === 'resend-with-note') send(L.judgeNote(verdict.said));
       }, waitMs);
     };
-    // type only once the program has drawn and gone quiet, so typed text is echoed once
-    const ready = () => (w.buf && Date.now() - w.last > 300) || !w.alive ? send() : setTimeout(ready, 50);
+    // typed only once the program has drawn and gone quiet, so the words are shown back once
+    const ready = () => (w.buf && Date.now() - w.last > K.QUIET_MS) || !w.alive ? send() : setTimeout(ready, K.READY_POLL_MS);
     ready();
-  });
-  return { job, ack, sent: targets.map(w => w.id) };
+  }
+  return { job, ack, sent: to.map(w => w.id) };
 }
 
-const body = req => new Promise(r => { let b = ''; req.on('data', c => b += c); req.on('end', () => r(b ? JSON.parse(b) : {})); });
-const mime = { '.html': 'text/html', '.js': 'text/javascript', '.css': 'text/css', '.png': 'image/png', '.svg': 'image/svg+xml', '.woff2': 'font/woff2', '.jpg': 'image/jpeg' };
+const body = req => new Promise((ok, no) => { let b = '', n = 0;
+  req.on('data', c => { n += c.length; if (n > K.BODY_BYTES) { no(new Error('the request is too large')); req.destroy(); } else b += c; });
+  req.on('end', () => { try { ok(b ? JSON.parse(b) : {}); } catch (e) { no(new Error('the request is not JSON')); } }); req.on('error', no); });
+
+const routes = {
+  'GET /api/windows': () => all().map(w => ({ id: w.id, cmd: w.cmd, alive: w.alive, keep: w.keep, role: w.role, restarts: w.restarts })),
+  'POST /api/spawn': b => { const r = L.spawnRequest(b); if (r.error) return { status: 400, error: r.error }; return { id: spawn(r.cmd, r.cwd, r).id }; },
+  'POST /api/kill': b => { const w = windows.get(String(b.id)); if (w) { windows.delete(w.id); try { w.term.kill(); } catch (e) {} save(); } return { ok: true }; },
+  'POST /api/swarm': b => typeof b.text === 'string' && b.text.trim() ? swarm(b) : { status: 400, error: 'an instruction needs words' },
+  'POST /api/prompter': b => {
+    if (!(typeof b.text === 'string' && b.text.trim())) return { status: 400, error: 'an instruction needs words' };
+    const p = L.prompterOf(all()); if (!p) return { status: 409, error: 'no prompter window is open' };
+    return swarm({ ...b, ids: [p.id], text: L.prompterText({ text: b.text, port: PORT, workers: L.workersFor(all(), p, b.ids) }) });
+  },
+  'POST /api/shot': b => { const bytes = L.shotBytes(b.png); if (!bytes) return { status: 400, error: 'a screenshot is a png data address' };
+    const f = path.join(DATA, 'shots', `${Date.now()}-${Math.random().toString(36).slice(2, 6)}.png`); fs.writeFileSync(f, Buffer.from(bytes, 'base64')); return { file: f }; },
+};
 
 const server = http.createServer(async (req, res) => {
   const u = new URL(req.url, 'http://x');
-  const json = o => { res.setHeader('content-type', 'application/json'); res.end(JSON.stringify(o)); };
-  if (u.pathname === '/api/windows') return json([...windows.values()].map(w => ({ id: w.id, cmd: w.cmd, alive: w.alive, keep: w.keep, role: w.role, restarts: w.restarts })));
-  if (u.pathname === '/api/spawn' && req.method === 'POST') { const b = await body(req); const w = spawn(b.cmd, b.cwd, { keep: b.keep, role: b.role }); return json({ id: w.id }); }
-  if (u.pathname === '/api/kill' && req.method === 'POST') { const b = await body(req); const w = windows.get(b.id); if (w) { try { w.term.kill(); } catch {} windows.delete(b.id); save(); } return json({ ok: true }); }
-  if (u.pathname === '/api/swarm' && req.method === 'POST') return json(swarm(await body(req)));
-  if (u.pathname === '/api/prompter' && req.method === 'POST') {
-    const b = await body(req); const p = [...windows.values()].find(w => w.role === 'prompter' && w.alive);
-    if (!p) { res.statusCode = 409; return json({ error: 'no prompter window is open' }); }
-    const workers = [...windows.values()].filter(w => w !== p && w.alive && (!b.ids || !b.ids.length || b.ids.includes(w.id))).map(w => `${w.id} ${w.cmd}`);
-    const text = `${b.text} (: You are the Prompter. Prompt these windows yourself, autonomously, with POST (no proxy) to http://localhost:${PORT}/api/swarm and JSON ids and text, read their replies from GET /api/ledger, and resend until each follows. Windows (: ${workers.join(', ') || 'none yet'} :) :)`;
-    return json(swarm({ ids: [p.id], text, waitMs: b.waitMs, retries: b.retries, values: b.values, instruction: b.instruction }));
-  }
-  if (u.pathname === '/api/shot' && req.method === 'POST') {
-    const b = await body(req); const f = path.join(DATA, 'shots', `${Date.now()}.png`);
-    fs.writeFileSync(f, Buffer.from(b.png.split(',')[1], 'base64')); return json({ file: f });
-  }
-  if (u.pathname === '/api/ledger') return res.end(fs.existsSync(ledger) ? fs.readFileSync(ledger, 'utf8').split('\n').slice(-200).join('\n') : '');
-  let p = u.pathname === '/' ? '/index.html' : u.pathname;
-  if (p.startsWith('/vendor/')) p = '/node_modules/' + p.slice(8);
-  const f = path.join(__dirname, path.normalize(p));
-  if (!f.startsWith(__dirname) || !fs.existsSync(f)) { res.statusCode = 404; return res.end(); }
-  res.setHeader('content-type', mime[path.extname(f)] || 'application/octet-stream');
-  fs.createReadStream(f).pipe(res);
+  const json = (o, status = 200) => { res.statusCode = status; res.setHeader('content-type', 'application/json'); res.end(JSON.stringify(o)); };
+  try {
+    if (u.pathname === '/api/ledger') return res.end(fs.existsSync(ledger) ? L.lastLines(fs.readFileSync(ledger, 'utf8')) : '');
+    const route = routes[`${req.method} ${u.pathname}`];
+    if (route) { const r = await route(req.method === 'POST' ? await body(req) : {}); return r && r.error ? json({ error: r.error }, r.status || 400) : json(r); }
+    if (u.pathname.startsWith('/api/')) return json({ error: 'no such call' }, 404);
+    const s = L.servedFile(__dirname, u.pathname);
+    if (!s || !fs.existsSync(s.file) || !fs.statSync(s.file).isFile()) { res.statusCode = 404; return res.end(); }
+    res.setHeader('content-type', s.type); fs.createReadStream(s.file).pipe(res);
+  } catch (e) { json({ error: String(e.message || e) }, 400); }
 });
 
 new WebSocketServer({ server }).on('connection', (s, req) => {
-  const id = new URL(req.url, 'http://x').searchParams.get('id'); const w = windows.get(id);
+  const w = windows.get(new URL(req.url, 'http://x').searchParams.get('id'));
   if (!w) return s.close();
   w.sockets.add(s); s.send(w.buf);
-  s.on('message', m => { const d = m.toString(); if (d.startsWith('\x00resize:')) { const [c, r] = d.slice(8).split('x').map(Number); try { w.term.resize(c, r); } catch {} } else w.term.write(d); });
+  s.on('message', m => { const d = L.fromPage(m); const now = windows.get(w.id) || w;   // a kept loop that started again has a new terminal
+    try { if (d.cols) now.term.resize(d.cols, d.rows); else if (d.keys != null && now.alive) now.term.write(d.keys); } catch (e) {} });
   s.on('close', () => w.sockets.delete(s));
 });
 
 // windows that were running before the host went down are opened again
-if (fs.existsSync(saved)) for (const w of JSON.parse(fs.readFileSync(saved, 'utf8'))) spawn(w.cmd, w.cwd, w);
-server.listen(PORT, () => console.log(`Smile Window Host on http://localhost:${PORT}`));
+if (fs.existsSync(saved)) { let was = []; try { was = JSON.parse(fs.readFileSync(saved, 'utf8')); } catch (e) {} for (const w of was) if (L.spawnRequest(w).cmd) spawn(w.cmd, w.cwd, w); }
+server.listen(PORT, HOST, () => console.log(`Smile Window Host on http://localhost:${PORT}`));
 module.exports = { spawn, swarm, windows, server };

@@ -63,7 +63,7 @@ test('E13 ticked windows alone receive the prompt', async () => {
 });
 test('E14 the screenshot option saves an image and names it in the prompt', async () => {
   await open(); await p.check('#shot'); await p.fill('#msg', 'with-picture'); await p.click('#send');
-  await until(async () => (await h.ledger()).some(e => e.kind === 'prompt' && e.text.includes('with-picture') && /shots.\d+\.png/.test(e.text)), 15000);
+  await until(async () => (await h.ledger()).some(e => e.kind === 'prompt' && e.text.includes('with-picture') && /shots.\d+-\w+\.png/.test(e.text)), 15000);
 });
 test('E15 the ledger panel shows recent ledger lines', async () => { await open(); await until(async () => (await p.textContent('#ledger')).includes('spawn'), 6000); });
 test('E16 reloading the page restores windows that are still running', async () => {
