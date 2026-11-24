@@ -70,3 +70,14 @@ test('E16 reloading the page restores windows that are still running', async () 
   await open(); const n = (await h.json('/api/windows')).filter(w => w.alive).length; await p.reload();
   await until(async () => (await p.locator('.win').count()) === n);
 });
+test('E17 the Prompter button opens a window marked Prompter, and both send buttons wait for an instruction', async () => {
+  await p.evaluate(() => document.querySelector('[data-role=prompter]').dataset.cmd = 'bash --norc');
+  await p.click('[data-role=prompter]'); await p.waitForSelector('.win .tt span:has-text("Prompter")');
+  assert.ok(await p.isDisabled('#viaPrompter')); await p.fill('#msg', 'lotus'); assert.ok(!(await p.isDisabled('#viaPrompter')));
+  await p.uncheck('#shot'); await p.click('#viaPrompter'); await until(async () => (await p.textContent('#status')).startsWith('sent to the Prompter'));
+});
+test('E18 on a phone the windows stack full width and the Sangha panel opens from the taskbar', async () => {
+  await p.setViewportSize({ width: 390, height: 844 }); await open();
+  const bb = await p.locator('.win').first().boundingBox(); assert.ok(bb.width > 360);
+  assert.ok(!(await p.isVisible('#swarm'))); await p.click('#panelBtn'); assert.ok(await p.isVisible('#swarm'));
+});

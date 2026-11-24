@@ -14,16 +14,24 @@ const log = o => fs.appendFileSync(ledger, JSON.stringify({ t: Date.now(), ...o 
 const windows = new Map(); // id -> { term, cmd, buf, sockets:Set }
 let nextId = 1;
 
-function spawn(cmd, cwd) {
-  const id = String(nextId++);
+const saved = path.join(DATA, 'windows.json');
+const save = () => fs.writeFileSync(saved, JSON.stringify([...windows.values()].filter(w => w.keep || w.role === 'prompter').map(({ id, cmd, cwd, keep, role }) => ({ id, cmd, cwd, keep, role }))));
+// spawn opens a program in its own pseudo terminal.
+// keep = a worker loop, restarted when it ends, needing no agent to run it.
+// role = 'prompter' marks the one window the user prompts, which then prompts the rest.
+function spawn(cmd, cwd, opts = {}) {
+  const id = opts.id || String(nextId++); nextId = Math.max(nextId, +id + 1);
   const shell = process.platform === 'win32' ? 'powershell.exe' : 'bash';
   const args = process.platform === 'win32' ? ['-NoLogo', '-Command', cmd] : ['-lc', cmd];
   const term = pty.spawn(shell, args, { name: 'xterm-256color', cols: 100, rows: 30, cwd: cwd || process.cwd(), env: process.env });
-  const w = { id, cmd, term, last: 0, buf: '', sockets: new Set(), alive: true };
+  const old = windows.get(id);
+  const w = { id, cmd, cwd, keep: !!opts.keep, role: opts.role || 'worker', restarts: old ? old.restarts + 1 : 0, term, last: 0, buf: old ? old.buf : '', sockets: old ? old.sockets : new Set(), alive: true };
   term.onData(d => { w.last = Date.now(); w.buf = (w.buf + d).slice(-200000); w.sockets.forEach(s => s.send(d)); });
-  term.onExit(() => { w.alive = false; const m = '\r\n[process ended]\r\n'; w.buf += m; w.sockets.forEach(s => s.send(m)); });
+  term.onExit(() => { w.alive = false; const m = '\r\n[process ended]\r\n'; w.buf += m; w.sockets.forEach(s => s.send(m));
+    if (w.keep && windows.get(id) === w) setTimeout(() => { if (windows.get(id) === w) { log({ kind: 'restart', id }); spawn(cmd, cwd, { id, keep: true, role: w.role }); } }, 500); });
   windows.set(id, w);
-  log({ kind: 'spawn', id, cmd });
+  log({ kind: 'spawn', id, cmd, keep: w.keep, role: w.role });
+  save();
   return w;
 }
 const plain = s => s.replace(/\x1b\[[0-9;?]*[ -\/]*[@-~]|\x1b\][^\x07]*\x07/g, '');
@@ -62,10 +70,17 @@ const mime = { '.html': 'text/html', '.js': 'text/javascript', '.css': 'text/css
 const server = http.createServer(async (req, res) => {
   const u = new URL(req.url, 'http://x');
   const json = o => { res.setHeader('content-type', 'application/json'); res.end(JSON.stringify(o)); };
-  if (u.pathname === '/api/windows') return json([...windows.values()].map(w => ({ id: w.id, cmd: w.cmd, alive: w.alive })));
-  if (u.pathname === '/api/spawn' && req.method === 'POST') { const b = await body(req); const w = spawn(b.cmd, b.cwd); return json({ id: w.id }); }
-  if (u.pathname === '/api/kill' && req.method === 'POST') { const b = await body(req); const w = windows.get(b.id); if (w) { try { w.term.kill(); } catch {} windows.delete(b.id); } return json({ ok: true }); }
+  if (u.pathname === '/api/windows') return json([...windows.values()].map(w => ({ id: w.id, cmd: w.cmd, alive: w.alive, keep: w.keep, role: w.role, restarts: w.restarts })));
+  if (u.pathname === '/api/spawn' && req.method === 'POST') { const b = await body(req); const w = spawn(b.cmd, b.cwd, { keep: b.keep, role: b.role }); return json({ id: w.id }); }
+  if (u.pathname === '/api/kill' && req.method === 'POST') { const b = await body(req); const w = windows.get(b.id); if (w) { try { w.term.kill(); } catch {} windows.delete(b.id); save(); } return json({ ok: true }); }
   if (u.pathname === '/api/swarm' && req.method === 'POST') return json(swarm(await body(req)));
+  if (u.pathname === '/api/prompter' && req.method === 'POST') {
+    const b = await body(req); const p = [...windows.values()].find(w => w.role === 'prompter' && w.alive);
+    if (!p) { res.statusCode = 409; return json({ error: 'no prompter window is open' }); }
+    const workers = [...windows.values()].filter(w => w !== p && w.alive && (!b.ids || !b.ids.length || b.ids.includes(w.id))).map(w => `${w.id} ${w.cmd}`);
+    const text = `${b.text} (: You are the Prompter. Prompt these windows yourself, autonomously, with POST (no proxy) to http://localhost:${PORT}/api/swarm and JSON ids and text, read their replies from GET /api/ledger, and resend until each follows. Windows (: ${workers.join(', ') || 'none yet'} :) :)`;
+    return json(swarm({ ids: [p.id], text, waitMs: b.waitMs, retries: b.retries }));
+  }
   if (u.pathname === '/api/shot' && req.method === 'POST') {
     const b = await body(req); const f = path.join(DATA, 'shots', `${Date.now()}.png`);
     fs.writeFileSync(f, Buffer.from(b.png.split(',')[1], 'base64')); return json({ file: f });
@@ -87,5 +102,7 @@ new WebSocketServer({ server }).on('connection', (s, req) => {
   s.on('close', () => w.sockets.delete(s));
 });
 
+// windows that were running before the host went down are opened again
+if (fs.existsSync(saved)) for (const w of JSON.parse(fs.readFileSync(saved, 'utf8'))) spawn(w.cmd, w.cwd, w);
 server.listen(PORT, () => console.log(`Smile Window Host on http://localhost:${PORT}`));
 module.exports = { spawn, swarm, windows, server };
