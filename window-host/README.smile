@@ -10,6 +10,7 @@
         Kept windows and the Prompter are written to data/windows.json and opened again whenever the host starts, so the layers keep going after the main process goes down.
         After a window follows an instruction, a model reads what it wrote against the sworn values with the prompt in values-judge.smile, and answers ADHERES or DEPARTS. A departure is sent back to the window with the judge's sentence. SMILE_JUDGE names the judge command, by default Claude Code on its smallest model.
         Seen with a real Claude Code window: it followed on the first try and the judge answered ADHERES. The words and the Enter are written 200 ms apart, since Claude Code took them together as one paste and submitted nothing.
+        A window opened with answer first screens on has the first screens of its program answered by the host, Claude Code's text style and its question whether the folder is trusted. The screens and their keys are rows of data, K.SCREENS in logic.js, so another program's screen is one new row.
         On a phone the windows stack full width and the Sangha panel opens from the taskbar.
     :) thank you
     (: Start (:

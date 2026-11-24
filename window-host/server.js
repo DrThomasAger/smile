@@ -29,12 +29,19 @@ function spawn(cmd, cwd, opts = {}) {
   const term = pty.spawn(win ? 'powershell.exe' : 'bash', win ? ['-NoLogo', '-Command', cmd] : ['-lc', cmd],
     { name: 'xterm-256color', cols: K.COLS, rows: K.ROWS, cwd: cwd && fs.existsSync(cwd) ? cwd : process.cwd(), env: process.env });
   const old = windows.get(id);
-  const w = { id, cmd, cwd, keep: !!opts.keep, role: opts.role || K.WORKER, restarts: old ? old.restarts + 1 : 0, term, last: 0,
+  const w = { id, cmd, cwd, answer: !!opts.answer, answered: null, keep: !!opts.keep, role: opts.role || K.WORKER, restarts: old ? old.restarts + 1 : 0, term, last: 0,
     buf: old ? old.buf : '', sockets: old ? old.sockets : new Set(), alive: true };
   const tell = d => w.sockets.forEach(s => { try { s.send(d); } catch (e) {} });
-  term.onData(d => { w.last = Date.now(); w.buf = L.keepTail(w.buf, d); tell(d); });
+  // With answer on, a first screen the program shows is answered with its keys once it has stopped drawing.
+  let looking = null;
+  const look = () => { looking = null; if (!w.alive) return; const r = L.screenAnswer(w.buf, K.SCREENS, w.answered);
+    if (!r) { if (!L.screenAnswer(w.buf, K.SCREENS, null)) w.answered = null; return; }
+    w.answered = r.name; log({ kind: 'screen-answered', id, screen: r.name });
+    r.keys.forEach((k, i) => setTimeout(() => { if (w.alive) term.write(k); }, i * K.KEY_GAP_MS)); };
+  term.onData(d => { w.last = Date.now(); w.buf = L.keepTail(w.buf, d); tell(d);
+    if (w.answer) { clearTimeout(looking); looking = setTimeout(look, K.QUIET_MS); } });
   term.onExit(() => { w.alive = false; w.buf = L.keepTail(w.buf, K.ENDED); tell(K.ENDED);
-    if (L.restarts(w, windows.get(id))) setTimeout(() => { if (L.restarts(w, windows.get(id))) { log({ kind: 'restart', id }); spawn(cmd, cwd, { id, keep: true, role: w.role }); } }, K.RESTART_MS); });
+    if (L.restarts(w, windows.get(id))) setTimeout(() => { if (L.restarts(w, windows.get(id))) { log({ kind: 'restart', id }); spawn(cmd, cwd, { id, keep: true, role: w.role, answer: w.answer }); } }, K.RESTART_MS); });
   windows.set(id, w);
   log({ kind: 'spawn', id, cmd, keep: w.keep, role: w.role });
   save();
@@ -88,7 +95,7 @@ const body = req => new Promise((ok, no) => { let b = '', n = 0;
   req.on('end', () => { try { ok(b ? JSON.parse(b) : {}); } catch (e) { no(new Error('the request is not JSON')); } }); req.on('error', no); });
 
 const routes = {
-  'GET /api/windows': () => all().map(w => ({ id: w.id, cmd: w.cmd, alive: w.alive, keep: w.keep, role: w.role, restarts: w.restarts })),
+  'GET /api/windows': () => all().map(w => ({ id: w.id, cmd: w.cmd, alive: w.alive, keep: w.keep, role: w.role, answer: w.answer, restarts: w.restarts })),
   'POST /api/spawn': b => { const r = L.spawnRequest(b); if (r.error) return { status: 400, error: r.error }; return { id: spawn(r.cmd, r.cwd, r).id }; },
   'POST /api/kill': b => { const w = windows.get(String(b.id)); if (w) { windows.delete(w.id); try { w.term.kill(); } catch (e) {} save(); } return { ok: true }; },
   'POST /api/swarm': b => typeof b.text === 'string' && b.text.trim() ? swarm(b) : { status: 400, error: 'an instruction needs words' },

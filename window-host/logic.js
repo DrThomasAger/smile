@@ -17,6 +17,15 @@ const K = {
   ACK: 'SMILE-ACK-', PLACE: '{ACK}', PROMPTER: 'prompter', WORKER: 'worker', ENDED: '\r\n[process ended]\r\n',
   RESIZE: '\x00resize:',
   MIME: { '.html': 'text/html', '.js': 'text/javascript', '.css': 'text/css', '.png': 'image/png', '.svg': 'image/svg+xml', '.woff2': 'font/woff2', '.jpg': 'image/jpeg', '.smile': 'text/plain' },
+  // First screens a program shows before it takes a prompt, and the keys that answer each. Data, so a new program's
+  // screen is one new row. when is tested on the screen's text with every space taken out. Each row answers once
+  // per time its screen appears. Seen with Claude Code 2.1.330.
+  SCREENS: [
+    { name: 'Claude Code asks whether the folder is trusted', when: /Yes,Itrustthisfolder/, keys: ['\x1b[B', '\r'] },
+    { name: 'Claude Code offers a text style', when: /Choosethetextstyle/, keys: ['\r'] },
+    { name: 'a screen that waits for Enter to confirm', when: /Entertoconfirm/, keys: ['\r'] },
+  ],
+  SCREEN_TAIL: 4000, KEY_GAP_MS: 300,
   // the only folders and files of the host a browser is given
   SERVED: ['index.html', 'styles/', 'assets/', 'node_modules/@xterm/', 'node_modules/html2canvas/dist/'],
 };
@@ -55,13 +64,13 @@ const workersFor = (windows, prompter, ids) => { const want = ids && ids.length 
 const prompterText = ({ text, port, workers }) => `${text} (: You are the Prompter. Prompt these windows yourself, autonomously, with POST (no proxy) to http://localhost:${port}/api/swarm and JSON ids and text, read their replies from GET /api/ledger, and resend until each follows. Windows (: ${(workers || []).map(w => `${w.id} ${w.cmd}`).join(', ') || 'none yet'} :) :)`;
 
 // Windows written down so they open again after the host goes down: kept loops and the Prompter.
-const toKeep = windows => (windows || []).filter(w => w.keep || w.role === K.PROMPTER).map(({ id, cmd, cwd, keep, role }) => ({ id, cmd, cwd, keep: !!keep, role }));
+const toKeep = windows => (windows || []).filter(w => w.keep || w.role === K.PROMPTER).map(({ id, cmd, cwd, keep, role, answer }) => ({ id, cmd, cwd, keep: !!keep, role, answer: !!answer }));
 const restarts = (w, current) => !!(w && w.keep && current === w);
 
 // A request to open a window, checked. Answers { cmd, cwd, keep, role } or { error }.
 const spawnRequest = b => { const cmd = typeof (b && b.cmd) === 'string' ? b.cmd.trim() : '';
   if (!cmd) return { error: 'a window needs a command to run' };
-  return { cmd, cwd: typeof b.cwd === 'string' && b.cwd ? b.cwd : undefined, keep: !!b.keep, role: b.role === K.PROMPTER ? K.PROMPTER : K.WORKER }; };
+  return { cmd, cwd: typeof b.cwd === 'string' && b.cwd ? b.cwd : undefined, answer: !!b.answer, keep: !!b.keep, role: b.role === K.PROMPTER ? K.PROMPTER : K.WORKER }; };
 const shotBytes = png => { const m = /^data:image\/png;base64,([A-Za-z0-9+/=]+)$/.exec(String(png ?? '')); return m ? m[1] : null; };
 // A message from a window's page: a resize, or keys for the program.
 const fromPage = msg => { const d = String(msg ?? '');
@@ -70,6 +79,11 @@ const fromPage = msg => { const d = String(msg ?? '');
   return Number.isInteger(c) && Number.isInteger(r) && c > 0 && r > 0 && c <= K.MAX_COLS && r <= K.MAX_ROWS ? { cols: c, rows: r } : { ignore: true }; };
 const lastLines = (text, n = K.LEDGER_LINES) => String(text ?? '').split('\n').slice(-n).join('\n');
 const keepTail = (buf, more) => (String(buf ?? '') + more).slice(-K.BUFFER);
+
+// The first row of rules whose screen is showing, or null. tail is the end of a window's output. A rule is skipped
+// when it was the last one answered and nothing new has been written since, so one screen is answered once.
+const screenAnswer = (tail, rules = K.SCREENS, lastAnswered = null) => { const s = plain(String(tail ?? '').slice(-K.SCREEN_TAIL)).replace(/\s+/g, '');
+  const r = (rules || []).find(x => x.when.test(s)); return r && r.name !== lastAnswered ? r : null; };
 
 // The file of the host a web path names, or null. Only what K.SERVED lists is given, and nothing above the root.
 const servedFile = (root, pathname) => {
@@ -82,5 +96,5 @@ const servedFile = (root, pathname) => {
   return { file: path.join(root, ...rel.split('/')), type: K.MIME[path.extname(rel).toLowerCase()] || 'application/octet-stream' };
 };
 
-module.exports = { K, plain, oneLine, ackFor, withAck, count, followed, afterWait, afterJudge, ledgerKind, judgeNote, judgePrompt, parseJudge,
+module.exports = { screenAnswer, K, plain, oneLine, ackFor, withAck, count, followed, afterWait, afterJudge, ledgerKind, judgeNote, judgePrompt, parseJudge,
   targets, prompterOf, workersFor, prompterText, toKeep, restarts, spawnRequest, shotBytes, fromPage, lastLines, keepTail, servedFile };

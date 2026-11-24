@@ -61,13 +61,13 @@ test('H15 prompterText names the port, each worker and the instruction, and says
   const t = L.prompterText({ text: 'climb', port: 4444, workers: [W[1], W[3]] }); for (const s of ['climb', 'localhost:4444/api/swarm', '2 bash, 4 bb', 'You are the Prompter']) assert.ok(t.includes(s), s);
   assert.ok(L.prompterText({ text: 'x', port: 1, workers: [] }).includes('none yet'));
 });
-test('H16 toKeep is kept loops and the prompter, as plain data', () => eq(L.toKeep(W), [{ id: '1', cmd: 'claude', cwd: undefined, keep: false, role: 'prompter' }, { id: '4', cmd: 'bb', cwd: undefined, keep: true, role: 'worker' }]));
+test('H16 toKeep is kept loops and the prompter, as plain data', () => eq(L.toKeep(W), [{ id: '1', cmd: 'claude', cwd: undefined, keep: false, role: 'prompter', answer: false }, { id: '4', cmd: 'bb', cwd: undefined, keep: true, role: 'worker', answer: false }]));
 test('H17 restarts only a kept window that is still the current one', () => { const w = { keep: true }; eq(L.restarts(w, w), true); eq(L.restarts(w, {}), false); eq(L.restarts(w, undefined), false); eq(L.restarts({ keep: false }, w), false); eq(L.restarts(null, null), false); });
 
 each('H18 spawnRequest', [
-  ['a command', { cmd: 'bash' }, { cmd: 'bash', cwd: undefined, keep: false, role: 'worker' }], ['spaces are trimmed', { cmd: '  bb  ' }, { cmd: 'bb', cwd: undefined, keep: false, role: 'worker' }],
-  ['kept prompter in a folder', { cmd: 'claude', cwd: '/tmp', keep: 1, role: 'prompter' }, { cmd: 'claude', cwd: '/tmp', keep: true, role: 'prompter' }],
-  ['an unknown role is a worker', { cmd: 'x', role: 'queen' }, { cmd: 'x', cwd: undefined, keep: false, role: 'worker' }],
+  ['a command', { cmd: 'bash' }, { cmd: 'bash', cwd: undefined, answer: false, keep: false, role: 'worker' }], ['spaces are trimmed', { cmd: '  bb  ' }, { cmd: 'bb', cwd: undefined, answer: false, keep: false, role: 'worker' }],
+  ['kept prompter in a folder', { cmd: 'claude', cwd: '/tmp', keep: 1, role: 'prompter' }, { cmd: 'claude', cwd: '/tmp', answer: false, keep: true, role: 'prompter' }],
+  ['an unknown role is a worker', { cmd: 'x', role: 'queen' }, { cmd: 'x', cwd: undefined, answer: false, keep: false, role: 'worker' }],
   ['empty', { cmd: '' }, { error: 'a window needs a command to run' }], ['only spaces', { cmd: '   ' }, { error: 'a window needs a command to run' }],
   ['a number', { cmd: 44 }, { error: 'a window needs a command to run' }], ['nothing', {}, { error: 'a window needs a command to run' }], ['nil', null, { error: 'a window needs a command to run' }],
 ], (i, o) => eq(L.spawnRequest(i), o));
@@ -96,6 +96,14 @@ each('H23 servedFile gives nothing for', [
   ['up out of vendor', '/vendor/@xterm/../../server.js'], ['backslashes', '/styles\\..\\server.js'], ['a nul', '/styles/a%00.css'], ['a broken encoding', '/%E0%A4%A'], ['a look-alike folder', '/styles-other/x.css'],
 ], p => eq(L.servedFile(R, p), null));
 
+const trust = 'Yes, I trust this folder\r\n Enter to confirm';
+each('H25 screenAnswer', [
+  ['the trust screen is answered with down then Enter', trust, null, 'Claude Code asks whether the folder is trusted'], ['the trust screen inside colour codes', '\x1b[1mYes, I trust\x1b[0m this folder', null, 'Claude Code asks whether the folder is trusted'],
+  ['the text style screen', 'Choose the text style that looks best', null, 'Claude Code offers a text style'], ['another Enter to confirm screen', 'Pick one. Enter to confirm', null, 'a screen that waits for Enter to confirm'],
+  ['a screen already answered is not answered twice', trust, 'Claude Code asks whether the folder is trusted', null], ['a prompt box is no first screen', '? for shortcuts', null, null], ['empty', '', null, null], ['nil', null, null, null],
+  ['only the end of the output is read', trust + 'x'.repeat(K.SCREEN_TAIL), null, null],
+], (tail, last, want) => eq((L.screenAnswer(tail, K.SCREENS, last) || {}).name || null, want));
+test('H26 screenAnswer takes other rules as data', () => eq(L.screenAnswer('Press any key', [{ name: 'any key', when: /Pressanykey/, keys: [' '] }]).keys, [' ']));
 test('H24 the worst inputs answer within 50 ms each', () => {
   const big = ('\x1b[31mA1 lotus\x1b[0m ').repeat(K.BUFFER / 18 | 0), crowd = Array.from({ length: 4444 }, (_, i) => ({ id: String(i), alive: i % 2 === 0, role: 'worker', cmd: 'bash', keep: i % 3 === 0 }));
   for (const [name, fn] of [['plain', () => L.plain(big)], ['followed', () => L.followed(big, 'A1', 'A1')], ['targets', () => L.targets(crowd, crowd.map(w => w.id))], ['workersFor', () => L.workersFor(crowd, crowd[0], crowd.map(w => w.id))],

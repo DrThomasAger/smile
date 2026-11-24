@@ -68,6 +68,7 @@ body{overflow:hidden;font:13px/1.45 var(--font-ui);color:var(--ink)}
   <button class="w98-button" data-cmd="claude">+ Claude Code</button>
   <button class="w98-button" data-cmd="bash">+ Shell</button>
   <label style="font-size:11px"><input type="checkbox" id="keep"> restart when it ends</label>
+  <label style="font-size:11px" title="Answers Claude Code's first screens, its text style and trusting the folder it opens in"><input type="checkbox" id="answer" checked> answer first screens</label>
   <input id="custom" placeholder="any command line program" style="width:260px">
   <button class="w98-button" id="launch">Open as window</button>
   <button class="aero-button" id="panelBtn">Sangha</button><span class="w98-tray" id="status" style="margin-left:auto;color:#999"></span>
@@ -102,7 +103,7 @@ function openWindow(id, cmd) {
   el.querySelector('.x').onclick = async () => { ws.close(); await api('/api/kill', { id }); el.remove(); delete wins[id]; };
   wins[id] = { el, term }; focus();
 }
-async function launch(cmd, role) { if (!cmd) return; const keep = $('#keep').checked; const { id } = await api('/api/spawn', { cmd, keep, role }); openWindow(id, (role === 'prompter' ? 'Prompter, ' : '') + (keep ? 'kept, ' : '') + cmd); }
+async function launch(cmd, role) { if (!cmd) return; const keep = $('#keep').checked; const { id } = await api('/api/spawn', { cmd, keep, role, answer: $('#answer').checked }); openWindow(id, (role === 'prompter' ? 'Prompter, ' : '') + (keep ? 'kept, ' : '') + cmd); }
 document.querySelectorAll('[data-cmd]').forEach(b => b.onclick = () => launch(b.dataset.cmd, b.dataset.role));
 $('#panelBtn').onclick = () => $('#swarm').classList.toggle('open');
 $('#launch').onclick = () => launch($('#custom').value.trim());

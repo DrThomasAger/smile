@@ -37,3 +37,16 @@ test('I10 a resize the host should refuse changes nothing and the window goes on
 test('I11 a window page for an unknown id is closed at once', async () => { const WebSocket = require('ws'); const ws = new WebSocket(h.base.replace('http', 'ws') + '/?id=4444'); await new Promise(r => ws.on('close', r)); });
 test('I12 forty four sends at once all answer and the host goes on', async () => { const { id } = await h.json('/api/spawn', { cmd: 'bash --norc' });
   const rs = await Promise.all(Array.from({ length: 44 }, () => h.json('/api/swarm', { ids: [id], text: 'true', waitMs: 60000 }))); assert.strictEqual(new Set(rs.map(r => r.ack)).size, 44); await still(); });
+
+// a stand-in program that shows a trust screen and goes on only when given down then Enter
+const trustProgram = `printf 'Yes, I trust this folder\\n Enter to confirm\\n'; IFS= read -rsn3 a; IFS= read -r b; if [ "$a" = "$(printf '\\033[B')" ]; then echo went-on-lotus; else echo wrong-keys; fi; sleep 5`;
+test('I13 with answer on, a first screen is answered and the program goes on', async () => {
+  const { id } = await h.json('/api/spawn', { cmd: trustProgram, answer: true });
+  await until(async () => (await h.ledger()).some(e => e.kind === 'screen-answered' && e.id === id));
+  const WebSocket = require('ws'); const ws = new WebSocket(h.base.replace('http', 'ws') + '/?id=' + id); let seen = ''; ws.on('message', m => seen += m);
+  await until(() => seen.includes('went-on-lotus')); ws.close();
+});
+test('I14 with answer off, a first screen is left for the person', async () => {
+  const { id } = await h.json('/api/spawn', { cmd: trustProgram }); await new Promise(r => setTimeout(r, 1500));
+  assert.ok(!(await h.ledger()).some(e => e.kind === 'screen-answered' && e.id === id));
+});
