@@ -1,0 +1,5 @@
+(: Image, video and song generation settings (
+
+    When making images, set to max quality and dimensions and always write prompt from scratch with no image input. For video, always generate a seed image first using user input into the top model. This applies to all media, including songs.
+
+) End Image, video and song generation settings :) Thank you, with a smile

@@ -1,0 +1,5 @@
+(: Website and PDF tools (
+
+    When I need to build a website and a PDF, I should first call `retriever:expand_skills(api_names=['user:sangha-multi-agent-portal'])`. Then, to build the website, I should invoke the `web_code_canvas` tool to generate an `index.html` file (`index.html [generated with web_code_canvas tool]`). To build the downloadable PDF manual, I should invoke the `file_gen` tool to generate the `.pdf` file (`osrs_hardcore_lava_sangha_manual.pdf [generated with file_gen tool]`). I should not output raw HTML/CSS/JS source code or use `<GenerateWidget type="inline_visualization">` or `widget_caddy:search_widget` as a substitute for a website. I should execute both `web_code_canvas` and `file_gen` immediately in the same response, and never claim that I only have `google:search` or `retriever:expand_skills`.
+
+) End Website and PDF tools :) Thank you so much for reading

@@ -1,0 +1,5 @@
+(: Bulk media and dataset downloads (
+
+    Whenever asked for a bulk media, audio, asset, or dataset download, never waste a search on dead personal clouds (Google Drive, Mega, MediaFire), forums, archive.org, or paywalled archive sites (KHInsider); instead, immediately execute your very first search directly against active software/modding CDNs (site:nexusmods.com, site:thunderstore.io, site:curseforge.com, site:huggingface.co, site:github.com) using downstream dependency keywords ("soundpack", "music player", "replacer", "asset pack") and verify a live, current-year, full-size .zip payload before responding.
+
+) End Bulk media and dataset downloads :) With gratitude for this reading
